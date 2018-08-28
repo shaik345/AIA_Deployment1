@@ -1,0 +1,1571 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: 
+  Author:  
+  Purpose: 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="SyncPriceListPDCProvABCSImplProcess"
+         targetNamespace="http://xmlns.oracle.com/ABCSImpl/PDC/Core/SyncPriceListPDCProvABCSImpl/V1"
+	 xmlns:pricinggateway="http://www.oracle.com/communications/pricing"
+	 xmlns:tns="urn:PricingGateWay"
+	     
+	     
+	 xmlns:eboebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/PriceList/V2"
+         xmlns:eboabcs="http://xmlns.oracle.com/ABCSImpl/PDC/Core/SyncPriceListPDCProvABCSImpl/V1"
+             
+	 xmlns:eboext="http://xmlns.oracle.com/ABCSImpl/PDC/SyncPriceListPDCProvABCSImplExtension/V1"
+	 xmlns:ebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/PriceList/V2"
+	 xmlns:ebs="http://xmlns.oracle.com/EnterpriseServices/Core/PriceList/V2"
+
+         xmlns:aia="http://www.oracle.com/XSL/Transform/java/oracle.apps.aia.core.xpath.AIAFunctions"
+         xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+         xmlns:aiaeh="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess"
+           
+	
+	 xmlns:xacml="urn:oasis:names:tc:xacml:2.0:context:schema:cd:04"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:wsa="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:ora="http://schemas.oracle.com/xpath/extension"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ehdr="http://www.oracle.com/XSL/Transform/java/oracle.tip.esb.server.headers.ESBHeaderFunctions"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:orcl="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:bpelcom="http://schemas.oracle.com/service/bpel/common"
+         xmlns:ns1="http://xmlns.oracle.com/communications/platform/model/pricing"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+		 xmlns:corepricelistext="http://xmlns.oracle.com/ABCSImpl/PDC/SyncPriceListPDCProvABCSImplExtension/V1"
+         xml:id="id_246" xmlns:ui="http://xmlns.oracle.com/soa/designer/">
+  <partnerLinks xml:id="id_247">
+    
+    <partnerLink name="SyncPriceListPDCProvABCSImpl"
+	 partnerLinkType="eboabcs:SyncPriceListPDCProvABCSImpl"
+	 myRole="SyncPriceListPDCProvABCSImplProvider" xml:id="id_248"/>
+
+
+
+    <partnerLink name="pricingGatewayPortType"
+	 partnerRole="pricingGatewayPortType_Role"
+	 partnerLinkType="tns:pricingGatewayPortType" xml:id="id_249"/>
+
+    <partnerLink myRole="AIAAsyncErrorHandlingBPELProcessRequester"
+	 name="AIAAsyncErrorHandlingBPELProcess"
+         partnerRole="AIAAsyncErrorHandlingBPELProcessProvider"
+         partnerLinkType="aiaeh:AIAAsyncErrorHandlingBPELProcess"
+                 xml:id="id_251"/>
+	 <partnerLink name="PriceListEBSResponse"
+	 partnerRole="PriceListEBSResponse_Role"
+	 partnerLinkType="ebs:PriceListEBSResponse" xml:id="id_252"/>
+  </partnerLinks>
+  <variables xml:id="id_253">
+    <variable name="SyncPriceListReqMsg"
+         messageType="eboabcs:SyncPriceListReqMsg" xml:id="id_254"/>
+    <variable name="SyncpricingAppReqMsg"
+         messageType="tns:CreatePublishPricingRequest" xml:id="id_255"/>  
+    <variable name="SyncpricingAppRespMsg"
+         messageType="tns:CreatePricingResponse" xml:id="id_256"/>
+    <variable name="SystemFaultVar"
+         messageType="bpelx:RuntimeFaultMessage" xml:id="id_258"/>
+    <variable name="AIAAsyncErrorHandlingBPELProcessRequestMessage"
+         messageType="aiaeh:AIAAsyncErrorHandlingBPELProcessRequestMessage"
+              xml:id="id_259"/>
+    
+	 <variable name="SyncPriceListAsyncRespMsg"
+         messageType="ebs:SyncPriceListListRespMsg" xml:id="id_260"/>
+
+    <variable name="SystemFaultMsg" messageType="bpelx:RuntimeFaultMessage"
+              xml:id="id_261"/>
+    <variable name="SystemID" type="xsd:string" xml:id="id_262"/>
+    <variable name="Sender" element="corecom:Sender" xml:id="id_263"/>
+    <variable name="Title" type="xsd:string" xml:id="id_264"/>
+    <variable name="EBM_HEADER" element="corecom:EBMHeader" xml:id="id_265"/>
+    <variable name="InstanceID" type="xsd:string" xml:id="id_266"/>
+    <variable name="ServiceName" type="xsd:string" xml:id="id_267"/>
+    <variable name="TraceLogEnabled" type="xsd:boolean" xml:id="id_268"/>
+    
+    <variable name="ChargeOfferingVar_add" element="ns1:PricingObjectsJXB"
+              xml:id="id_269"/>
+              
+             
+    <variable name="ChargeOfferingVar_update" element="ns1:PricingObjectsJXB"
+              xml:id="id_270"/>
+    <variable name="ChargeOfferingVarB64" type="xsd:base64Binary"
+              xml:id="id_271"/>
+    <variable name="params" element="bpelcom:parameters" xml:id="id_272"/>
+    <variable name="UpdatePricingAppReqMsg" messageType="tns:UpdatePublishPricingRequest"
+              xml:id="id_273"/>
+    <variable name="XSLTParameters" element="bpelcom:parameters"
+              xml:id="id_274"/>
+        <variable name="SyncpricingAppRespMsg_Update"
+                  messageType="tns:CreatePricingResponse" xml:id="id_794"/>
+        <variable name="params_update" element="bpelcom:parameters" xml:id="id_817"/>
+		 <variable name="ExtensionFaultVar"
+                  messageType="aiaeh:AIAAsyncErrorHandlingBPELProcessRequestMessage" xml:id="id_825"/>
+        <variable name="BindingMessageVar" type="xsd:string" xml:id="id_923"/>
+    </variables>
+
+  <faultHandlers xml:id="id_275">
+        <catch faultName="bpelx:remoteFault" faultVariable="SystemFaultVar"
+               xml:id="id_276">
+            <sequence name="Sequence_RemoteFault" xml:id="id_277">
+
+ <bpelx:exec name="TraceLog_BeginRemoteFaultCatch" language="java"
+                version="1.3" xml:id="id_278">
+      <![CDATA[java.lang.String TraceLogMessage = null; 
+	java.lang.Boolean tracelogenabled   = (java.lang.Boolean)getVariableData("TraceLogEnabled");
+java.lang.String title = (java.lang.String)getVariableData("Title");         
+java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+
+
+if (tracelogenabled.booleanValue())                                                                                
+{                                                                                                                                                                                      
+                       
+          
+   TraceLogMessage = "Starting " + serviceName + " Entering Error Hanlder Remote Fault Instance: " + instanceID + title; ;                         
+   
+   oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  null ,TraceLogMessage); 
+   
+}]]>
+    </bpelx:exec>
+			 <assign name="AssignRemoteFault" xml:id="id_824">
+                    <copy xml:id="id_826">
+                        <from expression="ora:processXSLT('xsl/EBM_to_Fault.xsl',bpws:getVariableData('SyncPriceListReqMsg','SyncPriceListEBM'))"
+                              xml:id="id_827"/>
+                        <to variable="ExtensionFaultVar" part="FaultMessage"
+                            xml:id="id_828" query="/corecom:Fault"/>
+                    </copy>
+                    <copy xml:id="id_829">
+                        <from variable="SystemFaultVar" part="code"
+                              xml:id="id_830"/>
+                        <to variable="ExtensionFaultVar" part="FaultMessage"
+                            query="/corecom:Fault/corecom:FaultNotification/corecom:FaultMessage/corecom:Code"
+                            xml:id="id_831"/>
+                    </copy>
+                    <copy xml:id="id_832">
+                        <from variable="SystemFaultVar" part="summary"
+                              xml:id="id_833"/>
+                        <to variable="ExtensionFaultVar" part="FaultMessage"
+                            query="/corecom:Fault/corecom:FaultNotification/corecom:FaultMessage/corecom:Text"
+                            xml:id="id_834"/>
+                    </copy>
+                    <copy xml:id="id_835">
+                        <from expression="xp20:current-dateTime()"
+                              xml:id="id_836"/>
+                        <to variable="ExtensionFaultVar" part="FaultMessage"
+                            query="/corecom:Fault/corecom:FaultNotification/corecom:ReportingDateTime"
+                            xml:id="id_837"/>
+                    </copy>
+                    <copy xml:id="id_838">
+                        <from expression="ora:getProcessId()" xml:id="id_839"/>
+                        <to variable="ExtensionFaultVar" part="FaultMessage"
+                            query="/corecom:Fault/corecom:FaultNotification/corecom:FaultingService/corecom:ID"
+                            xml:id="id_840"/>
+                    </copy>
+                    <copy xml:id="id_841">
+                        <from expression="'BPEL'" xml:id="id_842"/>
+                        <to variable="ExtensionFaultVar" part="FaultMessage"
+                            query="/corecom:Fault/corecom:FaultNotification/corecom:FaultingService/corecom:ImplementationCode"
+                            xml:id="id_843"/>
+                    </copy>
+                    <!--<copy xml:id="id_844">
+                        <from expression="ora:getCompositeInstanceId()"
+                              xml:id="id_845"/>
+                        <to variable="ExtensionFaultVar" part="FaultMessage"
+                            xml:id="id_846"
+                            query="/corecom:Fault/corecom:FaultNotification/corecom:FaultingService/corecom:InstanceID/@schemeAgencyID"/>
+                    </copy> -->
+                </assign>
+                <assign name="Xform_Fault_to_SyncPriceListResponseEBM"
+                        xml:id="id_301">
+                    <copy xml:id="id_302">
+                        <from xml:id="id_303">
+                            <bpelcom:parameters xmlns:bpelcom="http://schemas.oracle.com/service/bpel/common"
+                                                xml:id="id_304">
+                                <bpelcom:item xml:id="id_305">
+                                    <bpelcom:name xml:id="id_306">EscapedRequestEBM</bpelcom:name>
+                                    <bpelcom:value xml:id="id_307"/>
+                                </bpelcom:item>
+                                <bpelcom:item xml:id="id_308">
+                                    <bpelcom:name xml:id="id_309">ReqEBMID</bpelcom:name>
+                                    <bpelcom:value xml:id="id_310"/>
+                                </bpelcom:item>
+                            </bpelcom:parameters>
+                        </from>
+                        <to variable="XSLTParameters" xml:id="id_311"/>
+                    </copy>
+                    <copy xml:id="id_312">
+                        <from expression="ora:getContentAsString(bpws:getVariableData('SyncPriceListReqMsg','SyncPriceListEBM','/ebo:SyncPriceListListEBM'))"
+                              xml:id="id_313"/>
+                        <to variable="XSLTParameters"
+                            query="/bpelcom:parameters/bpelcom:item[bpelcom:name='EscapedRequestEBM']/bpelcom:value"
+                            xml:id="id_314"/>
+                    </copy>
+                    <copy xml:id="id_315">
+                        <from expression="bpws:getVariableData('SyncPriceListReqMsg','SyncPriceListEBM','/ebo:SyncPriceListListEBM/corecom:EBMHeader/corecom:EBMID')"
+                              xml:id="id_316"/>
+                        <to variable="XSLTParameters"
+                            query="/bpelcom:parameters/bpelcom:item[bpelcom:name='ReqEBMID']/bpelcom:value"
+                            xml:id="id_317"/>
+                    </copy>
+                    <copy xml:id="id_318">
+                        <from expression="ora:processXSLT('xsl/Xform_Fault_to_SyncPriceListListResponseEBM.xsl',bpws:getVariableData('ExtensionFaultVar','FaultMessage'),bpws:getVariableData('XSLTParameters'))"
+                              xml:id="id_319"/>
+                        <to variable="SyncPriceListAsyncRespMsg"
+                            part="SyncPriceListListResponseEBM"
+                            xml:id="id_320"/>
+                    </copy>
+                </assign>
+                <invoke name="InvokePriceListList"
+                        inputVariable="SyncPriceListAsyncRespMsg"
+                        partnerLink="PriceListEBSResponse"
+                        portType="ebs:PriceListEBSResponse"
+                        operation="SyncPriceListListResponse"
+                        bpelx:invokeAsDetail="no" xml:id="id_321"/>
+                <throw name="ReThrow_RemoteFault" faultName="bpelx:remoteFault"
+                       faultVariable="SystemFaultVar" xml:id="id_322"/>
+                 <bpelx:exec name="TraceLog_EndRemoteFaultCatch" language="java"
+                            version="1.3" xml:id="id_323">
+                    <![CDATA[java.lang.String TraceLogMessage = null; 
+                      java.lang.Boolean tracelogenabled   = (java.lang.Boolean)getVariableData("TraceLogEnabled");
+                    java.lang.String title = (java.lang.String)getVariableData("Title");         
+                    java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+                    java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+                    
+                    
+                    if (tracelogenabled.booleanValue())                                                                                
+                    {                                                                                                                                                                                      
+                                           
+                              
+                       TraceLogMessage = "Starting " + serviceName + " Exiting Error Hanlder Remote Fault Instance: " + instanceID + title; ;                         
+                       
+                       oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  null ,TraceLogMessage); 
+                       
+                    }]]>
+            </bpelx:exec>             
+  	      </sequence>
+        </catch>
+        <catch faultName="bpelx:bindingFault" faultVariable="SystemFaultVar"
+               xml:id="id_324">
+            <sequence name="Sequence_BindingFault" xml:id="id_325">
+               <bpelx:exec name="TraceLog_BeginBindingFaultCatch" language="java"
+                              version="1.3" xml:id="id_326">
+                    <![CDATA[java.lang.String TraceLogMessage = null; 
+                java.lang.Boolean tracelogenabled   = (java.lang.Boolean)getVariableData("TraceLogEnabled");
+              java.lang.String title = (java.lang.String)getVariableData("Title");         
+              java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+              java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+              
+              
+              if (tracelogenabled.booleanValue())                                                                                
+              {                                                                                                                                                                                      
+                                     
+                        
+                 TraceLogMessage = "Starting " + serviceName + " Entering Error Hanlder Binding Fault Instance: " + instanceID + title; ;                         
+                 
+                 oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  null ,TraceLogMessage); 
+                 
+              }]]>
+                  </bpelx:exec>
+				<switch name="Switch1" xml:id="id_888">
+                    <case xml:id="id_889"
+                          condition="bpws:getVariableData('BindingMessageVar') != ''">
+                        <bpelx:annotation xml:id="id_891">
+                            <bpelx:pattern xml:id="id_894">Text is not empty</bpelx:pattern>
+                            <bpelx:general xml:id="id_892">
+                                <bpelx:property name="userLabel"
+                                                xml:id="id_893">
+                                    <![CDATA[Error thrown]]>
+                                </bpelx:property>
+                            </bpelx:general>
+                        </bpelx:annotation>
+                        <assign name="AssignBinding" xml:id="id_895">
+                            <copy xml:id="id_896">
+                                <from expression="ora:processXSLT('xsl/EBM_to_Fault.xsl',bpws:getVariableData('SyncPriceListReqMsg','SyncPriceListEBM'))"
+                                      xml:id="id_897"/>
+                                <to variable="ExtensionFaultVar"
+                                    part="FaultMessage" xml:id="id_898"
+                                    query="/corecom:Fault"/>
+                            </copy>
+                            <copy xml:id="id_899">
+                                <from expression="xp20:current-dateTime()"
+                                      xml:id="id_900"/>
+                                <to variable="ExtensionFaultVar"
+                                    part="FaultMessage"
+                                    query="/corecom:Fault/corecom:FaultNotification/corecom:ReportingDateTime"
+                                    xml:id="id_901"/>
+                            </copy>
+                            <copy xml:id="id_902">
+                                <from expression="ora:getProcessId()"
+                                      xml:id="id_903"/>
+                                <to variable="ExtensionFaultVar"
+                                    part="FaultMessage"
+                                    query="/corecom:Fault/corecom:FaultNotification/corecom:FaultingService/corecom:ID"
+                                    xml:id="id_904"/>
+                            </copy>
+                            <copy xml:id="id_905">
+                                <from expression="'BPEL'" xml:id="id_906"/>
+                                <to variable="ExtensionFaultVar"
+                                    part="FaultMessage" xml:id="id_907"
+                                    query="/corecom:Fault/corecom:FaultNotification/corecom:FaultingService/corecom:ImplementationCode"/>
+                            </copy>
+                            <copy xml:id="id_930">
+                                <from variable="BindingMessageVar"
+                                      xml:id="id_931"/>
+                                <to variable="ExtensionFaultVar"
+                                    part="FaultMessage"
+                                    query="/corecom:Fault/corecom:FaultNotification/corecom:FaultMessage/corecom:Text"
+                                    xml:id="id_932"/>
+                            </copy>
+                        </assign>
+                    </case>
+                    <otherwise xml:id="id_890">
+                        <assign name="AssignBinding" xml:id="id_847">
+                            <copy xml:id="id_848">
+                                <from expression="ora:processXSLT('xsl/EBM_to_Fault.xsl',bpws:getVariableData('SyncPriceListReqMsg','SyncPriceListEBM'))"
+                                      xml:id="id_849"/>
+                                <to variable="ExtensionFaultVar"
+                                    part="FaultMessage" query="/corecom:Fault"
+                                    xml:id="id_850"/>
+                            </copy>
+                            <copy xml:id="id_851">
+                                <from variable="SystemFaultVar" part="code"
+                                      xml:id="id_852"/>
+                                <to variable="ExtensionFaultVar"
+                                    part="FaultMessage"
+                                    query="/corecom:Fault/corecom:FaultNotification/corecom:FaultMessage/corecom:Code"
+                                    xml:id="id_853"/>
+                            </copy>
+                            <copy xml:id="id_854">
+                                <from variable="SystemFaultVar" part="summary"
+                                      xml:id="id_855"/>
+                                <to variable="ExtensionFaultVar"
+                                    part="FaultMessage"
+                                    query="/corecom:Fault/corecom:FaultNotification/corecom:FaultMessage/corecom:Text"
+                                    xml:id="id_856"/>
+                            </copy>
+                            <copy xml:id="id_857">
+                                <from expression="xp20:current-dateTime()"
+                                      xml:id="id_858"/>
+                                <to variable="ExtensionFaultVar"
+                                    part="FaultMessage"
+                                    query="/corecom:Fault/corecom:FaultNotification/corecom:ReportingDateTime"
+                                    xml:id="id_859"/>
+                            </copy>
+                            <copy xml:id="id_860">
+                                <from expression="ora:getProcessId()"
+                                      xml:id="id_861"/>
+                                <to variable="ExtensionFaultVar"
+                                    part="FaultMessage"
+                                    query="/corecom:Fault/corecom:FaultNotification/corecom:FaultingService/corecom:ID"
+                                    xml:id="id_862"/>
+                            </copy>
+                            <copy xml:id="id_863">
+                                <from expression="'BPEL'" xml:id="id_864"/>
+                                <to variable="ExtensionFaultVar"
+                                    part="FaultMessage"
+                                    query="/corecom:Fault/corecom:FaultNotification/corecom:FaultingService/corecom:ImplementationCode"
+                                    xml:id="id_865"/>
+                            </copy>
+						</assign>
+                    </otherwise>
+                </switch>
+                <assign name="Xform_Fault_to_SyncPriceListResponseEBM"
+                        xml:id="id_349">
+                    <copy xml:id="id_350">
+                        <from xml:id="id_351">
+                            <bpelcom:parameters xmlns:bpelcom="http://schemas.oracle.com/service/bpel/common"
+                                                xml:id="id_352">
+                                <bpelcom:item xml:id="id_353">
+                                    <bpelcom:name xml:id="id_354">EscapedRequestEBM</bpelcom:name>
+                                    <bpelcom:value xml:id="id_355"/>
+                                </bpelcom:item>
+                                <bpelcom:item xml:id="id_356">
+                                    <bpelcom:name xml:id="id_357">ReqEBMID</bpelcom:name>
+                                    <bpelcom:value xml:id="id_358"/>
+                                </bpelcom:item>
+                            </bpelcom:parameters>
+                        </from>
+                        <to variable="XSLTParameters" xml:id="id_359"/>
+                    </copy>
+                    <copy xml:id="id_360">
+                        <from expression="ora:getContentAsString(bpws:getVariableData('SyncPriceListReqMsg','SyncPriceListEBM','/ebo:SyncPriceListListEBM'))"
+                              xml:id="id_361"/>
+                        <to variable="XSLTParameters"
+                            query="/bpelcom:parameters/bpelcom:item[bpelcom:name='EscapedRequestEBM']/bpelcom:value"
+                            xml:id="id_362"/>
+                    </copy>
+                    <copy xml:id="id_363">
+                        <from expression="bpws:getVariableData('SyncPriceListReqMsg','SyncPriceListEBM','/ebo:SyncPriceListListEBM/corecom:EBMHeader/corecom:EBMID')"
+                              xml:id="id_364"/>
+                        <to variable="XSLTParameters"
+                            query="/bpelcom:parameters/bpelcom:item[bpelcom:name='ReqEBMID']/bpelcom:value"
+                            xml:id="id_365"/>
+                    </copy>
+                    <copy xml:id="id_366">
+                        <from expression="ora:processXSLT('xsl/Xform_Fault_to_SyncPriceListListResponseEBM.xsl',bpws:getVariableData('ExtensionFaultVar','FaultMessage'),bpws:getVariableData('XSLTParameters'))"
+                              xml:id="id_367"/>
+                        <to variable="SyncPriceListAsyncRespMsg"
+                            part="SyncPriceListListResponseEBM"
+                            xml:id="id_368"/>
+                    </copy>
+                </assign>
+                <invoke name="InvokePriceListList"
+                        inputVariable="SyncPriceListAsyncRespMsg"
+                        partnerLink="PriceListEBSResponse"
+                        portType="ebs:PriceListEBSResponse"
+                        operation="SyncPriceListListResponse"
+                        bpelx:invokeAsDetail="no" xml:id="id_369"/>		
+                <throw name="ReThrow_BindingFault"
+                       faultName="bpelx:bindingFault"
+                       faultVariable="SystemFaultVar" xml:id="id_370"/>		
+                <bpelx:exec name="TraceLog_EndBindingFaultCatch" language="java"
+                            version="1.3" xml:id="id_371">
+                    <![CDATA[java.lang.String TraceLogMessage = null; 
+                      java.lang.Boolean tracelogenabled   = (java.lang.Boolean)getVariableData("TraceLogEnabled");
+                    java.lang.String title = (java.lang.String)getVariableData("Title");         
+                    java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+                    java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+                    
+                    
+                    if (tracelogenabled.booleanValue())                                                                                
+                    {                                                                                                                                                                                      
+                                           
+                              
+                       TraceLogMessage = "Starting " + serviceName + " Exiting Error Hanlder Remote Fault Instance: " + instanceID + title; ;                         
+                       
+                       oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  null ,TraceLogMessage); 
+                       
+                    }]]>
+            </bpelx:exec> 
+	    </sequence>
+        </catch>
+  
+        <catch faultName="bpelx:subLanguageExecutionFault"
+               faultVariable="SystemFaultVar" xml:id="id_397">
+            <sequence name="Sequence_SubLanguageExecutionFault" xml:id="id_398">
+         <bpelx:exec name="TraceLog_BeginSubLanguageExecutionFaultCatch" language="java"
+                version="1.3" xml:id="id_399">
+          <![CDATA[java.lang.String TraceLogMessage = null; 
+      java.lang.Boolean tracelogenabled   = (java.lang.Boolean)getVariableData("TraceLogEnabled");
+    java.lang.String title = (java.lang.String)getVariableData("Title");         
+    java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+    java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+    
+    
+    if (tracelogenabled.booleanValue())                                                                                
+    {                                                                                                                                                                                      
+                           
+              
+       TraceLogMessage = "Starting " + serviceName + " Entering Error Hanlder SubLanguageExecution Fault Instance: " + instanceID + title; ;                         
+       
+       oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  null ,TraceLogMessage); 
+       
+    }]]>
+    </bpelx:exec>
+                <assign name="Assign_AIAAsyncErrorHandlingBPELProcessRequestMessage"
+                        xml:id="id_400">
+                    <copy xml:id="id_401">
+                        <from expression="ora:processXSLT('xsl/EBM_to_Fault.xsl',bpws:getVariableData('EBM_HEADER'))"
+                              xml:id="id_402"/>
+                        <to variable="AIAAsyncErrorHandlingBPELProcessRequestMessage" part="FaultMessage"
+                            xml:id="id_403" query="/corecom:Fault"/>
+                      </copy>
+                    <copy xml:id="id_404">
+                        <from variable="SystemFaultVar" part="code"
+                              xml:id="id_405"/>
+                        <to variable="AIAAsyncErrorHandlingBPELProcessRequestMessage"
+                            part="FaultMessage"
+                            query="/corecom:Fault/corecom:FaultNotification/corecom:FaultMessage/corecom:Code"
+                            xml:id="id_406"/>
+                    </copy>
+                    <copy xml:id="id_407">
+                        <from variable="SystemFaultVar" part="summary"
+                              xml:id="id_408"/>
+                        <to variable="AIAAsyncErrorHandlingBPELProcessRequestMessage"
+                            part="FaultMessage"
+                            query="/corecom:Fault/corecom:FaultNotification/corecom:FaultMessage/corecom:Text"
+                            xml:id="id_409"/>
+                    </copy>
+
+                    <copy xml:id="id_410">
+                        <from expression="xp20:current-dateTime()"
+                              xml:id="id_411"/>
+                        <to variable="AIAAsyncErrorHandlingBPELProcessRequestMessage"
+                            part="FaultMessage"
+                            query="/corecom:Fault/corecom:FaultNotification/corecom:ReportingDateTime"
+                            xml:id="id_412"/>
+                    </copy>
+                    <copy xml:id="id_413">
+                        <from expression="ora:getProcessId()" xml:id="id_414"/>
+                        <to variable="AIAAsyncErrorHandlingBPELProcessRequestMessage"
+                            part="FaultMessage"
+                            query="/corecom:Fault/corecom:FaultNotification/corecom:FaultingService/corecom:ID"
+                            xml:id="id_415"/>
+                    </copy>
+                    <copy xml:id="id_416">
+                        <from expression="'BPEL'" xml:id="id_417"/>
+                        <to variable="AIAAsyncErrorHandlingBPELProcessRequestMessage"
+                            part="FaultMessage"
+                            query="/corecom:Fault/corecom:FaultNotification/corecom:FaultingService/corecom:ImplementationCode"
+                            xml:id="id_418"/>
+                    </copy>
+                    <copy xml:id="id_419">
+                        <from expression="ora:getInstanceId()" xml:id="id_420"/>
+                        <to variable="AIAAsyncErrorHandlingBPELProcessRequestMessage"
+                            part="FaultMessage"
+                            query="/corecom:Fault/corecom:FaultNotification/corecom:FaultingService/corecom:InstanceID"
+                            xml:id="id_421"/>
+                    </copy>
+                  <copy xml:id="id_422">
+                        <from expression="ora:getECID()" xml:id="id_423"/>
+                        <to variable="AIAAsyncErrorHandlingBPELProcessRequestMessage" part="FaultMessage" query="/corecom:Fault/corecom:FaultNotification/corecom:FaultingService/corecom:ExecutionContextID"
+                            xml:id="id_424"/>
+                    </copy>
+                </assign>
+                <invoke name="Invoke_AIAAsyncErrorHandlingBPELProcess"
+                        partnerLink="AIAAsyncErrorHandlingBPELProcess"
+                        portType="aiaeh:AIAAsyncErrorHandlingBPELProcess"
+                        operation="initiate"
+                        inputVariable="AIAAsyncErrorHandlingBPELProcessRequestMessage"
+                        xml:id="id_425"/>
+                <assign name="Xform_Fault_to_SyncPriceListResponseEBM"
+                        xml:id="id_426">
+                    <copy xml:id="id_430">
+                        <from xml:id="id_431">
+                            <bpelcom:parameters xmlns:bpelcom="http://schemas.oracle.com/service/bpel/common"
+                                                xml:id="id_432">
+                                <bpelcom:item xml:id="id_433">
+                                    <bpelcom:name xml:id="id_434">EscapedRequestEBM</bpelcom:name>
+                                    <bpelcom:value xml:id="id_435"/>
+                                </bpelcom:item>
+                                <bpelcom:item xml:id="id_436">
+                                    <bpelcom:name xml:id="id_437">ReqEBMID</bpelcom:name>
+                                    <bpelcom:value xml:id="id_438"/>
+                                </bpelcom:item>
+                            </bpelcom:parameters>
+                        </from>
+                        <to variable="XSLTParameters" xml:id="id_439"/>
+                    </copy>
+                    <copy xml:id="id_440">
+                        <from expression="ora:getContentAsString(bpws:getVariableData('SyncPriceListReqMsg','SyncPriceListEBM','/ebo:SyncPriceListListEBM'))"
+                              xml:id="id_441"/>
+                        <to variable="XSLTParameters"
+                            query="/bpelcom:parameters/bpelcom:item[bpelcom:name='EscapedRequestEBM']/bpelcom:value"
+                            xml:id="id_442"/>
+                    </copy>
+                    <copy xml:id="id_443">
+                        <from expression="bpws:getVariableData('SyncPriceListReqMsg','SyncPriceListEBM','/ebo:SyncPriceListListEBM/corecom:EBMHeader/corecom:EBMID')"
+                              xml:id="id_444"/>
+                        <to variable="XSLTParameters"
+                            query="/bpelcom:parameters/bpelcom:item[bpelcom:name='ReqEBMID']/bpelcom:value"
+                            xml:id="id_445"/>
+                    </copy>
+                    <copy xml:id="id_446">
+                        <from expression="ora:processXSLT('xsl/Xform_Fault_to_SyncPriceListListResponseEBM.xsl',bpws:getVariableData('AIAAsyncErrorHandlingBPELProcessRequestMessage','FaultMessage'),bpws:getVariableData('XSLTParameters'))"
+                              xml:id="id_447"/>
+                        <to variable="SyncPriceListAsyncRespMsg"
+                            part="SyncPriceListListResponseEBM"
+                            xml:id="id_448"/>
+                    </copy>
+                </assign>
+                <invoke name="InvokePriceListList"
+                        inputVariable="SyncPriceListAsyncRespMsg"
+                        partnerLink="PriceListEBSResponse"
+                        portType="ebs:PriceListEBSResponse"
+                        operation="SyncPriceListListResponse"
+                        bpelx:invokeAsDetail="no" xml:id="id_449"/>	
+                <throw name="Rethrow_subLanguageExecutionFault"
+                       faultName="bpelx:subLanguageExecutionFault"
+                       faultVariable="SystemFaultVar" xml:id="id_450"/>
+                <bpelx:exec name="TraceLog_EndSubLanguageExecutionFaultCatch"
+                            language="java" version="1.3" xml:id="id_199">
+                    <![CDATA[java.lang.String TraceLogMessage = null; 
+                  java.lang.Boolean tracelogenabled   = (java.lang.Boolean)getVariableData("TraceLogEnabled");
+                java.lang.String title = (java.lang.String)getVariableData("Title");         
+                java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+                java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+                
+                
+                if (tracelogenabled.booleanValue())                                                                                
+                {                                                                                                                                                                                      
+                                       
+                          
+                   TraceLogMessage = "Starting " + serviceName + " Exiting Error Hanlder SubLanguageExecution Fault Instance: " + instanceID + title; ;                         
+                   
+                   oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  null ,TraceLogMessage); 
+                   
+                }]]>
+             </bpelx:exec>  		
+	    </sequence>
+        </catch>
+        <catchAll xml:id="id_451">
+            <sequence name="Sequence_CatchAll" xml:id="id_452">
+ <bpelx:exec name="TraceLog_BeginCatchAll" language="java"
+                version="1.3" xml:id="id_453">
+      <![CDATA[java.lang.String TraceLogMessage = null; 
+	java.lang.Boolean tracelogenabled   = (java.lang.Boolean)getVariableData("TraceLogEnabled");
+java.lang.String title = (java.lang.String)getVariableData("Title");         
+java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+
+
+if (tracelogenabled.booleanValue())                                                                                
+{                                                                                                                                                                                      
+                       
+          
+   TraceLogMessage = "Starting " + serviceName + " Entering Error Hanlder Catch All Instance: " + instanceID + title; ;                         
+   
+   oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  null ,TraceLogMessage); 
+   
+}]]>
+    </bpelx:exec>
+  	           <assign name="Assign_AIAAsyncErrorHandlingBPELProcessRequestMessage"
+                      xml:id="id_454">
+                        <copy xml:id="id_455">
+							<from expression="ora:processXSLT('xsl/EBM_to_Fault.xsl',bpws:getVariableData('EBM_HEADER'))"
+             xml:id="id_456"/>
+							<to variable="AIAAsyncErrorHandlingBPELProcessRequestMessage" part="FaultMessage" query="/corecom:Fault"
+           xml:id="id_457"/>
+						</copy>
+						<copy xml:id="id_458">
+                            <from expression="ora:getFaultAsString()"
+                                  xml:id="id_459"/>
+                            <to variable="AIAAsyncErrorHandlingBPELProcessRequestMessage"
+                                part="FaultMessage"
+                                query="/corecom:Fault/corecom:FaultNotification/corecom:FaultMessage/corecom:Text"
+                                xml:id="id_460"/>
+                        </copy>
+                        <copy xml:id="id_461">
+                            <from expression="xp20:current-dateTime()"
+                                  xml:id="id_462"/>
+                            <to variable="AIAAsyncErrorHandlingBPELProcessRequestMessage"
+                                part="FaultMessage"
+                                query="/corecom:Fault/corecom:FaultNotification/corecom:ReportingDateTime"
+                                xml:id="id_463"/>
+                        </copy>
+                        <copy xml:id="id_464">
+                            <from expression="ora:getProcessId()"
+                                  xml:id="id_465"/>
+                            <to variable="AIAAsyncErrorHandlingBPELProcessRequestMessage"
+                                part="FaultMessage"
+                                query="/corecom:Fault/corecom:FaultNotification/corecom:FaultingService/corecom:ID"
+                                xml:id="id_466"/>
+                        </copy>
+                        <copy xml:id="id_467">
+                            <from expression="'BPEL'" xml:id="id_468"/>
+                            <to variable="AIAAsyncErrorHandlingBPELProcessRequestMessage"
+                                part="FaultMessage"
+                                query="/corecom:Fault/corecom:FaultNotification/corecom:FaultingService/corecom:ImplementationCode"
+                                xml:id="id_469"/>
+                        </copy>
+                        <copy xml:id="id_470">
+                            <from expression="ora:getInstanceId()"
+                                  xml:id="id_471"/>
+                            <to variable="AIAAsyncErrorHandlingBPELProcessRequestMessage"
+                                part="FaultMessage"
+                                query="/corecom:Fault/corecom:FaultNotification/corecom:FaultingService/corecom:InstanceID"
+                                xml:id="id_472"/>
+                        </copy>
+						<copy xml:id="id_473">
+                        <from expression="ora:getECID()" xml:id="id_474"/>
+                        <to variable="AIAAsyncErrorHandlingBPELProcessRequestMessage" part="FaultMessage" query="/corecom:Fault/corecom:FaultNotification/corecom:FaultingService/corecom:ExecutionContextID"
+                            xml:id="id_475"/>
+                    </copy>
+                    </assign>
+                    <invoke name="Invoke_AIAAsyncErrorHandlingBPELProcess"
+                            partnerLink="AIAAsyncErrorHandlingBPELProcess"
+                            portType="aiaeh:AIAAsyncErrorHandlingBPELProcess"
+                            operation="initiate"
+                        inputVariable="AIAAsyncErrorHandlingBPELProcessRequestMessage"
+                            xml:id="id_476"/>
+                <assign name="Xform_Fault_to_SyncPriceListResponseEBM"
+                        xml:id="id_477">
+                    <copy xml:id="id_481">
+                        <from xml:id="id_482">
+                            <bpelcom:parameters xmlns:bpelcom="http://schemas.oracle.com/service/bpel/common"
+                                                xml:id="id_483">
+                                <bpelcom:item xml:id="id_484">
+                                    <bpelcom:name xml:id="id_485">EscapedRequestEBM</bpelcom:name>
+                                    <bpelcom:value xml:id="id_486"/>
+                                </bpelcom:item>
+                                <bpelcom:item xml:id="id_487">
+                                    <bpelcom:name xml:id="id_488">ReqEBMID</bpelcom:name>
+                                    <bpelcom:value xml:id="id_489"/>
+                                </bpelcom:item>
+                            </bpelcom:parameters>
+                        </from>
+                        <to variable="XSLTParameters" xml:id="id_490"/>
+                    </copy>
+                    <copy xml:id="id_491">
+                        <from expression="ora:getContentAsString(bpws:getVariableData('SyncPriceListReqMsg','SyncPriceListEBM','/ebo:SyncPriceListListEBM'))"
+                              xml:id="id_492"/>
+                        <to variable="XSLTParameters"
+                            query="/bpelcom:parameters/bpelcom:item[bpelcom:name='EscapedRequestEBM']/bpelcom:value"
+                            xml:id="id_493"/>
+                    </copy>
+                    <copy xml:id="id_494">
+                        <from expression="bpws:getVariableData('SyncPriceListReqMsg','SyncPriceListEBM','/ebo:SyncPriceListListEBM/corecom:EBMHeader/corecom:EBMID')"
+                              xml:id="id_495"/>
+                        <to variable="XSLTParameters"
+                            query="/bpelcom:parameters/bpelcom:item[bpelcom:name='ReqEBMID']/bpelcom:value"
+                            xml:id="id_496"/>
+                    </copy>
+                    <copy xml:id="id_497">
+                        <from expression="ora:processXSLT('xsl/Xform_Fault_to_SyncPriceListListResponseEBM.xsl',bpws:getVariableData('AIAAsyncErrorHandlingBPELProcessRequestMessage','FaultMessage'),bpws:getVariableData('XSLTParameters'))"
+                              xml:id="id_498"/>
+                        <to variable="SyncPriceListAsyncRespMsg"
+                            part="SyncPriceListListResponseEBM"
+                            xml:id="id_499"/>
+                    </copy>
+                </assign>
+                <invoke name="InvokePriceListList"
+                        inputVariable="SyncPriceListAsyncRespMsg"
+                        partnerLink="PriceListEBSResponse"
+                        portType="ebs:PriceListEBSResponse"
+                        operation="SyncPriceListListResponse"
+                        bpelx:invokeAsDetail="no" xml:id="id_500"/>	
+		
+                <throw name="Throw_Fault" faultName="eboabcs:Fault"
+                       faultVariable="AIAAsyncErrorHandlingBPELProcessRequestMessage"
+                       xml:id="id_501"/>		
+                <bpelx:exec name="TraceLog_EndCatchAll" language="java"
+                            version="1.3" xml:id="id_245">
+                    <![CDATA[java.lang.String TraceLogMessage = null; 
+              java.lang.Boolean tracelogenabled   = (java.lang.Boolean)getVariableData("TraceLogEnabled");
+            java.lang.String title = (java.lang.String)getVariableData("Title");         
+            java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+            java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+            
+            
+            if (tracelogenabled.booleanValue())                                                                                
+            {                                                                                                                                                                                      
+                                   
+                      
+               TraceLogMessage = "Starting " + serviceName + " Exiting Error Hanlder Catch All Instance: " + instanceID + title; ;                         
+               
+               oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  null ,TraceLogMessage); 
+               
+            }]]>
+                            </bpelx:exec>
+	    </sequence>
+        </catchAll>
+  </faultHandlers>
+  <sequence name="main" xml:id="id_502">
+     <receive name="ReceivePriceList"
+             partnerLink="SyncPriceListPDCProvABCSImpl"
+             portType="eboabcs:SyncPriceListPDCProvABCSImpl"
+             operation="SyncPriceList" variable="SyncPriceListReqMsg"
+             createInstance="yes" xml:id="id_503"/>
+    
+     <assign name="GetTitle" xml:id="id_504">
+      <copy xml:id="id_505">
+	<from expression="'Sync PriceList'" xml:id="id_506"/>
+	<to variable="Title" xml:id="id_507"/>
+      </copy>
+      <copy xml:id="id_508">
+        <from expression="ora:getInstanceId()" xml:id="id_509"/>
+        <to variable="InstanceID" xml:id="id_510"/>
+      </copy>
+      <copy xml:id="id_511">
+        <from expression="ora:getProcessId()" xml:id="id_512"/>
+        <to variable="ServiceName" xml:id="id_513"/>
+      </copy>
+    </assign>
+     <bpelx:exec name="SetTitle" language="java" version="1.5" xml:id="id_514">
+      <![CDATA[setTitle((String)getVariableData("Title"));]]>
+     </bpelx:exec>
+ <bpelx:exec name="TraceLog_BeginABCS" language="java"
+                version="1.3" xml:id="id_515">
+      <![CDATA[java.lang.String TraceLogMessage = null; 
+	java.lang.Boolean tracelogenabled;  
+java.lang.String title = (java.lang.String)getVariableData("Title");         
+java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+
+tracelogenabled = oracle.apps.aia.core.eh.logging.AIALogger.isTraceLoggingEnabled("INFO","{http://xmlns.oracle.com/ABCSImpl/PDC/Core/SyncPriceListPDCProvABCSImpl/V1}SyncPriceListPDCProvABCSImpl");                                                                                  
+setVariableData("TraceLogEnabled", tracelogenabled);        
+
+if (tracelogenabled.booleanValue())                                                                                
+{                                                                                                                                                                                      
+                       
+          
+   TraceLogMessage = "Starting " + serviceName + " Instance: " + instanceID + title; ;                         
+   
+   oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  null ,TraceLogMessage); 
+   
+}]]>
+    </bpelx:exec>
+        <assign name="AddActionCode" xml:id="id_516">
+            <bpelx:annotation xml:id="id_517">
+                <bpelx:pattern xml:id="id_518">transformation</bpelx:pattern>
+            </bpelx:annotation>
+            <copy xml:id="id_519">
+                <from expression="ora:processXSLT('xsl/AddActionCode.xsl', bpws:getVariableData('SyncPriceListReqMsg','SyncPriceListEBM'))"
+                      xml:id="id_520"/>
+                <to variable="SyncPriceListReqMsg" part="SyncPriceListEBM"
+                    xml:id="id_521"/>
+            </copy>
+        </assign>
+        <scope name="Scope_Extension_ItemList_PreXformEBMtoABM" xml:id="id_770"
+               variableAccessSerializable="no" bpelx:skipCondition="true()"
+               ui:customizable="true">
+            <empty name="Scope_Empty_Extension_ItemList_PreXformEBMtoABM" xml:id="id_781"/>
+        </scope>
+        <scope name="pricingGatewayPortType" xml:id="id_540">
+		   <variables xml:id="id_541">
+                <variable name="pricingGatewayPortTypeFaultVar"
+                          messageType="tns:PricingExceptionResponse"
+                          xml:id="id_542"/>
+            </variables>  
+	<faultHandlers xml:id="id_543">
+        <catch faultName="pricinggateway:PricingException" faultVariable="pricingGatewayPortTypeFaultVar"
+               xml:id="id_544">
+            <sequence name="Sequence_pricingGatewayPortTypeFault"
+                      xml:id="id_545">
+
+ <bpelx:exec name="TraceLog_BeginPricingException" language="java"
+                version="1.3" xml:id="id_546">
+      <![CDATA[java.lang.String TraceLogMessage = null; 
+	java.lang.Boolean tracelogenabled   = (java.lang.Boolean)getVariableData("TraceLogEnabled");
+java.lang.String title = (java.lang.String)getVariableData("Title");         
+java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+
+
+if (tracelogenabled.booleanValue())                                                                                
+{                                                                                                                                                                                      
+                       
+          
+   TraceLogMessage = "Starting " + serviceName + " Entering PricingException Fault Catch  Instance: " + instanceID + title; ;                         
+   
+   oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  null ,TraceLogMessage); 
+   
+}]]>
+    </bpelx:exec>
+  	
+		
+                      <throw name="Throw_pricingGatewayPortTypeFault" faultName="pricinggateway:PricingException"
+                             faultVariable="pricingGatewayPortTypeFaultVar"
+                             xml:id="id_547"/>
+              	
+	    </sequence>
+        </catch>
+     </faultHandlers>    
+      <sequence name="pricingGatewayPortType" xml:id="id_548">
+                <assign name="GetTargetSystemID" xml:id="id_549">
+                    <copy xml:id="id_550">
+                        <from expression="ora:processXSLT('xsl/AddTargetSystemID.xsl',bpws:getVariableData('SyncPriceListReqMsg','SyncPriceListEBM'))"
+                              xml:id="id_551"/>
+                        <to variable="SyncPriceListReqMsg"
+                            part="SyncPriceListEBM" xml:id="id_552"/>
+                    </copy>
+                    <copy xml:id="id_553">
+                        <from variable="SyncPriceListReqMsg"
+                              part="SyncPriceListEBM"
+                              query="/eboebo:SyncPriceListListEBM/corecom:EBMHeader/corecom:Target/corecom:ID"
+                              xml:id="id_554"/>
+                        <to variable="SystemID" xml:id="id_555"/>
+                    </copy>
+                </assign>
+                <scope name="Scope_AddChargeOffering"
+                       variableAccessSerializable="no"
+                       bpelx:skipCondition="count(bpws:getVariableData('SyncPriceListReqMsg','SyncPriceListEBM','/ebo:SyncPriceListListEBM/ebo:DataArea[ebo:SyncPriceListList/@actionCode = &quot;add&quot;]')) = 0"
+                       xml:id="id_556">
+                    <bpelx:annotation xml:id="id_557">
+                        <bpelx:general xml:id="id_558">
+                            <bpelx:property name="userLabel" xml:id="id_559">
+                                <![CDATA[Scope_AddChargeOffering]]>
+                            </bpelx:property>
+                        </bpelx:general>
+                    </bpelx:annotation>
+                    <sequence xml:id="id_560">
+                        <assign name="TransformSyncPriceListEBMToCreateChargeOfferingABM"
+                                xml:id="id_561">
+                            <bpelx:annotation xml:id="id_562">
+                                <bpelx:pattern xml:id="id_563">transformation</bpelx:pattern>
+                            </bpelx:annotation>
+                            <copy xml:id="id_564">
+                                <from expression="ora:processXSLT('xsl/SyncPriceListEBMToCreateChargeOfferingABM.xsl', bpws:getVariableData('SyncPriceListReqMsg','SyncPriceListEBM'))"
+                                      xml:id="id_565"/>
+                                <to variable="ChargeOfferingVar_add"
+                                    xml:id="id_566"/>
+                            </copy>
+                        </assign>
+                      
+                        <scope name="Scope_Extension_CreatePricing_PreInvokeABS" xml:id="id_771"
+                               variableAccessSerializable="no"
+                               bpelx:skipCondition="true()"
+                               ui:customizable="true">
+                            <bpelx:annotation xml:id="id_786">
+                                <bpelx:general xml:id="id_787">
+                                    <bpelx:property name="userLabel"
+                                                    xml:id="id_788">
+                                        <![CDATA[Scope_Extension_CreatePricing_PreInvokeABS]]>
+                                    </bpelx:property>
+                                </bpelx:general>
+                            </bpelx:annotation>
+                            <empty name="Scope_Empty_Extension_CreatePricing_PreInvokeABS" xml:id="id_782"/>
+                        </scope>
+                        <assign name="ChargeOfferingBase64ToSyncPricingAppReqMsg"
+                                xml:id="id_585">
+                            <copy xml:id="id_586">
+                                <from expression="''" xml:id="id_587"/>
+                                <to variable="SyncpricingAppReqMsg" part="param"
+                                    xml:id="id_588"
+                                    query="/pricinggateway:CreatePublishPricingInputXML/pricinggateway:xmlBinaryString"/>
+                            </copy>
+                            <copy xml:id="id_589">
+                                <from expression="aia:getServiceProperty('{http://xmlns.oracle.com/ABCSImpl/PDC/Core/SyncPriceListPDCProvABCSImpl/V1}SyncPriceListPDCProvABCSImpl','Default.pdcuser',false())" xml:id="id_590"/>
+                                <to variable="SyncpricingAppReqMsg" part="param"
+                                    xml:id="id_591"
+                                    query="/pricinggateway:CreatePublishPricingInputXML/pricinggateway:UserContext/pricinggateway:userid"/>
+                            </copy>
+                        </assign>
+                        <bpelx:exec name="ChargeOfferingABMToChargeOfferingBase64"
+                                    version="1.5" language="java"
+                                    xml:id="id_592">
+                            <![CDATA[/*Write your java code below e.g.  
+        System.out.println("Hello, World"); 
+      */ 
+    
+			oracle.xml.parser.v2.XMLElement input = (oracle.xml.parser.v2.XMLElement)getVariableData("ChargeOfferingVar_add");
+			oracle.xml.parser.v2.XMLDocument xmlDoc = input.getDocument();
+			xmlDoc.setStandalone("yes");
+			xmlDoc.setVersion("1.0");
+			xmlDoc.setEncoding("UTF-8");	
+			
+			java.io.ByteArrayOutputStream outputStream = new java.io.ByteArrayOutputStream();
+		    java.io.ByteArrayOutputStream byteArrayOutputStream = new java.io.ByteArrayOutputStream();
+        try {
+			
+			
+            xmlDoc.print(outputStream);
+            java.util.zip.ZipOutputStream out = new java.util.zip.ZipOutputStream(byteArrayOutputStream);
+            out.setLevel(java.util.zip.Deflater.BEST_COMPRESSION);
+            java.util.zip.ZipEntry ze = new java.util.zip.ZipEntry("PDC");
+            out.putNextEntry(ze);
+			
+            out.write(outputStream.toByteArray());
+			out.closeEntry();
+           
+            byte[] bytesToRet = null;
+			
+           if (byteArrayOutputStream != null) {
+					bytesToRet=byteArrayOutputStream.toByteArray();
+            }
+
+			String base64str = new String(org.apache.commons.codec.binary.Base64.encodeBase64(bytesToRet));		
+			setVariableData("SyncpricingAppReqMsg","param","/pricinggateway:CreatePublishPricingInputXML/pricinggateway:xmlBinaryString",base64str);		
+		 	
+			
+	   }            
+        
+		catch (Exception e) {  
+				e.printStackTrace();  
+			  
+            }
+		finally {
+
+      if (byteArrayOutputStream != null) {
+        try {
+          byteArrayOutputStream.flush();
+        } catch (Exception e) {
+
+          e.printStackTrace();
+        }  
+      }
+
+    }
+    
+    ]]>
+                        </bpelx:exec>
+                        <scope name="SetDynamicPartnerlinkScope"
+                               xml:id="id_593">
+                            <variables xml:id="id_594">
+                                <variable name="EndpointReference"
+                                          element="wsa:EndpointReference"
+                                          xml:id="id_596"/>
+                                <variable name="ServiceName" type="xsd:string"
+                                          xml:id="id_597"/>
+                                <variable name="PartnerLinkName"
+                                          type="xsd:string" xml:id="id_598"/>
+                            </variables>
+                            <sequence name="SetDynamicPartnerlinkSequence"
+                                      xml:id="id_601">
+                                <assign name="AssignDynamicPartnerlinkVariables"
+                                        xml:id="id_602">
+                                    <copy xml:id="id_603">
+                                        <from expression="'{http://xmlns.oracle.com/ABCSImpl/PDC/Core/SyncPriceListPDCProvABCSImpl/V1}SyncPriceListPDCProvABCSImpl'"
+                                              xml:id="id_604"/>
+                                        <to variable="ServiceName"
+                                            xml:id="id_605"/>
+                                    </copy>
+                                    <copy xml:id="id_606">
+                                        <from expression="'pricingGatewayPortType'"
+                                              xml:id="id_607"/>
+                                        <to variable="PartnerLinkName"
+                                            xml:id="id_608"/>
+                                    </copy>
+                                </assign>
+                                <assign name="AssignPartnerlinkEndpointReference"
+                                        xml:id="id_618">
+                                    <copy xml:id="id_764">
+                                        <from expression="aia:getServiceProperty(bpws:getVariableData('ServiceName'),concat('Routing.',bpws:getVariableData('PartnerLinkName'),'.',bpws:getVariableData('SystemID'),'.EndpointURI'),false())"
+                                              xml:id="id_765"/>
+                                        <to variable="EndpointReference" query="/wsa:EndpointReference/wsa:Address" xml:id="id_766"/>
+                                    </copy>
+                                    <copy xml:id="id_627">
+                                        <from variable="EndpointReference"
+                                              xml:id="id_628"/>
+                                        <to partnerLink="pricingGatewayPortType"
+                                            xml:id="id_629"/>
+                                    </copy>
+                                </assign>
+                            </sequence>
+                        </scope>
+                        <bpelx:exec name="TraceLog_BeforeInvokepricing"
+                                    language="java" version="1.3"
+                                    xml:id="id_632">
+                            <![CDATA[java.lang.String TraceLogMessage = null; 
+	java.lang.Boolean tracelogenabled;  
+java.lang.String title = (java.lang.String)getVariableData("Title");         
+java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+
+tracelogenabled = oracle.apps.aia.core.eh.logging.AIALogger.isTraceLoggingEnabled("INFO","{http://xmlns.oracle.com/ABCSImpl/PDC/Core/SyncPriceListPDCProvABCSImpl/V1}SyncPriceListPDCProvABCSImpl");                                                                                  
+setVariableData("TraceLogEnabled", tracelogenabled);        
+
+if (tracelogenabled.booleanValue())                                                                                
+{                                                                                                                                                                                      
+                       
+          
+   TraceLogMessage = "Starting " + serviceName + " Before pricing Service Invoke Instance: " + instanceID + title; ;                         
+   
+   oracle.xml.parser.v2.XMLElement EBM_HEADER =                                                                        
+                                                                              
+   (oracle.xml.parser.v2.XMLElement)getVariableData("EBM_HEADER");                                                                                     
+   oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  EBM_HEADER ,TraceLogMessage); 
+   
+}]]>
+                        </bpelx:exec>
+                        <invoke name="Invokepricing"
+                                partnerLink="pricingGatewayPortType"
+                                portType="tns:pricingGatewayPortType"
+                                operation="createPricingAndSubmit"
+                                inputVariable="SyncpricingAppReqMsg"
+                                outputVariable="SyncpricingAppRespMsg"
+                                xml:id="id_633"/>
+                        <switch name="Switch_PopulateXREF" xml:id="id_789">
+                            <case xml:id="id_790"
+                                  condition="bpws:getVariableData('SyncpricingAppRespMsg','return','/pricinggateway:PDCResponse/pricinggateway:status')='SUCCEEDED'">
+                                <sequence xml:id="id_793">
+                                    <assign name="Assign_ProductResp_params"
+                                            xml:id="id_737">
+                                        <bpelx:insertAfter xml:id="id_738">
+                                            <bpelx:from variable="params"
+                                                        xml:id="id_739"
+                                                        query="/bpelcom:parameters/bpelcom:item"/>
+                                            <bpelx:to variable="params"
+                                                      xml:id="id_740"
+                                                      query="/bpelcom:parameters/bpelcom:item"/>
+                                        </bpelx:insertAfter>
+                                        <copy xml:id="id_741">
+                                            <from expression="'EscapedCommitProductRespMessage'"
+                                                  xml:id="id_742"/>
+                                            <to variable="params"
+                                                query="/bpelcom:parameters/bpelcom:item[1]/bpelcom:name"
+                                                xml:id="id_743"/>
+                                        </copy>
+                                        <copy xml:id="id_744">
+                                            <from expression="ora:getContentAsString(bpws:getVariableData('SyncpricingAppRespMsg','return','/pricinggateway:PDCResponse'))"
+                                                  xml:id="id_745"/>
+                                            <to variable="params"
+                                                query="/bpelcom:parameters/bpelcom:item[1]/bpelcom:value"
+                                                xml:id="id_746"/>
+                                        </copy>
+                                    </assign>
+                                    <assign name="XrefPopulate" xml:id="id_747">
+                                        <bpelx:annotation xml:id="id_748">
+                                            <bpelx:pattern xml:id="id_749">transformation</bpelx:pattern>
+                                        </bpelx:annotation>
+                                        <copy xml:id="id_750">
+                                            <from expression="ora:processXSLT('xsl/XrefPopulate.xsl',bpws:getVariableData('SyncPriceListReqMsg','SyncPriceListEBM'),bpws:getVariableData('params'))"
+                                                  xml:id="id_751"/>
+                                            <to variable="SyncPriceListAsyncRespMsg"
+                                                part="SyncPriceListListResponseEBM"
+                                                xml:id="id_752"/>
+                                        </copy>
+                                    </assign>
+                                </sequence>
+                            </case>
+                            <otherwise xml:id="id_791">
+							<sequence xml:id="id_822"
+                                          name="Sequence_BindingMessage">
+										<assign name="TransformMessage" xml:id="id_876">
+                                        <bpelx:annotation xml:id="id_877">
+                                            <bpelx:pattern xml:id="id_878">transformation</bpelx:pattern>
+                                        </bpelx:annotation>
+                                        <copy xml:id="id_879">
+                                            <from xml:id="id_880"
+                                                  expression="ora:doXSLTransformForDoc('xsl/Transformation_SyncpricingAppRespMsg.xsl', $SyncpricingAppRespMsg.return)"/>
+                                            <to xml:id="id_881"
+                                                variable="ExtensionFaultVar"
+                                                part="FaultMessage"/>
+                                        </copy>
+                                    </assign>
+                                    <assign name="AssignErrorText" xml:id="id_912">
+                                        <copy xml:id="id_924">
+                                            <from variable="ExtensionFaultVar"
+                                                  part="FaultMessage"
+                                                  query="/corecom:Fault/corecom:FaultNotification/corecom:FaultMessage/corecom:Text"
+                                                  xml:id="id_925"/>
+                                            <to variable="BindingMessageVar"
+                                                xml:id="id_926"/>
+                                        </copy>
+                                    </assign>
+									<throw name="ThrowBindingFault" xml:id="id_792"
+                                       faultName="bpelx:bindingFault"
+                                       faultVariable="SystemFaultVar"/>
+										</sequence>
+                            </otherwise>
+                        </switch>
+                    </sequence>
+                </scope>
+                <scope name="Scope_UpdateChargeOffering" variableAccessSerializable="no"
+                       bpelx:skipCondition="count(bpws:getVariableData('SyncPriceListReqMsg','SyncPriceListEBM','/ebo:SyncPriceListListEBM/ebo:DataArea[ebo:SyncPriceListList/@actionCode = &quot;update&quot;]'))=0"
+                       xml:id="id_634">
+                    <bpelx:annotation xml:id="id_635">
+                        <bpelx:general xml:id="id_636">
+                            <bpelx:property name="userLabel" xml:id="id_637">
+                                <![CDATA[Scope_UpdateChargeOffering]]>
+                            </bpelx:property>
+                        </bpelx:general>
+                    </bpelx:annotation>
+                    <sequence name="Sequence_update" xml:id="id_638">
+                        <assign name="TransformSyncPriceListEBMToUpdateChargeOfferingABM"
+                                xml:id="id_639">
+                            <bpelx:annotation xml:id="id_640">
+                                <bpelx:pattern xml:id="id_641">transformation</bpelx:pattern>
+                            </bpelx:annotation>
+                             <copy xml:id="id_642">
+                                <from expression="ora:processXSLT('xsl/SyncPriceListEBMToUpdateChargeOfferingABM.xsl', bpws:getVariableData('SyncPriceListReqMsg','SyncPriceListEBM'))"
+                                      xml:id="id_643"/>
+                                <to variable="ChargeOfferingVar_update"
+                                    xml:id="id_644"/>
+                            </copy>
+                        </assign>
+                        <scope name="Scope_Extension_ModifyPricing_PreInvokeABS" xml:id="id_772"
+                               variableAccessSerializable="no"
+                               bpelx:skipCondition="true()"
+                               ui:customizable="true">
+                            <empty name="Scope_Empty_Extension_ModifyPricing_PreInvokeABS" xml:id="id_783"/>
+                        </scope>
+                        <assign name="ChargeOfferingBase64ToUpdatePricingAppReqMsg"
+                                xml:id="id_645">
+                            <copy xml:id="id_646">
+                                <from expression="''" xml:id="id_647"/>
+                                <to variable="UpdatePricingAppReqMsg"
+                                    part="param"
+                                    query="/pricinggateway:UpdatePublishPricingInputXML/pricinggateway:xmlBinaryString"
+                                    xml:id="id_648"/>
+                            </copy>
+                            <copy xml:id="id_649">
+                                <from expression="aia:getServiceProperty('{http://xmlns.oracle.com/ABCSImpl/PDC/Core/SyncPriceListPDCProvABCSImpl/V1}SyncPriceListPDCProvABCSImpl','Default.pdcuser',false())" xml:id="id_650"/>
+                                <to variable="UpdatePricingAppReqMsg"
+                                    part="param"
+                                    query="/pricinggateway:UpdatePublishPricingInputXML/pricinggateway:UserContext/pricinggateway:userid"
+                                    xml:id="id_651"/>
+                            </copy>
+                        </assign>
+                        <bpelx:exec name="UpdateChargeOfferingABMToChargeOfferingBase64"
+                                    version="1.5" language="java"
+                                    xml:id="id_652">
+                            <![CDATA[/*Write your java code below e.g.  
+        System.out.println("Hello, World"); 
+      */ 
+    
+			oracle.xml.parser.v2.XMLElement input = (oracle.xml.parser.v2.XMLElement)getVariableData("ChargeOfferingVar_update");
+			oracle.xml.parser.v2.XMLDocument xmlDoc = input.getDocument();
+			xmlDoc.setStandalone("yes");
+			xmlDoc.setVersion("1.0");
+			xmlDoc.setEncoding("UTF-8");	
+			
+			java.io.ByteArrayOutputStream outputStream = new java.io.ByteArrayOutputStream();
+		    java.io.ByteArrayOutputStream byteArrayOutputStream = new java.io.ByteArrayOutputStream();
+        try {
+			
+			
+            xmlDoc.print(outputStream);
+            java.util.zip.ZipOutputStream out = new java.util.zip.ZipOutputStream(byteArrayOutputStream);
+            out.setLevel(java.util.zip.Deflater.BEST_COMPRESSION);
+            java.util.zip.ZipEntry ze = new java.util.zip.ZipEntry("PDC");
+            out.putNextEntry(ze);
+			
+            out.write(outputStream.toByteArray());
+			out.closeEntry();
+           
+            byte[] bytesToRet = null;
+			
+           if (byteArrayOutputStream != null) {
+					bytesToRet=byteArrayOutputStream.toByteArray();
+            }
+
+			String base64str = new String(org.apache.commons.codec.binary.Base64.encodeBase64(bytesToRet));	
+			setVariableData("UpdatePricingAppReqMsg","param","/pricinggateway:UpdatePublishPricingInputXML/pricinggateway:xmlBinaryString",base64str);
+			
+	   }            
+        
+		catch (Exception e) {  
+				e.printStackTrace();  
+			  
+            }
+		finally {
+
+      if (byteArrayOutputStream != null) {
+        try {
+          byteArrayOutputStream.flush();
+        } catch (Exception e) {
+
+          e.printStackTrace();
+        }  
+      }
+
+    }
+    
+    ]]>
+                        </bpelx:exec>
+                        <scope name="SetDynamicPartnerlinkScope"
+                               xml:id="id_653">
+                            <variables xml:id="id_654">
+                                <variable name="EndpointReference"
+                                          element="wsa:EndpointReference"
+                                          xml:id="id_656"/>
+                                <variable name="ServiceName" type="xsd:string"
+                                          xml:id="id_657"/>
+                                <variable name="PartnerLinkName"
+                                          type="xsd:string" xml:id="id_658"/>
+                            </variables>
+                            <sequence name="SetDynamicPartnerlinkSequence"
+                                      xml:id="id_661">
+                                <assign name="AssignDynamicPartnerlinkVariables"
+                                        xml:id="id_662">
+                                    <copy xml:id="id_663">
+                                        <from expression="'{http://xmlns.oracle.com/ABCSImpl/PDC/Core/SyncPriceListPDCProvABCSImpl/V1}SyncPriceListPDCProvABCSImpl'"
+                                              xml:id="id_664"/>
+                                        <to variable="ServiceName"
+                                            xml:id="id_665"/>
+                                    </copy>
+                                    <copy xml:id="id_666">
+                                        <from expression="'pricingGatewayPortType'"
+                                              xml:id="id_667"/>
+                                        <to variable="PartnerLinkName"
+                                            xml:id="id_668"/>
+                                    </copy>
+                                </assign>
+                                <assign name="AssignPartnerlinkEndpointReference"
+                                        xml:id="id_678">
+                                    <copy xml:id="id_767">
+                                        <from expression="aia:getServiceProperty(bpws:getVariableData('ServiceName'),concat('Routing.',bpws:getVariableData('PartnerLinkName'),'.',bpws:getVariableData('SystemID'),'.EndpointURI'),false())"
+                                              xml:id="id_768"/>
+                                        <to variable="EndpointReference"
+                                            xml:id="id_769"
+                                            query="/wsa:EndpointReference/wsa:Address"/>
+                                    </copy>
+                                    <copy xml:id="id_687">
+                                        <from variable="EndpointReference"
+                                              xml:id="id_688"/>
+                                        <to partnerLink="pricingGatewayPortType"
+                                            xml:id="id_689"/>
+                                    </copy>
+                                </assign>
+                            </sequence>
+                        </scope>
+                        <bpelx:exec name="TraceLog_BeforeInvokepricing"
+                                    language="java" version="1.3"
+                                    xml:id="id_692">
+                            <![CDATA[java.lang.String TraceLogMessage = null; 
+	java.lang.Boolean tracelogenabled;  
+java.lang.String title = (java.lang.String)getVariableData("Title");         
+java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+
+tracelogenabled = oracle.apps.aia.core.eh.logging.AIALogger.isTraceLoggingEnabled("INFO","{http://xmlns.oracle.com/ABCSImpl/PDC/Core/SyncPriceListPDCProvABCSImpl/V1}SyncPriceListPDCProvABCSImpl");                                                                                  
+setVariableData("TraceLogEnabled", tracelogenabled);        
+
+if (tracelogenabled.booleanValue())                                                                                
+{                                                                                                                                                                                      
+                       
+          
+   TraceLogMessage = "Starting " + serviceName + " Before pricing Service Invoke Instance: " + instanceID + title; ;                         
+   
+   oracle.xml.parser.v2.XMLElement EBM_HEADER =                                                                        
+                                                                              
+   (oracle.xml.parser.v2.XMLElement)getVariableData("EBM_HEADER");                                                                                     
+   oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  EBM_HEADER ,TraceLogMessage); 
+   
+}]]>
+                        </bpelx:exec>
+                        <invoke name="InvokeUpdatePricing"
+                                inputVariable="UpdatePricingAppReqMsg"
+                                outputVariable="SyncpricingAppRespMsg_Update"
+                                partnerLink="pricingGatewayPortType"
+                                portType="tns:pricingGatewayPortType"
+                                operation="modifyPricingAndSubmit" xml:id="id_693"
+                                bpelx:invokeAsDetail="no"/>
+                        <switch name="Switch_UpdateStatus" xml:id="id_795">
+                            <case xml:id="id_796"
+                                  condition="bpws:getVariableData('SyncpricingAppRespMsg_Update','return','/pricinggateway:PDCResponse/pricinggateway:status')='SUCCEEDED'">
+                                <sequence name="Sequence1" xml:id="id_800">
+                                    <assign name="Assign_ProductResp_params" xml:id="id_801">
+                                        <copy xml:id="id_802">
+                                            <from variable="params_update"
+                                                  xml:id="id_803"
+                                                  query="/bpelcom:parameters/bpelcom:item"/>
+                                            <to variable="params_update"
+                                                xml:id="id_804"
+                                                query="/bpelcom:parameters/bpelcom:item"/>
+                                        </copy>
+                                        <copy xml:id="id_805">
+                                            <from expression="'EscapedCommitProductRespMessage'"
+                                                  xml:id="id_806"/>
+                                            <to variable="params_update"
+                                                query="/bpelcom:parameters/bpelcom:item[1]/bpelcom:name"
+                                                xml:id="id_807"/>
+                                        </copy>
+                                        <copy xml:id="id_808">
+                                            <from expression="ora:getContentAsString(bpws:getVariableData('SyncpricingAppRespMsg_Update','return','/pricinggateway:PDCResponse'))"
+                                                  xml:id="id_809"/>
+                                            <to variable="params_update"
+                                                query="/bpelcom:parameters/bpelcom:item[1]/bpelcom:value"
+                                                xml:id="id_810"/>
+                                        </copy>
+                                    </assign>
+                                    <assign name="XrefPopulate" xml:id="id_811">
+                                        <bpelx:annotation xml:id="id_812">
+                                            <bpelx:pattern xml:id="id_813">transformation</bpelx:pattern>
+                                        </bpelx:annotation>
+                                        <copy xml:id="id_814">
+                                            <from xml:id="id_815"
+                                                  expression="ora:processXSLT('xsl/XrefPopulate.xsl',bpws:getVariableData('SyncPriceListReqMsg','SyncPriceListEBM'),bpws:getVariableData('params_update'))"/>
+                                            <to xml:id="id_816"
+                                                variable="SyncPriceListAsyncRespMsg"
+                                                part="SyncPriceListListResponseEBM"/>
+                                        </copy>
+                                    </assign>
+                                </sequence>
+                            </case>
+                            <otherwise xml:id="id_797">
+							<sequence xml:id="id_823"
+                                          name="Sequence_BindingMessage">
+								 <assign name="Transform_Message" xml:id="id_882">
+                                        <bpelx:annotation xml:id="id_883">
+                                            <bpelx:pattern xml:id="id_884">transformation</bpelx:pattern>
+                                        </bpelx:annotation>
+                                        <copy xml:id="id_885">
+                                            <from xml:id="id_886"
+                                                  expression="ora:doXSLTransformForDoc('xsl/Transformation_SyncpricingAppRespMsg_Update.xsl', $SyncpricingAppRespMsg_Update.return)"/>
+                                            <to xml:id="id_887"
+                                                variable="ExtensionFaultVar"
+                                                part="FaultMessage"/>
+                                        </copy>
+                                    </assign>
+                                    <assign name="AssignErrorMessage" xml:id="id_916">
+                                        <copy xml:id="id_927">
+                                            <from variable="ExtensionFaultVar"
+                                                  part="FaultMessage"
+                                                  query="/corecom:Fault/corecom:FaultNotification/corecom:FaultMessage/corecom:Text"
+                                                  xml:id="id_928"/>
+                                            <to variable="BindingMessageVar"
+                                                xml:id="id_929"/>
+                                        </copy>
+                                    </assign>
+									<throw name="ThrowBindingFault" xml:id="id_799"
+                                       faultName="bpelx:bindingFault"
+                                       faultVariable="SystemFaultVar"/>
+										</sequence>
+                            </otherwise>
+                        </switch>
+                    </sequence>
+                </scope>
+                <bpelx:exec name="TraceLog_AfterInvokepricing" language="java"
+                version="1.3" xml:id="id_699">
+      <![CDATA[java.lang.String TraceLogMessage = null; 
+	java.lang.Boolean tracelogenabled;  
+java.lang.String title = (java.lang.String)getVariableData("Title");         
+java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+
+tracelogenabled = oracle.apps.aia.core.eh.logging.AIALogger.isTraceLoggingEnabled("INFO","{http://xmlns.oracle.com/ABCSImpl/PDC/Core/SyncPriceListPDCProvABCSImpl/V1}SyncPriceListPDCProvABCSImpl");                                                                                  
+setVariableData("TraceLogEnabled", tracelogenabled);        
+
+if (tracelogenabled.booleanValue())                                                                                
+{                                                                                                                                                                                      
+                       
+          
+   TraceLogMessage = "Starting " + serviceName + " After pricing Service Invoke Instance: " + instanceID + title; ;                         
+   
+   oracle.xml.parser.v2.XMLElement EBM_HEADER =                                                                        
+                                                                              
+   (oracle.xml.parser.v2.XMLElement)getVariableData("EBM_HEADER");                                                                                     
+   oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  EBM_HEADER ,TraceLogMessage); 
+   
+}]]>
+    </bpelx:exec>
+                <scope name="Switch_Extension_Pricing_PostInvokeABS" xml:id="id_773"
+                       variableAccessSerializable="no"
+                       bpelx:skipCondition="true()" ui:customizable="true">
+                    <bpelx:annotation xml:id="id_778">
+                        <bpelx:general xml:id="id_779">
+                            <bpelx:property name="userLabel" xml:id="id_780">
+                                <![CDATA[Scope_Extension_Pricing_PostInvokeABS]]>
+                            </bpelx:property>
+                        </bpelx:general>
+                    </bpelx:annotation>
+                    <empty name="Switch_Empty_Extension_Pricing_PostInvokeABS" xml:id="id_785"/>
+                </scope>
+            </sequence>
+     </scope>
+ <bpelx:exec name="TraceLog_BeforePriceListRespMsgTransform" language="java"
+                version="1.3" xml:id="id_736">
+      <![CDATA[java.lang.String TraceLogMessage = null; 
+	java.lang.Boolean tracelogenabled;  
+java.lang.String title = (java.lang.String)getVariableData("Title");         
+java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+
+tracelogenabled = oracle.apps.aia.core.eh.logging.AIALogger.isTraceLoggingEnabled("INFO","{http://xmlns.oracle.com/ABCSImpl/PDC/Core/SyncPriceListPDCProvABCSImpl/V1}SyncPriceListPDCProvABCSImpl");                                                                                  
+setVariableData("TraceLogEnabled", tracelogenabled);        
+
+if (tracelogenabled.booleanValue())                                                                                
+{                                                                                                                                                                                      
+                       
+          
+   TraceLogMessage = "Starting " + serviceName + " Before PriceListRespMsg Transform Instance: " + instanceID + title; ;                         
+   
+   oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  null ,TraceLogMessage); 
+   
+}]]>
+    </bpelx:exec>
+     <assign name="Xform_PriceListReqMsg_to_PriceListRespMsg" xml:id="id_753">
+	      <bpelx:annotation xml:id="id_754">
+		<bpelx:pattern xml:id="id_755">transformation</bpelx:pattern>
+	      </bpelx:annotation>
+	      <copy xml:id="id_756">
+		<from expression="ora:processXSLT('xsl/Xform_PriceListReqMsg_to_PriceListRespMsg.xsl',bpws:getVariableData('SyncPriceListReqMsg','SyncPriceListEBM'))"
+        xml:id="id_757"/>
+		<to variable="SyncPriceListAsyncRespMsg"
+		    part="SyncPriceListListResponseEBM" xml:id="id_758"/>
+	      </copy>
+      </assign>
+        <scope name="Scope_Extension_ItemList_PostXformABMtoEBM" xml:id="id_774"
+               variableAccessSerializable="no" bpelx:skipCondition="true()"
+               ui:customizable="true">
+            <empty name="Scope_Empty_Extension_ItemList_PostXformABMtoEBM"
+                   xml:id="id_784"/>
+        </scope>
+        <bpelx:exec name="TraceLog_AfterPriceListRespMsgTransform" language="java"
+                version="1.3" xml:id="id_759">
+      <![CDATA[java.lang.String TraceLogMessage = null; 
+	java.lang.Boolean tracelogenabled;  
+java.lang.String title = (java.lang.String)getVariableData("Title");         
+java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+
+tracelogenabled = oracle.apps.aia.core.eh.logging.AIALogger.isTraceLoggingEnabled("INFO","{http://xmlns.oracle.com/ABCSImpl/PDC/Core/SyncPriceListPDCProvABCSImpl/V1}SyncPriceListPDCProvABCSImpl");                                                                                  
+setVariableData("TraceLogEnabled", tracelogenabled);        
+
+if (tracelogenabled.booleanValue())                                                                                
+{                                                                                                                                                                                      
+                       
+          
+   TraceLogMessage = "Starting " + serviceName + " After PriceListRespMsg Transform Instance: " + instanceID + title; ;                         
+   
+   oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  null ,TraceLogMessage); 
+   
+}]]>
+    </bpelx:exec>
+     
+ <bpelx:exec name="TraceLog_BeforeInvokePriceList" language="java"
+                version="1.3" xml:id="id_760">
+      <![CDATA[java.lang.String TraceLogMessage = null; 
+	java.lang.Boolean tracelogenabled;  
+java.lang.String title = (java.lang.String)getVariableData("Title");         
+java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+
+tracelogenabled = oracle.apps.aia.core.eh.logging.AIALogger.isTraceLoggingEnabled("INFO","{http://xmlns.oracle.com/ABCSImpl/PDC/Core/SyncPriceListPDCProvABCSImpl/V1}SyncPriceListPDCProvABCSImpl");                                                                                  
+setVariableData("TraceLogEnabled", tracelogenabled);        
+
+if (tracelogenabled.booleanValue())                                                                                
+{                                                                                                                                                                                      
+                       
+          
+   TraceLogMessage = "Starting " + serviceName + " Before InvokePriceList Asynchronous Response Instance: " + instanceID + title; ;                         
+   
+   oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  null ,TraceLogMessage); 
+   
+}]]>
+    </bpelx:exec>
+     
+     <invoke name="InvokePriceList"
+            partnerLink="PriceListEBSResponse"
+            portType="ebs:PriceListEBSResponse"
+            operation="SyncPriceListListResponse"
+            inputVariable="SyncPriceListAsyncRespMsg" xml:id="id_761"/>
+ <bpelx:exec name="TraceLog_AfterInvokePriceList" language="java"
+                version="1.3" xml:id="id_762">
+      <![CDATA[java.lang.String TraceLogMessage = null; 
+	java.lang.Boolean tracelogenabled;  
+java.lang.String title = (java.lang.String)getVariableData("Title");         
+java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+
+tracelogenabled = oracle.apps.aia.core.eh.logging.AIALogger.isTraceLoggingEnabled("INFO","{http://xmlns.oracle.com/ABCSImpl/PDC/Core/SyncPriceListPDCProvABCSImpl/V1}SyncPriceListPDCProvABCSImpl");                                                                                  
+setVariableData("TraceLogEnabled", tracelogenabled);        
+
+if (tracelogenabled.booleanValue())                                                                                
+{                                                                                                                                                                                      
+                       
+          
+   TraceLogMessage = "Starting " + serviceName + " After InvokePriceList Asynchronous Response Instance: " + instanceID + title; ;                         
+   
+   oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  null ,TraceLogMessage); 
+   
+}]]>
+    </bpelx:exec>
+ <bpelx:exec name="TraceLog_EndABCS" language="java"
+                version="1.3" xml:id="id_763">
+      <![CDATA[java.lang.String TraceLogMessage = null; 
+	java.lang.Boolean tracelogenabled   = (java.lang.Boolean)getVariableData("TraceLogEnabled");
+java.lang.String title = (java.lang.String)getVariableData("Title");         
+java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+
+
+if (tracelogenabled.booleanValue())                                                                                
+{                                                                                                                                                                                      
+                       
+          
+   TraceLogMessage = "Starting " + serviceName + " ABCS End Instance: " + instanceID + title; ;                         
+   
+   oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  null ,TraceLogMessage); 
+   
+}]]>
+    </bpelx:exec>
+  
+  </sequence>
+</process>

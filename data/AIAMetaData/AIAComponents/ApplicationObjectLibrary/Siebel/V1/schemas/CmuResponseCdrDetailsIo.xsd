@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.siebel.com/xml/CMU%20Response%20CDR%20Details%20IO" xmlns:xsdLocal="http://www.siebel.com/xml/CMU%20Response%20CDR%20Details%20IO" attributeFormDefault="unqualified" elementFormDefault="qualified">
+	<xsd:annotation>
+		<xsd:documentation>Copyright (C) 2001-2004 Siebel Systems, Inc. All rights reserved. Siebel XSD Generation</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="ListOfCmuResponseCdrDetailsIo" type="xsdLocal:ListOfCmuResponseCdrDetailsIo" />
+	<xsd:complexType name="ListOfCmuResponseCdrDetailsIoTopElmt">
+		<xsd:sequence>
+			<xsd:element name="ListOfCmuResponseCdrDetailsIo" type="xsdLocal:ListOfCmuResponseCdrDetailsIo" minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfCmuResponseCdrDetailsIo">
+		<xsd:sequence>
+			<xsd:element name="CmuCdrDetailsVbc" type="xsdLocal:CmuCdrDetailsVbc" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CmuCdrDetailsVbc">
+		<xsd:sequence>
+			<xsd:element name="AccountId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="BillPOID" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="BillingProfileId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="CalledNumber" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="Charge" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="CurrencyCode" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="Date" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="Discount" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="Duration" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="EventId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ItemChargeId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="NetAmount" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="AccountName" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="Non-Currency" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="BillingProfileName" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ServiceAccountId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<!-- Start BCT-797 Crediting with VAT Manish R17.4 --> 
+			<xsd:element name="TSVATPerc" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="TSChargeVAT" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="TSNetAmtVAT" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<!-- End BCT-797 Crediting with VAT Manish R17.4 -->
+			<!-- Start BCT-797 Display of product names in event details Manish R17.4 -->
+			<xsd:element name="TSProdDesc" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<!-- End BCT-797 Display of product names in event details Manish R17.4 -->
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

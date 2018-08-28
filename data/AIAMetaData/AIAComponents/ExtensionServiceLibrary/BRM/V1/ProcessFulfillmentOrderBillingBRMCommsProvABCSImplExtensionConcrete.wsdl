@@ -1,0 +1,428 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/ProcessFulfillmentOrderBillingBRMCommsProvABCSImplExtension/V1" xmlns:brmbaseserv="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" xmlns:sordebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/FulfillmentOrder/V1" xmlns:commsprcsbillordrebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/FulfillmentOrder/V1" xmlns:commssordext="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/ProcessFulfillmentOrderBillingBRMCommsProvABCSImplExtension/V1" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:sordsubebo="http://xmlns.oracle.com/ProcessFulfillmentOrderBillingBRMCommsSubprocess" name="ProcessFulfillmentOrderBillingBRMCommsProvABCSImplExtension1" targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/ProcessFulfillmentOrderBillingBRMCommsProvABCSImplExtension/V1">
+<types>
+<xsd:schema targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/ProcessFulfillmentOrderBillingBRMCommsProvABCSImpl/V1" elementFormDefault="qualified">
+<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/FulfillmentOrder/V1" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/FulfillmentOrder/V1/FulfillmentOrderEBM.xsd"/>
+<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd"/>
+<xsd:import namespace="http://xmlns.oracle.com/ProcessFulfillmentOrderBillingBRMCommsSubprocess" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/ProcessFulfillmentOrderBillingBRMCommsSubprocess.xsd"/>
+<xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_SUBSCRIPTION_SET_BUNDLE.xsd"/>
+<xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_CUST_CREATE_PROFILE.xsd"/>
+<xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_CUST_MODIFY_PROFILE.xsd"/>
+<xsd:import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_CUST_DELETE_PROFILE.xsd"/>
+</xsd:schema>
+</types>
+<message name="PreInvokeProcessPCM_OP_SUBSCRIPTION_SET_BUNDLE">
+<documentation>
+<svcdoc:Message>
+<svcdoc:Description>This message is used as a payload to PreProcess PCM_OP_SUBSCRIPTION_SET_BUNDLE operation</svcdoc:Description>
+</svcdoc:Message>
+</documentation>
+<part name="PCM_OP_SUBSCRIPTION_SET_BUNDLE_inputFlist" element="brmbaseserv:PCM_OP_SUBSCRIPTION_SET_BUNDLE_inputFlist"/>
+</message>
+<message name="PostInvokeProcessPCM_OP_SUBSCRIPTION_SET_BUNDLE">
+<documentation>
+<svcdoc:Message>
+<svcdoc:Description>This message is used as a payload to Post Process PCM_OP_SUBSCRIPTION_SET_BUNDLE operation</svcdoc:Description>
+</svcdoc:Message>
+</documentation>
+<part name="PCM_OP_SUBSCRIPTION_SET_BUNDLE_outputFlist" element="brmbaseserv:PCM_OP_SUBSCRIPTION_SET_BUNDLE_outputFlist"/>
+</message>
+<message name="PreInvokeProcessPCM_OP_CUST_CREATE_PROFILE">
+<documentation>
+<svcdoc:Message>
+<svcdoc:Description>This message is used as a payload to PreProcess PCM_OP_CUST_CREATE_PROFILE operation</svcdoc:Description>
+</svcdoc:Message>
+</documentation>
+<part name="PCM_OP_CUST_CREATE_PROFILE_inputFlist" element="brmbaseserv:PCM_OP_CUST_CREATE_PROFILE_inputFlist"/>
+</message>
+<message name="PostInvokeProcessPCM_OP_CUST_CREATE_PROFILE">
+<documentation>
+<svcdoc:Message>
+<svcdoc:Description>This message is used as a payload to Post Process PCM_OP_CUST_CREATE_PROFILE operation</svcdoc:Description>
+</svcdoc:Message>
+</documentation>
+<part name="PCM_OP_CUST_CREATE_PROFILE_outputFlist" element="brmbaseserv:PCM_OP_CUST_CREATE_PROFILE_outputFlist"/>
+</message>
+<message name="PreInvokeProcessPCM_OP_CUST_MODIFY_PROFILE">
+<documentation>
+<svcdoc:Message>
+<svcdoc:Description>This message is used as a payload to PreProcess PCM_OP_CUST_MODIFY_PROFILE operation</svcdoc:Description>
+</svcdoc:Message>
+</documentation>
+<part name="PCM_OP_CUST_MODIFY_PROFILE_inputFlist" element="brmbaseserv:PCM_OP_CUST_MODIFY_PROFILE_inputFlist"/>
+</message>
+<message name="PostInvokeProcessPCM_OP_CUST_MODIFY_PROFILE">
+<documentation>
+<svcdoc:Message>
+<svcdoc:Description>This message is used as a payload to Post Process PCM_OP_CUST_MODIFY_PROFILE operation</svcdoc:Description>
+</svcdoc:Message>
+</documentation>
+<part name="PCM_OP_CUST_MODIFY_PROFILE_outputFlist" element="brmbaseserv:PCM_OP_CUST_MODIFY_PROFILE_outputFlist"/>
+</message>
+<message name="PreInvokeProcessPCM_OP_CUST_DELETE_PROFILE">
+<documentation>
+<svcdoc:Message>
+<svcdoc:Description>This message is used as a payload to PreProcess PCM_OP_CUST_DELETE_PROFILE operation</svcdoc:Description>
+</svcdoc:Message>
+</documentation>
+<part name="PCM_OP_CUST_DELETE_PROFILE_inputFlist" element="brmbaseserv:PCM_OP_CUST_DELETE_PROFILE_inputFlist"/>
+</message>
+<message name="PostInvokeProcessPCM_OP_CUST_DELETE_PROFILE">
+<documentation>
+<svcdoc:Message>
+<svcdoc:Description>This message is used as a payload to Post Process PCM_OP_CUST_DELETE_PROFILE operation</svcdoc:Description>
+</svcdoc:Message>
+</documentation>
+<part name="PCM_OP_CUST_DELETE_PROFILE_outputFlist" element="brmbaseserv:PCM_OP_CUST_DELETE_PROFILE_outputFlist"/>
+</message>
+<message name="PreInvokeProcessFulfillmentOrderBillingEBMMessage">
+<documentation>
+<svcdoc:Message>
+<svcdoc:Description>This message is used as a payload to All the
+                                SubProcesses operation</svcdoc:Description>
+</svcdoc:Message>
+</documentation>
+<part name="payload" element="sordebo:ProcessFulfillmentOrderBillingEBM"/>
+</message>
+<message name="PostInvokeProcessFulfillmentOrderBillingEBMMessage">
+<documentation>
+<svcdoc:Message>
+<svcdoc:Description>This message is used as a payload that is
+                                finally coming out of the BPEL Process operation</svcdoc:Description>
+</svcdoc:Message>
+</documentation>
+<part name="payload" element="sordebo:ProcessFulfillmentOrderBillingEBM"/>
+</message>
+<message name="SubProcPreInvokeProcessFulfillmentOrderBillingEBMMessage">
+<documentation>
+<svcdoc:Message>
+<svcdoc:Description>This message is used as a payload that is
+                                finally coming out of the BPEL Process operation</svcdoc:Description>
+</svcdoc:Message>
+</documentation>
+<part name="payload" element="sordsubebo:ProcessFulfillmentOrderBillingBRMCommsSubprocessMessage"/>
+</message>
+<message name="FaultMessage">
+<documentation>
+<svcdoc:Message>
+<svcdoc:Description>This message is used for propagating Error
+                                Context and Error Message</svcdoc:Description>
+</svcdoc:Message>
+</documentation>
+<part name="AIAFault" element="corecom:Fault"/>
+</message>
+<portType name="ProcessFulfillmentOrderBillingBRMCommsProvABCSImplExtensionService">
+<documentation>
+<svcdoc:Interface>
+<svcdoc:Description>This is the ABCS extension service interface</svcdoc:Description>
+<svcdoc:DisplayName>ProcessFulfillmentOrderSiebelProvABCSImplExtensionService</svcdoc:DisplayName>
+<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+</svcdoc:Interface>
+</documentation>
+<operation name="PreInvokeProcessFulfillmentOrderBillingEBM">
+<documentation>
+<svcdoc:Operation>
+<svcdoc:Description>This operation is used to enrich
+                                   ProcessFulfillmentOrderBillingEBM before passing it to the
+                                   Sub Processes </svcdoc:Description>
+<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+<svcdoc:DisplayName>PreInvokeProcessFulfillmentOrderBillingEBM</svcdoc:DisplayName>
+<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+<svcdoc:Scope>Public</svcdoc:Scope>
+</svcdoc:Operation>
+</documentation>
+<input message="commssordext:PreInvokeProcessFulfillmentOrderBillingEBMMessage"/>
+<output message="commssordext:PreInvokeProcessFulfillmentOrderBillingEBMMessage"/>
+<fault name="fault" message="tns:FaultMessage"/>
+</operation>
+<operation name="PostInvokeProcessFulfillmentOrderBillingEBM">
+<documentation>
+<svcdoc:Operation>
+<svcdoc:Description>This operation is used to enrich
+                                   ProcessFulfillmentOrderBillingEBM before passing it to the
+                                   Sub Processes </svcdoc:Description>
+<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+<svcdoc:DisplayName>PreInvokeProcessFulfillmentOrderBillingEBM</svcdoc:DisplayName>
+<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+<svcdoc:Scope>Public</svcdoc:Scope>
+</svcdoc:Operation>
+</documentation>
+<input message="commssordext:PostInvokeProcessFulfillmentOrderBillingEBMMessage"/>
+<output message="commssordext:PostInvokeProcessFulfillmentOrderBillingEBMMessage"/>
+<fault name="fault" message="tns:FaultMessage"/>
+</operation>
+<operation name="SubProcPreInvokeProcessFulfillmentOrderBillingEBM">
+<documentation>
+<svcdoc:Operation>
+<svcdoc:Description>This operation is used to enrich
+                                   ProcessFulfillmentOrderBillingEBM before passing it to the
+                                   Sub Processes </svcdoc:Description>
+<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+<svcdoc:DisplayName>PreInvokeProcessFulfillmentOrderBillingEBM</svcdoc:DisplayName>
+<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+<svcdoc:Scope>Public</svcdoc:Scope>
+</svcdoc:Operation>
+</documentation>
+<input message="commssordext:SubProcPreInvokeProcessFulfillmentOrderBillingEBMMessage"/>
+<output message="commssordext:SubProcPreInvokeProcessFulfillmentOrderBillingEBMMessage"/>
+<fault name="fault" message="tns:FaultMessage"/>
+</operation>
+<operation name="PreInvokePCM_OP_SUBSCRIPTION_SET_BUNDLEABMtoPCM_OP_SUBSCRIPTION_SET_BUNDLEABM">
+<documentation>
+<svcdoc:Operation>
+<svcdoc:Description>This operation is used to PreInvoke PCM_OP_SUBSCRIPTION_SET_BUNDLE</svcdoc:Description>
+<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+<svcdoc:DisplayName>PreInvokeABM</svcdoc:DisplayName>
+<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+<svcdoc:Scope>Public</svcdoc:Scope>
+</svcdoc:Operation>
+</documentation>
+<input message="commssordext:PreInvokeProcessPCM_OP_SUBSCRIPTION_SET_BUNDLE"/>
+<output message="commssordext:PreInvokeProcessPCM_OP_SUBSCRIPTION_SET_BUNDLE"/>
+<fault name="fault" message="commssordext:FaultMessage"/>
+</operation>
+<operation name="PostInvokePCM_OP_SUBSCRIPTION_SET_BUNDLEABMtoPCM_OP_SUBSCRIPTION_SET_BUNDLEABM">
+<documentation>
+<svcdoc:Operation>
+<svcdoc:Description>This operation is used to Post Invoke PCM_OP_SUBSCRIPTION_SET_BUNDLE</svcdoc:Description>
+<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+<svcdoc:DisplayName>PreInvokeABSEBM</svcdoc:DisplayName>
+<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+<svcdoc:Scope>Public</svcdoc:Scope>
+</svcdoc:Operation>
+</documentation>
+<input message="commssordext:PostInvokeProcessPCM_OP_SUBSCRIPTION_SET_BUNDLE"/>
+<output message="commssordext:PostInvokeProcessPCM_OP_SUBSCRIPTION_SET_BUNDLE"/>
+<fault name="fault" message="commssordext:FaultMessage"/>
+</operation>
+<operation name="PreInvokePCM_OP_CUST_CREATE_PROFILEABMtoPCM_OP_CUST_CREATE_PROFILEABM">
+<documentation>
+<svcdoc:Operation>
+<svcdoc:Description>This operation is used to PreInvoke PCM_OP_CUST_CREATE_PROFILE</svcdoc:Description>
+<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+<svcdoc:DisplayName>PreInvokeABM</svcdoc:DisplayName>
+<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+<svcdoc:Scope>Public</svcdoc:Scope>
+</svcdoc:Operation>
+</documentation>
+<input message="commssordext:PreInvokeProcessPCM_OP_CUST_CREATE_PROFILE"/>
+<output message="commssordext:PreInvokeProcessPCM_OP_CUST_CREATE_PROFILE"/>
+<fault name="fault" message="commssordext:FaultMessage"/>
+</operation>
+<operation name="PostInvokePCM_OP_CUST_CREATE_PROFILEABMtoPCM_OP_CUST_CREATE_PROFILEABM">
+<documentation>
+<svcdoc:Operation>
+<svcdoc:Description>This operation is used to Post Invoke PCM_OP_CUST_CREATE_PROFILE</svcdoc:Description>
+<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+<svcdoc:DisplayName>PreInvokeABSEBM</svcdoc:DisplayName>
+<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+<svcdoc:Scope>Public</svcdoc:Scope>
+</svcdoc:Operation>
+</documentation>
+<input message="commssordext:PostInvokeProcessPCM_OP_CUST_CREATE_PROFILE"/>
+<output message="commssordext:PostInvokeProcessPCM_OP_CUST_CREATE_PROFILE"/>
+<fault name="fault" message="commssordext:FaultMessage"/>
+</operation>
+<operation name="PreInvokePCM_OP_CUST_MODIFY_PROFILEABMtoPCM_OP_CUST_MODIFY_PROFILEABM">
+<documentation>
+<svcdoc:Operation>
+<svcdoc:Description>This operation is used to PreInvoke PCM_OP_CUST_MODIFY_PROFILE</svcdoc:Description>
+<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+<svcdoc:DisplayName>PreInvokeABM</svcdoc:DisplayName>
+<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+<svcdoc:Scope>Public</svcdoc:Scope>
+</svcdoc:Operation>
+</documentation>
+<input message="commssordext:PreInvokeProcessPCM_OP_CUST_MODIFY_PROFILE"/>
+<output message="commssordext:PreInvokeProcessPCM_OP_CUST_MODIFY_PROFILE"/>
+<fault name="fault" message="commssordext:FaultMessage"/>
+</operation>
+<operation name="PostInvokePCM_OP_CUST_MODIFY_PROFILEABMtoPCM_OP_CUST_MODIFY_PROFILEABM">
+<documentation>
+<svcdoc:Operation>
+<svcdoc:Description>This operation is used to Post Invoke PCM_OP_CUST_MODIFY_PROFILE</svcdoc:Description>
+<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+<svcdoc:DisplayName>PreInvokeABSEBM</svcdoc:DisplayName>
+<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+<svcdoc:Scope>Public</svcdoc:Scope>
+</svcdoc:Operation>
+</documentation>
+<input message="commssordext:PostInvokeProcessPCM_OP_CUST_MODIFY_PROFILE"/>
+<output message="commssordext:PostInvokeProcessPCM_OP_CUST_MODIFY_PROFILE"/>
+<fault name="fault" message="commssordext:FaultMessage"/>
+</operation>
+<operation name="PreInvokePCM_OP_CUST_DELETE_PROFILEABMtoPCM_OP_CUST_DELETE_PROFILEABM">
+<documentation>
+<svcdoc:Operation>
+<svcdoc:Description>This operation is used to PreInvoke PCM_OP_CUST_DELETE_PROFILE</svcdoc:Description>
+<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+<svcdoc:DisplayName>PreInvokeABM</svcdoc:DisplayName>
+<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+<svcdoc:Scope>Public</svcdoc:Scope>
+</svcdoc:Operation>
+</documentation>
+<input message="commssordext:PreInvokeProcessPCM_OP_CUST_DELETE_PROFILE"/>
+<output message="commssordext:PreInvokeProcessPCM_OP_CUST_DELETE_PROFILE"/>
+<fault name="fault" message="commssordext:FaultMessage"/>
+</operation>
+<operation name="PostInvokePCM_OP_CUST_DELETE_PROFILEABMtoPCM_OP_CUST_DELETE_PROFILEABM">
+<documentation>
+<svcdoc:Operation>
+<svcdoc:Description>This operation is used to Post Invoke PCM_OP_CUST_DELETE_PROFILE</svcdoc:Description>
+<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+<svcdoc:DisplayName>PreInvokeABSEBM</svcdoc:DisplayName>
+<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+<svcdoc:Scope>Public</svcdoc:Scope>
+</svcdoc:Operation>
+</documentation>
+<input message="commssordext:PostInvokeProcessPCM_OP_CUST_DELETE_PROFILE"/>
+<output message="commssordext:PostInvokeProcessPCM_OP_CUST_DELETE_PROFILE"/>
+<fault name="fault" message="commssordext:FaultMessage"/>
+</operation>
+</portType>
+<binding name="ProcessFulfillmentOrderBillingBRMCommsProvABCSImplExtensionServiceBinding" type="tns:ProcessFulfillmentOrderBillingBRMCommsProvABCSImplExtensionService">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<operation name="PreInvokeProcessFulfillmentOrderBillingEBM">
+<soap:operation style="document" soapAction="PreInvokeProcessFulfillmentOrderBillingEBM"/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+<fault name="fault">
+<soap:fault name="fault" use="literal" encodingStyle=""/>
+</fault>
+</operation>
+<operation name="PostInvokeProcessFulfillmentOrderBillingEBM">
+<soap:operation style="document" soapAction="PostInvokeProcessFulfillmentOrderBillingEBM"/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+<fault name="fault">
+<soap:fault name="fault" use="literal" encodingStyle=""/>
+</fault>
+</operation>
+<operation name="SubProcPreInvokeProcessFulfillmentOrderBillingEBM">
+<soap:operation style="document" soapAction="PostInvokeProcessFulfillmentOrderBillingEBM"/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+<fault name="fault">
+<soap:fault name="fault" use="literal" encodingStyle=""/>
+</fault>
+</operation>
+<operation name="PreInvokePCM_OP_SUBSCRIPTION_SET_BUNDLEABMtoPCM_OP_SUBSCRIPTION_SET_BUNDLEABM">
+<soap:operation style="document" soapAction="mirror"/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+<fault name="fault">
+<soap:fault name="fault" use="literal" encodingStyle=""/>
+</fault>
+</operation>
+<operation name="PostInvokePCM_OP_SUBSCRIPTION_SET_BUNDLEABMtoPCM_OP_SUBSCRIPTION_SET_BUNDLEABM">
+<soap:operation style="document" soapAction="mirror"/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+<fault name="fault">
+<soap:fault name="fault" use="literal" encodingStyle=""/>
+</fault>
+</operation>
+<operation name="PreInvokePCM_OP_CUST_CREATE_PROFILEABMtoPCM_OP_CUST_CREATE_PROFILEABM">
+<soap:operation style="document" soapAction="mirror"/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+<fault name="fault">
+<soap:fault name="fault" use="literal" encodingStyle=""/>
+</fault>
+</operation>
+<operation name="PostInvokePCM_OP_CUST_CREATE_PROFILEABMtoPCM_OP_CUST_CREATE_PROFILEABM">
+<soap:operation style="document" soapAction="mirror"/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+<fault name="fault">
+<soap:fault name="fault" use="literal" encodingStyle=""/>
+</fault>
+</operation>
+<operation name="PreInvokePCM_OP_CUST_MODIFY_PROFILEABMtoPCM_OP_CUST_MODIFY_PROFILEABM">
+<soap:operation style="document" soapAction="mirror"/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+<fault name="fault">
+<soap:fault name="fault" use="literal" encodingStyle=""/>
+</fault>
+</operation>
+<operation name="PostInvokePCM_OP_CUST_MODIFY_PROFILEABMtoPCM_OP_CUST_MODIFY_PROFILEABM">
+<soap:operation style="document" soapAction="mirror"/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+<fault name="fault">
+<soap:fault name="fault" use="literal" encodingStyle=""/>
+</fault>
+</operation>
+<operation name="PreInvokePCM_OP_CUST_DELETE_PROFILEABMtoPCM_OP_CUST_DELETE_PROFILEABM">
+<soap:operation style="document" soapAction="mirror"/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+<fault name="fault">
+<soap:fault name="fault" use="literal" encodingStyle=""/>
+</fault>
+</operation>
+<operation name="PostInvokePCM_OP_CUST_DELETE_PROFILEABMtoPCM_OP_CUST_DELETE_PROFILEABM">
+<soap:operation style="document" soapAction="mirror"/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+<fault name="fault">
+<soap:fault name="fault" use="literal" encodingStyle=""/>
+</fault>
+</operation>
+</binding>
+<service name="ProcessFulfillmentOrderBillingBRMCommsProvABCSImplExtension">
+<port name="ProcessFulfillmentOrderBillingBRMCommsProvABCSImplExtensionServicePort" binding="tns:ProcessFulfillmentOrderBillingBRMCommsProvABCSImplExtensionServiceBinding">
+<soap:address location="http://tr002staia.ddc.teliasonera.net:8001/soa-infra/services/default/ProcessFulfillmentOrderBillingBRMCommsProvABCSImplExtension/ProcessFulfillmentOrderBillingBRMCommsProvABCSImplExtension"/>
+</port>
+</service>
+<plnk:partnerLinkType name="ProcessFulfillmentOrderBillingBRMCommsProvABCSImplExtensionService">
+<plnk:role name="ProcessFulfillmentOrderBillingBRMCommsProvABCSImplExtensionServiceProvider">
+<plnk:portType name="tns:ProcessFulfillmentOrderBillingBRMCommsProvABCSImplExtensionService"/>
+</plnk:role>
+</plnk:partnerLinkType>
+</definitions>

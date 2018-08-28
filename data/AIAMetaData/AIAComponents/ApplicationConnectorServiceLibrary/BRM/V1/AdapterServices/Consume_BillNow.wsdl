@@ -1,0 +1,24 @@
+<wsdl:definitions name="Consume_BillNow"
+                  targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/jms/BCT-227/ProcessFulfillmentOrderBillingBillNowCommsJMSConsumer/Consume_BillNow"
+                  xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:ns1="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes"
+                  xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/jms/BCT-227/ProcessFulfillmentOrderBillingBillNowCommsJMSConsumer/Consume_BillNow"
+                  xmlns:opaque="http://xmlns.oracle.com/pcbpel/adapter/opaque/"
+                  xmlns:pc="http://xmlns.oracle.com/pcbpel/"
+                  xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+    <wsdl:types>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/Notification.xsd"/>
+</xsd:schema>
+</wsdl:types>
+    <wsdl:message name="ProcessFulfillmentOrderBillingBillNow_Msg">
+        <wsdl:part name="ProcessFulfillmentOrderBillingBillNow" element="ns1:Notification"/>
+    </wsdl:message>
+    <wsdl:portType name="Consume_Message_ptt">
+        <wsdl:operation name="Consume_Message">
+            <wsdl:input message="tns:ProcessFulfillmentOrderBillingBillNow_Msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>
+

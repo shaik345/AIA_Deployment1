@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions name="SyncCustomerPartyListGESBCommsProvABCSImpl"
+             targetNamespace="http://xmlns.oracle.com/ABCSImpl/GESB/Industry/Comms/SyncCustomerPartyListGESBCommsProvABCSImpl/V1"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+			 xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+             xmlns:ns1="http://siebel.com/CustomUI"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:customerpartyeboebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:customerpartyeboabcs="http://xmlns.oracle.com/ABCSImpl/GESB/Industry/Comms/SyncCustomerPartyListGESBCommsProvABCSImpl/V1">
+   <documentation>
+      <svcdoc:Service>
+         <svcdoc:Description/>
+         <svcdoc:ServiceType>ProviderABCSImpl</svcdoc:ServiceType>
+         <svcdoc:Version>1</svcdoc:Version>
+         <svcdoc:ProductCode>GESB</svcdoc:ProductCode>
+      </svcdoc:Service>
+   </documentation>
+   <plnk:partnerLinkType name="SyncCustomerPartyListGESBCommsProvABCSImpl">
+      <plnk:role name="SyncCustomerPartyListGESBCommsProvABCSImplProvider">
+         <plnk:portType name="customerpartyeboabcs:SyncCustomerPartyListGESBCommsProvABCSImpl"/>
+      </plnk:role>
+   </plnk:partnerLinkType>
+   <import namespace="http://schemas.oracle.com/bpel/extension"
+           location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+   <types>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema">
+         <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/CustomerParty/V2/CustomerPartyEBM.xsd"/>
+			<import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd"/>
+            <import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+            <import namespace="http://schemas.xmlsoap.org/ws/2003/03/addressing" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/WS-Addressing.xsd"/>				 
+      </schema>
+   </types>
+   <message name="SyncCustomerPartyListReqMsg">
+      <part name="SyncCustomerPartyListEBM"
+            element="customerpartyeboebo:SyncCustomerPartyListEBM"/>
+   </message>
+   <portType name="SyncCustomerPartyListGESBCommsProvABCSImpl">
+      <operation name="SyncCustomerPartyList">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to Sync an
+                                   CustomerPartyList object</svcdoc:Description>
+               <svcdoc:MEP>FireAndForget</svcdoc:MEP>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="customerpartyeboabcs:SyncCustomerPartyListReqMsg"/>
+      </operation>
+   </portType>
+</definitions>

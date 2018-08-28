@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="ProcessManufacturerFilesKGMProvider" targetNamespace="http://xmlns.oracle.com/MDS_deploy/ProcessManufacturerFilesKGMProvider/ProcessManufacturerFilesKGMProvider" xmlns:ns1="http://schemas.oracle.com/bpel/extension" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:client="http://xmlns.oracle.com/MDS_deploy/ProcessManufacturerFilesKGMProvider/ProcessManufacturerFilesKGMProvider" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<plnk:partnerLinkType name="ProcessManufacturerFilesKGMProvider">
+<plnk:role name="ProcessManufacturerFilesKGMProviderProvider">
+<plnk:portType name="client:ProcessManufacturerFilesKGMProvider"/>
+</plnk:role>
+<plnk:role name="ProcessManufacturerFilesKGMProviderRequester">
+<plnk:portType name="client:ProcessManufacturerFilesKGMProviderCallback"/>
+</plnk:role>
+</plnk:partnerLinkType>
+<wsdl:import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+<wsdl:types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://schemas.oracle.com/bpel/extension" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:client="http://xmlns.oracle.com/MDS_deploy/ProcessManufacturerFilesKGMProvider/ProcessManufacturerFilesKGMProvider" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<import namespace="http://xmlns.oracle.com/MDS_deploy/ProcessManufacturerFilesKGMProvider/ProcessManufacturerFilesKGMProvider" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationConnectorServiceLibrary/KGM/schemas/ProcessManufacturerFilesKGMProvider.xsd"/>
+</schema>
+</wsdl:types>
+<wsdl:message name="ProcessManufacturerFilesKGMProviderRequestMessage">
+<wsdl:part name="payload" element="client:ItemListType"/>
+</wsdl:message>
+<wsdl:message name="ProcessManufacturerFilesKGMProviderResponseMessage">
+<wsdl:part name="payload" element="client:processResponse"/>
+</wsdl:message>
+<wsdl:portType name="ProcessManufacturerFilesKGMProvider">
+<wsdl:operation name="process">
+<wsdl:input message="client:ProcessManufacturerFilesKGMProviderRequestMessage"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:portType name="ProcessManufacturerFilesKGMProviderCallback">
+<wsdl:operation name="processResponse">
+<wsdl:input message="client:ProcessManufacturerFilesKGMProviderResponseMessage"/>
+</wsdl:operation>
+</wsdl:portType>
+</wsdl:definitions>

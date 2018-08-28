@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<componentType xmlns="http://xmlns.oracle.com/sca/1.0" xmlns:ui="http://xmlns.oracle.com/soa/designer/"
+               xml:id="id_1">
+	<service ui:wsdlLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationConnectorServiceLibrary/Siebel/V1/ProviderABCS/SyncProductSiebelProvABCSImpl.wsdl" name="SyncProductSiebelProvABCSImpl"
+          xml:id="id_2">
+		<interface.wsdl interface="http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncProductSiebelProvABCSImpl/V1#wsdl.interface(SyncProductSiebelProvABCSImplService)"
+                  xml:id="id_3"/>
+	</service>
+		<reference ui:wsdlLocation="AIASessionPoolManagerAbstractRef.wsdl" name="AIASessionPoolManager"
+             xml:id="id_4">
+			<interface.wsdl interface="http://xmlns.oracle.com/AIASessionPoolManager#wsdl.interface(AIASessionPoolManager)"
+                   xml:id="id_5"/>
+	</reference>
+	<reference ui:wsdlLocation="SWIProductIntegrationIORef.wsdl" name="SWIProductIntegration"
+            xml:id="id_6">
+		<interface.wsdl interface="http://siebel.com/asi/V0#wsdl.interface(SWIProductImport)"
+                  xml:id="id_7"/>
+	</reference>
+	<reference ui:wsdlLocation="ItemResponseEBSV2Ref.wsdl" name="ItemResponseEBSV2"
+            xml:id="id_8">
+		<interface.wsdl interface="http://xmlns.oracle.com/EnterpriseServices/Core/Item/V2#wsdl.interface(ItemEBSResponse)"
+                  xml:id="id_9"/>
+	</reference>
+	<reference ui:wsdlLocation="SWIPromotionIntegrationIORef.wsdl" name="SWIPromotionIntegration"
+            xml:id="id_10">
+		<interface.wsdl interface="http://siebel.com/asi/SWIPromotionIntegration/#wsdl.interface(SWIPromotionImport)"
+                  xml:id="id_11"/>
+	</reference>
+	<reference ui:wsdlLocation="oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/V1/wsdls/AIAAsyncErrorHandlingBPELProcess.wsdl" name="AIAAsyncErrorHandlingBPELProcess"
+            xml:id="id_12">
+		<interface.wsdl interface="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess#wsdl.interface(AIAAsyncErrorHandlingBPELProcess)" callbackInterface="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess#wsdl.interface(AIAAsyncErrorHandlingBPELProcessCallback)"
+                  xml:id="id_13"/>
+	</reference>
+	<reference ui:wsdlLocation="SyncProductSiebelProvABCSImplExtensionAbstract.wsdl" name="SyncProductSiebelProvABCSImplExtension"
+            xml:id="id_14">
+		<interface.wsdl callbackInterface="http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncProductSiebelProvABCSImplExtension#wsdl.interface(SyncProductSiebelProvABCSImplExtensionService)" interface="http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncProductSiebelProvABCSImplExtension#wsdl.interface(SyncProductSiebelProvABCSImplExtensionService)"
+                  xml:id="id_15"/>
+	</reference>
+ <reference name="ItemErrorResponseEBSV2"
+            ui:wsdlLocation="ItemResponseEBSV2Ref.wsdl" xml:id="id_16">
+  <interface.wsdl interface="http://xmlns.oracle.com/EnterpriseServices/Core/Item/V2#wsdl.interface(ItemEBSResponse)"
+                  xml:id="id_17"/>
+ </reference>
+ <reference name="SWIProductLine" ui:wsdlLocation="SWIProductLineRef.wsdl"
+            xml:id="id_20">
+  <interface.wsdl interface="http://siebel.com/asi/#wsdl.interface(SWIProductLine)"
+                  xml:id="id_21"/>
+ </reference>
+</componentType>

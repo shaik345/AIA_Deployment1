@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+ Copyright (c) 2011, 2014, Oracle and/or its affiliates. All rights reserved.
+    Oracle Corporation and/or its affiliates. Other names may be trademarks of their respective owners. 
+-->
+<schema targetNamespace="http://xmlns.oracle.com/communications/framework/webservice/fault/v1-0" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:appfault="http://xmlns.oracle.com/communications/framework/webservice/fault/v1-0" elementFormDefault="qualified">
+	<complexType name="ApplicationFaultType">
+		<sequence>
+			<element name="errorCode" type="string" nillable="false"/>
+			<element name="errorMessage" type="string" nillable="true" minOccurs="0"/>
+			<element name="errorContext" type="string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+	<!-- ====================== Simple Element Definitions =================  -->
+</schema>
+

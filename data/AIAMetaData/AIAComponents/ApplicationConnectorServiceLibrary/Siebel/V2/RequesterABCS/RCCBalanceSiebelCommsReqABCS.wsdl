@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="RCCBalanceSiebelCommsReqABCSImpl" targetNamespace="http://oracle.com/sca/soapservice/RCCBalanceSiebelCommsReqABCS/RCCBalanceSiebelCommsReqABCSImpl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:inp1="http://www.telia.org/Siebel/getRCCBalances" xmlns:tns="http://oracle.com/sca/soapservice/RCCBalanceSiebelCommsReqABCS/RCCBalanceSiebelCommsReqABCSImpl">
+   <wsdl:types>
+      <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+         <xsd:import namespace="http://www.telia.org/Siebel/getRCCBalances" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/GetBalanceGroups.xsd"/>
+         <xsd:import namespace="http://www.telia.org/Siebel/getRCCBalances" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/GetBalances.xsd"/>
+         <xsd:import namespace="http://www.telia.org/Siebel/getRCCBalances" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/UpdateRCCDetails.xsd"/>
+      </xsd:schema>
+   </wsdl:types>
+   <wsdl:message name="GetBalanceGroupsRequest">
+      <wsdl:part name="GetBalanceGroupsInput" element="inp1:GetBalanceGroupsRequest"/>
+   </wsdl:message>
+   <wsdl:message name="GetBalanceGroupsResponse">
+      <wsdl:part name="GetBalanceGroupsOutput" element="inp1:GetBalanceGroupsResponse"/>
+   </wsdl:message>
+   <wsdl:message name="GetBalanceGroupsFault">
+      <wsdl:part name="GetBalanceGroupsFault" element="inp1:GetBalanceGroupsFault"/>
+   </wsdl:message>
+   <wsdl:message name="GetBalancesRequest">
+      <wsdl:part name="GetBalancesInput" element="inp1:GetBalanceRequest"/>
+   </wsdl:message>
+   <wsdl:message name="GetBalancesResponse">
+      <wsdl:part name="GetBalancesOutput" element="inp1:GetBalanceResponse"/>
+   </wsdl:message>
+   <wsdl:message name="GetBalancesFault">
+      <wsdl:part name="GetBalanceFault" element="inp1:GetBalancesFault"/>
+   </wsdl:message>
+   <wsdl:message name="UpdateRCCDetailsRequest">
+      <wsdl:part name="UpdateRCCDetailsInput" element="inp1:UpdateRCCDetailsRequest"/>
+   </wsdl:message>
+   <wsdl:message name="UpdateRCCDetailsResponse">
+      <wsdl:part name="UpdateRCCDetailsOutput" element="inp1:UpdateRCCDetailsResponse"/>
+   </wsdl:message>
+   <wsdl:message name="UpdateRCCDetailsFault">
+      <wsdl:part name="UpdateRCCDetailsFault" element="inp1:UpdateRCCDetailsFault"/>
+   </wsdl:message>
+   <wsdl:portType name="GetBalanceGroups_ptt">
+      <wsdl:operation name="GetBalanceGroups">
+         <wsdl:input message="tns:GetBalanceGroupsRequest"/>
+         <wsdl:output message="tns:GetBalanceGroupsResponse"/>
+         <wsdl:fault name="GetBalanceGroupsfault" message="tns:GetBalanceGroupsFault"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetBalances">
+         <wsdl:input message="tns:GetBalancesRequest"/>
+         <wsdl:output message="tns:GetBalancesResponse"/>
+         <wsdl:fault name="fault" message="tns:GetBalancesFault"/>
+      </wsdl:operation>
+      <wsdl:operation name="UpdateRCCDetails">
+         <wsdl:input message="tns:UpdateRCCDetailsRequest"/>
+         <wsdl:output message="tns:UpdateRCCDetailsResponse"/>
+         <wsdl:fault name="fault" message="tns:UpdateRCCDetailsFault"/>
+      </wsdl:operation>
+   </wsdl:portType>
+</wsdl:definitions>

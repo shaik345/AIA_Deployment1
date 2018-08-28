@@ -1,0 +1,28 @@
+2017-05-30 17:55:17 INFO  CommonXMLFileReader:64 - Reading PGP configuration details...
+2017-05-30 17:55:17 INFO  CommonXMLFileReader:81 - Reading PGP configuration details...done!!
+2017-05-30 17:55:17 DEBUG CommonXMLFileReader:93 - No of Manufacturers '3'.
+2017-05-30 17:55:17 DEBUG CommonXMLFileReader:99 - Manufacturer Id is : 2
+2017-05-30 17:55:17 DEBUG CommonXMLFileReader:99 - Manufacturer Id is : 1
+2017-05-30 17:55:17 DEBUG CommonXMLFileReader:99 - Manufacturer Id is : 4
+2017-05-30 17:57:08 INFO  CommonXMLFileReader:64 - Reading PGP configuration details...
+2017-05-30 17:57:08 INFO  CommonXMLFileReader:81 - Reading PGP configuration details...done!!
+2017-05-30 17:57:08 DEBUG CommonXMLFileReader:93 - No of Manufacturers '3'.
+2017-05-30 17:57:08 DEBUG CommonXMLFileReader:99 - Manufacturer Id is : 2
+2017-05-30 17:57:08 DEBUG CommonXMLFileReader:99 - Manufacturer Id is : 1
+2017-05-30 17:57:08 DEBUG CommonXMLFileReader:99 - Manufacturer Id is : 4
+2017-05-30 17:57:08 DEBUG PgpDecryptValve:138 - manufacturer is :oberthur
+2017-05-30 17:57:08 DEBUG PgpDecryptValve:139 - File type is :OTA
+2017-05-30 17:57:08 DEBUG PgpDecryptValve:144 - CSF KEY NAME : oberthur-OTA , CSF KEY MAP :SOA , FILE TYPE : OTA
+ Private Key Path : /opt/aia/SCM/FileSystem/pgp_config/oberthur/OTA/privatekey.gpg
+2017-05-30 17:58:54 INFO  CommonXMLFileReader:64 - Reading PGP configuration details...
+2017-05-30 17:58:54 INFO  CommonXMLFileReader:81 - Reading PGP configuration details...done!!
+2017-05-30 17:58:54 DEBUG CommonXMLFileReader:93 - No of Manufacturers '3'.
+2017-05-30 17:58:54 DEBUG CommonXMLFileReader:99 - Manufacturer Id is : 2
+2017-05-30 17:58:54 DEBUG CommonXMLFileReader:99 - Manufacturer Id is : 1
+2017-05-30 17:58:54 DEBUG CommonXMLFileReader:99 - Manufacturer Id is : 4
+2017-05-30 17:58:54 DEBUG PgpDecryptValve:138 - manufacturer is :oberthur
+2017-05-30 17:58:54 DEBUG PgpDecryptValve:139 - File type is :OTA
+2017-05-30 17:58:54 DEBUG PgpDecryptValve:144 - CSF KEY NAME : oberthur-OTA , CSF KEY MAP :SOA , FILE TYPE : OTA
+ Private Key Path : /opt/aia/SCM/FileSystem/pgp_config/oberthur/OTA/privatekey.gpg
+2017-05-30 17:59:33 INFO  CommonXMLFileReader:64 - Reading PGP configuration details...
+2017-05-30 17:59:33 INFO  CommonXMLFileReader:81 - Reading PGP configuration details...done!!

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="QueryBalancesSiebelCommsReqABCSImpl"
+             targetNamespace="http://xmlns.oracle.com/ABCSImpl/SiebelComms/Industry//QueryBalancesSiebelCommsReqABCSImpl/V1.0"
+	     
+	     
+	     xmlns:abcsaboabo="http://www.telia.org/Siebel/getRCCBalances"
+             xmlns:abcsaboabcs="http://xmlns.oracle.com/ABCSImpl/SiebelComms/Industry//QueryBalancesSiebelCommsReqABCSImpl/V1.0"
+	     xmlns:abcsabo="http://www.telia.org/Siebel/getRCCBalances"
+	     xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" 
+             xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" 
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" >
+	
+	
+	<documentation>
+		<svcdoc:Service>
+		               <svcdoc:Description>
+QueryBalancesSiebelCommsReqABCSImpl
+</svcdoc:Description>
+		               
+			<svcdoc:ServiceType>RequesterABCSImpl</svcdoc:ServiceType>
+			<svcdoc:Version>1</svcdoc:Version>
+			<svcdoc:ProductCode>SIEBEL</svcdoc:ProductCode>
+		</svcdoc:Service>
+	</documentation>  
+	
+	 <import namespace="http://schemas.oracle.com/bpel/extension" 
+ location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+	 <types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema">
+	            <import namespace="http://www.telia.org/Siebel/getRCCBalances" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/GetBalances.xsd"/>
+               
+		</schema>
+	</types>
+	<message name="QueryBalancesReqMsg">
+		<part name="QueryBalances" 
+element="abcsaboabo:GetBalanceRequest"/>
+	</message>
+	<message name="QueryBalancesRespMsg">
+		<part name="QueryBalancesResponse" 
+element="abcsaboabo:GetBalanceResponse"/>
+	</message>
+	<message name="QueryBalancesFaultMsg">
+		<part name="QueryBalancesFault" element="abcsabo:GetBalancesFault"/>
+	</message>
+	<portType name="QueryBalancesSiebelCommsReqABCSImpl">
+        <operation name="QueryBalances">
+                <documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to Query an Balances
+                              object</svcdoc:Description>
+					<svcdoc:MEP>SyncReqResp</svcdoc:MEP>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="abcsaboabcs:QueryBalancesReqMsg"/>
+				<output message="abcsaboabcs:QueryBalancesRespMsg"/>
+			 	<fault name="fault" message="abcsaboabcs:QueryBalancesFaultMsg"/>
+		</operation>
+	   
+	    </portType>
+	<plnk:partnerLinkType name="QueryBalancesSiebelCommsReqABCSImpl">
+		<plnk:role name="QueryBalancesSiebelCommsReqABCSImplProvider">
+			<plnk:portType name="abcsaboabcs:QueryBalancesSiebelCommsReqABCSImpl"/>
+		</plnk:role>
+	</plnk:partnerLinkType>
+</definitions>

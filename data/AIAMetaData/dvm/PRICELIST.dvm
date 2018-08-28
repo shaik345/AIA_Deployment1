@@ -1,0 +1,57 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<dvm name="PRICELIST" xmlns="http://xmlns.oracle.com/dvm">
+	<description>PRICELIST.dvm to maintain the Pricelist Ids from all the participating edge applications(PIM,Siebel,Common and BRM) </description>
+	<columns>
+		<column name="COMMON"/>
+		<column name="SEBL_01"/>
+		<column name="BRM_01"/>
+		<column name="PIM_01"/>		
+		<column name="PDC_01"/>
+	</columns>	
+	<rows>
+		<row>
+			 <cell>DEFAULT Pricelist</cell>
+			 <cell>88-3JKQZ</cell>		 
+			 <cell>*</cell>                                                                        
+			 <cell>Default PIM PL</cell>
+			 <cell>*</cell>
+		</row>	
+		<row>
+			 <cell>Consumer Pricelist</cell>
+			 <cell>88-3L3BO</cell>		 
+			 <cell>ConsumerPL</cell>                                                                        
+			 <cell>CONSUMER</cell>
+			 <cell>ConsumerPL</cell>
+		</row>	
+		<row>
+			 <cell>Business Pricelist</cell>
+			 <cell>88-3L3BR</cell>		 
+			 <cell>BusinessPL</cell>                                                                        
+			 <cell>BUSINESS</cell>
+			 <cell>BusinessPL</cell>
+		</row>			
+		<!-- Start MDU-11 Changes in AIA to add new Pricelists for 18.1.-Ashwath-->
+		<row>
+			 <cell>MDU Landlord</cell>
+			 <cell>PriceListToken1</cell>		 
+			 <cell>MDU Landlord</cell>                                                                        
+			 <cell>MDU Landlord</cell>
+			 <cell>MDU Landlord</cell>
+		</row>
+		<row>
+			 <cell>SDU Landord Skanova Owned</cell>
+			 <cell>PriceListToken2</cell>		 
+			 <cell>SDU Landord Skanova Owned</cell>                                                                        
+			 <cell>SDU Landord Skanova Owned</cell>
+			 <cell>SDU Landord Skanova Owned</cell>
+		</row>
+		<row>
+			 <cell>SDU Landlord Customer Owned</cell>
+			 <cell>PriceListToken3</cell>		 
+			 <cell>SDU Landlord Customer Owned</cell>                                                                        
+			 <cell>SDU Landlord Customer Owned</cell>
+			 <cell>SDU Landlord Customer Owned</cell>
+		</row>
+		<!-- End MDU-11 Changes in AIA to add new Pricelists for 18.1.-Ashwath-->
+		</rows>
+</dvm>

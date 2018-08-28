@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created by TIBCO WSDL -->
+<wsdl:definitions xmlns:tns="http://www.teliasonera.com/ManageMediaVoucher/ws/oagis" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="Untitled" targetNamespace="http://www.teliasonera.com/ManageMediaVoucher/ws/oagis">
+	<wsdl:types>
+		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.teliasonera.com/ManageMediaVoucher/ws/oagis" elementFormDefault="qualified" attributeFormDefault="unqualified">
+			<xs:complexType name="IplApplicationPropertiesType">
+				<xs:sequence>
+					<xs:element name="msgID" type="xs:string" minOccurs="0"/>
+					<xs:element name="msgCorrelationID" type="xs:string" minOccurs="0"/>
+					<xs:element name="msgSource" type="xs:string" minOccurs="0"/>
+					<xs:element name="msgDestination" type="xs:string" minOccurs="0"/>
+					<xs:element name="msgState" type="xs:string" minOccurs="0"/>
+					<xs:element name="msgType" type="xs:string" minOccurs="0"/>
+					<xs:element name="msgBOD" type="xs:string" minOccurs="0"/>
+					<xs:element name="msgBODReleaseAndVersion" type="xs:string" minOccurs="0"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="confirmMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="IplApplicationProperties" type="tns:IplApplicationPropertiesType"/>
+						<xs:element name="ConfirmBOD" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="syncItemMasterRequest">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="IplApplicationProperties" type="tns:IplApplicationPropertiesType"/>
+						<xs:element name="SyncItemMaster" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:service name="MediaVoucher.serviceagent">
+		<wsdl:port name="ManageMediaVoucherPortTypeEndpoint1" binding="tns:ManageMediaVoucherPortTypeEndpoint1Binding">
+			<soap:address location="http://tssesbtest.han.telia.se:61275/Services/MediaVoucher"/>
+		</wsdl:port>
+	</wsdl:service>
+	<wsdl:portType name="ManageMediaVoucherPortType">
+		<wsdl:operation name="createSyncItemMasterRequest">
+			<wsdl:input message="tns:createSyncItemMasterRequest"/>
+			<wsdl:output message="tns:confirmentReply"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="ManageMediaVoucherPortTypeEndpoint1Binding" type="tns:ManageMediaVoucherPortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="createSyncItemMasterRequest">
+			<soap:operation style="document" soapAction="/Services/ManageMediaVoucher/createSyncItemMasterRequest"/>
+			<wsdl:input>
+				<soap:body use="literal" parts="createSyncItemMasterRequest"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" parts="ConfirmMessage"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:message name="createSyncItemMasterRequest">
+		<wsdl:part name="createSyncItemMasterRequest" element="tns:syncItemMasterRequest"/>
+	</wsdl:message>
+	<wsdl:message name="confirmentReply">
+		<wsdl:part name="ConfirmMessage" element="tns:confirmMessage"/>
+	</wsdl:message>
+</wsdl:definitions>

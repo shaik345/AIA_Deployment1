@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dvm name="APPLIES_TO" xmlns="http://xmlns.oracle.com/dvm">
+	<description>Applies To</description>
+	<columns>
+		<column name="PIM_01"/>
+		<column name="COMMON"/>
+		<column name="BRM_01"/>
+		<column name="SEBL_01"/>
+	</columns>
+	<rows>
+		<row>
+			<cell>/service/ip/gprs</cell>
+			<cell>/service/ip/gprs</cell>
+			<cell>/service/ip/gprs</cell>
+			<cell/>
+		</row>
+		<row>
+			<cell/>
+			<cell>/account</cell>
+			<cell>/account</cell>
+			<cell/>
+		</row>
+		<row>
+			<cell/>
+			<cell>/service/ip</cell>
+			<cell>/service/ip</cell>
+			<cell/>
+		</row>
+		<row>
+			<cell>/service/telephony</cell>
+			<cell>/service/telephony</cell>
+			<cell>/service/telephony</cell>
+			<cell/>
+		</row>
+		<row>
+			<cell>/service/broadband</cell>
+			<cell>/service/broadband</cell>
+			<cell>/service/broadband</cell>
+			<cell/>
+		</row>
+		<row>
+			<cell>/service/stream</cell>
+			<cell>/service/stream</cell>
+			<cell>/service/stream</cell>
+			<cell/>
+		</row>
+		<row>
+			<cell/>
+			<cell/>
+			<cell>/service/wap/interactive</cell>
+			<cell/>
+		</row>
+		<row>
+			<cell>/service/sms</cell>
+			<cell>/service/sms</cell>
+			<cell>/service/sms</cell>
+			<cell/>
+		</row>
+		<row>
+			<cell>/service/content</cell>
+			<cell>/service/content</cell>
+			<cell>/service/content</cell>
+			<cell/>
+		</row>
+		<row>
+			<cell>/service/gsm</cell>
+			<cell>/service/gsm</cell>
+			<cell>/service/gsm</cell>
+			<cell>/service/gsm</cell>
+		</row>
+		<row>
+			<cell>/service/settlement/roaming/outcollect</cell>
+			<cell>/service/settlement/roaming/outcollect</cell>
+			<cell>/service/settlement/roaming/outcollect</cell>
+			<cell/>
+		</row>
+		<row>
+			<cell>/service/settlement/roaming/incollect</cell>
+			<cell>/service/settlement/roaming/incollect</cell>
+			<cell>/service/settlement/roaming/incollect</cell>
+			<cell/>
+		</row>
+		<row>
+			<cell>/service/telco/gsm/telephony</cell>
+			<cell>/service/telco/gsm/telephony</cell>
+			<cell>/service/telco/gsm/telephony</cell>
+			<cell>/service/telco/gsm/telephony</cell>
+		</row>
+		<row>
+			<cell>/service/telco/voip</cell>
+			<cell>/service/telco/voip</cell>
+			<cell>/service/telco/VoIP</cell>
+			<cell>/service/telco/VoIP</cell>
+		</row>
+		<row>
+			<cell>/service/telco/gsm/sms</cell>
+			<cell>/service/telco/gsm/sms</cell>
+			<cell>/service/telco/gsm/sms</cell>
+			<cell/>
+		</row>
+		<row>
+			<cell/>
+			<cell>/service/telco/gsm/proximity</cell>
+			<cell>/service/telco/gsm/proximity</cell>
+			<cell/>
+		</row>
+		<!-- Start VAS Services added 8th Sept 2015 -Santosh M E-->
+<!--row>
+			<cell>/service/thirdparty/spotify</cell>
+			<cell>/service/thirdparty/spotify</cell>
+			<cell>/service/thirdparty/spotify</cell>
+			<cell/>
+		</row>
+		<row>
+			<cell>/service/thirdparty/readly</cell>
+			<cell>/service/thirdparty/readly</cell>
+			<cell>/service/thirdparty/readly</cell>
+			<cell/>
+		</row>
+		<row>
+			<cell>/service/thirdparty/storytel</cell>
+			<cell>/service/thirdparty/storytel</cell>
+			<cell>/service/thirdparty/storytel</cell>
+			<cell/>
+		</row>
+		<row>
+			<cell>/service/thirdparty/secure_safe</cell>
+			<cell>/service/thirdparty/secure_safe</cell>
+			<cell>/service/thirdparty/secure_safe</cell>
+			<cell/>
+		</row-->
+		<!--Start Defect#4006 fix update from /service/telia/thirdparty to /service/telia/thirdparty/email 17.4. -Ashwath -->
+		<row>
+			<cell>/service/telia/thirdparty/email</cell>
+			<cell>/service/telia/thirdparty/email</cell>
+			<cell>/service/telia/thirdparty/email</cell>
+			<cell/>
+		</row>
+		<!--End Defect#4006 fix update from /service/telia/thirdparty to /service/telia/thirdparty/email 17.4. -Ashwath -->
+		<row>
+			<cell>/service/telia/access</cell>
+			<cell>/service/telia/access</cell>
+			<cell>/service/telia/access</cell>
+			<cell/>
+		</row>
+
+<!-- End VAS Services added 8th Sept 2015 -Santosh M E-->
+
+<!-- Start B2B changes are added 28th Jan 2016 -Santosh M E-->
+	<row>
+			<cell>/service/telia/terminal</cell>
+			<cell>/service/telia/terminal</cell>
+			<cell>/service/telia/terminal</cell>
+			<cell/>
+		</row>
+		<row>
+			<cell>/service/telia/sla</cell>
+			<cell>/service/telia/sla</cell>
+			<cell>/service/telia/sla</cell>
+			<cell/>
+		</row>
+<!-- End B2B changes are added 28th Jan 2016 -Santosh M E-->
+<!-- Start IPTV change added 03rd mar 2016 -Surendra M-->
+		<row>
+			<cell>/service/telia/iptv</cell>
+			<cell>/service/telia/iptv</cell>
+			<cell>/service/telia/iptv</cell>
+			<cell/>			
+		</row>
+<!-- END IPTV change added 03rd mar 2016 -Surendra M-->
+<!-- Start VOIP Change -->
+		<row>
+			<cell>/service/telia/voicemail</cell>
+			<cell>/service/telia/voicemail</cell>
+			<cell>/service/telia/voicemail</cell>
+			<cell/>			
+		</row>
+		<row>
+			<cell>/service/telia/voip</cell>
+			<cell>/service/telia/voip</cell>
+			<cell>/service/telia/voip</cell>
+			<cell/>			
+		</row>	
+<!-- Start BCT-564 added R15.0 04-Jan-2017 Manish Agarwal -->
+		<row>
+			<cell>/service/telia/thirdparty/safe</cell>
+			<cell>/service/telia/thirdparty/safe</cell>
+			<cell>/service/telia/thirdparty/safe</cell>
+			<cell/>			
+		</row>
+		<row>
+			<cell>/service/telia/thirdparty/storytel</cell>
+			<cell>/service/telia/thirdparty/storytel</cell>
+			<cell>/service/telia/thirdparty/storytel</cell>
+			<cell/>			
+		</row>
+		<row>
+			<cell>/service/telia/thirdparty/readly</cell>
+			<cell>/service/telia/thirdparty/readly</cell>
+			<cell>/service/telia/thirdparty/readly</cell>
+			<cell/>			
+		</row>
+		<row>
+			<cell>/service/telia/thirdparty/spotify</cell>
+			<cell>/service/telia/thirdparty/spotify</cell>
+			<cell>/service/telia/thirdparty/spotify</cell>
+			<cell/>			
+		</row>	
+<!-- End BCT-564 added R15.0 04-Jan-2017 Manish Agarwal -->
+<!-- Start IPTV change TVTEAM-609 for R15 added 28/11/2016  R15.0-Ari-->
+
+<row>
+			<cell>/service/telia/tve</cell>
+			<cell>/service/telia/tve</cell>
+			<cell>/service/telia/tve</cell>
+			<cell/>
+			
+		</row>
+<!-- End IPTV change TVTEAM-609 for R15 added 28/11/2016  R15.0-Ari-->
+
+
+<!-- Start IPTV change TVTEAM-721 for R15 added 12/12/2016  R15.0-Ari-->
+
+<row>
+			<cell>/service/telia/ott</cell>
+			<cell>/service/telia/ott</cell>
+			<cell>/service/telia/ott</cell>
+			<cell/>
+			
+		</row>
+<!-- End IPTV change TVTEAM-721 for R15 added 12/12/2016  R15.0-Ari-->
+
+<!-- Start SPVAS-348  change for R17.3 added 23/03/2017  R19.0 - Surendra-->
+
+<row>
+			<cell>/service/telia/wifi</cell>
+			<cell>/service/telia/wifi</cell>
+			<cell>/service/telia/wifi</cell>
+			<cell/>
+			
+		</row>
+<!-- ENC SPVAS-348  change for R17.3 added 23/03/2017  R19.0 - Surendra-->
+<!-- Start MDU-117 Changes for R18.1 added 03-Nov-17 - Ashwath-->
+		<row>
+			<cell>/service/telia/manage</cell>
+			<cell>/service/telia/manage</cell>
+			<cell>/service/telia/manage</cell>
+			<cell/>			
+		</row>
+<!-- End MDU-117 Changes for R18.1 added 03-Nov-17 - Ashwath-->
+
+<!-- Start Netfilx BCT R18.1 Manish-->
+		<row>
+			<cell>/service/telia/thirdparty/netflix</cell>
+			<cell>/service/telia/thirdparty/netflix</cell>
+			<cell>/service/telia/thirdparty/netflix</cell>
+			<cell/>			
+		</row>
+<!-- End Netflix BCT R18.1 Manish -->
+<!-- Start MDU-477 Changes for R18.2 added 08-Dec-17 - Ashwath-->
+		<row>
+			<cell>/service/telia/coaxtv</cell>
+			<cell>/service/telia/coaxtv</cell>
+			<cell>/service/telia/coaxtv</cell>
+			<cell/>			
+		</row>
+<!-- End MDU-477 Changes for R18.2 added 08-Dec-17 - Ashwath-->
+<!-- Start MDU-863 Changes for R18.2 added 15-Feb-17 - Ashwath-->
+		<row>
+			<cell>/service/telia/collrgw</cell>
+			<cell>/service/telia/collrgw</cell>
+			<cell>/service/telia/collrgw</cell>
+			<cell/>			
+		</row>
+<!-- Start MDU-863 Changes for R18.2 added 15-Feb-17 - Ashwath-->
+	</rows>
+</dvm>

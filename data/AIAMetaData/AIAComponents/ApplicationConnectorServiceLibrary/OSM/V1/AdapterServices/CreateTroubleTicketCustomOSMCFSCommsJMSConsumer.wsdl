@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions name="CreateTroubleTicketCustomOSMCFSCommsJMSConsumer" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/jms/CreateTroubleTicketCustomOSMCFSCommsJMSConsumer/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:hdr="http://xmlns.oracle.com/pcbpel/adapter/jms/" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/jms/CreateTroubleTicketCustomOSMCFSCommsJMSConsumer/" xmlns:imp1="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/TroubleTicket/V1" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+<plt:partnerLinkType name="Consume_Message_plt">
+<plt:role name="Consume_Message_role">
+<plt:portType name="tns:Consume_Message_ptt"/>
+</plt:role>
+</plt:partnerLinkType>
+<types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+<import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/TroubleTicket/V1" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/TroubleTicket/V1/TroubleTicketEBM.xsd"/>
+</schema>
+</types>
+<message name="CreateTroubleTicketEBM_msg">
+<part name="CreateTroubleTicketEBM" element="imp1:CreateTroubleTicketEBM"/>
+</message>
+<portType name="Consume_Message_ptt">
+<operation name="Consume_Message">
+<input message="tns:CreateTroubleTicketEBM_msg"/>
+</operation>
+</portType>
+</definitions>

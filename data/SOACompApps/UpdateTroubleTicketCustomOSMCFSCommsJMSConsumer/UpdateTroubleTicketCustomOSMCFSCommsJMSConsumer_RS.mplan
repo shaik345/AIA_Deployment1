@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Mediator name="UpdateTroubleTicketCustomOSMCFSCommsJMSConsumer_RS" wsdlTargetNamespace="http://xmlns.oracle.com/pcbpel/adapter/jms/UpdateTroubleTicketCustomOSMCFSCommsJMSConsumer/" xmlns="http://xmlns.oracle.com/sca/1.0/mediator">
+   <operation name="Consume_Message">
+      <switch>
+         <case executionType="direct" name="CommunicationsTroubleTicketEBSV1.UpdateTroubleTicket">
+            <condition language="xpath">
+               <expression>false()</expression>
+            </condition>
+            <action>
+               <invoke reference="CommunicationsTroubleTicketEBSV1" operation="UpdateTroubleTicket"/>
+            </action>
+         </case>
+         <case executionType="direct" name="UpdateTroubleTicketProvider.UpdateTroubleTicket">
+            <condition language="xpath">
+               <expression>true()</expression>
+            </condition>
+            <action>
+               <invoke reference="UpdateTroubleTicketProvider" operation="UpdateTroubleTicket"/>
+            </action>
+         </case>
+      </switch>
+   </operation>
+</Mediator>

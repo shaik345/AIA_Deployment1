@@ -1,0 +1,51 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="ProcessManufacturerFilesValidationService"
+     targetNamespace="http://xmlns.oracle.com/SCM/ProcessManufacturerFilesValidationService/ProcessManufacturerFilesValidationService"
+     xmlns:ns2="http://xmlns.oracle.com/SCM/FileValidationResponse/FileValidationResponse"
+     xmlns:ns1="http://schemas.oracle.com/bpel/extension"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:client="http://xmlns.oracle.com/SCM/ProcessManufacturerFilesValidationService/ProcessManufacturerFilesValidationService"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <plnk:partnerLinkType name="ProcessManufacturerFilesValidationService">
+        <plnk:role name="ProcessManufacturerFilesValidationServiceProvider">
+            <plnk:portType name="client:ProcessManufacturerFilesValidationService"/>
+        </plnk:role>
+        <plnk:role name="ProcessManufacturerFilesValidationServiceRequester">
+            <plnk:portType name="client:ProcessManufacturerFilesValidationServiceCallback"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xmlns.oracle.com/SCM/FileValidationResponse/FileValidationResponse"
+             xmlns:ns1="http://schemas.oracle.com/bpel/extension" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:client="http://xmlns.oracle.com/SCM/ProcessManufacturerFilesValidationService/ProcessManufacturerFilesValidationService"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+            <import namespace="http://xmlns.oracle.com/SCM/ProcessManufacturerFilesValidationService/ProcessManufacturerFilesValidationService"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationConnectorServiceLibrary/FMW/schemas/ProcessManufacturerFilesValidationService.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xmlns.oracle.com/SCM/FileValidationResponse/FileValidationResponse"
+             xmlns:ns1="http://schemas.oracle.com/bpel/extension" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:client="http://xmlns.oracle.com/SCM/ProcessManufacturerFilesValidationService/ProcessManufacturerFilesValidationService"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+            <xsd:import namespace="http://xmlns.oracle.com/SCM/FileValidationResponse/FileValidationResponse" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationConnectorServiceLibrary/FMW/schemas/FileValidationResponse.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="ProcessManufacturerFilesValidationServiceRequestMessage">
+        <wsdl:part name="payload" element="client:process"/>
+    </wsdl:message>
+    <wsdl:message name="ProcessManufacturerFilesValidationServiceResponseMessage">
+        <wsdl:part name="payload" element="ns2:Response"/>
+    </wsdl:message>
+    <wsdl:portType name="ProcessManufacturerFilesValidationService">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:ProcessManufacturerFilesValidationServiceRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:portType name="ProcessManufacturerFilesValidationServiceCallback">
+        <wsdl:operation name="processResponse">
+            <wsdl:input message="client:ProcessManufacturerFilesValidationServiceResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

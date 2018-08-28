@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="SyncItemListPIMReqABCSImplExtension" targetNamespace="http://xmlns.oracle.com/ABCSImpl/PIM/Core/SyncItemListPIMReqABCSImplExtension/V1" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://xmlns.oracle.com/ABCSImpl/PIM/Core/SyncItemListPIMReqABCSImplExtension/V1" xmlns:corepricelist="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/PriceList/V2" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:bomlistabo="http://xmlns.oracle.com/PIM/QueryBillOffMaterialsListPIMAdapter" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:corebom="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/BillOfMaterials/V1" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:itemlistabo="http://xmlns.oracle.com/PIM/QueryItemListPIMAdapter" xmlns:pubservice="http://xmlns.oracle.com/apps/ego/pubfwk/service" xmlns:coreitem="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Item/V2" xmlns:itemebs="http://xmlns.oracle.com/EnterpriseServices/Core/Item/V2">
+	<import namespace="http://xmlns.oracle.com/PIM/QueryBillOffMaterialsListPIMAdapter" location="oramds:/apps/AIAMetaData/AIAComponents/ApplicationConnectorServiceLibrary/PIM/V1/AdapterServices/QueryBillOffMaterialsListPIMAdapter.wsdl"/>
+	<import namespace="http://xmlns.oracle.com/PIM/QueryItemListPIMAdapter" location="oramds:/apps/AIAMetaData/AIAComponents/ApplicationConnectorServiceLibrary/PIM/V1/AdapterServices/QueryItemListPIMAdapter.wsdl"/>
+	<types>
+		<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema">
+			<import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+			<import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd"/>
+			<import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Item/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/EBO/Item/V2/ItemEBM.xsd"/>
+			<import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/PriceList/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/EBO/PriceList/V2/PriceListEBM.xsd"/>
+			<import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/BillOfMaterials/V1" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/EBO/BillOfMaterials/V1/BillOfMaterialsEBM.xsd"/>
+			<xsd:import namespace="http://xmlns.oracle.com/apps/ego/pubfwk/service" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/PIM/V1/schemas/PublicationService.xsd"/>
+		</xsd:schema>
+	</types>
+	<message name="PreXformABMtoEBMItemListABMMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as a payload to PreXformABMtoEBM
+                        for Sync operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="QueryItemListPIMAdapterProcessResponse" element="itemlistabo:QueryItemListPIMAdapterProcessResponse"/>
+	</message>
+	<message name="FaultMessage">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used for propagating Error Context and
+                        Error Message</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="AIAFault" element="corecom:Fault"/>
+	</message>
+	<message name="PreInvokeItemListEBSSyncItemListEBMMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM
+                        SyncItem operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="SyncItemListEBM" element="coreitem:SyncItemListEBM"/>
+	</message>
+	<message name="PostXformEBMtoABMItemListEBMMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as a payload to PreXformABMtoEBMABM
+                        operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="SyncItemListResponseEBM" element="coreitem:SyncItemListResponseEBM"/>
+	</message>
+	<message name="PreInvokePublicationServiceItemListEBMMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM
+                        operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="PublicationService_UpdatePublicationStatus" element="pubservice:PublicationService_UpdatePublicationStatus"/>
+	</message>
+	<message name="PreInvokePriceListEBSSyncItemListEBMMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM
+                        operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="SyncPriceListListEBM" element="corepricelist:SyncPriceListListEBM"/>
+	</message>
+	<message name="PostXformEBMtoABMPriceListEBMMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as a payload to PreXformABMtoEBMABM
+                        operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="SyncPriceListListResponseEBM" element="corepricelist:SyncPriceListListResponseEBM"/>
+	</message>
+	<message name="PreInvokePublicationServicePriceListEBMMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM
+                        operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="PublicationService_UpdatePublicationStatus" element="pubservice:PublicationService_UpdatePublicationStatus"/>
+	</message>
+	<message name="PreXformABMtoEBMIBillOfMaterialsListABMMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as a payload to PreXformABMtoEBMABM
+                        operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="QueryBillOffMaterialsListPIMAdapterProcessResponse" element="bomlistabo:QueryBillOffMaterialsListPIMAdapterProcessResponse"/>
+	</message>
+	<message name="PreInvokeBillOfMaterialsListEBSSyncBOMListEBMMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM
+                        operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="SyncBillOfMaterialsListEBM" element="corebom:SyncBillOfMaterialsListEBM"/>
+	</message>
+	<message name="PostXformEBMtoABMBOMListEBMMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as a payload to PreXformABMtoEBMABM
+                        operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="SyncBillOfMaterialsListResponseEBM" element="corebom:SyncBillOfMaterialsListResponseEBM"/>
+	</message>
+	<message name="PreInvokePublicationServiceBOMListEBMMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM
+                        operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="PublicationService_UpdatePublicationStatus" element="pubservice:PublicationService_UpdatePublicationStatus"/>
+	</message>
+	<portType name="SyncItemListPIMReqABCSImplExtensionService">
+		<documentation>
+			<svcdoc:Interface>
+				<svcdoc:Description>This is the ABCS extension service interface</svcdoc:Description>
+				<svcdoc:DisplayName>ProcessSalesOrderSiebelReqABCSImplV2ExtensionService</svcdoc:DisplayName>
+				<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			</svcdoc:Interface>
+		</documentation>
+		<operation name="PreXformABMtoEBMItemListABM">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to PreXformABMtoEBM an
+                         ListOfSWIOrderIO object</svcdoc:Description>
+					<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>PreXformABMtoEBMABM</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="tns:PreXformABMtoEBMItemListABMMsg"/>
+			<output message="tns:PreXformABMtoEBMItemListABMMsg"/>
+			<fault name="fault" message="tns:FaultMessage"/>
+		</operation>
+		<operation name="PreInvokeItemListEBSSyncItemListEBM">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to PreInvokeEBS an
+                         ProcessSalesOrderEBM object</svcdoc:Description>
+					<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>PreInvokeEBSEBM</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="tns:PreInvokeItemListEBSSyncItemListEBMMsg"/>
+			<output message="tns:PreInvokeItemListEBSSyncItemListEBMMsg"/>
+			<fault name="fault" message="tns:FaultMessage"/>
+		</operation>
+		<operation name="PostXformEBMtoABMItemListEBM">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to PreInvokeEBS an
+                         ProcessSalesOrderEBM object</svcdoc:Description>
+					<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>PreInvokeEBSEBM</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="tns:PostXformEBMtoABMItemListEBMMsg"/>
+			<output message="tns:PostXformEBMtoABMItemListEBMMsg"/>
+			<fault name="fault" message="tns:FaultMessage"/>
+		</operation>
+		<operation name="PreInvokePublicationServiceItemListEBM">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to PreInvokeEBS an
+                         ProcessSalesOrderEBM object</svcdoc:Description>
+					<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>PreInvokeEBSEBM</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="tns:PreInvokePublicationServiceItemListEBMMsg"/>
+			<output message="tns:PreInvokePublicationServiceItemListEBMMsg"/>
+			<fault name="fault" message="tns:FaultMessage"/>
+		</operation>
+		<operation name="PreInvokePriceListEBSSyncItemListEBM">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to PreInvokeEBS an
+                         ProcessSalesOrderEBM object</svcdoc:Description>
+					<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>PreInvokeEBSEBM</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="tns:PreInvokePriceListEBSSyncItemListEBMMsg"/>
+			<output message="tns:PreInvokePriceListEBSSyncItemListEBMMsg"/>
+			<fault name="fault" message="tns:FaultMessage"/>
+		</operation>
+		<operation name="PostXformEBMtoABMPriceListEBM">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to PreInvokeEBS an
+                         ProcessSalesOrderEBM object</svcdoc:Description>
+					<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>PreInvokeEBSEBM</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="tns:PostXformEBMtoABMPriceListEBMMsg"/>
+			<output message="tns:PostXformEBMtoABMPriceListEBMMsg"/>
+			<fault name="fault" message="tns:FaultMessage"/>
+		</operation>
+		<operation name="PreInvokePublicationServicePriceListEBM">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to PreInvokeEBS an
+                         ProcessSalesOrderEBM object</svcdoc:Description>
+					<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>PreInvokeEBSEBM</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="tns:PreInvokePublicationServicePriceListEBMMsg"/>
+			<output message="tns:PreInvokePublicationServicePriceListEBMMsg"/>
+			<fault name="fault" message="tns:FaultMessage"/>
+		</operation>
+		<operation name="PreXformABMtoEBMIBillOfMaterialsListABM">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to PreInvokeEBS an
+                         ProcessSalesOrderEBM object</svcdoc:Description>
+					<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>PreInvokeEBSEBM</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="tns:PreXformABMtoEBMIBillOfMaterialsListABMMsg"/>
+			<output message="tns:PreXformABMtoEBMIBillOfMaterialsListABMMsg"/>
+			<fault name="fault" message="tns:FaultMessage"/>
+		</operation>
+		<operation name="PreInvokeBillOfMaterialsListEBSSyncBOMListEBM">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to PreInvokeEBS an
+                         ProcessSalesOrderEBM object</svcdoc:Description>
+					<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>PreInvokeEBSEBM</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="tns:PreInvokeBillOfMaterialsListEBSSyncBOMListEBMMsg"/>
+			<output message="tns:PreInvokeBillOfMaterialsListEBSSyncBOMListEBMMsg"/>
+			<fault name="fault" message="tns:FaultMessage"/>
+		</operation>
+		<operation name="PostXformEBMtoABMBOMListEBM">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to PreInvokeEBS an
+                         ProcessSalesOrderEBM object</svcdoc:Description>
+					<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>PreInvokeEBSEBM</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="tns:PostXformEBMtoABMBOMListEBMMsg"/>
+			<output message="tns:PostXformEBMtoABMBOMListEBMMsg"/>
+			<fault name="fault" message="tns:FaultMessage"/>
+		</operation>
+		<operation name="PreInvokePublicationServiceBOMListEBM">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to PreInvokeEBS an
+                         ProcessSalesOrderEBM object</svcdoc:Description>
+					<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>PreInvokeEBSEBM</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="tns:PreInvokePublicationServiceBOMListEBMMsg"/>
+			<output message="tns:PreInvokePublicationServiceBOMListEBMMsg"/>
+			<fault name="fault" message="tns:FaultMessage"/>
+		</operation>
+	</portType>
+	<plnk:partnerLinkType name="SyncItemListPIMReqABCSImplExtensionService">
+		<plnk:role name="SyncItemListPIMReqABCSImplExtensionServiceProvider">
+			<plnk:portType name="tns:SyncItemListPIMReqABCSImplExtensionService"/>
+		</plnk:role>
+	</plnk:partnerLinkType>
+</definitions>

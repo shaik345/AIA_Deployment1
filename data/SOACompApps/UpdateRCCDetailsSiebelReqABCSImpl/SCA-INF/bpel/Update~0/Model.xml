@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<process name="UpdateRCCDetailsSiebelReqABCSImplProcess" targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry//UpdateRCCDetailsSiebelReqABCSImpl/V1" xmlns:customerpartyebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2" xmlns:corecustomerpartyebs="http://xmlns.oracle.com/EnterpriseServices/Core/CustomerParty/V2" xmlns:rccabo="http://www.telia.org/Siebel/getRCCBalances" xmlns:rccabcs="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry//UpdateRCCDetailsSiebelReqABCSImpl/V1" xmlns:aia="http://www.oracle.com/XSL/Transform/java/oracle.apps.aia.core.xpath.AIAFunctions" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:aiaeh="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess" xmlns:xacml="urn:oasis:names:tc:xacml:2.0:context:schema:cd:04" xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions" xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20" xmlns:wsa="http://schemas.xmlsoap.org/ws/2003/03/addressing" xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath" xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ora="http://schemas.oracle.com/xpath/extension" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath" xmlns:ehdr="http://www.oracle.com/XSL/Transform/java/oracle.tip.esb.server.headers.ESBHeaderFunctions" xmlns:bpelx="http://schemas.oracle.com/bpel/extension" xmlns:orcl="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc" xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue" xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk" id="BpPrc0">
+  <partnerLinks>
+    
+    <partnerLink name="UpdateRCCDetailsSiebelReqABCSImpl" partnerLinkType="rccabcs:UpdateRCCDetailsSiebelReqABCSImpl" myRole="UpdateRCCDetailsSiebelReqABCSImplProvider"/>
+    
+
+    
+
+    <partnerLink myRole="AIAAsyncErrorHandlingBPELProcessRequester" name="AIAAsyncErrorHandlingBPELProcess" partnerRole="AIAAsyncErrorHandlingBPELProcessProvider" partnerLinkType="aiaeh:AIAAsyncErrorHandlingBPELProcess"/>
+        <partnerLink name="CommunicationsCustomerPartyEBS" partnerLinkType="corecustomerpartyebs:CommunicationsCustomerPartyEBS" partnerRole="CommunicationsCustomerPartyEBS" myRole="CommunicationsCustomerPartyEBSResponse"/>
+    </partnerLinks>
+  <variables>
+    <variable name="UpdateRCCDetailsReqMsg" messageType="rccabcs:UpdateRCCDetailsReqMsg"/>
+    <variable name="UpdateRCCDetailsRespMsg" messageType="rccabcs:UpdateRCCDetailsRespMsg"/>
+    <variable name="UpdateCustomerPartyEBSReqMsg" messageType="corecustomerpartyebs:ProcessCreditEligibilityVerificationReqMsg"/>
+
+    
+    <variable name="SystemFaultVar" messageType="bpelx:RuntimeFaultMessage"/>
+    <variable name="AIAAsyncErrorHandlingBPELProcessRequestMessage" messageType="aiaeh:AIAAsyncErrorHandlingBPELProcessRequestMessage"/>
+
+
+    <variable name="SystemFaultMsg" messageType="bpelx:RuntimeFaultMessage"/>
+    <variable name="SystemID" type="xsd:string"/>
+    <variable name="Sender" element="corecom:Sender"/>
+    <variable name="Title" type="xsd:string"/>
+    <variable name="EBM_HEADER" element="corecom:EBMHeader"/>
+    <variable name="InstanceID" type="xsd:string"/>
+    <variable name="ServiceName" type="xsd:string"/>
+    <variable name="TraceLogEnabled" type="xsd:boolean"/>
+        <variable name="UpdateCustomerPartyEBSResMsg" messageType="corecustomerpartyebs:ProcessCreditEligibilityVerificationRespMsg"/>
+        <variable name="UpdateRCCDetailsFaultMsg" messageType="rccabcs:UpdateRCCDetailsFaultMsg"/>
+    </variables>
+  
+  
+
+  <faultHandlers id="BpFhs0">
+        <catch faultName="bpelx:remoteFault" faultVariable="SystemFaultVar" id="BpCFt0">
+            <sequence name="Sequence_RemoteFault" id="BpSeq0">
+ <bpelx:exec name="TraceLog_BeginRemoteFaultCatch" language="java" version="1.3" id="BxExe0">
+      <![CDATA[java.lang.String TraceLogMessage = null; 
+	java.lang.Boolean tracelogenabled   = (java.lang.Boolean)getVariableData("TraceLogEnabled");
+java.lang.String title = (java.lang.String)getVariableData("Title");         
+java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+
+
+if (tracelogenabled.booleanValue())                                                                                
+{                                                                                                                                                                                      
+                       
+          
+   TraceLogMessage = "Starting " + serviceName + " Entering Error Hanlder Remote Fault Instance: " + instanceID + title; ;                         
+   
+   oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  null ,TraceLogMessage); 
+   
+}]]>
+    </bpelx:exec>
+  	
+                
+                <throw name="ReThrow_RemoteFault" faultName="bpelx:remoteFault" faultVariable="SystemFaultVar" id="BpThw0"/>
+  	
+	    </sequence>
+        </catch>
+        <catch faultName="bpelx:bindingFault" faultVariable="SystemFaultVar" id="BpCFt1">
+            <sequence name="Sequence_BindingFault" id="BpSeq1">
+
+ <bpelx:exec name="TraceLog_BeginBindingFaultCatch" language="java" version="1.3" id="BxExe1">
+      <![CDATA[java.lang.String TraceLogMessage = null; 
+	java.lang.Boolean tracelogenabled   = (java.lang.Boolean)getVariableData("TraceLogEnabled");
+java.lang.String title = (java.lang.String)getVariableData("Title");         
+java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+
+
+if (tracelogenabled.booleanValue())                                                                                
+{                                                                                                                                                                                      
+                       
+          
+   TraceLogMessage = "Starting " + serviceName + " Entering Error Hanlder Binding Fault Instance: " + instanceID + title; ;                         
+   
+   oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  null ,TraceLogMessage); 
+   
+}]]>
+    </bpelx:exec>
+		
+                <throw name="ReThrow_BindingFault" faultName="bpelx:bindingFault" faultVariable="SystemFaultVar" id="BpThw1"/>
+  		
+	    </sequence>
+        </catch>
+        
+  
+        <catch faultName="bpelx:subLanguageExecutionFault" faultVariable="SystemFaultVar" id="BpCFt2">
+            <sequence name="Sequence_SubLanguageExecutionFault" id="BpSeq2">
+ <bpelx:exec name="TraceLog_BeginSubLanguageExecutionFaultCatch" language="java" version="1.3" id="BxExe2">
+      <![CDATA[java.lang.String TraceLogMessage = null; 
+	java.lang.Boolean tracelogenabled   = (java.lang.Boolean)getVariableData("TraceLogEnabled");
+java.lang.String title = (java.lang.String)getVariableData("Title");         
+java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+
+
+if (tracelogenabled.booleanValue())                                                                                
+{                                                                                                                                                                                      
+                       
+          
+   TraceLogMessage = "Starting " + serviceName + " Entering Error Hanlder SubLanguageExecution Fault Instance: " + instanceID + title; ;                         
+   
+   oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  null ,TraceLogMessage); 
+   
+}]]>
+    </bpelx:exec>
+  		
+                <assign name="Assign_AIAAsyncErrorHandlingBPELProcessRequestMessage" id="BpAss0">
+                    <copy>
+                        <from expression="ora:processXSLT('xsl/EBM_to_Fault.xsl',bpws:getVariableData('EBM_HEADER'))"/>
+                        <to variable="AIAAsyncErrorHandlingBPELProcessRequestMessage" part="FaultMessage" query="/corecom:Fault"/>
+                    </copy>                        
+                    <copy>
+                        <from variable="SystemFaultVar" part="code"/>
+                        <to variable="AIAAsyncErrorHandlingBPELProcessRequestMessage" part="FaultMessage" query="/corecom:Fault/corecom:FaultNotification/corecom:FaultMessage/corecom:Code"/>
+                    </copy>
+                    <copy>
+                        <from variable="SystemFaultVar" part="summary"/>
+                        <to variable="AIAAsyncErrorHandlingBPELProcessRequestMessage" part="FaultMessage" query="/corecom:Fault/corecom:FaultNotification/corecom:FaultMessage/corecom:Text"/>
+                    </copy>
+
+                    <copy>
+                        <from expression="xp20:current-dateTime()"/>
+                        <to variable="AIAAsyncErrorHandlingBPELProcessRequestMessage" part="FaultMessage" query="/corecom:Fault/corecom:FaultNotification/corecom:ReportingDateTime"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getProcessId()"/>
+                        <to variable="AIAAsyncErrorHandlingBPELProcessRequestMessage" part="FaultMessage" query="/corecom:Fault/corecom:FaultNotification/corecom:FaultingService/corecom:ID"/>
+                    </copy>
+                    <copy>
+                        <from expression="'BPEL'"/>
+                        <to variable="AIAAsyncErrorHandlingBPELProcessRequestMessage" part="FaultMessage" query="/corecom:Fault/corecom:FaultNotification/corecom:FaultingService/corecom:ImplementationCode"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:getInstanceId()"/>
+                        <to variable="AIAAsyncErrorHandlingBPELProcessRequestMessage" part="FaultMessage" query="/corecom:Fault/corecom:FaultNotification/corecom:FaultingService/corecom:InstanceID"/>
+                    </copy>
+					<copy>
+                        <from expression="ora:getECID()"/>
+                        <to variable="AIAAsyncErrorHandlingBPELProcessRequestMessage" part="FaultMessage" query="/corecom:Fault/corecom:FaultNotification/corecom:FaultingService/corecom:ExecutionContextID"/>
+                    </copy>
+                </assign>
+                <invoke name="Invoke_AIAAsyncErrorHandlingBPELProcess" partnerLink="AIAAsyncErrorHandlingBPELProcess" portType="aiaeh:AIAAsyncErrorHandlingBPELProcess" operation="initiate" inputVariable="AIAAsyncErrorHandlingBPELProcessRequestMessage" id="BpInv0"/>
+
+
+                <throw name="Rethrow_subLanguageExecutionFault" faultName="bpelx:subLanguageExecutionFault" faultVariable="SystemFaultVar" id="BpThw2"/>		
+  		
+	    </sequence>
+        </catch>
+        <catchAll id="BpCAl0">
+            <sequence name="Sequence_CatchAll" id="BpSeq3">
+
+ <bpelx:exec name="TraceLog_BeginCatchAll" language="java" version="1.3" id="BxExe3">
+      <![CDATA[java.lang.String TraceLogMessage = null; 
+	java.lang.Boolean tracelogenabled   = (java.lang.Boolean)getVariableData("TraceLogEnabled");
+java.lang.String title = (java.lang.String)getVariableData("Title");         
+java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+
+
+if (tracelogenabled.booleanValue())                                                                                
+{                                                                                                                                                                                      
+                       
+          
+   TraceLogMessage = "Starting " + serviceName + " Entering Error Hanlder Catch All Instance: " + instanceID + title; ;                         
+   
+   oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  null ,TraceLogMessage); 
+   
+}]]>
+    </bpelx:exec>
+  	
+                    <assign name="Assign_AIAAsyncErrorHandlingBPELProcessRequestMessage" id="BpAss1">
+                    	<copy>
+			   <from expression="ora:processXSLT('xsl/EBM_to_Fault.xsl',bpws:getVariableData('EBM_HEADER'))"/>
+			   <to variable="AIAAsyncErrorHandlingBPELProcessRequestMessage" part="FaultMessage" query="/corecom:Fault"/>
+			</copy>
+                        <copy>
+                            <from expression="ora:getFaultAsString()"/>
+                            <to variable="AIAAsyncErrorHandlingBPELProcessRequestMessage" part="FaultMessage" query="/corecom:Fault/corecom:FaultNotification/corecom:FaultMessage/corecom:Text"/>
+                        </copy>
+                        <copy>
+                            <from expression="xp20:current-dateTime()"/>
+                            <to variable="AIAAsyncErrorHandlingBPELProcessRequestMessage" part="FaultMessage" query="/corecom:Fault/corecom:FaultNotification/corecom:ReportingDateTime"/>
+                        </copy>
+                        <copy>
+                            <from expression="ora:getProcessId()"/>
+                            <to variable="AIAAsyncErrorHandlingBPELProcessRequestMessage" part="FaultMessage" query="/corecom:Fault/corecom:FaultNotification/corecom:FaultingService/corecom:ID"/>
+                        </copy>
+                        <copy>
+                            <from expression="'BPEL'"/>
+                            <to variable="AIAAsyncErrorHandlingBPELProcessRequestMessage" part="FaultMessage" query="/corecom:Fault/corecom:FaultNotification/corecom:FaultingService/corecom:ImplementationCode"/>
+                        </copy>
+                        <copy>
+                            <from expression="ora:getInstanceId()"/>
+                            <to variable="AIAAsyncErrorHandlingBPELProcessRequestMessage" part="FaultMessage" query="/corecom:Fault/corecom:FaultNotification/corecom:FaultingService/corecom:InstanceID"/>
+                        </copy>
+						<copy>
+                        <from expression="ora:getECID()"/>
+                        <to variable="AIAAsyncErrorHandlingBPELProcessRequestMessage" part="FaultMessage" query="/corecom:Fault/corecom:FaultNotification/corecom:FaultingService/corecom:ExecutionContextID"/>
+                    </copy>
+                    </assign>
+                    <invoke name="Invoke_AIAAsyncErrorHandlingBPELProcess" partnerLink="AIAAsyncErrorHandlingBPELProcess" portType="aiaeh:AIAAsyncErrorHandlingBPELProcess" operation="initiate" inputVariable="AIAAsyncErrorHandlingBPELProcessRequestMessage" id="BpInv1"/>
+
+		
+                <throw name="Throw_Fault" faultName="rccabcs:Fault" faultVariable="AIAAsyncErrorHandlingBPELProcessRequestMessage" id="BpThw3"/>
+		  
+  	
+            </sequence>
+        </catchAll>
+  </faultHandlers>
+
+ 
+
+  <sequence name="main" id="BpSeq4">
+     <receive name="ReceiveRCCDetails" partnerLink="UpdateRCCDetailsSiebelReqABCSImpl" portType="rccabcs:UpdateRCCDetailsSiebelReqABCSImpl" operation="UpdateRCCDetails" variable="UpdateRCCDetailsReqMsg" createInstance="yes" id="BpRcv0"/>
+    
+     <assign name="GetTitle" id="BpAss2">
+      <copy>
+	<from expression="'Update RCCDetails'"/>
+	<to variable="Title"/>
+      </copy>
+      <copy>
+        <from expression="ora:getInstanceId()"/>
+        <to variable="InstanceID"/>
+      </copy>
+      <copy>
+        <from expression="ora:getProcessId()"/>
+        <to variable="ServiceName"/>
+      </copy>
+     </assign>
+     <bpelx:exec name="SetTitle" language="java" version="1.5" id="BxExe4">
+      <![CDATA[setTitle((String)getVariableData("Title"));]]>
+     </bpelx:exec>
+ <bpelx:exec name="TraceLog_BeginABCS" language="java" version="1.3" id="BxExe5">
+      <![CDATA[java.lang.String TraceLogMessage = null; 
+	java.lang.Boolean tracelogenabled;  
+java.lang.String title = (java.lang.String)getVariableData("Title");         
+java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+
+tracelogenabled = oracle.apps.aia.core.eh.logging.AIALogger.isTraceLoggingEnabled("INFO","{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry//UpdateRCCDetailsSiebelReqABCSImpl/V1}UpdateRCCDetailsSiebelReqABCSImpl");                                                                                  
+setVariableData("TraceLogEnabled", tracelogenabled);        
+
+if (tracelogenabled.booleanValue())                                                                                
+{                                                                                                                                                                                      
+                       
+          
+   TraceLogMessage = "Starting " + serviceName + " Instance: " + instanceID + title; ;                         
+   
+   oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  null ,TraceLogMessage); 
+   
+}]]>
+    </bpelx:exec>
+        <scope name="Scope_Data_Validation" variableAccessSerializable="no" id="BpScp0">
+            <sequence name="Sequence1" id="BpSeq5">
+                <assign name="Xform_Data_Validation" id="BpAss3">
+                    <bpelx:annotation>
+                        <bpelx:pattern>transformation</bpelx:pattern>
+                    </bpelx:annotation>
+                    <copy>
+                        <from expression="ora:doXSLTransformForDoc('xsl/Xform_Data_Validation.xsl', $UpdateRCCDetailsReqMsg.UpdateRCCDetails)"/>
+                        <to variable="UpdateRCCDetailsFaultMsg" part="UpdateRCCDetailsFault"/>
+                    </copy>
+                </assign>
+                <switch name="Switch1" id="BpSwt0">
+                    <case condition="bpws:getVariableData('UpdateRCCDetailsFaultMsg','UpdateRCCDetailsFault','/rccabo:UpdateRCCDetailsFault/rccabo:Response/rccabo:Status/rccabo:errorCode')!=''">
+                        <sequence name="Sequence2" id="BpSeq6">
+                            <reply name="ReplyFault" faultName="rccabcs:UpdateRCCDetailsFaultMsg" variable="UpdateRCCDetailsFaultMsg" partnerLink="UpdateRCCDetailsSiebelReqABCSImpl" portType="rccabcs:UpdateRCCDetailsSiebelReqABCSImpl" operation="UpdateRCCDetails" id="BpRpl0"/>
+                            <terminate name="TerminateFlow" id="BpTer0"/>
+                        </sequence>
+                    </case>
+                    <otherwise/>
+                </switch>
+            </sequence>
+        </scope>
+        <scope name="CommunicationsCustomerPartyEBS" id="BpScp1">
+      <sequence name="CommunicationsCustomerPartyEBS" id="BpSeq7">
+ <bpelx:exec name="TraceLog_BeforeCustomerPartyEBMReqMsgTransform" language="java" version="1.3" id="BxExe6">
+      <![CDATA[java.lang.String TraceLogMessage = null; 
+	java.lang.Boolean tracelogenabled;  
+java.lang.String title = (java.lang.String)getVariableData("Title");         
+java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+
+tracelogenabled = oracle.apps.aia.core.eh.logging.AIALogger.isTraceLoggingEnabled("INFO","{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry//UpdateRCCDetailsSiebelReqABCSImpl/V1}UpdateRCCDetailsSiebelReqABCSImpl");                                                                                  
+setVariableData("TraceLogEnabled", tracelogenabled);        
+
+if (tracelogenabled.booleanValue())                                                                                
+{                                                                                                                                                                                      
+                       
+          
+   TraceLogMessage = "Starting " + serviceName + " Before CustomerPartyEBMReqMsg Transform Instance: " + instanceID + title; ;                         
+   
+   oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  null ,TraceLogMessage); 
+   
+}]]>
+    </bpelx:exec>
+     <assign name="Xform_RCCDetailsABMReqMsg_to_CustomerPartyEBMReqMsg" id="BpAss4">
+	      <bpelx:annotation>
+		<bpelx:pattern>transformation</bpelx:pattern>
+	      </bpelx:annotation>
+	      <copy>
+		<from expression="ora:doXSLTransformForDoc('xsl/Xform_RCCDetailsABMReqMsg_to_CustomerPartyEBMReqMsg.xsl', $UpdateRCCDetailsReqMsg.UpdateRCCDetails)"/>
+		<to variable="UpdateCustomerPartyEBSReqMsg" part="ProcessCreditEligibilityVerificationEBM"/>
+	      </copy>
+      </assign>
+ <bpelx:exec name="TraceLog_AfterCustomerPartyEBMReqMsgTransform" language="java" version="1.3" id="BxExe7">
+      <![CDATA[java.lang.String TraceLogMessage = null; 
+	java.lang.Boolean tracelogenabled;  
+java.lang.String title = (java.lang.String)getVariableData("Title");         
+java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+
+tracelogenabled = oracle.apps.aia.core.eh.logging.AIALogger.isTraceLoggingEnabled("INFO","{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry//UpdateRCCDetailsSiebelReqABCSImpl/V1}UpdateRCCDetailsSiebelReqABCSImpl");                                                                                  
+setVariableData("TraceLogEnabled", tracelogenabled);        
+
+if (tracelogenabled.booleanValue())                                                                                
+{                                                                                                                                                                                      
+                       
+          
+   TraceLogMessage = "Starting " + serviceName + " After CustomerPartyEBMReqMsg Transform Instance: " + instanceID + title; ;                         
+   
+   oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  null ,TraceLogMessage); 
+   
+}]]>
+    </bpelx:exec>
+    
+      <!--assign name="Assign_EBM_HEADER">
+	      <copy>
+		<from variable="UpdateCustomerPartyEBSReqMsg"
+		      part="ProcessCreditEligibilityVerificationEBM"
+		      query="/customerpartyebo:ProcessCreditEligibilityVerificationEBM/corecom:EBMHeader"/>
+		<to variable="EBM_HEADER" query="/corecom:EBMHeader"/>
+	      </copy>
+      </assign-->
+ <bpelx:exec name="TraceLog_BeforeInvokeCustomerParty" language="java" version="1.3" id="BxExe8">
+      <![CDATA[java.lang.String TraceLogMessage = null; 
+	java.lang.Boolean tracelogenabled;  
+java.lang.String title = (java.lang.String)getVariableData("Title");         
+java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+
+tracelogenabled = oracle.apps.aia.core.eh.logging.AIALogger.isTraceLoggingEnabled("INFO","{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry//UpdateRCCDetailsSiebelReqABCSImpl/V1}UpdateRCCDetailsSiebelReqABCSImpl");                                                                                  
+setVariableData("TraceLogEnabled", tracelogenabled);        
+
+if (tracelogenabled.booleanValue())                                                                                
+{                                                                                                                                                                                      
+                       
+          
+   TraceLogMessage = "Starting " + serviceName + " Before CustomerParty Service Invoke Instance: " + instanceID + title; ;                         
+   
+   oracle.xml.parser.v2.XMLElement EBM_HEADER =                                                                        
+                                                                              
+   (oracle.xml.parser.v2.XMLElement)getVariableData("EBM_HEADER");                                                                                     
+   oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  EBM_HEADER ,TraceLogMessage); 
+   
+}]]>
+    </bpelx:exec>
+                <scope name="SetDynamicPartnerlinkScope" id="BpScp2">
+    <variables>
+	<variable name="TargetEndpointLocation" type="xsd:string"/>
+	<variable name="EndpointReference" element="wsa:EndpointReference"/>
+    </variables>
+ 
+	<switch name="Switch_SetEndpoint" id="BpSwt1">
+            <case condition="string-length(bpws:getVariableData('UpdateCustomerPartyEBSReqMsg','ProcessCreditEligibilityVerificationEBM','/customerpartyebo:ProcessCreditEligibilityVerificationEBM/corecom:EBMHeader/corecom:MessageProcessingInstruction/corecom:DefinitionID'))>0">
+		<bpelx:annotation>
+                    <bpelx:pattern>Test - isCAVSDefiniitonIDSet</bpelx:pattern>
+                </bpelx:annotation>
+                <sequence id="BpSeq8">
+                    <assign name="SetCAVSEndPointURL" id="BpAss5">
+                        <copy>
+                            <from variable="UpdateCustomerPartyEBSReqMsg" part="ProcessCreditEligibilityVerificationEBM" query="/customerpartyebo:ProcessCreditEligibilityVerificationEBM/corecom:EBMHeader/corecom:MessageProcessingInstruction/corecom:DefinitionID"/>
+                            <to variable="TargetEndpointLocation"/>
+                        </copy>
+                    </assign>
+                    <assign name="AssignPartnerlinkEndpointReference" id="BpAss6">
+                        <copy>
+                            <from>
+                                <wsa:EndpointReference>
+                                    <wsa:Address/>
+                                </wsa:EndpointReference>
+                            </from>
+                            <to variable="EndpointReference"/>
+                        </copy>
+                        <copy>
+                            <from variable="TargetEndpointLocation"/>
+                            <to variable="EndpointReference" query="/wsa:EndpointReference/wsa:Address"/>
+                        </copy>
+                        <copy>
+                            <from variable="EndpointReference"/>
+                            <to partnerLink="CommunicationsCustomerPartyEBS"/>
+                        </copy>
+                    </assign>
+                </sequence>
+            </case>
+            <otherwise> <empty name="Empty_NoSetEndpoint" id="BpEmp1"/> </otherwise>
+        </switch>
+		
+     </scope>
+                <scope name="CustomerParty_Scope" variableAccessSerializable="no" id="BpScp3">
+                    <bpelx:annotation>
+                        <bpelx:general>
+                            <bpelx:property name="userLabel">
+                                <![CDATA[CustomerPartyScope]]>
+                            </bpelx:property>
+                        </bpelx:general>
+                    </bpelx:annotation>
+                    <faultHandlers id="BpFhs1">
+                        <catch faultName="bpelx:remoteFault" faultVariable="UpdateRCCDetailsFaultMsg" id="BpCFt3"><switch name="Switch2" xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" id="BpSwt2">
+      <case condition="contains(bpws:getVariableData('SystemFaultVar','detail','/detail'),'NAP_CONNECT_FAILED')">
+         <sequence name="Sequence4" xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" id="BpSeq9">
+      <assign name="Assign_Error_Response" id="BpAss7">
+         
+      <copy>
+            <from>
+               <UpdateRCCDetailsFault xmlns:rccabo="http://www.telia.org/Siebel/getRCCBalances" xmlns="http://www.telia.org/Siebel/getRCCBalances">
+	<rccabo:Response>
+		<rccabo:responseDate>2017-03-31T09:51:41.210+02:00</rccabo:responseDate>
+		<rccabo:Status>
+			<rccabo:errorCode>0003</rccabo:errorCode>
+			<rccabo:errorMessage>Issues with Customer Subscription</rccabo:errorMessage>
+		</rccabo:Status>
+	</rccabo:Response>
+</UpdateRCCDetailsFault>
+            </from>
+            <to variable="UpdateRCCDetailsFaultMsg" part="UpdateRCCDetailsFault" query="/rccabo:UpdateRCCDetailsFault"/>
+         </copy><copy><from expression="xp20:current-dateTime()"/><to variable="UpdateRCCDetailsFaultMsg" part="UpdateRCCDetailsFault" query="/rccabo:UpdateRCCDetailsFault/rccabo:Response/rccabo:responseDate"/></copy></assign>
+      <reply name="ReplyFault" faultName="rccabcs:UpdateRCCDetailsFaultMsg" variable="UpdateRCCDetailsFaultMsg" partnerLink="UpdateRCCDetailsSiebelReqABCSImpl" portType="rccabcs:UpdateRCCDetailsSiebelReqABCSImpl" operation="UpdateRCCDetails" id="BpRpl1"/>
+   </sequence>
+      </case>
+      <case condition="contains(bpws:getVariableData('SystemFaultVar','detail','/detail'),'ERR_LOCATION_DM')">
+         <sequence name="Sequence4" id="BpSeq10">
+            <assign name="Assign_Error_Response" id="BpAss8">
+               <copy>
+                  <from>
+                     <UpdateRCCDetailsFault xmlns:rccabo="http://www.telia.org/Siebel/getRCCBalances" xmlns="http://www.telia.org/Siebel/getRCCBalances">
+	<rccabo:Response>
+		<rccabo:responseDate>2017-03-31T09:51:41.210+02:00</rccabo:responseDate>
+		<rccabo:Status>
+			<rccabo:errorCode>0004</rccabo:errorCode>
+			<rccabo:errorMessage>Technical error</rccabo:errorMessage>
+		</rccabo:Status>
+	</rccabo:Response>
+</UpdateRCCDetailsFault>
+                  </from>
+                  <to variable="UpdateRCCDetailsFaultMsg" part="UpdateRCCDetailsFault" query="/rccabo:UpdateRCCDetailsFault"/>
+               </copy>
+               <copy>
+                  <from expression="xp20:current-dateTime()"/>
+                  <to variable="UpdateRCCDetailsFaultMsg" part="UpdateRCCDetailsFault" query="/rccabo:UpdateRCCDetailsFault/rccabo:Response/rccabo:responseDate"/>
+               </copy>
+            </assign>
+            <reply name="ReplyFault" faultName="rccabcs:UpdateRCCDetailsFaultMsg" variable="UpdateRCCDetailsFaultMsg" partnerLink="UpdateRCCDetailsSiebelReqABCSImpl" portType="rccabcs:UpdateRCCDetailsSiebelReqABCSImpl" operation="UpdateRCCDetails" id="BpRpl2"/>
+         </sequence>
+      </case>
+      <otherwise>
+         <sequence name="Sequence4" xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" id="BpSeq11">
+      <assign name="Assign_Error_Response" id="BpAss9">
+         
+      <copy>
+            <from><UpdateRCCDetailsFault xmlns:rccabo="http://www.telia.org/Siebel/getRCCBalances" xmlns="http://www.telia.org/Siebel/getRCCBalances">
+	<rccabo:Response>
+		<rccabo:responseDate>2017-03-31T09:51:41.210+02:00</rccabo:responseDate>
+		<rccabo:Status>
+			<rccabo:errorCode>0005</rccabo:errorCode>
+			<rccabo:errorMessage>Other technical error</rccabo:errorMessage>
+		</rccabo:Status>
+	</rccabo:Response>
+</UpdateRCCDetailsFault></from>
+            <to variable="UpdateRCCDetailsFaultMsg" part="UpdateRCCDetailsFault" query="/rccabo:UpdateRCCDetailsFault"/>
+         </copy><copy><from expression="xp20:current-dateTime()"/><to variable="UpdateRCCDetailsFaultMsg" part="UpdateRCCDetailsFault" query="/rccabo:UpdateRCCDetailsFault/rccabo:Response/rccabo:responseDate"/></copy></assign>
+      <reply name="ReplyFault" faultName="rccabcs:UpdateRCCDetailsFaultMsg" variable="UpdateRCCDetailsFaultMsg" partnerLink="UpdateRCCDetailsSiebelReqABCSImpl" portType="rccabcs:UpdateRCCDetailsSiebelReqABCSImpl" operation="UpdateRCCDetails" id="BpRpl3"/>
+   </sequence>
+      </otherwise>
+   </switch></catch>
+                        <catch faultName="bpelx:bindingFault" faultVariable="UpdateRCCDetailsFaultMsg" id="BpCFt4">
+                            <switch name="Switch2" id="BpSwt3">
+                                <case condition="contains(bpws:getVariableData('SystemFaultVar','detail','/detail'),'NAP_CONNECT_FAILED')"><sequence name="Sequence4" xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" id="BpSeq12">
+      <assign name="Assign_Error_Response" id="BpAss10">
+         
+      <copy>
+            <from>
+               <UpdateRCCDetailsFault xmlns:rccabo="http://www.telia.org/Siebel/getRCCBalances" xmlns="http://www.telia.org/Siebel/getRCCBalances">
+	<rccabo:Response>
+		<rccabo:responseDate>2017-03-31T09:51:41.210+02:00</rccabo:responseDate>
+		<rccabo:Status>
+			<rccabo:errorCode>0003</rccabo:errorCode>
+			<rccabo:errorMessage>Issues with Customer Subscription</rccabo:errorMessage>
+		</rccabo:Status>
+	</rccabo:Response>
+</UpdateRCCDetailsFault>
+            </from>
+            <to variable="UpdateRCCDetailsFaultMsg" part="UpdateRCCDetailsFault" query="/rccabo:UpdateRCCDetailsFault"/>
+         </copy><copy>
+                                                <from expression="xp20:current-dateTime()"/>
+                                                <to variable="UpdateRCCDetailsFaultMsg" part="UpdateRCCDetailsFault" query="/rccabo:UpdateRCCDetailsFault/rccabo:Response/rccabo:responseDate"/>
+                                            </copy></assign>
+      <reply name="ReplyFault" faultName="rccabcs:UpdateRCCDetailsFaultMsg" variable="UpdateRCCDetailsFaultMsg" partnerLink="UpdateRCCDetailsSiebelReqABCSImpl" portType="rccabcs:UpdateRCCDetailsSiebelReqABCSImpl" operation="UpdateRCCDetails" id="BpRpl4"/>
+   </sequence></case>
+                                <case condition="contains(bpws:getVariableData('SystemFaultVar','detail','/detail'),'ERR_LOCATION_DM')">
+                                    <sequence name="Sequence4" id="BpSeq13">
+                                        <assign name="Assign_Error_Response" id="BpAss11">
+                                            <copy>
+                                                <from><UpdateRCCDetailsFault xmlns:rccabo="http://www.telia.org/Siebel/getRCCBalances" xmlns="http://www.telia.org/Siebel/getRCCBalances">
+	<rccabo:Response>
+		<rccabo:responseDate>2017-03-31T09:51:41.210+02:00</rccabo:responseDate>
+		<rccabo:Status>
+			<rccabo:errorCode>0004</rccabo:errorCode>
+			<rccabo:errorMessage>Technical error</rccabo:errorMessage>
+		</rccabo:Status>
+	</rccabo:Response>
+</UpdateRCCDetailsFault></from>
+                                                <to variable="UpdateRCCDetailsFaultMsg" part="UpdateRCCDetailsFault" query="/rccabo:UpdateRCCDetailsFault"/>
+                                            </copy>
+                                            <copy>
+                                                <from expression="xp20:current-dateTime()"/>
+                                                <to variable="UpdateRCCDetailsFaultMsg" part="UpdateRCCDetailsFault" query="/rccabo:UpdateRCCDetailsFault/rccabo:Response/rccabo:responseDate"/>
+                                            </copy>
+                                        </assign>
+                                        <reply name="ReplyFault" faultName="rccabcs:UpdateRCCDetailsFaultMsg" variable="UpdateRCCDetailsFaultMsg" partnerLink="UpdateRCCDetailsSiebelReqABCSImpl" portType="rccabcs:UpdateRCCDetailsSiebelReqABCSImpl" operation="UpdateRCCDetails" id="BpRpl5"/>
+                                    </sequence>
+                                </case>
+                                <otherwise><sequence name="Sequence4" xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" id="BpSeq14">
+      <assign name="Assign_Error_Response" id="BpAss12">
+         
+      <copy>
+            <from><UpdateRCCDetailsFault xmlns:rccabo="http://www.telia.org/Siebel/getRCCBalances" xmlns="http://www.telia.org/Siebel/getRCCBalances">
+	<rccabo:Response>
+		<rccabo:responseDate>2017-03-31T09:51:41.210+02:00</rccabo:responseDate>
+		<rccabo:Status>
+			<rccabo:errorCode>0005</rccabo:errorCode>
+			<rccabo:errorMessage>Other technical error</rccabo:errorMessage>
+		</rccabo:Status>
+	</rccabo:Response>
+</UpdateRCCDetailsFault></from>
+            <to variable="UpdateRCCDetailsFaultMsg" part="UpdateRCCDetailsFault" query="/rccabo:UpdateRCCDetailsFault"/>
+         </copy><copy>
+                                                <from expression="xp20:current-dateTime()"/>
+                                                <to variable="UpdateRCCDetailsFaultMsg" part="UpdateRCCDetailsFault" query="/rccabo:UpdateRCCDetailsFault/rccabo:Response/rccabo:responseDate"/>
+                                            </copy></assign>
+      <reply name="ReplyFault" faultName="rccabcs:UpdateRCCDetailsFaultMsg" variable="UpdateRCCDetailsFaultMsg" partnerLink="UpdateRCCDetailsSiebelReqABCSImpl" portType="rccabcs:UpdateRCCDetailsSiebelReqABCSImpl" operation="UpdateRCCDetails" id="BpRpl6"/>
+   </sequence></otherwise>
+                            </switch>
+                        </catch>
+                        <catchAll id="BpCAl1"><sequence name="Sequence4" xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" id="BpSeq15">
+      <assign name="Assign_Error_Response" id="BpAss13">
+         
+      <copy>
+            <from><UpdateRCCDetailsFault xmlns:rccabo="http://www.telia.org/Siebel/getRCCBalances" xmlns="http://www.telia.org/Siebel/getRCCBalances">
+	<rccabo:Response>
+		<rccabo:responseDate>2017-03-31T09:51:41.210+02:00</rccabo:responseDate>
+		<rccabo:Status>
+			<rccabo:errorCode>0005</rccabo:errorCode>
+			<rccabo:errorMessage>Other technical error</rccabo:errorMessage>
+		</rccabo:Status>
+	</rccabo:Response>
+</UpdateRCCDetailsFault></from>
+            <to variable="UpdateRCCDetailsFaultMsg" part="UpdateRCCDetailsFault" query="/rccabo:UpdateRCCDetailsFault"/>
+         </copy><copy><from expression="xp20:current-dateTime()"/><to variable="UpdateRCCDetailsFaultMsg" part="UpdateRCCDetailsFault" query="/rccabo:UpdateRCCDetailsFault/rccabo:Response/rccabo:responseDate"/></copy></assign>
+      <reply name="ReplyFault" faultName="rccabcs:UpdateRCCDetailsFaultMsg" variable="UpdateRCCDetailsFaultMsg" partnerLink="UpdateRCCDetailsSiebelReqABCSImpl" portType="rccabcs:UpdateRCCDetailsSiebelReqABCSImpl" operation="UpdateRCCDetails" id="BpRpl7"/>
+   </sequence></catchAll>
+                    </faultHandlers>
+                    <sequence id="BpSeq16">
+                        <invoke name="InvokeCustomerParty" partnerLink="CommunicationsCustomerPartyEBS" portType="corecustomerpartyebs:CommunicationsCustomerPartyEBS" operation="ProcessCreditEligibilityVerification" inputVariable="UpdateCustomerPartyEBSReqMsg" bpelx:invokeAsDetail="no" outputVariable="UpdateCustomerPartyEBSResMsg" id="BpInv2"/>
+                        <bpelx:exec name="TraceLog_AfterInvokeCustomerParty" language="java" version="1.3" id="BxExe9">
+                            <![CDATA[java.lang.String TraceLogMessage = null; 
+	java.lang.Boolean tracelogenabled;  
+java.lang.String title = (java.lang.String)getVariableData("Title");         
+java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+
+tracelogenabled = oracle.apps.aia.core.eh.logging.AIALogger.isTraceLoggingEnabled("INFO","{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry//UpdateRCCDetailsSiebelReqABCSImpl/V1}UpdateRCCDetailsSiebelReqABCSImpl");                                                                                  
+setVariableData("TraceLogEnabled", tracelogenabled);        
+
+if (tracelogenabled.booleanValue())                                                                                
+{                                                                                                                                                                                      
+                       
+          
+   TraceLogMessage = "Starting " + serviceName + " After CustomerParty Service Invoke Instance: " + instanceID + title; ;                         
+   
+   oracle.xml.parser.v2.XMLElement EBM_HEADER =                                                                        
+                                                                              
+   (oracle.xml.parser.v2.XMLElement)getVariableData("EBM_HEADER");                                                                                     
+   oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  EBM_HEADER ,TraceLogMessage); 
+   
+}]]>
+                        </bpelx:exec>
+                        <switch name="Switch3" id="BpSwt4">
+                            <case condition="bpws:getVariableData('UpdateCustomerPartyEBSResMsg','ProcessCreditEligibilityVerificationResponseEBM','/customerpartyebo:ProcessCreditEligibilityVerificationResponseEBM/customerpartyebo:DataArea/customerpartyebo:ProcessCreditEligibilityVerificationResponse/corecom:Identification/corecom:ApplicationObjectKey/corecom:ID')!=''">
+                                <sequence id="BpSeq17">
+                                    <assign name="Xform_CustomerPartyResponseEBMResMsg_to_RCCDetailsABMResMsg" id="BpAss14">
+                                        <bpelx:annotation>
+                                            <bpelx:pattern>transformation</bpelx:pattern>
+                                        </bpelx:annotation>
+                                        <copy>
+                                            <from expression="ora:doXSLTransformForDoc('xsl/Xform_CustomerPartyResponseEBMResMsg_to_RCCDetailsABMResMsg.xsl', $UpdateCustomerPartyEBSResMsg.ProcessCreditEligibilityVerificationResponseEBM)"/>
+                                            <to variable="UpdateRCCDetailsRespMsg" part="UpdateRCCDetailsResponse"/>
+                                        </copy>
+                                    </assign>
+                                    <bpelx:exec name="TraceLog_BeforereplyRCCDetails" language="java" version="1.3" id="BxExe10">
+                                        <![CDATA[java.lang.String TraceLogMessage = null; 
+	java.lang.Boolean tracelogenabled;  
+java.lang.String title = (java.lang.String)getVariableData("Title");         
+java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+
+tracelogenabled = oracle.apps.aia.core.eh.logging.AIALogger.isTraceLoggingEnabled("INFO","{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry//UpdateRCCDetailsSiebelReqABCSImpl/V1}UpdateRCCDetailsSiebelReqABCSImpl");                                                                                  
+setVariableData("TraceLogEnabled", tracelogenabled);        
+
+if (tracelogenabled.booleanValue())                                                                                
+{                                                                                                                                                                                      
+                       
+          
+   TraceLogMessage = "Starting " + serviceName + " Before RCCDetails Service reply Instance: " + instanceID + title; ;                         
+   
+   oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  null ,TraceLogMessage); 
+   
+}]]>
+                                    </bpelx:exec>
+                                    <reply name="replyRCCDetails" partnerLink="UpdateRCCDetailsSiebelReqABCSImpl" portType="rccabcs:UpdateRCCDetailsSiebelReqABCSImpl" operation="UpdateRCCDetails" variable="UpdateRCCDetailsRespMsg" id="BpRpl8"/>
+                                </sequence>
+                            </case>
+                            <otherwise><sequence name="Sequence4" xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" id="BpSeq18">
+      <assign name="Assign_Error_Response" id="BpAss15">
+         <copy>
+            <from><UpdateRCCDetailsFault xmlns:rccabo="http://www.telia.org/Siebel/getRCCBalances" xmlns="http://www.telia.org/Siebel/getRCCBalances">
+	<rccabo:Response>
+		<rccabo:responseDate>2017-03-31T09:51:41.210+02:00</rccabo:responseDate>
+		<rccabo:Status>
+			<rccabo:errorCode>0005</rccabo:errorCode>
+			<rccabo:errorMessage>Other technical error</rccabo:errorMessage>
+		</rccabo:Status>
+	</rccabo:Response>
+</UpdateRCCDetailsFault></from>
+            <to variable="UpdateRCCDetailsFaultMsg" part="UpdateRCCDetailsFault" query="/rccabo:UpdateRCCDetailsFault"/>
+         </copy>
+         <copy>
+            <from expression="xp20:current-dateTime()"/>
+            <to variable="UpdateRCCDetailsFaultMsg" part="UpdateRCCDetailsFault" query="/rccabo:UpdateRCCDetailsFault/rccabo:Response/rccabo:responseDate"/>
+         </copy>
+      </assign>
+      <reply name="ReplyFault" faultName="rccabcs:UpdateRCCDetailsFaultMsg" variable="UpdateRCCDetailsFaultMsg" partnerLink="UpdateRCCDetailsSiebelReqABCSImpl" portType="rccabcs:UpdateRCCDetailsSiebelReqABCSImpl" operation="UpdateRCCDetails" id="BpRpl9"/>
+   </sequence></otherwise>
+                        </switch>
+                    </sequence>
+                </scope>
+    
+      </sequence>
+     </scope>
+ <bpelx:exec name="TraceLog_AfterreplyRCCDetails" language="java" version="1.3" id="BxExe11">
+      <![CDATA[java.lang.String TraceLogMessage = null; 
+	java.lang.Boolean tracelogenabled;  
+java.lang.String title = (java.lang.String)getVariableData("Title");         
+java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+
+tracelogenabled = oracle.apps.aia.core.eh.logging.AIALogger.isTraceLoggingEnabled("INFO","{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry//UpdateRCCDetailsSiebelReqABCSImpl/V1}UpdateRCCDetailsSiebelReqABCSImpl");                                                                                  
+setVariableData("TraceLogEnabled", tracelogenabled);        
+
+if (tracelogenabled.booleanValue())                                                                                
+{                                                                                                                                                                                      
+                       
+          
+   TraceLogMessage = "Starting " + serviceName + " After RCCDetails Service reply Instance: " + instanceID + title; ;                         
+   
+   oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  null ,TraceLogMessage); 
+   
+}]]>
+    </bpelx:exec>
+    
+ <bpelx:exec name="TraceLog_EndABCS" language="java" version="1.3" id="BxExe12">
+      <![CDATA[java.lang.String TraceLogMessage = null; 
+	java.lang.Boolean tracelogenabled   = (java.lang.Boolean)getVariableData("TraceLogEnabled");
+java.lang.String title = (java.lang.String)getVariableData("Title");         
+java.lang.String instanceID = (java.lang.String)getVariableData("InstanceID");      
+java.lang.String serviceName = (java.lang.String)getVariableData("ServiceName");     
+
+
+if (tracelogenabled.booleanValue())                                                                                
+{                                                                                                                                                                                      
+                       
+          
+   TraceLogMessage = "Starting " + serviceName + " ABCS End Instance: " + instanceID + title; ;                         
+   
+   oracle.apps.aia.core.eh.logging.AIALogger.logTraceMessage("INFO",  null ,TraceLogMessage); 
+   
+}]]>
+    </bpelx:exec>
+   
+  </sequence>
+</process><!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: 
+  Author:  
+  Purpose: 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->

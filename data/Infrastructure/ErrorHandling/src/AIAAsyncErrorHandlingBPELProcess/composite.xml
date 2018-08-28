@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<composite name="AIAAsyncErrorHandlingBPELProcess" applicationName="default" revision="111" label="soa_833b06f4-c2f2-46e1-9ecc-f828b6de5ecd" mode="active" state="on" home="/opt/aia/Middleware_wls/user_projects/domains/aiafp/servers/SOA_MS2/dc/soa_833b06f4-c2f2-46e1-9ecc-f828b6de5ecd" xmlns:ui="http://xmlns.oracle.com/soa/designer/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:orawsp="http://schemas.oracle.com/ws/2006/01/policy" xmlns="http://xmlns.oracle.com/sca/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <import location="oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/V1/wsdls/AIAAsyncErrorHandlingBPELProcess.wsdl" importType="wsdl"/>
+   <import namespace="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess" location="oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/V1/wsdls/AIAAsyncErrorHandlingBPELProcess.wsdl" importType="wsdl"/>
+   <service name="client" ui:wsdlLocation="oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/V1/wsdls/AIAAsyncErrorHandlingBPELProcess.wsdl">
+      <interface.wsdl interface="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess#wsdl.interface(AIAAsyncErrorHandlingBPELProcess)" callbackInterface="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess#wsdl.interface(AIAAsyncErrorHandlingBPELProcessCallback)"/>
+      <binding.ws port="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess#wsdl.endpoint(AIAAsyncErrorHandlingBPELProcess/AIAAsyncErrorHandlingBPELProcess)" streamIncomingAttachments="false" streamOutgoingAttachments="false">
+         <wsp:PolicyReference orawsp:category="security" orawsp:status="enabled" URI="oracle/aia_wss_saml_or_username_or_http_token_service_policy_OPT_ON"/>
+      </binding.ws>
+   </service>
+   <component name="AIAAsyncErrorHandlingBPELProcess">
+      <implementation.bpel src="AIAAsyncErrorHandlingBPELProcess.bpel"/>
+      <property name="bpel.config.oneWayDeliveryPolicy" many="false">sync</property>
+      <business-events/>
+   </component>
+   <wire>
+      <source.uri>client</source.uri>
+      <target.uri>AIAAsyncErrorHandlingBPELProcess/client</target.uri>
+   </wire>
+</composite>

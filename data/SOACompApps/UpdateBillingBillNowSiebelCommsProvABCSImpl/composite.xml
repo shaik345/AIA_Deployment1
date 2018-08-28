@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="UpdateBillingBillNowSiebelCommsProvABCSImpl" revision="1.0"
+           mode="active" state="on" xmlns="http://xmlns.oracle.com/sca/1.0"
+           xmlns:ui="http://xmlns.oracle.com/soa/designer/"
+           xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <import namespace="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess"
+            location="oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/V1/wsdls/AIAAsyncErrorHandlingBPELProcess.wsdl"/>
+    <import namespace="http://xmlns.oracle.com/ABCSImpl/SiebelComms/Industry//UpdateBillingBillNowSiebelCommsProvABCSImpl/V1"
+            location="oramds:/apps/AIAMetaData/AIAComponents/ApplicationConnectorServiceLibrary/Siebel/V1/ProviderABCS/UpdateBillingBillNowSiebelCommsProvABCSImpl.wsdl"
+            importType="wsdl"/>
+    <!--<svcdoc:AIA>
+               <svcdoc:ServiceSolutionComponentAssociation>
+                  <svcdoc:GUID>dc197808-621c-4578-b4c5-6c092ad63b7e</svcdoc:GUID>
+               </svcdoc:ServiceSolutionComponentAssociation>
+        </svcdoc:AIA>-->
+    <import namespace="http://xmlns.oracle.com/AIASessionPoolManager"
+            location="AIASessionPoolManagerAbstractWrapper.wsdl"
+            importType="wsdl"/>
+    <import namespace="http://siebel.com/asi/"
+            location="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/wsdls/ProductOfferWebservice.wsdl"
+            importType="wsdl"/>
+    <import namespace="http://siebel.com/asi/"
+            location="ProductOfferWebserviceWrapper.wsdl" importType="wsdl"/>
+    <service ui:wsdlLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationConnectorServiceLibrary/Siebel/V1/ProviderABCS/UpdateBillingBillNowSiebelCommsProvABCSImpl.wsdl"
+             name="UpdateBillingBillNowSiebelCommsProvABCSImpl">
+        <interface.wsdl interface="http://xmlns.oracle.com/ABCSImpl/SiebelComms/Industry//UpdateBillingBillNowSiebelCommsProvABCSImpl/V1#wsdl.interface(UpdateBillingBillNowSiebelCommsProvABCSImpl)"/>
+        <binding.ws port="http://xmlns.oracle.com/ABCSImpl/SiebelComms/Industry//UpdateBillingBillNowSiebelCommsProvABCSImpl/V1#wsdl.endpoint(UpdateBillingBillNowSiebelCommsProvABCSImpl/UpdateBillingBillNowSiebelCommsProvABCSImpl_pt)"
+                    xmlns:ns="http://xmlns.oracle.com/sca/1.0"/>
+        <!--<svcdoc:AIA>
+                    <svcdoc:Service>
+                      <svcdoc:InterfaceDetails>
+                          <svcdoc:ServiceName></svcdoc:ServiceName>
+                           <svcdoc:Namespace></svcdoc:Namespace>
+                            <svcdoc:ArtifactType>EnterpriseBusinessService</svcdoc:ArtifactType>
+                            <svcdoc:ServiceOperation>
+                              <svcdoc:Name></svcdoc:Name>
+                            </svcdoc:ServiceOperation>
+                      </svcdoc:InterfaceDetails>
+                      <svcdoc:ImplementationDetails>
+                         <svcdoc:ApplicationName>SiebelComms</svcdoc:ApplicationName>
+                         <svcdoc:BaseVersion></svcdoc:BaseVersion>
+                         <svcdoc:DevelopedBy>Oracle</svcdoc:DevelopedBy>
+                         <svcdoc:OracleCertified>Yes</svcdoc:OracleCertified>
+                         <svcdoc:ArtifactType>ProviderABCSImplementation</svcdoc:ArtifactType>
+                         <svcdoc:ServiceOperation>
+                            <svcdoc:Name>UpdateBillingBillNow</svcdoc:Name>
+                         </svcdoc:ServiceOperation>
+                      </svcdoc:ImplementationDetails>
+                   </svcdoc:Service>
+        </svcdoc:AIA>-->
+    </service>
+    <property name="oracle.composite.faultPolicyFile">oramds:/apps/AIAMetaData/faultPolicies/fault-policies.xml</property>
+    <property name="oracle.composite.faultBindingFile">oramds:/apps/AIAMetaData/faultPolicies/fault-bindings.xml</property>
+    <component name="UpdateBillingBillNowSiebelCommsProvABCSImplProcess">
+        <implementation.bpel src="UpdateBillingBillNowSiebelCommsProvABCSImplProcess.bpel"/>
+        <property name="bpel.config.transaction">required</property>
+        <property name="bpel.config.oneWayDeliveryPolicy">sync</property>
+    </component>
+    <reference ui:wsdlLocation="oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/V1/wsdls/AIAAsyncErrorHandlingBPELProcess.wsdl"
+               name="AIAAsyncErrorHandlingBPELProcess">
+        <interface.wsdl interface="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess#wsdl.interface(AIAAsyncErrorHandlingBPELProcess)"
+                        callbackInterface="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess#wsdl.interface(AIAAsyncErrorHandlingBPELProcessCallback)"
+                        xmlns:ns="http://xmlns.oracle.com/sca/1.0"/>
+        <binding.ws port="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess#wsdl.endpoint(AIAAsyncErrorHandlingBPELProcess/AIAAsyncErrorHandlingBPELProcess)"
+                    location="oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/V1/wsdls/AIAAsyncErrorHandlingBPELProcess.wsdl"
+                    xmlns:ns="http://xmlns.oracle.com/sca/1.0"/>
+        <!--<svcdoc:AIA>
+                    <svcdoc:Reference>
+                        <svcdoc:ArtifactType>UtilityService</svcdoc:ArtifactType>
+                        <svcdoc:ServiceOperation>
+                        <svcdoc:Name>initiate</svcdoc:Name>
+                        </svcdoc:ServiceOperation>
+                    </svcdoc:Reference>
+                    </svcdoc:AIA>-->
+    </reference>
+    <reference ui:wsdlLocation="oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/V1/wsdls/AIASessionPoolManagerAbstract.wsdl"
+               name="AIASessionPoolManager">
+        <!--<svcdoc:AIA>
+                    <svcdoc:Reference>
+                        <svcdoc:ArtifactType>EnterpriseBusinessService</svcdoc:ArtifactType>
+                        <svcdoc:ServiceOperation>
+                        <svcdoc:Name>Get</svcdoc:Name>
+                        </svcdoc:ServiceOperation>
+                    </svcdoc:Reference>
+                </svcdoc:AIA>-->
+        <interface.wsdl interface="http://xmlns.oracle.com/AIASessionPoolManager#wsdl.interface(AIASessionPoolManager)"/>
+        <binding.ws location="http://tr007buaia.ddc.teliasonera.net:8001/soa-infra/services/default/AIASessionPoolManager/client?WSDL"
+                    port="http://xmlns.oracle.com/AIASessionPoolManager#wsdl.endpoint(AIASessionPoolManager/AIASessionPoolManager)"
+                    soapVersion="1.1" xml:id="id_25"/>
+    </reference>
+    <reference ui:wsdlLocation="ProductOfferWebserviceWrapper.wsdl"
+               name="GetRecommendedProductOffersPort">
+        <!--<svcdoc:AIA>
+                    <svcdoc:Reference>
+                        <svcdoc:ArtifactType>Other</svcdoc:ArtifactType>
+                        <svcdoc:ServiceOperation>
+                            <svcdoc:Name>GetRecommendedProductOffers</svcdoc:Name>
+                        </svcdoc:ServiceOperation>
+                    </svcdoc:Reference>
+                  </svcdoc:AIA>-->
+        <interface.wsdl interface="http://siebel.com/asi/#wsdl.interface(GetRecommendedProductOffersPort)"/>
+        <binding.ws port="http://siebel.com/asi/#wsdl.endpoint(Product_spcOffer_spcWebservice/GetRecommendedProductOffersPort)"
+                    location="ProductOfferWebserviceWrapper.wsdl"
+                    soapVersion="1.1">
+            <wsp:PolicyReference URI="oracle/no_authentication_client_policy"
+                                 category="security" status="enabled"
+                                 xml:id="id_38"/>
+        </binding.ws>
+    </reference>
+    <reference name="ApplyOfferToCreateOrderPort"
+               ui:wsdlLocation="ProductOfferWebserviceWrapper.wsdl">
+        <interface.wsdl interface="http://siebel.com/asi/#wsdl.interface(ApplyOfferToCreateOrderPort)"/>
+        <binding.ws port="http://siebel.com/asi/#wsdl.endpoint(Product_spcOffer_spcWebservice/ApplyOfferToCreateOrderPort)"
+                    location="ProductOfferWebserviceWrapper.wsdl"
+                    soapVersion="1.1">
+             <wsp:PolicyReference URI="oracle/no_authentication_client_policy"
+                                 category="security" status="enabled"
+                                 xml:id="id_318"/>
+        </binding.ws>
+    </reference>
+    <wire>
+        <source.uri>UpdateBillingBillNowSiebelCommsProvABCSImpl</source.uri>
+        <target.uri>UpdateBillingBillNowSiebelCommsProvABCSImplProcess/UpdateBillingBillNowSiebelCommsProvABCSImpl</target.uri>
+    </wire>
+    <wire>
+        <source.uri>UpdateBillingBillNowSiebelCommsProvABCSImplProcess/AIAAsyncErrorHandlingBPELProcess</source.uri>
+        <target.uri>AIAAsyncErrorHandlingBPELProcess</target.uri>
+    </wire>
+    <wire>
+        <source.uri>UpdateBillingBillNowSiebelCommsProvABCSImplProcess/AIASessionPoolManager</source.uri>
+        <target.uri>AIASessionPoolManager</target.uri>
+    </wire>
+    <wire>
+        <source.uri>UpdateBillingBillNowSiebelCommsProvABCSImplProcess/GetRecommendedProductOffersPort</source.uri>
+        <target.uri>GetRecommendedProductOffersPort</target.uri>
+    </wire>
+    <wire>
+        <source.uri>UpdateBillingBillNowSiebelCommsProvABCSImplProcess/ApplyOfferToCreateOrderPort</source.uri>
+        <target.uri>ApplyOfferToCreateOrderPort</target.uri>
+    </wire>
+</composite>

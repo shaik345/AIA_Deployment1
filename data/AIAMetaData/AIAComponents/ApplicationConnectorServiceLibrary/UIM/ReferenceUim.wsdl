@@ -1,0 +1,167 @@
+<wsdl:definitions
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://www.w3.org/2001/XMLSchema"
+    xmlns:invws="http://xmlns.oracle.com/communications/inventory/webservice/getuta"
+    xmlns:invcom="http://xmlns.oracle.com/communications/inventory/webservice/common"
+    xmlns:invfault="http://xmlns.oracle.com/communications/inventory/webservice/fault"
+    xmlns:getutavalues="http://xmlns.oracle.com/communications/inventory/webservice/getutavalues"
+    name="ReferenceUim"
+    targetNamespace="http://xmlns.oracle.com/communications/inventory/webservice/getuta">
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <!-- ============= Schema Imports ==================== -->
+            <xsd:import namespace="http://xmlns.oracle.com/communications/inventory/webservice/common" schemaLocation="./referenceSchemas/InventoryCommon.xsd" />
+            <xsd:import namespace="http://xmlns.oracle.com/communications/inventory/webservice/fault" schemaLocation="./referenceSchemas/InventoryFaults.xsd" />
+            <xsd:import namespace="http://xmlns.oracle.com/communications/inventory/webservice/getutavalues" schemaLocation="./schemas/GetUTAValues.xsd" />
+        </xsd:schema>
+    </wsdl:types>
+
+    <!--  *************************************************************  -->
+    <!--  Web Service Messages Definition  -->
+    <!--  *************************************************************  -->
+    <!--  ************** Inventory Common *****************************  -->
+     <wsdl:message name="InventoryFault">
+        <wsdl:part name="inventoryFault" element="invfault:inventoryFault">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="ValidationFault">
+        <wsdl:part name="validationFault" element="invfault:validationFault">
+        </wsdl:part>
+    </wsdl:message>
+   
+     <wsdl:message name="UTARequest">
+        <wsdl:part name="utaRequest" element="getutavalues:utaRequest">
+        </wsdl:part>
+     </wsdl:message>
+    <wsdl:message name="UTAResponse">
+        <wsdl:part name="utaResponse" element="getutavalues:utaResponse">
+        </wsdl:part>
+    </wsdl:message>
+    
+     <wsdl:message name="Request">
+        <wsdl:part name="request" element="getutavalues:request">
+        </wsdl:part>
+     </wsdl:message>
+    <wsdl:message name="Response">
+        <wsdl:part name="response" element="getutavalues:response">
+        </wsdl:part>
+    </wsdl:message>
+    
+
+    <!--  *************************************************************  -->
+    <!--  Web Service Port Definition -->
+    <!--  *************************************************************  -->
+    <wsdl:portType name="ReferenceUimPort">
+
+        <wsdl:operation name="getUTAValue">
+            <wsdl:input message="invws:UTARequest" />
+            <wsdl:output message="invws:UTAResponse" />
+            <wsdl:fault name="InventoryFault" message="invws:InventoryFault" />
+            <wsdl:fault name="ValidationFault" message="invws:ValidationFault" />
+        </wsdl:operation>
+         
+         <wsdl:operation name="getValue">
+            <wsdl:input message="invws:Request" />
+            <wsdl:output message="invws:Response" />
+            <wsdl:fault name="InventoryFault" message="invws:InventoryFault" />
+            <wsdl:fault name="ValidationFault" message="invws:ValidationFault" />
+        </wsdl:operation>
+        
+    </wsdl:portType>
+
+    <!--  *************************************************************  -->
+    <!--  Web Service HTTP Binding Definition -->
+    <!--  *************************************************************  -->
+    <wsdl:binding name="ReferenceUimHTTPSoapBinding" type="invws:ReferenceUimPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+       
+        <wsdl:operation name="getUTAValue">
+            <soap:operation soapAction="http://xmlns.oracle.com/communications/inventory/webservice/getUTAValue" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="InventoryFault">
+                <soap:fault name="InventoryFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="ValidationFault">
+                <soap:fault name="ValidationFault" use="literal" />
+            </wsdl:fault>
+        </wsdl:operation>
+        
+        <wsdl:operation name="getValue">
+            <soap:operation soapAction="http://xmlns.oracle.com/communications/inventory/webservice/getValue" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="InventoryFault">
+                <soap:fault name="InventoryFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="ValidationFault">
+                <soap:fault name="ValidationFault" use="literal" />
+            </wsdl:fault>
+        </wsdl:operation>
+        
+    </wsdl:binding>
+
+    <!--  *************************************************************  -->
+    <!--  Web Service JMS Binding Definition -->
+    <!--  *************************************************************  -->
+    <wsdl:binding name="ReferenceUimJMSSoapBinding" type="invws:ReferenceUimPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/jms" />
+        
+         <wsdl:operation name="getUTAValue">
+            <soap:operation soapAction="http://xmlns.oracle.com/communications/inventory/webservice/getUTAValue" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="InventoryFault">
+                <soap:fault name="InventoryFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="ValidationFault">
+                <soap:fault name="ValidationFault" use="literal" />
+            </wsdl:fault>
+        </wsdl:operation>
+        
+        <wsdl:operation name="getValue">
+            <soap:operation soapAction="http://xmlns.oracle.com/communications/inventory/webservice/getValue" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="InventoryFault">
+                <soap:fault name="InventoryFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="ValidationFault">
+                <soap:fault name="ValidationFault" use="literal" />
+            </wsdl:fault>
+        </wsdl:operation>
+
+    </wsdl:binding>
+
+    <!--  *************************************************************  -->
+    <!--  Web Service Port Binding Definition -->
+    <!--  *************************************************************  -->
+    <wsdl:service name="ReferenceUim">
+        <wsdl:port name="ReferenceUimHTTPPort" binding="invws:ReferenceUimHTTPSoapBinding">
+            <soap:address location="http://localhost:7001/ReferenceUim/ReferenceUimHTTP" />
+        </wsdl:port>
+        <wsdl:port name="ReferenceUimJMSPort" binding="invws:ReferenceUimJMSSoapBinding">
+            <soap:address location="jms://localhost:7001/ReferenceUim/ReferenceUimJMS?URI=InventoryCustomWSQueue" />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

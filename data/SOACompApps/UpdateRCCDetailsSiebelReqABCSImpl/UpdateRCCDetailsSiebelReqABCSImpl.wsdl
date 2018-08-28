@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="UpdateRCCDetailsSiebelReqABCSImpl"
+             targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry//UpdateRCCDetailsSiebelReqABCSImpl/V1"
+	     
+	     
+	     xmlns:rccabo="http://www.telia.org/Siebel/getRCCBalances"
+             xmlns:rccabcs="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry//UpdateRCCDetailsSiebelReqABCSImpl/V1"
+	     xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" 
+             xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" 
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" >
+	
+	
+	<documentation>
+		<svcdoc:Service>
+		               <svcdoc:Description>
+
+</svcdoc:Description>
+		               
+			<svcdoc:ServiceType>RequesterABCSImpl</svcdoc:ServiceType>
+			<svcdoc:Version>1</svcdoc:Version>
+			<svcdoc:ProductCode>Agile</svcdoc:ProductCode>
+		</svcdoc:Service>
+	</documentation>  
+	
+	 <import namespace="http://schemas.oracle.com/bpel/extension" 
+ location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+	 <types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema">
+	            <import namespace="http://www.telia.org/Siebel/getRCCBalances" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/UpdateRCCDetails.xsd"/>
+             
+		
+	  
+		</schema>
+	</types>
+	<message name="UpdateRCCDetailsReqMsg">
+		<part name="UpdateRCCDetailsInput" 
+element="rccabo:UpdateRCCDetailsRequest"/>
+	</message>
+	<message name="UpdateRCCDetailsRespMsg">
+		<part name="UpdateRCCDetailsOutput" 
+element="rccabo:UpdateRCCDetailsResponse"/>
+	</message>
+        <message name="UpdateRCCDetailsFaultMsg">
+		<part name="UpdateRCCDetailsFault" 
+element="rccabo:UpdateRCCDetailsFault"/>
+	</message>
+	<portType name="UpdateRCCDetailsSiebelReqABCSImpl">
+        <operation name="UpdateRCCDetails">
+                <documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to Update an RCCDetails
+                              object</svcdoc:Description>
+					<svcdoc:MEP>SyncReqResp</svcdoc:MEP>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="rccabcs:UpdateRCCDetailsReqMsg"/>
+				<output message="rccabcs:UpdateRCCDetailsRespMsg"/>
+                                <fault message="rccabcs:UpdateRCCDetailsFaultMsg" name="UpdateRCCDetailsFaultMsg"/>
+		</operation>
+	   
+	    </portType>
+	<plnk:partnerLinkType name="UpdateRCCDetailsSiebelReqABCSImpl">
+		<plnk:role name="UpdateRCCDetailsSiebelReqABCSImplProvider">
+			<plnk:portType name="rccabcs:UpdateRCCDetailsSiebelReqABCSImpl"/>
+		</plnk:role>
+	</plnk:partnerLinkType>
+</definitions>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<componentType xmlns="http://xmlns.oracle.com/sca/1.0" xmlns:ui="http://xmlns.oracle.com/soa/designer/">
+    <service ui:wsdlLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationConnectorServiceLibrary/BRM/V1/ProviderABCS/UpdateRCCDetailsBRMProvABCSImpl.wsdl" name="UpdateRCCDetailsBRMProvABCSImpl">
+        <interface.wsdl interface="http://xmlns.oracle.com/ABCSImpl/BRM/Industry//UpdateRCCDetailsBRMProvABCSImpl/V1#wsdl.interface(UpdateRCCDetailsBRMProvABCSImpl)"/>
+    </service>
+    <reference ui:wsdlLocation="oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/V1/wsdls/AIAAsyncErrorHandlingBPELProcess.wsdl" name="AIAAsyncErrorHandlingBPELProcess">
+        <interface.wsdl interface="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess#wsdl.interface(AIAAsyncErrorHandlingBPELProcess)" callbackInterface="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess#wsdl.interface(AIAAsyncErrorHandlingBPELProcessCallback)"/>
+    </reference>
+    <reference name="BRMBILLService_ptt"
+               ui:wsdlLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/wsdls/BRMBillServices.wsdl">
+        <interface.wsdl interface="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes#wsdl.interface(BRMBILLService_ptt)"/>
+    </reference>
+</componentType>

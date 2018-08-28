@@ -1,0 +1,223 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--Upgraded by DVM upgade utility 1.0-->
+<dvm name="ACCOUNTBALANCEADJUSTMENT_REASON" xmlns="http://xmlns.oracle.com/dvm">
+   <description>DVM description</description>
+   <columns>
+      <column name="COMMON"/>
+      <column name="SEBL_01"/>
+      <column name="BRM_01"/>
+   </columns>
+   <rows>
+      <row>
+         <cell>Billing Error</cell>
+         <cell>Billing Error</cell>
+         <cell>1:3000</cell>
+      </row>
+      <row>
+         <cell>Credit Card Now Working</cell>
+         <cell>Credit Card Now Working</cell>
+         <cell>2:3000</cell>
+      </row>
+      <row>
+         <cell>Credited account by mistake</cell>
+         <cell>Credited Account by Mistake</cell>
+         <cell>3:3000</cell>
+      </row>
+      <row>
+         <cell>Credited by mistake</cell>
+         <cell>Credited by Mistake</cell>
+         <cell>4:3000</cell>
+      </row>
+      <row>
+         <cell>Cust. Requested Reactivation</cell>
+         <cell>Cust. Requested Reactivation</cell>
+         <cell>5:3000</cell>
+      </row>
+      <row>
+         <cell>Customer unaware of charges</cell>
+         <cell>Customer Unaware of Charges</cell>
+         <cell>6:3000</cell>
+      </row>
+      <row>
+         <cell>Debited account by mistake</cell>
+         <cell>Debited Account by Mistake</cell>
+         <cell>7:3000</cell>
+      </row>
+      <row>
+         <cell>Other</cell>
+         <cell>Other</cell>
+         <cell>8:3000</cell>
+      </row>
+      <row>
+         <cell>Other Problem Resolved</cell>
+         <cell>Other Problem Resolved</cell>
+         <cell>9:3000</cell>
+      </row>
+      <row>
+         <cell>Overdue Charges Settled</cell>
+         <cell>Overdue Charges Settled</cell>
+         <cell>10:3000</cell>
+      </row>
+      <row>
+         <cell>Service Charges</cell>
+         <cell>Service Charges</cell>
+         <cell>11:3000</cell>
+      </row>
+      <row>
+         <cell>Special Credit</cell>
+         <cell>Special Credit</cell>
+         <cell>12:3000</cell>
+      </row>
+      <row>
+         <cell>Sponsoree Credit</cell>
+         <cell>Sponsoree Credit</cell>
+         <cell>13:3000</cell>
+      </row>
+      <row>
+         <cell>Technical and support charges</cell>
+         <cell>Technical and Support Charges</cell>
+         <cell>14:3000</cell>
+      </row>
+      <row>
+         <cell>Unsatisfied Service</cell>
+         <cell>Unsatisfied Service</cell>
+         <cell>15:3000</cell>
+      </row>
+      <row>
+         <cell>Write-off</cell>
+         <cell>Write-Off</cell>
+         <cell>16:3000</cell>
+      </row>
+      <row>
+         <cell>Sponsored Topup. Sponsoree Debit</cell>
+         <cell>Sponsored Topup. Sponsoree Debit</cell>
+         <cell/>
+      </row>
+      <row>
+         <cell>Partner Code</cell>
+         <cell>Partner Code</cell>
+         <cell/>
+      </row>
+	  <!-- Start R3.0 changes new Reason codes added by Santosh M E -->
+	 
+    <row>
+         <cell>General terms-Interuption</cell>
+         <cell>General terms-Interuption</cell>
+            <cell>1:300</cell>
+     </row>
+	 <row>
+         <cell>General terms-Product defects</cell>
+         <cell>General terms-Product defects</cell>
+            <cell>2:300</cell>
+     </row>
+	 <row>
+         <cell>General terms-Delayed delivery</cell>
+         <cell>General terms-Delayed delivery</cell>
+            <cell>3:300</cell>
+     </row>
+	 <row>
+         <cell>General terms-Incorrect delive</cell>
+         <cell>General terms-Incorrect delive</cell>
+            <cell>4:300</cell>
+     </row>
+	 <row>
+         <cell>Goodwill-Dissatisfied treatmnt</cell>
+         <cell>Goodwill-Dissatisfied treatmnt</cell>
+            <cell>5:300</cell>
+     </row>
+	 <row>
+         <cell>Goodwill-Technician assignment</cell>
+         <cell>Goodwill-Technician assignment</cell>
+            <cell>6:300</cell>
+     </row>
+	 <row>
+         <cell>Goodwill-Customer experience</cell>
+         <cell>Goodwill-Customer experience</cell>
+            <cell>7:300</cell>
+     </row>
+	 <row>
+         <cell>Goodwill-Interuption not terms</cell>
+         <cell>Goodwill-Interuption not terms</cell>
+            <cell>8:300</cell>
+     </row>
+	 <row>
+         <cell>Invoice-Wrong amount</cell>
+         <cell>Invoice-Wrong amount</cell>
+            <cell>9:300</cell>
+     </row>
+	 <row>
+         <cell>Invoice-Wrong service</cell>
+         <cell>Invoice-Wrong service</cell>
+            <cell>10:300</cell>
+     </row>
+	 <row>
+         <cell>Invoice-Cancellation</cell>
+         <cell>Invoice-Cancellation</cell>
+            <cell>11:300</cell>
+     </row>
+	 <row>
+         <cell>Invoice-Wrong address</cell>
+         <cell>Invoice-Wrong address</cell>
+            <cell>12:300</cell>
+     </row>
+	 <row>
+         <cell>Proactive-Interuption</cell>
+         <cell>Proactive-Interuption</cell>
+            <cell>13:300</cell>
+     </row>
+	 <row>
+         <cell>Proactive-Product defects</cell>
+         <cell>Proactive-Product defects</cell>
+            <cell>14:300</cell>
+     </row>
+<!-- End R3.0 changes new Reason codes added by Santosh M E -->
+<!-- START R6.0 changes new Reason codes added by Arup -->
+	 <row>
+         <cell>Address Change Only</cell>
+         <cell>Address Change Only</cell>
+            <cell>1:43</cell>
+     </row>
+	 <row>
+         <cell>Adjustments</cell>
+         <cell>Adjustments</cell>
+            <cell>2:43</cell>
+     </row>
+	 <row>
+         <cell>Price correction</cell>
+         <cell>Price correction</cell>
+            <cell>3:43</cell>
+     </row>
+	 <row>
+         <cell>Others</cell>
+         <cell>Others</cell>
+            <cell>0:43</cell>
+     </row>
+<!-- End R6.0 changes new Reason codes added by Arup -->
+<!-- START R17.3 changes new Reason codes BCT-281 added by Manish -->
+	 <row>
+         <cell>Reduction - right to cancel</cell>
+         <cell>Reduction - right to cancel</cell>
+         <cell>15:300</cell>
+     </row>
+<!-- End R17.3 changes new Reason codes BCT-281 added by Manish -->
+
+<!-- START R18.1 Mobdev Sprint 30 BCT2-709 -->
+	 <row>
+         <cell>Kompensation mobil rörliga avg</cell>
+         <cell>Kompensation mobil rörliga avg</cell>
+         <cell>1:100</cell>
+     </row>
+	  <row>
+         <cell>Kompensation MBB rörliga avg</cell>
+         <cell>Kompensation MBB rörliga avg</cell>
+         <cell>2:100</cell>
+     </row>
+	  <row>
+         <cell>Kompensation BBT rörliga avg</cell>
+         <cell>Kompensation BBT rörliga avg</cell>
+         <cell>3:100</cell>
+     </row>
+<!-- End R18.1 Mobdev Sprint 30 BCT-709 -->
+
+   </rows>
+</dvm>

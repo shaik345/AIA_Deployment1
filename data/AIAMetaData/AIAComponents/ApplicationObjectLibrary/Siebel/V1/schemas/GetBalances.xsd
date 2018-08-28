@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.telia.org/Siebel/getRCCBalances"
+            targetNamespace="http://www.telia.org/Siebel/getRCCBalances"
+            elementFormDefault="qualified">
+  <xsd:element name="GetBalanceRequest">
+    <xsd:annotation>
+      <xsd:documentation>
+        A sample element
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="TSServiceAcntId" type="xsd:string"/>
+        <xsd:element name="TSBalanceGroupPOID" type="xsd:string"/>
+        <xsd:element name="TSAssetIntegrationID" type="xsd:string"/>
+        <xsd:element name="TsServiceId" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetBalanceResponse" >
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="TsBalanceGroupPOID" type="xsd:string"/>
+        <xsd:element name="TsServiceAcntId" type="xsd:string"/>
+        <xsd:element name="TsBillProfileid" type="xsd:string"/>
+        <xsd:element name="Balances" maxOccurs="unbounded">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="TsResourceName" type="xsd:string"/>
+              <xsd:element name="ResourceID" type="xsd:string"/>
+             
+              <xsd:element name="CreditFloor" type="xsd:string"/>
+              <xsd:element name="CreditLimit" type="xsd:string"/>
+              <xsd:element name="CreditThresholds" type="xsd:string"/>
+               <xsd:element name="CurrentBalance" type="xsd:string"/>
+              <xsd:element name="FDThreshold" maxOccurs="unbounded">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="FixedThresholds" type="xsd:string"/>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="SubBalance" maxOccurs="unbounded">
+                <xsd:complexType>
+                  <xsd:sequence>
+                   <xsd:element name="TsCurrentBalance" type="xsd:string"/>
+                    <xsd:element name="TsValidTo" type="xsd:string"/>
+                    <xsd:element name="TsValidFrom" type="xsd:string"/>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetBalancesFault">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Response">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="responseDate" type="xsd:dateTime"/>
+               <xsd:element name="Status">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="errorCode" type="xsd:string"/>
+              <xsd:element name="errorMessage" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+       
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

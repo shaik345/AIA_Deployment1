@@ -1,0 +1,36 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--Upgraded by DVM upgade utility 1.0--><dvm name="TROUBLETICKET_AREA" xmlns="http://xmlns.oracle.com/dvm">
+<description>DVM to map the Area of Trouble Ticket</description>
+   <columns>
+      <column name="SEBL_01"/>
+      <column name="COMMON"/>
+   </columns>
+<rows>
+      <row>
+         <cell>Oracle AIA</cell>
+         <cell>AIA</cell>
+      </row>
+	<row>
+		<cell>BRM_01</cell>
+		<cell>BRM_01</cell>
+	</row>
+<row>
+         <cell>Oracle OSM - OLM</cell>
+         <cell>OSMCFS</cell>
+      </row>
+<row>
+         <cell>Oracle OSM - Provisioning</cell>
+         <cell>OSMPROV</cell>
+      </row>
+<row>
+         <cell>Oracle UIM</cell>
+         <cell>UIM</cell>
+      </row>
+<!--Start TVTeam-571 Fallout Management By Nishant 24 April 17 -->
+	<row>
+		<cell>IGLOO_01</cell>
+		<cell>IGLOO_01</cell>
+	</row>
+<!--Start TVTeam-571 Fallout Management By Nishant 24 April 17 -->
+</rows>
+</dvm>

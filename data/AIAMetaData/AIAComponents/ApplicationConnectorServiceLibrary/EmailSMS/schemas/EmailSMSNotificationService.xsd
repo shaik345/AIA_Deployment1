@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.example.org" targetNamespace="http://www.example.org" elementFormDefault="qualified">
+<xsd:element name="Notification">
+<xsd:annotation>
+<xsd:documentation>
+        A sample element
+      </xsd:documentation>
+</xsd:annotation>
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="mode">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:enumeration value="Email"/>
+<xsd:enumeration value="sms"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="status">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:enumeration value="success"/>
+<xsd:enumeration value="failure"/>
+<xsd:enumeration value="partial_success"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element name="text" type="xsd:string"/>
+<xsd:element name="filename" type="xsd:string"/>
+<xsd:element name="email_subject" type="xsd:string"/>
+<xsd:element name="orderid" type="xsd:string"/>
+<xsd:element name="MessageListType" minOccurs="1" maxOccurs="unbounded">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="Seq_Id" type="xsd:int"/>
+<xsd:element name="IMSI" type="xsd:string"/>
+<xsd:element name="ErrorCode" type="xsd:int"/>
+<xsd:element name="ErrorMessage" type="xsd:string"/>
+<xsd:element name="ErrorType" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:schema>

@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faultPolicy version="2.0.1" id="SyncItemListPIMReqABCSImplProcessFaultPolicy" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.oracle.com/bpel/faultpolicy" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<Conditions>
+<faultName xmlns:plmfault="http://xmlns.oracle.com/EnterpriseFlows/Core/SyncItemListPIMReqABCSImplProcess/V1" name="plmfault:fault">
+<condition>
+<action ref="ora-rethrow-fault"/>
+</condition>
+</faultName>
+<faultName>
+<condition>
+<action ref="aia-ora-java"/>
+</condition>
+</faultName>
+</Conditions>
+<Actions>
+<Action id="aia-ora-retry">
+<retry>
+<retryCount>1</retryCount>
+<retryInterval>2</retryInterval>
+<exponentialBackoff/>
+<retryFailureAction ref="aia-ora-java"/>
+<retrySuccessAction ref="aia-ora-java"/>
+</retry>
+</Action>
+<Action id="ora-replay-scope">
+<replayScope/>
+</Action>
+<Action id="ora-rethrow-fault">
+<rethrowFault/>
+</Action>
+<Action id="ora-human-intervention">
+<humanIntervention/>
+</Action>
+<Action id="ora-terminate">
+<abort/>
+</Action>
+<Action id="aia-ora-java">
+<javaAction className="oracle.apps.aia.core.eh.CompositeJavaAction" defaultAction="ora-rethrow-fault">
+<returnValue value="REPLAY" ref="ora-terminate"/>
+<returnValue value="RETRHOW" ref="ora-rethrow-fault"/>
+<returnValue value="ABORT" ref="ora-terminate"/>
+<returnValue value="RETRY" ref="aia-ora-retry"/>
+<returnValue value="MANUAL" ref="ora-human-intervention"/>
+</javaAction>
+</Action>
+</Actions>
+</faultPolicy>

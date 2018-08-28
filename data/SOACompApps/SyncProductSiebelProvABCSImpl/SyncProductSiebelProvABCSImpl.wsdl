@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="SyncProductSiebelProvABCSImpl" targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncProductSiebelProvABCSImpl/V1" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:swiprodprom="http://www.siebel.com/xml/SWIPromotionIntegrationIO" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:coreitemebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Item/V2" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ItemComposition/V1" xmlns:client="http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncProductSiebelProvABCSImpl/V1" xmlns:bom="http://oracle.apps.ego.item.service/" xmlns:swiprod="http://www.siebel.com/xml/SWIProductIntegrationIO">
+	<documentation>
+		<svcdoc:Service>
+			<svcdoc:Description>Siebel Provider ABCS Implementation to process Simple
+                       Product</svcdoc:Description>
+			<svcdoc:ServiceType>ProviderABCSImplementation</svcdoc:ServiceType>
+			<svcdoc:DisplayName>SyncProductSiebelProvABCSImpl</svcdoc:DisplayName>
+			<svcdoc:Version>1.0</svcdoc:Version>
+			<svcdoc:EBOName>ItemEBO</svcdoc:EBOName>
+			<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			<svcdoc:ProductFamily>Siebel</svcdoc:ProductFamily>
+			<svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+			<svcdoc:ProductCode>SIA</svcdoc:ProductCode>
+			<svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+		</svcdoc:Service>
+	</documentation>
+	<import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+	<types>
+		<xsd:schema xmlns:swiprod="http://schemas.oracle.com/service/bpel/common">
+			<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd"/>
+			<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Item/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/EBO/Item/V2/ItemEBM.xsd"/>
+			<xsd:import namespace="http://www.siebel.com/xml/SWIProductIntegrationIO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/SWIProductIntegrationIO.xsd"/>
+			<xsd:import namespace="http://www.siebel.com/xml/SWIPromotionIntegrationIO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/SWIPromotionIntegrationIO.xsd"/>
+			<xsd:import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+		</xsd:schema>
+	</types>
+	<message name="SyncItemListReqMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>Siebel Item Request EBM</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="SyncItemListEBM" element="coreitemebo:SyncItemListEBM"/>
+	</message>
+	<message name="FaultMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>Siebel Fault</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="AIAFault" element="corecom:Fault"/>
+	</message>
+	<message name="SiebelPromotionListABM">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>Siebel Promotion  Request ABM</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="ListOfSwipromotionIntegrationio" element="swiprodprom:ListOfSwipromotionIntegrationio"/>
+	</message>
+	<message name="SiebelListABM">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>Siebel Item Request ABM</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="ListOfProductImport" element="swiprod:ListOfProductImport"/>
+	</message>
+	<message name="SyncItemListResMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>Siebel Item Response EBM</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="SyncItemListResponseEBM" element="coreitemebo:SyncItemListResponseEBM"/>
+	</message>
+	<portType name="SyncProductSiebelProvABCSImplService">
+		<documentation>
+			<svcdoc:Interface>
+				<svcdoc:Description>This interface contains the operations to Sync the Item
+                        object</svcdoc:Description>
+				<svcdoc:DisplayName>SyncProductSiebelProvABCSImpl</svcdoc:DisplayName>
+				<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			</svcdoc:Interface>
+		</documentation>
+		<operation name="SyncItem">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is for Syncing Item into Siebel</svcdoc:Description>
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+					<svcdoc:DisplayName>SyncItem</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="client:SyncItemListReqMsg"/>
+		</operation>
+	</portType>
+	<plnk:partnerLinkType name="SyncProductSiebelProvABCSImpl">
+		<plnk:role name="SyncProductSiebelProvABCSImplProvider">
+			<plnk:portType name="client:SyncProductSiebelProvABCSImplService"/>
+		</plnk:role>
+	</plnk:partnerLinkType>
+</definitions>

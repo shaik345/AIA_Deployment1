@@ -1,0 +1,69 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="ProcessManufacturerFilesUIMProviderBPELProcess"
+     targetNamespace="http://xmlns.oracle.com/scm/ProcessManufacturerFilesUIMProvider/ProcessManufacturerFilesUIMProviderBPELProcess"
+     xmlns:ns2="http://schemas.oracle.com/service/bpel/common"
+     xmlns:ns1="http://schemas.oracle.com/bpel/extension"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:cor="http://xmlns.oracle.com/scm/ProcessManufacturerFilesUIMProvider/ProcessManufacturerFilesUIMProviderBPELProcess/correlationset"
+     xmlns:client="http://xmlns.oracle.com/scm/ProcessManufacturerFilesUIMProvider/ProcessManufacturerFilesUIMProviderBPELProcess"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+     xmlns:excel="http://www.teliasonera.com/xml/excelrecord"
+    >
+    <plnk:partnerLinkType name="ProcessManufacturerFilesUIMProviderBPELProcess">
+        <plnk:role name="ProcessManufacturerFilesUIMProviderBPELProcessProvider">
+            <plnk:portType name="client:ProcessManufacturerFilesUIMProviderBPELProcess"/>
+        </plnk:role>
+        <plnk:role name="ProcessManufacturerFilesUIMProviderBPELProcessRequester">
+            <plnk:portType name="client:ProcessManufacturerFilesUIMProviderBPELProcessCallback"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+	<!--changes done 11july-->
+    <bpws:propertyAlias propertyName="cor:NameCorr" messageType="client:ProcessManufacturerFilesUIMProviderBPELProcessRequestMessage"
+         part="payload" query="/client:process/client:filename"/>
+    <bpws:propertyAlias propertyName="cor:NameCorr" messageType="client:SIMCardLoadingResponseStatusMessage"
+         part="input" query="/client:loadingResponse/client:filename"/>
+    <wsdl:import namespace="http://xmlns.oracle.com/scm/ProcessManufacturerFilesUIMProvider/ProcessManufacturerFilesUIMProviderBPELProcess/correlationset"
+         location="ProcessManufacturerFilesUIMProviderBPELProcess_Properties.wsdl"/>
+    <wsdl:import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/scm/ProcessManufacturerFilesUIMProvider/ProcessManufacturerFilesUIMProviderBPELProcess"
+                 schemaLocation="../schemas/ProcessManufacturerFilesUIMProviderBPELProcess.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.teliasonera.com/xml/excelrecord" schemaLocation="../schemas/ExcelRecordXMLFormat.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="ProcessManufacturerFilesUIMProviderBPELProcessRequestMessage">
+        <wsdl:part name="payload" element="client:process"/>
+    </wsdl:message>
+    <wsdl:message name="ProcessManufacturerFilesUIMProviderBPELProcessResponseMessage">
+        <wsdl:part name="payload" element="client:processResponse"/>
+    </wsdl:message>
+    <wsdl:message name="SIMCardLoadingResponseStatusMessage">
+        <wsdl:part name="input" element="client:loadingResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ExcelRecordXMLFormatMessage">
+        <wsdl:part name="input" element="excel:ImportEntities"/>
+    </wsdl:message>
+    <wsdl:portType name="ProcessManufacturerFilesUIMProviderBPELProcess">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:ProcessManufacturerFilesUIMProviderBPELProcessRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:portType name="ProcessManufacturerFilesUIMProviderBPELProcessCallback">
+        <wsdl:operation name="processResponse">
+            <wsdl:input message="client:ProcessManufacturerFilesUIMProviderBPELProcessResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:portType name="SIMCardLoadingResponseStatusReceive">
+        <wsdl:operation name="loadingResponse">
+            <wsdl:input message="client:SIMCardLoadingResponseStatusMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

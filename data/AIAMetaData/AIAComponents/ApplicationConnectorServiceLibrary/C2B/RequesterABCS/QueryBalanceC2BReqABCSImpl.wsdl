@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions name="QueryBalanceC2BReqABCSImpl" targetNamespace="http://xmlns.oracle.com/ABCSImpl/C2B/Industry//QueryBalanceC2BReqABCSImpl/V1" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:qbabo="http://www.telia.org/c2b/queryBalance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:qbabcs="http://xmlns.oracle.com/ABCSImpl/C2B/Industry//QueryBalanceC2BReqABCSImpl/V1">
+<documentation>
+<svcdoc:Service>
+<svcdoc:Description/>
+<svcdoc:ServiceType>RequesterABCSImpl</svcdoc:ServiceType>
+<svcdoc:Version>1</svcdoc:Version>
+<svcdoc:ProductCode>Agile</svcdoc:ProductCode>
+</svcdoc:Service>
+</documentation>
+<plnk:partnerLinkType name="QueryBalanceC2BReqABCSImpl">
+<plnk:role name="QueryBalanceC2BReqABCSImplProvider">
+<plnk:portType name="qbabcs:QueryBalanceC2BReqABCSImpl"/>
+</plnk:role>
+</plnk:partnerLinkType>
+<import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+<types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:qbabo="http://www.telia.org/c2b/queryBalance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:qbabcs="http://xmlns.oracle.com/ABCSImpl/C2B/Industry//QueryBalanceC2BReqABCSImpl/V1">
+<import namespace="http://www.telia.org/c2b/queryBalance" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/C2B/QueryBalances.xsd"/>
+</schema>
+</types>
+<message name="QueryBalanceReqMsg">
+<part name="QueryBalance" element="qbabo:QueryBalanceRequest"/>
+</message>
+<message name="QueryBalanceRespMsg">
+<part name="QueryBalanceResponse" element="qbabo:QueryBalanceResponse"/>
+</message>
+<message name="QueryBalanceFaultMsg">
+<part name="QueryBalanceFault" element="qbabo:QueryBalanceFault"/>
+</message>
+<portType name="QueryBalanceC2BReqABCSImpl">
+<operation name="QueryBalance">
+<documentation>
+<svcdoc:Operation>
+<svcdoc:Description>This operation is used to Query an Balance
+                              object</svcdoc:Description>
+<svcdoc:MEP>SyncReqResp</svcdoc:MEP>
+</svcdoc:Operation>
+</documentation>
+<input message="qbabcs:QueryBalanceReqMsg"/>
+<output message="qbabcs:QueryBalanceRespMsg"/>
+<fault message="qbabcs:QueryBalanceFaultMsg" name="QueryBalanceFault"/>
+</operation>
+</portType>
+</definitions>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.siebel.com/xml/CMU%20Request%20Adjustment%20IO" xmlns:xsdLocal="http://www.siebel.com/xml/CMU%20Request%20Adjustment%20IO" attributeFormDefault="unqualified" elementFormDefault="qualified">
+	<xsd:annotation>
+		<xsd:documentation>Copyright (C) 2001-2004 Siebel Systems, Inc. All rights reserved. Siebel XSD Generation</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="ListOfCmuRequestAdjustmentIo" type="xsdLocal:ListOfCmuRequestAdjustmentIo" />
+	<xsd:complexType name="ListOfCmuRequestAdjustmentIoTopElmt">
+		<xsd:sequence>
+			<xsd:element name="ListOfCmuRequestAdjustmentIo" type="xsdLocal:ListOfCmuRequestAdjustmentIo" minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfCmuRequestAdjustmentIo">
+		<xsd:sequence>
+			<xsd:element name="FsInvoiceAdjustment" type="xsdLocal:FsInvoiceAdjustment" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+		<xsd:attribute name="Language" type="xsd:string" />
+		<xsd:attribute name="Locale" type="xsd:string" />
+		<xsd:attribute name="MessageId" type="xsd:string" />
+		<xsd:attribute name="EnterpriseServerName" type="xsd:string" />
+	</xsd:complexType>
+	<xsd:complexType name="FsInvoiceAdjustment">
+		<xsd:sequence>
+			<xsd:element name="AccountId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="AccountName" type="xsdLocal:string100" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="AdjustmentEffectiveDate" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="AdjustmentID" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="AdjustmentLevelType" type="xsdLocal:string30" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ApprovedAmt" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ApprovedCurrency" type="xsdLocal:string20" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ApprovedDate" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ApprovedExchangeDate" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ApprovedPercentage" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="BillingProfileId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="CustomerDecision" type="xsdLocal:string30" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="CustomerDecisionDate" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="DecisionDescription" type="xsdLocal:string250" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="Description" type="xsdLocal:string250" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="IntegrationId" type="xsdLocal:string512" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="InvoiceID" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="InvoiceLineItemID" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="InvoiceNumber" type="xsdLocal:string50" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="ReasonForRequest" type="xsdLocal:string30" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="RequestAmt" type="xsd:string" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="RequestCurrency" type="xsdLocal:string20" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="RequestDate" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="RequestExchangeDate" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="RequestPercentage" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="Status" type="xsdLocal:string30" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="TaxType" type="xsdLocal:string30" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="TaxValue" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="Type" type="xsdLocal:string30" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="AdjustmentClass" type="xsdLocal:string30" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ServiceAccountId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<!-- Start BCT-227 Vat functionality Manish R17.4 -->
+			<xsd:element name="TSAccountType" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<!-- End BCT-227 Vat functionality Manish R17.4 -->
+			<xsd:element name="ListOfSiaInvoiceAdjustmentExternalItems" type="xsdLocal:ListOfSiaInvoiceAdjustmentExternalItems" minOccurs="0" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfSiaInvoiceAdjustmentExternalItems">
+		<xsd:sequence>
+			<xsd:element name="SiaInvoiceAdjustmentExternalItems" type="xsdLocal:SiaInvoiceAdjustmentExternalItems" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SiaInvoiceAdjustmentExternalItems">
+		<xsd:sequence>
+			<xsd:element name="AdjustmentEffectiveDate" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="AdjustmentType" type="xsdLocal:string30" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ApprovedAmt" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ApprovedCurrencyCode" type="xsdLocal:string20" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ApprovedDescription" type="xsdLocal:string250" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ApprovedExchangeDate" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ApprovedPercentage" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ApprovedValue" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="Comments" type="xsdLocal:string30" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="Description" type="xsdLocal:string250" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="EventOriginalAmount" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="IntegrationId" type="xsdLocal:string512" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="InvoiceAdjID" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="InvoiceID" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="InvoiceItemDetailId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="InvoiceItemID" type="xsd:string" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="ItemAdjustmentID" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="NonCurrency" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="OriginalAmount" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="OriginalValue" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ReasonForRequest" type="xsdLocal:string30" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="RequestAmt" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="RequestCurrencyCode" type="xsdLocal:string20" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="RequestDate" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="RequestExchangeDate" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="RequestPercentage" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="RequestValue" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="ResourceType" type="xsdLocal:string30" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="Status" type="xsdLocal:string30" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="TaxType" type="xsdLocal:string30" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="TaxValue" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<!-- Start BCT-227 Vat functionality Manish R17.4 -->
+			<xsd:element name="TSVATPerc" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<!-- End BCT-227 Vat functionality Manish R17.4 -->
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="string250">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="250" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string50">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="50" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string30">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="30" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string100">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="100" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string20">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="20" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string512">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="512" />
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

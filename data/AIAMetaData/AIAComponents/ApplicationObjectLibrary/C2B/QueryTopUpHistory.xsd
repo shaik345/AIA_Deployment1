@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.telia.org/c2b/queryTopUpHistory" xmlns="http://www.telia.org/c2b/queryTopUpHistory" elementFormDefault="qualified">
+	<xs:element name="QueryTopUpHistoryRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="RequestDetails">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="requesterId" type="xs:string"/>
+							<xs:element name="requestDate" type="xs:dateTime"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="CustomerParty">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="serviceAccountId" type="xs:string"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="InstalledProduct">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="assetIntegrationId" type="xs:string"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="HistoryDepth">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="from" type="xs:dateTime"/>
+							<xs:element name="to" type="xs:dateTime"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="QueryTopUpHistoryResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ResponseDetails">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="responseDate" type="xs:dateTime"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="TopUpDetails">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="nbOfTopUp" type="xs:string"/>
+							<xs:element name="TopUpEventDetails" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="productName" type="xs:string"/>
+										<xs:element name="limit" type="xs:string"/>
+										<xs:element name="price" type="xs:string"/>
+										<xs:element name="taxAmount" type="xs:string"/>
+										<xs:element name="purchasedDate" type="xs:dateTime"/>
+										<xs:element name="prepaidFlag" type="xs:string"/>
+										<xs:element name="purchasedThrough" type="xs:string" minOccurs="0"/>
+										<!-- Start MOBREL 18.4 - Sprint 44:Mobdev-4318 and 4319 RAG-250-->
+										<xs:element name="TsServiceId" type="xs:string"/>
+										<!-- End MOBREL 18.4 - Sprint 44:Mobdev-4318 and 4319 RAG-250-->
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="QueryTopUpHistoryFault">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Response">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="responseDate" type="xs:dateTime"/>
+							<xs:element name="Status">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="errorCode" type="xs:string"/>
+										<xs:element name="errorMessage" type="xs:string"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

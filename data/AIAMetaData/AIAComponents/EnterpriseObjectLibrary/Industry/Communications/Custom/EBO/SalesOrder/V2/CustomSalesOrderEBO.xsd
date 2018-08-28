@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ** Oracle Corporation  ** ** AIA Enterprise Object Library ** ** Version: 2.03 ** ** Date: Jan 31, 2011 **    Copyright (c) 2007, 2014, Oracle and/or its affiliates. All rights reserved. License information for this file is provided in the file  "Oracle AIA EBO License.txt" that is provided with this package.   XML Schema  Name: \EnterpriseObjectsLibrary\Industry\Communications\EBO\SalesOrder\V2\SalesOrderEBO.xsd    -->
+<!-- ========================================================================== -->
+<!-- =====      Oracle EBO Custom SalesOrder EBO Schema Module     ===== -->
+<!-- ====================================================================== -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://xmlns.oracle.com/EnterpriseObjects/Core/Custom/EBO/SalesOrder/V2" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:corecomcust="http://xmlns.oracle.com/EnterpriseObjects/Core/Custom/Common/V2" targetNamespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Custom/EBO/SalesOrder/V2" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.03.00">
+	<!-- ====================================================================== -->
+	<!-- ==============  Imports and Includes   =============================== -->
+	<!-- ====================================================================== -->
+	<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="../../../../Common/V2/CommonComponents.xsd"/>
+	<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="../../../../Common/V2/CodeLists.xsd"/>
+	<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="../../../../Common/V2/DataTypes.xsd"/>
+	<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="../../../../Common/V2/Meta.xsd"/>
+	<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Custom/Common/V2" schemaLocation="../../../Common/V2/CustomCommonComponents.xsd"/>
+	<!-- ====================================================================== -->
+	<!-- ==============  SalesOrder Custom Components ================ -->
+	<!-- ====================================================================== -->
+	<xsd:complexType name="CustomSalesOrderEBOType">
+		<xsd:sequence>
+			<!-- Start R2.0 VAS Changes by Santosh M E Jan 7th 2016-->
+			<xsd:element name="OrderSubType" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<!-- End R2.0 VAS Changes by Santosh M E Jan 7th 2016-->
+	</xsd:complexType>
+	<xsd:complexType name="CustomMembershipAssetIdType"/>
+	<xsd:complexType name="CustomSalesOrderAllowanceType"/>
+	<xsd:complexType name="CustomSalesOrderAttachmentType"/>
+	<xsd:complexType name="CustomSalesOrderBillToPartyType"/>
+	<xsd:complexType name="CustomSalesOrderCarrierPartyType"/>
+	<xsd:complexType name="CustomSalesOrderChargeType"/>
+	<xsd:complexType name="CustomSalesOrderCustomerPartyType"/>
+	<xsd:complexType name="CustomSalesOrderItemInstanceType"/>
+	<xsd:complexType name="CustomSalesOrderLegalEntityType"/>
+	<!-- custom fields for PointID START by Arup on 19082015 -->
+	<xsd:complexType name="CustomSalesOrderLineType">
+		<xsd:sequence>
+			<!--START  XDSL-010&018 for 18.1 changes by Surendra 30/08/2017 -->
+			<xsd:element name="TSVDSLBlockFlg" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TSSDStream" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TSPSTNNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TSHDStream" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TSHDBlockFlg" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TSFBNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TSActiveCertificates" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--End XDSL-010,018 for 18.1 changes by Surendra 30/08/2017 -->
+			<!--START XDSL525 for 18.1 changes by Surendra 12/10/2017 -->
+			<xsd:element name="TSOldPSTNNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--End XDSL525 for 18.1 changes by Surendra 12/10/2017-->
+			<!--Start MDU-211 RAG-186 Changes to add New Field Integration 18.2. -Ashwath-->
+			<xsd:element name="TSMDUDeliveryContractNum" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--End MDU-211 RAG-186 Changes to add New Field Integration 18.2. -Ashwath-->
+			<!--Start MDU-211 RAG-186 Changes to add New Field Integration 18.2. -Ashwath-->
+			<xsd:element name="TSAgreementNum" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--End MDU-211 RAG-186 Changes to add New Field Integration 18.2. -Ashwath-->
+			<xsd:element name="TSServiceAccountPointId" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+			<!-- start R1.5 vas-Activation key  Ari and Surendra -->
+			<!-- RAG 94 Start-->
+			<xsd:element name="TSDelayedDueDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!-- RAG 94 End-->
+			<!-- RAG 167 Start-->
+			<xsd:element name="TSDelayedActivation" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!-- RAG 167 End-->
+			<!--Defect 5480 start-->
+			<xsd:element name="TsUnitSalePrice" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--Defect 5480 end-->
+			<!-- start: MOBREL18.1 Sprint 30 RAG 190 changes-->
+			<xsd:element name="TSAssetRelationshipId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!-- End: MOBREL18.1 Sprint 30 RAG 190 changes-->
+			<xsd:element name="TSVASActivationKey" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TSKeyExpiryDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TSVASRegistrationStatus" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TSVASUniqueId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TSVASPreActivation" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!-- end R1.5 vas-Activation key Ari and Surendra-->
+			<!-- Start R1,5 Transfer Ownership Changes by Sanotsh M E on 2nd Nov 2015 -->
+			<!--xsd:element name="PreviousOwnerAccountId" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/-->
+			<!-- End R1,5 Transfer Ownership Changes by Sanotsh M E on 2nd Nov 2015 -->
+			<!-- Start B2B GAP 34 Adding Delivery Method for R4.0 -->
+			<xsd:element name="TSShippingMethod" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!-- End B2B GAP 34 Adding Delivery Method for R4.0 -->
+			<!--Start CareOf gap 52B BCT 44 Ari R6.0 -->
+			<xsd:element name="TSCareOf" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+			<!--End CareOf gap 52B R6.0 -->
+			<!--Start CareofShipping Added 13 May 2016 Nishant for gap 52A R8.0 -->
+			<xsd:element name="TSAttnInfo" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--End CareofShipping Added 13 May 2016 Nishant for gap 52A R8.0 -->
+			<!-- Start DI-544 for R8.0 by Arup on 07/07/2016-->
+			<xsd:element name="TSParcelNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TSCourierVendor" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!-- END DI-544 for R8.0 by Arup on 07/07/2016-->
+			<!-- Start Delivery reason code update during to Siebel – R13 by Surendra on 23/11/2016-->
+			<xsd:element name="TSReasonCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!-- End Delivery reason code update during to Siebel – R13 by Surendra on 23/11/2016-->
+			<!--Start changes for DI-719 &722 Ari 2/8/2016 for  R11.0 -->
+			<xsd:element name="TSServiceAccountPointIdStatus" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--End changes for DI-719 &722 Ari 2/8/2016 for  R11.0 -->
+			<!--Start TSPaymentMethod for R15.0 DI-59 Ari 27/12/2016 -->
+			<xsd:element name="TSPaymentMethod" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--End TSPaymentMethod for R15.0 DI-59 Ari 27/12/2016 -->
+			<!--Start VoIPDeviceType for R17.0 VOIPTEAM-215 Ari 7/2/2016 -->
+			<xsd:element name="TSVoIPDeviceType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--End VoIPDeviceType for R17.0 VOIPTEAM-215 Ari 7/2/2016 -->
+			<!--Start changes for VASPAP-319 Manish 24/01/2017 for  R15.0 -->
+			<xsd:element name="TSNote" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--End changes for VASPAP-319 Manish 24/01/2017 for  R15.0 -->
+			<!--Start changes Sprint 26 for KO SDU-264 R17.4 by Nishant Ashish 27/06/2017-->
+			<xsd:element name="TSContactFirstName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TSContactLastName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TSContactEmail" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TSContactWorkPhone" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TSContactMobPhone" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--End changes Sprint 26 for KO SDU-264 R17.4 By Nishant Ashish 27/06/2017 -->
+			<!--Start changes TVTeam-608 R17.4 by Nishant Ashish 28/06/2017-->
+			<xsd:element name="TSTVAccountId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--End changes TVTeam-608 R17.4 by Nishant Ashish 28/06/2017 -->
+			<!--Start changes DI-1736 R17.4 by Ashwath Prabhu 12/07/2017-->
+			<xsd:element type="xsd:string" name="TSReasonCode" maxOccurs="1" minOccurs="0"/>
+			<!--End changes DI-1736 R17.4 by Ashwath Prabhu 12/07/2017-->
+			<!--Start changes DI-1667 R17.4 by Ashwath Prabhu 12/07/2017-->
+			<xsd:element type="xsd:string" name="TSProductShipFlag" maxOccurs="1" minOccurs="0"/>
+			<!--End changes DI-1667 R17.4 by Ashwath Prabhu 12/07/2017-->
+			<!--Start changes DI-2183 R17.4 by Ashwath Prabhu 24/07/2017-->
+			<xsd:element name="TSOrderSubType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--End changes DI-2183 R17.4 by Ashwath Prabhu 24/07/2017-->
+			<!-- Start MDU-227 RAG-187 Changes in AIA for 18.1 by Ashwath  27/10/2017 -->
+			<xsd:element name="TSActivationType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!-- End MDU-227 RAG-187 Changes in AIA for 18.1 by Ashwath  27/10/2017 -->
+			<!--Start MDU-587 Changes for MDU to add New Fields 18.2. -Ashwath-->
+			<xsd:element name="TSMDUAgreementType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TSMDUAgreementNetworkName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--End MDU-587 Changes for MDU to add New Fields 18.2. -Ashwath-->
+			<!-- Start XDSL-527 changes to asd new set of fields from Siebel to OSM for 18.2. -Ashwath -->
+			<xsd:element name="TemporaryContactPhoneNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TemporaryContactLastName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TemporaryContactFirstName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TemporaryContactEmailAdd" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TemparoryContactId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!-- End XDSL-527 changes to asd new set of fields from Siebel to OSM for 18.2. -Ashwath -->
+			<!--Start MDU-795 RAG-207 Changes to add New Field Integration 18.2. -Ashwath-->
+			<xsd:element name="TSPrevAccessTypeId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TSAccessTypeId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--End MDU-795 RAG-207 Changes to add New Field Integration 18.2. -Ashwath-->
+			<!-- Start: MOBREL18.2 Sprint 31 MOBDEV-2779-->
+			<xsd:element name="TSChangeReason" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!-- End: MOBREL18.2 Sprint 31 MOBDEV-2779-->
+			<!-- Start: MOBREL18.2 Sprint 34 MOBDEV-2403(RAG-195)-->
+			<xsd:element name="TSPortInReasonCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TargetTSCID" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!-- End: MOBREL18.2 Sprint 34 MOBDEV-2403(RAG-195)-->
+			<!-- Start: MOBREL18.3 Sprint 41 MOBDEV-3762-->
+			<xsd:element name="TSPhoneNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!-- End: MOBREL18.3 Sprint 41 MOBDEV-3762-->
+			
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- custom fields for PointID END by Arup on 19082015 -->
+	<xsd:complexType name="CustomSalesOrderLineAttachmentType"/>
+	<xsd:complexType name="CustomSalesOrderLineSpecificationGroupType"/>
+	<xsd:complexType name="CustomSalesOrderPaymentInstrumentType"/>
+	<xsd:complexType name="CustomSalesOrderPromotionGroupType"/>
+	<xsd:complexType name="CustomSalesOrderReceivedPaymentType"/>
+	<xsd:complexType name="CustomSalesOrderRelatedSalesOrderType"/>
+	<xsd:complexType name="CustomSalesOrderRelatedSalesOrderLineType"/>
+	<xsd:complexType name="CustomSalesOrderRelatedSalesOrderScheduleType"/>
+	<xsd:complexType name="CustomSalesOrderSalesCommissionType"/>
+	<xsd:complexType name="CustomSalesOrderScheduleType"/>
+	<xsd:complexType name="CustomSalesOrderScheduleAllowanceType"/>
+	<xsd:complexType name="CustomSalesOrderScheduleAttachmentType"/>
+	<xsd:complexType name="CustomSalesOrderScheduleChargeType"/>
+	<xsd:complexType name="CustomSalesOrderSchedulePaymentInstrumentType"/>
+	<xsd:complexType name="CustomSalesOrderScheduleReceivedPaymentType"/>
+	<xsd:complexType name="CustomSalesOrderScheduleSalesCommissionType"/>
+	<xsd:complexType name="CustomSalesOrderScheduleTaxType"/>
+	<xsd:complexType name="CustomSalesOrderShipFromPartyType"/>
+	<xsd:complexType name="CustomSalesOrderShipToPartyType"/>
+	<xsd:complexType name="CustomSalesOrderShipmentType"/>
+	<xsd:complexType name="CustomSalesOrderStatusHistoryType"/>
+	<xsd:complexType name="CustomSalesOrderLineShippingChargeCalculationResponseType"/>
+	<xsd:complexType name="CustomHoldSalesOrderFulfillmentResponseType"/>
+	<xsd:complexType name="CustomReleaseSalesOrderLineFulfillmentHoldListResponseType"/>
+	<xsd:complexType name="CustomProcessSalesOrderATPCheckResponseType"/>
+	<xsd:complexType name="CustomHoldSalesOrderFulfillmentType"/>
+	<xsd:complexType name="CustomInventoryAvailabilityType"/>
+	<xsd:complexType name="CustomHoldSalesOrderLineFulfillmentListResponseType"/>
+	<xsd:complexType name="CustomCancelSalesOrderFulfillmentResponseType"/>
+	<xsd:complexType name="CustomReleaseSalesOrderFulfillmentHoldResponseType"/>
+	<xsd:complexType name="CustomSalesOrderLineATPCheckResponseType"/>
+	<xsd:complexType name="CustomProcessSalesOrderShippingChargeCalculationType"/>
+	<xsd:complexType name="CustomCancelSalesOrderFulfillmentType"/>
+	<xsd:complexType name="CustomHoldSalesOrderLineFulfillmentListType"/>
+	<xsd:complexType name="CustomProcessSalesOrderATPCheckType"/>
+	<xsd:complexType name="CustomReleaseSalesOrderFulfillmentHoldType"/>
+	<xsd:complexType name="CustomReleaseSalesOrderLineFulfillmentHoldListType"/>
+	<xsd:complexType name="CustomProcessSalesOrderShippingChargeCalculationResponseType"/>
+	<xsd:complexType name="CustomSalesOrderLineShippingChargeCalculationType"/>
+	<xsd:complexType name="CustomSalesOrderLineATPCheckType"/>
+</xsd:schema>

@@ -1,0 +1,116 @@
+<WL5G3N0:definitions xmlns="" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://xmlns.oracle.com/communications/inventory/webservice/fault" xmlns:WL5G3N2="http://xmlns.oracle.com/communications/inventory/webservice/getutavalues" xmlns:WL5G3N3="http://xmlns.oracle.com/communications/inventory/webservice/getuta" xmlns:WL5G3N4="http://schemas.xmlsoap.org/wsdl/soap/" name="ReferenceUim" targetNamespace="http://xmlns.oracle.com/communications/inventory/webservice/getuta">
+<WL5G3N0:types>
+<xsd:schema xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://xmlns.oracle.com/communications/inventory/webservice/fault" xmlns:WL5G3N2="http://xmlns.oracle.com/communications/inventory/webservice/getutavalues" xmlns:WL5G3N3="http://xmlns.oracle.com/communications/inventory/webservice/getuta" xmlns:WL5G3N4="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:getutavalues="http://xmlns.oracle.com/communications/inventory/webservice/getutavalues" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:invcom="http://xmlns.oracle.com/communications/inventory/webservice/common" xmlns:invfault="http://xmlns.oracle.com/communications/inventory/webservice/fault" xmlns:invws="http://xmlns.oracle.com/communications/inventory/webservice/getuta" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--  ============= Schema Imports ====================  -->
+<xsd:import namespace="http://xmlns.oracle.com/communications/inventory/webservice/common" schemaLocation="http://tw001buuim.ddc.teliasonera.net:7011/ReferenceUim/ReferenceUimHTTP?WSDL/InventoryCommon.xsd"/>
+<xsd:import namespace="http://xmlns.oracle.com/communications/inventory/webservice/fault" schemaLocation="http://tw001buuim.ddc.teliasonera.net:7011/ReferenceUim/ReferenceUimHTTP?WSDL/InventoryFaults.xsd"/>
+<xsd:import namespace="http://xmlns.oracle.com/communications/inventory/webservice/getutavalues" schemaLocation="http://tw001buuim.ddc.teliasonera.net:7011/ReferenceUim/ReferenceUimHTTP?WSDL/GetUTAValues.xsd"/>
+</xsd:schema>
+</WL5G3N0:types>
+<WL5G3N0:message name="InventoryFault">
+<WL5G3N0:part element="WL5G3N1:inventoryFault" name="inventoryFault"/>
+</WL5G3N0:message>
+<WL5G3N0:message name="ValidationFault">
+<WL5G3N0:part element="WL5G3N1:validationFault" name="validationFault"/>
+</WL5G3N0:message>
+<WL5G3N0:message name="UTARequest">
+<WL5G3N0:part element="WL5G3N2:utaRequest" name="utaRequest"/>
+</WL5G3N0:message>
+<WL5G3N0:message name="UTAResponse">
+<WL5G3N0:part element="WL5G3N2:utaResponse" name="utaResponse"/>
+</WL5G3N0:message>
+<WL5G3N0:message name="Request">
+<WL5G3N0:part element="WL5G3N2:request" name="request"/>
+</WL5G3N0:message>
+<WL5G3N0:message name="Response">
+<WL5G3N0:part element="WL5G3N2:response" name="response"/>
+</WL5G3N0:message>
+<WL5G3N0:portType name="ReferenceUimPort">
+<WL5G3N0:operation name="getUTAValue">
+<WL5G3N0:input message="WL5G3N3:UTARequest"/>
+<WL5G3N0:output message="WL5G3N3:UTAResponse"/>
+<WL5G3N0:fault message="WL5G3N3:InventoryFault" name="InventoryFault"/>
+<WL5G3N0:fault message="WL5G3N3:ValidationFault" name="ValidationFault"/>
+</WL5G3N0:operation>
+<WL5G3N0:operation name="getValue">
+<WL5G3N0:input message="WL5G3N3:Request"/>
+<WL5G3N0:output message="WL5G3N3:Response"/>
+<WL5G3N0:fault message="WL5G3N3:InventoryFault" name="InventoryFault"/>
+<WL5G3N0:fault message="WL5G3N3:ValidationFault" name="ValidationFault"/>
+</WL5G3N0:operation>
+</WL5G3N0:portType>
+<WL5G3N0:binding name="ReferenceUimHTTPSoapBinding" type="WL5G3N3:ReferenceUimPort">
+<WL5G3N4:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<WL5G3N0:operation name="getUTAValue">
+<WL5G3N4:operation soapAction="http://xmlns.oracle.com/communications/inventory/webservice/getUTAValue"/>
+<WL5G3N0:input>
+<WL5G3N4:body use="literal"/>
+</WL5G3N0:input>
+<WL5G3N0:output>
+<WL5G3N4:body use="literal"/>
+</WL5G3N0:output>
+<WL5G3N0:fault name="InventoryFault">
+<WL5G3N4:fault name="InventoryFault" use="literal"/>
+</WL5G3N0:fault>
+<WL5G3N0:fault name="ValidationFault">
+<WL5G3N4:fault name="ValidationFault" use="literal"/>
+</WL5G3N0:fault>
+</WL5G3N0:operation>
+<WL5G3N0:operation name="getValue">
+<WL5G3N4:operation soapAction="http://xmlns.oracle.com/communications/inventory/webservice/getValue"/>
+<WL5G3N0:input>
+<WL5G3N4:body use="literal"/>
+</WL5G3N0:input>
+<WL5G3N0:output>
+<WL5G3N4:body use="literal"/>
+</WL5G3N0:output>
+<WL5G3N0:fault name="InventoryFault">
+<WL5G3N4:fault name="InventoryFault" use="literal"/>
+</WL5G3N0:fault>
+<WL5G3N0:fault name="ValidationFault">
+<WL5G3N4:fault name="ValidationFault" use="literal"/>
+</WL5G3N0:fault>
+</WL5G3N0:operation>
+</WL5G3N0:binding>
+<WL5G3N0:binding name="ReferenceUimJMSSoapBinding" type="WL5G3N3:ReferenceUimPort">
+<WL5G3N4:binding style="document" transport="http://schemas.xmlsoap.org/soap/jms"/>
+<WL5G3N0:operation name="getUTAValue">
+<WL5G3N4:operation soapAction="http://xmlns.oracle.com/communications/inventory/webservice/getUTAValue"/>
+<WL5G3N0:input>
+<WL5G3N4:body use="literal"/>
+</WL5G3N0:input>
+<WL5G3N0:output>
+<WL5G3N4:body use="literal"/>
+</WL5G3N0:output>
+<WL5G3N0:fault name="InventoryFault">
+<WL5G3N4:fault name="InventoryFault" use="literal"/>
+</WL5G3N0:fault>
+<WL5G3N0:fault name="ValidationFault">
+<WL5G3N4:fault name="ValidationFault" use="literal"/>
+</WL5G3N0:fault>
+</WL5G3N0:operation>
+<WL5G3N0:operation name="getValue">
+<WL5G3N4:operation soapAction="http://xmlns.oracle.com/communications/inventory/webservice/getValue"/>
+<WL5G3N0:input>
+<WL5G3N4:body use="literal"/>
+</WL5G3N0:input>
+<WL5G3N0:output>
+<WL5G3N4:body use="literal"/>
+</WL5G3N0:output>
+<WL5G3N0:fault name="InventoryFault">
+<WL5G3N4:fault name="InventoryFault" use="literal"/>
+</WL5G3N0:fault>
+<WL5G3N0:fault name="ValidationFault">
+<WL5G3N4:fault name="ValidationFault" use="literal"/>
+</WL5G3N0:fault>
+</WL5G3N0:operation>
+</WL5G3N0:binding>
+<WL5G3N0:service name="ReferenceUim">
+<WL5G3N0:port binding="WL5G3N3:ReferenceUimHTTPSoapBinding" name="ReferenceUimHTTPPort">
+<WL5G3N4:address location="http://tw001buuim.ddc.teliasonera.net:7011/ReferenceUim/ReferenceUimHTTP"/>
+</WL5G3N0:port>
+<WL5G3N0:port binding="WL5G3N3:ReferenceUimJMSSoapBinding" name="ReferenceUimJMSPort">
+<WL5G3N4:address location="http://tw001buuim.ddc.teliasonera.net:7011/ReferenceUim/ReferenceUimJMS?URI=InventoryCustomWSQueue"/>
+</WL5G3N0:port>
+</WL5G3N0:service>
+</WL5G3N0:definitions>

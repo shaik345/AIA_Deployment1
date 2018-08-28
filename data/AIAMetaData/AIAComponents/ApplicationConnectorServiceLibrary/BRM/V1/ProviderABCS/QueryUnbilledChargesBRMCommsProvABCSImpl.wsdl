@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions name="QueryUnbilledChargesBRMCommsProvABCSImpl" targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRMComms/Industry//QueryUnbilledChargesBRMCommsProvABCSImpl/V1" xmlns:serviceusageeboebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ServiceUsage/V2" xmlns:serviceusageeboabcs="http://xmlns.oracle.com/ABCSImpl/BRMComms/Industry//QueryUnbilledChargesBRMCommsProvABCSImpl/V1" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+<documentation>
+<svcdoc:Service>
+<svcdoc:Description/>
+<svcdoc:ServiceType>ProviderABCSImpl</svcdoc:ServiceType>
+<svcdoc:Version>1</svcdoc:Version>
+<svcdoc:ProductCode>BRM</svcdoc:ProductCode>
+</svcdoc:Service>
+</documentation>
+<import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+<types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+<import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ServiceUsage/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/ServiceUsage/V2/ServiceUsageEBM.xsd"/>
+<import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd"/>
+</schema>
+</types>
+<message name="QueryUnbilledChargesReqMsg">
+<part name="QueryUnbilledChargesEBM" element="serviceusageeboebo:QueryServiceUsageEBM"/>
+</message>
+<message name="QueryUnbilledChargesRespMsg">
+<part name="QueryUnbilledChargesResponseEBM" element="serviceusageeboebo:QueryServiceUsageResponseEBM"/>
+</message>
+<message name="QueryUnbilledChargesFaultMsg">
+<part name="QueryUnbilledChargesFault" element="corecom:Fault"/>
+</message>
+<portType name="QueryUnbilledChargesBRMCommsProvABCSImpl">
+<operation name="QueryUnbilledCharges">
+<documentation>
+<svcdoc:Operation>
+<svcdoc:Description>This operation is used to Query an UnbilledCharges
+                              object</svcdoc:Description>
+<svcdoc:MEP>SyncReqResp</svcdoc:MEP>
+</svcdoc:Operation>
+</documentation>
+<input message="serviceusageeboabcs:QueryUnbilledChargesReqMsg"/>
+<output message="serviceusageeboabcs:QueryUnbilledChargesRespMsg"/>
+<fault name="fault" message="serviceusageeboabcs:QueryUnbilledChargesFaultMsg"/>
+</operation>
+</portType>
+<plnk:partnerLinkType name="QueryUnbilledChargesBRMCommsProvABCSImpl">
+<plnk:role name="QueryUnbilledChargesBRMCommsProvABCSImplProvider">
+<plnk:portType name="serviceusageeboabcs:QueryUnbilledChargesBRMCommsProvABCSImpl"/>
+</plnk:role>
+</plnk:partnerLinkType>
+</definitions>

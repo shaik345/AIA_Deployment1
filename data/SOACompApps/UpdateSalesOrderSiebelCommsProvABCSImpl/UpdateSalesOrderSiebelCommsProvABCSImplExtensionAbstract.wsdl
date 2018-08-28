@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:sblupdate="http://siebel.com/OrderManagement/Order/Data" xmlns:sblasi="http://siebel.com/asi" xmlns:coresalesorderebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/SalesOrder/V2" xmlns:coresalesorderext="http://xmlns.oracle.com/ABCSImpl/Siebel/UpdateSalesOrderSiebelCommsProvABCSImplExtension/V1" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:xsd1="http://siebel.com/OrderManagement/Order/Data" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="UpdateSalesOrderSiebelCommsProvABCSImplExtension1" targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/UpdateSalesOrderSiebelCommsProvABCSImplExtension/V1">
+   <documentation>
+      <svcdoc:Service>
+         <svcdoc:Description>This service contains intercepting operations that
+                             would be used by the participating application</svcdoc:Description>
+         <svcdoc:ServiceType>ProviderABCSExtension</svcdoc:ServiceType>
+         <svcdoc:DisplayName>UpdateSalesOrderSiebelCommsProvABCSImpl Provider ABCS Extension
+                          Implementation Interface</svcdoc:DisplayName>
+			<svcdoc:ServiceObjectName>UpdateSalesOrder</svcdoc:ServiceObjectName>
+			<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			<svcdoc:Version>1.0</svcdoc:Version>
+			<svcdoc:ImplementationTechnology><!-- PLACEHOLDER--></svcdoc:ImplementationTechnology>
+			<svcdoc:ProductFamily>CRM</svcdoc:ProductFamily>
+			<svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+			<svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+      </svcdoc:Service>
+   </documentation>
+   <types>
+      <xsd:schema targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/UpdateSalesOrderSiebelCommsProvABCSImplExtension/V1" elementFormDefault="qualified">
+         <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/SalesOrder/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/SalesOrder/V2/SalesOrderEBM.xsd" />
+         <!--xsd:import namespace="http://siebel.com/asi" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/wsdls/SWIOrderIO.wsdl"/-->
+
+		 
+		 <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd" />
+		 
+		 
+		<xsd:import namespace="http://siebel.com/OrderManagement/Order/Data" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/SWIOrderIO.xsd" />
+		
+		 <xsd:element name="SWIOrderUpsert_Input">
+ <xsd:complexType>
+ <xsd:sequence>
+  <xsd:element name="Process_spcInstance_spcId" type="xsd:string" /> 
+  <xsd:element name="Auto-Asset_spcFlag" type="xsd:string" /> 
+  <xsd:element name="Object_spcId" type="xsd:string" /> 
+  <xsd:element ref="xsd1:ListOfSWIOrderIO" /> 
+  <xsd:element name="Backup_spcOrder_spcFlag" type="xsd:string" /> 
+  <xsd:element name="Cascade_spcDown_spcFlag" type="xsd:string" /> 
+  <xsd:element name="Error_spcCode" type="xsd:string" /> 
+  <xsd:element name="Error_spcMessage" type="xsd:string" /> 
+  </xsd:sequence>
+  </xsd:complexType>
+  </xsd:element>
+  
+   <xsd:element name="SWIOrderUpsert_Output">
+ <xsd:complexType>
+ <xsd:sequence>
+  <xsd:element name="Error_spcCode" type="xsd:string" /> 
+  <xsd:element name="Error_spcMessage" type="xsd:string" /> 
+  <xsd:element name="Object_spcId" type="xsd:string" /> 
+  <xsd:element name="Process_spcInstance_spcId" type="xsd:string" /> 
+  <xsd:element ref="xsd1:ListOfSWIOrderIO" /> 
+  </xsd:sequence>
+  </xsd:complexType>
+  </xsd:element>
+
+
+
+      </xsd:schema>
+   </types>
+   <message name="PreXformEBMtoABMSalesOrderMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreXformEBMtoABMABM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="UpdateSalesOrderEBM" element="coresalesorderebo:UpdateSalesOrderEBM" />
+   </message>
+	<message name="PreInvokeABSUpdateUpdateUpsertReqMsg">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM operation</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="SWIOrderUpsert_Input" element="coresalesorderext:SWIOrderUpsert_Input" />
+   </message>
+
+   
+   <message name="FaultMessage">
+      <documentation>
+         <svcdoc:Message>
+            <svcdoc:Description>This message is used for propagating Error
+                                Context and Error Message</svcdoc:Description>
+         </svcdoc:Message>
+      </documentation>
+      <part name="AIAFault" element="corecom:Fault" />
+   </message>
+   <portType name="UpdateSalesOrderSiebelCommsProvABCSImplV1ExtensionService">
+      <documentation>
+         <svcdoc:Interface>
+            <svcdoc:Description>This is the ABCS extension service interface</svcdoc:Description>
+            <svcdoc:DisplayName>ProcessSalesOrderSiebelProvABCSImplV2ExtensionService</svcdoc:DisplayName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+         </svcdoc:Interface>
+      </documentation>
+      <operation name="PreXformEBMtoABMSalesOrderEBM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreXformEBMtoABM an ListOfSWIOrderIO object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreXformEBMtoABMABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="coresalesorderext:PreXformEBMtoABMSalesOrderMsg" />
+         <output message="coresalesorderext:PreXformEBMtoABMSalesOrderMsg" />
+         <fault name="fault" message="coresalesorderext:FaultMessage" />
+      </operation>
+	 <operation name="PreInvokeABSUpdateUpsertABM">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to PreInvokeEBS an ProcessSalesOrderEBM object</svcdoc:Description>
+               <svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+               <svcdoc:DisplayName>PreInvokeABSABM</svcdoc:DisplayName>
+               <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+               <svcdoc:Scope>Public</svcdoc:Scope>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="coresalesorderext:PreInvokeABSUpdateUpdateUpsertReqMsg" />
+         <output message="coresalesorderext:PreInvokeABSUpdateUpdateUpsertReqMsg" />
+         <fault name="fault" message="coresalesorderext:FaultMessage" />
+      </operation>
+   </portType>
+   <plnk:partnerLinkType name="UpdateSalesOrderSiebelCommsProvABCSImplV1ExtensionService">
+      <plnk:role name="UpdateSalesOrderSiebelCommsProvABCSImplV1ExtensionServiceProvider">
+         <plnk:portType name="coresalesorderext:UpdateSalesOrderSiebelCommsProvABCSImplV1ExtensionService" />
+      </plnk:role>
+   </plnk:partnerLinkType>
+</definitions>

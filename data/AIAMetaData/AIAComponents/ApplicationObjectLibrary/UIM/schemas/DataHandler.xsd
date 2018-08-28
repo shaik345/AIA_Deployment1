@@ -1,0 +1,20 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://www.bea.com/servers/wls90/wsee/attachment">
+    
+             
+                <xsd:complexType name="datahandler">
+           
+                <xsd:annotation>
+                    <xsd:documentation>Internal type created by WebLogic
+                        - Do not edit!
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:complexType>
+           
+                <!--xsd:annotation>
+                    <xsd:documentation>Internal type created by WebLogic
+                        - Do not edit!
+                    </xsd:documentation>
+                </xsd:annotation-->
+           
+        </xsd:schema>

@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<SecurityConfiguration xmlns="http://xmlns.oracle.com/fp/core/security/V1" version="1.0" compositeName="{http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess}AIAAsyncErrorHandlingBPELProcess">
+   <Service resourceType="SOA-Service">
+      <Name>client</Name>
+      <PortName>AIAAsyncErrorHandlingBPELProcess</PortName>
+      <WSPolicies>
+         <WSPolicyName policyType="authentication">oracle/aia_wss_saml_or_username_or_http_token_service_policy_OPT_ON</WSPolicyName>
+      </WSPolicies>
+   </Service>
+</SecurityConfiguration>

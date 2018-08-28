@@ -1,0 +1,10 @@
+<AIAServiceConfiguration xmlns="http://xmlns.oracle.com/aia/core/config/V1" version="1.0">
+<!-- UpdateTroubleTicketSiebelCommsProvABCSImpl -->
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/UpdateTroubleTicketSiebelCommsProvABCSImpl/V1}UpdateTroubleTicketSiebelCommsProvABCSImpl">
+	<Property name="Default.SystemID">SEBL_01</Property>
+	<Property name="Routing.SWI_spcTrouble_spcTicket_spcService.RouteToCAVS">false</Property>
+	<Property name="Routing.SWI_spcTrouble_spcTicket_spcService.SEBL_01.EndpointURI">${participatingapplications.siebel.server.InternetProtocol}${participatingapplications.siebel.server.host}:${participatingapplications.siebel.server.port}/eai_${participatingapplications.siebel.server.Language}/start.swe?SWEExtSource=SecureWebService&amp;SWEExtCmd=Execute&amp;WSSOAP=1</Property>
+  <Property name="ABCSExtension.PreXformEBMtoABMTroubleTicketEBM">false</Property>
+  <Property name="ABCSExtension.PreInvokeABSSWITroubleTicketIOABM">false</Property>
+</ServiceConfiguration>
+</AIAServiceConfiguration>

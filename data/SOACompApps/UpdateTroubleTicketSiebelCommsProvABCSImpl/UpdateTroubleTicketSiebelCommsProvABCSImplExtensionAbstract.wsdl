@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<definitions name="UpdateTroubleTicketSiebelCommsProvABCSImplExtension1"
+		targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/UpdateTroubleTicketSiebelCommsProvABCSImplExtension/V1"
+		xmlns:sbltroubleticket="http://www.siebel.com/xml/SWITroubleTicketIO"
+		xmlns:sblasi="http://siebel.com/asi/"
+		xmlns:coretroubleticketebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/TroubleTicket/V1"
+		xmlns:coretroubleticketext="http://xmlns.oracle.com/ABCSImpl/Siebel/UpdateTroubleTicketSiebelCommsProvABCSImplExtension/V1"
+
+
+		xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+		xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+		xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V2"
+		xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+		xmlns="http://schemas.xmlsoap.org/wsdl/">
+	<documentation>
+		<svcdoc:Service>
+			<svcdoc:Description>This service contains intercepting operations that
+				would be used by the participating application</svcdoc:Description>
+			<svcdoc:ServiceType>ABCSExtension</svcdoc:ServiceType>
+			<svcdoc:DisplayName>UpdateTroubleTicketSiebelCommsProvABCSImpl Provider ABCS Extension
+				Implementation Interface</svcdoc:DisplayName>
+			<svcdoc:ServiceObjectName>UpdateTroubleTicket</svcdoc:ServiceObjectName>
+			<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			<svcdoc:Version>2.0</svcdoc:Version>
+			<svcdoc:ImplementationTechnology><!-- PLACEHOLDER--></svcdoc:ImplementationTechnology>
+			<svcdoc:ProductFamily>CRM</svcdoc:ProductFamily>
+			<svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+			<svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+		</svcdoc:Service>
+	</documentation>
+	<types>
+		<xsd:schema targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/UpdateTroubleTicketSiebelCommsProvABCSImplExtension/V1"
+				elementFormDefault="qualified">
+			<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/TroubleTicket/V1" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/TroubleTicket/V1/TroubleTicketEBM.xsd"/>
+			<!--xsd:import namespace="http://siebel.com/asi/" schemaLocation="http://sdc60012sems.us.oracle.com:8092/AIAComponents/ApplicationObjectLibrary/Siebel/V1/wsdls/SWITroubleTicketIO.wsdl"/-->
+
+			<xsd:import namespace="http://www.siebel.com/xml/SWITroubleTicketIO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/SWITroubleTicketIO.xsd" />
+
+			<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd"/>
+		</xsd:schema>
+		<xsd:element name="SWITroubleTicketInsertOrUpdate_Input">
+			<xsd:complexType>
+				<xsd:sequence>
+					<xsd:element name="Status" minOccurs="0" type="xsd:string" /> 
+					<xsd:element name="UTCCanonical" minOccurs="0" type="xsd:string" /> 
+					<xsd:element ref="sbltroubleticket:ListOfSWITroubleTicketIO" /> 
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:element>
+		<xsd:element name="SWITroubleTicketInsertOrUpdate_Output">
+			<xsd:complexType>
+				<xsd:sequence>
+					<xsd:element ref="sbltroubleticket:ListOfSWITroubleTicketIO" /> 
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:element>
+	</types>
+	<message name="PreXformEBMtoABMTroubleTicketMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as a payload to PreXformEBMtoABMABM operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="UpdateTroubleTicketEBM"
+				element="coretroubleticketebo:UpdateTroubleTicketEBM"/>
+	</message>
+	<message name="PreInvokeABSUpdateSWITroubleTicketIOReqMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as a payload to PreInvokeEBSEBM operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="SWITroubleTicketInsertOrUpdate_Input"
+				element="sblasi:SWITroubleTicketInsertOrUpdate_Input"/>
+	</message>
+
+
+	<message name="FaultMessage">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used for propagating Error
+					Context and Error Message</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="AIAFault" element="corecom:Fault"/>
+	</message>
+	<portType name="UpdateTroubleTicketSiebelCommsProvABCSImplV1ExtensionService">
+		<documentation>
+			<svcdoc:Interface>
+				<svcdoc:Description>This is the ABCS extension service interface</svcdoc:Description>
+				<svcdoc:DisplayName>UpdateTroubleTicketSiebelCommsProvABCSImplV1ExtensionService</svcdoc:DisplayName>
+				<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			</svcdoc:Interface>
+		</documentation>
+		<operation name="PreXformEBMtoABMTroubleTicketEBM">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to PreXformEBMtoABM an ListOfSWITroubleTicketIO object</svcdoc:Description>
+					<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>PreXformEBMtoABMABM</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="coretroubleticketext:PreXformEBMtoABMTroubleTicketMsg"/>
+			<output message="coretroubleticketext:PreXformEBMtoABMTroubleTicketMsg"/>
+			<fault name="fault" message="coretroubleticketext:FaultMessage"/>
+		</operation>
+		<operation name="PreInvokeABSSWITroubleTicketIOABM">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to PreInvokeEBS an UpdateTroubleTicketEBM object</svcdoc:Description>
+					<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>PreInvokeABSABM</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="coretroubleticketext:PreInvokeABSUpdateSWITroubleTicketIOReqMsg"/>
+			<output message="coretroubleticketext:PreInvokeABSUpdateSWITroubleTicketIOReqMsg"/>
+			<fault name="fault" message="coretroubleticketext:FaultMessage"/>
+		</operation>
+	</portType>
+	<plnk:partnerLinkType name="UpdateTroubleTicketSiebelCommsProvABCSImplV1ExtensionService">
+		<plnk:role name="UpdateTroubleTicketSiebelCommsProvABCSImplV1ExtensionServiceProvider">
+			<plnk:portType name="coretroubleticketext:UpdateTroubleTicketSiebelCommsProvABCSImplV1ExtensionService" />
+		</plnk:role>
+	</plnk:partnerLinkType>
+</definitions>

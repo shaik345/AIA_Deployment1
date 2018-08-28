@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="CreateOneTimeBillSiebelCommsReqABCSImpl" targetNamespace="http://xmlns.oracle.com/CreateOneTimeBillSiebelCommsReqABCSImpl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:client="http://xmlns.oracle.com/CreateOneTimeBillSiebelCommsReqABCSImpl" xmlns:ns1="http://www.siebel.com/xml/CMU%20Request%20Unbilled%20Usage%20IO" xmlns:ns2="http://www.siebel.com/xml/CMU%20Response%20Unbilled%20Usage%20IO" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+   <wsdl:types>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema">
+         <import namespace="http://www.siebel.com/xml/CMU%20Request%20Unbilled%20Usage%20IO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/ListOfTSBillNowRequestIO.xsd"/>
+      </schema>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema">
+         <import namespace="http://www.siebel.com/xml/CMU%20Response%20Unbilled%20Usage%20IO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/ListOfTSBillNowResponseIO.xsd"/>
+      </schema>
+   </wsdl:types>
+   <wsdl:message name="CreateOneTimeBillSiebelCommsReqABCSImplRequestMessage">
+      <wsdl:part name="payload" element="ns1:ListOfTSBillNowRequestIO"/>
+   </wsdl:message>
+   <wsdl:message name="CreateOneTimeBillSiebelCommsReqABCSImplResponseMessage">
+      <wsdl:part name="payload" element="ns2:ListOfTSBillNowResponseIO"/>
+   </wsdl:message>
+   <wsdl:portType name="CreateOneTimeBillSiebelCommsReqABCSImpl">
+      <wsdl:operation name="process">
+         <wsdl:input message="client:CreateOneTimeBillSiebelCommsReqABCSImplRequestMessage"/>
+         <wsdl:output message="client:CreateOneTimeBillSiebelCommsReqABCSImplResponseMessage"/>
+      </wsdl:operation>
+   </wsdl:portType>
+   <plnk:partnerLinkType name="CreateOneTimeBillSiebelCommsReqABCSImpl">
+      <plnk:role name="CreateOneTimeBillSiebelCommsReqABCSImplProvider">
+         <plnk:portType name="client:CreateOneTimeBillSiebelCommsReqABCSImpl"/>
+      </plnk:role>
+   </plnk:partnerLinkType>
+</wsdl:definitions>

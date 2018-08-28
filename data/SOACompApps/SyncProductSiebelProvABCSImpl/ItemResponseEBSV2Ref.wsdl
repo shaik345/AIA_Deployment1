@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:coreitemebs="http://xmlns.oracle.com/EnterpriseServices/Core/Item/V2" name="ItemEBS" targetNamespace="http://xmlns.oracle.com/EnterpriseServices/Core/Item/V2">
+	<import namespace="http://xmlns.oracle.com/EnterpriseServices/Core/Item/V2" location="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseBusinessServiceLibrary/Core/EBO/Item/V2/ItemEBS.wsdl" />
+	<plnk:partnerLinkType name="ItemEBSResponse_PL">
+		<plnk:role name="ItemEBSResponse_Role">
+			<plnk:portType name="coreitemebs:ItemEBSResponse" />
+		</plnk:role>
+	</plnk:partnerLinkType>
+	<plnk:partnerLinkType name="ItemEBS_PL">
+		<plnk:role name="ItemEBS_Role">
+			<plnk:portType name="coreitemebs:ItemEBS" />
+		</plnk:role>
+	</plnk:partnerLinkType>
+</definitions>

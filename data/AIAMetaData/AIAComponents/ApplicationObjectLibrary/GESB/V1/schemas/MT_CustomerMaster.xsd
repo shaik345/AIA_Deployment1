@@ -1,0 +1,1002 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://teliasonera.se/Seibel/PO/ERP/CustomerMaster_6407"
+            xmlns="http://teliasonera.se/Seibel/PO/ERP/CustomerMaster_6407"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="MT_CustomerMaster" type="DT_CustomerMaster"/>
+    <xsd:complexType name="DT_CustomerMaster">
+        <xsd:sequence>
+            <xsd:element name="CustomerAccount">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="Created" type="xsd:string"
+                                     minOccurs="0"/>
+                        <xsd:element name="AccountNumber" type="xsd:string"
+                                     minOccurs="0"/>
+                        <xsd:element name="AccountStatus" type="xsd:string"
+                                     minOccurs="0"/>
+                        <xsd:element name="AccountTypeCode" type="xsd:string"
+                                     minOccurs="0"/>
+                        <xsd:element name="CurrencyCode" type="xsd:string"
+                                     minOccurs="0"/>
+                        <xsd:element name="DUNSNumber" type="xsd:string"
+                                     minOccurs="0"/>
+                        <xsd:element name="HomePage" type="xsd:string"
+                                     minOccurs="0"/>
+                        <xsd:element name="IntegrationId" type="xsd:string"
+                                     minOccurs="0"/>
+                        <xsd:element name="Location" type="xsd:string"
+                                     minOccurs="0"/>
+                        <xsd:element name="MainFaxNumber" type="xsd:string"
+                                     minOccurs="0"/>
+                        <xsd:element name="MainPhoneNumber" type="xsd:string"
+                                     minOccurs="0"/>
+                        <xsd:element name="MasterAccountId" type="xsd:string"
+                                     minOccurs="0"/>
+                        <xsd:element name="Name" type="xsd:string"
+                                     minOccurs="0"/>
+                        <xsd:element name="ParentAccountId" type="xsd:string"
+                                     minOccurs="0"/>
+                        <xsd:element name="PrimaryAddressId" type="xsd:string"
+                                     minOccurs="0"/>
+                        <xsd:element name="PrimaryBillToAddressId"
+                                     type="xsd:string" minOccurs="0"/>
+                        <xsd:element name="PrimaryContactId" type="xsd:string"
+                                     minOccurs="0"/>
+                        <xsd:element name="PrimaryOrganizationId"
+                                     type="xsd:string" minOccurs="0"/>
+                        <xsd:element name="PrimaryShipToAddressId"
+                                     type="xsd:string" minOccurs="0"/>
+                        <xsd:element name="RowId" type="xsd:string"
+                                     minOccurs="0"/>
+                        <xsd:element name="Type" type="xsd:string"
+                                     minOccurs="0"/>
+                        <xsd:element name="SSN" type="xsd:string"
+                                     minOccurs="0"/>
+                        <xsd:element name="TSChannel" type="xsd:string"
+                                     minOccurs="0"/>
+                        <xsd:element name="TSVATCode" type="xsd:string"
+                                     minOccurs="0"/>
+                        <xsd:element name="TSVATNumber" type="xsd:string"
+                                     minOccurs="0"/>
+                        <xsd:element name="TSGlobalAccount" type="xsd:string"
+                                     minOccurs="0"/>
+                        <xsd:element name="TSVIPFlag" type="xsd:string"
+                                     minOccurs="0"/>
+                        <xsd:element name="TSSalesTeamId" type="xsd:string"
+                                     minOccurs="0"/>
+                        <xsd:element name="TSInsolvencyStatus" type="xsd:string"
+                                     minOccurs="0"/>
+                        <xsd:element name="TSSubSegment" type="xsd:string"
+                                     minOccurs="0"/>
+                        <xsd:element name="PrimaryBillingProfileId"
+                                     type="xsd:string" minOccurs="0"/>
+                        <xsd:element name="TSCustomerId" type="xsd:string"
+                                     minOccurs="0"/>
+                        <xsd:element name="TSDateOfExpiry" type="xsd:string"
+                                     minOccurs="0"/>
+                        <xsd:element name="ListOfLegalAddress" minOccurs="0">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="LegalAddress"
+                                                 minOccurs="0"
+                                                 maxOccurs="unbounded">
+                                        <xsd:complexType>
+                                            <xsd:sequence>
+                                                <xsd:element name="AddressName"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="AddressType"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="BillAddressFlag"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="City"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="Country"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="County"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="DisableDataCleansing"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="EmailAddress"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="IntegrationId"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="EndDate"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="MainAddressFlag"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="PostalCode"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="Province"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="RowId"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="ShipAddressFlag"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="State"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="StartDate"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="StreetAddress"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="StreetAddress2"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="TSPointId"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="TSShippingAddressFlag"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="TSInstallationAddressFlag"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="TSBillingAddressFlag"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="TSLegalAddressFlag"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                            </xsd:sequence>
+                                        </xsd:complexType>
+                                    </xsd:element>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="ListOfLegalContact" minOccurs="0">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="LegalContact"
+                                                 minOccurs="0"
+                                                 maxOccurs="unbounded">
+                                        <xsd:complexType>
+                                            <xsd:sequence>
+                                                <xsd:element name="TSLastUpdEmail"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="TSLastUpdFixed"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="TSLastUpdMobile"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="Alias"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="CellularPhone"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="ContactPersonTitle"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="CurrencyCode"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="DateofBirth"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="EmailAddress"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="FaxPhone"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="FirstName"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="Gender"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="HomePhone"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="IntegrationId"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="JobTitle"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="LastName"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="MM"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="MaritalStatus"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="MiddleName"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="MotherMaidenName"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="PrimaryOrganizationId"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="RowId"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="SocialSecurityNumber"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="Status"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="SuppressAllCalls"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="SuppressAllEmails"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="SuppressAllFaxes"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="SuppressAllMailings"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="WorkPhone"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="ConsumerLink"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="ListOfPersonalAddress"
+                                                             minOccurs="0">
+                                                    <xsd:complexType>
+                                                        <xsd:sequence>
+                                                            <xsd:element name="PersonalAddress"
+                                                                         minOccurs="0"
+                                                                         maxOccurs="unbounded">
+                                                                <xsd:complexType>
+                                                                    <xsd:sequence>
+                                                                        <xsd:element name="Id"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="AddressName"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="City"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="Country"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="County"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="EmailAddress"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="IntegrationId"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="PostalCode"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="Province"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="State"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="StreetAddress"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="StreetAddress2"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="AIAIntegrationId"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="AddressType"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="EndDate"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="StartDate"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                    </xsd:sequence>
+                                                                </xsd:complexType>
+                                                            </xsd:element>
+                                                        </xsd:sequence>
+                                                    </xsd:complexType>
+                                                </xsd:element>
+                                            </xsd:sequence>
+                                        </xsd:complexType>
+                                    </xsd:element>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="BillingAccount" minOccurs="0"
+                                     maxOccurs="unbounded">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="Created"
+                                                 type="xsd:string"
+                                                 minOccurs="0"/>
+                                    <xsd:element name="AccountNumber"
+                                                 type="xsd:string"
+                                                 minOccurs="0"/>
+                                    <xsd:element name="AccountStatus"
+                                                 type="xsd:string"
+                                                 minOccurs="0"/>
+                                    <xsd:element name="AccountTypeCode"
+                                                 type="xsd:string"
+                                                 minOccurs="0"/>
+                                    <xsd:element name="CurrencyCode"
+                                                 type="xsd:string"
+                                                 minOccurs="0"/>
+                                    <xsd:element name="DUNSNumber"
+                                                 type="xsd:string"
+                                                 minOccurs="0"/>
+                                    <xsd:element name="HomePage"
+                                                 type="xsd:string"
+                                                 minOccurs="0"/>
+                                    <xsd:element name="IntegrationId"
+                                                 type="xsd:string"
+                                                 minOccurs="0"/>
+                                    <xsd:element name="Location"
+                                                 type="xsd:string"
+                                                 minOccurs="0"/>
+                                    <xsd:element name="MainFaxNumber"
+                                                 type="xsd:string"
+                                                 minOccurs="0"/>
+                                    <xsd:element name="MainPhoneNumber"
+                                                 type="xsd:string"
+                                                 minOccurs="0"/>
+                                    <xsd:element name="MasterAccountId"
+                                                 type="xsd:string"
+                                                 minOccurs="0"/>
+                                    <xsd:element name="Name" type="xsd:string"
+                                                 minOccurs="0"/>
+                                    <xsd:element name="ParentAccountId"
+                                                 type="xsd:string"
+                                                 minOccurs="0"/>
+                                    <xsd:element name="PrimaryAddressId"
+                                                 type="xsd:string"
+                                                 minOccurs="0"/>
+                                    <xsd:element name="PrimaryBillToAddressId"
+                                                 type="xsd:string"
+                                                 minOccurs="0"/>
+                                    <xsd:element name="PrimaryContactId"
+                                                 type="xsd:string"
+                                                 minOccurs="0"/>
+                                    <xsd:element name="PrimaryOrganizationId"
+                                                 type="xsd:string"
+                                                 minOccurs="0"/>
+                                    <xsd:element name="PrimaryShipToAddressId"
+                                                 type="xsd:string"
+                                                 minOccurs="0"/>
+                                    <xsd:element name="RowId" type="xsd:string"
+                                                 minOccurs="0"/>
+                                    <xsd:element name="Type" type="xsd:string"
+                                                 minOccurs="0"/>
+                                    <xsd:element name="SSN" type="xsd:string"
+                                                 minOccurs="0"/>
+                                    <xsd:element name="TSChannel"
+                                                 type="xsd:string"
+                                                 minOccurs="0"/>
+                                    <xsd:element name="TSVATCode"
+                                                 type="xsd:string"
+                                                 minOccurs="0"/>
+                                    <xsd:element name="TSVATNumber"
+                                                 type="xsd:string"
+                                                 minOccurs="0"/>
+                                    <xsd:element name="TSGlobalAccount"
+                                                 type="xsd:string"
+                                                 minOccurs="0"/>
+                                    <xsd:element name="TSVIPFlag"
+                                                 type="xsd:string"
+                                                 minOccurs="0"/>
+                                    <xsd:element name="TSSalesTeamId"
+                                                 type="xsd:string"
+                                                 minOccurs="0"/>
+                                    <xsd:element name="TSInsolvencyStatus"
+                                                 type="xsd:string"
+                                                 minOccurs="0"/>
+                                    <xsd:element name="TSSubSegment"
+                                                 type="xsd:string"
+                                                 minOccurs="0"/>
+                                    <xsd:element name="PrimaryBillingProfileId"
+                                                 type="xsd:string"
+                                                 minOccurs="0"/>
+                                    <xsd:element name="TSCustomerId"
+                                                 type="xsd:string"
+                                                 minOccurs="0"/>
+                                    <xsd:element name="ListOfBillingAddress"
+                                                 minOccurs="0">
+                                        <xsd:complexType>
+                                            <xsd:sequence>
+                                                <xsd:element name="BillingAddress"
+                                                             minOccurs="0"
+                                                             maxOccurs="unbounded">
+                                                    <xsd:complexType>
+                                                        <xsd:sequence>
+                                                            <xsd:element name="AddressName"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="AddressType"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="BillAddressFlag"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="City"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="Country"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="County"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="DisableDataCleansing"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="EmailAddress"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="IntegrationId"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="EndDate"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="MainAddressFlag"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="PostalCode"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="Province"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="RowId"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="ShipAddressFlag"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="State"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="StartDate"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="StreetAddress"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="StreetAddress2"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="TSPointId"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="TSShippingAddressFlag"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="TSInstallationAddressFlag"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="TSBillingAddressFlag"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="TSLegalAddressFlag"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                        </xsd:sequence>
+                                                    </xsd:complexType>
+                                                </xsd:element>
+                                            </xsd:sequence>
+                                        </xsd:complexType>
+                                    </xsd:element>
+                                    <xsd:element name="ListOfBillingContact"
+                                                 minOccurs="0">
+                                        <xsd:complexType>
+                                            <xsd:sequence>
+                                                <xsd:element name="BillingContact"
+                                                             minOccurs="0"
+                                                             maxOccurs="unbounded">
+                                                    <xsd:complexType>
+                                                        <xsd:sequence>
+                                                            <xsd:element name="TSLastUpdEmail"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="TSLastUpdFixed"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="TSLastUpdMobile"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="Alias"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="CellularPhone"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="ContactPersonTitle"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="CurrencyCode"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="DateofBirth"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="EmailAddress"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="FaxPhone"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="FirstName"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="Gender"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="HomePhone"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="IntegrationId"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="JobTitle"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="LastName"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="MM"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="MaritalStatus"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="MiddleName"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="MotherMaidenName"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="PrimaryOrganizationId"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="RowId"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="SocialSecurityNumber"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="Status"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="SuppressAllCalls"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="SuppressAllEmails"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="SuppressAllFaxes"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="SuppressAllMailings"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="WorkPhone"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="ConsumerLink"
+                                                                         type="xsd:string"
+                                                                         minOccurs="0"/>
+                                                            <xsd:element name="ListOfPersonalAddress"
+                                                                         minOccurs="0">
+                                                                <xsd:complexType>
+                                                                    <xsd:sequence>
+                                                                        <xsd:element name="PersonalAddress"
+                                                                                     minOccurs="0"
+                                                                                     maxOccurs="unbounded">
+                                                                            <xsd:complexType>
+                                                                                <xsd:sequence>
+                                                                                    <xsd:element name="Id"
+                                                                                                 type="xsd:string"
+                                                                                                 minOccurs="0"/>
+                                                                                    <xsd:element name="AddressName"
+                                                                                                 type="xsd:string"
+                                                                                                 minOccurs="0"/>
+                                                                                    <xsd:element name="City"
+                                                                                                 type="xsd:string"
+                                                                                                 minOccurs="0"/>
+                                                                                    <xsd:element name="Country"
+                                                                                                 type="xsd:string"
+                                                                                                 minOccurs="0"/>
+                                                                                    <xsd:element name="County"
+                                                                                                 type="xsd:string"
+                                                                                                 minOccurs="0"/>
+                                                                                    <xsd:element name="EmailAddress"
+                                                                                                 type="xsd:string"
+                                                                                                 minOccurs="0"/>
+                                                                                    <xsd:element name="IntegrationId"
+                                                                                                 type="xsd:string"
+                                                                                                 minOccurs="0"/>
+                                                                                    <xsd:element name="PostalCode"
+                                                                                                 type="xsd:string"
+                                                                                                 minOccurs="0"/>
+                                                                                    <xsd:element name="Province"
+                                                                                                 type="xsd:string"
+                                                                                                 minOccurs="0"/>
+                                                                                    <xsd:element name="State"
+                                                                                                 type="xsd:string"
+                                                                                                 minOccurs="0"/>
+                                                                                    <xsd:element name="StreetAddress"
+                                                                                                 type="xsd:string"
+                                                                                                 minOccurs="0"/>
+                                                                                    <xsd:element name="StreetAddress2"
+                                                                                                 type="xsd:string"
+                                                                                                 minOccurs="0"/>
+                                                                                    <xsd:element name="AIAIntegrationId"
+                                                                                                 type="xsd:string"
+                                                                                                 minOccurs="0"/>
+                                                                                    <xsd:element name="AddressType"
+                                                                                                 type="xsd:string"
+                                                                                                 minOccurs="0"/>
+                                                                                    <xsd:element name="EndDate"
+                                                                                                 type="xsd:string"
+                                                                                                 minOccurs="0"/>
+                                                                                    <xsd:element name="StartDate"
+                                                                                                 type="xsd:string"
+                                                                                                 minOccurs="0"/>
+                                                                                </xsd:sequence>
+                                                                            </xsd:complexType>
+                                                                        </xsd:element>
+                                                                    </xsd:sequence>
+                                                                </xsd:complexType>
+                                                            </xsd:element>
+                                                        </xsd:sequence>
+                                                    </xsd:complexType>
+                                                </xsd:element>
+                                            </xsd:sequence>
+                                        </xsd:complexType>
+                                    </xsd:element>
+                                    <xsd:element name="BillingProfile"
+                                                 minOccurs="0"
+                                                 maxOccurs="unbounded">
+                                        <xsd:complexType>
+                                            <xsd:sequence>
+                                                <xsd:element name="BillingProfileId"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="AccountId"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="TSCCompanyCodeGrp"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="TSCID"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="Type"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="AddressId"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="BankAccountName"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="BankAccountNumber"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="BankAccountType"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="BankAuthorizationflag"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="BankBranch"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="BankLanguageCode"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="BankLanguageId"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="BankName"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="BillAverage"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="BillCycle"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="BillCycleDay"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="BillFrequency"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="BillSequence"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="BillSource"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="BillType"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="BillVendorId"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="BudgetBillingFlag"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="CPNIDate"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="CPNIFlag"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="CollectionsFlag"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="ContactId"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="CreditCardBlockFlag"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="CreditCardBlockReason"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="CreditCardCategory"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="CreditCardExpirationDate"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="CreditCardExpirationMonth"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="CreditCardExpirationYear"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="CreditCardName"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="CreditCardNumber"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="CreditCardNumberEncryptkeyReference"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="CreditCardSecurityCode"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="CreditCardType"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="CreditCardVerificationNumber"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="CreditCardVerificationNumberEncryptionKey"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="DaysToCash"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="EmailBillTo"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="ExternalBillingAccountNumber"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="ExternalBillingAccountNumber_Old"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="ExtraCopies"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="InterestatInvoiceFlag"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="LastBillAmount"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="LastBillDate"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="MediaType"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="BillingProfileName"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="NoPayFormFlag"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="NumberofManualInvoices"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="PaymentMethod"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="ReasonforManualOutsource"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="RepeatDebtorFlag"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="RoutingNumber"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="StandingOrderFlag"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="StatementFlag"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="Status"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="YearlyAdvancePaymentFlag"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="TSOrganizationName"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+                                                <xsd:element name="TSBankId"
+                                                             type="xsd:string"
+                                                             minOccurs="0"/>
+					     <!-- Start : MDU-490 AIA Changes for Field Integration from Siebel to GESB SAP 18.2. -Ashwath -->
+					     <xsd:element name="TSVIPFlag"
+							 type="xsd:string"
+							 minOccurs="0"/>
+					     <!-- End : MDU-490 AIA Changes for Field Integration from Siebel to GESB SAP 18.2. -Ashwath -->
+                                                <xsd:element name="ListOfAddress"
+                                                             minOccurs="0">
+                                                    <xsd:complexType>
+                                                        <xsd:sequence>
+                                                            <xsd:element name="Address"
+                                                                         minOccurs="0"
+                                                                         maxOccurs="unbounded">
+                                                                <xsd:complexType>
+                                                                    <xsd:sequence>
+                                                                        <xsd:element name="County"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="Province"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="AddressName"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="City"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="Country"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="PostalCode"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="AddressId"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="State"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="AddressLine1"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="AddressLine2"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="AddressLine3"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="AddressLine4"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="AddressLine6"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="TSPointId"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="AttentionInfo"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="CoAddress"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                    </xsd:sequence>
+                                                                </xsd:complexType>
+                                                            </xsd:element>
+                                                        </xsd:sequence>
+                                                    </xsd:complexType>
+                                                </xsd:element>
+                                                <xsd:element name="ListOfContact"
+                                                             minOccurs="0">
+                                                    <xsd:complexType>
+                                                        <xsd:sequence>
+                                                            <xsd:element name="Contact"
+                                                                         minOccurs="0"
+                                                                         maxOccurs="unbounded">
+                                                                <xsd:complexType>
+                                                                    <xsd:sequence>
+                                                                        <xsd:element name="CellularPhone"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="EmailAddress"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="FaxPhone"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="FirstName"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="HomePhone"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="JobTitle"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="LastName"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="Salutation"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="MiddleName"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="PrimaryOrganizationId"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="ContactId"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                        <xsd:element name="WorkPhone"
+                                                                                     type="xsd:string"
+                                                                                     minOccurs="0"/>
+                                                                    </xsd:sequence>
+                                                                </xsd:complexType>
+                                                            </xsd:element>
+                                                        </xsd:sequence>
+                                                    </xsd:complexType>
+                                                </xsd:element>
+                                            </xsd:sequence>
+                                        </xsd:complexType>
+                                    </xsd:element>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

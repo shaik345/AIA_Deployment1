@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.siebel.com/xml/TS%20CallGuide%20SMS%20IO" xmlns:xsdLocal="http://www.siebel.com/xml/TS%20CallGuide%20SMS%20IO" attributeFormDefault="unqualified" elementFormDefault="qualified" 
+><xsd:annotation
+><xsd:documentation
+>Copyright (C) 2001-2004 Siebel Systems, Inc. All rights reserved. Siebel XSD Generation</xsd:documentation
+></xsd:annotation
+><xsd:element name="CallGuideSMS" type="xsdLocal:CallGuideSMS"
+/><xsd:complexType name="CallGuideSMSTopElmt"
+><xsd:sequence
+><xsd:element name="CallGuideSMS" type="xsdLocal:CallGuideSMS" minOccurs="1" maxOccurs="1"
+/></xsd:sequence
+></xsd:complexType
+><xsd:complexType name="CallGuideSMS"
+><xsd:sequence
+><xsd:element name="correlationId" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="originatingAddress" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="destinationAddress" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="userData" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="userDataHeader" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="dcs" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="relativeValidityTime" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="deliveryTime" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="operatorResponseTime" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="statusReportFlags" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="tariffClass" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="referenceId" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="tag" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="contactId" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="prio" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="messageId" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="responseCode" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="responseMessage" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="temporaryError" type="xsd:string" minOccurs="0" maxOccurs="1"
+/></xsd:sequence
+></xsd:complexType
+></xsd:schema
+>

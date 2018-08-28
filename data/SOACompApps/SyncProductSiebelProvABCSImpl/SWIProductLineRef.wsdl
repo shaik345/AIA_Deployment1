@@ -1,0 +1,15 @@
+<?xml version= "1.0" encoding= "UTF-8" ?>
+<definitions targetNamespace="http://siebel.com/asi/"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:tns="http://siebel.com/asi/"
+     xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <plnk:partnerLinkType name="SWIProductLine_PL">
+        <plnk:role name="SWIProductLine_Role">
+            <plnk:portType name="tns:SWIProductLine"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <import namespace="http://siebel.com/asi/" location="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/wsdls/SWIProductLine.wsdl"/>
+</definitions>

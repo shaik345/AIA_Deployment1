@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<componentType xmlns="http://xmlns.oracle.com/sca/1.0"
+               xmlns:ui="http://xmlns.oracle.com/soa/designer/" xml:id="id_1">
+    <service ui:wsdlLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationConnectorServiceLibrary/Siebel/V1/ProviderABCS/UpdateSalesOrderSiebelCommsProvABCSImpl.wsdl"
+             name="UpdateSalesOrderSiebelCommsProvABCSImpl" xml:id="id_2">
+        <interface.wsdl interface="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/UpdateSalesOrderSiebelCommsProvABCSImpl/V1#wsdl.interface(UpdateSalesOrderSiebelCommsProvABCSImplService)"
+                        xml:id="id_3"/>
+    </service>
+    <reference ui:wsdlLocation="SWIOrderIORef.wsdl"
+               name="SWI_spcOrder_spcUpsert" xml:id="id_4">
+        <interface.wsdl interface="http://siebel.com/asi#wsdl.interface(SWIOrderUpsert)"
+                        xml:id="id_5"/>
+    </reference>
+    <reference name="AIAAsyncErrorHandlingBPELProcess"
+               ui:wsdlLocation="oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/V1/wsdls/AIAAsyncErrorHandlingBPELProcess.wsdl"
+               xml:id="id_6">
+        <interface.wsdl interface="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess#wsdl.interface(AIAAsyncErrorHandlingBPELProcess)"
+                        xml:id="id_7"/>
+    </reference>
+    <reference name="AIASessionPoolManager"
+               ui:wsdlLocation="AIASessionPoolManagerAbstractRef.wsdl"
+               xml:id="id_8">
+        <interface.wsdl interface="http://xmlns.oracle.com/AIASessionPoolManager#wsdl.interface(AIASessionPoolManager)"
+                        xml:id="id_9"/>
+    </reference>
+    <reference name="UpdateSalesOrderSiebelCommsProvABCSImplV1ExtensionService"
+               ui:wsdlLocation="UpdateSalesOrderSiebelCommsProvABCSImplExtensionAbstract.wsdl"
+               xml:id="id_11">
+        <interface.wsdl interface="http://xmlns.oracle.com/ABCSImpl/Siebel/UpdateSalesOrderSiebelCommsProvABCSImplExtension/V1#wsdl.interface(UpdateSalesOrderSiebelCommsProvABCSImplV1ExtensionService)"
+                        xml:id="id_12"/>
+    </reference>
+    <property name="bpel.config.oneWayDeliveryPolicy" type="xs:string"
+              xmlns:xs="http://www.w3.org/2001/XMLSchema" xml:id="id_10"></property>
+</componentType>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="ProcessSMSConfigSiebelReqABCSImpl"
+             targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry//ProcessSMSConfigSiebelReqABCSImpl/V1"
+	     xmlns:eboabo="http://www.siebel.com/xml/TS%20CallGuide%20SMS%20IO"
+             xmlns:eboabcs="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry//ProcessSMSConfigSiebelReqABCSImpl/V1"
+	     xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" 
+             xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" 
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" >
+	
+	
+	<documentation>
+		<svcdoc:Service>
+		               <svcdoc:Description>
+This Process Converts Siebel ABM to AIA EBM.
+</svcdoc:Description>
+		               
+			<svcdoc:ServiceType>RequesterABCSImpl</svcdoc:ServiceType>
+			<svcdoc:Version>1</svcdoc:Version>
+			<svcdoc:ProductCode>CRMOD</svcdoc:ProductCode>
+		</svcdoc:Service>
+	</documentation>  
+	
+	 <import namespace="http://schemas.oracle.com/bpel/extension" 
+ location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+	 <types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema">
+	            <import namespace="http://www.siebel.com/xml/TS%20CallGuide%20SMS%20IO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CallGudeSMSXSD.xsd"/>
+             
+		
+	  
+		</schema>
+	</types>
+	<message name="ProcessSMSConfigReqMsg">
+		<part name="ProcessSMSConfig" 
+element="eboabo:CallGuideSMS"/>
+	</message>
+	<message name="ProcessSMSConfigRespMsg">
+		<part name="ProcessSMSConfigResponse" 
+element="eboabo:CallGuideSMS"/>
+	</message>
+	<portType name="ProcessSMSConfigSiebelReqABCSImpl">
+        <operation name="ProcessSMSConfig">
+                <documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to Process an SMSConfig
+                              object</svcdoc:Description>
+					<svcdoc:MEP>SyncReqResp</svcdoc:MEP>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="eboabcs:ProcessSMSConfigReqMsg"/>
+				<output message="eboabcs:ProcessSMSConfigRespMsg"/>
+		</operation>
+	   
+	    </portType>
+	<plnk:partnerLinkType name="ProcessSMSConfigSiebelReqABCSImpl">
+		<plnk:role name="ProcessSMSConfigSiebelReqABCSImplProvider">
+			<plnk:portType name="eboabcs:ProcessSMSConfigSiebelReqABCSImpl"/>
+		</plnk:role>
+	</plnk:partnerLinkType>
+</definitions>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="CreateCorrectiveBillSiebelCommsReqABCSImpl"
+             targetNamespace="http://xmlns.oracle.com/R6/CreateCorrectiveBillSiebelCommsReqABCSImpl/CreateCorrectiveBillSiebelCommsReqABCSImpl"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:client="http://xmlns.oracle.com/R6/CreateCorrectiveBillSiebelCommsReqABCSImpl/CreateCorrectiveBillSiebelCommsReqABCSImpl"
+             xmlns:ns1="http://www.siebel.com/xml/CMU%20Request%20Billed%20Usage%20IO"
+             xmlns:ns2="http://www.siebel.com/xml/CMU%20Response%20Billing%20Invoice%20IO"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	TYPE DEFINITION - List of services participating in this BPEL process
+	The default output of the BPEL designer uses strings as input and 
+	output to the BPEL Process. But you can define or import any XML 
+	Schema type and use them as part of the message types.
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->   
+	<wsdl:types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema">
+			<import namespace="http://www.siebel.com/xml/CMU%20Request%20Billed%20Usage%20IO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/ListOfTSCorrectiveInvoiceIO.xsd" />
+		</schema>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema">
+			<import namespace="http://www.siebel.com/xml/CMU%20Response%20Billing%20Invoice%20IO" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/ListOfTSCorrectiveInvoiceResponseIO.xsd" />
+		</schema>
+	</wsdl:types>
+
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	MESSAGE TYPE DEFINITION - Definition of the message types used as 
+	part of the port type defintions
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->      
+	<wsdl:message name="CreateCorrectiveBillSiebelCommsReqABCSImplRequestMessage">
+		<wsdl:part name="payload" element="ns1:ListOfTSCorrectiveInvoiceIO" />
+	</wsdl:message>
+	<wsdl:message name="CreateCorrectiveBillSiebelCommsReqABCSImplResponseMessage">
+		<wsdl:part name="payload" element="ns2:ListOfTSCorrectiveInvoiceResponseIO" />
+	</wsdl:message>
+
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	PORT TYPE DEFINITION - A port type groups a set of operations into
+	a logical service unit.
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+	<!-- portType implemented by the CreateCorrectiveBillSiebelCommsReqABCSImpl BPEL process -->
+	<wsdl:portType name="CreateCorrectiveBillSiebelCommsReqABCSImpl">
+		<wsdl:operation name="process">
+			<wsdl:input  message="client:CreateCorrectiveBillSiebelCommsReqABCSImplRequestMessage" />
+			<wsdl:output message="client:CreateCorrectiveBillSiebelCommsReqABCSImplResponseMessage"/>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	PARTNER LINK TYPE DEFINITION
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --> 
+	<plnk:partnerLinkType name="CreateCorrectiveBillSiebelCommsReqABCSImpl">
+		<plnk:role name="CreateCorrectiveBillSiebelCommsReqABCSImplProvider">
+			<plnk:portType name="client:CreateCorrectiveBillSiebelCommsReqABCSImpl"/>
+		</plnk:role>
+	</plnk:partnerLinkType>
+</wsdl:definitions>

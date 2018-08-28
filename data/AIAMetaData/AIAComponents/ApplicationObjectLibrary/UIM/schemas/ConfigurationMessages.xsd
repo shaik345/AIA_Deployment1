@@ -1,0 +1,1913 @@
+<?xml version="1.0"?>
+<!--
+ Copyright (c) 2011, 2014, Oracle and/or its affiliates. All rights reserved.
+    Oracle Corporation and/or its affiliates. Other names may be trademarks of their respective owners.
+-->
+<xs:schema targetNamespace="http://xmlns.oracle.com/communications/inventory/webservice/configuration"
+           xmlns:invconfig="http://xmlns.oracle.com/communications/inventory/configuration"
+           xmlns:invsvc="http://xmlns.oracle.com/communications/inventory/service"
+           xmlns:invplace="http://xmlns.oracle.com/communications/inventory/place"
+           xmlns:invld="http://xmlns.oracle.com/communications/inventory/logicaldevice"
+           xmlns:invnet="http://xmlns.oracle.com/communications/inventory/network"
+           xmlns:invbi="http://xmlns.oracle.com/communications/inventory/businessinteraction"
+           xmlns:invfault="http://xmlns.oracle.com/communications/inventory/webservice/fault"
+           xmlns:invcom="http://xmlns.oracle.com/communications/inventory/webservice/common"
+           xmlns:invconnectivity="http://xmlns.oracle.com/communications/inventory/connectivity"
+           xmlns:configws="http://xmlns.oracle.com/communications/inventory/webservice/configuration"
+           xmlns="http://www.w3.org/2001/XMLSchema"
+           xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+    <!--  ============= Imports Start ================= -->
+    <xs:import schemaLocation="BusinessInteraction.xsd"
+               namespace="http://xmlns.oracle.com/communications/inventory/businessinteraction"></xs:import>
+    <xs:import namespace="http://www.w3.org/2001/XMLSchema"/>
+    <!-- Local Imports -->
+    <xs:import namespace="http://xmlns.oracle.com/communications/inventory/webservice/common"
+               schemaLocation="InventoryCommon.xsd"/>
+    <xs:import namespace="http://xmlns.oracle.com/communications/inventory/webservice/fault"
+               schemaLocation="InventoryFaults.xsd"/>
+    <xs:import namespace="http://xmlns.oracle.com/communications/inventory/service"
+               schemaLocation="Service.xsd"/>
+    <xs:import namespace="http://xmlns.oracle.com/communications/inventory/place"
+               schemaLocation="Place.xsd"/>
+    <xs:import namespace="http://xmlns.oracle.com/communications/inventory/logicaldevice"
+               schemaLocation="LogicalDevice.xsd"/>
+    <xs:import namespace="http://xmlns.oracle.com/communications/inventory/network"
+               schemaLocation="Network.xsd"/>
+    <xs:import namespace="http://xmlns.oracle.com/communications/inventory/businessinteraction"
+               schemaLocation="BusinessInteraction.xsd"/>
+    <xs:import namespace="http://xmlns.oracle.com/communications/inventory/configuration"
+               schemaLocation="Configuration.xsd"/>
+    <xs:import namespace="http://xmlns.oracle.com/communications/inventory/connectivity"
+               schemaLocation="Connectivity.xsd"/>
+    <!-- ==== Message Types ==== -->
+    <xs:complexType name="GetConfigurationType" abstract="true">
+        <xs:annotation>
+            <xs:documentation>TODO</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="invcom:InventoryRequestType">
+                <xs:sequence>
+                    <xs:element name="responseLevel"
+                                type="configws:ConfigurationResponseLevelEnum"
+                                minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>Determines if the EntityType in
+                                              the response should contain
+                                              child-Entity Configuration (along
+                                              with child configuration items).
+                                              If ENTITY_CONFIGURATION_EXPANDED
+                                              is selected, the search will print
+                                              the assigned resource information
+                                              and if the assigned resource is a
+                                              Service, then it will look inside
+                                              the Services and retrieve its
+                                              configuration and its
+                                              configuration items. If a
+                                              configuration item as a child
+                                              service assigned to it, then the
+                                              search will recursively retrieve
+                                              its service and service
+                                              configuration information. If
+                                              ENTITY_CONFIGURATION is selected,
+                                              the search will print the assigned
+                                              resource information and if the
+                                              assigned resource is a Service,
+                                              then it will look inside the
+                                              Services and retrieve its
+                                              configuration and its
+                                              configuration items. If a
+                                              configuration item as a child
+                                              service assigned to it, then the
+                                              search will NOT recursively
+                                              retrieve its service and service
+                                              configuration information. Default
+                                              is ENTITY_CONFIGURATION.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="configSearchOption"
+                                type="configws:ConfigurationSearchOption"
+                                nillable="true">
+                        <xs:annotation>
+                            <xs:documentation>Current State of the Service</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="GetConfigurationRequestType">
+        <xs:annotation>
+            <xs:documentation>GetConfigurationRequestType holds the request
+                              information containing the Entity and Entity
+                              Configuration criteria.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="searchOptions"
+                        type="configws:GetConfigurationType" nillable="false">
+                <xs:annotation>
+                    <xs:documentation>The service search Options</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="includeTags" type="boolean" minOccurs="0" maxOccurs="1" >
+               	<xs:annotation>
+                    <xs:documentation>If the flag is true, tag data will be sent as part of the response. Defaulted to false.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="includeTagsOtherInfo" type="boolean" minOccurs="0" maxOccurs="1" >
+               	<xs:annotation>
+                    <xs:documentation>If the flag is true, tag other information will be sent as part of the response. Defaulted to false.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="GetServiceConfigurationType">
+        <xs:annotation>
+            <xs:documentation>GetServiceConfigurationRequestType holds the
+                              request information containing the Service and
+                              Service Configuration criteria.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:GetConfigurationType"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="GetPlaceConfigurationType">
+        <xs:annotation>
+            <xs:documentation>GetPlaceConfigurationRequestType holds the request
+                              information containing the Place and Place
+                              Configuration criteria.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:GetConfigurationType"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="GetNetworkConfigurationType">
+        <xs:annotation>
+            <xs:documentation>GetNetworkConfigurationRequestType holds the
+                              request information containing the Network and
+                              Network Configuration criteria.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:GetConfigurationType"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="GetLogicalDeviceConfigurationType">
+        <xs:annotation>
+            <xs:documentation>GetLogicalDeviceConfigurationRequestType holds the
+                              request information containing the LogicalDevice
+                              and LogicalDevice Configuration criteria.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:GetConfigurationType"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="GetLogicalDeviceAccountConfigurationType">
+        <xs:annotation>
+            <xs:documentation>GetLogicalDeviceAccountConfigurationRequestType holds the
+                              request information containing the LogicalDeviceAccount
+                              and LogicalDeviceAccount Configuration criteria.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:GetConfigurationType"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="GetDeviceInterfaceConfigurationType">
+        <xs:annotation>
+            <xs:documentation>GetDeviceInterfaceConfigurationRequestType holds
+                              the request information containing the
+                              DeviceInterface and DeviceInterface Configuration
+                              criteria.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:GetConfigurationType"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="GetConnectivityConfigurationType">
+        <xs:annotation>
+            <xs:documentation>GetConnectivityConfigurationRequestType holds the
+                              request information containing the Connectivity
+                              and Connectivity Configuration criteria.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:GetConfigurationType"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="GetConfigurationResponseType" abstract="true">
+        <xs:annotation>
+            <xs:documentation>GetConfigurationResponseType holds the response of
+                              the GetConfiguration operation. This returns the
+                              top level entity and the entire tree of
+                              configurations as an array.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="invcom:InventoryResponseType"></xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="GetServiceConfigurationResponseType" abstract="true">
+        <xs:annotation>
+            <xs:documentation>GetServiceConfigurationResponseType holds the
+                              response of the GetServiceConfiguration operation.
+                              This returns the top level entity and the entire
+                              tree of configurations as an array.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:GetConfigurationResponseType">
+                <xs:sequence>
+                    <xs:choice>
+                        <xs:element name="service" type="invsvc:ServiceType"
+                                    nillable="false">
+                            <xs:annotation>
+                                <xs:documentation>The service.</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:choice>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="GetPlaceConfigurationResponseType" abstract="true">
+        <xs:annotation>
+            <xs:documentation>GetPlaceConfigurationResponseType holds the
+                              response of the GetPlaceConfiguration operation.
+                              This returns the top level entity and the entire
+                              tree of configurations as an array.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:GetConfigurationResponseType">
+                <xs:sequence>
+                    <xs:choice>
+                        <xs:element name="place" type="invplace:PlaceType"
+                                    nillable="false">
+                            <xs:annotation>
+                                <xs:documentation>The place.</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:choice>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="GetNetworkConfigurationResponseType" abstract="true">
+        <xs:annotation>
+            <xs:documentation>GetNetworkConfigurationResponseType holds the
+                              response of the GetNetworkConfiguration operation.
+                              This returns the top level entity and the entire
+                              tree of configurations as an array.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:GetConfigurationResponseType">
+                <xs:sequence>
+                    <xs:choice>
+                        <xs:element name="network" type="invnet:NetworkType"
+                                    nillable="false">
+                            <xs:annotation>
+                                <xs:documentation>The network.</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:choice>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="GetLogicalDeviceConfigurationResponseType"
+                    abstract="true">
+        <xs:annotation>
+            <xs:documentation>GetLogicalDeviceConfigurationResponseType holds
+                              the response of the GetLogicalDeviceConfiguration
+                              operation. This returns the top level entity and
+                              the entire tree of configurations as an array.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:GetConfigurationResponseType">
+                <xs:sequence>
+                    <xs:choice>
+                        <xs:element name="logicalDevice"
+                                    type="invld:LogicalDeviceType"
+                                    nillable="false">
+                            <xs:annotation>
+                                <xs:documentation>The logicaldevice.</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:choice>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:complexType name="GetLogicalDeviceAccountConfigurationResponseType"
+                    abstract="true">
+        <xs:annotation>
+            <xs:documentation>GetLogicalDeviceAccountConfigurationResponseType holds
+                              the response of the GetConfiguration operation. 
+                              This returns the top level entity and
+                              the entire tree of configurations as an array.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:GetConfigurationResponseType">
+                <xs:sequence>
+                    <xs:choice>
+                        <xs:element name="logicalDeviceAccount"
+                                    type="invld:LogicalDeviceAccountType"
+                                    nillable="false">
+                            <xs:annotation>
+                                <xs:documentation>The LogicalDeviceAccount.</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:choice>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="GetDeviceInterfaceConfigurationResponseType"
+                    abstract="true">
+        <xs:annotation>
+            <xs:documentation>GetDeviceInterfaceConfigurationResponseType holds
+                              the response of the
+                              GetDeviceInterfaceConfiguration operation. This
+                              returns the top level entity and the entire tree
+                              of configurations as an array.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:GetConfigurationResponseType">
+                <xs:sequence>
+                    <xs:choice>
+                        <xs:element name="deviceInterface"
+                                    type="invld:DeviceInterfaceType"
+                                    nillable="false">
+                            <xs:annotation>
+                                <xs:documentation>The device interface.</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:choice>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="GetConnectivityConfigurationResponseType"
+                    abstract="true">
+        <xs:annotation>
+            <xs:documentation>GetConnectivityConfigurationResponseType holds the
+                              response of the GetConnectivityConfiguration
+                              operation. This returns the top level entity and
+                              the entire tree of configurations as an array.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:GetConfigurationResponseType">
+                <xs:sequence>
+                    <xs:choice>
+                        <xs:element name="connectivity"
+                                    type="invconnectivity:ConnectivityType"
+                                    nillable="false">
+                            <xs:annotation>
+                                <xs:documentation>The connectivity.</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:choice>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="UpdateConfigurationRequestType">
+        <xs:annotation>
+            <xs:documentation>UpdateConfigurationStateRequestType holds the
+                              request for Update Service Configuration State Web
+                              Service operation</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:ServiceFulfillmentRequestType">
+                <xs:sequence>
+                    <xs:element name="serviceCriteria"
+                                type="invsvc:ServiceCriteriaType"
+                                nillable="true" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>Criteria to uniquely identify a
+                                              Service.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="configurationCriteria"
+                                type="invconfig:ConfigurationCriteriaType"
+                                nillable="true" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>Criteria to uniquely identify a
+                                              Service Configuration version.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="configurationAction"
+                                type="invconfig:ConfigurationActionEnum"
+                                nillable="true" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>Action that needs to be taken on
+                                              the configuration.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="serviceAction"
+                                type="invsvc:ServiceActionEnum" nillable="true"
+                                minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>Action that needs to be taken on
+                                              the Service</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="stateChangePolicy"
+                                type="invsvc:StateChangePolicyEnum">
+                        <xs:annotation>
+                            <xs:documentation>State change policy for the
+                                              Service Configuration Items.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="UpdateConfigurationResponseType">
+        <xs:annotation>
+            <xs:documentation>UpdateConfigurationStateResponseType holds the
+                              response of the UpdateServiceConfigurationState
+                              Web Service operation. This return the
+                              created/updated Service tree.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="invcom:InventoryResponseType">
+                <xs:sequence>
+                    <xs:element name="service" type="invsvc:ServiceType"
+                                nillable="false" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>Service information with/without
+                                              configuration items.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="UpdateConfigurationFaultType">
+        <xs:annotation>
+            <xs:documentation>Fault type to return any business faults within
+                              Update Service Configuration State Web Service.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="invfault:InventoryFaultType"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="GetConfigurationDifferencesRequestType">
+        <xs:annotation>
+            <xs:documentation>GetConfigurationRequestType holds the request
+                              information containing the Entity and Entity
+                              Configuration criteria.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="invcom:InventoryRequestType">
+                <xs:sequence>
+                    <xs:element name="searchOptions"
+                                type="configws:ConfigurationDifferencesSearchOption"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>Configuration Search Options</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="includeConfigItemDifferences"
+                                type="boolean" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>If the flag is true, then the
+                                              GetConfigurationDifferences
+                                              operation will include changes on
+                                              the configuration item itself.
+                                              Example: adding or removing
+                                              configuration items. If it's set
+                                              to false, then only changes on the
+                                              resources will be included.
+                                              Default is false.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="includeChildConfigDifferences"
+                                type="boolean" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>If the flag is set to true, then
+                                              the GetConfigurationDifferences
+                                              operation will include the
+                                              differences for child
+                                              configurations that are referenced
+                                              or assigned to a configuration
+                                              item on a parent configuration.
+                                              Typical case is a RFS is assigned
+                                              on a CFS. For complete details on
+                                              Child Configuration differences,
+                                              refer to the section 2.1.4 Child
+                                              Configuration. Default is false.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="includeActionPerformedInTargetVersion"
+                                type="boolean" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>If the flag is true, then the
+                                              GetConfigurationDifferences
+                                              response will include the element
+                                              actionPerformedInTargetVersion for
+                                              the target configuration item
+                                              difference. Default is false.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="includeTarget" type="boolean"
+                                minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>If the flag is true, target
+                                              configuration will be sent as part
+                                              of the response. Defaulted to true.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>                    
+                    <xs:element name="includeSource" type="boolean"
+                                minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>If the flag is true, source
+                                              configuration will be sent as part
+                                              of the response. Defaulted to
+                                              true.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+
+                    <xs:element name="returnTargetWhenNoChange" type="boolean"
+                                minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>If the flag is set to true, and if
+                                              the versions we are comparing are
+                                              the same, then the difference
+                                              object with target populated is
+                                              returned, the source is not
+                                              populated and action will be
+                                              noChange. If the flag is set to
+                                              false, and if the versions we are
+                                              comparing are the same, then only
+                                              the action of No change will be
+                                              returned.. If the versions we are
+                                              comparing are different, then the
+                                              returnTargetWhenNoChange option
+                                              has no bearing on the output. includeTarget 
+                                              flag will take precendence over this flag 
+                                              in the request.The default value is false.
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="includeTags" type="boolean" minOccurs="0" maxOccurs="1" >
+                     	<xs:annotation>
+                            <xs:documentation>If the flag is true, tag data will be sent as part
+                                              of the response. Defaulted to false.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="includeTagsOtherInfo" type="boolean" minOccurs="0" maxOccurs="1" >
+                    	<xs:annotation>
+                            <xs:documentation>If the flag is true, tag other information will be sent as part
+                                              of the response. Defaulted to false.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="GetConfigurationDifferencesResponseType">
+        <xs:annotation>
+            <xs:documentation>GetConfigurationDifferencesResponseType, is an XML
+                              object that holds the request information
+                              containing the configuration differences. It
+                              extends the base invcom:InventoryResponseType.
+                              NOTE: whenever the getConfigurationDifferences
+                              operation uses its logic to figure out which
+                              target or source to use, an informative message
+                              should be returned with the
+                              getConfigurationDifferences response. For example,
+                              if the getConfigurationDifferences request
+                              contains the service external object id and the
+                              target configuration, then the
+                              getConfigurationDifferences will use the previous
+                              active configuration. But, if the previous active
+                              configuration is cancelled, then it'll use the one
+                              previous the cancelled configuration. It'll do
+                              this until it finds an active configuration. When
+                              returning the Configuration Differences, there
+                              should be an information message sayng that the
+                              "Service Configuration z was compared to Service
+                              Configuration x because Service Configuration y
+                              was in a Canceled State"</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="invcom:InventoryResponseType">
+                <xs:sequence>
+                    <xs:element name="configurationDifferences"
+                                type="invconfig:ConfigurationDifferenceType"
+                                nillable="false" maxOccurs="unbounded"
+                                minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>Configuration Differences</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="GetConfigurationDifferencesFaultType">
+        <xs:annotation>
+            <xs:documentation>Fault type to return any business faults within
+                              Get Configuration operation.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="invfault:InventoryFaultType"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="ServiceFulfillmentRequestType">
+        <xs:annotation>
+            <xs:documentation>ServiceFulfillmentRequestType defines the base
+                              type for Requests that will be used for Service
+                              Fulfillment. All the attributes that are defined
+                              at the Service Fulfillemnt request level are
+                              defined here.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="invcom:InventoryRequestType">
+                <xs:sequence>
+                    <xs:element name="expandedResponse" type="xsd:boolean"
+                                nillable="false" minOccurs="1" default="true">
+                        <xs:annotation>
+                            <xs:documentation>expandedResponse determines of the
+                                              ServiceType in the response should
+                                              contain Configuration Items (along
+                                              with child configuration items).
+                                              If true, the whole Service tree is
+                                              returned. If false, Configuration
+                                              Items are omitted. Default is
+                                              false.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="GetConfigurationFaultType">
+        <xs:annotation>
+            <xs:documentation>Fault type to return any business faults within
+                              Get Configuration operation.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="invfault:InventoryFaultType"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- ==== Elements ==== -->
+    <xs:element name="getConfigurationRequest"
+                type="configws:GetConfigurationRequestType">
+        <xs:annotation>
+            <xs:documentation>The element for input for locating the specific
+                              entity configuration entity.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="getConfigurationResponse"
+                type="configws:GetConfigurationResponseType">
+        <xs:annotation>
+            <xs:documentation>The element to represent the information returned
+                              for locating the specific configuration entity.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="getConfigurationFault"
+                type="configws:GetConfigurationFaultType">
+        <xs:annotation>
+            <xs:documentation>The element to represent the information returned
+                              as a fault if for locating the specific
+                              configuration entity has errors.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="updateConfigurationRequest"
+                type="configws:UpdateConfigurationRequestType">
+        <xs:annotation>
+            <xs:documentation>The element is used for inputs for
+                              UpdateServiceConfiguration operation.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="updateConfigurationResponse"
+                type="configws:UpdateConfigurationResponseType">
+        <xs:annotation>
+            <xs:documentation>The element represents the information returned
+                              for updateConfigurationResponse operation.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="updateConfigurationFault"
+                type="configws:UpdateConfigurationFaultType">
+        <xs:annotation>
+            <xs:documentation>The element represents the information of errors
+                              returned for UpdateServiceConfiguration operation
+                              failure.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="getConfigurationDifferencesRequest"
+                type="configws:GetConfigurationDifferencesRequestType">
+        <xs:annotation>
+            <xs:documentation>The element for input for locating the specific
+                              entity configuration entity.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="getConfigurationDifferencesResponse"
+                type="configws:GetConfigurationDifferencesResponseType">
+        <xs:annotation>
+            <xs:documentation>The element to represent the information returned
+                              for locating the specific configuration entity.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="getConfigurationDifferencesFault"
+                type="configws:GetConfigurationDifferencesFaultType">
+        <xs:annotation>
+            <xs:documentation>The element to represent the information returned
+                              as a fault if for locating the specific
+                              configuration entity has errors.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <!-- ==== Enums ==== -->
+    <xs:simpleType name="ConfigurationResponseLevelEnum">
+        <xs:annotation>
+            <xs:documentation>Defines valid values for Configuration Response
+                              Detail Level.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xsd:string">
+            <xs:enumeration value="ENTITY_CONFIGURATION">
+                <xs:annotation>
+                    <xs:documentation>Selecting this option the search will
+                                      print the assigned resource information
+                                      and if the assigned resource is a Service,
+                                      then it will print the Services
+                                      information (including the Place and
+                                      Party), but it will not print the
+                                      configuration information.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="ENTITY_CONFIGURATION_EXPANDED">
+                <xs:annotation>
+                    <xs:documentation>Selecting this option the search will
+                                      print the assigned resource information
+                                      and if the assigned resource is a Service,
+                                      then it will look inside the Services and
+                                      retrieve its configuration and its
+                                      configuration items. If a configuration
+                                      item as a child service assigned to it,
+                                      then the search will recursively retrieve
+                                      its service and service configuration
+                                      information.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- ==== Configuration Search Options ==== -->
+    <complexType name="ConfigurationSearchOption" abstract="true">
+        <annotation>
+            <documentation>SearchOption</documentation>
+        </annotation>
+        <sequence>
+            <element name="entityNote" type="xsd:string" nillable="false"
+                     minOccurs="0"/>
+        </sequence>
+    </complexType>
+    <!-- ==== Service Configuration Search Options ==== -->
+    <complexType name="ServiceConfigurationSearchByEntityId">
+        <annotation>
+            <documentation>...</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="configws:ServiceConfigurationSearchOption">
+                <sequence>
+                    <element name="entityId" type="xs:string" nillable="false">
+                        <annotation>
+                            <documentation>The id of the service to get.</documentation>
+                        </annotation>
+                    </element>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ServiceConfigurationSearchOption" abstract="true">
+        <annotation>
+            <documentation>ConfigurationSearchOption1</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="configws:ConfigurationSearchOption">
+                <sequence/>
+            </extension>
+        </complexContent>
+    </complexType>
+    <xs:complexType name="ServiceConfigurationSearchByVersionNumber">
+        <xs:annotation>
+            <xs:documentation>...</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:ServiceConfigurationSearchOption">
+                <xs:sequence>
+                    <xs:element name="entityId" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The id of the service to get.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="versionNumber" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The versionNumber of the
+                                              configuration.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="ServiceConfigurationSearchByConfigId">
+        <xs:annotation>
+            <xs:documentation>...</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:ServiceConfigurationSearchOption">
+                <xs:sequence>
+                    <xs:element name="configurationId" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The id of the configuration to get.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="ServiceConfigurationSearchByConfigStatus">
+        <xs:annotation>
+            <xs:documentation>...</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:ServiceConfigurationSearchOption">
+                <xs:sequence>
+                    <xs:element name="entityId" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The id of the service to get.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="configurationStatus"
+                                type="invconfig:ConfigurationStateEnum"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The configuration version state
+                                              (ex: in Progress, designed, issue,
+                                              pending cancel, completed,
+                                              cancelled).</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="ServiceConfigurationSearchByEffectiveDate">
+        <xs:annotation>
+            <xs:documentation>...</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:ServiceConfigurationSearchOption">
+                <xs:sequence>
+                    <xs:element name="entityId" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The id of the service to get.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="effectiveDate" type="xs:dateTime"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The date that services as a frame
+                                              of reference for the service
+                                              configuration to get.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- ==== Place Configuration Search Options ==== -->
+    <complexType name="PlaceConfigurationSearchByEntityId">
+        <annotation>
+            <documentation>...</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="configws:PlaceConfigurationSearchOption">
+                <sequence>
+                    <element name="entityId" type="xs:string" nillable="false">
+                        <annotation>
+                            <documentation>The id of the Place to get.</documentation>
+                        </annotation>
+                    </element>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="PlaceConfigurationSearchOption" abstract="true">
+        <annotation>
+            <documentation>ConfigurationSearchOption1</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="configws:ConfigurationSearchOption">
+                <sequence/>
+            </extension>
+        </complexContent>
+    </complexType>
+    <xs:complexType name="PlaceConfigurationSearchByVersionNumber">
+        <xs:annotation>
+            <xs:documentation>...</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:PlaceConfigurationSearchOption">
+                <xs:sequence>
+                    <xs:element name="entityId" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The id of the Place to get.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="versionNumber" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The versionNumber of the
+                                              configuration.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="PlaceConfigurationSearchByConfigId">
+        <xs:annotation>
+            <xs:documentation>...</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:PlaceConfigurationSearchOption">
+                <xs:sequence>
+                    <xs:element name="configurationId" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The id of the configuration to get.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="PlaceConfigurationSearchByConfigStatus">
+        <xs:annotation>
+            <xs:documentation>...</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:PlaceConfigurationSearchOption">
+                <xs:sequence>
+                    <xs:element name="entityId" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The id of the Place to get.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="configurationStatus"
+                                type="invconfig:ConfigurationStateEnum"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The configuration version state
+                                              (ex: in Progress, designed, issue,
+                                              pending cancel, completed,
+                                              cancelled).</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="PlaceConfigurationSearchByEffectiveDate">
+        <xs:annotation>
+            <xs:documentation>...</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:PlaceConfigurationSearchOption">
+                <xs:sequence>
+                    <xs:element name="entityId" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The id of the Place to get.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="effectiveDate" type="xs:dateTime"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The date that Places as a frame of
+                                              reference for the Place
+                                              configuration to get.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- ==== LogicalDevice Configuration Search Options ==== -->
+    <complexType name="LogicalDeviceConfigurationSearchByEntityId">
+        <annotation>
+            <documentation>...</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="configws:LogicalDeviceConfigurationSearchOption">
+                <sequence>
+                    <element name="entityId" type="xs:string" nillable="false">
+                        <annotation>
+                            <documentation>The id of the LogicalDevice to get.</documentation>
+                        </annotation>
+                    </element>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="LogicalDeviceConfigurationSearchOption" abstract="true">
+        <annotation>
+            <documentation>ConfigurationSearchOption1</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="configws:ConfigurationSearchOption">
+                <sequence/>
+            </extension>
+        </complexContent>
+    </complexType>
+    <xs:complexType name="LogicalDeviceConfigurationSearchByVersionNumber">
+        <xs:annotation>
+            <xs:documentation>...</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:LogicalDeviceConfigurationSearchOption">
+                <xs:sequence>
+                    <xs:element name="entityId" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The id of the LogicalDevice to get.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="versionNumber" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The versionNumber of the
+                                              configuration.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="LogicalDeviceConfigurationSearchByConfigId">
+        <xs:annotation>
+            <xs:documentation>...</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:LogicalDeviceConfigurationSearchOption">
+                <xs:sequence>
+                    <xs:element name="configurationId" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The id of the configuration to get.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="LogicalDeviceConfigurationSearchByConfigStatus">
+        <xs:annotation>
+            <xs:documentation>...</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:LogicalDeviceConfigurationSearchOption">
+                <xs:sequence>
+                    <xs:element name="entityId" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The id of the LogicalDevice to get.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="configurationStatus"
+                                type="invconfig:ConfigurationStateEnum"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The configuration version state
+                                              (ex: in Progress, designed, issue,
+                                              pending cancel, completed,
+                                              cancelled).</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="LogicalDeviceConfigurationSearchByEffectiveDate">
+        <xs:annotation>
+            <xs:documentation>...</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:LogicalDeviceConfigurationSearchOption">
+                <xs:sequence>
+                    <xs:element name="entityId" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The id of the LogicalDevice to get.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="effectiveDate" type="xs:dateTime"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The date that LogicalDevices as a
+                                              frame of reference for the
+                                              LogicalDevice configuration to get.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+     <!-- ==== LogicalDeviceAccount Configuration Search Options ==== -->
+    <complexType name="LogicalDeviceAccountConfigurationSearchByEntityId">
+        <annotation>
+            <documentation>...</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="configws:LogicalDeviceAccountConfigurationSearchOption">
+                <sequence>
+                    <element name="entityId" type="xs:string" nillable="false">
+                        <annotation>
+                            <documentation>The id of the LogicalDeviceAccount to get.</documentation>
+                        </annotation>
+                    </element>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="LogicalDeviceAccountConfigurationSearchOption" abstract="true">
+        <annotation>
+            <documentation>ConfigurationSearchOption1</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="configws:ConfigurationSearchOption">
+                <sequence/>
+            </extension>
+        </complexContent>
+    </complexType>
+    <xs:complexType name="LogicalDeviceAccountConfigurationSearchByVersionNumber">
+        <xs:annotation>
+            <xs:documentation>...</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:LogicalDeviceAccountConfigurationSearchOption">
+                <xs:sequence>
+                    <xs:element name="entityId" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The id of the LogicalDeviceAccount to get.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="versionNumber" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The versionNumber of the configuration.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="LogicalDeviceAccountConfigurationSearchByConfigId">
+        <xs:annotation>
+            <xs:documentation>...</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:LogicalDeviceAccountConfigurationSearchOption">
+                <xs:sequence>
+                    <xs:element name="configurationId" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The id of the configuration to get.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="LogicalDeviceAccountConfigurationSearchByConfigStatus">
+        <xs:annotation>
+            <xs:documentation>...</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:LogicalDeviceAccountConfigurationSearchOption">
+                <xs:sequence>
+                    <xs:element name="entityId" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The id of the LogicalDeviceAccount to get.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="configurationStatus"
+                                type="invconfig:ConfigurationStateEnum"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The configuration version state
+                                              (ex: in Progress, designed, issue,
+                                              pending cancel, completed,
+                                              cancelled).</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="LogicalDeviceAccountConfigurationSearchByEffectiveDate">
+        <xs:annotation>
+            <xs:documentation>...</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:LogicalDeviceAccountConfigurationSearchOption">
+                <xs:sequence>
+                    <xs:element name="entityId" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The id of the LogicalDeviceAccount to get.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="effectiveDate" type="xs:dateTime"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The date that LogicalDeviceAccounts as a
+                                              frame of reference for the
+                                              LogicalDeviceAccount configuration to get.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- ==== Network Configuration Search Options ==== -->
+    <complexType name="NetworkConfigurationSearchByEntityId">
+        <annotation>
+            <documentation>...</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="configws:NetworkConfigurationSearchOption">
+                <sequence>
+                    <element name="entityId" type="xs:string" nillable="false">
+                        <annotation>
+                            <documentation>The id of the Network to get.</documentation>
+                        </annotation>
+                    </element>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="NetworkConfigurationSearchOption" abstract="true">
+        <annotation>
+            <documentation>ConfigurationSearchOption1</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="configws:ConfigurationSearchOption">
+                <sequence/>
+            </extension>
+        </complexContent>
+    </complexType>
+    <xs:complexType name="NetworkConfigurationSearchByVersionNumber">
+        <xs:annotation>
+            <xs:documentation>...</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:NetworkConfigurationSearchOption">
+                <xs:sequence>
+                    <xs:element name="entityId" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The id of the Network to get.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="versionNumber" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The versionNumber of the
+                                              configuration.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="NetworkConfigurationSearchByConfigId">
+        <xs:annotation>
+            <xs:documentation>...</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:NetworkConfigurationSearchOption">
+                <xs:sequence>
+                    <xs:element name="configurationId" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The id of the configuration to get.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="NetworkConfigurationSearchByConfigStatus">
+        <xs:annotation>
+            <xs:documentation>...</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:NetworkConfigurationSearchOption">
+                <xs:sequence>
+                    <xs:element name="entityId" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The id of the Network to get.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="configurationStatus"
+                                type="invconfig:ConfigurationStateEnum"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The configuration version state
+                                              (ex: in Progress, designed, issue,
+                                              pending cancel, completed,
+                                              cancelled).</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="NetworkConfigurationSearchByEffectiveDate">
+        <xs:annotation>
+            <xs:documentation>...</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:NetworkConfigurationSearchOption">
+                <xs:sequence>
+                    <xs:element name="entityId" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The id of the Network to get.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="effectiveDate" type="xs:dateTime"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The date that Networks as a frame
+                                              of reference for the Network
+                                              configuration to get.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- ==== DeviceInterface Configuration Search Options ==== -->
+    <complexType name="DeviceInterfaceConfigurationSearchByEntityId">
+        <annotation>
+            <documentation>...</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="configws:DeviceInterfaceConfigurationSearchOption">
+                <sequence>
+                    <element name="entityId" type="xs:string" nillable="false">
+                        <annotation>
+                            <documentation>The id of the DeviceInterface to get.</documentation>
+                        </annotation>
+                    </element>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="DeviceInterfaceConfigurationSearchOption"
+                 abstract="true">
+        <annotation>
+            <documentation>ConfigurationSearchOption1</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="configws:ConfigurationSearchOption">
+                <sequence/>
+            </extension>
+        </complexContent>
+    </complexType>
+    <xs:complexType name="DeviceInterfaceConfigurationSearchByVersionNumber">
+        <xs:annotation>
+            <xs:documentation>...</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:DeviceInterfaceConfigurationSearchOption">
+                <xs:sequence>
+                    <xs:element name="entityId" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The id of the DeviceInterface to
+                                              get.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="versionNumber" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The versionNumber of the
+                                              configuration.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="DeviceInterfaceConfigurationSearchByConfigId">
+        <xs:annotation>
+            <xs:documentation>...</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:DeviceInterfaceConfigurationSearchOption">
+                <xs:sequence>
+                    <xs:element name="configurationId" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The id of the configuration to get.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="DeviceInterfaceConfigurationSearchByConfigStatus">
+        <xs:annotation>
+            <xs:documentation>...</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:DeviceInterfaceConfigurationSearchOption">
+                <xs:sequence>
+                    <xs:element name="entityId" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The id of the DeviceInterface to
+                                              get.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="configurationStatus"
+                                type="invconfig:ConfigurationStateEnum"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The configuration version state
+                                              (ex: in Progress, designed, issue,
+                                              pending cancel, completed,
+                                              cancelled).</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="DeviceInterfaceConfigurationSearchByEffectiveDate">
+        <xs:annotation>
+            <xs:documentation>...</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:DeviceInterfaceConfigurationSearchOption">
+                <xs:sequence>
+                    <xs:element name="entityId" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The id of the DeviceInterface to
+                                              get.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="effectiveDate" type="xs:dateTime"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The date that DeviceInterfaces as
+                                              a frame of reference for the
+                                              DeviceInterface configuration to
+                                              get.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <!-- ==== Connectivity Configuration Search Options ==== -->
+    <complexType name="ConnectivityConfigurationSearchByEntityId">
+        <annotation>
+            <documentation>...</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="configws:ConnectivityConfigurationSearchOption">
+                <sequence>
+                    <element name="entityId" type="xs:string" nillable="false">
+                        <annotation>
+                            <documentation>The id of the Connectivity to get.</documentation>
+                        </annotation>
+                    </element>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="ConnectivityConfigurationSearchOption" abstract="true">
+        <annotation>
+            <documentation>ConfigurationSearchOption1</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="configws:ConfigurationSearchOption">
+                <sequence/>
+            </extension>
+        </complexContent>
+    </complexType>
+    <xs:complexType name="ConnectivityConfigurationSearchByVersionNumber">
+        <xs:annotation>
+            <xs:documentation>...</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:ConnectivityConfigurationSearchOption">
+                <xs:sequence>
+                    <xs:element name="entityId" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The id of the Connectivity to get.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="versionNumber" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The versionNumber of the
+                                              configuration.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="ConnectivityConfigurationSearchByConnectivityIdentifier">
+        <xs:annotation>
+            <xs:documentation>...</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:ConnectivityConfigurationSearchOption">
+                <xs:sequence>
+                    <xs:element name="connectivityIdentifier" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The id of the Connectivity to get.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="versionNumber" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The versionNumber of the
+                                              configuration.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="ConnectivityConfigurationSearchByConfigId">
+        <xs:annotation>
+            <xs:documentation>...</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:ConnectivityConfigurationSearchOption">
+                <xs:sequence>
+                    <xs:element name="configurationId" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The id of the configuration to get.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="ConnectivityConfigurationSearchByConfigStatus">
+        <xs:annotation>
+            <xs:documentation>...</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:ConnectivityConfigurationSearchOption">
+                <xs:sequence>
+                    <xs:element name="entityId" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The id of the Connectivity to get.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="configurationStatus"
+                                type="invconfig:ConfigurationStateEnum"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The configuration version state
+                                              (ex: in Progress, designed, issue,
+                                              pending cancel, completed,
+                                              cancelled).</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="ConnectivityConfigurationSearchByEffectiveDate">
+        <xs:annotation>
+            <xs:documentation>...</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:ConnectivityConfigurationSearchOption">
+                <xs:sequence>
+                    <xs:element name="entityId" type="xs:string"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The id of the Connectivity to get.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="effectiveDate" type="xs:dateTime"
+                                nillable="false">
+                        <xs:annotation>
+                            <xs:documentation>The date that Connectivitys as a
+                                              frame of reference for the
+                                              Connectivity configuration to get.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="ConfigurationDifferencesSearchOption" abstract="true">
+        <xs:annotation>
+            <xs:documentation>ConfigurationDifferencesSearchOption is the base
+                              for all ConfigurationDifferencesSearchOption.
+                              Currently, is does not hold much value, but
+                              eventually it could contain comment
+                              ConfigurationDifferencesSearchOption elements.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="entityNote" type="xsd:string" nillable="false"
+                        minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Stores entity information. Optional. Note
+                                      that no information is contained in the
+                                      entityNote. This is a workaround for a xsd
+                                      compiler (wsdlc) issue. When the compiler
+                                      generates the classes, if the complexType
+                                      does not have any elements, then the
+                                      inheritance is not properly generated. The
+                                      entityNote can be used by the WS operation
+                                      caller to set or get special note on the
+                                      entity.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="BusinessInteractionConfigurationDifferencesSearchOption">
+        <xs:annotation>
+            <xs:documentation>BusinessInteractionConfigurationDifferencesSearchOption,
+                              is used to describe the type of
+                              ConfigurationDifferencesSearchOption. It would
+                              contain the BI information to be requested 
+                              typically the BI id or the BI externalId. This
+                              would be an example of the
+                              getConfigurationDifferencesRequest for a BI. When
+                              user uses this search option, the system will find
+                              differences of all configurations associated with
+                              this BI or its child BI's with its previous non
+                              cancelled configurations.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:ConfigurationDifferencesSearchOption">
+                <xs:sequence>
+                    <xs:element name="interaction"
+                                type="invbi:BusinessInteractionType"
+                                maxOccurs="1" minOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>Used to give the BI details to
+                                              search for. Need to give at
+                                              minimum the BI id or the BI
+                                              external object id.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="EntityConfigurationDifferencesSearchOption"
+                    abstract="true">
+        <xs:annotation>
+            <xs:documentation>EntityConfigurationDifferencesSearchOption is the
+                              base for all
+                              EntityConfigurationDifferencesSearchOption
+                              (example:
+                              ServiceConfigurationDifferencesSearchOption). It
+                              extends ConfigurationDifferencesSearchOption and
+                              refers to two elements: source and target
+                              ConfigurationCriteriaType. The source and target
+                              are used to specify which configuration to
+                              compare. The user shall be able to call the web
+                              service by passing the ID of the target entity
+                              that will serve as root of the comparison (in the
+                              case of BI and Service an external object id can
+                              be used). An optional configuration version for
+                              the target can be given; otherwise the
+                              getConfigurationDifferences operation will assume
+                              the latest, non-canceled version. Similarly, an
+                              optional source configuration version can be
+                              specified, otherwise the
+                              getConfigurationDifferences operation will default
+                              to the first non-canceled previous to the latest
+                              non-cancelled version for the entity. If only a
+                              source configuration is given, and if the
+                              getConfigurationDifferences operation cannot
+                              resolve an target, then an error will be returned.
+                              If the user does not specify a target or source
+                              configuration, then the
+                              getConfigurationDifferences operation will use the
+                              first (latest) non-cancelled configuration version
+                              as the target and the previous non-cancelled
+                              configuration version as the source. If neither
+                              exists, an error is returned. If only the target
+                              exist, then all configuration items will be marked
+                              as "ADDED". If the target and source
+                              configurations are not given, then the
+                              getConfigurationDifferences operation will use
+                              version 5 as target and version 3 as source. In
+                              all case, whenever the getConfigurationDifferences
+                              operation uses its logic to figure out which
+                              target or source to use, an informative message
+                              should be returned with the
+                              getConfigurationDifferences response.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:ConfigurationDifferencesSearchOption">
+                <xs:sequence>
+                    <xs:element name="targetConfigurationCriteriaType"
+                                type="invconfig:ConfigurationCriteriaType"
+                                maxOccurs="1" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>The target configuration to
+                                              compare. Optional.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>                
+                    <xs:element name="sourceConfigurationCriteriaType"
+                                type="invconfig:ConfigurationCriteriaType"
+                                maxOccurs="1" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>The source configuration to
+                                              compare. Optional.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="ServiceConfigurationDifferencesSearchOption">
+        <xs:annotation>
+            <xs:documentation>ServiceConfigurationDifferencesSearchOption, is
+                              used to describe the type of
+                              ConfigurationDifferencesSearchOption. It would
+                              contain the Service information to be requested 
+                              typically the Service id or the Service externalId
+                              (if available).</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:EntityConfigurationDifferencesSearchOption">
+                <xs:sequence>
+                    <xs:element name="service" type="invsvc:ServiceCriteriaType"
+                                maxOccurs="1" minOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>The source configuration to
+                                              compare. Need to give at minimum
+                                              the service id or the service
+                                              external object id. If the service
+                                              external object id is used and
+                                              multiple services are found, then
+                                              an error is logged.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="PlaceConfigurationDifferencesSearchOption">
+        <xs:annotation>
+            <xs:documentation>PlaceConfigurationDifferencesSearchOption, is used
+                              to describe the type of
+                              ConfigurationDifferencesSearchOption. It would
+                              contain the Place information to be requested 
+                              typically the Place id or the Place externalId (if
+                              available).</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:EntityConfigurationDifferencesSearchOption">
+                <xs:sequence>
+                    <xs:element name="place" type="invplace:PlaceCriteriaType"
+                                maxOccurs="1" minOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>The source configuration to
+                                              compare. Need to give at minimum
+                                              the place id.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="LogicalDeviceConfigurationDifferencesSearchOption">
+        <xs:annotation>
+            <xs:documentation>LogicalDeviceConfigurationDifferencesSearchOption,
+                              is used to describe the type of
+                              ConfigurationDifferencesSearchOption. It would
+                              contain the Logical Device information to be
+                              requested  typically the Logical Device id or the
+                              Logical Device externalId (if available).</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:EntityConfigurationDifferencesSearchOption">
+                <xs:sequence>
+                    <xs:element name="logicalDevice"
+                                type="invld:LogicalDeviceCriteriaType"
+                                maxOccurs="1" minOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>The source configuration to
+                                              compare. Need to give at minimum
+                                              the logical device id.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="NetworkConfigurationDifferencesSearchOption">
+        <xs:annotation>
+            <xs:documentation>NetworkConfigurationDifferencesSearchOption, is
+                              used to describe the type of
+                              ConfigurationDifferencesSearchOption. It would
+                              contain the Network information to be requested 
+                              typically the Network id or the Network externalId
+                              (if available).</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:EntityConfigurationDifferencesSearchOption">
+                <xs:sequence>
+                    <xs:element name="network" type="invnet:NetworkCriteriaType"
+                                maxOccurs="1" minOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>The source configuration to
+                                              compare. Need to give at minimum
+                                              the network id.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="ConnectivityConfigurationDifferencesSearchOption">
+        <xs:annotation>
+            <xs:documentation>ConfigurationDifferencesSearchOption. It would
+                              contain the Connectivity information to be
+                              requested  typically the Connectivity id or the
+                              Connectivity externalId (if available).</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:EntityConfigurationDifferencesSearchOption">
+                <xs:sequence>
+                    <xs:element name="connectivity"
+                                type="invconnectivity:ConnectivityCriteriaType"
+                                maxOccurs="1" minOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>The source configuration to
+                                              compare. Need to give at minimum
+                                              the connectivity id or the
+                                              connectivity external object id.
+                                              Works for all connectivitiy (ie:
+                                              pipe, channelized connectivity..)</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="LogicalDeviceAccountConfigurationDifferencesSearchOption">
+        <xs:annotation>
+            <xs:documentation>LogicalDeviceAccountConfigurationDifferencesSearchOption,
+                              is used to describe the type of
+                              ConfigurationDifferencesSearchOption. It would
+                              contain the LogicalDeviceAccount information to be
+                              requested  typically the LogicalDeviceAccount id
+                              or the LogicalDeviceAccount externalId (if
+                              available).</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="configws:EntityConfigurationDifferencesSearchOption">
+                <xs:sequence>
+                    <xs:element name="logicalDeviceAccount"
+                                type="invld:LogicalDeviceAccountCriteriaType"
+                                maxOccurs="1" minOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>The source configuration to
+                                              compare. Need to give at minimum
+                                              the LDA id.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+</xs:schema>

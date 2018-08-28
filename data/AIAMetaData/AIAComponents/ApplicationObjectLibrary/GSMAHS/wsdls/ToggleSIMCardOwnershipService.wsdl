@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<wsdl:definitions name="ToggleSIMCardOwnershipService"
+                  targetNamespace="http://telia.com/scm/fmw/sim/processsimcardownerchangerequest/v1"
+                  xmlns:client="http://telia.com/scm/fmw/sim/processsimcardownerchangerequest/v1"
+                  xmlns:scmo="http://telia.com/scm/fmw/sim/objects/v1"
+                  xmlns:err="http://telia.com/scm//common/error/objects/v1"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns="http://schemas.xmlsoap.org/wsdl/">
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:import namespace="http://telia.com/scm/fmw/sim/objects/v1"
+               schemaLocation="../schemas/SCMServiceObjects.xsd"/>
+			<xsd:import namespace="http://telia.com/scm//common/error/objects/v1"
+               schemaLocation="../schemas/SCMErrorMessage.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="LeaseSIMCardRequest">
+		<part name="request" element="scmo:LeaseSIMCardRequest"/>
+	</wsdl:message>
+	<wsdl:message name="ReleaseSIMCardRequest">
+		<part name="request" element="scmo:ReleaseSIMCardRequest"/>
+	</wsdl:message>
+	<wsdl:message name="LeaseSIMCardResponse">
+		<part name="response" element="scmo:LeaseSIMCardResponse"/>
+	</wsdl:message>
+	<wsdl:message name="ReleaseSIMCardResponse">
+		<part name="response" element="scmo:ReleaseSIMCardResponse"/>
+	</wsdl:message>
+	<wsdl:message name="SIMCardFault">
+		<wsdl:part name="fault" element="err:scmFaultMessage"/>
+	</wsdl:message>
+	<wsdl:portType name="ToggleSIMCardOwnershipServicePortType">
+		<wsdl:operation name="LeaseSIMCard">
+			<wsdl:input message="client:LeaseSIMCardRequest"/>
+			<wsdl:output message="client:LeaseSIMCardResponse"/>
+			<wsdl:fault message="client:SIMCardFault" name="SIMCardTechnicalFault"/>
+			<wsdl:fault message="client:SIMCardFault" name="SIMCardBusinessFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="ReleaseSIMCard">
+			<wsdl:input message="client:ReleaseSIMCardRequest"/>
+			<wsdl:output message="client:ReleaseSIMCardResponse"/>
+			<wsdl:fault message="client:SIMCardFault" name="SIMCardTechnicalFault"/>
+			<wsdl:fault message="client:SIMCardFault" name="SIMCardBusinessFault"/>
+		</wsdl:operation>
+	</wsdl:portType>
+</wsdl:definitions>

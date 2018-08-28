@@ -1,0 +1,696 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+		<xsd:schema xmlns:xsdLocal1="http://www.siebel.com/xml/SWIPromotionIntegrationIO" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" targetNamespace="http://www.siebel.com/xml/SWIPromotionIntegrationIO">
+			<xsd:annotation>
+				<xsd:documentation>Copyright (C) 2001-2004 Siebel Systems, Inc. All rights reserved. Siebel XSD Generation</xsd:documentation>
+			</xsd:annotation>
+			<xsd:element name="ListOfSwipromotionIntegrationio" type="xsdLocal1:ListOfSwipromotionIntegrationio"/>
+			<xsd:complexType name="ListOfSwipromotionIntegrationioTopElmt">
+				<xsd:sequence>
+					<xsd:element name="ListOfSwipromotionIntegrationio" maxOccurs="1" minOccurs="1" type="xsdLocal1:ListOfSwipromotionIntegrationio"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="ListOfSwipromotionIntegrationio">
+				<xsd:sequence>
+					<xsd:element name="SwiPromotionIntegrationVbc" maxOccurs="unbounded" minOccurs="0" type="xsdLocal1:SwiPromotionIntegrationVbc"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SwiPromotionIntegrationVbc">
+				<xsd:sequence>
+					<xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="OverrideLockedFlag" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ReleaseDate" maxOccurs="1" minOccurs="0" type="xsd:string"/>		
+					<xsd:element name="WorkspaceId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="WorkspaceName" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="WorkspaceReleaseFlag" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="WorkspaceReuseFlag" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ActiveWorkspaceFlag" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ListOfSwiPromotionVbc" maxOccurs="1" minOccurs="0" type="xsdLocal1:ListOfSwiPromotionVbc"/>
+					<xsd:element name="ListOfSwiPromotionItemAttributeVbc" maxOccurs="1" minOccurs="0" type="xsdLocal1:ListOfSwiPromotionItemAttributeVbc"/>
+					<xsd:element name="ListOfSwiPromotionPricingOverrideVbc" maxOccurs="1" minOccurs="0" type="xsdLocal1:ListOfSwiPromotionPricingOverrideVbc"/>
+					<xsd:element name="ListOfSwiPromotionProductOverrideVbc" maxOccurs="1" minOccurs="0" type="xsdLocal1:ListOfSwiPromotionProductOverrideVbc"/>
+				</xsd:sequence>
+				<xsd:attribute name="Operation" type="xsd:string"/>
+				<xsd:attribute name="Searchspec" type="xsd:string"/>
+			</xsd:complexType>
+			<xsd:complexType name="ListOfSwiPromotionVbc">
+				<xsd:sequence>
+					<xsd:element name="SwiPromotionVbc" maxOccurs="unbounded" minOccurs="0" type="xsdLocal1:SwiPromotionVbc"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SwiPromotionVbc">
+				<xsd:sequence>
+					<xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ActiveFlag" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="AdjustCharge" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="AdjustReason" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="AllocateBelowSafetyFlag" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="AutoAllocateFlag" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="AutoConfirm" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="AutoExplodeFlag" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="AutoSubstituteFlag" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Campaign" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="CatalogCategoryName" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="CommitFlag" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Description" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Duration" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="EffectiveDates" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="EndDate" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Featured" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="GracePeriod" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="GracePeriodUOM" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="InclusiveEligibility" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Instances" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="NRCAmount" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="NRCAmountCurrencyCode" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="NRCAmountExchangeDate" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="NRCPlan" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="NRCQty" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="NRCSchedule" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Name" maxOccurs="1" minOccurs="1" type="xsd:string"/>
+					<xsd:element name="Organization" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="PaymentType" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Period" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="PeriodUOM" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="CheckEligibility" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="PrimaryCampaignId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="PrimaryOrganizationId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ProductDefTypeCode" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="PromotionId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Type" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="RCAdjust" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="RCAdjustmentUM" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Recurring" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="RCAmountCurrencyCode" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="RCAmountExchangeDate" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="RCSchedule" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Message" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="StartDate" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="TrackAsAgreement" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="TrackAsAsset" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ShowInCatalog" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="UsagePlanId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="UsePlan" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="UsageSchedule" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="UsageScheduleId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="VendorId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ReleaseFlag" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ReleaseDate" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<!-- Start code merge for Product Line SP & KO by Surendra on 14/08/2015 -->
+					<xsd:element name="TSProductLine" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+					<!-- End code merge for Product Line SP & KO by Surendra on 14/08/2015 -->
+					<!-- Start ARFT changes for siebel by Surendra on 17/05/2016 -->
+					<xsd:element name="TSNonSuspendFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+					<!-- END ARFT changes for siebel by Surendra on 17/05/2016 -->
+					<xsd:element name="TSMoveFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+					<!-- Start DI-1894 changes for siebel by Surendra on 05/06/2017 -->
+				    <xsd:element type="xsd:string" name="TSReportFlag" maxOccurs="1" minOccurs="0"/>
+					<!-- End DI-1894 changes for siebel by Surendra on 17/05/2017 -->
+					<!-- Start DI-2184 changes in AIA for Siebel by Ashwath Prabhu on 27/07/2017 -->
+					<xsd:element name="TSTransferFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+					<!-- End DI-2184 changes in AIA for Siebel by Ashwath Prabhu on 27/07/2017 -->
+					<!-- Start MDU-376 changes in AIA for R18.2 by Ashwath Prabhu on 27/11/2017-->
+					<xsd:element name="TSMDUServiceType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+					<!-- End MDU-376 changes in AIA for R18.2 by Ashwath Prabhu on 27/11/2017-->
+				    <xsd:element name="Score" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ChargeBasis" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="DynamicDiscountMethod" maxOccurs="1" minOccurs="1" type="xsd:string"/>
+					<xsd:element name="PricingCommitType" maxOccurs="1" minOccurs="1" type="xsd:string"/>
+					<!-- Start GPI change on 02/09/2015  by Ashish -->
+                     <xsd:element name="GlobalProductIdentifier" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+					<!-- End GPI change on 02/09/2015  by Ashish -->
+					<xsd:element name="ListOfSwiPromotionProductComponentsVbc" maxOccurs="1" minOccurs="0" type="xsdLocal1:ListOfSwiPromotionProductComponentsVbc"/>
+					<xsd:element name="ListOfSwiPromotionUpgradeVbc" maxOccurs="1" minOccurs="0" type="xsdLocal1:ListOfSwiPromotionUpgradeVbc"/>
+					<xsd:element name="ListOfSwiProductCompatibility-SubjectVbc" maxOccurs="1" minOccurs="0" type="xsdLocal1:ListOfSwiProductCompatibility-SubjectVbc"/>
+					<xsd:element name="ListOfSwiPromotionTermsVbc" maxOccurs="1" minOccurs="0" type="xsdLocal1:ListOfSwiPromotionTermsVbc"/>
+					<xsd:element name="ListOfSwiPromotionCharges_CreditsVbc" maxOccurs="1" minOccurs="0" type="xsdLocal1:ListOfSwiPromotionCharges_CreditsVbc"/>
+					<xsd:element name="ListOfSwiPromotionMessagesVbc" maxOccurs="1" minOccurs="0" type="xsdLocal1:ListOfSwiPromotionMessagesVbc"/>
+					<xsd:element name="ListOfSwiPromotionPricingComponentsVbc" maxOccurs="1" minOccurs="0" type="xsdLocal1:ListOfSwiPromotionPricingComponentsVbc"/>
+					<xsd:element name="ListOfSwiPromotionAggregateProductLineVbc" maxOccurs="1" minOccurs="0" type="xsdLocal1:ListOfSwiPromotionAggregateProductLineVbc"/>
+					<xsd:element name="ListOfSwiPromotionPricingProductLineVbc" maxOccurs="1" minOccurs="0" type="xsdLocal1:ListOfSwiPromotionPricingProductLineVbc"/>
+					<xsd:element name="ListOfSwiPromotionAggregateProductClassVbc" maxOccurs="1" minOccurs="0" type="xsdLocal1:ListOfSwiPromotionAggregateProductClassVbc"/>
+					<xsd:element name="ListOfSwiPromotionPricingProductClassVbc" maxOccurs="1" minOccurs="0" type="xsdLocal1:ListOfSwiPromotionPricingProductClassVbc"/>
+					<xsd:element name="ListOfSwiPromotionUpgradeToVbc" maxOccurs="1" minOccurs="0" type="xsdLocal1:ListOfSwiPromotionUpgradeToVbc"/>
+					<xsd:element name="ListOfSwiPromotionUpgradeAggregateProductLineVbc" maxOccurs="1" minOccurs="0" type="xsdLocal1:ListOfSwiPromotionUpgradeAggregateProductLineVbc"/>
+					<xsd:element name="ListOfSwiPromotionUpgradeAggregateProductClassVbc" maxOccurs="1" minOccurs="0" type="xsdLocal1:ListOfSwiPromotionUpgradeAggregateProductClassVbc"/>
+					<xsd:element name="ListOfSwiPromotionUpgradeToAggregateProductLineVbc" maxOccurs="1" minOccurs="0" type="xsdLocal1:ListOfSwiPromotionUpgradeToAggregateProductLineVbc"/>
+					<xsd:element name="ListOfSwiPromotionUpgradeToAggregateProductClassVbc" maxOccurs="1" minOccurs="0" type="xsdLocal1:ListOfSwiPromotionUpgradeToAggregateProductClassVbc"/>
+				</xsd:sequence>
+				<xsd:attribute name="Operation" type="xsd:string"/>
+				<xsd:attribute name="Searchspec" type="xsd:string"/>
+			</xsd:complexType>
+			<xsd:complexType name="ListOfSwiPromotionItemAttributeVbc">
+				<xsd:sequence>
+					<xsd:element name="SWIPromotionAttributeOverrideVbc" maxOccurs="unbounded" minOccurs="0" type="xsdLocal1:SWIPromotionAttributeOverrideVbc"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SWIPromotionAttributeOverrideVbc">
+				<xsd:sequence>
+					<xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Attribute" maxOccurs="1" minOccurs="1" type="xsd:string"/>
+					<xsd:element name="ComponentPath" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Condition" maxOccurs="1" minOccurs="1" type="xsd:string"/>
+					<xsd:element name="PromotionName" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="PrimaryOrganizationId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="VendorId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="PromotionId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ListOfSwiPromotionItemAttributeValueVbc" maxOccurs="1" minOccurs="0" type="xsdLocal1:ListOfSwiPromotionItemAttributeValueVbc"/>
+				</xsd:sequence>
+				<xsd:attribute name="Operation" type="xsd:string"/>
+				<xsd:attribute name="Searchspec" type="xsd:string"/>
+			</xsd:complexType>
+			<xsd:complexType name="ListOfSwiPromotionPricingOverrideVbc">
+				<xsd:sequence>
+					<xsd:element name="SwiPromotionPricingOverrideVbc" maxOccurs="unbounded" minOccurs="0" type="xsdLocal1:SwiPromotionPricingOverrideVbc"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SwiPromotionPricingOverrideVbc">
+				<xsd:sequence>
+					<xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="AdjustmentType" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="AdjustmentValue" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ComponentPath" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="CurrencyCode" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="EndDate" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="MaximumPrice" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="MinimumPrice" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="PromotionListItemId" maxOccurs="1" minOccurs="1" type="xsd:string"/>
+					<xsd:element name="PromotionName" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="StartDate" maxOccurs="1" minOccurs="1" type="xsd:string"/>
+					<xsd:element name="PromotionId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="VendorId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="PrimaryOrganizationId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+				</xsd:sequence>
+				<xsd:attribute name="Operation" type="xsd:string"/>
+				<xsd:attribute name="Searchspec" type="xsd:string"/>
+			</xsd:complexType>
+			<xsd:complexType name="ListOfSwiPromotionProductOverrideVbc">
+				<xsd:sequence>
+					<xsd:element name="SwiPromotionProductOverrideVbc" maxOccurs="unbounded" minOccurs="0" type="xsdLocal1:SwiPromotionProductOverrideVbc"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SwiPromotionProductOverrideVbc">
+				<xsd:sequence>
+					<xsd:element name="PromotionId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ComponentPath" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="DefaultCardinality" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="MaxCardinality" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="MinCardinality" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="PromotionName" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="PrimaryOrganizationId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="VendorId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ApplyComponentChargeFlag" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="GracePeriod" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="GracePeriodUOM" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="CommitmentPeriod" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="CommitmentPeriodUOM" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ProratePlanName" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="TerminationCharge" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+				</xsd:sequence>
+				<xsd:attribute name="Operation" type="xsd:string"/>
+				<xsd:attribute name="Searchspec" type="xsd:string"/>
+			</xsd:complexType>
+			<xsd:complexType name="ListOfSwiPromotionProductComponentsVbc">
+				<xsd:sequence>
+					<xsd:element name="SwiPromotionProductComponentsVbc" maxOccurs="unbounded" minOccurs="0" type="xsdLocal1:SwiPromotionProductComponentsVbc"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SwiPromotionProductComponentsVbc">
+				<xsd:sequence>
+					<xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Default" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Description" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Recommendable" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Max" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Min" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="DisconnectAction" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ProductId" maxOccurs="1" minOccurs="1" type="xsd:string"/>
+					<xsd:element name="ProductName" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Commitment" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="PrimaryOrganizationId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="VendorId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ApplyComponentChargeFlag" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="GracePeriod" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="GracePeriodUOM" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="CommitmentPeriod" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="CommitmentPeriodUOM" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ProratePlanName" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="TerminationCharge" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ListOfSwiPromotionProductComponentsMessagesVbc" maxOccurs="1" minOccurs="0" type="xsdLocal1:ListOfSwiPromotionProductComponentsMessagesVbc"/>
+				</xsd:sequence>
+				<xsd:attribute name="Operation" type="xsd:string"/>
+				<xsd:attribute name="Searchspec" type="xsd:string"/>
+			</xsd:complexType>
+			<xsd:complexType name="ListOfSwiPromotionUpgradeVbc">
+				<xsd:sequence>
+					<xsd:element name="SwiPromotionUpgradeVbc" maxOccurs="unbounded" minOccurs="0" type="xsdLocal1:SwiPromotionUpgradeVbc"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SwiPromotionUpgradeVbc">
+				<xsd:sequence>
+					<xsd:element name="Reason" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="DisplayProratedCharge" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="DisplayCommitment" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="CommitmentStart" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Duration" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="OriginalGracePeriod" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="OriginalGracePeriodUOM" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="OriginalPeriod" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="OriginalPeriodUOM" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="OriginalPromotionDescription" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="OriginalPromotionId" maxOccurs="1" minOccurs="1" type="xsd:string"/>
+					<xsd:element name="OriginalPromotion" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Penalty" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="PenaltyAmountCurrencyCode" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="PenaltyAmountExchangeDate" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ProratePlanId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ProratePlan" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+				</xsd:sequence>
+				<xsd:attribute name="Operation" type="xsd:string"/>
+				<xsd:attribute name="Searchspec" type="xsd:string"/>
+			</xsd:complexType>
+			<xsd:complexType name="ListOfSwiProductCompatibility-SubjectVbc">
+				<xsd:sequence>
+					<xsd:element name="SwiProductCompatibility-SubjectVbc" maxOccurs="unbounded" minOccurs="0" type="xsdLocal1:SwiProductCompatibility-SubjectVbc"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SwiProductCompatibility-SubjectVbc">
+				<xsd:sequence>
+					<xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="MatrixName" maxOccurs="1" minOccurs="1" type="xsd:string"/>
+					<xsd:element name="AdjustmentGroupId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Comments" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="EndDate" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="StartDate" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="RuleId" maxOccurs="1" minOccurs="1" type="xsd:string"/>
+					<xsd:element name="Object-Product" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Object-ProductClass" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="RelProductClassId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="RelProductId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Object-ProductLine" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Scope" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Type" maxOccurs="1" minOccurs="1" type="xsd:string"/>
+				</xsd:sequence>
+				<xsd:attribute name="Operation" type="xsd:string"/>
+				<xsd:attribute name="Searchspec" type="xsd:string"/>
+			</xsd:complexType>
+			<xsd:complexType name="ListOfSwiPromotionTermsVbc">
+				<xsd:sequence>
+					<xsd:element name="SwiPromotionTermsVbc" maxOccurs="unbounded" minOccurs="0" type="xsdLocal1:SwiPromotionTermsVbc"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SwiPromotionTermsVbc">
+				<xsd:sequence>
+					<xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="AssociateProductName" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Description" maxOccurs="1" minOccurs="1" type="xsd:string"/>
+					<xsd:element name="Name" maxOccurs="1" minOccurs="1" type="xsd:string"/>
+					<xsd:element name="Section" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Number" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Type" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+				</xsd:sequence>
+				<xsd:attribute name="Operation" type="xsd:string"/>
+				<xsd:attribute name="Searchspec" type="xsd:string"/>
+			</xsd:complexType>
+			<xsd:complexType name="ListOfSwiPromotionCharges_CreditsVbc">
+				<xsd:sequence>
+					<xsd:element name="SwiPromotionCharges_CreditsVbc" maxOccurs="unbounded" minOccurs="0" type="xsdLocal1:SwiPromotionCharges_CreditsVbc"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SwiPromotionCharges_CreditsVbc">
+				<xsd:sequence>
+					<xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Amount" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ChargeAmountCurrencyCode" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ChargeAmountExchangeDate" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Period" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ProratePlanId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Plan" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="StartLag" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="LagUOM" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Type" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+				</xsd:sequence>
+				<xsd:attribute name="Operation" type="xsd:string"/>
+				<xsd:attribute name="Searchspec" type="xsd:string"/>
+			</xsd:complexType>
+			<xsd:complexType name="ListOfSwiPromotionMessagesVbc">
+				<xsd:sequence>
+					<xsd:element name="SwiPromotionMessagesVbc" maxOccurs="unbounded" minOccurs="0" type="xsdLocal1:SwiPromotionMessagesVbc"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SwiPromotionMessagesVbc">
+				<xsd:sequence>
+					<xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Description" maxOccurs="1" minOccurs="1" type="xsd:string"/>
+					<xsd:element name="LanguageCode" maxOccurs="1" minOccurs="1" type="xsd:string"/>
+					<xsd:element name="Message" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+				</xsd:sequence>
+				<xsd:attribute name="Operation" type="xsd:string"/>
+				<xsd:attribute name="Searchspec" type="xsd:string"/>
+			</xsd:complexType>
+			<xsd:complexType name="ListOfSwiPromotionPricingComponentsVbc">
+				<xsd:sequence>
+					<xsd:element name="SwiPromotionPricingComponentsVbc" maxOccurs="unbounded" minOccurs="0" type="xsdLocal1:SwiPromotionPricingComponentsVbc"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SwiPromotionPricingComponentsVbc">
+				<xsd:sequence>
+					<xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="AdjustmentType" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Value" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="CurrencyCode" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="EndDate" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ExchangeDate" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ProductId" maxOccurs="1" minOccurs="1" type="xsd:string"/>
+					<xsd:element name="ProductName" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="PrimaryOrganizationId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="VendorId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+				</xsd:sequence>
+				<xsd:attribute name="Operation" type="xsd:string"/>
+				<xsd:attribute name="Searchspec" type="xsd:string"/>
+			</xsd:complexType>
+			<xsd:complexType name="ListOfSwiPromotionAggregateProductLineVbc">
+				<xsd:sequence>
+					<xsd:element name="SwiPromotionAggregateProductLineVbc" maxOccurs="unbounded" minOccurs="0" type="xsdLocal1:SwiPromotionAggregateProductLineVbc"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SwiPromotionAggregateProductLineVbc">
+				<xsd:sequence>
+					<xsd:element name="Default" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Description" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="DisconnectAction" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Recommendable" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Max" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Min" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="PrimaryOrganizationId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ProductLine" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ProductLineId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Commitment" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ListOfSwiPromotionAggregateProductLineDefaultProductsVbc" maxOccurs="1" minOccurs="0" type="xsdLocal1:ListOfSwiPromotionAggregateProductLineDefaultProductsVbc"/>
+					<xsd:element name="ListOfSwiPromotionAggregateProductLineMessagesVbc" maxOccurs="1" minOccurs="0" type="xsdLocal1:ListOfSwiPromotionAggregateProductLineMessagesVbc"/>
+				</xsd:sequence>
+				<xsd:attribute name="Operation" type="xsd:string"/>
+				<xsd:attribute name="Searchspec" type="xsd:string"/>
+			</xsd:complexType>
+			<xsd:complexType name="ListOfSwiPromotionPricingProductLineVbc">
+				<xsd:sequence>
+					<xsd:element name="SwiPromotionPricingProductLineVbc" maxOccurs="unbounded" minOccurs="0" type="xsdLocal1:SwiPromotionPricingProductLineVbc"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SwiPromotionPricingProductLineVbc">
+				<xsd:sequence>
+					<xsd:element name="AdjustmentType" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="AdjustmentValue" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="CurrencyCode" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ExchangeDate" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ProductLine" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ProductLineId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Type" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+				</xsd:sequence>
+				<xsd:attribute name="Operation" type="xsd:string"/>
+				<xsd:attribute name="Searchspec" type="xsd:string"/>
+			</xsd:complexType>
+			<xsd:complexType name="ListOfSwiPromotionAggregateProductClassVbc">
+				<xsd:sequence>
+					<xsd:element name="SwiPromotionAggregateProductClassVbc" maxOccurs="unbounded" minOccurs="0" type="xsdLocal1:SwiPromotionAggregateProductClassVbc"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SwiPromotionAggregateProductClassVbc">
+				<xsd:sequence>
+					<xsd:element name="ClassId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ClassName" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Default" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Description" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="DisconnectAction" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Recommendable" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Max" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Min" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="PrimaryOrganizationId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Commitment" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ListOfSwiPromotionAggregateProductClassDefaultProductsVbc" maxOccurs="1" minOccurs="0" type="xsdLocal1:ListOfSwiPromotionAggregateProductClassDefaultProductsVbc"/>
+					<xsd:element name="ListOfSwiPromotionAggregateProductClassMessagesVbc" maxOccurs="1" minOccurs="0" type="xsdLocal1:ListOfSwiPromotionAggregateProductClassMessagesVbc"/>
+				</xsd:sequence>
+				<xsd:attribute name="Operation" type="xsd:string"/>
+				<xsd:attribute name="Searchspec" type="xsd:string"/>
+			</xsd:complexType>
+			<xsd:complexType name="ListOfSwiPromotionPricingProductClassVbc">
+				<xsd:sequence>
+					<xsd:element name="SwiPromotionPricingProductClassVbc" maxOccurs="unbounded" minOccurs="0" type="xsdLocal1:SwiPromotionPricingProductClassVbc"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SwiPromotionPricingProductClassVbc">
+				<xsd:sequence>
+					<xsd:element name="AdjustmentType" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="AdjustmentValue" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ClassId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ClassName" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="CurrencyCode" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ExchangeDate" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Type" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+				</xsd:sequence>
+				<xsd:attribute name="Operation" type="xsd:string"/>
+				<xsd:attribute name="Searchspec" type="xsd:string"/>
+			</xsd:complexType>
+			<xsd:complexType name="ListOfSwiPromotionUpgradeToVbc">
+				<xsd:sequence>
+					<xsd:element name="SwiPromotionUpgradeToVbc" maxOccurs="unbounded" minOccurs="0" type="xsdLocal1:SwiPromotionUpgradeToVbc"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SwiPromotionUpgradeToVbc">
+				<xsd:sequence>
+					<xsd:element name="Reason" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="DisplayProratedCharge" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="DisplayCommitment" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="CommitmentStart" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Duration" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Penalty" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="PenaltyAmountCurrencyCode" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="PenaltyAmountExchangeDate" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ProratePlanId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ProratePlan" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="TargetGracePeriod" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="TargetGracePeriodUOM" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="TargetPeriod" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="TargetPeriodUOM" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="TargetPromotionDescription" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="TargetPromotionId" maxOccurs="1" minOccurs="1" type="xsd:string"/>
+					<xsd:element name="TargetPromotionName" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+				</xsd:sequence>
+				<xsd:attribute name="Operation" type="xsd:string"/>
+				<xsd:attribute name="Searchspec" type="xsd:string"/>
+			</xsd:complexType>
+			<xsd:complexType name="ListOfSwiPromotionUpgradeAggregateProductLineVbc">
+				<xsd:sequence>
+					<xsd:element name="SwiPromotionUpgradeAggregateProductLineVbc" maxOccurs="unbounded" minOccurs="0" type="xsdLocal1:SwiPromotionUpgradeAggregateProductLineVbc"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SwiPromotionUpgradeAggregateProductLineVbc">
+				<xsd:sequence>
+					<xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Created" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="CreatedBy" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Updated" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="UpdatedBy" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ConflictId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ModId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="CommitmentStart" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="DisplayCommitment" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="DisplayProratedCharge" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Duration" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Penalty" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="PenaltyAmountCurrencyCode" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="PenaltyAmountExchangeDate" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ProductLine" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ProductLineId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ProratePlanId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ProratePlanName" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Reason" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="RelationshipType" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+				</xsd:sequence>
+				<xsd:attribute name="Operation" type="xsd:string"/>
+				<xsd:attribute name="Searchspec" type="xsd:string"/>
+			</xsd:complexType>
+			<xsd:complexType name="ListOfSwiPromotionUpgradeAggregateProductClassVbc">
+				<xsd:sequence>
+					<xsd:element name="SwiPromotionUpgradeAggregateProductClassVbc" maxOccurs="unbounded" minOccurs="0" type="xsdLocal1:SwiPromotionUpgradeAggregateProductClassVbc"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SwiPromotionUpgradeAggregateProductClassVbc">
+				<xsd:sequence>
+					<xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Created" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="CreatedBy" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Updated" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="UpdatedBy" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ConflictId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ModId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="CommitmentStart" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="DisplayCommitment" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="DisplayProratedCharge" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Duration" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Penalty" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="PenaltyAmountCurrencyCode" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="PenaltyAmountExchangeDate" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ProductClassId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ProductClassName" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ProratePlanId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ProratePlanName" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Reason" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="RelationshipType" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+				</xsd:sequence>
+				<xsd:attribute name="Operation" type="xsd:string"/>
+				<xsd:attribute name="Searchspec" type="xsd:string"/>
+			</xsd:complexType>
+			<xsd:complexType name="ListOfSwiPromotionUpgradeToAggregateProductLineVbc">
+				<xsd:sequence>
+					<xsd:element name="SwiPromotionUpgradeToAggregateProductLineVbc" maxOccurs="unbounded" minOccurs="0" type="xsdLocal1:SwiPromotionUpgradeToAggregateProductLineVbc"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SwiPromotionUpgradeToAggregateProductLineVbc">
+				<xsd:sequence>
+					<xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Created" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="CreatedBy" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Updated" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="UpdatedBy" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ConflictId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ModId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="CommitmentStart" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="DisplayCommitment" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="DisplayProratedCharge" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Duration" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Penalty" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="PenaltyAmountCurrencyCode" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="PenaltyAmountExchangeDate" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ProductLine" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ProductLineId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ProratePlanId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ProratePlanName" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Reason" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="RelationshipType" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+				</xsd:sequence>
+				<xsd:attribute name="Operation" type="xsd:string"/>
+				<xsd:attribute name="Searchspec" type="xsd:string"/>
+			</xsd:complexType>
+			<xsd:complexType name="ListOfSwiPromotionUpgradeToAggregateProductClassVbc">
+				<xsd:sequence>
+					<xsd:element name="SwiPromotionUpgradeToAggregateProductClassVbc" maxOccurs="unbounded" minOccurs="0" type="xsdLocal1:SwiPromotionUpgradeToAggregateProductClassVbc"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SwiPromotionUpgradeToAggregateProductClassVbc">
+				<xsd:sequence>
+					<xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Created" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="CreatedBy" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Updated" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="UpdatedBy" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ConflictId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ModId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="CommitmentStart" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="DisplayCommitment" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="DisplayProratedCharge" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Duration" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Penalty" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="PenaltyAmountCurrencyCode" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="PenaltyAmountExchangeDate" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ProductClassId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ProductClassName" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ProratePlanId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ProratePlanName" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Reason" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="RelationshipType" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+				</xsd:sequence>
+				<xsd:attribute name="Operation" type="xsd:string"/>
+				<xsd:attribute name="Searchspec" type="xsd:string"/>
+			</xsd:complexType>
+			<xsd:complexType name="ListOfSwiPromotionItemAttributeValueVbc">
+				<xsd:sequence>
+					<xsd:element name="SwiPromotionItemAttributeValueVbc" maxOccurs="unbounded" minOccurs="0" type="xsdLocal1:SwiPromotionItemAttributeValueVbc"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SwiPromotionItemAttributeValueVbc">
+				<xsd:sequence>
+					<xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Value" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+				</xsd:sequence>
+				<xsd:attribute name="Operation" type="xsd:string"/>
+				<xsd:attribute name="Searchspec" type="xsd:string"/>
+			</xsd:complexType>
+			<xsd:complexType name="ListOfSwiPromotionProductComponentsMessagesVbc">
+				<xsd:sequence>
+					<xsd:element name="SwiPromotionProductComponentsMessagesVbc" maxOccurs="unbounded" minOccurs="0" type="xsdLocal1:SwiPromotionProductComponentsMessagesVbc"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SwiPromotionProductComponentsMessagesVbc">
+				<xsd:sequence>
+					<xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Description" maxOccurs="1" minOccurs="1" type="xsd:string"/>
+					<xsd:element name="LanguageCode" maxOccurs="1" minOccurs="1" type="xsd:string"/>
+				</xsd:sequence>
+				<xsd:attribute name="Operation" type="xsd:string"/>
+				<xsd:attribute name="Searchspec" type="xsd:string"/>
+			</xsd:complexType>
+			<xsd:complexType name="ListOfSwiPromotionAggregateProductLineDefaultProductsVbc">
+				<xsd:sequence>
+					<xsd:element name="SwiPromotionAggregateProductLineDefaultProductsVbc" maxOccurs="unbounded" minOccurs="0" type="xsdLocal1:SwiPromotionAggregateProductLineDefaultProductsVbc"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SwiPromotionAggregateProductLineDefaultProductsVbc">
+				<xsd:sequence>
+					<xsd:element name="DefaultCardinality" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ProductId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ProductName" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+				</xsd:sequence>
+				<xsd:attribute name="Operation" type="xsd:string"/>
+				<xsd:attribute name="Searchspec" type="xsd:string"/>
+			</xsd:complexType>
+			<xsd:complexType name="ListOfSwiPromotionAggregateProductLineMessagesVbc">
+				<xsd:sequence>
+					<xsd:element name="SwiPromotionAggregateProductLineMessagesVbc" maxOccurs="unbounded" minOccurs="0" type="xsdLocal1:SwiPromotionAggregateProductLineMessagesVbc"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SwiPromotionAggregateProductLineMessagesVbc">
+				<xsd:sequence>
+					<xsd:element name="Description" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="LanguageCode" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+				</xsd:sequence>
+				<xsd:attribute name="Operation" type="xsd:string"/>
+				<xsd:attribute name="Searchspec" type="xsd:string"/>
+			</xsd:complexType>
+			<xsd:complexType name="ListOfSwiPromotionAggregateProductClassDefaultProductsVbc">
+				<xsd:sequence>
+					<xsd:element name="SwiPromotionAggregateProductClassDefaultProductsVbc" maxOccurs="unbounded" minOccurs="0" type="xsdLocal1:SwiPromotionAggregateProductClassDefaultProductsVbc"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SwiPromotionAggregateProductClassDefaultProductsVbc">
+				<xsd:sequence>
+					<xsd:element name="DefaultCardinality" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ProductId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="ProductName" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+				</xsd:sequence>
+				<xsd:attribute name="Operation" type="xsd:string"/>
+				<xsd:attribute name="Searchspec" type="xsd:string"/>
+			</xsd:complexType>
+			<xsd:complexType name="ListOfSwiPromotionAggregateProductClassMessagesVbc">
+				<xsd:sequence>
+					<xsd:element name="SwiPromotionAggregateProductClassMessagesVbc" maxOccurs="unbounded" minOccurs="0" type="xsdLocal1:SwiPromotionAggregateProductClassMessagesVbc"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SwiPromotionAggregateProductClassMessagesVbc">
+				<xsd:sequence>
+					<xsd:element name="LanguageCode" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+					<xsd:element name="Description" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+				</xsd:sequence>
+				<xsd:attribute name="Searchspec" type="xsd:string"/>
+				<xsd:attribute name="Operation" type="xsd:string"/>
+			</xsd:complexType>
+		</xsd:schema>

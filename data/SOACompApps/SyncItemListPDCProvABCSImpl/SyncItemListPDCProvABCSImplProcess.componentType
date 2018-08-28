@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<componentType xmlns="http://xmlns.oracle.com/sca/1.0" xmlns:ui="http://xmlns.oracle.com/soa/designer/"
+               xml:id="id_1">
+   <service ui:wsdlLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationConnectorServiceLibrary/PDC/V1/ProviderABCS/SyncItemListPDCProvABCSImpl.wsdl" name="SyncItemListPDCProvABCSImpl"
+            xml:id="id_2">
+      <interface.wsdl interface="http://xmlns.oracle.com/ABCSImpl/PDC/Core/SyncItemListPDCProvABCSImpl/V1#wsdl.interface(SyncItemListPDCProvABCSImpl)"
+                      xml:id="id_3"/>
+   </service>
+   <reference ui:wsdlLocation="oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/V1/wsdls/AIAAsyncErrorHandlingBPELProcess.wsdl" name="AIAAsyncErrorHandlingBPELProcess"
+              xml:id="id_6">
+      <interface.wsdl interface="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess#wsdl.interface(AIAAsyncErrorHandlingBPELProcess)" callbackInterface="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess#wsdl.interface(AIAAsyncErrorHandlingBPELProcessCallback)"
+                      xml:id="id_7"/>
+   </reference>
+   <reference ui:wsdlLocation="pricingGatewayPortTypeRef.wsdl" name="pricingGatewayPortType"
+              xml:id="id_8">
+      <interface.wsdl interface="urn:PricingGateWay#wsdl.interface(pricingGatewayPortType)"
+                      xml:id="id_9"/>
+   </reference>
+   <reference name="ItemEBSResponse" ui:wsdlLocation="ItemEBSResponseRef.wsdl"
+              xml:id="id_10">
+      <interface.wsdl interface="http://xmlns.oracle.com/EnterpriseServices/Core/Item/V2#wsdl.interface(ItemEBSResponse)"
+                      xml:id="id_11"/>
+   </reference>
+</componentType>

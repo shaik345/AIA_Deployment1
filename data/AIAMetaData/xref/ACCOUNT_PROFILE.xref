@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Upgraded by Xref Upgrade Utility 1.0 -->
+<xref xmlns="http://xmlns.oracle.com/xref">
+<table name="ACCOUNT_PROFILE">
+<description>
+</description>
+<columns>
+<column name="COMMON"/>
+<column name="SEBL_01"/>
+<column name="BRM_01"/>
+</columns>
+  </table>
+</xref>

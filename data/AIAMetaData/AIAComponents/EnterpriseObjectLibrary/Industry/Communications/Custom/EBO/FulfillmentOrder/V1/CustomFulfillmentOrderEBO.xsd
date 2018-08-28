@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+** Oracle Corporation  **
+** AIA Enterprise Object Library **
+** Version: 1.02 **
+** Date: Dec 2, 2013 **
+ 
+ Copyright (c) 2007, 2014, Oracle and/or its affiliates. All rights reserved.
+License information for this file is provided in the file 
+"Oracle AIA EBO License.txt" that is provided with this package.
+ 
+    XML Schema 
+    Name: \EnterpriseObjectsLibrary\Industry\Communications\EBO\FulfillmentOrder\V1\FulfillmentOrderEBO.xsd 
+ 
+-->
+<!-- ====================================================================== -->
+<!-- =====      Oracle EBO Custom FulfillmentOrder EBO Schema Module     ===== -->
+<!-- ====================================================================== -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://xmlns.oracle.com/EnterpriseObjects/Core/Custom/EBO/FulfillmentOrder/V1" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:corecomcust="http://xmlns.oracle.com/EnterpriseObjects/Core/Custom/Common/V2" targetNamespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Custom/EBO/FulfillmentOrder/V1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.02.00">
+	<!-- ====================================================================== -->
+	<!-- ==============  Imports and Includes   =============================== -->
+	<!-- ====================================================================== -->
+	<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="../../../../Common/V2/CommonComponents.xsd"/>
+	<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="../../../../Common/V2/CodeLists.xsd"/>
+	<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="../../../../Common/V2/DataTypes.xsd"/>
+	<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="../../../../Common/V2/Meta.xsd"/>
+	<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Custom/Common/V2" schemaLocation="../../../Common/V2/CustomCommonComponents.xsd"/>
+	<!-- ====================================================================== -->
+	<!-- ==============  FulfillmentOrder Custom Components ================ -->
+	<!-- ====================================================================== -->
+	<!-- Start R 2.0 VAS changes by Sanotsh M E on 5th jan 2016 -->
+	<xsd:complexType name="CustomFulfillmentOrderEBOType">
+		<xsd:sequence>
+			<xsd:element name="OrderSubType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- End R 2.0 VAS changes by Sanotsh M E on 5th jan 2016 -->
+	<xsd:complexType name="CustomFulfillmentOrderAllowanceType"/>
+	<xsd:complexType name="CustomFulfillmentOrderAttachmentType"/>
+	<xsd:complexType name="CustomFulfillmentOrderBillToPartyType"/>
+	<xsd:complexType name="CustomFulfillmentOrderChargeType"/>
+	<xsd:complexType name="CustomFulfillmentOrderCustomerPartyType"/>
+	<xsd:complexType name="CustomFulfillmentOrderFulfillmentTaskEventType"/>
+	<xsd:complexType name="CustomFulfillmentOrderHoldType"/>
+	<xsd:complexType name="CustomFulfillmentOrderInventoryReservationType"/>
+	<xsd:complexType name="CustomFulfillmentOrderInvoiceLineType"/>
+	<xsd:complexType name="CustomFulfillmentOrderInvoicingTaskEventType"/>
+	<xsd:complexType name="CustomFulfillmentOrderItemType"/>
+	<xsd:complexType name="CustomFulfillmentOrderItemInstanceType"/>
+	<!-- Start R 2.0 VAS changes by Sanotsh M E on 5th jan 2016 -->
+	<xsd:complexType name="CustomFulfillmentOrderLineType">
+		<xsd:sequence>
+			<xsd:element name="TSServiceAccountPointId" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="TSVASActivationKey" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TSKeyExpiryDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TSVASRegistrationStatus" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TSVASUniqueId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TSVASPreActivation" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--Start MDU-718 Changes in AIA to add Service Profile for Service Bundle 18.2. -Ashwath-->
+			<xsd:element name="TSAgreementNum" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--End MDU-718 Changes in AIA to add Service Profile for Service Bundle 18.2. -Ashwath-->
+			<xsd:element name="TSDelayedActivation" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TSOrderSubType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- End R 2.0 VAS changes by Sanotsh M E on 5th jan 2016 -->
+	<xsd:complexType name="CustomFulfillmentOrderLineAttachmentType"/>
+	<xsd:complexType name="CustomFulfillmentOrderLinePaymentInstrumentType"/>
+	<xsd:complexType name="CustomFulfillmentOrderLineRelatedObjectType"/>
+	<xsd:complexType name="CustomFulfillmentOrderLineSpecificationGroupType"/>
+	<xsd:complexType name="CustomFulfillmentOrderOrganizationUnitType"/>
+	<xsd:complexType name="CustomFulfillmentOrderPaymentType"/>
+	<xsd:complexType name="CustomFulfillmentOrderPaymentInstrumentType"/>
+	<xsd:complexType name="CustomFulfillmentOrderPromotionGroupType"/>
+	<xsd:complexType name="CustomFulfillmentOrderReceivedPaymentType"/>
+	<xsd:complexType name="CustomFulfillmentOrderRelatedFulfillmentOrderType"/>
+	<xsd:complexType name="CustomFulfillmentOrderRelatedFulfillmentOrderLineType"/>
+	<xsd:complexType name="CustomFulfillmentOrderRelatedFulfillmentOrderScheduleType"/>
+	<xsd:complexType name="CustomFulfillmentOrderRelatedObjectType"/>
+	<xsd:complexType name="CustomFulfillmentOrderSalesCommissionType"/>
+	<xsd:complexType name="CustomFulfillmentOrderScheduleType"/>
+	<xsd:complexType name="CustomFulfillmentOrderScheduleAllowanceType"/>
+	<xsd:complexType name="CustomFulfillmentOrderScheduleAttachmentType"/>
+	<xsd:complexType name="CustomFulfillmentOrderScheduleChargeType"/>
+	<xsd:complexType name="CustomFulfillmentOrderSchedulePaymentType"/>
+	<xsd:complexType name="CustomFulfillmentOrderSchedulePaymentInstrumentType"/>
+	<xsd:complexType name="CustomFulfillmentOrderScheduleRelatedObjectType"/>
+	<xsd:complexType name="CustomFulfillmentOrderScheduleSalesCommissionType"/>
+	<xsd:complexType name="CustomFulfillmentOrderScheduleTaxType"/>
+	<xsd:complexType name="CustomFulfillmentOrderShipToPartyType"/>
+	<xsd:complexType name="CustomFulfillmentOrderShipmentAdviceType"/>
+	<xsd:complexType name="CustomFulfillmentOrderShipmentRequestOrderLineType"/>
+	<xsd:complexType name="CustomFulfillmentOrderShipmentTaskEventType"/>
+	<xsd:complexType name="CustomFulfillmentOrderStatusHistoryType"/>
+	<xsd:complexType name="CustomInvoiceLineType"/>
+	<xsd:complexType name="CustomMembershipAssetIdType"/>
+	<xsd:complexType name="CustomShipmentType"/>
+	<xsd:complexType name="CustomShipmentBillOfLadingType"/>
+	<xsd:complexType name="CustomShipmentItemType"/>
+	<xsd:complexType name="CustomShipmentRequestOrderLineType"/>
+	<xsd:complexType name="CustomReleaseFulfillmentOrderLineExecutionHoldListResponseType"/>
+	<xsd:complexType name="CustomReleaseFulfillmentOrderLineExecutionHoldListType"/>
+	<xsd:complexType name="CustomHoldFulfillmentOrderExecutionType"/>
+	<xsd:complexType name="CustomReleaseFulfillmentOrderExecutionHoldType"/>
+	<xsd:complexType name="CustomHoldFulfillmentOrderLineExecutionListType"/>
+	<xsd:complexType name="CustomHoldFulfillmentOrderExecutionResponseType"/>
+	<xsd:complexType name="CustomHoldFulfillmentOrderLineExecutionListResponseType"/>
+	<xsd:complexType name="CustomReleaseFulfillmentOrderExecutionHoldResponseType"/>
+	<xsd:complexType name="CustomCancelFulfillmentOrderType"/>
+	<xsd:complexType name="CustomCancelFulfillmentOrderResponseType"/>
+	<xsd:complexType name="CustomHoldFulfillmentOrderFulfillmentTaskType"/>
+	<xsd:complexType name="CustomHoldFulfillmentOrderFulfillmentTaskResponseType"/>
+	<xsd:complexType name="CustomReleaseFulfillmentOrderFulfillmentTaskHoldType"/>
+	<xsd:complexType name="CustomReleaseFulfillmentOrderFulfillmentTaskHoldResponseType"/>
+	<xsd:complexType name="CustomHoldFulfillmentOrderLineFulfillmentTaskListType"/>
+	<xsd:complexType name="CustomHoldFulfillmentOrderLineFulfillmentTaskListResponseType"/>
+	<xsd:complexType name="CustomReleaseFulfillmentOrderLineFulfillmentTaskHoldListType"/>
+	<xsd:complexType name="CustomReleaseFulfillmentOrderLineFulfillmentTaskHoldListResponseType"/>
+	<xsd:complexType name="CustomCancelFulfillmentOrderFulfillmentTaskType"/>
+	<xsd:complexType name="CustomCancelFulfillmentOrderFulfillmentTaskResponseType"/>
+	<xsd:complexType name="CustomQueryFulfillmentOrderFulfillmentTaskType"/>
+	<xsd:complexType name="CustomQueryFulfillmentOrderFulfillmentTaskDetailType"/>
+	<xsd:complexType name="CustomReleaseFulfillmentOrderScheduleExecutionHoldListResponseType"/>
+	<xsd:complexType name="CustomReleaseFulfillmentOrderScheduleExecutionHoldListType"/>
+	<xsd:complexType name="CustomHoldFulfillmentOrderScheduleFulfillmentTaskListType"/>
+	<xsd:complexType name="CustomHoldFulfillmentOrderScheduleFulfillmentTaskListResponseType"/>
+	<xsd:complexType name="CustomHoldFulfillmentOrderScheduleExecutionListType"/>
+	<xsd:complexType name="CustomHoldFulfillmentOrderScheduleExecutionListResponseType"/>
+	<xsd:complexType name="CustomReleaseFulfillmentOrderScheduleFulfillmentTaskHoldListType"/>
+	<xsd:complexType name="CustomReleaseFulfillmentOrderScheduleFulfillmentTaskHoldListResponseType"/>
+</xsd:schema>

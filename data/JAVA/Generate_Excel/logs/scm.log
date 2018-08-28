@@ -1,0 +1,244 @@
+2017-07-18 16:19:58 INFO  SendSOAPAttachmentOverJms:162 - Creating SOAP message with attachment...
+2017-07-18 16:19:58 INFO  SendSOAPAttachmentOverJms:204 - Sending message over JMS...
+2017-07-18 16:20:00 DEBUG SendSOAPAttachmentOverJms:208 - Established initial context, looking up connection factory details
+2017-07-18 16:20:07 DEBUG SendSOAPAttachmentOverJms:212 - Creating Queue connection ...
+2017-07-18 16:20:34 DEBUG SendSOAPAttachmentOverJms:216 - Creating Queue session...
+2017-07-18 16:20:48 DEBUG SendSOAPAttachmentOverJms:222 - Setting up JMS header properties, JMSReplyTo details.
+2017-07-18 16:20:55 DEBUG SendSOAPAttachmentOverJms:234 - Sending message over JMS...started 
+2017-07-18 16:20:58 INFO  SendSOAPAttachmentOverJms:238 - Sending message over JMS...successful!
+2017-07-18 16:26:54 INFO  SendSOAPAttachmentOverJms:162 - Creating SOAP message with attachment...
+2017-07-18 16:26:54 INFO  SendSOAPAttachmentOverJms:204 - Sending message over JMS...
+2017-07-18 16:26:56 DEBUG SendSOAPAttachmentOverJms:208 - Established initial context, looking up connection factory details
+2017-07-18 16:27:04 DEBUG SendSOAPAttachmentOverJms:212 - Creating Queue connection ...
+2017-07-18 16:27:26 DEBUG SendSOAPAttachmentOverJms:216 - Creating Queue session...
+2017-07-18 16:27:41 DEBUG SendSOAPAttachmentOverJms:222 - Setting up JMS header properties, JMSReplyTo details.
+2017-07-18 16:27:47 DEBUG SendSOAPAttachmentOverJms:234 - Sending message over JMS...started 
+2017-07-18 16:27:50 INFO  SendSOAPAttachmentOverJms:238 - Sending message over JMS...successful!
+2017-07-19 17:32:57 INFO  SendSOAPAttachmentOverJms:164 - Creating SOAP message with attachment...
+2017-07-19 17:32:57 INFO  SendSOAPAttachmentOverJms:206 - Sending message over JMS...
+2017-07-19 17:32:59 DEBUG SendSOAPAttachmentOverJms:210 - Established initial context, looking up connection factory details
+2017-07-19 17:33:06 DEBUG SendSOAPAttachmentOverJms:214 - Creating Queue connection ...
+2017-07-19 17:33:27 DEBUG SendSOAPAttachmentOverJms:218 - Creating Queue session...
+2017-07-19 17:33:41 DEBUG SendSOAPAttachmentOverJms:224 - Setting up JMS header properties, JMSReplyTo details.
+2017-07-19 17:33:48 DEBUG SendSOAPAttachmentOverJms:237 - Sending message over JMS...started 
+2017-07-19 17:33:50 INFO  SendSOAPAttachmentOverJms:241 - Sending message over JMS...successful!
+2017-07-19 17:36:42 INFO  SendSOAPAttachmentOverJms:164 - Creating SOAP message with attachment...
+2017-07-19 17:36:43 INFO  SendSOAPAttachmentOverJms:206 - Sending message over JMS...
+2017-07-19 17:36:44 DEBUG SendSOAPAttachmentOverJms:210 - Established initial context, looking up connection factory details
+2017-07-19 17:36:51 DEBUG SendSOAPAttachmentOverJms:214 - Creating Queue connection ...
+2017-07-19 17:37:13 DEBUG SendSOAPAttachmentOverJms:218 - Creating Queue session...
+2017-07-19 17:37:28 DEBUG SendSOAPAttachmentOverJms:224 - Setting up JMS header properties, JMSReplyTo details.
+2017-07-19 17:37:35 DEBUG SendSOAPAttachmentOverJms:237 - Sending message over JMS...started 
+2017-07-19 17:37:37 INFO  SendSOAPAttachmentOverJms:241 - Sending message over JMS...successful!
+2017-07-19 17:44:09 INFO  SendSOAPAttachmentOverJms:164 - Creating SOAP message with attachment...
+2017-07-19 17:44:09 INFO  SendSOAPAttachmentOverJms:206 - Sending message over JMS...
+2017-07-19 17:44:11 DEBUG SendSOAPAttachmentOverJms:210 - Established initial context, looking up connection factory details
+2017-07-19 17:44:29 DEBUG SendSOAPAttachmentOverJms:214 - Creating Queue connection ...
+2017-07-19 17:45:35 DEBUG SendSOAPAttachmentOverJms:218 - Creating Queue session...
+2017-07-19 17:46:18 DEBUG SendSOAPAttachmentOverJms:224 - Setting up JMS header properties, JMSReplyTo details.
+2017-07-19 17:46:38 DEBUG SendSOAPAttachmentOverJms:237 - Sending message over JMS...started 
+2017-07-19 17:46:44 INFO  SendSOAPAttachmentOverJms:241 - Sending message over JMS...successful!
+2017-07-19 17:52:06 INFO  SendSOAPAttachmentOverJms:164 - Creating SOAP message with attachment...
+2017-07-19 17:52:06 INFO  SendSOAPAttachmentOverJms:206 - Sending message over JMS...
+2017-07-19 17:52:07 DEBUG SendSOAPAttachmentOverJms:210 - Established initial context, looking up connection factory details
+2017-07-19 17:52:14 DEBUG SendSOAPAttachmentOverJms:214 - Creating Queue connection ...
+2017-07-19 17:52:36 DEBUG SendSOAPAttachmentOverJms:218 - Creating Queue session...
+2017-07-19 17:52:53 DEBUG SendSOAPAttachmentOverJms:224 - Setting up JMS header properties, JMSReplyTo details.
+2017-07-19 17:52:59 DEBUG SendSOAPAttachmentOverJms:237 - Sending message over JMS...started 
+2017-07-19 17:53:02 INFO  SendSOAPAttachmentOverJms:241 - Sending message over JMS...successful!
+2017-07-19 17:54:24 INFO  SendSOAPAttachmentOverJms:164 - Creating SOAP message with attachment...
+2017-07-19 17:54:24 INFO  SendSOAPAttachmentOverJms:206 - Sending message over JMS...
+2017-07-19 17:54:26 DEBUG SendSOAPAttachmentOverJms:210 - Established initial context, looking up connection factory details
+2017-07-19 17:54:32 DEBUG SendSOAPAttachmentOverJms:214 - Creating Queue connection ...
+2017-07-19 17:54:55 DEBUG SendSOAPAttachmentOverJms:218 - Creating Queue session...
+2017-07-19 17:55:08 DEBUG SendSOAPAttachmentOverJms:224 - Setting up JMS header properties, JMSReplyTo details.
+2017-07-19 17:55:15 DEBUG SendSOAPAttachmentOverJms:237 - Sending message over JMS...started 
+2017-07-19 17:55:18 INFO  SendSOAPAttachmentOverJms:241 - Sending message over JMS...successful!
+2017-07-19 17:58:23 INFO  SendSOAPAttachmentOverJms:164 - Creating SOAP message with attachment...
+2017-07-19 17:58:24 INFO  SendSOAPAttachmentOverJms:206 - Sending message over JMS...
+2017-07-19 17:58:25 DEBUG SendSOAPAttachmentOverJms:210 - Established initial context, looking up connection factory details
+2017-07-19 17:58:32 DEBUG SendSOAPAttachmentOverJms:214 - Creating Queue connection ...
+2017-07-19 17:58:54 DEBUG SendSOAPAttachmentOverJms:218 - Creating Queue session...
+2017-07-19 17:59:10 DEBUG SendSOAPAttachmentOverJms:224 - Setting up JMS header properties, JMSReplyTo details.
+2017-07-19 17:59:17 DEBUG SendSOAPAttachmentOverJms:237 - Sending message over JMS...started 
+2017-07-19 17:59:20 INFO  SendSOAPAttachmentOverJms:241 - Sending message over JMS...successful!
+2017-07-19 18:01:43 INFO  SendSOAPAttachmentOverJms:164 - Creating SOAP message with attachment...
+2017-07-19 18:01:43 INFO  SendSOAPAttachmentOverJms:206 - Sending message over JMS...
+2017-07-19 18:01:45 DEBUG SendSOAPAttachmentOverJms:210 - Established initial context, looking up connection factory details
+2017-07-19 18:01:51 DEBUG SendSOAPAttachmentOverJms:214 - Creating Queue connection ...
+2017-07-19 18:02:12 DEBUG SendSOAPAttachmentOverJms:218 - Creating Queue session...
+2017-07-19 18:02:26 DEBUG SendSOAPAttachmentOverJms:224 - Setting up JMS header properties, JMSReplyTo details.
+2017-07-19 18:02:33 DEBUG SendSOAPAttachmentOverJms:237 - Sending message over JMS...started 
+2017-07-19 18:02:35 INFO  SendSOAPAttachmentOverJms:241 - Sending message over JMS...successful!
+2017-07-19 18:13:53 INFO  SendSOAPAttachmentOverJms:164 - Creating SOAP message with attachment...
+2017-07-19 18:13:54 INFO  SendSOAPAttachmentOverJms:206 - Sending message over JMS...
+2017-07-19 18:13:55 DEBUG SendSOAPAttachmentOverJms:210 - Established initial context, looking up connection factory details
+2017-07-19 18:14:03 DEBUG SendSOAPAttachmentOverJms:214 - Creating Queue connection ...
+2017-07-19 18:14:25 DEBUG SendSOAPAttachmentOverJms:218 - Creating Queue session...
+2017-07-19 18:14:39 DEBUG SendSOAPAttachmentOverJms:224 - Setting up JMS header properties, JMSReplyTo details.
+2017-07-19 18:14:47 DEBUG SendSOAPAttachmentOverJms:237 - Sending message over JMS...started 
+2017-07-19 18:14:50 INFO  SendSOAPAttachmentOverJms:241 - Sending message over JMS...successful!
+2017-07-19 18:19:46 INFO  SendSOAPAttachmentOverJms:164 - Creating SOAP message with attachment...
+2017-07-19 18:19:46 INFO  SendSOAPAttachmentOverJms:206 - Sending message over JMS...
+2017-07-19 18:19:48 DEBUG SendSOAPAttachmentOverJms:210 - Established initial context, looking up connection factory details
+2017-07-19 18:19:54 DEBUG SendSOAPAttachmentOverJms:214 - Creating Queue connection ...
+2017-07-19 18:20:16 DEBUG SendSOAPAttachmentOverJms:218 - Creating Queue session...
+2017-07-19 18:20:30 DEBUG SendSOAPAttachmentOverJms:224 - Setting up JMS header properties, JMSReplyTo details.
+2017-07-19 18:20:37 DEBUG SendSOAPAttachmentOverJms:237 - Sending message over JMS...started 
+2017-07-19 18:20:40 INFO  SendSOAPAttachmentOverJms:241 - Sending message over JMS...successful!
+2017-07-19 18:21:57 INFO  SendSOAPAttachmentOverJms:164 - Creating SOAP message with attachment...
+2017-07-19 18:21:57 INFO  SendSOAPAttachmentOverJms:206 - Sending message over JMS...
+2017-07-19 18:21:59 DEBUG SendSOAPAttachmentOverJms:210 - Established initial context, looking up connection factory details
+2017-07-19 18:22:06 DEBUG SendSOAPAttachmentOverJms:214 - Creating Queue connection ...
+2017-07-19 18:22:27 DEBUG SendSOAPAttachmentOverJms:218 - Creating Queue session...
+2017-07-19 18:22:43 DEBUG SendSOAPAttachmentOverJms:224 - Setting up JMS header properties, JMSReplyTo details.
+2017-07-19 18:22:50 DEBUG SendSOAPAttachmentOverJms:237 - Sending message over JMS...started 
+2017-07-19 18:22:52 INFO  SendSOAPAttachmentOverJms:241 - Sending message over JMS...successful!
+2017-07-19 18:52:21 INFO  SendSOAPAttachmentOverJms:164 - Creating SOAP message with attachment...
+2017-07-19 18:52:21 INFO  SendSOAPAttachmentOverJms:206 - Sending message over JMS...
+2017-07-19 18:52:24 ERROR SendSOAPAttachmentOverJms:264 - Error in getting initial JMS connection context. Check the logs for more details 
+
+javax.naming.NamingException: Couldn't connect to the specified host [Root exception is org.omg.CORBA.COMM_FAILURE:   vmcid: SUN  minor code: 203  completed: No]
+	at weblogic.corba.j2ee.naming.Utils.wrapNamingException(Utils.java:83)
+	at weblogic.corba.j2ee.naming.ORBHelper.getORBReferenceWithRetry(ORBHelper.java:656)
+	at weblogic.corba.j2ee.naming.ORBHelper.getORBReference(ORBHelper.java:594)
+	at weblogic.corba.j2ee.naming.InitialContextFactoryImpl.getInitialContext(InitialContextFactoryImpl.java:85)
+	at weblogic.corba.j2ee.naming.InitialContextFactoryImpl.getInitialContext(InitialContextFactoryImpl.java:31)
+	at weblogic.jndi.WLInitialContextFactory.getInitialContext(WLInitialContextFactory.java:46)
+	at javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:667)
+	at javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:288)
+	at javax.naming.InitialContext.init(InitialContext.java:223)
+	at javax.naming.InitialContext.<init>(InitialContext.java:197)
+	at com.soa.jms.SendSOAPAttachmentOverJms.sendMessage(SendSOAPAttachmentOverJms.java:208)
+	at com.soa.jms.SendSOAPAttachmentOverJms.main(SendSOAPAttachmentOverJms.java:139)
+Caused by: org.omg.CORBA.COMM_FAILURE:   vmcid: SUN  minor code: 203  completed: No
+	at com.sun.corba.se.impl.logging.ORBUtilSystemException.writeErrorSend(ORBUtilSystemException.java:2259)
+	at com.sun.corba.se.impl.logging.ORBUtilSystemException.writeErrorSend(ORBUtilSystemException.java:2281)
+	at com.sun.corba.se.impl.transport.SocketOrChannelConnectionImpl.writeLock(SocketOrChannelConnectionImpl.java:957)
+	at com.sun.corba.se.impl.encoding.BufferManagerWriteGrow.sendMessage(BufferManagerWriteGrow.java:53)
+	at com.sun.corba.se.impl.encoding.CDROutputObject.finishSendingMessage(CDROutputObject.java:144)
+	at com.sun.corba.se.impl.protocol.CorbaMessageMediatorImpl.finishSendingRequest(CorbaMessageMediatorImpl.java:247)
+	at com.sun.corba.se.impl.protocol.CorbaClientRequestDispatcherImpl.marshalingComplete1(CorbaClientRequestDispatcherImpl.java:355)
+	at com.sun.corba.se.impl.protocol.CorbaClientRequestDispatcherImpl.marshalingComplete(CorbaClientRequestDispatcherImpl.java:336)
+	at com.sun.corba.se.impl.protocol.CorbaClientDelegateImpl.invoke(CorbaClientDelegateImpl.java:129)
+	at com.sun.corba.se.impl.protocol.CorbaClientDelegateImpl.non_existent(CorbaClientDelegateImpl.java:232)
+	at org.omg.CORBA.portable.ObjectImpl._non_existent(ObjectImpl.java:137)
+	at weblogic.corba.j2ee.naming.ORBHelper.getORBReferenceWithRetry(ORBHelper.java:633)
+	... 10 more
+2017-07-19 18:53:40 INFO  SendSOAPAttachmentOverJms:164 - Creating SOAP message with attachment...
+2017-07-19 18:53:41 INFO  SendSOAPAttachmentOverJms:206 - Sending message over JMS...
+2017-07-19 18:53:43 ERROR SendSOAPAttachmentOverJms:264 - Error in getting initial JMS connection context. Check the logs for more details 
+
+javax.naming.NamingException: Couldn't connect to the specified host [Root exception is org.omg.CORBA.COMM_FAILURE:   vmcid: SUN  minor code: 203  completed: No]
+	at weblogic.corba.j2ee.naming.Utils.wrapNamingException(Utils.java:83)
+	at weblogic.corba.j2ee.naming.ORBHelper.getORBReferenceWithRetry(ORBHelper.java:656)
+	at weblogic.corba.j2ee.naming.ORBHelper.getORBReference(ORBHelper.java:594)
+	at weblogic.corba.j2ee.naming.InitialContextFactoryImpl.getInitialContext(InitialContextFactoryImpl.java:85)
+	at weblogic.corba.j2ee.naming.InitialContextFactoryImpl.getInitialContext(InitialContextFactoryImpl.java:31)
+	at weblogic.jndi.WLInitialContextFactory.getInitialContext(WLInitialContextFactory.java:46)
+	at javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:667)
+	at javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:288)
+	at javax.naming.InitialContext.init(InitialContext.java:223)
+	at javax.naming.InitialContext.<init>(InitialContext.java:197)
+	at com.soa.jms.SendSOAPAttachmentOverJms.sendMessage(SendSOAPAttachmentOverJms.java:208)
+	at com.soa.jms.SendSOAPAttachmentOverJms.main(SendSOAPAttachmentOverJms.java:139)
+Caused by: org.omg.CORBA.COMM_FAILURE:   vmcid: SUN  minor code: 203  completed: No
+	at com.sun.corba.se.impl.logging.ORBUtilSystemException.writeErrorSend(ORBUtilSystemException.java:2259)
+	at com.sun.corba.se.impl.logging.ORBUtilSystemException.writeErrorSend(ORBUtilSystemException.java:2281)
+	at com.sun.corba.se.impl.transport.SocketOrChannelConnectionImpl.writeLock(SocketOrChannelConnectionImpl.java:957)
+	at com.sun.corba.se.impl.encoding.BufferManagerWriteGrow.sendMessage(BufferManagerWriteGrow.java:53)
+	at com.sun.corba.se.impl.encoding.CDROutputObject.finishSendingMessage(CDROutputObject.java:144)
+	at com.sun.corba.se.impl.protocol.CorbaMessageMediatorImpl.finishSendingRequest(CorbaMessageMediatorImpl.java:247)
+	at com.sun.corba.se.impl.protocol.CorbaClientRequestDispatcherImpl.marshalingComplete1(CorbaClientRequestDispatcherImpl.java:355)
+	at com.sun.corba.se.impl.protocol.CorbaClientRequestDispatcherImpl.marshalingComplete(CorbaClientRequestDispatcherImpl.java:336)
+	at com.sun.corba.se.impl.protocol.CorbaClientDelegateImpl.invoke(CorbaClientDelegateImpl.java:129)
+	at com.sun.corba.se.impl.protocol.CorbaClientDelegateImpl.non_existent(CorbaClientDelegateImpl.java:232)
+	at org.omg.CORBA.portable.ObjectImpl._non_existent(ObjectImpl.java:137)
+	at weblogic.corba.j2ee.naming.ORBHelper.getORBReferenceWithRetry(ORBHelper.java:633)
+	... 10 more
+2017-07-19 18:58:12 INFO  SendSOAPAttachmentOverJms:164 - Creating SOAP message with attachment...
+2017-07-19 18:58:12 INFO  SendSOAPAttachmentOverJms:206 - Sending message over JMS...
+2017-07-19 18:58:14 ERROR SendSOAPAttachmentOverJms:264 - Error in getting initial JMS connection context. Check the logs for more details 
+
+javax.naming.NamingException: Couldn't connect to the specified host [Root exception is org.omg.CORBA.COMM_FAILURE:   vmcid: SUN  minor code: 203  completed: No]
+	at weblogic.corba.j2ee.naming.Utils.wrapNamingException(Utils.java:83)
+	at weblogic.corba.j2ee.naming.ORBHelper.getORBReferenceWithRetry(ORBHelper.java:656)
+	at weblogic.corba.j2ee.naming.ORBHelper.getORBReference(ORBHelper.java:594)
+	at weblogic.corba.j2ee.naming.InitialContextFactoryImpl.getInitialContext(InitialContextFactoryImpl.java:85)
+	at weblogic.corba.j2ee.naming.InitialContextFactoryImpl.getInitialContext(InitialContextFactoryImpl.java:31)
+	at weblogic.jndi.WLInitialContextFactory.getInitialContext(WLInitialContextFactory.java:46)
+	at javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:667)
+	at javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:288)
+	at javax.naming.InitialContext.init(InitialContext.java:223)
+	at javax.naming.InitialContext.<init>(InitialContext.java:197)
+	at com.soa.jms.SendSOAPAttachmentOverJms.sendMessage(SendSOAPAttachmentOverJms.java:208)
+	at com.soa.jms.SendSOAPAttachmentOverJms.main(SendSOAPAttachmentOverJms.java:139)
+Caused by: org.omg.CORBA.COMM_FAILURE:   vmcid: SUN  minor code: 203  completed: No
+	at com.sun.corba.se.impl.logging.ORBUtilSystemException.writeErrorSend(ORBUtilSystemException.java:2259)
+	at com.sun.corba.se.impl.logging.ORBUtilSystemException.writeErrorSend(ORBUtilSystemException.java:2281)
+	at com.sun.corba.se.impl.transport.SocketOrChannelConnectionImpl.writeLock(SocketOrChannelConnectionImpl.java:957)
+	at com.sun.corba.se.impl.encoding.BufferManagerWriteGrow.sendMessage(BufferManagerWriteGrow.java:53)
+	at com.sun.corba.se.impl.encoding.CDROutputObject.finishSendingMessage(CDROutputObject.java:144)
+	at com.sun.corba.se.impl.protocol.CorbaMessageMediatorImpl.finishSendingRequest(CorbaMessageMediatorImpl.java:247)
+	at com.sun.corba.se.impl.protocol.CorbaClientRequestDispatcherImpl.marshalingComplete1(CorbaClientRequestDispatcherImpl.java:355)
+	at com.sun.corba.se.impl.protocol.CorbaClientRequestDispatcherImpl.marshalingComplete(CorbaClientRequestDispatcherImpl.java:336)
+	at com.sun.corba.se.impl.protocol.CorbaClientDelegateImpl.invoke(CorbaClientDelegateImpl.java:129)
+	at com.sun.corba.se.impl.protocol.CorbaClientDelegateImpl.non_existent(CorbaClientDelegateImpl.java:232)
+	at org.omg.CORBA.portable.ObjectImpl._non_existent(ObjectImpl.java:137)
+	at weblogic.corba.j2ee.naming.ORBHelper.getORBReferenceWithRetry(ORBHelper.java:633)
+	... 10 more
+2017-07-19 19:03:36 INFO  SendSOAPAttachmentOverJms:164 - Creating SOAP message with attachment...
+2017-07-19 19:03:36 INFO  SendSOAPAttachmentOverJms:206 - Sending message over JMS...
+2017-07-19 19:03:38 ERROR SendSOAPAttachmentOverJms:264 - Error in getting initial JMS connection context. Check the logs for more details 
+
+javax.naming.NamingException: Couldn't connect to the specified host [Root exception is org.omg.CORBA.COMM_FAILURE:   vmcid: SUN  minor code: 203  completed: No]
+	at weblogic.corba.j2ee.naming.Utils.wrapNamingException(Utils.java:83)
+	at weblogic.corba.j2ee.naming.ORBHelper.getORBReferenceWithRetry(ORBHelper.java:656)
+	at weblogic.corba.j2ee.naming.ORBHelper.getORBReference(ORBHelper.java:594)
+	at weblogic.corba.j2ee.naming.InitialContextFactoryImpl.getInitialContext(InitialContextFactoryImpl.java:85)
+	at weblogic.corba.j2ee.naming.InitialContextFactoryImpl.getInitialContext(InitialContextFactoryImpl.java:31)
+	at weblogic.jndi.WLInitialContextFactory.getInitialContext(WLInitialContextFactory.java:46)
+	at javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:667)
+	at javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:288)
+	at javax.naming.InitialContext.init(InitialContext.java:223)
+	at javax.naming.InitialContext.<init>(InitialContext.java:197)
+	at com.soa.jms.SendSOAPAttachmentOverJms.sendMessage(SendSOAPAttachmentOverJms.java:208)
+	at com.soa.jms.SendSOAPAttachmentOverJms.main(SendSOAPAttachmentOverJms.java:139)
+Caused by: org.omg.CORBA.COMM_FAILURE:   vmcid: SUN  minor code: 203  completed: No
+	at com.sun.corba.se.impl.logging.ORBUtilSystemException.writeErrorSend(ORBUtilSystemException.java:2259)
+	at com.sun.corba.se.impl.logging.ORBUtilSystemException.writeErrorSend(ORBUtilSystemException.java:2281)
+	at com.sun.corba.se.impl.transport.SocketOrChannelConnectionImpl.writeLock(SocketOrChannelConnectionImpl.java:957)
+	at com.sun.corba.se.impl.encoding.BufferManagerWriteGrow.sendMessage(BufferManagerWriteGrow.java:53)
+	at com.sun.corba.se.impl.encoding.CDROutputObject.finishSendingMessage(CDROutputObject.java:144)
+	at com.sun.corba.se.impl.protocol.CorbaMessageMediatorImpl.finishSendingRequest(CorbaMessageMediatorImpl.java:247)
+	at com.sun.corba.se.impl.protocol.CorbaClientRequestDispatcherImpl.marshalingComplete1(CorbaClientRequestDispatcherImpl.java:355)
+	at com.sun.corba.se.impl.protocol.CorbaClientRequestDispatcherImpl.marshalingComplete(CorbaClientRequestDispatcherImpl.java:336)
+	at com.sun.corba.se.impl.protocol.CorbaClientDelegateImpl.invoke(CorbaClientDelegateImpl.java:129)
+	at com.sun.corba.se.impl.protocol.CorbaClientDelegateImpl.non_existent(CorbaClientDelegateImpl.java:232)
+	at org.omg.CORBA.portable.ObjectImpl._non_existent(ObjectImpl.java:137)
+	at weblogic.corba.j2ee.naming.ORBHelper.getORBReferenceWithRetry(ORBHelper.java:633)
+	... 10 more
+2017-07-19 19:04:22 INFO  SendSOAPAttachmentOverJms:164 - Creating SOAP message with attachment...
+2017-07-19 19:04:22 INFO  SendSOAPAttachmentOverJms:206 - Sending message over JMS...
+2017-07-19 19:04:24 DEBUG SendSOAPAttachmentOverJms:210 - Established initial context, looking up connection factory details
+2017-07-19 19:04:31 DEBUG SendSOAPAttachmentOverJms:214 - Creating Queue connection ...
+2017-07-19 19:04:53 DEBUG SendSOAPAttachmentOverJms:218 - Creating Queue session...
+2017-07-19 19:05:07 DEBUG SendSOAPAttachmentOverJms:224 - Setting up JMS header properties, JMSReplyTo details.
+2017-07-19 19:05:14 DEBUG SendSOAPAttachmentOverJms:237 - Sending message over JMS...started 
+2017-07-19 19:05:17 INFO  SendSOAPAttachmentOverJms:241 - Sending message over JMS...successful!
+2017-07-19 19:06:32 INFO  SendSOAPAttachmentOverJms:164 - Creating SOAP message with attachment...
+2017-07-19 19:06:32 INFO  SendSOAPAttachmentOverJms:206 - Sending message over JMS...
+2017-07-19 19:06:35 DEBUG SendSOAPAttachmentOverJms:210 - Established initial context, looking up connection factory details
+2017-07-19 19:06:41 DEBUG SendSOAPAttachmentOverJms:214 - Creating Queue connection ...
+2017-07-19 19:07:03 DEBUG SendSOAPAttachmentOverJms:218 - Creating Queue session...
+2017-07-19 19:07:21 DEBUG SendSOAPAttachmentOverJms:224 - Setting up JMS header properties, JMSReplyTo details.
+2017-07-19 19:07:29 DEBUG SendSOAPAttachmentOverJms:237 - Sending message over JMS...started 
+2017-07-19 19:07:32 INFO  SendSOAPAttachmentOverJms:241 - Sending message over JMS...successful!
+2017-07-19 19:10:30 INFO  SendSOAPAttachmentOverJms:164 - Creating SOAP message with attachment...
+2017-07-19 19:10:30 INFO  SendSOAPAttachmentOverJms:206 - Sending message over JMS...
+2017-07-19 19:10:32 DEBUG SendSOAPAttachmentOverJms:210 - Established initial context, looking up connection factory details
+2017-07-19 19:10:39 DEBUG SendSOAPAttachmentOverJms:214 - Creating Queue connection ...
+2017-07-19 19:11:01 DEBUG SendSOAPAttachmentOverJms:218 - Creating Queue session...
+2017-07-19 19:11:15 DEBUG SendSOAPAttachmentOverJms:224 - Setting up JMS header properties, JMSReplyTo details.
+2017-07-19 19:11:21 DEBUG SendSOAPAttachmentOverJms:237 - Sending message over JMS...started 
+2017-07-19 19:11:24 INFO  SendSOAPAttachmentOverJms:241 - Sending message over JMS...successful!

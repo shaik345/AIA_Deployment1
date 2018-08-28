@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions name="QueryTopUpHistoryBRMProvABCSImpl" targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryTopUpHistoryBRMProvABCSImpl/V1" xmlns:customerpartyeboebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2" xmlns:customerpartyeboabcs="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryTopUpHistoryBRMProvABCSImpl/V1" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+<documentation>
+<svcdoc:Service>
+<svcdoc:Description>
+This service is used to query the TopUps history from BRM
+</svcdoc:Description>
+<svcdoc:ServiceType>ProviderABCSImpl</svcdoc:ServiceType>
+<svcdoc:Version>1</svcdoc:Version>
+<svcdoc:ProductCode>BRM01</svcdoc:ProductCode>
+</svcdoc:Service>
+</documentation>
+<import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+<types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+<import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/EBO/CustomerParty/V2/CustomerPartyEBM.xsd"/>
+<import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd"/>
+</schema>
+</types>
+<message name="QueryTopUpHistoryReqMsg">
+<part name="QueryCustomerPartyEBM" element="customerpartyeboebo:QueryCustomerPartyEBM"/>
+</message>
+<message name="QueryTopUpHistoryRespMsg">
+<part name="QueryCustomerPartyResponseEBM" element="customerpartyeboebo:QueryCustomerPartyResponseEBM"/>
+</message>
+<message name="QueryTopUpHistoryFaultMsg">
+<part name="QueryTopUpHistoryFault" element="corecom:Fault"/>
+</message>
+<portType name="QueryTopUpHistoryBRMProvABCSImpl">
+<operation name="QueryTopUpHistory">
+<documentation>
+<svcdoc:Operation>
+<svcdoc:Description>This operation is used to Query an TopUpHistory
+                              object</svcdoc:Description>
+<svcdoc:MEP>SyncReqResp</svcdoc:MEP>
+</svcdoc:Operation>
+</documentation>
+<input message="customerpartyeboabcs:QueryTopUpHistoryReqMsg"/>
+<output message="customerpartyeboabcs:QueryTopUpHistoryRespMsg"/>
+<fault name="fault" message="customerpartyeboabcs:QueryTopUpHistoryFaultMsg"/>
+</operation>
+</portType>
+<plnk:partnerLinkType name="QueryTopUpHistoryBRMProvABCSImpl">
+<plnk:role name="QueryTopUpHistoryBRMProvABCSImplProvider">
+<plnk:portType name="customerpartyeboabcs:QueryTopUpHistoryBRMProvABCSImpl"/>
+</plnk:role>
+</plnk:partnerLinkType>
+</definitions>

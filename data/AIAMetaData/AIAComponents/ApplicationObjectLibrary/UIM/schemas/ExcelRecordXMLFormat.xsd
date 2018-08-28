@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.teliasonera.com/xml/excelrecord"
+            targetNamespace="http://www.teliasonera.com/xml/excelrecord"
+            elementFormDefault="qualified">
+  <xsd:element name="ImportEntities">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Header">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="rowNumber"/>
+              <xsd:element name="action"/>
+              <xsd:element name="entityType"/>
+              <xsd:element name="id"/>
+              <xsd:element name="rangeFromID"/>
+              <xsd:element name="rangeToID"/>
+              <xsd:element name="quantity"/>
+              <xsd:element name="name"/>
+              <xsd:element name="rangeFromName"/>
+              <xsd:element name="rangeToName"/>
+              <xsd:element name="specification"/>
+              <xsd:element name="description"/>
+              <xsd:element name="characteristic" maxOccurs="unbounded"/>
+              <xsd:element name="relatedRow"/>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="Entity" maxOccurs="unbounded">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="Related-Entity" maxOccurs="unbounded">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="rowNumber" type="xsd:integer"/>
+                    <xsd:element name="action" type="xsd:string"/>
+                    <xsd:element name="entityType" type="xsd:string"/>
+                    <xsd:element name="id" type="xsd:string"/>
+                    <xsd:element name="rangeFromID" type="xsd:string"/>
+                    <xsd:element name="rangeToID" type="xsd:string"/>
+                    <xsd:element name="quantity" type="xsd:string"/>
+                    <xsd:element name="name" type="xsd:string"/>
+                    <xsd:element name="rangeFromName" type="xsd:string"/>
+                    <xsd:element name="rangeToName" type="xsd:string"/>
+                    <xsd:element name="specification" type="xsd:string"/>
+                    <xsd:element name="description" type="xsd:string"/>
+                    <xsd:element name="characteristic" maxOccurs="unbounded" type="xsd:string"/>
+                    <xsd:element name="relatedRow" type="xsd:integer"/>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

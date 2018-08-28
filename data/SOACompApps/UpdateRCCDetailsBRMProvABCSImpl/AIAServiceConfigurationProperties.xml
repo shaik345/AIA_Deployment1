@@ -1,0 +1,10 @@
+<AIAServiceConfiguration xmlns="http://xmlns.oracle.com/aia/core/config/V1" version="1.0">
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/Industry//UpdateRCCDetailsBRMProvABCSImpl/V1}UpdateRCCDetailsBRMProvABCSImpl">
+	<Property name="Default.SystemID">BRM_01</Property>
+	<Property name="Routing.BRMBILLService_ptt.RouteToCAVS">false</Property>
+	<Property name="Routing.BRMBILLService_ptt.CAVS.EndpointURI">oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/AIAValidationSystemServlet/syncresponsesimulator</Property>
+	<Property name="Routing.BRMBILLService_ptt.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+	<Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+	<Property name="ABCSExtension.PostXformEBMtoABM">false</Property>	
+</ServiceConfiguration>
+</AIAServiceConfiguration>

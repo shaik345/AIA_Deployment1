@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<componentType xmlns="http://xmlns.oracle.com/sca/1.0" xmlns:ui="http://xmlns.oracle.com/soa/designer/">
+    <service ui:wsdlLocation="UpdateBillingBillNowSiebelCommsProvABCSImpl.wsdl" name="UpdateBillingBillNowSiebelCommsProvABCSImpl">
+        <interface.wsdl interface="http://xmlns.oracle.com/ABCSImpl/SiebelComms/Industry//UpdateBillingBillNowSiebelCommsProvABCSImpl/V1#wsdl.interface(UpdateBillingBillNowSiebelCommsProvABCSImpl)"/>
+    </service>
+    <reference ui:wsdlLocation="oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/V1/wsdls/AIAAsyncErrorHandlingBPELProcess.wsdl" name="AIAAsyncErrorHandlingBPELProcess">
+        <interface.wsdl interface="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess#wsdl.interface(AIAAsyncErrorHandlingBPELProcess)" callbackInterface="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess#wsdl.interface(AIAAsyncErrorHandlingBPELProcessCallback)"/>
+    </reference>
+    <reference ui:wsdlLocation="AIASessionPoolManagerAbstractWrapper.wsdl" name="AIASessionPoolManager">
+        <interface.wsdl interface="http://xmlns.oracle.com/AIASessionPoolManager#wsdl.interface(AIASessionPoolManager)"/>
+    </reference>
+     <reference ui:wsdlLocation="ProductOfferWebserviceWrapper.wsdl" name="GetRecommendedProductOffersPort">
+        <interface.wsdl interface="http://siebel.com/asi/#wsdl.interface(GetRecommendedProductOffersPort)"/>
+    </reference>
+    <reference name="ApplyOfferToCreateOrderPort"
+               ui:wsdlLocation="ProductOfferWebserviceWrapper.wsdl">
+        <interface.wsdl interface="http://siebel.com/asi/#wsdl.interface(ApplyOfferToCreateOrderPort)"/>
+    </reference>
+</componentType>

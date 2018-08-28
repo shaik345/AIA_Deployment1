@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xb:config xmlns:xb="http://xml.apache.org/xmlbeans/2004/02/xbean/config" xmlns:pol="http://openuri.org/easypoLocal">
+  
+  <xb:namespace uri="http://xmlns.oracle.com/communications/inventory/webservice/common">
+    <xb:package>oracle.communications.inventory.webservice.framework.common</xb:package>
+  </xb:namespace>
+  
+  <xb:namespace uri="http://xmlns.oracle.com/communications/inventory/webservice/fault">
+    <xb:package>oracle.communications.inventory.webservice.framework.fault</xb:package>
+  </xb:namespace>
+  
+  <xb:namespace uri="http://xmlns.oracle.com/communications/inventory/webservice/businessinteraction">
+  	<xb:package>oracle.communications.inventory.sfws.businessinteraction</xb:package>
+  </xb:namespace> 
+  
+  <xb:namespace uri="http://xmlns.oracle.com/communications/framework/webservice/fault/v1-0">
+    <xb:package>oracle.communications.inventory.webservice.framework.fault</xb:package>
+  </xb:namespace>
+  
+  <xb:namespace uri="http://xmlns.oracle.com/communications/inventory/entity">
+    <xb:package>oracle.communications.inventory.sfws.entity</xb:package>
+  </xb:namespace>
+  
+  <xb:namespace uri="http://xmlns.oracle.com/communications/inventory/specification">
+    <xb:package>oracle.communications.inventory.sfws.specification</xb:package>
+  </xb:namespace>
+    
+  <xb:namespace uri="http://xmlns.oracle.com/communications/inventory/property">
+    <xb:package>oracle.communications.inventory.sfws.property</xb:package>
+  </xb:namespace>
+  
+  <xb:namespace uri="http://xmlns.oracle.com/communications/inventory/logicaldevice">
+    <xb:package>oracle.communications.inventory.sfws.logicaldevice</xb:package>
+  </xb:namespace>
+  
+  <xb:namespace uri="http://xmlns.oracle.com/communications/inventory/mediastream">
+        <xb:package>oracle.communications.inventory.sfws.mediastream</xb:package>
+  </xb:namespace>
+  
+  <xb:namespace uri="http://xmlns.oracle.com/communications/inventory/physicaldevice">
+    <xb:package>oracle.communications.inventory.sfws.physicaldevice</xb:package>
+  </xb:namespace>
+  
+  <xb:namespace uri="http://xmlns.oracle.com/communications/inventory/group">
+    <xb:package>oracle.communications.inventory.sfws.group</xb:package>
+  </xb:namespace>
+  
+  <xb:namespace uri="http://xmlns.oracle.com/communications/inventory/party">
+    <xb:package>oracle.communications.inventory.sfws.party</xb:package>
+  </xb:namespace> 
+  
+  <xb:namespace uri="http://xmlns.oracle.com/communications/inventory/place">
+    <xb:package>oracle.communications.inventory.sfws.place</xb:package>
+  </xb:namespace> 
+  
+  <xb:namespace uri="http://xmlns.oracle.com/communications/inventory/number">
+    <xb:package>oracle.communications.inventory.sfws.number</xb:package>
+  </xb:namespace> 
+  
+  <xb:namespace uri="http://xmlns.oracle.com/communications/inventory/network">
+        <xb:package>oracle.communications.inventory.sfws.network</xb:package>
+  </xb:namespace>
+  
+  <xb:namespace uri="http://xmlns.oracle.com/communications/inventory/networkaddress">
+    <xb:package>oracle.communications.inventory.sfws.networkaddress</xb:package>
+  </xb:namespace>
+  
+  <xb:namespace uri="http://xmlns.oracle.com/communications/inventory/customobject">
+    <xb:package>oracle.communications.inventory.sfws.customobject</xb:package>
+  </xb:namespace>
+  
+  <xb:namespace uri="http://xmlns.oracle.com/communications/inventory/customnetworkaddress">
+        <xb:package>oracle.communications.inventory.sfws.customnetworkaddress</xb:package>
+  </xb:namespace> 
+  
+  <xb:namespace uri="http://xmlns.oracle.com/communications/inventory/role">
+    <xb:package>oracle.communications.inventory.sfws.role</xb:package>
+  </xb:namespace>
+  
+  <xb:namespace uri="http://xmlns.oracle.com/communications/inventory/configuration">
+        <xb:package>oracle.communications.inventory.sfws.configuration</xb:package>
+  </xb:namespace>
+  
+  <xb:namespace uri="http://xmlns.oracle.com/communications/inventory/webservice/configuration">
+        <xb:package>oracle.communications.inventory.sfws.configuration</xb:package>
+  </xb:namespace>
+  
+  <xb:namespace uri="http://xmlns.oracle.com/communications/inventory/service">
+    <xb:package>oracle.communications.inventory.sfws.service</xb:package>
+  </xb:namespace> 
+  
+  <xb:namespace uri="http://xmlns.oracle.com/communications/inventory/businessinteraction">
+    <xb:package>oracle.communications.inventory.sfws.businessinteraction</xb:package>
+  </xb:namespace>
+  
+  <xb:namespace uri="http://xmlns.oracle.com/communications/inventory/connectivity">
+    <xb:package>oracle.communications.inventory.sfws.connectivity</xb:package>
+  </xb:namespace>
+    
+  <xb:namespace uri="http://xmlns.oracle.com/communications/inventory/webservice/nsrm">
+    <xb:package>oracle.communications.inventory.webservice.nsrm</xb:package>
+  </xb:namespace>
+  
+</xb:config>

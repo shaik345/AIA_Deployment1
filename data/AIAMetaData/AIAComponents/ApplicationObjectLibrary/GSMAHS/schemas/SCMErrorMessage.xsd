@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:scm="http://telia.com/scm//common/error/objects/v1"
+            targetNamespace="http://telia.com/scm//common/error/objects/v1"
+            elementFormDefault="qualified">
+			
+	<xsd:element name="scmFaultMessage" type="scm:scmFaultMessageType"/>
+  
+	<xsd:complexType name="scmFaultMessageType">
+	<xsd:sequence>      
+		<xsd:element name="code" type="xsd:string" /> 
+		<xsd:element name="summary" type="xsd:string" /> 
+		<xsd:element name="detail" type="xsd:string" />
+	</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="ProcessFulfillmentOrderBillingBRMCommsCustomProvABCSImpl"
+             targetNamespace="http://xmlns.oracle.com/ABCSImpl/Custom/Industry//ProcessFulfillmentOrderBillingBRMCommsCustomProvABCSImpl/V1"
+             xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+             xmlns:sordebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/FulfillmentOrder/V1"
+             xmlns:sordeboabcs="http://xmlns.oracle.com/ABCSImpl/Custom/Industry//ProcessFulfillmentOrderBillingBRMCommsCustomProvABCSImpl/V1"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+ <documentation>
+  <svcdoc:Service>
+   <svcdoc:Description>Update Billing</svcdoc:Description>
+   <svcdoc:ServiceType>ProviderABCSImpl</svcdoc:ServiceType>
+   <svcdoc:Version>1</svcdoc:Version>
+   <svcdoc:ProductCode>BRM</svcdoc:ProductCode>
+  </svcdoc:Service>
+ </documentation>
+ <import namespace="http://schemas.oracle.com/bpel/extension"
+         location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+ <types>
+  <schema xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/FulfillmentOrder/V1"
+           schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/FulfillmentOrder/V1/FulfillmentOrderEBM.xsd"/>
+  </schema>
+  <xsd:schema>
+   <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+               schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd"/>
+  </xsd:schema>
+  <xsd:schema>
+   <xsd:import namespace="http://schemas.oracle.com/service/bpel/common"
+               schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+  </xsd:schema>
+ </types>
+ <message name="ProcessFulfillmentOrderBillingBRMCommsReqMsg">
+  <part name="payload"
+        element="sordebo:ProcessFulfillmentOrderBillingEBM"/>
+ </message>
+ <message name="ProcessFulfillmentOrderBillingBRMCommsRespMsg">
+  <part name="payload"
+        element="sordebo:ProcessFulfillmentOrderBillingEBM"/>
+ </message>
+ <message name="ProcessFulfillmentOrderBillingBRMCommsCustomUpdateSubFaultMsg">
+  <part name="Fault"
+        element="corecom:Fault"/>
+ </message>
+ <message name="AIAFaultMsg">
+<documentation>
+<svcdoc:Message>
+<svcdoc:Description>This message is used for propagating Error
+                                    Context and Error Message</svcdoc:Description>
+</svcdoc:Message>
+</documentation>
+<part name="AIAFault" element="corecom:Fault"/>
+</message>
+ <portType name="ProcessFulfillmentOrderBillingBRMCommsCustomProvABCSImpl">
+  <operation name="processBilling">
+   <documentation>
+    <svcdoc:Operation>
+     <svcdoc:Description>This operation is used to Process an
+                         FulfillmentOrderBillingBRMComms object</svcdoc:Description>
+     <svcdoc:MEP>FireAndForget</svcdoc:MEP>
+    </svcdoc:Operation>
+   </documentation>
+   <input message="sordeboabcs:ProcessFulfillmentOrderBillingBRMCommsReqMsg"/>  
+   <!--output message="sordeboabcs:ProcessFulfillmentOrderBillingBRMCommsCustomUpdateSubFaultMsg"/-->
+  </operation>
+ </portType>
+ <plnk:partnerLinkType name="ProcessFulfillmentOrderBillingBRMCommsCustomProvABCSImpl">
+  <plnk:role name="ProcessFulfillmentOrderBillingBRMCommsCustomProvABCSImplProvider">
+   <plnk:portType name="sordeboabcs:ProcessFulfillmentOrderBillingBRMCommsCustomProvABCSImpl"/>
+  </plnk:role>
+ </plnk:partnerLinkType>
+</definitions>

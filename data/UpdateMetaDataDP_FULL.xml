@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="yes"?>
+<DeploymentPlan component="Metadata" version="3.0">
+	<Configurations>
+
+		<UpdateMetadata wlserver="fp" >	
+			<fileset dir="<REPLACE_PATH>">
+				<include name="**" />
+			</fileset>
+		</UpdateMetadata>	
+
+              	
+	</Configurations>
+</DeploymentPlan>
+ 

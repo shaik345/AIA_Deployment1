@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<project default="buildall" basedir="." xmlns:ac="antlib:net.sf.antcontrib">
+	<macrodef name="mytask">
+        <attribute name="message"/>
+	<attribute name="componentName"/>
+        <element name="myredirector" optional="true"/>
+        <sequential>
+            <exec executable="./ant_xml_pars.ksh">
+                <arg value="@{componentName}"/>
+                <myredirector/>
+            </exec>
+	    <echo message="@{componentName}" />
+	    <echo message="macro called" />
+        </sequential>
+	</macrodef>
+
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+		<classpath>
+			<pathelement location="./antcontrib/ant-contrib-1.0b3"/>
+		</classpath>
+	</taskdef>
+	<property environment="env"/>
+	<property file="./build.properties"/>
+	<property name="build.sysclasspath" value="ignore"/>
+	<property name="weblogic.lib" value="${FMW_HOME}/wlserver_10.3/server/lib"/>
+		<path id="wlst.class.path">
+		<pathelement path="${weblogic.lib}/weblogic.jar"/>
+	</path>
+	<path id="antcontrib.path">
+		<pathelement path="lib/ant-contrib-1.0b3.jar"/>
+	</path>
+	<taskdef classpathref="antcontrib.path" resource="net/sf/antcontrib/antlib.xml"/>
+
+	<target name="print_process_list">
+		<echo message="print_process_list start"/>
+		<echo message="${compile_project_lists} "/>
+		<echo message="print_process_list end"/>
+	</target>
+	<target name="buildall" depends="print_process_list">
+		<echo message="${compile_project_lists} "/>
+		<ac:for list="${compile_project_lists}" param="iprocess">
+				<sequential>
+                               <!-- exec outputs to STDOUT by default 
+                	        <mytask message="To STDOUT" componentName="@{iprocess}" >
+        	                </mytask>
+				<echo message="@{iprocess}"/>	-->
+        	                <!-- exec outputs to a property in this example -->
+				<var name="my.property" unset="true"/>
+				<var name="scac.input" unset="true"/>
+                                <var name="serverURL" unset="true"/>
+                                <var name="sarLocation" unset="true"/>
+                                <var name="password" unset="true"/>
+                                <var name="compositeDir" unset="true"/>
+                                <var name="compositeName" unset="true"/>
+                                <var name="revision" unset="true"/>
+
+	                        <mytask message="To property" componentName="@{iprocess}" >
+                        	    <myredirector>
+                	                <redirector outputproperty="my.property"/>
+        	                    </myredirector>
+	                        </mytask>
+				<echo>${my.property}</echo>
+				<echo message="compile start"/>
+				<ant antfile="${env.SOA_HOME}/bin/ant-sca-compile.xml" target="scac" inheritall="false">
+					<property name="scac.input" value="SOACompApps/@{iprocess}/composite.xml"/>
+				</ant>
+				<echo message="compile end"/>
+				<echo message="package start"/>
+				<ant antfile="${env.SOA_HOME}/bin/ant-sca-package.xml" target="package" inheritall="false">
+					<property name="compositeDir" value="${env.PWD}/SOACompApps/@{iprocess}"/>
+					<property name="compositeName" value="@{iprocess}"/>
+					<property name="revision" value="${my.property}"/>
+					<property name="sca.application.home" value="${env.PWD}/SOACompApps/@{iprocess}"/>
+				</ant>
+				<echo message="package end"/>
+				<echo message="deploy start"/>
+				<ant antfile="${env.SOA_HOME}/bin/ant-sca-deploy.xml" target="deploy" inheritall="false">
+					<property name="serverURL" value="${deploy_serverURL}"/>
+					<property name="sarLocation" value="${env.PWD}/SOACompApps/@{iprocess}/deploy/sca_@{iprocess}_rev${my.property}.jar"/>
+					<property name="overwrite" value="${deploy_overwrite}"/>
+					<property name="user" value="${deploy_user}"/>
+					<property name="password" value="${deploy_password}"/>
+					<property name="forceDefault" value="${deploy_forceDefault}"/>
+				</ant>
+				<echo message="deploy end"/>
+			</sequential>
+		</ac:for>
+ 		</target>
+	<target name="replaceAllURLs" depends="replaceURLs_SOACompApps_aia,replaceURLs_AIAMetaData_aia,replaceURLs_SOACompApps_aiapim,replaceURLs_AIAMetaData_aiapim,replaceURLs_SOACompApps_sbl,replaceURLs_AIAMetaData_sbl,replaceURLs_AIAMetaData_aiahostname,replaceURLs_SOACompApps_aia1">
+		<echo message="replace All done."/>
+	</target>
+	<!-- AIA replace -->
+	<target name="replaceURLs_SOACompApps_aia">
+		<replace summary="true" dir="${env.PWD}/SOACompApps" token="${deploy.source.aia.hostname}:${deploy.source.aia.hostport}" value="${deploy.target.aia.hostname}:${deploy.target.aia.hostport}"></replace>
+		<replace summary="true" dir="${env.PWD}/SOACompApps" token="${deploy.source1.aia.hostname}:${deploy.source.aia.hostport}" value="${deploy.target.aia.hostname}:${deploy.target.aia.hostport}"></replace>
+		<replace summary="true" dir="${env.PWD}/SOACompApps" token="${deploy.source2.aia.hostname}:${deploy.source.aia.hostport}" value="${deploy.target.aia.hostname}:${deploy.target.aia.hostport}"></replace>
+		<replace summary="true" dir="${env.PWD}/SOACompApps" token="${deploy.source3.aia.hostname}:${deploy.source1.aia.hostport}" value="${deploy.target.aia.hostname}:${deploy.target.aia.hostport}"></replace>
+		<replace summary="true" dir="${env.PWD}/SOACompApps" token="${deploy.source4.aia.hostname}:${deploy.source.aia.hostport}" value="${deploy.target.aia.hostname}:${deploy.target.aia.hostport}"></replace>
+		<replace summary="true" dir="${env.PWD}/SOACompApps" token="${deploy.source3.aia.hostname}:${deploy.source2.aia.hostport}" value="${deploy.target.aia.hostname}:${deploy.target.aia.hostport}"></replace>
+		<replace summary="true" dir="${env.PWD}/SOACompApps" token="${deploy.source5.aia.hostname}:${deploy.source.aia.hostport}" value="${deploy.target.aia.hostname}:${deploy.target.aia.hostport}"></replace>
+		
+	</target>
+	<target name="replaceURLs_AIAMetaData_aia">
+		<replace summary="true" dir="${env.PWD}/AIAMetaData" token="${deploy.source.aia.hostname}:${deploy.source.aia.hostport}" value="${deploy.target.aia.hostname}:${deploy.target.aia.hostport}"></replace>
+		<replace summary="true" dir="${env.PWD}/AIAMetaData" token="${deploy.source1.aia.hostname}:${deploy.source.aia.hostport}" value="${deploy.target.aia.hostname}:${deploy.target.aia.hostport}"></replace>
+		<replace summary="true" dir="${env.PWD}/AIAMetaData" token="${deploy.source2.aia.hostname}:${deploy.source.aia.hostport}" value="${deploy.target.aia.hostname}:${deploy.target.aia.hostport}"></replace>
+		<replace summary="true" dir="${env.PWD}/AIAMetaData" token="${deploy.source3.aia.hostname}:${deploy.source1.aia.hostport}" value="${deploy.target.aia.hostname}:${deploy.target.aia.hostport}"></replace>
+		<replace summary="true" dir="${env.PWD}/SOACompApps" token="${deploy.source4.aia.hostname}:${deploy.source.aia.hostport}" value="${deploy.target.aia.hostname}:${deploy.target.aia.hostport}"></replace>
+		<replace summary="true" dir="${env.PWD}/AIAMetaData" token="${deploy.source.aia.path}" value="${deploy.target.aia.path}">
+              </replace>
+              <replace summary="true" dir="${env.PWD}/AIAMetaData" token="${deploy.source.brm_schema}" value="${deploy.target.brm_schema}">
+              </replace>
+              <replace summary="true" dir="${env.PWD}/AIAMetaData" token="${deploy.source.aia_schema}" value="${deploy.target.aia_schema}">
+              </replace>
+	</target>
+	<!-- aiapim ApplicationServer-Applications10g replace -->
+	<target name="replaceURLs_SOACompApps_aiapim">
+		<replace summary="true" dir="${env.PWD}/SOACompApps" token="${deploy.source.aiapim.hostname}:${deploy.source.aiapim.hostport}" value="${deploy.target.aiapim.hostname}:${deploy.target.aiapim.hostport}">
+			</replace>
+	</target>
+	<target name="replaceURLs_AIAMetaData_aiapim">
+		<replace summary="true" dir="${env.PWD}/AIAMetaData" token="${deploy.source.aiapim.hostname}:${deploy.source.aiapim.hostport}" value="${deploy.target.aiapim.hostname}:${deploy.target.aiapim.hostport}">
+				</replace>
+	</target>
+	<!-- siebel replace -->
+	<target name="replaceURLs_SOACompApps_sbl">
+		<replace summary="true" dir="${env.PWD}/SOACompApps" token="${deploy.source.sbl.hostname}:${deploy.source.sbl.hostport}" value="${deploy.target.sbl.hostname}:${deploy.target.sbl.hostport}">
+			</replace>
+	</target>
+	<target name="replaceURLs_AIAMetaData_sbl">
+		<replace summary="true" dir="${env.PWD}/AIAMetaData" token="${deploy.source.sbl.hostname}:${deploy.source.sbl.hostport}" value="${deploy.target.sbl.hostname}:${deploy.target.sbl.hostport}">
+				</replace>
+	</target>
+	<!-- AIAhostname replace -->
+	<target name="replaceURLs_AIAMetaData_aiahostname">
+		<replace summary="true" dir="${env.PWD}/AIAMetaData" token="${deploy.source.aia.hostname}" value="${deploy.target.aia.hostname}">
+		</replace>
+	</target>
+
+       <target name="replaceURLs_SOACompApps_aia1">
+                <replace summary="true" dir="${env.PWD}/SOACompApps" token="${deploy.source.osm.safpass}" value="${deploy.target.osm.safpass}">
+                </replace>
+		  <replace summary="true" dir="${env.PWD}/SOACompApps" token="${deploy.source.aia.path}" value="${deploy.target.aia.path}">
+                </replace>
+                <replace summary="true" dir="${env.PWD}/SOACompApps" token="${deploy.source.brm_schema}" value="${deploy.target.brm_schema}">
+                </replace>
+                <replace summary="true" dir="${env.PWD}/SOACompApps" token="${deploy.source.aia_schema}" value="${deploy.target.aia_schema}">
+                </replace>
+        </target>
+	
+	<target name="BRMAdapter-deploy" description="runs the configuration script for the Central and Local Fulfillment instance">
+		<java classname="weblogic.WLST" classpathref="wlst.class.path" fork="true" failonerror="true">
+		<arg value="config_AIA.py"/>
+		</java>
+</target>
+<!-- Undeploy COMPOSITE -->
+	
+		<target name="undeployComposites" depends="print_process_list">
+		<echo message="${compile_project_lists} "/>
+		<ac:for list="${compile_project_lists}" param="iprocess">
+			<sequential>
+			
+  		<var name="my.property" unset="true"/>
+		<var name="scac.input" unset="true"/>
+		<var name="serverURL" unset="true"/>
+		<var name="sarLocation" unset="true"/>
+		<var name="password" unset="true"/>
+		<var name="compositeDir" unset="true"/>
+		<var name="compositeName" unset="true"/>
+		<var name="revision" unset="true"/>
+		<mytask message="To property" componentName="@{iprocess}">
+		<myredirector>
+		<redirector outputproperty="my.property"/>
+		</myredirector>
+		</mytask>
+		<echo>${my.property}</echo>
+		<echo message="compile start"/>
+			        <trycatch property="tryName" reference="exception_ref">
+          <try>
+ 
+            <echo>
+            ================================================================================
+            UNDEPLOY COMPOSITE # @{iprocess}
+            ================================================================================
+            </echo>
+            <ant antfile="${env.SOA_HOME}/bin/ant-sca-deploy.xml" target="undeploy" inheritall="false">
+              <property name="user"             value="${deploy_user}"/>
+              <property name="password"         value="${deploy_password}"/>
+              <property name="serverURL"        value="${deploy_serverURL}"/>
+              <property name="compositeName"    value="@{iprocess}"/>
+              <property name="revision"         value="${my.property}"/>
+            </ant>
+          </try>
+          <catch>
+            <echo>
+            ================================================================================
+            UNDEPLOY COMPOSITE FAILD
+            ================================================================================
+            </echo>
+          </catch>
+        </trycatch>
+        <sleep seconds="1" />
+      </sequential>
+	  </ac:for>
+	  </target>
+</project>

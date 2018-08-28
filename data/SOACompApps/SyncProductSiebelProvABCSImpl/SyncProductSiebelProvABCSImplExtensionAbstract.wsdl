@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncProductSiebelProvABCSImplExtension" xmlns:swiprodprom="http://siebel.com/asi/SWIPromotionIntegration/" xmlns:seblproductabo="http://siebel.com/asi/V0" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:coreitem="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Item/V2" xmlns:ns2="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/ItemComposition/V1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="SyncProductSiebelProvABCSImplExtension" targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncProductSiebelProvABCSImplExtension">
+	<documentation>
+		<svcdoc:Service>
+			<svcdoc:Description>This service contains intercepting operations that
+                             would be used by the participating application</svcdoc:Description>
+			<svcdoc:ServiceType>ABCSExtension</svcdoc:ServiceType>
+			<svcdoc:DisplayName>SyncProduct SiebelProvABCSImpl  ABCS Extension Abstract Interface</svcdoc:DisplayName>
+			<svcdoc:EBOName>ItemEBO</svcdoc:EBOName>
+			<svcdoc:ABOName>SWIProductIntegrationIORes</svcdoc:ABOName>
+			<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			<svcdoc:Version>1.0</svcdoc:Version>
+			<svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+			<svcdoc:ProductFamily>Siebel</svcdoc:ProductFamily>
+			<svcdoc:ProductPillar>CRM</svcdoc:ProductPillar>
+			<svcdoc:ProductCode>SIA</svcdoc:ProductCode>
+		</svcdoc:Service>
+	</documentation>
+	<import namespace="http://siebel.com/asi/V0" location="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/wsdls/SWIProductIntegrationIO.wsdl"/>
+	<import namespace="http://siebel.com/asi/SWIPromotionIntegration/" location="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/wsdls/SWIPromotionIntegrationIO.wsdl"/>
+	<types>
+		<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema">
+			<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Item/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/EBO/Item/V2/ItemEBM.xsd"/>
+			<xsd:import namespace="http://schemas.oracle.com/service/bpel/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+			<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd"/>
+		</xsd:schema>
+	</types>
+	<message name="PreXformEBMtoABMEBMMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message will contain the SyncItemList EBM</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="SyncItemListEBM" element="coreitem:SyncItemListEBM"/>
+	</message>
+	<message name="FaultMessage">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used for propagating Error Context and Error Message</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="AIAFault" element="corecom:Fault"/>
+	</message>
+	<message name="PreInvokeSWIProductImportUpsertABMMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message will contain the Input Parameters of  SWIProductImportUpsert Service</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="SWIProductImportUpsert_Input" element="seblproductabo:SWIProductImportUpsert_Input"/>
+	</message>
+	<message name="PostInvokeSWIProductImportUpsertABMMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message will contain the Output Parameters of  SWIProductImportUpsert Service</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="SWIProductImportUpsert_Output" element="seblproductabo:SWIProductImportUpsert_Output"/>
+	</message>
+	<message name="PreInvokeSWIPromotionIntegrationABMMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message will contain the Input Parameters of  SWIProductImportUpsert Service</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="SWIPromotionUpsert_Input" element="swiprodprom:SWIPromotionUpsert_Input"/>
+	</message>
+	<message name="PostInvokeSWIPromotionIntegrationABMMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message will contain the Output Parameters of  SWIProductImportUpsert Service</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="SWIPromotionUpsert_Output" element="swiprodprom:SWIPromotionUpsert_Output"/>
+	</message>
+	<message name="PostXformABMtoEBMEBMMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message will contain the SyncItemListResponse EBM</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="SyncItemListResponseEBM" element="coreitem:SyncItemListResponseEBM"/>
+	</message>
+	<portType name="SyncProductSiebelProvABCSImplExtensionService">
+		<documentation>
+			<svcdoc:Interface>
+				<svcdoc:Description>This interface contains operations that can act upon
+                            the ABO / EBO object</svcdoc:Description>
+				<svcdoc:DisplayName>SyncItemCompositionListEbizProvABCSImpl ABCS Extension</svcdoc:DisplayName>
+				<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			</svcdoc:Interface>
+		</documentation>
+		<operation name="PreXformEBMtoABMEBM">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is For Extension Of SyncItemListEBM</svcdoc:Description>
+					<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>PreXformEBMtoABMEBM</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="tns:PreXformEBMtoABMEBMMsg"/>
+			<output message="tns:PreXformEBMtoABMEBMMsg"/>
+			<fault name="fault" message="tns:FaultMessage"/>
+		</operation>
+		<operation name="PreInvokeSWIProductImportUpsertABM">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is For Extension Of InputParameters</svcdoc:Description>
+					<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>PreInvokeSWIProductImportUpsertABM</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="tns:PreInvokeSWIProductImportUpsertABMMsg"/>
+			<output message="tns:PreInvokeSWIProductImportUpsertABMMsg"/>
+			<fault name="fault" message="tns:FaultMessage"/>
+		</operation>
+		<operation name="PostInvokeSWIProductImportUpsertABM">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is For Extension Of OutputParamters</svcdoc:Description>
+					<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>PostInvokeSWIProductImportUpsertABM</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="tns:PostInvokeSWIProductImportUpsertABMMsg"/>
+			<output message="tns:PostInvokeSWIProductImportUpsertABMMsg"/>
+			<fault name="fault" message="tns:FaultMessage"/>
+		</operation>
+		<operation name="PreInvokeSWIPromotionIntegrationABM">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is For Extension Of InputParameters</svcdoc:Description>
+					<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>PreInvokeSWIProductImportUpsertABM</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="tns:PreInvokeSWIPromotionIntegrationABMMsg"/>
+			<output message="tns:PreInvokeSWIPromotionIntegrationABMMsg"/>
+			<fault name="fault" message="tns:FaultMessage"/>
+		</operation>
+		<operation name="PostInvokeSWIPromotionIntegrationABM">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is For Extension Of OutputParamters</svcdoc:Description>
+					<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>PostInvokeSWIProductImportUpsertABM</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="tns:PostInvokeSWIPromotionIntegrationABMMsg"/>
+			<output message="tns:PostInvokeSWIPromotionIntegrationABMMsg"/>
+			<fault name="fault" message="tns:FaultMessage"/>
+		</operation>
+		<operation name="PostXformABMtoEBMEBM">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is For Extension Of  SyncItemListResponseEBM</svcdoc:Description>
+					<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>PostXformABMtoEBMEBM</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="tns:PostXformABMtoEBMEBMMsg"/>
+			<output message="tns:PostXformABMtoEBMEBMMsg"/>
+			<fault name="fault" message="tns:FaultMessage"/>
+		</operation>
+	</portType>
+	<plnk:partnerLinkType name="SyncProductSiebelProvABCSImplExtensionService">
+		<plnk:role name="SyncProductSiebelProvABCSImplExtensionServiceProvider">
+			<plnk:portType name="tns:SyncProductSiebelProvABCSImplExtensionService"/>
+		</plnk:role>
+	</plnk:partnerLinkType>
+		<binding name="SyncProductSiebelProvABCSImplExtensionService_Binding" type="tns:SyncProductSiebelProvABCSImplExtensionService">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="PreXformEBMtoABMEBM">
+			<soap:operation style="document" soapAction="mirror"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fault">
+				<soap:fault name="fault" use="literal" encodingStyle=""/>
+			</fault>
+		</operation>
+		<operation name="PreInvokeSWIProductImportUpsertABM">
+			<soap:operation style="document" soapAction="mirror"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fault">
+				<soap:fault name="fault" use="literal" encodingStyle=""/>
+			</fault>
+		</operation>
+		<operation name="PostInvokeSWIProductImportUpsertABM">
+			<soap:operation style="document" soapAction="mirror"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fault">
+				<soap:fault name="fault" use="literal" encodingStyle=""/>
+			</fault>
+		</operation>
+		<operation name="PreInvokeSWIPromotionIntegrationABM">
+			<soap:operation style="document" soapAction="mirror"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fault">
+				<soap:fault name="fault" use="literal" encodingStyle=""/>
+			</fault>
+		</operation>
+		<operation name="PostInvokeSWIPromotionIntegrationABM">
+			<soap:operation style="document" soapAction="mirror"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fault">
+				<soap:fault name="fault" use="literal" encodingStyle=""/>
+			</fault>
+		</operation>
+		<operation name="PostXformABMtoEBMEBM">
+			<soap:operation style="document" soapAction="mirror"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="fault">
+				<soap:fault name="fault" use="literal" encodingStyle=""/>
+			</fault>
+		</operation>
+	</binding>
+	<service name="mirrorAnyService">
+		<port name="SyncProductSiebelProvABCSImplExtensionService" binding="tns:SyncProductSiebelProvABCSImplExtensionService_Binding">
+			<soap:address location="http://tw001buaia.ddc.teliasonera.net:8001/MirrorServlet/mirror"/>
+		</port>
+	</service>
+</definitions>

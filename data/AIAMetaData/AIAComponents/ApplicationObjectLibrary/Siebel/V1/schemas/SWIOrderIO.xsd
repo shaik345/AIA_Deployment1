@@ -1,0 +1,1004 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://siebel.com/OrderManagement/Order/Data" xmlns:xsdLocal="http://siebel.com/OrderManagement/Order/Data" attributeFormDefault="unqualified" elementFormDefault="qualified">
+	<xsd:annotation>
+		<xsd:documentation>
+			Copyright (C) 2001-2004 Siebel Systems, Inc. All rights reserved. Siebel XSD Generation
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="ListOfSWIOrderIO" type="xsdLocal:ListOfSWIOrderIO"/>
+	<xsd:complexType name="ListOfSWIOrderIOTopElmt">
+		<xsd:sequence>
+			<xsd:element name="ListOfSWIOrderIO" type="xsdLocal:ListOfSWIOrderIO" minOccurs="1" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfSWIOrderIO">
+		<xsd:sequence>
+			<xsd:element name="SWIOrder" type="xsdLocal:SWIOrder" minOccurs="1" maxOccurs="1"/>
+		</xsd:sequence>
+		<xsd:attribute name="Language" type="xsd:string"/>
+		<xsd:attribute name="Locale" type="xsd:string"/>
+		<xsd:attribute name="MessageId" type="xsd:string"/>
+		<xsd:attribute name="EnterpriseServerName" type="xsd:string"/>
+	</xsd:complexType>
+	<xsd:complexType name="SWIOrder">
+		<xsd:sequence>
+			<xsd:element name="Account" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="AccountAddress" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="AccountAddress-City" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="AccountAddress-Country" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="AccountAddress-PostalCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="AccountAddress-State" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="AccountAddress-Street2" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="AccountAddressId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="AccountContractedProductsOnlyFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="AccountId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="AccountLoc" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="AccountType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Active" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Approved" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="AsOfDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BackOfficeProcessStatus" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillToAccountId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillToAccountIntegrationId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillToAddress" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillToAddress2" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillToAddress3" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillToAddressCity" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillToAddressCountry" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillToAddressCounty" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillToAddressId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillToAddressPostalCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillToAddressProvince" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillToAddressState" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillToContactId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillToContactIntegrationId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillableFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillingAccountId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CarrierPriority" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CarrierType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CompoundProductNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ContactId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Created" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CurrencyCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="DeliveryStatus" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="DestinationInventoryLocationId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Discount" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="DiscountAmount" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="EAISyncDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ExchangeDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Freight" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="FreightAmountCurrencyCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="FreightTerms" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="FreightTermsInfo" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="HoldFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Id" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="IntegrationId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="InvLocAddress" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="InvLocAddress2" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="InvLocCity" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="InvLocCountry" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="InvLocCounty" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="InvLocPostalCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="InvLocProvince" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="InvLocState" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ModId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="NRCTotal" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OptyId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OrderDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OrderNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OrderPriority" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OrderType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OrderTypeCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OrderTypeId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ParentOrderId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PaymentMethod" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PaymentTerm" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PriceListId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PricingDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PrimaryOrganizationId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PrimaryPositionId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="QuoteId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="QuoteNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="RequestedShipDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ReturnReason" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Revision" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ScenarioTestFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceAccountId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ShipToAccountId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ShipToAddress" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ShipToAddress2" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ShipToAddress3" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ShipToAddressCity" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ShipToAddressCountry" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ShipToAddressCounty" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ShipToAddressId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ShipToAddressPostalCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ShipToAddressProvince" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ShipToAddressState" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ShipToContactId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SourceInventoryLocId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SourceInventoryLocIntegrationId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SourceInventoryLocShipToAddressId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SourceInventoryLocation" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Status" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TaxAmount" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TaxExempt" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TaxRate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TotalVolume" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TotalVolumeUoM" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TotalWeight" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TotalWeightUoM" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Updated" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="AIAIntegrationId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="AccountAddressIntegrationId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="AgreementId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="AgreementName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillingAccount" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="DestinationCity" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="DestinationCountry" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="DestinationInventoryId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="DestinationLocation" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="DestinationLocationId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="DestinationState" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="DestinationZipCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Division" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="EndingCustomerRequestedDeliveryDTTMUTC" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="EndingCustomerRequestedPickupDTTMUTC" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="FleetIntegrationId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="LineofBusiness" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="MileagePackage" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Mode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OriginCity" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OriginCountry" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OriginLocation" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OriginLocationId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OriginState" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OriginZipCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PaymentTermId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PrimaryBillToFirstName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PrimaryBillToLastName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PrimaryPaymentId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Sector" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="StartingCustomerRequestedDeliveryDTTMUTC" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="StartingCustomerRequestedPickupDTTMUTC" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SolutionValidFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SubmitFulfillmentFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TotalDistance" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Organization" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PrimaryOrganization" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OrderReference" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OrderReferenceType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="RejectCancelReasonCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TotalAcceptedPrice" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="UoMbasedTotalLineItemsWeight" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="UoMbasedTotalLineItemsVolume" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ConflictId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ChangeReason" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CancelReason" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Description" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="FulfillmentMode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--Start R2.0 VAS changes by Santosh M E Jan 7th 2016 -->
+			<xsd:element name="OrderSubType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--Start R2.0 VAS changes by Santosh M E Jan 7th 2016 -->
+			<xsd:element name="JobCardinality" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="JobId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="JobType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OrderTotal" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ShipInstructions" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ShipViaId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SingleSourceFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SuccessDependency" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SumExtendedPrice" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="AccountNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ContactEmailAddress" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ContactFirstName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ContactLastName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ContactWorkPhone" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!-- START: R1.1 code merge mobile number element added for OSM-NetAdmin integration SANTOSH July 22 2015 -->
+			<xsd:element name="ContactMobilePhone" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!-- END R1.1 code merge mobile number element added for OSM-NetAdmin integration SANTOSH July 22 2015 -->
+			<xsd:element name="PrimaryPositionContactId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ProjectId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="StatusContext" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PrimaryAccountStreetAddress" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PrimaryAccountState" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PrimaryAccountPostalCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PrimaryAccountCounty" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PrimaryAccountCountry" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="AccountClass" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PreviousOrderId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="RootOrderId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ParentOrderStatus" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OrderChangeFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PackInstructions" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="RootOrderDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="MSQuoteNum" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--Start changes DI-1736 R17.4 by Ashwath Prabhu 12/07/2017-->
+			<xsd:element type="xsd:string" name="TSReasonCode" maxOccurs="1" minOccurs="0"/>
+			<!--End changes DI-1736 R17.4 by Ashwath Prabhu 12/07/2017-->
+			<!--Start changes DI-2183 R17.4 by Ashwath Prabhu 24/07/2017-->
+			<xsd:element name="TSOrderSubType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--End changes DI-2183 R17.4 by Ashwath Prabhu 24/07/2017-->
+			<xsd:element name="ListOfSWIOrderItem" type="xsdLocal:ListOfSWIOrderItem" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ListOfPayments" type="xsdLocal:ListOfPayments" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ListOfFmOrderEntryStops" type="xsdLocal:ListOfFmOrderEntryStops" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ListOfFmRatingSolutions" type="xsdLocal:ListOfFmRatingSolutions" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+		<xsd:attribute name="operation" type="xsd:string"/>
+		<xsd:attribute name="searchspec" type="xsd:string"/>
+		<xsd:attribute name="uiactive" type="xsd:string"/>
+		<xsd:attribute name="uiselected" type="xsd:string"/>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfSWIOrderItem">
+		<xsd:sequence>
+			<xsd:element name="SWIOrderItem" type="xsdLocal:SWIOrderItem" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SWIOrderItem">
+		<xsd:sequence>
+			<!--Start MDU-211 RAG-186 Changes to add New Field Integration 18.2. -Ashwath-->
+			<xsd:element name="TSMDUDeliveryContractNum" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--End MDU-211 RAG-186 Changes to add New Field Integration 18.2. -Ashwath-->
+			<!--MOB REL 18.2 RAG 228 Changes Start-->
+           <xsd:element name="TSSubscriptionEndDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <!--MOB REL 18.2 RAG 228 Changes End-->
+			<!-- Start XDSL-527 changes to asd new set of fields from Siebel to OSM for 18.2. -Ashwath -->
+			<xsd:element name="TemporaryContactPhoneNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TemporaryContactLastName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TemporaryContactFirstName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TemporaryContactEmailAdd" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TemparoryContactId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!-- End XDSL-527 changes to asd new set of fields from Siebel to OSM for 18.2. -Ashwath -->
+			<!--START XDSL-010&018 for 18.1 changes by Surendra 30/08/2017 -->
+			<xsd:element name="VDSLBlockFlg" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SDStream" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--Start MDU-795 RAG-207 Changes to add New Field Integration 18.2. -Ashwath-->
+			<xsd:element name="TSPrevAccessTypeId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TSAccessTypeId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--End MDU-795 RAG-207 Changes to add New Field Integration 18.2. -Ashwath-->
+			<xsd:element name="PSTNNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="HDStream" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="HDBlockFlg" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="FBNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--MOB REL 18.4 RAG 237 Changes Start-->
+			<xsd:element name="TSCommitmentReason" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			 <!--MOB REL 18.4 RAG 237 Changes End-->
+			<xsd:element name="ActiveCertificates" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--START XDSL525 for 18.1 changes by Surendra 12/10/2017 -->
+			<xsd:element name="TSOldPSTNNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--End  XDSL-010,018 for 18.1 changes by Surendra 30/08/2017 -->
+			<!--End XDSL525 for 18.1 changes by Surendra 12/10/2017-->
+			<!--Start MDU-211 RAG-186 Changes to add New Field Integration 18.2. -Ashwath-->
+			<xsd:element name="TSMDUDeliveryContractNum" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--End MDU-211 RAG-186 Changes to add New Field Integration 18.2. -Ashwath-->
+			<!--Start VoIPDeviceType for R17.0 VOIPTEAM-215 Ari 7/2/2016 -->
+			<xsd:element name="VoIPDeviceType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--End VoIPDeviceType for R17.0 VOIPTEAM-215 Ari 7/2/2016 -->
+			<!--Start TSPaymentMethod for R15.0 DI-59 Ari 27/12/2016 -->
+			<xsd:element name="TSPaymentMethod" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--End TSPaymentMethod for R15.0 DI-59 Ari 27/12/2016 -->
+			<!--Start changes DI-1667 R17.4 by Ashwath Prabhu 12/07/2017-->
+			<xsd:element name="ProductShipFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--End changes DI-1667 R17.4 by Ashwath Prabhu 12/07/2017-->
+			<!-- RAG 94 Start-->
+			<xsd:element name="TSDelayedDueDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!-- RAG 94 End-->
+			<!-- Start MDU-227 RAG-187 Changes in AIA for 18.1 by Ashwath 27/10/2017 -->
+			<xsd:element name="TSActivationType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!-- End MDU-227 RAG-187 Changes in AIA for 18.1 by Ashwath 27/10/2017 -->
+			<!--Start MDU-587 Changes for MDU to add New Fields 18.2. -Ashwath-->
+			<xsd:element name="TSMDUAgreementType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TSMDUAgreementNetworkName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--End MDU-587 Changes for MDU to add new Fields 18.2. -Ashwath-->
+			<!-- RAG 167 Start-->
+			<xsd:element name="TSDelayedActivation" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!-- RAG 167 End-->
+			<xsd:element name="Alias" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TSPortInTarTSCID" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="AdjustedListPrice" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BasePrice" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillingAccountId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CarrierCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!-- Start DI-544 for R8.0 by Arup on 07/07/2016-->
+			<xsd:element name="TSParcelNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!-- Start DI-544 for R8.0 by Arup on 07/07/2016-->
+			<!-- Start Delivery reason code update during to Siebel – R13 by Surendra on 23/11/2016-->
+			<xsd:element name="TSDeliveryChangeReasonCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!-- End Delivery reason code update during to Siebel – R13 by Surendra on 23/11/2016-->
+			<xsd:element name="CarrierPriority" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CompoundProductNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ConflictId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ContactId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CurrencyCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CurrentPrice" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Discount" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="DiscountAmount" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="DueDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ExtendedQuantity" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ExtendedQuantityRequested" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ExternalConfiguratorReference1" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ExternalConfiguratorReference2" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ExternalConfiguratorReference3" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="FreightAmount" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="FreightTerms" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="GrossWeight" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="GrossWeightUoM" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Id" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="IntegrationId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="LineNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="InvLocAddress2" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="LineNumber2" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="InvLocCity" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ListPrice" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="InvLocCountry" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ModId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="InvLocCounty" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Name" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="InvLocPostalCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="NetPrice" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="InvLocProvince" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OrigListPrice" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="InvLocState" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ParentOrderItemId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PortItemId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PriceListId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Product" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ProductId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ProductPrimaryProductLineId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ProductTypeCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="InstallmentRelationshipId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Qty" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="QuantityRequested" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="RootOrderItemId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SalesUnitofMeasure" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SequenceNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceAccountId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--Start CareofShipping Added 28Apr 2016 Ari for gap 52C R6.0 -->
+			<xsd:element name="TSCareOfShipping" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--End CareofShipping Added 28Apr 2016 Ari for gap 52C R6.0 -->
+			<!--Start CareofShipping Added 28Apr 2016 Nishant for gap 52A R8.0 -->
+			<xsd:element name="TSAttentionInformation" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--End CareofShipping Added 28Apr 2016 Nishant for gap 52A R8.0 -->
+			<xsd:element name="ShipToAccountId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ShipToAddress" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ShipToAddress2" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ShipToAddress3" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ShipToAddressId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ShipToCity" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ShipToContactId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ShipToCountry" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ShipToCounty" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ShipToProvince" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ShipToState" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ShipToZip" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ShippingMethod" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SourceInventoryAddress" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SourceInventoryLocId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SourceInventoryLocIntegrationId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SourceInventoryLocShipToAddressId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SourceInventoryLocation" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Status" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TaxAmount" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="UnitPrice" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="UnitofMeasure" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Updated" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Volume" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="VolumeUoM" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="AIAIntegrationId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--start here Mobdev sprint 21 RAG 135 changes-->
+			<xsd:element name="ProductType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="InstallmentRelationshipId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--end here Mobdev sprint 21 RAG 135 changes-->
+			<xsd:element name="AcceptedPrice" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillToAddressId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Commodity" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CounterOffer" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="DimensionsUOM" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="FleetIntegrationId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="FreightClass" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Height" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="InvoiceTo" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ItineraryCurrency" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OverDimension" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Packaging" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Part" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ProductwSTconstraint" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ShipUnits" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Shipping" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SolutionValidFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BackOfficeProcessStatus" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CfgComplexProductId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PKGUnits" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ProcessedFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PromotionItemFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ScheduledShipDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Width" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ActionCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="AssetIntegrationId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillingProfileId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillingServiceType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillingType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CfgStateCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CfgType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ConfigurationModelId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Created" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Description" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="DiscountPercent" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="DiscountSource" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="EffectiveFrom" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="EffectiveTo" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="EligibilityReason" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="EligibilityStatus" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ExchangeDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ExcludePricingFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ForcastableFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="HasGenerics" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="InclusiveEligibilityFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ItemPriceDisplay" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ItemPriceListId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="MRCCxTotal" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="NRCCxTotal" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="NeedRefresh" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Orderable" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PostPickCD" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PrePickCD" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PreviousBillingAccountId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PreviousBillingProfileId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PreviousItemPriceDisplay" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PreviousNetPrice" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PreviousNetPriceCalc" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PreviousServiceAccountId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--Start R1.5 Transfer of Ownership chages by Santosh M E Sept 16th 2015 -->
+			<!--xsd:element name="PreviousOwnerAccountId" type="xsd:string" minOccurs="0" maxOccurs="1"/-->
+			<!--End R1.5 Transfer of Ownership chages by Santosh M E Sept 16th 2015 -->
+			<!--Start R 1.5 Adding VAS - activationKey Ari and Surendra-->
+			<xsd:element name="TSVASActivationKey" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TSKeyExpiryDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TSVASRegistrationStatus" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TSVASUniqueKey" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TSVASPreActivation" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--End R 1.5 Adding VAS - activationKey  Ari and Surendra -->
+			<xsd:element name="PreviousServiceId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PriceType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PricingComments" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ProdItemId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ProdPromId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ProdPromInstanceId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ProdPromName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ProdPromRuleId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ProdPromSourceId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="RelatedAssetIntegrationId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="RelatedProductId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="RollupAmount" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="RollupItemPrice" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="RootAssetIntegrationId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SmartPartNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SubActionCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TrackAsAssetFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="VolumeDiscountId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="VolumeDiscountItem" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="VolumeDiscountItemId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="VolumeUpsellItem" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="VolumeUpsellItemId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="VolumeUpsellMessage" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="AutoSubstituteFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ChangeCost" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CompositionType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ClassId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ClassVersion" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="DependsOnLineItemId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="DependsOnOrderId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="DynamicDiscountMethod" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="FulfillmentItem" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="NetworkElementType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="NRCStartDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PricingCommitType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PromotionDescription" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="RCStartDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="RevisedLineItemId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceFlg" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServicePoint" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="StatusContext" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SuccessDependency" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="UseStartDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Vendor" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="VendorPartNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Milestone" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ClassName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CLLI" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CompoundProductFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CompletedDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ExpectedDeliveryDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Node" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PortNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Prefix" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceAccount" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceAddress" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceAddressId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceLength" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceLengthUoM" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SpecialRatingListId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="StartBillingOnFirstUsage" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ToCLLI" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ToNode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ToPortNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ToPrefix" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ToServiceAccountId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ToServiceAddressId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ToServicePointId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BasePriceDisplay" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="NetPriceCalc" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="RootProdPromInstanceId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="RootProdPromSourceId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SpecialRatingMaxItems" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillableFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OwnerAccountId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="EffectiveEndDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="AgreementId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ToServiceAccount" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BaseLineItemId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceAddressZipCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceAddressState" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceAddressProvince" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceAddressCounty" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceAddressCountry" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceAddressCity" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceAddress3" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceAddress2" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--Start Changes for MDU to add line 4. -Ashwath-->
+			<xsd:element name="ServiceAddress4" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--End Changes for MDU to add line 4. -Ashwath-->
+			<xsd:element name="CancelReason" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="RequestToCancel" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OriginalQty" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceInstanceFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OrderLineChangeFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="EffectiveStartDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="AvailableDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="DeliveryStatus" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="HoldFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ProductObjectNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="HoldReason" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="RelatedProdObjectNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PackageName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PackInstructions" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ChangeReason" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="MemberAssetId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ShipInstructions" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="FulfillmentItemCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OwnerAccntId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PromGroupId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PromGroupInstanceId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CustomerDetailsChangeFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PromGroupName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PromGroupRuleId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PromotionRole" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SourceInventoryLocationTypeId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SourceInventoryLocationType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="MSQuoteId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="MSQuoteCancelledItemsId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--Start changes for DI-719 &722 Ari 2/8/2016 for  R11.0 -->
+			<xsd:element name="TSFiberStatus" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--End changes for DI-719 &722 Ari 2/8/2016 for  R11.0 -->
+			<!--Start changes for VASPAP-319 Manish 24/01/2017 for  R15.0 -->
+			<xsd:element name="TSNote" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--End changes for VASPAP-319 Manish 24/01/2017 for  R15.0 -->
+			<!--Start changes TVTeam-608 R17.4 by Nishant Ashish 28/06/2017-->
+			<xsd:element name="TSTVAccountId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--End changes TVTeam-608 R17.4 by Nishant Ashish 28/06/2017 -->
+			<xsd:element name="ListOfSWIOrderItemXA" type="xsdLocal:ListOfSWIOrderItemXA" minOccurs="0" maxOccurs="1"/>
+			<!--Start changes Sprint 26 for KO SDU-264 R17.4 by Nishant Ashish 27/06/2017-->
+			<xsd:element name="TSContactFirstName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TSContactLastName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--Defect 5480 start-->
+			<xsd:element name="TSBasePricingItemWithVAT" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--Defect 5480 end-->
+			<xsd:element name="TSContactEmail" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TSContactWorkPhone" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TSContactMobPhone" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--End changes Sprint 26 for KO SDU-264 R17.4 By Nishant Ashish 27/06/2017 -->
+			<xsd:element name="ListOfFmLineItemStops" type="xsdLocal:ListOfFmLineItemStops" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ListOfSWIOrderItemPreviousValues" type="xsdLocal:ListOfSWIOrderItemPreviousValues" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ListOfSWISpecialRatingListItems" type="xsdLocal:ListOfSWISpecialRatingListItems" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ListOfSWIShipTrackingDetails" type="xsdLocal:ListOfSWIShipTrackingDetails" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ListOfSWIOrchestrationLineItems" type="xsdLocal:ListOfSWIOrchestrationLineItems" minOccurs="0" maxOccurs="1"/>
+			
+			<!--Start MOBREL18.3 sprint 41 RAG 215 REFERENCE ON INVOICE - INSTALLMENTS MOBDEV-3508 -->
+			<xsd:element name="TsServiceIntegrationID" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!-- End MOBREL18.3 sprint 41 RAG 215 REFERENCE ON INVOICE - INSTALLMENTS MOBDEV-3508 -->
+			
+			<!--Start MOBREL18.3 sprint 41 RAG 215 SUBSCRIPTION NUMBER FOR PENALTY FEES MOBDEV-3845 -->
+			<xsd:element name="TsServiceID" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<!--End MOBREL18.3 sprint 41 RAG 215 SUBSCRIPTION NUMBER FOR PENALTY FEES MOBDEV-3845 -->
+		</xsd:sequence>
+		<xsd:attribute name="operation" type="xsd:string"/>
+		<xsd:attribute name="searchspec" type="xsd:string"/>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfPayments">
+		<xsd:sequence>
+			<xsd:element name="Payments" type="xsdLocal:Payments" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Payments">
+		<xsd:sequence>
+			<xsd:element name="ABACode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="AVSCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="AccountNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ActualCharge" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="AuthorizationCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="AuthorizationDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BankAccountId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BankAddressId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillToAddressId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillToAddressIntegrationId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CardHolder" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ConflictId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ContactEmail" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ContactFirstName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ContactLastName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ContactPhone" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Created" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CreatedByName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CreditCheckMessage2" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CreditCheckStatus" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CreditCheckStatusAsOfDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CurrencyCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="DateOfBirth" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Description" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="DesiredPayDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="EncryptionKey" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ExchangeDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ExpirationDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ExpirationMonth" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ExpirationYear" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="FirstName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Id" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="IntegrationId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="InvoiceId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="InvoiceNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="IssuingBankCustomerId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="IssuingBankName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="IssuingBankPhoneNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="LastName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="LineNumber4" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ManualAuthorizationFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="MerchantId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ModId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OrderCustomerId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OrderId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OrderNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OrderTypeCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Payment" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PaymentAccountId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PaymentAccountIntegrationId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PaymentAccountName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PaymentAccountSite" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PaymentContactId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PaymentContactIntegrationId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PaymentDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PaymentImportFlg" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PaymentMethod" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="PaymentProfileName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PaymentStatus" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PaymentStatusAsOfDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PaymentType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PersonalBillToCity" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PersonalBillToCountry" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PersonalBillToPostalCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PersonalBillToState" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PersonalBillToStreetAddress" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PersonalBillToStreetAddress2" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="QuoteCustomerId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="QuoteId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SSNEncryptionKey" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SocialSecurityNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TransactionAmount" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TransactionId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TransactionMessage" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TransactionTime" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TransactionType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Updated" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="VendorId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="VerificationNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BankAddress" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BankCity" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BankState" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BankZip" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillToAddress" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillToCity" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillToState" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillToZip" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillToCountry" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillingProfileId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillingAccountId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillingProfileName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillingAccount" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillingAccountNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="InvoiceTo" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+		<xsd:attribute name="operation" type="xsd:string"/>
+		<xsd:attribute name="searchspec" type="xsd:string"/>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfFmOrderEntryStops">
+		<xsd:sequence>
+			<xsd:element name="FmOrderEntryStops" type="xsdLocal:FmOrderEntryStops" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="FmOrderEntryStops">
+		<xsd:sequence>
+			<xsd:element name="Id" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="City" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ActualEndDTTMUTC" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ActualStartDTTMUTC" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="AppointmentConfirmationRequired" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="AppointmentRequested" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Country" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Distance" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="DistanceUOM" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="FleetIntegrationId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="LineItemId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Location" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="LocationId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OrderId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PlanEndDTTMUTC" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PlanStartDTTMUTC" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PrimaryAddressId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PrimaryStopReferencesId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="RQTEndDTTMUTC" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="RQTStartDTTMUTC" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SortField" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Status" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="StopSequenceNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ZipCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="AppointmentStartDTTMUTC" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="AppointmentEndDTTMUTC" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="StopReference" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="State" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="StopType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ReturnId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ReturnFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="LocationTimezone" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PreviousOrderStopId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="RootOrderStopId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ListOfFmStopActions" type="xsdLocal:ListOfFmStopActions" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ListOfFmStopReferences" type="xsdLocal:ListOfFmStopReferences" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+		<xsd:attribute name="operation" type="xsd:string"/>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfFmRatingSolutions">
+		<xsd:sequence>
+			<xsd:element name="FmRatingSolutions" type="xsdLocal:FmRatingSolutions" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="FmRatingSolutions">
+		<xsd:sequence>
+			<xsd:element name="FeasibleFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="FleetIntegrationId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Itinerary" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ItineraryEndTime" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ItineraryPrice" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ItineraryStartTime" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OrderId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Id" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ListOfFmRatingSolutionDetails" type="xsdLocal:ListOfFmRatingSolutionDetails" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+		<xsd:attribute name="operation" type="xsd:string"/>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfSWIOrderItemXA">
+		<xsd:sequence>
+			<xsd:element name="SWIOderItemXA" type="xsdLocal:SWIOderItemXA" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SWIOderItemXA">
+		<xsd:sequence>
+			<xsd:element name="ActionCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Attribute" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ConflictId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Created" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="DisplayName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Hidden" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Id" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="IntegrationId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="LOVType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ModId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ObjectId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ReadOnly" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Required" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Sequence" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="UnitofMeasure" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Updated" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Validation" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Value" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="XAId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="LICValue" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OrderLineItemId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PreviousLICValue" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="DataType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+		<xsd:attribute name="searchspec" type="xsd:string"/>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfFmLineItemStops">
+		<xsd:sequence>
+			<xsd:element name="FmLineItemStops" type="xsdLocal:FmLineItemStops" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="FmLineItemStops">
+		<xsd:sequence>
+			<xsd:element name="Id" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="LineItemId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ShpmntId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="StopType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="operation" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PreviousOrderStopId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="RootOrderStopId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfSWIOrderItemPreviousValues">
+		<xsd:sequence>
+			<xsd:element name="SWIOrderItemPreviousValues" type="xsdLocal:SWIOrderItemPreviousValues" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SWIOrderItemPreviousValues">
+		<xsd:sequence>
+			<xsd:element name="AgreementId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillingAccountId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="BillingProfileId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CLLI" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="DiscountAmount" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="DiscountPercent" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="DynamicDiscountMethod" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="EffectiveEndDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Node" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OrderLineItemId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OwnerAccountId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PortNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Prefix" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PricingCommitType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ProdPromId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ProdPromInstanceId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ProdPromSourceId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Quantity" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceAccount" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceAccountId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceAddress" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceAddressId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceLength" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceLengthUoM" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServicePointId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SmartPartNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ToCLLI" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ToNode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ToPortNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ToPrefix" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ToServiceAccount" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ToServiceAccountId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ToServiceAddressId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SpecialRatingListId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceAddressZipCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceAddressState" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceAddressProvince" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceAddressCounty" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceAddressCountry" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceAddressCity" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceAddress3" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceAddress2" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="EffectiveStartDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfSWISpecialRatingListItems">
+		<xsd:sequence>
+			<xsd:element name="SWISpecialRatingListItems" type="xsdLocal:SWISpecialRatingListItems" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SWISpecialRatingListItems">
+		<xsd:sequence>
+			<xsd:element name="SpecialRatingListItem" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OrderLineItemId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfSWIShipTrackingDetails">
+		<xsd:sequence>
+			<xsd:element name="SWIShipTrackingDetails" type="xsdLocal:SWIShipTrackingDetails" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SWIShipTrackingDetails">
+		<xsd:sequence>
+			<xsd:element name="OrderItemId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ProductId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SourceInventoryId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TrackingNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Quantity" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CarrierCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ShipDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfSWIOrchestrationLineItems">
+		<xsd:sequence>
+			<xsd:element name="SWIOrchestrationLineItems" type="xsdLocal:SWIOrchestrationLineItems" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SWIOrchestrationLineItems">
+		<xsd:sequence>
+			<xsd:element name="OrderItemId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ProductId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SourceInventoryId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="DeliveryDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Quantity" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ShipDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ItemId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Status" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="PartMovementNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="IntegrationId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfFmStopActions">
+		<xsd:sequence>
+			<xsd:element name="FmStopActions" type="xsdLocal:FmStopActions" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="FmStopActions">
+		<xsd:sequence>
+			<xsd:element name="Id" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ActionType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="AppointmentFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Comments" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="LineItemId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Status" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="StopId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+		<xsd:attribute name="operation" type="xsd:string"/>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfFmStopReferences">
+		<xsd:sequence>
+			<xsd:element name="FmStopReferences" type="xsdLocal:FmStopReferences" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="FmStopReferences">
+		<xsd:sequence>
+			<xsd:element name="Id" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="StopReference" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Type" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="StopId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+		<xsd:attribute name="operation" type="xsd:string"/>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfFmRatingSolutionDetails">
+		<xsd:sequence>
+			<xsd:element name="FmRatingSolutionDetails" type="xsdLocal:FmRatingSolutionDetails" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="FmRatingSolutionDetails">
+		<xsd:sequence>
+			<xsd:element name="Id" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Distance" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="DistanceUoM" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Mode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OriginLocationName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="RateOffering" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="RtngSoltnId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceProvideEndDTTM" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceProvider" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ServiceProviderStartDTTM" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="DestinationLocationName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ListOfFmRatingSolutionDetailPricing" type="xsdLocal:ListOfFmRatingSolutionDetailPricing" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+		<xsd:attribute name="operation" type="xsd:string"/>
+	</xsd:complexType>
+	<xsd:complexType name="ListOfFmRatingSolutionDetailPricing">
+		<xsd:sequence>
+			<xsd:element name="FmRatingSolutionDetailPricing" type="xsdLocal:FmRatingSolutionDetailPricing" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="FmRatingSolutionDetailPricing">
+		<xsd:sequence>
+			<xsd:element name="Id" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Accessorial" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="Cost" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="CostDetails" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="RtngSltnDetId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+		<xsd:attribute name="operation" type="xsd:string"/>
+	</xsd:complexType>
+</xsd:schema>

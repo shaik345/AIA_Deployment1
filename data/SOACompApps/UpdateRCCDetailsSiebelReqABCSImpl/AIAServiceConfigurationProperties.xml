@@ -1,0 +1,12 @@
+<AIAServiceConfiguration xmlns="http://xmlns.oracle.com/aia/core/config/V1" version="1.0">
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry//UpdateRCCDetailsSiebelReqABCSImpl/V1}UpdateRCCDetailsSiebelReqABCSImpl">
+	<Property name="Default.SystemID">SEBL_01</Property>
+	<Property name="ABCSExtension.PreXformABMtoEBM">false</Property>
+	<Property name="ABCSExtension.PostXformABMtoEBM">false</Property>	
+	<Property name="Routing.CommunicationsCustomerPartyEBS.ProcessCreditEligibilityVerification.RouteToCAVS">false</Property>
+	<Property name="Routing.CommunicationsCustomerPartyEBS.ProcessCreditEligibilityVerification.CAVS.EndpointURI">oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/AIAValidationSystemServlet/asyncresponsesimulator </Property>
+	<Property name="Routing.CommunicationsCustomerPartyEBS.ProcessCreditEligibilityVerification.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+	<Property name="ABCSExtension.PreInvokeEBS">false</Property>
+	<Property name="ABCSExtension.PostInvokeEBS">false</Property>
+</ServiceConfiguration>
+</AIAServiceConfiguration>

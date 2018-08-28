@@ -1,0 +1,22 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://xmlns.oracle.com/communications/inventory/webservice/nsrm"
+            xmlns:att="http://www.bea.com/servers/wls90/wsee/attachment">
+            <xs:import namespace="http://www.bea.com/servers/wls90/wsee/attachment"
+               schemaLocation="DataHandler.xsd"/>
+                    
+            <xs:element name="importEntityRequestType">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="octet" type="att:datahandler"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="exportEntityResponseType">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element
+                            name="octet" type="att:datahandler"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>

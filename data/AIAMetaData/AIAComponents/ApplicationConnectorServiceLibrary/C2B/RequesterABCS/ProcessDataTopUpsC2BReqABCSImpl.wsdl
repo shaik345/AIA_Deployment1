@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions name="ProcessDataTopUpsC2BReqABCSImpl" targetNamespace="http://xmlns.oracle.com/ABCSImpl/C2B/Industry//ProcessDataTopUpsC2BReqABCSImpl/V1" xmlns:tpsabo="http://www.telia.org/c2b/topusps" xmlns:tpsabcs="http://xmlns.oracle.com/ABCSImpl/C2B/Industry//ProcessDataTopUpsC2BReqABCSImpl/V1" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+   <documentation>
+      <svcdoc:Service>
+         <svcdoc:Description/>
+         <svcdoc:ServiceType>RequesterABCSImpl</svcdoc:ServiceType>
+         <svcdoc:Version>1</svcdoc:Version>
+         <svcdoc:ProductCode>C2B</svcdoc:ProductCode>
+      </svcdoc:Service>
+   </documentation>
+   <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+   <types>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema">
+         <import namespace="http://www.telia.org/c2b/topusps" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/C2B/DataTopUps.xsd"/>
+      </schema>
+   </types>
+   <message name="ProcessDataTopUpsReqMsg">
+      <part name="ProcessDataTopUps" element="tpsabo:ManageTopUpPurchaseRequest"/>
+   </message>
+   <message name="ProcessDataTopUpsRespMsg">
+      <part name="ProcessDataTopUpsResponse" element="tpsabo:ManageTopUpPurchaseResponse"/>
+   </message>
+   <portType name="ProcessDataTopUpsC2BReqABCSImpl">
+      <operation name="ProcessDataTopUps">
+         <documentation>
+            <svcdoc:Operation>
+               <svcdoc:Description>This operation is used to Process an DataTopUps
+                              object</svcdoc:Description>
+               <svcdoc:MEP>SyncReqResp</svcdoc:MEP>
+            </svcdoc:Operation>
+         </documentation>
+         <input message="tpsabcs:ProcessDataTopUpsReqMsg"/>
+         <output message="tpsabcs:ProcessDataTopUpsRespMsg"/>
+      </operation>
+   </portType>
+   <plnk:partnerLinkType name="ProcessDataTopUpsC2BReqABCSImpl">
+      <plnk:role name="ProcessDataTopUpsC2BReqABCSImplProvider">
+         <plnk:portType name="tpsabcs:ProcessDataTopUpsC2BReqABCSImpl"/>
+      </plnk:role>
+   </plnk:partnerLinkType>
+</definitions>

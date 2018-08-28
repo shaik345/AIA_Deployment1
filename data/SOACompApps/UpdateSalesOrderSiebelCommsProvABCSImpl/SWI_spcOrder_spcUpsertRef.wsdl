@@ -1,0 +1,17 @@
+<definitions
+     name="SWI_spcOrder_spcUpsert"
+     targetNamespace="http://siebel.com/asi/"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:sblasi="http://siebel.com/asi/V0"
+    >
+    <import namespace="http://siebel.com/asi/V0" location="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/wsdls/SWIOrderIO.WSDL"/>
+   
+    <plnk:partnerLinkType name="SWI_spcOrder_spcUpsert">
+        <plnk:role name="SWI_spcOrder_spcUpsert_Role">
+            <plnk:portType name="sblasi:SWI_spcOrder_spcUpsert"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

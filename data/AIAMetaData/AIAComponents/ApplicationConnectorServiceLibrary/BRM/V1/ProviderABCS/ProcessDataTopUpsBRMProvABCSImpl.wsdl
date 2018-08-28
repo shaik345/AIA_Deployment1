@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="ProcessDataTopUpsBRMProvABCSImpl"
+             targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/Industry//ProcessDataTopUpsBRMProvABCSImpl/V1"
+
+
+	     
+	     xmlns:eboebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/FulfillmentOrder/V1"
+             xmlns:eboabcs="http://xmlns.oracle.com/ABCSImpl/BRM/Industry//ProcessDataTopUpsBRMProvABCSImpl/V1"
+	     xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+	     xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" 
+             xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" 
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" >
+	
+	
+	<documentation>
+		<svcdoc:Service>
+		               <svcdoc:Description>
+
+</svcdoc:Description>
+		               
+			<svcdoc:ServiceType>ProviderABCSImpl</svcdoc:ServiceType>
+						<svcdoc:Version>1</svcdoc:Version>
+						<svcdoc:ProductCode>BRM</svcdoc:ProductCode>
+		</svcdoc:Service>
+	</documentation>  
+	
+	 <import namespace="http://schemas.oracle.com/bpel/extension" 
+ 	 location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+	<types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema">
+	            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/FulfillmentOrder/V1" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/EBO/FulfillmentOrder/V1/FulfillmentOrderEBM.xsd"/>
+		    <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd"/>
+		
+		</schema>
+	</types>
+	<message name="ProcessDataTopUpsReqMsg">
+		<part name="ProcessFulfillmentOrderEBM" element="eboebo:ProcessFulfillmentOrderEBM"/>
+	</message>
+	<message name="ProcessDataTopUpsRespMsg">
+		<part name="ProcessFulfillmentOrderResponseEBM" element="eboebo:ProcessFulfillmentOrderResponseEBM"/>
+	</message>
+	<message name="ProcessDataTopUpsFaultMsg">
+		<part name="ProcessDataTopUpsFault" element="corecom:Fault"/>
+	</message>
+	<portType name="ProcessDataTopUpsBRMProvABCSImpl">
+        <operation name="ProcessDataTopUps">
+                <documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to Process an DataTopUps
+                              object</svcdoc:Description>
+					<svcdoc:MEP>SyncReqResp</svcdoc:MEP>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="eboabcs:ProcessDataTopUpsReqMsg"/>
+				<output message="eboabcs:ProcessDataTopUpsRespMsg"/>
+			 	<fault name="fault" message="eboabcs:ProcessDataTopUpsFaultMsg"/>
+		</operation>
+	   
+	    </portType>
+	<plnk:partnerLinkType name="ProcessDataTopUpsBRMProvABCSImpl">
+		<plnk:role name="ProcessDataTopUpsBRMProvABCSImplProvider">
+			<plnk:portType name="eboabcs:ProcessDataTopUpsBRMProvABCSImpl"/>
+		</plnk:role>
+	</plnk:partnerLinkType>
+</definitions>

@@ -1,0 +1,306 @@
+<ImportEntities>
+  <Header xmlns:Excel="http://www.telia.com/gen-excel">
+	<Excel:rowNumber/>
+	<Excel:action/>
+	<Excel:entityType/>
+	<Excel:id/>
+	<Excel:rangeFromID/>
+	<Excel:rangeToID/>
+	<Excel:quantity/>
+	<Excel:name/>
+	<Excel:rangeFromName/>
+	<Excel:rangeToName/>
+	<Excel:specification/>
+	<Excel:description/>
+	<Excel:characteristic/>
+	<Excel:characteristic/>
+	<Excel:characteristic/>
+	<Excel:characteristic/>
+	<Excel:characteristic/>
+	<Excel:relatedRow/>
+  </Header>  
+  <Entity>
+  <Related-Entity>
+		<rowNumber>1</rowNumber>
+		<action>create</action>
+		<entityType>LogicalDevice</entityType>
+		<!-- ICCID-->
+		<id>9200000001</id>
+		<rangeFromID/>
+		<rangeToID/>
+		<quantity/>
+		<name>sim_card</name>
+		<rangeFromName/>
+		<rangeToName/>
+		<specification>SIM_CARD</specification>
+		<description/>
+		<!-- header - Cardtype:561-->
+		<characteristic>SIM_TYPE=561</characteristic>
+		<!-- PIN1-->
+		<characteristic>PIN=1234</characteristic>
+		<!-- PIN2-->
+		<characteristic>PIN2=2345</characteristic>
+		<!-- PUK1-->
+		<characteristic>PUK=12345678</characteristic>
+		<!-- PUK2-->
+		<characteristic>PUK=23456789</characteristic>
+		<!-- current_row_count + 1 (rowNumber+1)-->
+		<relatedRow>2</relatedRow>
+	</Related-Entity>
+	<Related-Entity>
+		<rowNumber>2</rowNumber>
+		<action>create</action>
+		<entityType>LogicalDeviceAccount</entityType>
+		<!-- IMSI-->
+		<id>1200000001</id>
+		<rangeFromID/>
+		<rangeToID/>
+		<quantity/>
+		<name>imsi</name>
+		<rangeFromName/>
+		<rangeToName/>
+		<specification>IMSI</specification>
+		<description/>		
+		<characteristic>IMSI_TYPE=primary</characteristic>		
+		<characteristic/>		
+		<characteristic/>		
+		<characteristic/>		
+		<characteristic/>
+		<!-- current_row_count - 1 (rowNumber-1)-->
+		<relatedRow>1</relatedRow>
+	</Related-Entity>	
+	<!-- related-entity 3 & 4 are generated only incase of cardType 561, i.e - with IMSI2-->
+	<Related-Entity>
+		<rowNumber>3</rowNumber>
+		<action>information</action>
+		<entityType>LogicalDevice</entityType>
+		<!-- ICCID-->
+		<id>9200000001</id>
+		<rangeFromID/>
+		<rangeToID/>
+		<quantity/>
+		<name>sim_card</name>
+		<rangeFromName/>
+		<rangeToName/>
+		<specification>SIM_CARD</specification>
+		<description/>		
+		<characteristic/>
+		<characteristic/>		
+		<characteristic/>		
+		<characteristic/>		
+		<characteristic/>
+		<!-- current_row_count + 1 (rowNumber+1)-->
+		<relatedRow>4</relatedRow>
+	</Related-Entity>
+	<!-- related-entity 3 & 4 are generated only incase of cardType 561, i.e - with IMSI2-->
+	<Related-Entity>
+		<rowNumber>4</rowNumber>
+		<action>create</action>
+		<entityType>LogicalDeviceAccount</entityType>
+		<!-- IMSI_EMT : IMSI2-->
+		<id>2200000001</id>
+		<rangeFromID/>
+		<rangeToID/>
+		<quantity/>
+		<name>imsi_emt</name>
+		<rangeFromName/>
+		<rangeToName/>
+		<specification>IMSI_EMT</specification>
+		<description/>		
+		<characteristic>IMSI_TYPE=secondary</characteristic>		
+		<characteristic/>		
+		<characteristic/>		
+		<characteristic/>		
+		<characteristic/>
+		<!-- current_row_count - 1 (rowNumber-1)-->
+		<relatedRow>3</relatedRow>
+	</Related-Entity>
+	<Related-Entity>
+		<rowNumber>5</rowNumber>
+		<action>associate</action>
+		<entityType>LogicalDevice</entityType>
+		<!-- ICCID-->
+		<id>9200000001</id>
+		<rangeFromID/>
+		<rangeToID/>
+		<quantity/>
+		<name>sim_card</name>
+		<rangeFromName/>
+		<rangeToName/>
+		<specification>SIM_CARD</specification>
+		<description/>		
+		<characteristic/>
+		<characteristic/>		
+		<characteristic/>		
+		<characteristic/>		
+		<characteristic/>
+		<!-- current_row_count + 1 (rowNumber+1)-->
+		<relatedRow>6</relatedRow>
+	</Related-Entity>
+	<Related-Entity>
+		<rowNumber>6</rowNumber>
+		<action>information</action>
+		<entityType>InventoryGroup</entityType>		
+		<id/>
+		<rangeFromID/>
+		<rangeToID/>
+		<quantity/>
+		<!-- MANUFACTURING_RUN : filename - need to confirm with Bhavana once-->
+		<name>1PDH1610080517.PRO001</name>
+		<rangeFromName/>
+		<rangeToName/>
+		<specification>MANUFACTURING_RUN</specification>
+		<description/>		
+		<characteristic/>
+		<characteristic/>		
+		<characteristic/>		
+		<characteristic/>		
+		<characteristic/>
+		<!-- current_row_count - 1 (rowNumber-1)-->
+		<relatedRow>5</relatedRow>
+	</Related-Entity>
+  </Entity>
+  <!-- Another Entity ROW-->
+  <Entity>
+  <Related-Entity>
+		<rowNumber>7</rowNumber>
+		<action>create</action>
+		<entityType>LogicalDevice</entityType>
+		<!-- ICCID-->
+		<id>9200000002</id>
+		<rangeFromID/>
+		<rangeToID/>
+		<quantity/>
+		<name>sim_card</name>
+		<rangeFromName/>
+		<rangeToName/>
+		<specification>SIM_CARD</specification>
+		<description/>
+		<!-- header - Cardtype:561-->
+		<characteristic>SIM_TYPE=561</characteristic>
+		<!-- PIN1-->
+		<characteristic>PIN=1234</characteristic>
+		<!-- PIN2-->
+		<characteristic>PIN2=2345</characteristic>
+		<!-- PUK1-->
+		<characteristic>PUK=12345678</characteristic>
+		<!-- PUK2-->
+		<characteristic>PUK=23456789</characteristic>
+		<!-- current_row_count + 1 (rowNumber+1)-->
+		<relatedRow>8</relatedRow>
+	</Related-Entity>
+	<Related-Entity>
+		<rowNumber>8</rowNumber>
+		<action>create</action>
+		<entityType>LogicalDeviceAccount</entityType>
+		<!-- IMSI-->
+		<id>1200000002</id>
+		<rangeFromID/>
+		<rangeToID/>
+		<quantity/>
+		<name>imsi</name>
+		<rangeFromName/>
+		<rangeToName/>
+		<specification>IMSI</specification>
+		<description/>		
+		<characteristic>IMSI_TYPE=primary</characteristic>		
+		<characteristic/>		
+		<characteristic/>		
+		<characteristic/>		
+		<characteristic/>
+		<!-- current_row_count - 1 (rowNumber-1)-->
+		<relatedRow>7</relatedRow>
+	</Related-Entity>	
+	<!-- related-entity 3 & 4 are generated only incase of cardType 561, i.e - with IMSI2-->
+	<Related-Entity>
+		<rowNumber>9</rowNumber>
+		<action>information</action>
+		<entityType>LogicalDevice</entityType>
+		<!-- ICCID-->
+		<id>9200000002</id>
+		<rangeFromID/>
+		<rangeToID/>
+		<quantity/>
+		<name>sim_card</name>
+		<rangeFromName/>
+		<rangeToName/>
+		<specification>SIM_CARD</specification>
+		<description/>		
+		<characteristic/>
+		<characteristic/>		
+		<characteristic/>		
+		<characteristic/>		
+		<characteristic/>
+		<!-- current_row_count + 1 (rowNumber+1)-->
+		<relatedRow>10</relatedRow>
+	</Related-Entity>
+	<!-- related-entity 3 & 4 are generated only incase of cardType 561, i.e - with IMSI2-->
+	<Related-Entity>
+		<rowNumber>10</rowNumber>
+		<action>create</action>
+		<entityType>LogicalDeviceAccount</entityType>
+		<!-- IMSI_EMT : IMSI2-->
+		<id>2200000002</id>
+		<rangeFromID/>
+		<rangeToID/>
+		<quantity/>
+		<name>imsi_emt</name>
+		<rangeFromName/>
+		<rangeToName/>
+		<specification>IMSI_EMT</specification>
+		<description/>		
+		<characteristic>IMSI_TYPE=secondary</characteristic>		
+		<characteristic/>		
+		<characteristic/>		
+		<characteristic/>		
+		<characteristic/>
+		<!-- current_row_count - 1 (rowNumber-1)-->
+		<relatedRow>9</relatedRow>
+	</Related-Entity>
+	<Related-Entity>
+		<rowNumber>11</rowNumber>
+		<action>associate</action>
+		<entityType>LogicalDevice</entityType>
+		<!-- ICCID-->
+		<id>9200000002</id>
+		<rangeFromID/>
+		<rangeToID/>
+		<quantity/>
+		<name>sim_card</name>
+		<rangeFromName/>
+		<rangeToName/>
+		<specification>SIM_CARD</specification>
+		<description/>		
+		<characteristic/>
+		<characteristic/>		
+		<characteristic/>		
+		<characteristic/>		
+		<characteristic/>
+		<!-- current_row_count + 1 (rowNumber+1)-->
+		<relatedRow>12</relatedRow>
+	</Related-Entity>
+	<Related-Entity>
+		<rowNumber>12</rowNumber>
+		<action>information</action>
+		<entityType>InventoryGroup</entityType>		
+		<id/>
+		<rangeFromID/>
+		<rangeToID/>
+		<quantity/>
+		<!-- MANUFACTURING_RUN : filename - need to confirm with Bhavana once-->
+		<name>1PDH1610080517.PRO001</name>
+		<rangeFromName/>
+		<rangeToName/>
+		<specification>MANUFACTURING_RUN</specification>
+		<description/>		
+		<characteristic/>
+		<characteristic/>		
+		<characteristic/>		
+		<characteristic/>		
+		<characteristic/>
+		<!-- current_row_count - 1 (rowNumber-1)-->
+		<relatedRow>11</relatedRow>
+	</Related-Entity>
+  </Entity>
+    
+</ImportEntities>

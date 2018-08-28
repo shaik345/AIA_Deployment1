@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.telia.org/Siebel/getRCCBalances" xmlns="http://www.telia.org/Siebel/getRCCBalances" elementFormDefault="qualified">
+<xs:element name="UpdateRCCDetailsRequest">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="TSServiceAcntId" type="xs:string"/>
+<xs:element name="TSAssetIntegrationID" type="xs:string"/>
+<xs:element name="TSIPServiceId" type="xs:string"/>
+<xs:element name="ResourceID" type="xs:string"/>
+<xs:element name="CreditLimit" type="xs:string"/>
+<xs:element name="CreditFloor" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="UpdateRCCDetailsResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="TSServiceAcntId" type="xs:string"/>
+<xs:element name="TSIPServiceId" type="xs:string"/>
+<xs:element name="TSAssetIntegrationID" type="xs:string"/>
+<xs:element name="Status">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="statusCode" type="xs:string"/>
+<xs:element name="errorCode" type="xs:string"/>
+<xs:element name="errorMessage" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="UpdateRCCDetailsFault">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Response">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="responseDate" type="xs:dateTime"/>
+<xs:element name="Status">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="errorCode" type="xs:string"/>
+<xs:element name="errorMessage" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:schema>

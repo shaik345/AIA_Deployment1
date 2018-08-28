@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dvm name="PRICE_TYPE" xmlns="http://xmlns.oracle.com/dvm">
+<description>DVM description</description>
+<columns>
+<column name="COMMON"/>
+<column name="SEBL_01"/>
+<column name="BRM_01"/>
+<column name="PIM_01"/>
+</columns>
+<rows>
+<row>
+<cell>ONE-TIME</cell>
+<cell>One-Time</cell>
+<cell>Act</cell>
+<cell>ONE-TIME</cell>
+</row>
+<row>
+<cell>RECURRING</cell>
+<cell>Recurring</cell>
+<cell>Mcf</cell>
+<cell>RECURRING</cell>
+</row>
+<!-- Code changes for Pay&Go Release 16.4 Usecase 1.2 Sprint1 OPH Sync Starts here -->
+<row>
+<cell>USAGE</cell>
+<cell>Usage</cell>
+<cell/>
+<cell>Usage</cell>
+</row>
+<!-- Code changes for Pay&Go Release 16.4 Usecase 1.2 Sprint1 OPH Sync Starts here -->
+</rows>
+</dvm>

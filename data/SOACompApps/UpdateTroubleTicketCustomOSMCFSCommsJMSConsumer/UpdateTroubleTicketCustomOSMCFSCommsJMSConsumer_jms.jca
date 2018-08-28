@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<adapter-config name="UpdateTroubleTicketCustomOSMCFSCommsJMSConsumer" adapter="Jms Adapter" wsdlLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationConnectorServiceLibrary/OSM/V1/AdapterServices/UpdateTroubleTicketCustomOSMCFSCommsJMSConsumer.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+   <connection-factory location="eis/wljms/COMMS_ORDERFALLOUT_CONSUMER" UIConnectionName="AIADIT" UIJmsProvider="OJMS" adapterRef="">
+      <non-managed-connection managedConnectionFactoryClassName="oracle.tip.adapter.jms.JmsManagedConnectionFactory">
+         <property name="ConnectionFactoryLocation" value="jms/aia/COMMS_ORDERFALLOUT_CONSUMER"/>
+         <property name="IsTopic" value="false"/>
+         <property name="IsTransacted" value="true"/>
+         <property name="FactoryProperties" value=""/>
+         <property name="Username" value="jmsuser"/>
+         <property name="Password" value="BE49B84750434652C21A27623F0F412D"/>
+      </non-managed-connection>
+   </connection-factory>
+   <endpoint-activation portType="Consume_Message_ptt" operation="Consume_Message">
+      <activation-spec className="oracle.tip.adapter.jms.inbound.JmsConsumeActivationSpec">
+         <property name="DestinationName" value="jms/aia/AIA_CUSTOM_UPDTTREQ_JMSQ"/>
+         <property name="UseMessageListener" value="false"/>
+         <property name="PayloadType" value="TextMessage"/>
+      </activation-spec>
+      <input/>
+   </endpoint-activation>
+</adapter-config>

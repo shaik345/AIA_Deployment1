@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/Twist_application/HHTPBindingTest/BPELProcess1" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="SendResponse">
+      <complexType>
+         <sequence>
+            <element name="correlationId" type="string"/>
+            <element name="messageId" type="string"/>
+            <element name="responseCode" type="string"/>
+            <element name="responseMessage" type="string"/>
+            <element name="temporaryError" type="string"/>
+         </sequence>
+      </complexType>
+   </element>
+</schema>

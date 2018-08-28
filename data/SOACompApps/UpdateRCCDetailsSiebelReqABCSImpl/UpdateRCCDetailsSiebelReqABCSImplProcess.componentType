@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<componentType xmlns="http://xmlns.oracle.com/sca/1.0" xmlns:ui="http://xmlns.oracle.com/soa/designer/">
+    <service ui:wsdlLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationConnectorServiceLibrary/Siebel/V2/RequesterABCS/UpdateRCCDetailsSiebelReqABCSImpl.wsdl" name="UpdateRCCDetailsSiebelReqABCSImpl">
+        <interface.wsdl interface="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry//UpdateRCCDetailsSiebelReqABCSImpl/V1#wsdl.interface(UpdateRCCDetailsSiebelReqABCSImpl)"/>
+    </service>
+    <reference ui:wsdlLocation="oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/V1/wsdls/AIAAsyncErrorHandlingBPELProcess.wsdl" name="AIAAsyncErrorHandlingBPELProcess">
+        <interface.wsdl interface="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess#wsdl.interface(AIAAsyncErrorHandlingBPELProcess)" callbackInterface="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess#wsdl.interface(AIAAsyncErrorHandlingBPELProcessCallback)"/>
+    </reference>
+    <reference name="CommunicationsCustomerPartyEBS"
+               ui:wsdlLocation="CommunicationsCustomerPartyEBSV2Wrapper.wsdl">
+        <interface.wsdl interface="http://xmlns.oracle.com/EnterpriseServices/Core/CustomerParty/V2#wsdl.interface(CommunicationsCustomerPartyEBS)"
+                        callbackInterface="http://xmlns.oracle.com/EnterpriseServices/Core/CustomerParty/V2#wsdl.interface(CommunicationsCustomerPartyEBSResponse)"/>
+    </reference>
+</componentType>

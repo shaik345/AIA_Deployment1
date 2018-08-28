@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dvm name="PAYMENT_TERM" xmlns="http://xmlns.oracle.com/dvm">
+	<description>Payment Term</description>
+	<columns>
+		<column name="SEBL_01"/>
+		<column name="BRM_01"/>
+		<column name="COMMON"/>
+	</columns>
+	<rows>
+	
+<!-- Start New DVM for payment term BCT-226 by Ari 6/10/2016-->	
+		<row>
+			<cell>5 days</cell>
+			<cell>1002</cell>
+			<cell>5 days</cell>
+		</row>
+		<row>
+			<cell>15 days</cell>
+			<cell>1003</cell>
+			<cell>15 days</cell>
+		</row>
+		<row>
+			<cell>30 days</cell>
+			<cell>1004</cell>
+			<cell>30 days</cell>
+		</row>
+		<row>
+			<cell>45 days</cell>
+			<cell>1005</cell>
+			<cell>45 days</cell>
+		</row>
+		<row>
+			<cell>60 days</cell>
+			<cell>1006</cell>
+			<cell>60 days</cell>
+		</row>
+		<row>
+			<cell>90 days</cell>
+			<cell>1007</cell>
+			<cell>90 days</cell>
+		</row>
+		<row>
+			<cell>Last bank day of the month</cell>
+			<cell>1001</cell>
+			<cell>Last bank day of the month</cell>
+		</row>
+<!-- END New DVM for payment term BCT-226 by Ari 6/10/2016-->
+	</rows>
+</dvm>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+     name="PublicationService"
+     targetNamespace="http://xmlns.oracle.com/oracle/apps/ego/pubfwk/service/PublicationService"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:tns="http://xmlns.oracle.com/oracle/apps/ego/pubfwk/service/PublicationService"
+     xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    >
+    <import namespace="http://xmlns.oracle.com/oracle/apps/ego/pubfwk/service/PublicationService"
+         location="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/PIM/V1/wsdls/PublicationService_Service.wsdl"/>
+    <plnk:partnerLinkType name="PublicationService_PortType_PL">
+        <plnk:role name="PublicationService_PortType_Role">
+            <plnk:portType name="tns:PublicationService_PortType"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

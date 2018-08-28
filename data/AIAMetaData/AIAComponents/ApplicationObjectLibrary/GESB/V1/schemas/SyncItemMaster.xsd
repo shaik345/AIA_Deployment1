@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		    targetNamespace="http://www.teliasonera.com/oagis"
+			xmlns:ts="http://www.teliasonera.com/oagis"
+			xmlns="http://www.teliasonera.com/oagis"
+			elementFormDefault="unqualified"
+			xmlns:oa="http://www.openapplications.org/oagis/9">
+			<xsd:import namespace="http://www.openapplications.org/oagis/9" schemaLocation="MediaVoucherTargetFields.xsd"/>
+				<xsd:element name="SyncItemMaster">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="ApplicationArea" type="oa:ApplicationAreaType"  maxOccurs="unbounded"/>
+						<xsd:element name="DataArea" type="ts:DataAreaType"  maxOccurs="unbounded"/>
+					</xsd:sequence>
+					<xsd:attribute name="releaseID" type="xsd:float"/>
+					<xsd:attribute name="versionID" type="xsd:float"/>
+				</xsd:complexType>
+				</xsd:element>	
+				<xsd:complexType name="DataAreaType">
+					<xsd:sequence>
+						<xsd:element name="Sync" type="oa:SyncType"  maxOccurs="unbounded"/>
+						<xsd:element name="ItemMaster">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="ItemMasterHeader" type="oa:ItemMasterHeaderType"  maxOccurs="unbounded"/>
+								</xsd:sequence>
+							</xsd:complexType>	
+						</xsd:element>							
+					</xsd:sequence>
+				</xsd:complexType>					
+</xsd:schema>

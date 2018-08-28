@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="ProcessManufacturerFilesGSMAHSProvider" targetNamespace="http://xmlns.oracle.com/MDS_deploy/ProcessManufacturerFilesGSMAHSProvider/ProcessManufacturerFilesGSMAHSProvider" xmlns:ns1="http://schemas.oracle.com/bpel/extension" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:client="http://xmlns.oracle.com/MDS_deploy/ProcessManufacturerFilesGSMAHSProvider/ProcessManufacturerFilesGSMAHSProvider" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<plnk:partnerLinkType name="ProcessManufacturerFilesGSMAHSProvider">
+<plnk:role name="ProcessManufacturerFilesGSMAHSProviderProvider">
+<plnk:portType name="client:ProcessManufacturerFilesGSMAHSProvider"/>
+</plnk:role>
+<plnk:role name="ProcessManufacturerFilesGSMAHSProviderRequester">
+<plnk:portType name="client:ProcessManufacturerFilesGSMAHSProviderCallback"/>
+</plnk:role>
+</plnk:partnerLinkType>
+<wsdl:import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/V1/wsdls/AIAAsyncErrorHandlingBPELProcess.wsdl"/>
+<wsdl:import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+<wsdl:types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+<import namespace="http://xmlns.oracle.com/MDS_deploy/ProcessManufacturerFilesGSMAHSProvider/ProcessManufacturerFilesGSMAHSProvider" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationConnectorServiceLibrary/GSMAHS/schemas/ProcessManufacturerFilesGSMAHSProvider.xsd"/>
+</schema>
+</wsdl:types>
+<wsdl:message name="ProcessManufacturerFilesGSMAHSProviderRequestMessage">
+<wsdl:part name="payload" element="client:process"/>
+</wsdl:message>
+<wsdl:message name="ProcessManufacturerFilesGSMAHSProviderResponseMessage">
+<wsdl:part name="payload" element="client:processResponse"/>
+</wsdl:message>
+<wsdl:portType name="ProcessManufacturerFilesGSMAHSProvider">
+<wsdl:operation name="process">
+<wsdl:input message="client:ProcessManufacturerFilesGSMAHSProviderRequestMessage"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:portType name="ProcessManufacturerFilesGSMAHSProviderCallback">
+<wsdl:operation name="processResponse">
+<wsdl:input message="client:ProcessManufacturerFilesGSMAHSProviderResponseMessage"/>
+</wsdl:operation>
+</wsdl:portType>
+</wsdl:definitions>

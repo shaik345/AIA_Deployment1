@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<componentType xmlns="http://xmlns.oracle.com/sca/1.0" xmlns:ui="http://xmlns.oracle.com/soa/designer/"
+               xml:id="id_1">
+	<service ui:wsdlLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationConnectorServiceLibrary/PIM/V1/RequesterABCS/SyncItemListPIMReqABCSImpl.wsdl" name="SyncItemListPIMReqABCSImpl"
+          xml:id="id_2">
+		<interface.wsdl interface="http://xmlns.oracle.com/ABCSImpl/PIM/Core/SyncItemListPIMReqABCSImpl/V1#wsdl.interface(SyncItemListPIMReqABCSImplService)"
+                  xml:id="id_3"/>
+	</service>
+	<reference ui:wsdlLocation="PublicationService_ServiceRef.wsdl" name="PublicationService"
+            xml:id="id_4">
+		<interface.wsdl interface="http://xmlns.oracle.com/oracle/apps/ego/pubfwk/service/PublicationService#wsdl.interface(PublicationService_PortType)"
+                  xml:id="id_5"/>
+	</reference>
+	<reference ui:wsdlLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationConnectorServiceLibrary/PIM/V1/AdapterServices/QueryBillOffMaterialsListPIMAdapter.wsdl" name="QueryBillOffMaterialsListPIMAdapter"
+            xml:id="id_6">
+		<interface.wsdl interface="http://xmlns.oracle.com/PIM/QueryBillOffMaterialsListPIMAdapter#wsdl.interface(QueryBillOffMaterialsListPIMAdapterService)"
+                  xml:id="id_7"/>
+	</reference>
+	<reference ui:wsdlLocation="SyncItemListPIMReqABCSImplExtensionAbstract.wsdl" name="SyncItemListPIMReqABCSImplExtension"
+            xml:id="id_8">
+		<interface.wsdl callbackInterface="http://xmlns.oracle.com/ABCSImpl/PIM/Core/SyncItemListPIMReqABCSImplExtension/V1#wsdl.interface(SyncItemListPIMReqABCSImplExtensionService)" interface="http://xmlns.oracle.com/ABCSImpl/PIM/Core/SyncItemListPIMReqABCSImplExtension/V1#wsdl.interface(SyncItemListPIMReqABCSImplExtensionService)"
+                  xml:id="id_9"/>
+	</reference>
+	<reference ui:wsdlLocation="ItemEBSRef.wsdl" name="ItemEBS" xml:id="id_10">
+		<interface.wsdl interface="http://xmlns.oracle.com/EnterpriseServices/Core/Item/V2#wsdl.interface(ItemEBS)"
+                  xml:id="id_11"/>
+	</reference>
+	<reference name="AIAAsyncErrorHandlingBPELProcess" ui:wsdlLocation="http://tw001buaia.ddc.teliasonera.net:8001/soa-infra/services/default/AIAAsyncErrorHandlingBPELProcess!1.0/client?WSDL"
+            xml:id="id_12">
+		<interface.wsdl interface="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess#wsdl.interface(AIAAsyncErrorHandlingBPELProcess)" callbackInterface="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess#wsdl.interface(AIAAsyncErrorHandlingBPELProcessCallback)" xmlns:ns="http://xmlns.oracle.com/sca/1.0"
+                  xml:id="id_13"/>
+	</reference>
+	<reference ui:wsdlLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationConnectorServiceLibrary/PIM/V1/AdapterServices/QueryItemListPIMAdapter.wsdl" name="QueryItemListPIMAdapter"
+            xml:id="id_14">
+		<interface.wsdl interface="http://xmlns.oracle.com/PIM/QueryItemListPIMAdapter#wsdl.interface(QueryItemListPIMAdapterService)"
+                  xml:id="id_15"/>
+	</reference>
+	<reference ui:wsdlLocation="PriceListEBSV2Ref.wsdl" name="PriceListEBSV2"
+            xml:id="id_16">
+		<interface.wsdl interface="http://xmlns.oracle.com/EnterpriseServices/Core/PriceList/V2#wsdl.interface(PriceListEBS)"
+                  xml:id="id_17"/>
+	</reference>
+	<reference ui:wsdlLocation="BillOfMaterialsEBSRef.wsdl" name="BillOfMaterialsEBS"
+            xml:id="id_18">
+		<interface.wsdl interface="http://xmlns.oracle.com/EnterpriseServices/Core/BillOfMaterials/V1#wsdl.interface(BillOfMaterialsEBS)"
+                  xml:id="id_19"/>
+	</reference>
+	<reference ui:wsdlLocation="PublicationService_ServiceRef.wsdl" name="GetListofTargetSystems"
+            xml:id="id_20">
+		<interface.wsdl interface="http://xmlns.oracle.com/oracle/apps/ego/pubfwk/service/PublicationService#wsdl.interface(PublicationService_PortType)"
+                  xml:id="id_21"/>
+	</reference>
+</componentType>

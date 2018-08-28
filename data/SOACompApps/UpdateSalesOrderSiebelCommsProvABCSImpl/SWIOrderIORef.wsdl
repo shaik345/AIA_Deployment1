@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+    
+     targetNamespace="http://siebel.com/asi"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+     xmlns:tns="http://siebel.com/asi"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    >
+    <import namespace="http://siebel.com/asi" location="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/wsdls/SWIOrderIO.wsdl"/>
+    <plnk:partnerLinkType name="SWIOrderUpsert_PL">
+        <plnk:role name="SWIOrderUpsert_Role">
+            <plnk:portType name="tns:SWIOrderUpsert"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="updateMetaData" default="updateData" basedir=".">
+        <property environment="env" />
+        <property name="aia.home" value="${env.AIA_HOME}" />
+        <property name="aia.instance" value="${env.AIA_INSTANCE}" />
+
+        <target name="updateData">
+                <ant antfile="${aia.home}/Infrastructure/Install/AID/AIAInstallDriver.xml" target="Install" inheritall="false">
+			<property name="DeploymentPlan" value="${aia.instance}/config/UpdateMetaDataDP_FULL.xml" />
+			<property name="PropertiesFile" value="${aia.instance}/config/AIAInstallProperties.xml" />
+	         </ant>
+        </target>
+
+	
+</project>

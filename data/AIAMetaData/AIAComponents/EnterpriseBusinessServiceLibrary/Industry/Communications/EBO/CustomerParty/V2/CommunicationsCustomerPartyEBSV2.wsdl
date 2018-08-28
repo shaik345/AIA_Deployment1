@@ -1,0 +1,689 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (c) 2007, 2010, Oracle and/or its affiliates. 
+All rights reserved. -->
+<!-- This is an Entity EBS BASED ON CRUD OPERATIONS -->
+<!-- We always include the wsdl,xsd, soap, our documentation, and Core Common namespaces. Always the same prefixes. -->
+<!-- Need to define namespaces for EBO and EBS, and always use these same prefixes - ebo and ebs.-->
+<!-- Need to define the target namespace equal to the EBS namespace. Also define a name, in the form of - name+EBS. -->
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:customerpartyebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2" xmlns:corecustomerpartyebs="http://xmlns.oracle.com/EnterpriseServices/Core/CustomerParty/V2" name="CommunicationsCustomerPartyEBSV2" targetNamespace="http://xmlns.oracle.com/EnterpriseServices/Core/CustomerParty/V2">
+	<documentation>
+		<svcdoc:Service>
+			<svcdoc:Description>Customer Party Enterprise Business Service</svcdoc:Description>
+			<svcdoc:ServiceType>EnterpriseBusinessService</svcdoc:ServiceType>
+			<svcdoc:DisplayName>CommunicationsCustomerPartyEBSV2</svcdoc:DisplayName>
+			<svcdoc:Version>2.0</svcdoc:Version>
+			<svcdoc:EBOName>CustomerPartyEBO</svcdoc:EBOName>
+			<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			<svcdoc:ImplementationTechnology>ESB</svcdoc:ImplementationTechnology>
+
+
+			<svcdoc:Industry>Communications</svcdoc:Industry>
+		</svcdoc:Service>
+	</documentation>
+	<types>
+		<xsd:schema targetNamespace="http://xmlns.oracle.com/EnterpriseServices/CustomerParty/V2" elementFormDefault="qualified">
+			<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2" schemaLocation="../../../../../../EnterpriseObjectLibrary/Industry/Communications/EBO/CustomerParty/V2/CustomerPartyEBM.xsd"/>
+			<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="../../../../../../EnterpriseObjectLibrary/Industry/Communications/Common/V2/Meta.xsd"/>
+		</xsd:schema>
+	</types>
+	<message name="FaultMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used for propagating Error Context and Error Message</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="AIAFault" element="corecom:Fault"/>
+	</message>
+	<message name="QueryCustomerPartyReqMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the request payload to the QueryCustomerParty operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="QueryCustomerPartyEBM" element="customerpartyebo:QueryCustomerPartyEBM"/>
+	</message>
+	<message name="QueryCustomerPartyRespMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the response payload to the QueryCustomerParty operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="QueryCustomerPartyResponseEBM" element="customerpartyebo:QueryCustomerPartyResponseEBM"/>
+	</message>
+	<message name="QueryCustomerPartyListReqMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the request payload to the QueryCustomerPartyList operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="QueryCustomerPartyListEBM" element="customerpartyebo:QueryCustomerPartyListEBM"/>
+	</message>
+	<message name="QueryCustomerPartyListRespMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the response payload to the QueryCustomerPartyList operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="QueryCustomerPartyListResponseEBM" element="customerpartyebo:QueryCustomerPartyListResponseEBM"/>
+	</message>
+	<message name="CreateCustomerPartyReqMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the request payload to the CreateCustomerParty operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="CreateCustomerPartyEBM" element="customerpartyebo:CreateCustomerPartyEBM"/>
+	</message>
+	<message name="CreateCustomerPartyRespMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the response payload to the CreateCustomerParty operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="CreateCustomerPartyResponseEBM" element="customerpartyebo:CreateCustomerPartyResponseEBM"/>
+	</message>
+	<message name="CreateCustomerPartyListReqMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the request payload to the CreateCustomerPartyList operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="CreateCustomerPartyListEBM" element="customerpartyebo:CreateCustomerPartyListEBM"/>
+	</message>
+	<message name="CreateCustomerPartyListRespMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the response payload to the CreateCustomerPartyList operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="CreateCustomerPartyListResponseEBM" element="customerpartyebo:CreateCustomerPartyListResponseEBM"/>
+	</message>
+	<message name="UpdateCustomerPartyReqMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the request payload to the UpdateCustomerParty operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="UpdateCustomerPartyEBM" element="customerpartyebo:UpdateCustomerPartyEBM"/>
+	</message>
+	<message name="UpdateCustomerPartyRespMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the response payload to the UpdateCustomerParty operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="UpdateCustomerPartyResponseEBM" element="customerpartyebo:UpdateCustomerPartyResponseEBM"/>
+	</message>
+	<message name="UpdateCustomerPartyListReqMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the request payload to the UpdateCustomerPartyList operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="UpdateCustomerPartyListEBM" element="customerpartyebo:UpdateCustomerPartyListEBM"/>
+	</message>
+	<message name="UpdateCustomerPartyListRespMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the response payload to the UpdateCustomerPartyList operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="UpdateCustomerPartyListResponseEBM" element="customerpartyebo:UpdateCustomerPartyListResponseEBM"/>
+	</message>
+	<message name="DeleteCustomerPartyReqMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the request payload to the DeleteCustomerParty operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="DeleteCustomerPartyEBM" element="customerpartyebo:DeleteCustomerPartyEBM"/>
+	</message>
+	<message name="DeleteCustomerPartyRespMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the response payload to the DeleteCustomerParty operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="DeleteCustomerPartyResponseEBM" element="customerpartyebo:DeleteCustomerPartyResponseEBM"/>
+	</message>
+	<message name="DeleteCustomerPartyListReqMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the request payload to the DeleteCustomerPartyList operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="DeleteCustomerPartyListEBM" element="customerpartyebo:DeleteCustomerPartyListEBM"/>
+	</message>
+	<message name="DeleteCustomerPartyListRespMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the response payload to the DeleteCustomerPartyList operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="DeleteCustomerPartyListResponseEBM" element="customerpartyebo:DeleteCustomerPartyListResponseEBM"/>
+	</message>
+	<message name="SyncCustomerPartyListReqMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the request payload to the SyncCustomerPartyList operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="SyncCustomerPartyListEBM" element="customerpartyebo:SyncCustomerPartyListEBM"/>
+	</message>
+	<message name="SyncCustomerPartyListRespMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the response payload to the syncCustomerPartyList operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="SyncCustomerPartyListResponseEBM" element="customerpartyebo:SyncCustomerPartyListResponseEBM"/>
+	</message>
+	<message name="ProcessCustomerPartyListReqMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the request payload to the ProcessCustomerPartyList operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="ProcessCustomerPartyListEBM" element="customerpartyebo:ProcessCustomerPartyListEBM"/>
+	</message>
+	<message name="ProcessCustomerPartyListRespMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the response payload to the ProcessCustomerPartyList operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="ProcessCustomerPartyListResponseEBM" element="customerpartyebo:ProcessCustomerPartyListResponseEBM"/>
+	</message>
+	<message name="SyncCustomerPartyAccountListReqMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the request payload to the SyncCustomerPartyAccountList operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="SyncCustomerPartyAccountListEBM" element="customerpartyebo:SyncCustomerPartyAccountListEBM"/>
+	</message>
+	<message name="SyncCustomerPartyAccountListRespMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the response payload to the SyncCustomerPartyAccountList operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="SyncCustomerPartyAccountListResponseEBM" element="customerpartyebo:SyncCustomerPartyAccountListResponseEBM"/>
+	</message>
+	<message name="UpdateCustomerPartyAccountReqMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the request payload to the UpdateCustomerPartyAccount operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="UpdateCustomerPartyAccountEBM" element="customerpartyebo:UpdateCustomerPartyAccountEBM"/>
+	</message>
+	<message name="UpdateCustomerPartyAccountRespMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the response payload to the UpdateCustomerPartyAccount operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="UpdateCustomerPartyAccountResponseEBM" element="customerpartyebo:UpdateCustomerPartyAccountResponseEBM"/>
+	</message>
+	<message name="ProcessCreditEligibilityVerificationReqMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the request payload to the ProcessCreditEligibilityVerification operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="ProcessCreditEligibilityVerificationEBM" element="customerpartyebo:ProcessCreditEligibilityVerificationEBM"/>
+	</message>
+	<message name="ProcessCreditEligibilityVerificationRespMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the response payload to the ProcessCreditEligibilityVerificationt operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="ProcessCreditEligibilityVerificationResponseEBM" element="customerpartyebo:ProcessCreditEligibilityVerificationResponseEBM"/>
+	</message>
+	<message name="ProcessBillingAccountReqMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the response payload to the ProcessBillingAccount operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="ProcessBillingAccountEBM" element="customerpartyebo:ProcessBillingAccountEBM"/>
+	</message>
+	<message name="ProcessBillingAccountRespMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the response payload to the ProcessBillingAccountResponse operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="ProcessBillingAccountResponseEBM" element="customerpartyebo:ProcessBillingAccountResponseEBM"/>
+	</message>
+	<message name="ProcessBillingAccountListReqMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the response payload to the ProcessBillingAccountList operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="ProcessBillingAccountListEBM" element="customerpartyebo:ProcessBillingAccountListEBM"/>
+	</message>
+	<message name="ProcessBillingAccountListRespMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the response payload to the ProcessBillingAccountListResponse operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="ProcessBillingAccountListResponseEBM" element="customerpartyebo:ProcessBillingAccountListResponseEBM"/>
+	</message>	
+	<portType name="CommunicationsCustomerPartyEBS">
+		<documentation>
+			<svcdoc:Interface>
+				<svcdoc:Description>This interface contains operations for the Request-Response and Request-Only patterns</svcdoc:Description>
+				<svcdoc:DisplayName>RequestCustomerParty EBS Interface</svcdoc:DisplayName>
+				<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			</svcdoc:Interface>
+		</documentation>
+		<!-- operation support for creation -->
+		<operation name="CreateCustomerParty">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to create a CustomerParty EBO.</svcdoc:Description>
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+					<svcdoc:DisplayName>CreateCustomerParty</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="corecustomerpartyebs:CreateCustomerPartyReqMsg"/>
+		</operation>
+		<operation name="CreateCustomerPartyList">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to create a multiple CustomerParty EBOs</svcdoc:Description>
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+					<svcdoc:DisplayName>CreateCustomerPartyList</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="corecustomerpartyebs:CreateCustomerPartyListReqMsg"/>
+		</operation>
+		<!-- operation support for read/query -->
+		<operation name="QueryCustomerParty">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to query a CustomerParty EBO</svcdoc:Description>
+					<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>QueryCustomerParty</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="corecustomerpartyebs:QueryCustomerPartyReqMsg"/>
+			<output message="corecustomerpartyebs:QueryCustomerPartyRespMsg"/>
+			<fault name="fault" message="corecustomerpartyebs:FaultMsg"/>
+		</operation>
+		<operation name="QueryCustomerPartyList">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to query multiple CustomerParty EBOs</svcdoc:Description>
+					<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>QueryCustomerPartyList</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="corecustomerpartyebs:QueryCustomerPartyListReqMsg"/>
+			<output message="corecustomerpartyebs:QueryCustomerPartyListRespMsg"/>
+			<fault name="fault" message="corecustomerpartyebs:FaultMsg"/>
+		</operation>
+		<!-- operation support for update -->
+		<operation name="UpdateCustomerParty">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to update a CustomerParty EBO</svcdoc:Description>
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+					<svcdoc:DisplayName>UpdateCustomerParty</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="corecustomerpartyebs:UpdateCustomerPartyReqMsg"/>
+		</operation>
+		<operation name="UpdateCustomerPartyList">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to update multiple CustomerParty EBOs</svcdoc:Description>
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+					<svcdoc:DisplayName>UpdateCustomerPartyList</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="corecustomerpartyebs:UpdateCustomerPartyListReqMsg"/>
+		</operation>
+		<operation name="UpdateCustomerPartyAccount">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to update a CustomerParty EBO</svcdoc:Description>
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+					<svcdoc:DisplayName>UpdateCustomerPartyAccount</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="corecustomerpartyebs:UpdateCustomerPartyAccountReqMsg"/>
+		</operation>
+		<!-- operation support for deletion -->
+		<operation name="DeleteCustomerParty">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to delete a CustomerParty EBO</svcdoc:Description>
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+					<svcdoc:DisplayName>DeleteCustomerParty</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="corecustomerpartyebs:DeleteCustomerPartyReqMsg"/>
+		</operation>
+		<operation name="DeleteCustomerPartyList">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to delete multiple CustomerParty EBOs</svcdoc:Description>
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+					<svcdoc:DisplayName>DeleteCustomerPartyList</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="corecustomerpartyebs:DeleteCustomerPartyListReqMsg"/>
+		</operation>
+		<!-- operation support for sync -->
+		<operation name="SyncCustomerPartyList">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to sync multiple CustomerParty EBOs</svcdoc:Description>
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+					<svcdoc:DisplayName>SyncCustomerPartyList</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="corecustomerpartyebs:SyncCustomerPartyListReqMsg"/>
+		</operation>
+		<operation name="SyncCustomerPartyAccountList">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to sync multiple CustomerPartyAccounts</svcdoc:Description>
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+					<svcdoc:DisplayName>SyncCustomerPartyAccountList</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="corecustomerpartyebs:SyncCustomerPartyAccountListReqMsg"/>
+		</operation>
+		<!-- operation support for process -->
+		<operation name="ProcessCustomerPartyList">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to process multiple CustomerParty EBOs</svcdoc:Description>
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+					<svcdoc:DisplayName>ProcessCustomerPartyList</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="corecustomerpartyebs:ProcessCustomerPartyListReqMsg"/>
+			
+			<!--  Start R1.5 SMS configuration Sept 28th 2015 by Ashish-->
+   <output message="corecustomerpartyebs:ProcessCustomerPartyListRespMsg"/>
+   
+  <!--  End R1.5 SMS configuration Sept 28th 2015 by Ashish-->
+  </operation>
+		<operation name="ProcessCreditEligibilityVerification">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to process CreditEligibilityVerification</svcdoc:Description>
+					<svcdoc:MEP>SYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>ProcessCreditEligibilityVerification</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="corecustomerpartyebs:ProcessCreditEligibilityVerificationReqMsg"/>
+			<output message="corecustomerpartyebs:ProcessCreditEligibilityVerificationRespMsg"/>
+			<fault name="fault" message="corecustomerpartyebs:FaultMsg"/>
+		</operation>
+		<!-- operation support for ProcessBillingAccount -->
+		<operation name="ProcessBillingAccount">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used for ProcessBillingAccount</svcdoc:Description>
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+					<svcdoc:DisplayName>ProcessBillingAccount</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="corecustomerpartyebs:ProcessBillingAccountReqMsg"/>
+		</operation>
+		<!-- operation support for ProcessBillingAccountList -->
+		<operation name="ProcessBillingAccountList">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used for ProcessBillingAccountList</svcdoc:Description>
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+					<svcdoc:DisplayName>ProcessBillingAccountList</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="corecustomerpartyebs:ProcessBillingAccountListReqMsg"/>
+		</operation>		
+	</portType>
+	<portType name="CommunicationsCustomerPartyEBSResponse">
+		<documentation>
+			<svcdoc:Interface>
+				<svcdoc:Description>This interface contains operations for the ResponseCustomerParty EBS</svcdoc:Description>
+				<svcdoc:DisplayName>ResponseCustomerParty EBS Interface</svcdoc:DisplayName>
+				<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			</svcdoc:Interface>
+		</documentation>
+		<!-- operation support for creation response-->
+		<operation name="CreateCustomerPartyResponse">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This callback operation will be used to provide the Create Customer Party Response</svcdoc:Description>
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>CreateCustomerPartyResponse</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+					<svcdoc:InitiatorService>CommunicationsCustomerPartyEBSV2</svcdoc:InitiatorService>
+					<svcdoc:InitiatorInterface>CreateCustomerPartyResponseEBM</svcdoc:InitiatorInterface>
+					<svcdoc:InitiatorOperation>CreateCustomerPartyRequest</svcdoc:InitiatorOperation>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="corecustomerpartyebs:CreateCustomerPartyRespMsg"/>
+		</operation>
+		<operation name="CreateCustomerPartyListResponse">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This callback operation will be used to provide the Create Customer Party Response</svcdoc:Description>
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>CreateCustomerPartyListResponse</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+					<svcdoc:InitiatorService>CommunicationsCustomerPartyEBSV2</svcdoc:InitiatorService>
+					<svcdoc:InitiatorInterface>CreateCustomerPartyResponseEBM</svcdoc:InitiatorInterface>
+					<svcdoc:InitiatorOperation>CreateCustomerPartyListRequest</svcdoc:InitiatorOperation>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="corecustomerpartyebs:CreateCustomerPartyListRespMsg"/>
+		</operation>
+		<!-- operation support for update response-->
+		<operation name="UpdateCustomerPartyResponse">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This callback operation will be used to provide the Update Customer Party Response</svcdoc:Description>
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>UpdateCustomerPartyResponse</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+					<svcdoc:InitiatorService>CommunicationsCustomerPartyEBSV2</svcdoc:InitiatorService>
+					<svcdoc:InitiatorInterface>UpdateCustomerPartyResponseEBM</svcdoc:InitiatorInterface>
+					<svcdoc:InitiatorOperation>UpdateCustomerPartyRequest</svcdoc:InitiatorOperation>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="corecustomerpartyebs:UpdateCustomerPartyRespMsg"/>
+		</operation>
+		<operation name="UpdateCustomerPartyListResponse">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This callback operation will be used to provide the Update Customer Party List Response</svcdoc:Description>
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>UpdateCustomerPartyListResponse</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+					<svcdoc:InitiatorService>CommunicationsCustomerPartyEBSV2</svcdoc:InitiatorService>
+					<svcdoc:InitiatorInterface>UpdateCustomerPartyListResponseEBM</svcdoc:InitiatorInterface>
+					<svcdoc:InitiatorOperation>UpdateCustomerPartyListRequest</svcdoc:InitiatorOperation>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="corecustomerpartyebs:UpdateCustomerPartyListRespMsg"/>
+		</operation>
+		<operation name="UpdateCustomerPartyAccountResponse">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This callback operation will be used to provide the Update Customer Party Accountt Response</svcdoc:Description>
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>UpdateCustomerPartyAccountResponse</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+					<svcdoc:InitiatorService>CommunicationsCustomerPartyEBSV2</svcdoc:InitiatorService>
+					<svcdoc:InitiatorInterface>UpdateCustomerPartyAccountResponseEBM</svcdoc:InitiatorInterface>
+					<svcdoc:InitiatorOperation>UpdateCustomerPartyAccountRequest</svcdoc:InitiatorOperation>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="corecustomerpartyebs:UpdateCustomerPartyAccountRespMsg"/>
+		</operation>
+		<!-- operation support for deletion response-->
+		<operation name="DeleteCustomerPartyResponse">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This callback operation will be used to provide the Delete Customer Party Response</svcdoc:Description>
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>DeleteCustomerPartyResponse</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+					<svcdoc:InitiatorService>CommunicationsCustomerPartyEBSV2</svcdoc:InitiatorService>
+					<svcdoc:InitiatorInterface>DeleteCustomerPartyResponseEBM</svcdoc:InitiatorInterface>
+					<svcdoc:InitiatorOperation>DeleteCustomerPartyRequest</svcdoc:InitiatorOperation>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="corecustomerpartyebs:DeleteCustomerPartyRespMsg"/>
+		</operation>
+		<operation name="DeleteCustomerPartyListResponse">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This callback operation will be used to provide the Delete Customer Party List Response</svcdoc:Description>
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>DeleteCustomerPartyListResponse</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+					<svcdoc:InitiatorService>CommunicationsCustomerPartyEBSV2</svcdoc:InitiatorService>
+					<svcdoc:InitiatorInterface>DeleteCustomerPartyListResponseEBM</svcdoc:InitiatorInterface>
+					<svcdoc:InitiatorOperation>DeleteCustomerPartyListRequest</svcdoc:InitiatorOperation>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="corecustomerpartyebs:DeleteCustomerPartyListRespMsg"/>
+		</operation>
+		<!-- operation support for sync response-->
+		<operation name="SyncCustomerPartyListResponse">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This callback operation will be used to provide the Sync Customer Party Response</svcdoc:Description>
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>SyncCustomerPartyResponse</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+					<svcdoc:InitiatorService>CommunicationsCustomerPartyEBSV2</svcdoc:InitiatorService>
+					<svcdoc:InitiatorInterface>SyncCustomerPartyResponseEBM</svcdoc:InitiatorInterface>
+					<svcdoc:InitiatorOperation>SyncCustomerPartyRequest</svcdoc:InitiatorOperation>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="corecustomerpartyebs:SyncCustomerPartyListRespMsg"/>
+		</operation>
+		<operation name="SyncCustomerPartyAccountListResponse">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This callback operation will be used to provide the Sync Customer Party Account List Response</svcdoc:Description>
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>SyncCustomerPartyAccountListResponse</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+					<svcdoc:InitiatorService>CommunicationsCustomerPartyEBSV2</svcdoc:InitiatorService>
+					<svcdoc:InitiatorInterface>SyncCustomerPartyAccountResponseEBM</svcdoc:InitiatorInterface>
+					<svcdoc:InitiatorOperation>SyncCustomerPartyAccountRequest</svcdoc:InitiatorOperation>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="corecustomerpartyebs:SyncCustomerPartyAccountListRespMsg"/>
+		</operation>
+		<!-- operation support for process response-->
+		<operation name="ProcessCustomerPartyListResponse">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This callback operation will be used to provide the Process Customer Party List Response</svcdoc:Description>
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>ProcessCustomerPartyListResponse</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+					<svcdoc:InitiatorService>CommunicationsCustomerPartyEBSV2</svcdoc:InitiatorService>
+					<svcdoc:InitiatorInterface>ProcessCustomerPartyListResponseEBM</svcdoc:InitiatorInterface>
+					<svcdoc:InitiatorOperation>ProcessCustomerPartyRequest</svcdoc:InitiatorOperation>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="corecustomerpartyebs:ProcessCustomerPartyListRespMsg"/>
+		</operation>
+		<!-- operation support for ProcessBillingAccountResponse -->
+		<operation name="ProcessBillingAccountResponse">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This callback operation will be used to provide the ProcessBillingAccount Response.</svcdoc:Description>
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>ProcessBillingAccountResponse</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+					<svcdoc:InitiatorService>CommunicationsCustomerPartyEBSV2</svcdoc:InitiatorService>
+					<svcdoc:InitiatorInterface>ProcessBillingAccountEBM</svcdoc:InitiatorInterface>
+					<svcdoc:InitiatorOperation>ProcessBillingAccountRequest</svcdoc:InitiatorOperation>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="corecustomerpartyebs:ProcessBillingAccountRespMsg"/>
+		</operation>
+		<!-- operation support for ProcessBillingAccountListResponse -->
+		<operation name="ProcessBillingAccountListResponse">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This callback operation will be used to provide the ProcessBillingAccountList Response.</svcdoc:Description>
+					<svcdoc:MEP>ASYNC_REQ_RESPONSE</svcdoc:MEP>
+					<svcdoc:DisplayName>ProcessBillingAccountListResponse</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+					<svcdoc:InitiatorService>CommunicationsCustomerPartyEBSV2</svcdoc:InitiatorService>
+					<svcdoc:InitiatorInterface>ProcessBillingAccountListEBM</svcdoc:InitiatorInterface>
+					<svcdoc:InitiatorOperation>ProcessBillingAccountListRequest</svcdoc:InitiatorOperation>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="corecustomerpartyebs:ProcessBillingAccountListRespMsg"/>
+		</operation>		
+	</portType>
+	<!--<message name="NewMessage"/>-->
+	<!-- common fault message -->
+	<!-- create messages -->
+	<!-- read/query messages -->
+	<!-- update messages -->
+	<!-- delete messages -->
+	<!-- sync messages -->
+	<!-- Service Interface -->
+</definitions>

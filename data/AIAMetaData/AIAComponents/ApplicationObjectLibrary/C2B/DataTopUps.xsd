@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.telia.org/c2b/topusps" xmlns="http://www.telia.org/c2b/topusps" elementFormDefault="qualified">
+   <xs:element name="ManageTopUpPurchaseRequest">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="RequestDetails">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="requesterId" type="xs:string"/>
+                     <xs:element name="requestDate" type="xs:dateTime"/>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="CustomerParty">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="billingProfileId" type="xs:string"/>
+                     <xs:element name="serviceAccountId" type="xs:string"/>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="InstalledProduct">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="assetIntegrationId" type="xs:string"/>
+					 <!-- Start MOBREL 18.4 - Sprint 44:Mobdev-4318 and 4319 RAG-250-->
+					 <xs:element name="ServiceId" type="xs:string"/>
+					 <!-- End MOBREL 18.4 - Sprint 44:Mobdev-4318 and 4319 RAG-250-->
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="PurchasedProduct">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="productId" type="xs:string"/>
+                     <xs:element name="transactionId" type="xs:string"/>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="ManageTopUpPurchaseResponse">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="Response">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="responseDate" type="xs:dateTime"/>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="Status">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="statusCode" type="xs:string"/>
+                     <xs:element name="ErrorCode" type="xs:string"/>
+                     <xs:element name="ErrorMessage" type="xs:string"/>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+</xs:schema>

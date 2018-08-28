@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="UpdateRCCDetailsBRMProvABCSImpl"
+             targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/Industry//UpdateRCCDetailsBRMProvABCSImpl/V1"
+
+
+	     
+	     xmlns:customerpartyeboebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2"
+             xmlns:customerpartyeboabcs="http://xmlns.oracle.com/ABCSImpl/BRM/Industry//UpdateRCCDetailsBRMProvABCSImpl/V1"
+	     xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" 
+             xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" 
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" >
+	
+	
+	<documentation>
+		<svcdoc:Service>
+		               <svcdoc:Description>
+
+</svcdoc:Description>
+		               
+			<svcdoc:ServiceType>ProviderABCSImpl</svcdoc:ServiceType>
+						<svcdoc:Version>1</svcdoc:Version>
+						<svcdoc:ProductCode>BRM</svcdoc:ProductCode>
+		</svcdoc:Service>
+	</documentation>  
+	
+	 <import namespace="http://schemas.oracle.com/bpel/extension" 
+ 	 location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+	<types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema">
+	            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/CustomerParty/V2/CustomerPartyEBM.xsd"/>
+		
+		</schema>
+	</types>
+	<message name="UpdateRCCDetailsReqMsg">
+		<part name="UpdateCustomerPartyEBM" element="customerpartyeboebo:UpdateCustomerPartyEBM"/>
+	</message>
+        	<message name="UpdateRCCDetailsResMsg">
+		<part name="UpdateCustomerPartyResponseEBM" element="customerpartyeboebo:UpdateCustomerPartyResponseEBM"/>
+	</message>
+	<portType name="UpdateRCCDetailsBRMProvABCSImpl">
+        <operation name="UpdateRCCDetails">
+                <documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to Update an RCCDetails
+                              object</svcdoc:Description>
+					<svcdoc:MEP>FireAndForget</svcdoc:MEP>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="customerpartyeboabcs:UpdateRCCDetailsReqMsg"/>
+                        <output message="customerpartyeboabcs:UpdateRCCDetailsResMsg"/>
+		</operation>
+	   
+	    </portType>
+	<plnk:partnerLinkType name="UpdateRCCDetailsBRMProvABCSImpl">
+		<plnk:role name="UpdateRCCDetailsBRMProvABCSImplProvider">
+			<plnk:portType name="customerpartyeboabcs:UpdateRCCDetailsBRMProvABCSImpl"/>
+		</plnk:role>
+	</plnk:partnerLinkType>
+</definitions>

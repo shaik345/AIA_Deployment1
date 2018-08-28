@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SecurityConfiguration xmlns="http://xmlns.oracle.com/fp/core/security/V1" version="1.0" 
+                     compositeName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncProductSiebelProvABCSImpl/V1}SyncProductSiebelProvABCSImpl">
+   <Reference resourceType = 'SOA-Reference'>
+      <Name>SWIProductIntegration</Name>
+      <PortName>SWIProductImport</PortName>
+      <WSPolicies>
+         <WSPolicyName policyType ="authentication">oracle/no_authentication_client_policy</WSPolicyName>
+      </WSPolicies>
+   </Reference>
+   <Reference resourceType = 'SOA-Reference'>
+      <Name>SWIPromotionIntegration</Name>
+      <PortName>SWIPromotionImport</PortName>
+      <WSPolicies>
+         <WSPolicyName policyType ="authentication">oracle/no_authentication_client_policy</WSPolicyName>
+      </WSPolicies>
+   </Reference>
+   <Reference resourceType = 'SOA-Reference'>
+      <Name>SWIProductLine</Name>
+      <PortName>SWIProductLine</PortName>
+      <WSPolicies>
+         <WSPolicyName policyType ="authentication">oracle/no_authentication_client_policy</WSPolicyName>
+      </WSPolicies>
+   </Reference>
+  <Reference resourceType="SOA-Reference">
+    <Name>ItemErrorResponseEBSV2</Name>
+    <PortName>ItemEBSResponse_pt</PortName>
+    <WSPolicies>
+      <WSPolicyName policyType="authentication">oracle/wss_username_token_client_policy</WSPolicyName>
+      <ConfigParams>
+        <Param paramName="csf-key">AIABasicCredentials</Param>
+      </ConfigParams>
+    </WSPolicies>
+  </Reference>
+</SecurityConfiguration>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<componentType xmlns="http://xmlns.oracle.com/sca/1.0" xmlns:ui="http://xmlns.oracle.com/soa/designer/"
+               xml:id="id_1">
+    <service ui:wsdlLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationConnectorServiceLibrary/Siebel/V1/ProviderABCS/UpdateTroubleTicketSiebelCommsProvABCSImpl.wsdl" name="UpdateTroubleTicketSiebelCommsProvABCSImpl"
+             xml:id="id_2">
+        <interface.wsdl interface="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/UpdateTroubleTicketSiebelCommsProvABCSImpl/V1#wsdl.interface(UpdateTroubleTicketSiebelCommsProvABCSImplService)"
+                        xml:id="id_3"/>
+    </service>
+    <reference ui:wsdlLocation="SWI_spcTrouble_spcTicket_spcServiceRef.wsdl" name="SWI_spcTrouble_spcTicket_spcService"
+               xml:id="id_6">
+        <interface.wsdl interface="http://siebel.com/asi/#wsdl.interface(SWI_spcTrouble_spcTicket_spcService)"
+                        xml:id="id_7"/>
+    </reference>
+    <reference name="AIAAsyncErrorHandlingBPELProcess"
+               ui:wsdlLocation="oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/V1/wsdls/AIAAsyncErrorHandlingBPELProcess.wsdl"
+               xml:id="id_8">
+        <interface.wsdl interface="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess#wsdl.interface(AIAAsyncErrorHandlingBPELProcess)"
+                        callbackInterface="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess#wsdl.interface(AIAAsyncErrorHandlingBPELProcessCallback)"
+                        xml:id="id_9"/>
+    </reference>
+    <reference name="AIASessionPoolManager"
+               ui:wsdlLocation="AIASessionPoolManagerAbstractRef.wsdl"
+               xml:id="id_10">
+        <interface.wsdl interface="http://xmlns.oracle.com/AIASessionPoolManager#wsdl.interface(AIASessionPoolManager)"
+                        xml:id="id_11"/>
+    </reference>
+    <reference name="UpdateTroubleTicketSiebelCommsProvABCSImplV1ExtensionService"
+               ui:wsdlLocation="UpdateTroubleTicketSiebelCommsProvABCSImplExtensionAbstract.wsdl"
+               xml:id="id_13">
+        <interface.wsdl interface="http://xmlns.oracle.com/ABCSImpl/Siebel/UpdateTroubleTicketSiebelCommsProvABCSImplExtension/V1#wsdl.interface(UpdateTroubleTicketSiebelCommsProvABCSImplV1ExtensionService)"
+                        xml:id="id_14"/>
+    </reference>
+    <property name="bpel.config.oneWayDeliveryPolicy" type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+              xml:id="id_12"/>
+</componentType>

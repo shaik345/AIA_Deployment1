@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions name="QueryBalanceGroupSiebelReqABCSImpl" targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry//QueryBalanceGroupSiebelReqABCSImpl/V1" xmlns:rccabo="http://www.telia.org/Siebel/getRCCBalances" xmlns:rccabcs="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry//QueryBalanceGroupSiebelReqABCSImpl/V1" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+<documentation>
+<svcdoc:Service>
+<svcdoc:Description/>
+<svcdoc:ServiceType>RequesterABCSImpl</svcdoc:ServiceType>
+<svcdoc:Version>1</svcdoc:Version>
+<svcdoc:ProductCode>Agile</svcdoc:ProductCode>
+</svcdoc:Service>
+</documentation>
+<import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+<types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+<import namespace="http://www.telia.org/Siebel/getRCCBalances" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/GetBalanceGroups.xsd"/>
+</schema>
+</types>
+<message name="QueryBalanceGroupReqMsg">
+<part name="QueryBalanceGroupRequest" element="rccabo:GetBalanceGroupsRequest"/>
+</message>
+<message name="QueryBalanceGroupRespMsg">
+<part name="QueryBalanceGroupResponse" element="rccabo:GetBalanceGroupsResponse"/>
+</message>
+<message name="QueryBalanceGroupFaultMsg">
+<part name="QueryBalanceGroupFault" element="rccabo:GetBalanceGroupsFault"/>
+</message>
+<portType name="QueryBalanceGroupSiebelReqABCSImpl">
+<operation name="QueryBalanceGroup">
+<documentation>
+<svcdoc:Operation>
+<svcdoc:Description>This operation is used to Query an BalanceGroup
+                              object</svcdoc:Description>
+<svcdoc:MEP>SyncReqResp</svcdoc:MEP>
+</svcdoc:Operation>
+</documentation>
+<input message="rccabcs:QueryBalanceGroupReqMsg"/>
+<output message="rccabcs:QueryBalanceGroupRespMsg"/>
+<fault name="QueryBalanceGroupFaultMsg" message="rccabcs:QueryBalanceGroupFaultMsg"/>
+</operation>
+</portType>
+<plnk:partnerLinkType name="QueryBalanceGroupSiebelReqABCSImpl">
+<plnk:role name="QueryBalanceGroupSiebelReqABCSImplProvider">
+<plnk:portType name="rccabcs:QueryBalanceGroupSiebelReqABCSImpl"/>
+</plnk:role>
+</plnk:partnerLinkType>
+</definitions>

@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.telia.org/c2b/unbilledcharges" xmlns="http://www.telia.org/c2b/unbilledcharges">
+<xs:element name="QueryUnBilledChargesRequest">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="TsServiceaccountid" type="xs:string"/>
+            <xs:element name="TsServiceIntegrationId" type="xs:string"/>
+            <xs:element name="Channelidentification" type="xs:string"/>
+         </xs:sequence>
+    </xs:complexType>
+ </xs:element>
+ <xs:element name="QueryUnBilledChargesResponse">
+     <xs:complexType>
+        <xs:sequence>
+            <xs:element name="Results">
+                <xs:complexType>
+                    <xs:sequence>
+                         <xs:element name="TsServiceaccountid" type="xs:string"/>
+                         <xs:element name="TsServiceaccountid" type="xs:string"/>
+                         <xs:element name="TSServiceAccountNumber" type="xs:string"/>
+                         <xs:element name="TSGrossTaxIncl" type="xs:decimal"/>
+                         <xs:element name="TsGrossTaxExcl" type="xs:decimal"/>
+                         <xs:element name="TsItemPoid" type="xs:string"/>
+                         <xs:element name="TsName" type="xs:string"/>
+                    </xs:sequence>
+                 </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="GetBalanceGroupsFault">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="Response">
+                <xs:complexType>
+                     <xs:sequence>
+                        <xs:element name="responseDate" type="xs:dateTime"/>
+                        <xs:element name="Status">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="errorCode" type="xs:string"/>
+                                    <xs:element name="errorMessage" type="xs:string"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+     </xs:complexType>
+    </xs:element>
+</xs:schema>

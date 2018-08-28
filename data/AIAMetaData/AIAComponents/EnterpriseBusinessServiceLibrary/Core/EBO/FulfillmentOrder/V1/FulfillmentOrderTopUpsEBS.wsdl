@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:ebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/FulfillmentOrder/V1" xmlns:ebs="http://xmlns.oracle.com/EnterpriseServices/Core/FulfillmentOrder/topUps" xmlns:ns="http://schemas.xmlsoap.org/ws/2003/03/addressing" xmlns:ns1="http://xmlns.oracle.com/EnterpriseObjects/Core/Custom/Common/V2" xmlns:ns2="http://xmlns.oracle.com/EnterpriseObjects/Core/Custom/EBO/FulfillmentOrder/V1" xmlns:ns3="urn:oasis:names:tc:xacml:2.0:context:schema:cd:04" xmlns:ns4="urn:oasis:names:tc:xacml:2.0:policy:schema:cd:04" name="FulfillmentOrderEBSV1" targetNamespace="http://xmlns.oracle.com/EnterpriseServices/Core/FulfillmentOrder/topUps">
+	<documentation>
+		<svcdoc:Service>
+			<svcdoc:Description>FulfillmentOrder Enterprise Business Service for top ups</svcdoc:Description>
+			<svcdoc:ServiceType>EnterpriseBusinessService</svcdoc:ServiceType>
+			<svcdoc:DisplayName>FulfillmentOrderTopUpsEBS</svcdoc:DisplayName>
+			<svcdoc:Version>1.1</svcdoc:Version>
+			<svcdoc:EBOName>FulfillmentOrderEBO</svcdoc:EBOName>
+			<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			<svcdoc:ImplementationTechnology>ESB</svcdoc:ImplementationTechnology>
+		</svcdoc:Service>
+	</documentation>
+	<types>
+		<xsd:schema targetNamespace="http://xmlns.oracle.com/EnterpriseServices/FulfillmentOrder/V1" elementFormDefault="qualified">
+			<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/FulfillmentOrder/V1" schemaLocation="../../../../../EnterpriseObjectLibrary/Core/EBO/FulfillmentOrder/V1/FulfillmentOrderEBM.xsd"/>
+			<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="../../../../../EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd"/>
+		</xsd:schema>
+	</types>
+	<message name="FaultMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used for propagating Error Context and Error Message</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="AIAFault" element="corecom:Fault"/>
+	</message>
+	<message name="ProcessFulfillmentOrderReqMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the request payload to the ProcessFulfillmentOrder Request operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="ProcessFulfillmentOrderEBM" element="ebo:ProcessFulfillmentOrderEBM"/>
+	</message>
+	<message name="ProcessFulfillmentOrderRespMsg">
+		<documentation>
+			<svcdoc:Message>
+				<svcdoc:Description>This message is used as the response payload to the ProcessFulfillmentOrder Response operation</svcdoc:Description>
+			</svcdoc:Message>
+		</documentation>
+		<part name="ProcessFulfillmentOrderResponseEBM" element="ebo:ProcessFulfillmentOrderResponseEBM"/>
+	</message>
+	<portType name="FulfillmentOrderEBS">
+		<documentation>
+			<svcdoc:Interface>
+				<svcdoc:Description>This interface contains operations for the Request-Response and Request-Only patterns</svcdoc:Description>
+				<svcdoc:DisplayName>RequestFulfillmentOrder EBS Interface</svcdoc:DisplayName>
+				<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+			</svcdoc:Interface>
+		</documentation>
+		
+		
+		<operation name="ProcessFulfillmentOrder">
+			<documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to ProcessFulfillmentOrder EBOs.</svcdoc:Description>
+					<svcdoc:MEP>REQUEST_ONLY</svcdoc:MEP>
+					<svcdoc:DisplayName>ProcessFulfillmentOrder</svcdoc:DisplayName>
+					<svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+					<svcdoc:Scope>Public</svcdoc:Scope>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="ebs:ProcessFulfillmentOrderReqMsg"/>
+			<output message="ebs:ProcessFulfillmentOrderRespMsg"/>
+			<fault name="fault" message="ebs:FaultMsg"/>
+		</operation>
+		
+	</portType>
+</definitions>

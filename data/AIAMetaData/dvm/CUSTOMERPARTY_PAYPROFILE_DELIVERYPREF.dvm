@@ -1,0 +1,59 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--Upgraded by DVM upgade utility 1.0--><dvm name="CUSTOMERPARTY_PAYPROFILE_DELIVERYPREF" xmlns="http://xmlns.oracle.com/dvm">
+<description>Customer Party Payment Profile Delivery Preference</description>
+   <columns>
+      <column name="COMMON"/>
+      <column name="SEBL_01"/>
+      <column name="BRM_01"/>
+      <column name="OU_CCB_01"/>
+   </columns>
+<rows>
+      <row>
+         <cell>EMAIL</cell>
+         <cell>Email</cell>
+         <cell>0</cell>
+         <cell>EMAIL</cell>
+      </row>
+<row>
+         <cell>MAIL</cell>
+         <cell>Paper</cell>
+         <cell>1</cell>
+         <cell>MAIL</cell>
+      </row>
+<row>
+         <cell>FAX</cell>
+         <cell/>
+         <cell>2</cell>
+         <cell>FAX</cell>
+      </row>
+<row>
+         <cell>EINVOICE</cell>
+         <cell>e-Invoicing</cell>
+         <cell>3</cell>
+         <cell>EINVOICE</cell>
+      </row>
+<!-- Start B2B GAP 27 Invoice Paper Fees Change for R4.0 --> 
+<row>
+         <cell>PAPERFORFREE</cell>
+         <cell>Paper for Free</cell>
+         <cell>4</cell>
+         <cell>PAPERFORFREE</cell>
+      </row>
+<!-- End B2B GAP 27 Invoice Paper Fees Change for R4.0 -->
+<!-- Start BCT-120 SMS Notification of invoice for R17.3 Manish --> 
+<row>
+         <cell>SMS</cell>
+         <cell>SMS</cell>
+         <cell>5</cell>
+         <cell>SMS</cell>
+      </row>
+<!-- End BCT-120 SMS notification of invoice for R17.3 Manish-->	  
+<row>
+         <cell>PAPERWITHEXEMPTION</cell>
+         <cell>Paper with exemption</cell>
+         <cell>6</cell>
+         <cell>PAPERWITHEXEMPTION</cell>
+      </row>
+<!-- End RAG-188 new Bill Media for R17.4 Manish -->
+</rows>
+</dvm>

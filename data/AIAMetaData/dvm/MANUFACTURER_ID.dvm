@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dvm name="MANUFACTURER_ID" xmlns="http://xmlns.oracle.com/dvm">
+<description>DVM description</description>
+<columns>
+<column name="ID"/>
+<column name="MANUFACTURER"/>
+</columns>
+<rows>
+<row>
+<cell>1</cell>
+<cell>Gamp;D</cell>
+</row>
+<row>
+<cell>2</cell>
+<cell>Gemalto</cell>
+</row>
+<row>
+<cell>4</cell>
+<cell>Oberthur</cell>
+</row>
+</rows>
+</dvm>

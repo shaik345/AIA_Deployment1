@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+<dvm name="PRICETYPE_EVENT" xmlns="http://xmlns.oracle.com/dvm">
+	<description>UOM for Price Charge Type</description>
+	<columns>
+		<column name="COMMON"/>
+		<column name="SEBL_01"/>
+		<column name="BRM_01"/>
+		<column name="PRICECHARGETYPE"/>
+		<column name="PRICECHARGETYPEUOM"/>
+		<column name="PIM_01"/>
+		<column name="PDC_01"/>
+		<column name="PRICECHARGETYPE_PDC"/>
+		<column name="PRICINGPROFILE_PDC"/>
+	</columns>
+	<rows>
+		<row>
+			<cell>PURCHASE</cell>
+			<cell/>
+			<cell>/event/billing/product/fee/purchase</cell>
+			<cell>ONETIME</cell>
+			<cell>EACH</cell>
+			<cell>PRODUCT_PURCHASE_FEE_EVENT</cell>
+			<cell>EventBillingProductFeePurchase</cell>
+			<cell>ONETIME</cell>
+			<cell>Subscription</cell>
+		</row>
+		<row>
+			<cell>CFQ</cell>
+			<cell/>
+			<cell>/event/billing/product/fee/cycle/cycle_forward_quarterly</cell>
+			<cell>RECURRING</cell>
+			<cell>PER_QUARTER</cell>
+			<cell>QUARTERLY_CYCLE_FORWARD_EVENT</cell>
+			<cell>EventBillingProductFeeCycleCycle_forward_quarterly</cell>
+			<cell>RECURRING</cell>
+			<cell>Subscription</cell>
+		</row>
+		<row>
+			<cell>CFM</cell>
+			<cell/>
+			<cell>/event/billing/product/fee/cycle/cycle_forward_monthly</cell>
+			<cell>RECURRING</cell>
+			<cell>PER_MONTH</cell>
+			<cell>MONTHLY_CYCLE_FORWARD_EVENT</cell>
+			<cell>EventBillingProductFeeCycleCycle_forward_monthly</cell>
+			<cell>RECURRING</cell>
+			<cell>Subscription</cell>
+		</row>
+		<row>
+			<cell>CFB</cell>
+			<cell/>
+			<cell>/event/billing/product/fee/cycle/cycle_forward_bimonthly</cell>
+			<cell>RECURRING</cell>
+			<cell>BI_MONTHLY</cell>
+			<cell>BIMONTHLY_CYCLE_FORWARD_EVENT</cell>
+			<cell>EventBillingProductFeeCycleCycle_forward_bimonthly</cell>
+			<cell>RECURRING</cell>
+			<cell>Subscription</cell>
+		</row>
+		<row>
+			<cell>CFAR</cell>
+			<cell/>
+			<cell>/event/billing/product/fee/cycle/cycle_forward_arrear</cell>
+			<cell>RECURRING</cell>
+			<cell>PER_MONTH</cell>
+			<cell>CYCLE_FORWARD_ARREAR_EVENT</cell>
+			<cell>EventBillingProductFeeCycleCycle_forward_arrear</cell>
+			<cell>RECURRING</cell>
+			<cell>Subscription</cell>
+		</row>
+		<row>
+			<cell>CFA</cell>
+			<cell/>
+			<cell>/event/billing/product/fee/cycle/cycle_forward_annual</cell>
+			<cell>RECURRING</cell>
+			<cell>PER_YEAR</cell>
+			<cell>ANNUAL_CYCLE_FORWARD_EVENT</cell>
+			<cell>EventBillingProductFeeCycleCycle_forward_annual</cell>
+			<cell>RECURRING</cell>
+			<cell>Subscription</cell>
+		</row>
+		<row>
+			<cell>CAR</cell>
+			<cell/>
+			<cell>/event/billing/product/fee/cycle/cycle_arrear</cell>
+			<cell>RECURRING</cell>
+			<cell>PER_MONTH</cell>
+			<cell>MONTHLY_CYCLE_ARREAR_EVENT</cell>
+			<cell>EventBillingProductFeeCycleCycle_arrear</cell>
+			<cell>RECURRING</cell>
+			<cell>Subscription</cell>
+		</row>
+		<row>
+			<cell>DELAYEDSESSION</cell>
+			<cell/>
+			<cell>/event/delayed/session/telco/gsm</cell>
+			<cell/>
+			<cell/>
+			<cell>DELAYED_TELCO_GSM_SESSION</cell>
+			<cell>EventDelayedSessionTelcoGsm</cell>
+			<cell>USAGE</cell>
+		<!-- Release 17.2: Non - Currency Changes -->
+			<cell>Convergent Usage</cell>
+		<!-- Release 17.2: Non - Currency Changes -->
+		</row>
+		<!-- BRMPOC Start-->
+		<row>
+			<cell>INVOICE</cell>
+			<cell/>
+			<cell>/event/billing/fee/telia/invoice_fee</cell>
+			<cell>ONETIME</cell>
+			<cell>EACH</cell>
+			<cell>INVOICE_FEE_EVENT</cell>
+			<cell>EventBillingFeeTeliaInvoice_fee</cell>
+			<cell>ONETIME</cell>
+			<cell>Subscription</cell>
+		</row>
+		<!-- BRM POC end -->
+		<!-- Start VOIP Changes -->
+		<row>
+			<cell>SESSIONTELCO</cell>
+			<cell/>
+			<cell>/event/session/telco</cell>
+			<cell>USAGE</cell>
+			<cell>PER_MINUTE</cell>
+			<cell>EVENT SESSION TELCO</cell>
+			<cell>EventSessionTelco</cell>
+			<cell>USAGE</cell>
+			<cell>Online Usage</cell>
+		</row>		
+		<!-- End VOIP Changes -->
+		<!--start Release 17.3 BCT-447 Sprint21 Manish-->
+		<row>
+			<cell>INVOICE_DETAIL</cell>
+			<cell/>
+			<cell>/event/billing/fee/telia/invoice_detail_fee</cell>
+			<cell>ONETIME</cell>
+			<cell>EACH</cell>
+			<cell>INVOICE_DETAIL_FEE_EVENT</cell>
+			<cell>EventBillingFeeTeliaInvoice_detail_fee</cell>
+			<cell>ONETIME</cell>
+			<cell>Subscription</cell>
+		</row>
+		<!--End Sprint 21 changes -->
+		<!--start Release 17.4 BCT-845  Manish-->
+		<row>
+			<cell>EVENT DELAYED VOIP</cell>
+			<cell/>
+			<cell>/event/delayed/session/telia/voip</cell>
+			<cell>USAGE</cell>
+			<cell>PER_MINUTE</cell>
+			<cell>EVENT DELAYED SESSION TELIA VOIP</cell>
+			<cell>EventDelayedSessionTeliaVoip</cell>
+			<cell>USAGE</cell>
+			<cell>Online Usage</cell>
+			<!--end Release 17.4 BCT-845  Manish-->
+		</row>
+		<!--start Netflix BCT  R18.1 Manish-->
+		<row>
+			<cell>EVENT DELAYED NETFLIX</cell>
+			<cell/>
+			<cell>/event/delayed/session/telia/netflix</cell>
+			<cell>USAGE</cell>
+			<cell>PER_MINUTE</cell>
+			<cell>EVENT DELAYED SESSION TELIA NETFLIX</cell>
+			<cell>EventDelayedSessionTeliaNetflix</cell>
+			<cell>USAGE</cell>
+			<cell>Online Usage</cell>			
+		</row>
+		<!--end Netflix BCT R18.1 Manish-->
+		</rows>
+</dvm>

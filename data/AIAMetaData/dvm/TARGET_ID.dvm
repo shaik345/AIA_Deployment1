@@ -1,0 +1,42 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--Upgraded by DVM upgade utility 1.0--><dvm name="TARGET_ID" xmlns="http://xmlns.oracle.com/dvm">
+<description>Target ID</description>
+   <columns>
+      <column name="UCM_01"/>
+      <column name="COMMON"/>
+      <column name="PIM_01"/>
+      <column name="FUSION_01"/>
+   </columns>
+<rows>
+<row>
+  <cell>Ebiz01</cell> 
+  <cell>EBIZ_01</cell> 
+  <cell>EBSSS</cell> 
+  <cell>Ebiz</cell>
+</row>
+<row>
+  <cell>Siebel01</cell> 
+  <cell>SEBL_01</cell> 
+  <cell>SEBL_01</cell>
+  <cell>Siebel</cell>
+</row>
+<row>
+  <cell>BRM01</cell> 
+  <cell>BRM_01</cell> 
+  <cell>BRM_01</cell> 
+  <cell />
+</row>
+<row>
+  <cell>SAP01</cell> 
+  <cell>SAP_01</cell> 
+  <cell /> 
+  <cell />
+</row>
+<row>
+  <cell>PDC01</cell> 
+  <cell>PDC_01</cell> 
+  <cell>PDC_01</cell> 
+  <cell />
+</row>
+</rows>
+</dvm>

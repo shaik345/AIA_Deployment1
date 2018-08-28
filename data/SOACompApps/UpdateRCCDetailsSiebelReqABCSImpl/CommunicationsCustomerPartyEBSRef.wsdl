@@ -1,0 +1,17 @@
+<definitions
+     name="CommunicationsCustomerPartyEBS"
+     targetNamespace="http://xmlns.oracle.com/EnterpriseServices/Core/CustomerParty/V2"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:corecustomerpartyebs="http://xmlns.oracle.com/EnterpriseServices/Core/CustomerParty/V2"
+    >
+    <import namespace="http://xmlns.oracle.com/EnterpriseServices/Core/CustomerParty/V2" location="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseBusinessServiceLibrary/Industry/Communications/EBO/CustomerParty/V2/CommunicationsCustomerPartyEBSV2.wsdl"/>
+    
+    <plnk:partnerLinkType name="CommunicationsCustomerPartyEBS">
+        <plnk:role name="CommunicationsCustomerPartyEBS_Role">
+            <plnk:portType name="corecustomerpartyebs:CommunicationsCustomerPartyEBS"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

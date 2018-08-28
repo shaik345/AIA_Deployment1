@@ -1,0 +1,27 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--Upgraded by DVM upgade utility 1.0-->
+<dvm name="INVENTORY_TYPE" xmlns="http://xmlns.oracle.com/dvm">
+   <description>DVM description</description>
+   <columns>
+      <column name="SEBL_01"/>
+      <column name="BRM_01"/>
+   </columns>
+   <rows>
+      <row>
+         <cell>Detail</cell>
+         <cell>1</cell>
+      </row>
+      <row>
+         <cell>Summary</cell>
+         <cell>2</cell>
+      </row>
+      <row>
+         <cell>Replacement Invoice</cell>
+         <cell>256</cell>
+      </row>
+      <row>
+         <cell>Credit Invoice</cell>
+         <cell>128</cell>
+      </row>
+   </rows>
+</dvm>

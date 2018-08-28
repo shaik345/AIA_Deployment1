@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="QueryBalancesBRMCommsProvABCSImpl"
+             targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRMComms/Industry//QueryBalancesBRMCommsProvABCSImpl/V1.0"
+
+
+	     
+	     xmlns:rcceboebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2"
+             xmlns:rcceboabcs="http://xmlns.oracle.com/ABCSImpl/BRMComms/Industry//QueryBalancesBRMCommsProvABCSImpl/V1.0"
+	     xmlns:fault="http://oracle.abs.eh.service.v1/"
+	     xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" 
+             xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" 
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" >
+	
+	
+	<documentation>
+		<svcdoc:Service>
+		               <svcdoc:Description>
+asd
+</svcdoc:Description>
+		               
+			<svcdoc:ServiceType>ProviderABCSImpl</svcdoc:ServiceType>
+						<svcdoc:Version>1</svcdoc:Version>
+						<svcdoc:ProductCode>BRM</svcdoc:ProductCode>
+		</svcdoc:Service>
+	</documentation>  
+	
+	 <import namespace="http://schemas.oracle.com/bpel/extension" 
+ 	 location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+	<types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema">
+	            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/CustomerParty/V2/CustomerPartyEBM.xsd"/>
+		    <import namespace="http://oracle.abs.eh.service.v1/" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/V1/schemas/FaultMessageType.xsd"/>
+                    
+		
+		</schema>
+	</types>
+	<message name="QueryBalancesReqMsg">
+		<part name="QueryBalancesEBM" element="rcceboebo:QueryCustomerPartyListEBM"/>
+	</message>
+	<message name="QueryBalancesRespMsg">
+		<part name="QueryBalancesResponseEBM" element="rcceboebo:QueryCustomerPartyListResponseEBM"/>
+	</message>
+	<!--
+        <message name="QueryBalancesFaultMsg">
+		<part name="QueryBalancesFault" element=":"/>
+	</message>-->
+	<portType name="QueryBalancesBRMCommsProvABCSImpl">
+        <operation name="QueryBalances">
+                <documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to Query an Balances
+                              object</svcdoc:Description>
+					<svcdoc:MEP>SyncReqResp</svcdoc:MEP>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="rcceboabcs:QueryBalancesReqMsg"/>
+				<output message="rcceboabcs:QueryBalancesRespMsg"/>
+			 	<!--<fault name="fault" message="rcceboabcs:QueryBalancesFaultMsg"/>-->
+		</operation>
+	   
+	    </portType>
+	<plnk:partnerLinkType name="QueryBalancesBRMCommsProvABCSImpl">
+		<plnk:role name="QueryBalancesBRMCommsProvABCSImplProvider">
+			<plnk:portType name="rcceboabcs:QueryBalancesBRMCommsProvABCSImpl"/>
+		</plnk:role>
+	</plnk:partnerLinkType>
+</definitions>

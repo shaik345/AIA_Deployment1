@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AIAServiceConfiguration xmlns="http://xmlns.oracle.com/aia/core/config/V1" version="1.0">
+ <ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncProductSiebelProvABCSImpl/V1}SyncProductSiebelProvABCSImpl">
+  <Property name="Default.SystemID">SEBL_01</Property>
+  <Property name="SIMPLE_PRODUCT_RELEASE_FLAG">Y</Property>
+  <Property name="COMPLEX_PRODUCT_RELEASE_FLAG">N</Property>
+  <Property name="Routing.SWIProductIntegration.SEBL_01.EndpointURI">${participatingapplications.siebel.server.InternetProtocol}${participatingapplications.siebel.server.host}:${participatingapplications.siebel.server.port}/eai_${participatingapplications.siebel.server.Language}/start.swe?SWEExtSource=SecureWebService&amp;SWEExtCmd=Execute&amp;WSSOAP=1</Property>
+  <Property name="Routing.SWIProductIntegration.RouteToCAVS">false</Property>
+  <!--<Property name="Routing.SWIProductIntegration.CAVS.EndpointURI">http://tw001buaia.ddc.teliasonera.net:8001/AIAValidationSystemServlet/syncresponsesimulator</Property>-->
+  <Property name="Routing.SWIPromotionIntegration.RouteToCAVS">false</Property>
+  <Property name="Routing.SWIPromotionIntegration.SEBL_01.EndpointURI">${participatingapplications.siebel.server.InternetProtocol}${participatingapplications.siebel.server.host}:${participatingapplications.siebel.server.port}/eai_${participatingapplications.siebel.server.Language}/start.swe?SWEExtSource=SecureWebService&amp;SWEExtCmd=Execute&amp;WSSOAP=1</Property>
+  <!--<Property name="Routing.SWIPromotionIntegration.CAVS.EndpointURI">http://tw001buaia.ddc.teliasonera.net:8001/AIAValidationSystemServlet/syncresponsesimulator</Property>-->
+  <Property name="Routing.SWIProductLineIntegration.SEBL_01.EndpointURI">${participatingapplications.siebel.server.InternetProtocol}${participatingapplications.siebel.server.host}:${participatingapplications.siebel.server.port}/eai_${participatingapplications.siebel.server.Language}/start.swe?SWEExtSource=SecureWebService&amp;SWEExtCmd=Execute&amp;WSSOAP=1</Property>
+  <Property name="Routing.SWIProductLineIntegration.RouteToCAVS">false</Property>
+  <Property name="Routing.ItemResponseEBSV2.SyncItemListResponse.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+  <Property name="Routing.ItemResponseEBSV2.SyncItemListResponse.RouteToCAVS">false</Property>
+  <!--<Property name="Routing.ItemResponseEBSV2.SyncItemListResponse.CAVS.EndpointURI">http://tw001buaia.ddc.teliasonera.net:8001/AIAValidationSystemServlet/asyncresponserecipient</Property>-->
+  <Property name="ABCSExtension.PreXformEBMtoABMEBM">false</Property>
+  <Property name="ABCSExtension.PreInvokeSWIProductImportUpsertABM">false</Property>
+  <Property name="ABCSExtension.PostInvokeSWIProductImportUpsertABM">false</Property>
+  <Property name="ABCSExtension.PostXformABMtoEBMEBM">false</Property>
+  <Property name="ABCSExtension.PreInvokeSWIPromotionIntegrationABM">false</Property>
+  <Property name="ABCSExtension.PostInvokeSWIPromotionIntegrationABM">false</Property>
+  <Property name="Product.Source.PIP">O2C</Property>
+  <Property name="ABCSExtension.PreInvokeSWIPromotionIntegrationABM">false</Property>
+  <Property name="ABCSExtension.PostInvokeSWIPromotionIntegrationABM">false</Property>
+  <Property name="OPERATION_TYPE">N</Property>
+  <Property name="UTC_FORMAT_ENABLE">N</Property>
+  <Property name="LANGUAGE_CODE">US</Property>
+ </ServiceConfiguration>
+</AIAServiceConfiguration>

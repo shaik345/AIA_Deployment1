@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<adapter-config xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata" adapter="Oracle BRM Adapter" name="BRMTLCCHANNELService">
+<connection-factory UIConnectionName="" adapterRef="" location="eis/BRM"/>
+<endpoint-interaction operation="TLC_OP_CHANNEL_QUERY_BALANCES" portType="BRMTLCCHANNELService_ptt">
+<interaction-spec className="oracle.tip.adapter.brm.BRMInteractionSpec">
+<property name="OpcodeName" value="10901"/>
+<property name="OpcodeFlags" value="0"/>
+<property name="OpcodeSchema" value="TLC_OP_CHANNEL_QUERY_BALANCES.xsd"/>
+<property name="ValidationAttr" value="ValidationRequired"/>
+<property name="IsBase" value="false"/>
+</interaction-spec>
+</endpoint-interaction>
+<endpoint-interaction operation="TLC_OP_CHANNEL_GET_TOPUP_HISTORY" portType="BRMTLCCHANNELService_ptt">
+<interaction-spec className="oracle.tip.adapter.brm.BRMInteractionSpec">
+<property name="OpcodeName" value="10902"/>
+<property name="OpcodeFlags" value="0"/>
+<property name="OpcodeSchema" value="TLC_OP_CHANNEL_GET_TOPUP_HISTORY.xsd"/>
+<property name="ValidationAttr" value="ValidationRequired"/>
+<property name="IsBase" value="false"/>
+</interaction-spec>
+</endpoint-interaction>
+<endpoint-interaction operation="TLC_OP_CHANNEL_PURCHASE_TOPUP" portType="BRMTLCCHANNELService_ptt">
+<interaction-spec className="oracle.tip.adapter.brm.BRMInteractionSpec">
+<property name="OpcodeName" value="10900"/>
+<property name="OpcodeFlags" value="0"/>
+<property name="OpcodeSchema" value="TLC_OP_CHANNEL_PURCHASE_TOPUP.xsd"/>
+<property name="ValidationAttr" value="ValidationRequired"/>
+<property name="IsBase" value="false"/>
+</interaction-spec>
+</endpoint-interaction>
+	<endpoint-interaction operation="TLC_OP_CHANNEL_AR_GET_BILL_ITEMS" portType="BRMTLCCHANNELService_ptt">
+        <interaction-spec className="oracle.tip.adapter.brm.BRMInteractionSpec">
+            <property name="OpcodeName" value="10903"/>
+            <property name="OpcodeFlags" value="0"/>
+            <property name="OpcodeSchema" value="TLC_OP_CHANNEL_AR_GET_BILL_ITEMS.xsd"/>
+            <property name="ValidationAttr" value="ValidationRequired"/>
+            <property name="IsBase" value="false"/>
+        </interaction-spec>
+    </endpoint-interaction>
+</adapter-config>

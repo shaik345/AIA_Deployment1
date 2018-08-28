@@ -1,0 +1,1412 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<AIAConfiguration xmlns="http://xmlns.oracle.com/aia/core/config/V1" version="1.0">
+<SystemConfiguration>
+<Property name="O2C.EnablePriceListMapping">false</Property>
+<Property name="Routing.ActiveRuleset">DEFAULT</Property>
+<Property name="TRACE.LOG.ENABLED">false</Property>
+<Property name="DIAG.SYSTEM.CONFIG">AIADiagnosticsSystemProperty</Property>
+<ModuleConfiguration moduleName="DiagnosticsModule">
+<Property name="DIAG.MODULE.CONFIG">AIADiagnosticsModuleProperty</Property>
+</ModuleConfiguration>
+<ModuleConfiguration moduleName="ErrorHandler">
+<Property name="COMMON.ERRORHANDLER.IMPL">oracle.apps.aia.core.eh.AIAErrorHandlerImpl</Property>
+<Property name="COMMON.ERRORHANDLER_EXT.IMPL">oracle.apps.aia.core.eh.AIAErrorHandlerExtImpl</Property>
+<Property name="LOGGER.TRACE">oracle.aia.logging.trace</Property>
+<Property name="LOGGER.ERROR">oracle.aia.logging.error</Property>
+<Property name="COMMON.ERRORHANDLER.JAXB.CONTEXT">oracle.apps.aia.eh</Property>
+<Property name="EH.AQ.SUBSCRIPTION">AIA_ERROR_SUBSCRIPTION</Property>
+<Property name="EH.RESUBMIT.SYS.METRICS">true</Property>
+<Property name="EH.RESUBMIT.BIZ.METRICS">true</Property>
+<Property name="EH.RESUBMIT.RES.CF">jms/aia/aiaResourceCF</Property>
+<Property name="EH.RESUBMIT.ERR.CF">jms/aia/aiaErrorQueueCF</Property>
+<Property name="EH.HOSTNAME">AIA_HOSTNAME</Property>
+<Property name="EH.PORT">AIA_PORT</Property>
+<Property name="EH.JNDIURL">t3://CLUSTER_URLS</Property>
+<Property name="EH.USERNAME">weblogic</Property>
+<Property name="EH.PASSWORD">fp.server.password</Property>
+<Property name="EH.INVOKE.HWF">true</Property>
+<Property name="EH.INVOKE.NOTIFY">true</Property>
+<Property name="EH.AGGR.NOTIFY">false</Property>
+<Property name="FROM.EMAIL.ID">Email:AiaAdmin@server.com</Property>
+<Property name="EH.DEFAULT.ACTOR.ROLE">AIAIntegrationAdmin</Property>
+<Property name="EH.DEFAULT.FYI.ROLE"/>
+<Property name="EH.B2B.AIAFAULTENRICH.REQ">true</Property>
+<Property name="EH.B2B.HOSTNAME">AIA_HOSTNAME</Property>
+<Property name="EH.B2B.PORT">AIA_PORT</Property>
+<Property name="EH.AIACOM_OFM_EXT.IMPL">oracle.apps.aia.industry.comms.eh.AIAOrderFalloutErrorHandlerExtension</Property>
+</ModuleConfiguration>
+<ModuleConfiguration moduleName="CAVS">
+<Property name="SyncResponseSimulator.Soap.EndpointURL">http://AIA_HOSTNAME:AIA_PORT/AIAValidationSystemServlet/syncresponsesimulator</Property>
+<Property name="AsyncResponseSimulator.Soap.EndpointURL">http://AIA_HOSTNAME:AIA_PORT/AIAValidationSystemServlet/asyncresponsesimulator</Property>
+<Property name="AsyncRequestRecipient.Soap.EndpointURL">http://AIA_HOSTNAME:AIA_PORT/AIAValidationSystemServlet/asyncrequestrecipient</Property>
+</ModuleConfiguration>
+<ModuleConfiguration moduleName="OSM_Module">
+<Property name="OSMCFS.USERNAME">osm</Property>
+<Property name="OSMCFS.PASSWORD">participatingapplications.osmcfs.server.password</Property>
+<Property name="OSMLF.USERNAME">osmlf</Property>
+<Property name="OSMLF.PASSWORD">participatingapplications.osmlf.server.password</Property>
+</ModuleConfiguration>
+<ModuleConfiguration moduleName="BalanceGroupParameters">
+<Property name="O2C.AccountLevelBalanceGroup">False</Property>
+</ModuleConfiguration>
+<ModuleConfiguration moduleName="CorporateHierarchyParameters">
+<Property name="O2C.CorporateHierarchyAccountType">BUSINESS</Property>
+</ModuleConfiguration>
+<ModuleConfiguration moduleName="LegalGroupParameters">
+<Property name="O2C.LegalGroup">FALSE</Property>
+</ModuleConfiguration>
+<ModuleConfiguration moduleName="SessionPoolManager">
+<Property xmlns:aia="http://xmlns.oracle.com/aia/core/config/V1" name="all_hosts">SEBL_01 NOSERVER</Property>
+<Property name="all_hosts.PoolSize_Max">40</Property>
+<Property name="all_hosts.PoolInitialLoad">1</Property>
+<Property name="all_hosts.GetFromPoolTable_MaxAttempts">4</Property>
+<Property name="all_hosts.GetFromPoolTable_WaitInterval">500</Property>
+<Property name="all_hosts.ConnectServer_MaxAttempts">3</Property>
+<Property name="all_hosts.ConnectServer_WaitInterval">500</Property>
+<Property name="all_hosts.PredictExpiration_Idle">780000</Property>
+<Property name="all_hosts.PredictExpiration_Age">82800000</Property>
+<Property name="all_hosts.Sentinel_PoolSize_Min">1</Property>
+<Property name="all_hosts.Sentinel_Renew_Max">1</Property>
+<Property name="all_hosts.ServerSessionRequestRate">50</Property>
+<Property name="all_hosts.InvalidSessionErrorCodes">404</Property>
+<Property name="TRACE.LOG.ENABLED">FALSE</Property>
+<Property name="all_hosts.Sentinel_LogLevel">ERROR</Property>
+<Property name="all_hosts.TraceToAIA-SPM-CSVFile_Enabled">FALSE</Property>
+<Property name="all_hosts.ProxySettings_Enabled">false</Property>
+<Property name="all_hosts.Proxy.Host"/>
+<Property name="all_hosts.Proxy.Port"/>
+<Property name="NOSERVER.UserId">JosePerez</Property>
+<Property name="NOSERVER.Password">fp.server.password</Property>
+<Property name="NOSERVER.EndpointURI">http://any.fake.value.is/good</Property>
+<Property name="NOSERVER.ClassName">oracle.apps.aia.core.sessionpool.NoSvrCRMSiebelSession</Property>
+<Property name="NOSERVER.PoolInitialLoad">5</Property>
+<Property name="NOSERVER.PredictExpiration_Idle">60000</Property>
+<Property name="NOSERVER.PredictExpiration_Age">180000</Property>
+<Property name="NOSERVER.Sentinel_PoolSize_Min">5</Property>
+<Property name="NOSERVER.Sentinel_Renew_Max">3</Property>
+<Property name="NOSERVER.InvalidSessionErrorCodes">404|10944642|Invalid Session</Property>
+<Property name="NOSERVER.TraceToAIA-SPM-CSVFile_Enabled">true</Property>
+<Property name="SEBL_01.EndpointURI">http://SBL_HOSTNAME:SBL_PORT/eai_enu/start.swe?SWEExtSource=SecureWebService&amp;SWEExtCmd=Execute&amp;WSSOAP=1</Property>
+<Property name="SEBL_01.UserId">SADMIN</Property>
+<Property name="SEBL_01.Password">participatingapplications.siebel.server.eai.password</Property>
+<Property name="SEBL_01.PredictExpiration_Idle">780000</Property>
+<Property name="SEBL_01.PredictExpiration_Age">82800000</Property>
+<Property name="SEBL_01.InvalidSessionErrorCodes">10944642|SBL-BPR-00162|SBL-DAT-00175|11338608|SBL-UIF-00880</Property>
+<Property name="SEBL_01.ClassName">oracle.apps.aia.core.sessionpool.CRMSiebelSession</Property>
+</ModuleConfiguration>
+<ModuleConfiguration moduleName="CollectionsParameters">
+<Property name="FromMailAddress">user@oracle.com</Property>
+<Property name="ToMailAddress">user@oracle.com</Property>
+<Property name="MailServer">mail.oracle.com</Property>
+<Property name="ODI.USERNAME">odi.username</Property>
+<Property name="ODI.PASSWORD">odi.password</Property>
+<Property name="ODI.WORKREPNAME">pips.AABC.odi.workrep.name</Property>
+<Property name="BatchSize">5000</Property>
+<Property name="AQName.BRM">AQ_QUEUE</Property>
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="Default.Source_SystemID">BRM_01</Property>
+<Property name="AIAHome">/opt/aia/aiafp</Property>
+<Property name="IF_ROW_BATCH_NUM_CreatedStart">100</Property>
+<Property name="IF_ROW_BATCH_NUM_CreatedEnd">199</Property>
+<Property name="IF_ROW_BATCH_NUM_UpdateStart">200</Property>
+<Property name="IF_ROW_BATCH_NUM_UpdateEnd">299</Property>
+<Property name="IF_ROW_BATCH_NUM_Error">50</Property>
+<Property name="AL_SOURCE_CD">Customer</Property>
+<Property name="AL_TYPE_CD">Credit</Property>
+</ModuleConfiguration>
+<ModuleConfiguration moduleName="PIM">
+<Property name="PIM_01.SERVER_TIMEZONE">+00:00</Property>
+<Property name="RESPONSIBILITY_NAME">Development Manager</Property>
+<Property name="RESPONSIBILITY_APPL_NAME"/>
+<Property name="SECURITY_GROUP_NAME"/>
+<Property name="NLS_LANGUAGE">AMERICAN</Property>
+</ModuleConfiguration>
+</SystemConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/ProcessFulfillmentOrderBillingBRMCommsUpdateSubProcess/V1}ProcessFulfillmentOrderBillingBRMCommsUpdateSubProcess">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="ABCSExtension.PreInvokeEBM">false</Property>
+<Property name="ABCSExtension.PostInvokeEBM">true</Property>
+<Property name="ABCSExtension.PreProcessUpdate1PCM_OP_SEARCHABM">false</Property>
+<Property name="ABCSExtension.PostProcessUpdate1PCM_OP_SEARCHABM">false</Property>
+<Property name="ABCSExtension.PreProcessUpdate2PCM_OP_SEARCHABM">false</Property>
+<Property name="ABCSExtension.PostProcessUpdate2PCM_OP_SEARCHABM">false</Property>
+<Property name="ABCSExtension.PreProcessUpdate1PCM_OP_CUST_MODIFY_CUSTOMERABM">false</Property>
+<Property name="ABCSExtension.PostProcessUpdate1PCM_OP_CUST_MODIFY_CUSTOMERABM">false</Property>
+<Property name="ABCSExtension.PreProcessUpdate2PCM_OP_CUST_MODIFY_CUSTOMERABM">false</Property>
+<Property name="ABCSExtension.PostProcessUpdate2PCM_OP_CUST_MODIFY_CUSTOMERABM">false</Property>
+<Property name="ABCSExtension.PreProcessPCM_OP_SUBSCRIPTION_TRANSFER_SUBSCRIPTIONABM">false</Property>
+<Property name="ABCSExtension.PostProcessPCM_OP_SUBSCRIPTION_TRANSFER_SUBSCRIPTIONABM">false</Property>
+<Property name="ABCSExtension.PreProcessPCM_OP_CUST_UPDATE_SERVICESABM">false</Property>
+<Property name="ABCSExtension.PostProcessPCM_OP_CUST_UPDATE_SERVICESABM">false</Property>
+<Property name="ABCSExtension.PreProcessPCM_OP_SUBSCRIPTION_SERVICE_BALGRP_TRANSFERABM">false</Property>
+<Property name="ABCSExtension.PostProcessPCM_OP_SUBSCRIPTION_SERVICE_BALGRP_TRANSFERABM">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/ProcessAccountHierarchyListSiebelCommsProvABCSImpl/V1}ProcessAccountHierarchyListSiebelCommsProvABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PostXformEBMtoABM">false</Property>
+<Property name="Routing.SWI_spcAccount_spcHierarchy.RouteToCAVS">false</Property>
+<Property name="Routing.SWI_spcAccount_spcHierarchy.CAVS.EndpointURI">oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/AIAValidationSystemServlet/syncresponsesimulator</Property>
+<Property name="Routing.SWI_spcAccount_spcHierarchy.SEBL_01.EndpointURI">http://SBL_HOSTNAME:SBL_PORT/eai_enu/start.swe?SWEExtSource=SecureWebService&amp;SWEExtCmd=Execute&amp;WSSOAP=1</Property>
+<Property name="Routing.SWI_spcAccount_spcHierarchy.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="ABCSExtension.PreInvokeABS">false</Property>
+<Property name="ABCSExtension.PostInvokeABS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/SyncCustomerPartyListBRMCommsProvABCSImpl/V1}SyncCustomerPartyListBRMCommsProvABCSImpl">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="EBSOverride.CommunicationsCustomerPartyEBSV2.SyncCustomerPartyListResponse.PortType">CommsProcessBillingAccountListEBF</Property>
+<Property name="EBSOverride.CommunicationsCustomerPartyEBSV2.SyncCustomerPartyListResponse.ServiceName">{http://xmlns.oracle.com/EnterpriseFlows/Industry/Comms/CommsProcessBillingAccountListEBF/V1}CommsProcessBillingAccountListEBF</Property>
+<Property name="EBSOverride.CommunicationsCustomerPartyEBSV2.SyncCustomerPartyListResponse.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/CommsProcessBillingAccountListEBF/client</Property>
+<Property name="EnableAccountStatusSync">false</Property>
+<Property name="Routing.BRMCUSTService.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="Routing.BRMCUSTService.RouteToCAVS">false</Property>
+<Property name="Routing.BRMCUSTService_ptt.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="AccountLevelBalanceGroupName">Account Level Balance Group</Property>
+<Property name="Routing.BRMCUSTService_ptt.RouteToCAVS">false</Property>
+<Property name="Routing.BRMCUSTCAREService.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="Routing.BRMCUSTCAREService.RouteToCAVS">false</Property>
+<Property name="Routing.BRMBILLService.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="Routing.BRMBILLService.RouteToCAVS">false</Property>
+<Property name="Routing.BRMBASEService.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="Routing.BRMBASEService.RouteToCAVS">false</Property>
+<Property name="Routing.BRMTXNService.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="Routing.BRMTXNService.RouteToCAVS">false</Property>
+<Property name="ABCSExtension.PreXFormEBMtoABM">false</Property>
+<Property name="ABCSExtension.PreInvokePCM_OP_BILL_GROUP_GET_PARENTABM">false</Property>
+<Property name="ABCSExtension.PostInvokePCM_OP_BILL_GROUP_GET_PARENTABM">false</Property>
+<Property name="ABCSExtension.PreInvokePCM_OP_SEARCHABM">false</Property>
+<Property name="ABCSExtension.PostInvokePCM_OP_SEARCHABM">false</Property>
+<Property name="ABCSExtension.PreInvokeABSPCM_OP_CUST_COMMIT_CUSTOMERABM">false</Property>
+<Property name="ABCSExtension.PostInvokeABSPCM_OP_CUST_COMMIT_CUSTOMERABM">false</Property>
+<Property name="ABCSExtension.PreInvokePCM_OP_CUSTCARE_MOVE_ACCTABM">false</Property>
+<Property name="ABCSExtension.PostInvokePCM_OP_CUSTCARE_MOVE_ACCTABM">false</Property>
+<Property name="ABCSExtension.PreInvokePCM_OP_CUST_UPDATE_CUSTOMERABM">false</Property>
+<Property name="ABCSExtension.PostInvokePCM_OP_CUST_UPDATE_CUSTOMERABM">false</Property>
+<Property name="ABCSExtension.PreInvokePCM_OP_CUST_DELETE_PAYINFOABM">false</Property>
+<Property name="ABCSExtension.PostInvokePCM_OP_CUST_DELETE_PAYINFOABM">false</Property>
+<Property name="ABCSExtension.PostXFormABMtoEBM">true</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/ProcessFulfillmentOrderBillingBRMCommsProvABCSImplExtension/V1}ProcessFulfillmentOrderBillingBRMCommsProvABCSImplExtension">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PostXformEBMtoABM">false</Property>
+<Property name="Routing.BRMBASEService_ptt.RouteToCAVS">false</Property>
+<Property name="Routing.BRMBASEService_ptt.CAVS.EndpointURI">oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/AIAValidationSystemServlet/syncresponsesimulator</Property>
+<Property name="Routing.BRMBASEService_ptt.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="Routing.BRMBASEService_ptt.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="ABCSExtension.PreInvokeABS">false</Property>
+<Property name="ABCSExtension.PostInvokeABS">false</Property>
+<Property name="Routing.BRMCUSTService_ptt.RouteToCAVS">false</Property>
+<Property name="Routing.BRMCUSTService_ptt.CAVS.EndpointURI">oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/AIAValidationSystemServlet/syncresponsesimulator</Property>
+<Property name="Routing.BRMCUSTService_ptt.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="Routing.BRMCUSTService_ptt.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="ABCSExtension.PreInvokeABS">false</Property>
+<Property name="ABCSExtension.PostInvokeABS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/Industry//ProcessDataTopUpsBRMProvABCSImpl/V1}ProcessDataTopUpsBRMProvABCSImpl">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="Routing.BRMTLCCHANNELService_ptt.RouteToCAVS">false</Property>
+<Property name="Routing.BRMTLCCHANNELService_ptt.CAVS.EndpointURI"/>
+<Property name="Routing.BRMTLCCHANNELService_ptt.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="Routing.BRMTLCCHANNELService_ptt.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PostXformEBMtoABM">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/C2B/Industry//ProcessDataTopUpsC2BReqABCSImpl/V1}ProcessDataTopUpsC2BReqABCSImpl">
+<Property name="Default.SystemID">C2B</Property>
+<Property name="Default.Target.SystemID">BRM_01</Property>
+<Property name="ABCSExtension.PreXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBM">false</Property>
+<Property name="Routing.FulfillmentOrderEBS.ProcessFulfillmentOrder.RouteToCAVS">false</Property>
+<Property name="Routing.FulfillmentOrderEBS.ProcessFulfillmentOrder.CAVS.EndpointURI">oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/AIAValidationSystemServlet/asyncresponsesimulator </Property>
+<Property name="Routing.FulfillmentOrderEBS.ProcessFulfillmentOrder.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="ABCSExtension.PreInvokeEBS">false</Property>
+<Property name="ABCSExtension.PostInvokeEBS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/Industry//QueryBalanceBRMProvABCSImpl/V1}QueryBalanceBRMProvABCSImpl">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="Routing.BRMTLCCHANNELService_ptt.RouteToCAVS">false</Property>
+<Property name="Routing.BRMTLCCHANNELService_ptt.CAVS.EndpointURI">oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/AIAValidationSystemServlet/syncresponsesimulator</Property>
+<Property name="Routing.BRMTLCCHANNELService_ptt.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="Routing.BRMTLCCHANNELService_ptt.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PostXformEBMtoABM">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/C2B/Industry//QueryBalanceC2BReqABCSImpl/V1}QueryBalanceC2BReqABCSImpl">
+<Property name="Default.SystemID">C2B</Property>
+<Property name="Default.Target.SystemID">BRM_01</Property>
+<Property name="ABCSExtension.PreXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBM">false</Property>
+<Property name="Routing.CustomerPartyEBS.QueryCustomerParty.RouteToCAVS">false</Property>
+<Property name="Routing.CustomerPartyEBS.QueryCustomerParty.CAVS.EndpointURI">oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/AIAValidationSystemServlet/syncresponsesimulator</Property>
+<Property name="Routing.CustomerPartyEBS.QueryCustomerParty.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="ABCSExtension.PreInvokeEBS">false</Property>
+<Property name="ABCSExtension.PostInvokeEBS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/C2B/Industry/Comms/QueryTopUpHistoryC2BReqABCSImpl/V1}QueryTopUpHistoryC2BReqABCSImpl">
+<Property name="Default.SystemID">C2B_01</Property>
+<Property name="Default.Target.SystemID">BRM_01</Property>
+<Property name="ABCSExtension.PreXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBM">false</Property>
+<Property name="Routing.CustomerPartyEBS.QueryCustomerParty.RouteToCAVS">false</Property>
+<Property name="Routing.CustomerPartyEBS.QueryCustomerParty.CAVS.EndpointURI">oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/AIAValidationSystemServlet/syncresponsesimulator</Property>
+<Property name="Routing.CustomerPartyEBS.QueryCustomerParty.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="ABCSExtension.PreInvokeEBS">false</Property>
+<Property name="ABCSExtension.PostInvokeEBS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryTopUpHistoryBRMProvABCSImpl/V1}QueryTopUpHistoryBRMProvABCSImpl">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PostXformEBMtoABM">false</Property>
+<Property name="Routing.BRMTLCCHANNELService_ptt.RouteToCAVS">false</Property>
+<Property name="Routing.BRMTLCCHANNELService_ptt.CAVS.EndpointURI">oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/AIAValidationSystemServlet/syncresponsesimulator</Property>
+<Property name="Routing.BRMTLCCHANNELService_ptt.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="Routing.BRMTLCCHANNELService_ptt.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="ABCSExtension.PreInvokeABS">false</Property>
+<Property name="ABCSExtension.PostInvokeABS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/ProcessFulfillmentOrderBillingBRMCommsAddSubProcessExtension/V1}ProcessFulfillmentOrderBillingBRMCommsAddSubProcessExtension">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PostXformEBMtoABM">false</Property>
+<Property name="Routing.BRMCreditLimitService.RouteToCAVS">false</Property>
+<Property name="Routing.BRMCreditLimitService.CAVS.EndpointURI">oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/AIAValidationSystemServlet/syncresponsesimulator</Property>
+<Property name="Routing.BRMCreditLimitService.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="Routing.BRMCreditLimitService.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="ABCSExtension.PreInvokeABS">false</Property>
+<Property name="ABCSExtension.PostInvokeABS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/ProcessFulfillmentOrderBillingBRMCommsProvABCSImplExtension/V1}ProcessFulfillmentOrderBillingBRMCommsProvABCSImplExtension">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PostXformEBMtoABM">false</Property>
+<Property name="Routing.BRMBASEService_ptt.RouteToCAVS">false</Property>
+<Property name="Routing.BRMBASEService_ptt.CAVS.EndpointURI">oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/AIAValidationSystemServlet/syncresponsesimulator</Property>
+<Property name="Routing.BRMBASEService_ptt.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="Routing.BRMBASEService_ptt.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="ABCSExtension.PreInvokeABS">false</Property>
+<Property name="ABCSExtension.PostInvokeABS">true</Property>
+<Property name="Routing.BRMCUSTService_ptt.RouteToCAVS">false</Property>
+<Property name="Routing.BRMCUSTService_ptt.CAVS.EndpointURI">oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/AIAValidationSystemServlet/syncresponsesimulator</Property>
+<Property name="Routing.BRMCUSTService_ptt.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="Routing.BRMCUSTService_ptt.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="ABCSExtension.PreInvokeABS">false</Property>
+<Property name="ABCSExtension.PostInvokeABS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/CreditInvoiceSiebel/Industry//CreateFullCreditInvoiceSiebelReqABCSImpl/V1}CreateFullCreditInvoiceSiebelReqABCSImpl">
+<Property name="Default.SystemID">AIA</Property>
+<Property name="ABCSExtension.PreXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBM">false</Property>
+<Property name="Routing.BRMBILLService_ptt.TWI_OP_BILL_ADJUST_FULL_BILL.RouteToCAVS">false</Property>
+<Property name="Routing.BRMBILLService_ptt.TWI_OP_BILL_ADJUST_FULL_BILL.CAVS.EndpointURI">oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/AIAValidationSystemServlet/syncresponsesimulator</Property>
+<Property name="Routing.BRMBILLService_ptt.TWI_OP_BILL_ADJUST_FULL_BILL.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="ABCSExtension.PreInvokeEBS">false</Property>
+<Property name="ABCSExtension.PostInvokeEBS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Custom/Industry//ProcessFulfillmentOrderBillingBRMCommsCustomProvABCSImpl/V1}ProcessFulfillmentOrderBillingBRMCommsCustomProvABCSImpl">
+<Property name="Default.SystemID">AIA</Property>
+<Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PostXformEBMtoABM">false</Property>
+<Property name="Routing.BRMSUBSCRIPTIONService_ptt.RouteToCAVS">false</Property>
+<Property name="Routing.BRMSUBSCRIPTIONService_ptt.CAVS.EndpointURI">oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/AIAValidationSystemServlet/syncresponsesimulator</Property>
+<Property name="Routing.BRMSUBSCRIPTIONService_ptt.AIA.EndpointURI"/>
+<Property name="Routing.BRMSUBSCRIPTIONService_ptt.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="ABCSExtension.PreInvokeABS">false</Property>
+<Property name="ABCSExtension.PostInvokeABS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/GESBComms/Industry//SyncCustomerPartyListGESBCommsProvABCSImpl/V1}SyncCustomerPartyListGESBCommsProvABCSImpl">
+<Property name="Default.SystemID">GESB_01</Property>
+<Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PostXformEBMtoABM">false</Property>
+<Property name="Routing.execute_ptt.RouteToCAVS">false</Property>
+<Property name="Routing.execute_ptt.CAVS.EndpointURI">oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/AIAValidationSystemServlet/asyncresponsesimulator </Property>
+<Property name="Routing.execute_ptt.GESB_01.EndpointURI"/>
+<Property name="Routing.execute_ptt.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="ABCSExtension.PreInvokeABS">false</Property>
+<Property name="ABCSExtension.PostInvokeABS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry//ProcessSMSConfigSiebelReqABCSImpl/V1}ProcessSMSConfigSiebelReqABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="ABCSExtension.PreXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBM">false</Property>
+<Property name="Routing.CommunicationsCustomerPartyEBS.ProcessCustomerPartyList.RouteToCAVS">false</Property>
+<Property name="Routing.CommunicationsCustomerPartyEBS.ProcessCustomerPartyList.CAVS.EndpointURI">oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/AIAValidationSystemServlet/asyncresponsesimulator </Property>
+<Property name="Routing.CommunicationsCustomerPartyEBS.ProcessCustomerPartyList.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="ABCSExtension.PreInvokeEBS">false</Property>
+<Property name="ABCSExtension.PostInvokeEBS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/HTTPBinding/Industry//ProcessSMSContentConfigHTTPBindingProvABCSImpl/V1}ProcessSMSContentConfigHTTPBindingProvABCSImpl">
+<Property name="Default.SystemID">Agile</Property>
+<Property name="Routing.BRMBASEService_ptt.RouteToCAVS">false</Property>
+<Property name="Routing.BRMBASEService_ptt.CAVS.EndpointURI">oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/AIAValidationSystemServlet/syncresponsesimulator</Property>
+<Property name="Routing.BRMBASEService_ptt.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PostXformEBMtoABM">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/PDC/Core/SyncPriceListPDCProvABCSImpl/V1}SyncPriceListPDCProvABCSImpl">
+<Property name="Default.SystemID">PDC_01</Property>
+<Property name="Default.BRMID">BRM_01</Property>
+<Property name="Default.pdcuser">pdc2</Property>
+<Property name="Routing.pricingGatewayPortType.RouteToCAVS">false</Property>
+<Property name="Routing.pricingGatewayPortType.CAVS.EndpointURI">oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/AIAValidationSystemServlet/syncresponsesimulator</Property>
+<Property name="Routing.pricingGatewayPortType.PDC_01.EndpointURI">http://PDC_HOSTNAME:PDC_PORT/pdc/PricingGatewayPort</Property>
+<Property name="Routing.pricingGatewayPortType.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/PDC/Core/SyncItemListPDCProvABCSImpl/V1}SyncItemListPDCProvABCSImpl">
+<Property name="Default.SystemID">PDC_01</Property>
+<Property name="Default.BRMID">BRM_01</Property>
+<Property name="Default.pdcuser">pdc2</Property>
+<Property name="Routing.pricingGatewayPortType.RouteToCAVS">false</Property>
+<Property name="Routing.pricingGatewayPortType.CAVS.EndpointURI">oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/AIAValidationSystemServlet/syncresponsesimulator</Property>
+<Property name="Routing.pricingGatewayPortType.PDC_01.EndpointURI">http://PDC_HOSTNAME:PDC_PORT/pdc/PricingGatewayPort</Property>
+<Property name="Routing.pricingGatewayPortType.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/Core/SyncPriceListListBRMProvABCSImpl/V1}SyncPriceListListBRMProvABCSImpl">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PostXformEBMtoABM">false</Property>
+<Property name="Routing.BRMPRICINGService_ptt.RouteToCAVS">false</Property>
+<Property name="Routing.BRMPRICINGService_ptt.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="Routing.PriceListEBSV2.SyncPriceListListResponse.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/PriceListResponseEBSV2/PriceListResponseEBSV2_ep</Property>
+<Property name="Routing.PriceListEBSV2.SyncPriceListListResponse.RouteToCAVS">false</Property>
+<Property name="Routing.PriceListEBSV2.SyncPriceListListResponse.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="LANGUAGE_CODE">US</Property>
+<Property name="ABCSExtension.PreInvokeABS">false</Property>
+<Property name="ABCSExtension.PostInvokeABS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/Core/SyncItemListBRMProvABCSImpl/V1}SyncItemListBRMProvABCSImpl">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PostXformEBMtoABM">false</Property>
+<Property name="Routing.BRMPRICINGService_ptt.RouteToCAVS">false</Property>
+<Property name="Routing.BRMPRICINGService_ptt.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="Routing.ItemEBSV2.SyncItemListResponse.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/ItemResponseEBSV2/ItemResponseEBSV2_ep</Property>
+<Property name="Routing.ItemEBSV2.SyncItemListResponse.RouteToCAVS">false</Property>
+<Property name="Routing.ItemEBSV2.SyncItemListResponse.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="LANGUAGE_CODE">US</Property>
+<Property name="ABCSExtension.PreInvokeABS">false</Property>
+<Property name="ABCSExtension.PostInvokeABS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncBillOfMaterialsListSiebelProvABCSImpl/V1}SyncBillOfMaterialsListSiebelProvABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="Routing.SWIProductIntegration.SEBL_01.EndpointURI">http://SBL_HOSTNAME:SBL_PORT/eai_enu/start.swe?SWEExtSource=SecureWebService&amp;SWEExtCmd=Execute&amp;WSSOAP=1</Property>
+<Property name="Routing.SWIProductIntegration.RouteToCAVS">false</Property>
+<Property name="Routing.SWIPromotionIntegration.SEBL_01.EndpointURI">http://SBL_HOSTNAME:SBL_PORT/eai_enu/start.swe?SWEExtSource=SecureWebService&amp;SWEExtCmd=Execute&amp;WSSOAP=1</Property>
+<Property name="Routing.SWIPromotionIntegration.RouteToCAVS">false</Property>
+<Property name="Routing.BillOfMaterialsResponseEBS.SyncBillOfMaterialsListResponse.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="Routing.BillOfMaterialsResponseEBS.SyncBillOfMaterialsListResponse.RouteToCAVS">false</Property>
+<Property name="SIMPLE_PRODUCT_RELEASE_FLAG">Y</Property>
+<Property name="COMPLEX_PRODUCT_RELEASE_FLAG">Y</Property>
+<Property name="ABCSExtension.PreXformEBMtoABMEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeSWIProductImportUpsertABM">false</Property>
+<Property name="ABCSExtension.PostInvokeSWIProductImportUpsertABM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBMEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeSWIPromotionIntegrationABM">false</Property>
+<Property name="ABCSExtension.PostInvokeSWIPromotionIntegrationABM">false</Property>
+<Property name="OPERATION_TYPE">Y</Property>
+<Property name="UTC_FORMAT_ENABLE">N</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncSpecificationValueSetListSiebelProvABCSImpl/V1}SyncSpecificationValueSetListSiebelProvABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="ABCSExtension.PreXformEBMtoABMSpecificationValueSetListEBM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBMSpecificationValueSetListEBM">false</Property>
+<Property name="Routing.SWIAttributeImport.RouteToCAVS">false</Property>
+<Property name="Routing.SWIAttributeImport.SEBL_01.EndpointURI">http://SBL_HOSTNAME:SBL_PORT/eai_enu/start.swe?SWEExtSource=SecureWebService&amp;SWEExtCmd=Execute&amp;WSSOAP=1</Property>
+<Property name="Routing.SWIAttributeImport.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="Routing.SpecificationValueSetResponseEBS.SyncSpecificationValueSetListResponse.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="Routing.SpecificationValueSetResponseEBS.SyncSpecificationValueSetListResponse.RouteToCAVS">false</Property>
+<Property name="ABCSExtension.PreInvokeABSSyncAttributeDefinitionABM">false</Property>
+<Property name="ABCSExtension.PostInvokeABSSyncAttributeDefinitionABM">false</Property>
+<Property name="OPERATION_TYPE">Y</Property>
+<Property name="RELEASE_WORKSPACE">N</Property>
+<Property name="UTC_FORMAT_ENABLE">N</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncProductSiebelProvABCSImpl/V1}SyncProductSiebelProvABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="SIMPLE_PRODUCT_RELEASE_FLAG">Y</Property>
+<Property name="COMPLEX_PRODUCT_RELEASE_FLAG">N</Property>
+<Property name="Routing.SWIProductIntegration.SEBL_01.EndpointURI">http://SBL_HOSTNAME:SBL_PORT/eai_enu/start.swe?SWEExtSource=SecureWebService&amp;SWEExtCmd=Execute&amp;WSSOAP=1</Property>
+<Property name="Routing.SWIProductIntegration.RouteToCAVS">false</Property>
+<Property name="Routing.SWIPromotionIntegration.RouteToCAVS">false</Property>
+<Property name="Routing.SWIPromotionIntegration.SEBL_01.EndpointURI">http://SBL_HOSTNAME:SBL_PORT/eai_enu/start.swe?SWEExtSource=SecureWebService&amp;SWEExtCmd=Execute&amp;WSSOAP=1</Property>
+<Property name="Routing.SWIProductLineIntegration.SEBL_01.EndpointURI">http://SBL_HOSTNAME:SBL_PORT/eai_enu/start.swe?SWEExtSource=SecureWebService&amp;SWEExtCmd=Execute&amp;WSSOAP=1</Property>
+<Property name="Routing.SWIProductLineIntegration.RouteToCAVS">false</Property>
+<Property name="Routing.ItemResponseEBSV2.SyncItemListResponse.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="Routing.ItemResponseEBSV2.SyncItemListResponse.RouteToCAVS">false</Property>
+<Property name="ABCSExtension.PreXformEBMtoABMEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeSWIProductImportUpsertABM">false</Property>
+<Property name="ABCSExtension.PostInvokeSWIProductImportUpsertABM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBMEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeSWIPromotionIntegrationABM">false</Property>
+<Property name="ABCSExtension.PostInvokeSWIPromotionIntegrationABM">false</Property>
+<Property name="Product.Source.PIP">MDM</Property>
+<Property name="ABCSExtension.PreInvokeSWIPromotionIntegrationABM">false</Property>
+<Property name="ABCSExtension.PostInvokeSWIPromotionIntegrationABM">false</Property>
+<Property name="OPERATION_TYPE">Y</Property>
+<Property name="UTC_FORMAT_ENABLE">N</Property>
+<Property name="LANGUAGE_CODE">US</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncClassificationSchemeListSiebelProvABCSImpl/V1}SyncClassificationSchemeListSiebelProvABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="RELEASE_WORKSPACE">N</Property>
+<Property name="REUSE_WORKSPACE">Y</Property>
+<Property name="ABCSExtension.PreXformEBMtoABMClassificationSchemeListEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeABSSyncProductClassABM">false</Property>
+<Property name="ABCSExtension.PostInvokeABSSyncProductClassABM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBMClassificationSchemeListEBM">false</Property>
+<Property name="Routing.ClassificationSchemeResponseEBS.SyncClassificationSchemeListResponse.RouteToCAVS">false</Property>
+<Property name="Routing.SyncProductClassService.RouteToCAVS">false</Property>
+<Property name="Routing.SyncProductClassService.SEBL_01.EndpointURI">http://SBL_HOSTNAME:SBL_PORT/eai_enu/start.swe?SWEExtSource=SecureWebService&amp;SWEExtCmd=Execute&amp;WSSOAP=1</Property>
+<Property name="Routing.ClassificationSchemeResponseEBS.SyncClassificationSchemeListResponse.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="TRACE.LOG.ENABLED">false</Property>
+<Property name="UTC_FORMAT_ENABLE">N</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/PIM/Core/SyncSpecificationValueSetListPIMReqABCSImpl/V1}SyncSpecificationValueSetListPIMReqABCSImpl">
+<Property name="Default.SystemID">PIM_01</Property>
+<Property name="TRACE.LOG.ENABLED">false</Property>
+<Property name="ABCSExtension.PreInvokeValueSetServiceABM">false</Property>
+<Property name="ABCSExtension.PostInvokeValueSetServiceABM">false</Property>
+<Property name="ABCSExtension.PreInvokeEBSSpecificationValueSetListEBM">false</Property>
+<Property name="ABCSExtension.PostInvokeEBSSpecificationValueSetListEBM">false</Property>
+<Property name="Routing.SpecificationValueSetEBS.SyncSpecificationValueSetList.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="Routing.PublicationService.PIM_01.EndpointURI">http://OPH_HOSTNAME:OPH_PORT/webservices/AppsWSProvider/oracle/apps/ego/pubfwk/service/PublicationService</Property>
+<Property name="Routing.ValueSetService.PIM_01.EndpointURI">http://AIA_HOSTNAME:AIA_PORT/WebServices-Valueset-context-root/ValueSetServicePort?WSDL</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/PIM/Core/SyncItemListPIMReqABCSImpl/V1}SyncItemListPIMReqABCSImpl">
+<Property name="Default.SystemID">PIM_01</Property>
+<Property name="Routing.QueryItemListPIMAdapter.PIM_01.EndpointURI">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/QueryItemListPIMAdapter/client</Property>
+<Property name="Routing.QueryBillOffMaterialsListPIMAdapter.PIM_01.EndpointURI">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/QueryBillOffMaterialsListPIMAdapter/client</Property>
+<Property name="Routing.GetListofTargetSystems.PIM_01.EndpointURI">http://OPH_HOSTNAME:OPH_PORT/webservices/AppsWSProvider/oracle/apps/ego/pubfwk/service/PublicationService?wsdl</Property>
+<Property name="Routing.PublicationService.PIM_01.EndpointURI">http://OPH_HOSTNAME:OPH_PORT/webservices/AppsWSProvider/oracle/apps/ego/pubfwk/service/PublicationService?wsdl</Property>
+<Property name="Routing.ItemEBSV2.SyncItemList.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="Routing.BillOfMaterialsEBS.SyncBillOfMaterialsList.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="Routing.PriceListEBSV2.SyncPriceListList.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="ABCSExtension.PreXformABMtoEBMItemListABM">false</Property>
+<Property name="ABCSExtension.PreInvokeItemListEBSSyncItemListEBM">false</Property>
+<Property name="ABCSExtension.PostXformEBMtoABMItemListEBM">false</Property>
+<Property name="ABCSExtension.PreInvolkePublicationServiceItemListEBM">false</Property>
+<Property name="ABCSExtension.PreInvokePriceListEBSSyncItemListEBM">false</Property>
+<Property name="ABCSExtension.PostXformEBMtoABMPriceListEBM">false</Property>
+<Property name="ABCSExtension.PreInvolkePublicationServicePriceListEBM">false</Property>
+<Property name="ABCSExtension.PreXformABMtoEBMIBillOfMaterialsListABM">false</Property>
+<Property name="ABCSExtension.PreInvokeBillOfMaterialsListEBSSyncBOMListEBM">false</Property>
+<Property name="ABCSExtension.PostXformEBMtoABMBOMListEBM">false</Property>
+<Property name="ABCSExtension.PreInvolkePublicationServiceBOMListEBM">false</Property>
+<Property name="NUMBER_OF_PARALLEL_ITEM_TARGETS">3</Property>
+<Property name="NUMBER_OF_PARALLEL_BOM_TARGETS">3</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/PIM/QueryBillOffMaterialsListPIMAdapter}QueryBillOffMaterialsListPIMAdapter">
+<Property name="Default.SystemID">PIM_01</Property>
+<Property name="BATCH_SIZE">2</Property>
+<Property name="Routing.ItemService.PIM_01.EndpointURI">http://AIA_HOSTNAME:AIA_PORT/WebServices-Item-context-root/ItemServicePort?WSDL</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/PIM/QueryItemListPIMAdapter}QueryItemListPIMAdapter">
+<Property name="Default.SystemID">PIM_01</Property>
+<Property name="BATCH_SIZE">5</Property>
+<Property name="Routing.ItemService.PIM_01.EndpointURI">http://AIA_HOSTNAME:AIA_PORT/WebServices-Item-context-root/ItemServicePort?WSDL</Property>
+<Property name="LANGUAGE_CODES">US,KO,AR</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/PIM/Core/SyncItemCatalogCategoryPIMReqABCSImpl/V1}SyncItemCatalogCategoryPIMReqABCSImpl">
+<Property name="Default.SystemID">PIM_01</Property>
+<Property name="ABCSExtension.PreProcessABM">false</Property>
+<Property name="ABCSExtension.PostProcessABM">false</Property>
+<Property name="ABCSExtension.PostProcessEBM">false</Property>
+<Property name="ABCSExtension.SpecificationValueSetPreProcessEBM">false</Property>
+<Property name="ABCSExtension.ClassificationSchemePreProcessEBM">false</Property>
+<Property name="ABCSExtension.PreXformABMtoEBMItemCatalogCategoryABM">false</Property>
+<Property name="Routing.ItemCatalogCategoryService.PIM_01.EndpointURI">http://AIA_HOSTNAME:AIA_PORT/WebServices-ICC-context-root/ItemCatalogServicePort?WSDL</Property>
+<Property name="Routing.PublicationService.PIM_01.EndpointURI">http://OPH_HOSTNAME:OPH_PORT/webservices/AppsWSProvider/oracle/apps/ego/pubfwk/service/PublicationService</Property>
+<Property name="Routing.ClassificationSchemeEBS.SyncClassificationSchemeList.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="Routing.SpecificationValueSetEBS.SyncSpecificationValueSetList.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="SyncValueSet">true</Property>
+<Property name="TRACE.LOG.ENABLED">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryInvoiceListBRMCommsProvABCSImpl/V1}QueryInvoiceListBRMCommsProvABCSImpl">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="Routing.BRMARService.RouteToCAVS">false</Property>
+<Property name="Routing.BRMARService.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="Routing.BRMBillService.RouteToCAVS">false</Property>
+<Property name="Routing.BRMBillService.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="Routing.BRMBALService.RouteToCAVS">false</Property>
+<Property name="Routing.BRMBALService.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PostXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PreInvokeQueryPCM_OP_BAL_GET_ACCT_BILLINFO">false</Property>
+<Property name="ABCSExtension.PostInvokeQueryPCM_OP_BAL_GET_ACCT_BILLINFO">false</Property>
+<Property name="ABCSExtension.PreInvokeQueryPCM_OP_AR_GET_ACCT_BILLS">false</Property>
+<Property name="ABCSExtension.PostInvokeQueryPCM_OP_AR_GET_ACCT_BILLS">false</Property>
+<Property name="ABCSExtension.PreInvokeQueryPCM_OP_AR_GET_BILL_ITEMS">false</Property>
+<Property name="ABCSExtension.PostInvokeQueryPCM_OP_AR_GET_BILL_ITEMS">false</Property>
+<Property name="ABCSExtension.PreInvokeQueryPCM_OP_AR_RESOURCE_AGGREGATION">false</Property>
+<Property name="ABCSExtension.PostInvokeQueryPCM_OP_AR_RESOURCE_AGGREGATION">false</Property>
+<Property name="ABCSExtension.PreInvokeQueryPCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNT">false</Property>
+<Property name="ABCSExtension.PostInvokeQueryPCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNT">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/UpdateCreditAlertBRMCommsProvABCSImpl/V1}UpdateCreditAlertBRMCommsProvABCSImpl">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="Routing.BRMCOLLECTIONSService_ptt.RouteToCAVS">false</Property>
+<Property name="Routing.BRMCOLLECTIONSService_ptt.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="ABCSExtension.PreXformEBMtoABMCreditAlertEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeABSCreditAlertABM">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/UpdateAccountBalanceAdjustmentRespSiebelCommsProvABCSImpl}UpdateAccountBalanceAdjustmentRespSiebelCommsProvABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="Routing.SWIAdjustmentStatusUpdate.RouteToCAVS">false</Property>
+<Property name="Routing.SWIAdjustmentStatusUpdate.SEBL_01.EndpointURI">http://SBL_HOSTNAME:SBL_PORT/eai_enu/start.swe?SWEExtSource=SecureWebService&amp;SWEExtCmd=Execute&amp;WSSOAP=1</Property>
+<Property name="ABCSExtension.PreXformEBMtoABMAccountBalanceAdjustmentRespEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeABSUpdateAdjustmentABM">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QueryInvoicePaymentSiebelCommsReqABCSImpl/V1}QueryInvoicePaymentSiebelCommsReqABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="EBSOverride.CommunicationsReceivedPaymentEBSV1.QueryReceivedPaymentList.PortType">QueryReceivedPaymentListBRMCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsReceivedPaymentEBSV1.QueryReceivedPaymentList.ServiceName">{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryReceivedPaymentListBRMCommsProvABCSImpl/V1}QueryReceivedPaymentListBRMCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsReceivedPaymentEBSV1.QueryReceivedPaymentList.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/QueryReceivedPaymentListBRMCommsProvABCSImpl/QueryReceivedPaymentListBRMCommsProvABCSImpl</Property>
+<Property name="ABCSExtension.PreXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeEBS">false</Property>
+<Property name="ABCSExtension.PostInvokeEBS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QueryUnbilledEventDetailsSiebelCommsReqABCSImpl/V1}QueryUnbilledEventDetailsSiebelCommsReqABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="EBSOverride.CommunicationsServiceUsageEBSV2.QueryServiceUsageList.PortType">QueryServiceUsageBRMCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsServiceUsageEBSV2.QueryServiceUsageList.ServiceName">{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryServiceUsageBRMCommsProvABCSImpl/V1}QueryServiceUsageBRMCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsServiceUsageEBSV2.QueryServiceUsageList.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/QueryServiceUsageBRMCommsProvABCSImpl/QueryServiceUsageBRMCommsProvABCSImpl</Property>
+<Property name="ABCSExtension.PreXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeEBS">false</Property>
+<Property name="ABCSExtension.PostInvokeEBS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/SearchUnbilledEventDetailsSiebelCommsReqABCSImpl/V1}SearchUnbilledEventDetailsSiebelCommsReqABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="EBSOverride.CommunicationsServiceUsageEBSV2.QueryServiceUsageList.PortType">QueryServiceUsageBRMCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsServiceUsageEBSV2.QueryServiceUsageList.ServiceName">{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryServiceUsageBRMCommsProvABCSImpl/V1}QueryServiceUsageBRMCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsServiceUsageEBSV2.QueryServiceUsageList.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/QueryServiceUsageBRMCommsProvABCSImpl/QueryServiceUsageBRMCommsProvABCSImpl</Property>
+<Property name="ABCSExtension.PreXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeEBS">false</Property>
+<Property name="ABCSExtension.PostInvokeEBS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QueryBalanceGroupServicesSiebelCommsReqABCSImpl/V1}QueryBalanceGroupServicesSiebelCommsReqABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="EBSOverride.InstalledProductEBS.QueryInstalledProductList">true</Property>
+<Property name="EBSOverride.InstalledProductEBS.QueryInstalledProductList.PortType">QueryInstalledProductListBRMCommsProvABCSImpl</Property>
+<Property name="EBSOverride.InstalledProductEBS.QueryInstalledProductList.ServiceName">{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryInstalledProductListBRMCommsProvABCSImpl/V1}QueryInstalledProductListBRMCommsProvABCSImpl</Property>
+<Property name="EBSOverride.InstalledProductEBS.QueryInstalledProductList.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/QueryInstalledProductListBRMCommsProvABCSImpl/QueryInstalledProductListBRMCommsProvABCSImpl</Property>
+<Property name="ABCSExtension.PreXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeEBS">false</Property>
+<Property name="ABCSExtension.PostInvokeEBS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryReceivedPaymentListBRMCommsProvABCSImpl/V1}QueryReceivedPaymentListBRMCommsProvABCSImpl">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="Routing.BRMARService.RouteToCAVS">false</Property>
+<Property name="Routing.BRMARService.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="Routing.BRMBALService.RouteToCAVS">false</Property>
+<Property name="Routing.BRMBALService.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeABS">false</Property>
+<Property name="ABCSExtension.PostInvokeABS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QueryInvoiceListSiebelCommsReqABCSImpl/V1}QueryInvoiceListSiebelCommsReqABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="EBSOverride.CommunicationsInvoiceEBSV2.QueryInvoiceList">true</Property>
+<Property name="EBSOverride.CommunicationsInvoiceEBSV2.QueryInvoiceList.PortType">QueryInvoiceListBRMCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsInvoiceEBSV2.QueryInvoiceList.ServiceName">{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryInvoiceListBRMCommsProvABCSImpl/V1}QueryInvoiceListBRMCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsInvoiceEBSV2.QueryInvoiceList.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/QueryInvoiceListBRMCommsProvABCSImpl/QueryInvoiceListBRMCommsProvABCSImpl</Property>
+<Property name="ABCSExtension.PreXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PostXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PreInvokeEBS">false</Property>
+<Property name="ABCSExtension.PostInvokeEBS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Communications/CreateAccountBalanceAdjustmentSiebelCommsReqABCSImpl/V1}CreateAccountBalanceAdjustmentSiebelCommsReqABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="EBSOverride.CommunicationsAccountBalanceAdjustmentEBSV2.CreateAccountBalanceAdjustmentList.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/CreateAccountBalanceAdjustmentBRMCommsProvABCSImpl/client</Property>
+<Property name="EBSOverride.CommunicationsAccountBalanceAdjustmentEBSV2.CreateAccountBalanceAdjustmentList.PortType">CreateAccountBalanceAdjustmentBRMCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsAccountBalanceAdjustmentEBSV2.CreateAccountBalanceAdjustmentList.ServiceName">{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/CreateAccountBalanceAdjustmentBRMCommsProvABCSImpl/V1}CreateAccountBalanceAdjustmentBRMCommsProvABCSImpl</Property>
+<Property name="ABCSExtension.PreXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeEBS">false</Property>
+<Property name="ABCSExtension.PostInvokeEBS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/CreateReceivedPaymentBRMCommsProvABCSImpl/V1}CreateReceivedPaymentBRMCommsProvABCSImpl">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="BRM.Payment.Command">4</Property>
+<Property name="Routing.BRMPYMTService_ptt.RouteToCAVS">false</Property>
+<Property name="Routing.BRMPYMTService_ptt.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeABS">false</Property>
+<Property name="ABCSExtension.PostInvokeABS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QueryUnbilledBalanceDetailsSiebelCommsReqABCSImpl/V1}QueryUnbilledBalanceDetailsSiebelCommsReqABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="EBSOverride.CommunicationsServiceUsageEBSV2.QueryServiceUsageList.PortType">QueryServiceUsageBRMCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsServiceUsageEBSV2.QueryServiceUsageList.ServiceName">{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryServiceUsageBRMCommsProvABCSImpl/V1}QueryServiceUsageBRMCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsServiceUsageEBSV2.QueryServiceUsageList.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/QueryServiceUsageBRMCommsProvABCSImpl/QueryServiceUsageBRMCommsProvABCSImpl</Property>
+<Property name="ABCSExtension.PreXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeEBS">false</Property>
+<Property name="ABCSExtension.PostInvokeEBS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/SearchPaymentSiebelCommsReqABCSImpl/V1}SearchPaymentSiebelCommsReqABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="EBSOverride.CommunicationsReceivedPaymentEBSV1.QueryReceivedPaymentList.PortType">QueryReceivedPaymentListBRMCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsReceivedPaymentEBSV1.QueryReceivedPaymentList.ServiceName">{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryReceivedPaymentListBRMCommsProvABCSImpl/V1}QueryReceivedPaymentListBRMCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsReceivedPaymentEBSV1.QueryReceivedPaymentList.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/QueryReceivedPaymentListBRMCommsProvABCSImpl/QueryReceivedPaymentListBRMCommsProvABCSImpl</Property>
+<Property name="ABCSExtension.PreXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeEBS">false</Property>
+<Property name="ABCSExtension.PostInvokeEBS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QueryBalanceGroupListSiebelCommsReqABCSImpl/V1}QueryBalanceGroupListSiebelCommsReqABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="EBSOverride.CustomerPartyEBS.QueryCustomerPartyList">true</Property>
+<Property name="EBSOverride.CustomerPartyEBS.QueryCustomerPartyList.PortType">QueryCustomerPartyListBRMCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CustomerPartyEBS.QueryCustomerPartyList.ServiceName">{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryCustomerPartyListBRMCommsProvABCSImpl/V1}QueryCustomerPartyListBRMCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CustomerPartyEBS.QueryCustomerPartyList.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/QueryCustomerPartyListBRMCommsProvABCSImpl/QueryCustomerPartyListBRMCommsProvABCSImpl</Property>
+<Property name="ABCSExtension.PreXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeEBS">false</Property>
+<Property name="ABCSExtension.PostInvokeEBS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryServiceUsageBRMCommsProvABCSImpl/V1}QueryServiceUsageBRMCommsProvABCSImpl">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="Routing.BRMBILLService_ptt.RouteToCAVS">false</Property>
+<Property name="Routing.BRMBILLService_ptt.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="Routing.BRMARService_ptt.RouteToCAVS">false</Property>
+<Property name="Routing.BRMARService_ptt.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="Routing.BRMBALService_ptt.RouteToCAVS">false</Property>
+<Property name="Routing.BRMBALService_ptt.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PreInvokePCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNTABM">false</Property>
+<Property name="ABCSExtension.PostInvokePCM_OP_BILL_GET_ITEM_EVENT_CHARGE_DISCOUNTABM">false</Property>
+<Property name="ABCSExtension.PreInvokeQueryPCM_OP_BAL_GET_ACCT_BILLINFO">false</Property>
+<Property name="ABCSExtension.PostInvokeQueryPCM_OP_BAL_GET_ACCT_BILLINFO">false</Property>
+<Property name="ABCSExtension.PreInvokePCM_OP_AR_GET_BILL_ITEMSABM">false</Property>
+<Property name="ABCSExtension.PostInvokePCM_OP_AR_GET_BILL_ITEMSABM">false</Property>
+<Property name="ABCSExtension.PreInvokePCM_OP_AR_RESOURCE_AGGREGATIONABM">false</Property>
+<Property name="ABCSExtension.PostInvokePCM_OP_AR_RESOURCE_AGGREGATIONABM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBM">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryAccountBalanceAdjustmentBRMCommsProvABCSImpl/V1}QueryAccountBalanceAdjustmentBRMCommsProvABCSImpl">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="Routing.BRMARServices.RouteToCAVS">false</Property>
+<Property name="Routing.BRMARServices.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeABS">false</Property>
+<Property name="ABCSExtension.PostInvokeABS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QueryInvoiceEventDetailsSiebelCommsReqABCSImpl/V1}QueryInvoiceEventDetailsSiebelCommsReqABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="EBSOverride.CommunicationsInvoiceEBSV2.QueryInvoiceList">true</Property>
+<Property name="EBSOverride.CommunicationsInvoiceEBSV2.QueryInvoiceList.PortType">QueryInvoiceListBRMCommsProvABCSImplService</Property>
+<Property name="EBSOverride.CommunicationsInvoiceEBSV2.QueryInvoiceList.ServiceName">{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryInvoiceListBRMCommsProvABCSImplService/V1}QueryInvoiceListBRMCommsProvABCSImplService</Property>
+<Property name="EBSOverride.CommunicationsInvoiceEBSV2.QueryInvoiceList.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/QueryInvoiceListBRMCommsProvABCSImpl/QueryInvoiceListBRMCommsProvABCSImpl</Property>
+<Property name="ABCSExtension.PreXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PostXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PreInvokeEBS">false</Property>
+<Property name="ABCSExtension.PostInvokeEBS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/CreateInvoicePaymentSiebelCommsReqABCSImpl/V1}CreateInvoicePaymentSiebelCommsReqABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="EBSOverride.CommunicationsReceivedPaymentEBSV1.CreateReceivedPaymentRequestResponse.PortType">CreateReceivedPaymentBRMCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsReceivedPaymentEBSV1.CreateReceivedPaymentRequestResponse.ServiceName">{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/CreateReceivedPaymentBRMCommsProvABCSImpl/V1}CreateReceivedPaymentBRMCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsReceivedPaymentEBSV1.CreateReceivedPaymentRequestResponse.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/CreateReceivedPaymentBRMCommsProvABCSImpl/CreateReceivedPaymentBRMCommsProvABCSImpl</Property>
+<Property name="ABCSExtension.PreXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeEBS">false</Property>
+<Property name="ABCSExtension.PostInvokeEBS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/SearchInvoiceEventDetailsSiebelCommsReqABCSImpl/V1}SearchInvoiceEventDetailsSiebelCommsReqABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="EBSOverride.CommunicationsInvoiceEBSV2.QueryInvoiceList">true</Property>
+<Property name="EBSOverride.CommunicationsInvoiceEBSV2.QueryInvoiceList.PortType">QueryInvoiceListBRMCommsProvABCSImplService</Property>
+<Property name="EBSOverride.CommunicationsInvoiceEBSV2.QueryInvoiceList.ServiceName">{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryInvoiceListBRMCommsProvABCSImplService/V1}QueryInvoiceListBRMCommsProvABCSImplService</Property>
+<Property name="EBSOverride.CommunicationsInvoiceEBSV2.QueryInvoiceList.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/QueryInvoiceListBRMCommsProvABCSImplService/QueryInvoiceListBRMCommsProvABCSImplService</Property>
+<Property name="ABCSExtension.PreXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PostXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PreInvokeEBS">false</Property>
+<Property name="ABCSExtension.PostInvokeEBS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QueryInvoiceBalanceDetailsSiebelCommsReqABCSImpl/V1}QueryInvoiceBalanceDetailsSiebelCommsReqABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="EBSOverride.CommunicationsInvoiceEBSV2.QueryInvoiceList">true</Property>
+<Property name="EBSOverride.CommunicationsInvoiceEBSV2.QueryInvoiceList.PortType">QueryInvoiceListBRMCommsProvABCSImplService</Property>
+<Property name="EBSOverride.CommunicationsInvoiceEBSV2.QueryInvoiceList.ServiceName">{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryInvoiceListBRMCommsProvABCSImplService/V1}QueryInvoiceListBRMCommsProvABCSImplService</Property>
+<Property name="EBSOverride.CommunicationsInvoiceEBSV2.QueryInvoiceList.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/QueryInvoiceListBRMCommsProvABCSImplService/QueryInvoiceListBRMCommsProvABCSImplService</Property>
+<Property name="ABCSExtension.PreXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PostXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PreInvokeEBS">false</Property>
+<Property name="ABCSExtension.PostInvokeEBS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QueryPaymentSiebelCommsReqABCSImpl/V1}QueryPaymentSiebelCommsReqABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="EBSOverride.CommunicationsReceivedPaymentEBSV1.QueryReceivedPaymentList.PortType">QueryReceivedPaymentListBRMCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsReceivedPaymentEBSV1.QueryReceivedPaymentList.ServiceName">{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryReceivedPaymentListBRMCommsProvABCSImpl/V1}QueryReceivedPaymentListBRMCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsReceivedPaymentEBSV1.QueryReceivedPaymentList.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/QueryReceivedPaymentListBRMCommsProvABCSImpl/QueryReceivedPaymentListBRMCommsProvABCSImpl</Property>
+<Property name="ABCSExtension.PreXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeEBS">false</Property>
+<Property name="ABCSExtension.PostInvokeEBS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/CreateAccountBalanceAdjustmentBRMCommsProvABCSImpl/V1}CreateAccountBalanceAdjustmentBRMCommsProvABCSImpl">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="Routing.BRMARServices.RouteToCAVS">false</Property>
+<Property name="Routing.BRMARServices.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="Routing.CreateAccountBalanceAdjustmentListResponseBRMCommsJMSProducer.EndpointURI">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/CreateAccountBalanceAdjustmentListResponseBRMCommsJMSProducer/CreateAccountBalanceAdjustmentListResponseBRMCommsJMSProducer_ep</Property>
+<Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeABS">false</Property>
+<Property name="ABCSExtension.PostInvokeABS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QueryBalanceDetailsSiebelCommsReqABCSImpl/V1}QueryBalanceDetailsSiebelCommsReqABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="EBSOverride.CustomerPartyEBS.QueryCustomerPartyList">true</Property>
+<Property name="EBSOverride.CustomerPartyEBS.QueryCustomerPartyList.PortType">QueryCustomerPartyListBRMCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CustomerPartyEBS.QueryCustomerPartyList.ServiceName">{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryCustomerPartyListBRMCommsProvABCSImpl/V1}QueryCustomerPartyListBRMCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CustomerPartyEBS.QueryCustomerPartyList.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/QueryCustomerPartyListBRMCommsProvABCSImpl/QueryCustomerPartyListBRMCommsProvABCSImpl</Property>
+<Property name="ABCSExtension.PreXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeEBS">false</Property>
+<Property name="ABCSExtension.PostInvokeEBS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryCustomerPartyListBRMCommsProvABCSImpl/V1}QueryCustomerPartyListBRMCommsProvABCSImpl">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="Routing.BRMBALService_ptt.RouteToCAVS">false</Property>
+<Property name="Routing.BRMBALService_ptt.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="Routing.BRMARService_ptt.RouteToCAVS">false</Property>
+<Property name="Routing.BRMARService_ptt.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="ABCSExtension.PreXformABMtoSyncItemCompositionListEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeItemCompositionEBS">false</Property>
+<Property name="ABCSExtension.PreXformQueryBalanceSummaryEBMtoABM">false</Property>
+<Property name="ABCSExtension.PreInvokeQueryBalanceSummaryABS">false</Property>
+<Property name="ABCSExtension.PostInvokeQueryBalanceSummaryABS">false</Property>
+<Property name="ABCSExtension.PostXformQueryBalanceSummaryEBMtoABM">false</Property>
+<Property name="ABCSExtension.PreXformQueryBalanceDetailsEBMtoABM">false</Property>
+<Property name="ABCSExtension.PostXformQueryBalanceDetailsEBMtoABM">false</Property>
+<Property name="ABCSExtension.PreInvokeQueryBalanceDetailsABS">false</Property>
+<Property name="ABCSExtension.PostInvokeQueryBalanceDetailsABS">false</Property>
+<Property name="ABCSExtension.PreXformQueryBalanceGroupListEBMtoABM">false</Property>
+<Property name="ABCSExtension.PostXformQueryBalanceGroupListEBMtoABM">false</Property>
+<Property name="ABCSExtension.PreInvokeQueryBalanceGroupListABS">false</Property>
+<Property name="ABCSExtension.PostInvokeQueryBalanceGroupListABS">false</Property>
+<Property name="ABCSExtension.PreInvokeQueryPCM_OP_BAL_GET_ACCT_BILLINFO">false</Property>
+<Property name="ABCSExtension.PreInvokeQueryPCM_OP_BAL_GET_ACCT_BILLINFO">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/UpdateCreditAlertSiebelCommsReqABCSImpl/V1}UpdateCreditAlertSiebelCommsReqABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="EBSOverride.CreditAlertEBS.UpdateCreditAlertList.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/UpdateCreditAlertBRMCommsProvABCSImpl/UpdateCreditAlertBRMCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CreditAlertEBS.UpdateCreditAlertList.PortType">UpdateCreditAlertBRMCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CreditAlertEBS.UpdateCreditAlertList.ServiceName">{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/UpdateCreditAlertBRMCommsProvABCSImpl/V1}UpdateCreditAlertBRMCommsProvABCSImpl</Property>
+<Property name="ABCSExtension.PreXformABMtoEBMCreditAlertABM">false</Property>
+<Property name="ABCSExtension.PreInvokeEBSCreditAlertEBM">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/CreatePaymentSiebelCommsReqABCSImpl/V1}CreatePaymentSiebelCommsReqABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="EBSOverride.CommunicationsReceivedPaymentEBSV1.CreateReceivedPaymentRequestResponse.PortType">CreateReceivedPaymentBRMCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsReceivedPaymentEBSV1.CreateReceivedPaymentRequestResponse.ServiceName">{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/CreateReceivedPaymentBRMCommsProvABCSImpl/V1}CreateReceivedPaymentBRMCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsReceivedPaymentEBSV1.CreateReceivedPaymentRequestResponse.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/CreateReceivedPaymentBRMCommsProvABCSImpl/CreateReceivedPaymentBRMCommsProvABCSImpl</Property>
+<Property name="ABCSExtension.PreXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeEBS">false</Property>
+<Property name="ABCSExtension.PostInvokeEBS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QueryInvoiceSiebelCommsReqABCSImpl/V1}QueryInvoiceSiebelCommsReqABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="EBSOverride.CommunicationsInvoiceEBSV2.QueryInvoiceList">true</Property>
+<Property name="EBSOverride.CommunicationsInvoiceEBSV2.QueryInvoiceList.PortType">QueryInvoiceListBRMCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsInvoiceEBSV2.QueryInvoiceList.ServiceName">{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryInvoiceListBRMCommsProvABCSImpl/V1}QueryInvoiceListBRMCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsInvoiceEBSV2.QueryInvoiceList.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/QueryInvoiceListBRMCommsProvABCSImpl/QueryInvoiceListBRMCommsProvABCSImpl</Property>
+<Property name="ABCSExtension.PreXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PostXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PreInvokeEBS">false</Property>
+<Property name="ABCSExtension.PostInvokeEBS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QueryBalanceSummarySiebelCommsReqABCSImpl/V1}QueryBalanceSummarySiebelCommsReqABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="EBSOverride.CustomerPartyEBS.QueryCustomerPartyList">false</Property>
+<Property name="EBSOverride.CustomerPartyEBS.QueryCustomerPartyList.PortType">QueryCustomerPartyListBRMCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CustomerPartyEBS.QueryCustomerPartyList.ServiceName">{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryCustomerPartyListBRMCommsProvABCSImpl/V1}QueryCustomerPartyListBRMCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CustomerPartyEBS.QueryCustomerPartyList.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/QueryCustomerPartyListBRMCommsProvABCSImpl/QueryCustomerPartyListBRMCommsProvABCSImpl</Property>
+<Property name="ABCSExtension.PreXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeEBS">false</Property>
+<Property name="ABCSExtension.PostInvokeEBS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryInstalledProductListBRMCommsProvABCSImpl/V1}QueryInstalledProductListBRMCommsProvABCSImpl">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="Routing.BRMBaseServices_ptt.RouteToCAVS">false</Property>
+<Property name="Routing.BRMBaseServices_ptt.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="Routing.BRMSubscriptionServices_ptt.RouteToCAVS">false</Property>
+<Property name="Routing.BRMSubscriptionServices_ptt.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PreInvokePCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGSABS">false</Property>
+<Property name="ABCSExtension.PostInvokePCM_OP_SUBSCRIPTION_GET_PURCHASED_OFFERINGSABS">false</Property>
+<Property name="ABCSExtension.PreInvokePCM_OP_READ_FLDSABS">false</Property>
+<Property name="ABCSExtension.PostInvokePCM_OP_READ_FLDSABS">false</Property>
+<Property name="ABCSExtension.PreInvokePCM_OP_SEARCHABS">false</Property>
+<Property name="ABCSExtension.PostInvokePCM_OP_SEARCHABS">false</Property>
+<Property name="ABCSExtension.PostInvokePCM_OP_SEARCHABS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Communications/QueryAccountBalanceAdjustmentSiebelCommsReqABCSImpl/V1}QueryAccountBalanceAdjustmentSiebelCommsReqABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="EBSOverride.CommunicationsAccountBalanceAdjustmentEBSV2.QueryAccountBalanceAdjustmentList.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/QueryAccountBalanceAdjustmentBRMCommsProvABCSImpl/QueryAccountBalanceAdjustmentBRMCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsAccountBalanceAdjustmentEBSV2.QueryAccountBalanceAdjustmentList.PortType">QueryAccountBalanceAdjustmentBRMCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsAccountBalanceAdjustmentEBSV2.QueryAccountBalanceAdjustmentList.ServiceName">{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryAccountBalanceAdjustmentBRMCommsProvABCSImpl/V1}QueryAccountBalanceAdjustmentBRMCommsProvABCSImpl</Property>
+<Property name="ABCSExtension.PreXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeEBS">false</Property>
+<Property name="ABCSExtension.PostInvokeEBS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QueryUnbilledUsageSiebelCommsReqABCSImpl/V1}QueryUnbilledUsageSiebelCommsReqABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="EBSOverride.CommunicationsServiceUsageEBSV2.QueryServiceUsageList.PortType">QueryServiceUsageBRMCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsServiceUsageEBSV2.QueryServiceUsageList.ServiceName">{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/QueryServiceUsageBRMCommsProvABCSImpl/V1}QueryServiceUsageBRMCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsServiceUsageEBSV2.QueryServiceUsageList.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/QueryServiceUsageBRMCommsProvABCSImpl/QueryServiceUsageBRMCommsProvABCSImpl</Property>
+<Property name="ABCSExtension.PreXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeEBS">false</Property>
+<Property name="ABCSExtension.PostInvokeEBS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/CreateReceivedPaymentListBRMCommsProvABCSImpl/V1}CreateReceivedPaymentListBRMCommsProvABCSImpl">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="BRM.Payment.Command">4</Property>
+<Property name="Routing.BRMPymtServices.RouteToCAVS">false</Property>
+<Property name="Routing.BRMPymtServices.BRM_01.EndpointURI">eis/BRM</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QueryReceivedPaymentListSiebelCommsProvABCSImpl/V1}QueryReceivedPaymentListSiebelCommsProvABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="Routing.OrderDetailService.RouteToCAVS">false</Property>
+<Property name="Routing.OrderDetailService.SEBL_01.EndpointURI">http://SBL_HOSTNAME:SBL_PORT/eai_enu/start.swe?SWEExtSource=SecureWebService&amp;SWEExtCmd=Execute&amp;WSSOAP=1</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/SyncSponsorshipBRMCommsReqABCSImpl/V1}SyncSponsorshipBRMCommsReqABCSImpl">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="EBSOverride.CommunicationsItemCompositionEBS.SyncItemCompositionList">true</Property>
+<Property name="EBSOverride.CommunicationsItemCompositionEBS.SyncItemCompositionList.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/SyncItemCompositionListSiebelCommsProvABCSImpl/SyncItemCompositionListSiebelCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsItemCompositionEBS.SyncItemCompositionList.PortType">{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/SyncItemCompositionListSiebelCommsProvABCSImpl/V1}SyncItemCompositionListSiebelCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsItemCompositionEBS.SyncItemCompositionList.ServiceName">{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/SyncItemCompositionListSiebelCommsProvABCSImpl/V1}SyncItemCompositionListSiebelCommsProvABCSImpl</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/SyncMultiSchemaChangeBRMRequesterImpl/V1}SyncMultiSchemaChangeBRMRequesterImpl">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="CustomTables">XREF_CUSTOMERPARTY_A_16,XREF_CUSTOMERPARTY_A_17</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/SCE/Industry/Comms/QueryProductClassAndAttributesSCECommsReqABCSImpl/V1}QueryProductClassAndAttributesSCECommsReqABCSImpl">
+<Property name="Default.SystemID">SCE_01</Property>
+<Property name="Routing.CommunicationsClassificationEBSV1.QueryClassificationList.RouteToCAVS">false</Property>
+<Property name="Routing.CommunicationsSpecificationEBSV1.QuerySpecificationList.RouteToCAVS">false</Property>
+<Property name="Routing.CommunicationsSpecificationValueSetEBSV1.QuerySpecificationValueSetList.RouteToCAVS">false</Property>
+<Property name="Routing.EdgeApplications">SEBL_01</Property>
+<Property name="Default.Routing.EdgeApplication">SEBL_01</Property>
+<Property name="EBSOverride.CommunicationsClassificationEBSV1.QueryClassificationList.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/QueryClassificationListSiebelCommsProvABCSImpl/QueryClassificationListSiebelCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsClassificationEBSV1.QueryClassificationList.PortType">QueryClassificationListSiebelCommsProvABCSImplService</Property>
+<Property name="EBSOverride.CommunicationsClassificationEBSV1.QueryClassificationList.ServiceName">{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QueryClassificationListSiebelCommsProvABCSImpl/V1}QueryClassificationListSiebelCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsSpecificationEBSV1.QuerySpecificationList.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/QuerySpecificationListSiebelCommsProvABCSImpl/QuerySpecificationListSiebelCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsSpecificationEBSV1.QuerySpecificationList.PortType">QuerySpecificationListSiebelCommsProvABCSImplService</Property>
+<Property name="EBSOverride.CommunicationsSpecificationEBSV1.QuerySpecificationList.ServiceName">{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QuerySpecificationListSiebelCommsProvABCSImpl/V1}QuerySpecificationListSiebelCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsSpecificationValueSetEBSV1.QuerySpecificationValueSetList.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/QuerySpecificationValueSetListSiebelCommsProvABCSImpl/QuerySpecificationValueSetListSiebelCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsSpecificationValueSetEBSV1.QuerySpecificationValueSetList.PortType">QuerySpecificationValueSetListSiebelCommsProvABCSImplService</Property>
+<Property name="EBSOverride.CommunicationsSpecificationValueSetEBSV1.QuerySpecificationValueSetList.ServiceName">{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QuerySpecificationValueSetListSiebelCommsProvABCSImpl/V1}QuerySpecificationValueSetListSiebelCommsProvABCSImpl</Property>
+<Property name="ABCSExtension.PreInvokeCommunicationsClassificationEBS">false</Property>
+<Property name="ABCSExtension.PostInvokeCommunicationsClassificationEBS">false</Property>
+<Property name="ABCSExtension.PreInvokeEBSQueryClassificationListEBM">false</Property>
+<Property name="ABCSExtension.PostXformQueryClassificationListResponeEBMtoProductClassAndAttributesResponseABM">false</Property>
+<Property name="ABCSExtension.PreXformQueryClassificationListResponseEBMtoQuerySpecificationListEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeCommunicationsSpecificationEBS">false</Property>
+<Property name="ABCSExtension.PostInvokeCommunicationsSpecificationEBS">false</Property>
+<Property name="ABCSExtension.PreXformQueryClassificationListResponseEBMtoQuerySpecificationValueSetListEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeCommunicationsSpecifictionValueSetEBS">false</Property>
+<Property name="ABCSExtension.PostInvokeCommunicationsSpecifictionValueSetEBS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/OSMCFS/Industry/Comms/CreateOrderFalloutNotificationOSMCFSCommsProvImpl/V1}CreateOrderFalloutNotificationOSMCFSCommsProvImpl">
+<Property name="Default.SystemID">OSMCFS_01</Property>
+<Property name="Routing.CreateOrderFalloutNotification.OSMCFS_01.EndpointURI">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/CreateOrderFalloutNotificationOSMCFSCommsJMSProducer/client</Property>
+<Property name="Fault.DefaultSeverity">2</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/ProcessInstalledProductSpecialRatingSetListBRMCommsProvABCSImpl/V1}ProcessInstalledProductSpecialRatingSetListBRMCommsProvABCSImpl">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+<Property name="Routing.BRMCUSTService.RouteToCAVS">false</Property>
+<Property name="Routing.BRMCUSTService.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="ABCSExtension.PreInvokeABS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/SyncProductBRMCommsReqABCSImpl/V1}SyncProductBRMCommsReqABCSImpl">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="CallBackAddress">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/SyncProductBRMCommsReqABCSImpl/SyncProductBRMCommsReqABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsItemCompositionEBSV1.SyncItemCompositionList">true</Property>
+<Property name="EBSOverride.CommunicationsItemCompositionEBSV1.SyncItemCompositionList.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/SyncItemCompositionListSiebelCommsProvABCSImpl/SyncItemCompositionListSiebelCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsItemCompositionEBSV1.SyncItemCompositionList.PortType">{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/SyncItemCompositionListSiebelCommsProvABCSImpl/V1}SyncItemCompositionListSiebelCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsItemCompositionEBSV1.SyncItemCompositionList.ServiceName">{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/SyncItemCompositionListSiebelCommsProvABCSImpl/V1}SyncItemCompositionListSiebelCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsPriceListEBSV2.SyncPriceListList">true</Property>
+<Property name="EBSOverride.CommunicationsPriceListEBSV2.SyncPriceListList.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/ProductOptimizedSyncPriceListListSiebelCommsProvABCSImpl/ProductOptimizedSyncPriceListListSiebelCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsPriceListEBSV2.SyncPriceListList.PortType">{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/ProductOptimizedSyncPriceListListSiebelCommsProvABCSImpl/V1}ProductOptimizedSyncPriceListListSiebelCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsPriceListEBSV2.SyncPriceListList.ServiceName">{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/ProductOptimizedSyncPriceListListSiebelCommsProvABCSImpl/V1}ProductOptimizedSyncPriceListListSiebelCommsProvABCSImpl</Property>
+<Property name="ABCSExtension.PreXformABMtoSyncItemCompositionListEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeItemCompositionEBS">false</Property>
+<Property name="ABCSExtension.PreXformABMtoPriceListListEBM">false</Property>
+<Property name="ABCSExtension.PreInvokePriceListEBS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/ProcessFulfillmentOrderBillingBRMCommsDeleteSubProcess/V1}ProcessFulfillmentOrderBillingBRMCommsDeleteSubProcess">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="ABCSExtension.PreInvokeEBM">false</Property>
+<Property name="ABCSExtension.PostInvokeEBM">true</Property>
+<Property name="ABCSExtension.PreProcessPCM_OP_SUBSCRIPTION_CANCEL_DISCOUNTABM">false</Property>
+<Property name="ABCSExtension.PostProcessPCM_OP_SUBSCRIPTION_CANCEL_DISCOUNTABM">false</Property>
+<Property name="ABCSExtension.PreProcessPCM_OP_SUBSCRIPTION_CANCEL_PRODUCTABM">false</Property>
+<Property name="ABCSExtension.PostProcessPCM_OP_SUBSCRIPTION_CANCEL_PRODUCTABM">false</Property>
+<Property name="ABCSExtension.PreProcessPCM_OP_CUST_SET_STATUSABM">false</Property>
+<Property name="ABCSExtension.PostProcessPCM_OP_CUST_SET_STATUSABM">false</Property>
+<Property name="ABCSExtension.PreProcessDeletePCM_OP_SUBSCRIPTION_PURCHASE_DEALABM">false</Property>
+<Property name="ABCSExtension.PostProcessDeletePCM_OP_SUBSCRIPTION_PURCHASE_DEALABM">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/ProductOptimizedSyncPriceListListSiebelCommsProvABCSImpl/V1}ProductOptimizedSyncPriceListListSiebelCommsProvABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="CallBackAddress">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/ProductOptimizedSyncPriceListListSiebelCommsProvABCSImpl/ProductOptimizedSyncPriceListListSiebelCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsItemCompositionEBSV1.SyncItemCompositionList">true</Property>
+<Property name="EBSOverride.CommunicationsItemCompositionEBSV1.SyncItemCompositionList.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/SyncItemCompositionListSiebelCommsProvABCSImpl/SyncItemCompositionListSiebelCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsItemCompositionEBSV1.SyncItemCompositionList.PortType">{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/SyncItemCompositionListSiebelCommsProvABCSImpl/V1}SyncItemCompositionListSiebelCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsItemCompositionEBSV1.SyncItemCompositionList.ServiceName">{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/SyncItemCompositionListSiebelCommsProvABCSImpl/V1}SyncItemCompositionListSiebelCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsPriceListResponseEBS.SyncPriceListListResponse">true</Property>
+<Property name="EBSOverride.CommunicationsPriceListResponseEBS.SyncPriceListListResponse.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/CommunicationsPriceListResponseEBSV2/CommunicationsPriceListResponseEBSV2_ep</Property>
+<Property name="EBSOverride.CommunicationsPriceListResponseEBS.SyncPriceListListResponse.PortType">{http://xmlns.oracle.com/EnterpriseServices/Core/PriceList/V2}CommunicationsPriceListResponse</Property>
+<Property name="EBSOverride.CommunicationsPriceListResponseEBS.SyncPriceListListResponse.ServiceName">{http://xmlns.oracle.com/EnterpriseServices/Core/PriceList/V2}CommunicationsPriceListResponse</Property>
+<Property name="Routing.SiebelProductService.SEBL_01.EndpointURI">http://SBL_HOSTNAME:SBL_PORT/eai_enu/start.swe?SWEExtSource=SecureWebService&amp;SWEExtCmd=Execute&amp;WSSOAP=1</Property>
+<Property name="Routing.SiebelProductService.RouteToCAVS">false</Property>
+<Property name="Routing.SiebelPriceListService.SEBL_01.EndpointURI">http://SBL_HOSTNAME:SBL_PORT/eai_enu/start.swe?SWEExtSource=SecureWebService&amp;SWEExtCmd=Execute&amp;WSSOAP=1</Property>
+<Property name="Routing.SiebelPriceListService.RouteToCAVS">false</Property>
+<Property name="Siebel.SEBL_01.BusinessUnit">0-R9NH</Property>
+<Property name="Siebel.SEBL_01.Product.WorkspaceName">Demo Workspace</Property>
+<Property name="Siebel.Product.WorkspaceReleaseFlag">N</Property>
+<Property name="Siebel.Product.WorkspaceReuseFlag">Y</Property>
+<Property name="Siebel.SEBL_01.PriceList.ID">SBL_PRICE_LIST</Property>
+<Property name="Siebel.PriceList.Currency">SEK</Property>
+<Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PostXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PreInvokeABS">false</Property>
+<Property name="ABCSExtension.PostInvokeABS">false</Property>
+<Property name="ABCSExtension.PreXformPriceListListEBMtoItemCompositionEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeItemCompositionEBS">false</Property>
+<Property name="ABCSExtension.PreXformPriceListListEBMtoProductABM">false</Property>
+<Property name="ABCSExtension.PreInvokeProductABM">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/ProcessInstalledProductSpecialRatingSetListSiebelCommsReqABCSImpl/V1}ProcessInstalledProductSpecialRatingSetListSiebelCommsReqABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="ABCSExtension.ABCSExtension.PreXformABMtoEBM">false</Property>
+<Property name="EBSOverride.CommunicationsInstalledProductEBSV2.ProcessInstalledProductSpecialRatingSetList.PortType">ProcessInstalledProductSpecialRatingSetListBRMCommsProvABCSImplService</Property>
+<Property name="EBSOverride.CommunicationsInstalledProductEBSV2.ProcessInstalledProductSpecialRatingSetList.ServiceName">{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/ProcessInstalledProductSpecialRatingSetListBRMCommsProvABCSImpl/V1}ProcessInstalledProductSpecialRatingSetListBRMCommsProvABCSImplService</Property>
+<Property name="EBSOverride.CommunicationsInstalledProductEBSV2.ProcessInstalledProductSpecialRatingSetList.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/ProcessInstalledProductSpecialRatingSetListBRMCommsProvABCSImpl/ProcessInstalledProductSpecialRatingSetListBRMCommsProvABCSImpl</Property>
+<Property name="ABCSExtension.PreInvokeEBS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QuerySpecificationValueSetListSiebelCommsProvABCSImpl/V1}QuerySpecificationValueSetListSiebelCommsProvABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="Routing.QueryProductClassAttributes.RouteToCAVS">false</Property>
+<Property name="Routing.QueryProductClassAttributes.SEBL_01.EndpointURI">http://SBL_HOSTNAME:SBL_PORT/eai_enu/start.swe?SWEExtSource=SecureWebService&amp;SWEExtCmd=Execute&amp;WSSOAP=1</Property>
+<Property name="ABCSExtension.PreInvokeABSAttributeQueryByExample_InputABM">false</Property>
+<Property name="ABCSExtension.PostInvokeABSAttributeQueryByExample_InputABM">false</Property>
+<Property name="ABCSExtension.PreXformEBMtoABMSpecificationValueSetListEBM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBMSpecificationValueSetListEBM">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/EnterpriseFlows/Industry/Comms/CommsProcessFulfillmentOrderBillingAccountListEBF/V1}CommsProcessFulfillmentOrderBillingAccountListEBF">
+<Property name="EBSOverride.BillingResponseEBS.ProcessFulfillmentOrderBillingAccountListResponse.PortType">ProcessFOBillingAccountListRespOSMCFSCommsJMSProducer</Property>
+<Property name="EBSOverride.BillingResponseEBS.ProcessFulfillmentOrderBillingAccountListResponse.ServiceName">{http://xmlns.oracle.com/ProcessFOBillingAccountListRespOSMCFSCommsJMSProducer}ProcessFOBillingAccountListRespOSMCFSCommsJMSProducer</Property>
+<Property name="EBSOverride.BillingResponseEBS.ProcessFulfillmentOrderBillingAccountListResponse.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/ProcessFOBillingAccountListRespOSMCFSCommsJMSProducer/client</Property>
+<Property name="EBSOverride.CommunicationsBillingEBSV1.ProcessBillingAccountList.PortType">CommsProcessBillingAccountListEBF</Property>
+<Property name="EBSOverride.CommunicationsBillingEBSV1.ProcessBillingAccountList.ServiceName">{http://xmlns.oracle.com/EnterpriseFlows/Industry/Comms/CommsProcessBillingAccountListEBF/V1}CommsProcessBillingAccountListEBF</Property>
+<Property name="EBSOverride.CommunicationsBillingEBSV1.ProcessBillingAccountList.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/CommsProcessBillingAccountListEBF/client</Property>
+<Property name="EBSOverride.ProcessAccountHierarchyListSiebelCommsProvABCSImpl.ProcessBillingAccountList.PortType">ProcessAccountHierarchyListSiebelCommsProvABCSImpl</Property>
+<Property name="EBSOverride.ProcessAccountHierarchyListSiebelCommsProvABCSImpl.ProcessBillingAccountList.ServiceName">{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/ProcessAccountHierarchyListSiebelCommsProvABCSImpl/V1}ProcessAccountHierarchyListSiebelCommsProvABCSImpl</Property>
+<Property name="EBSOverride.ProcessAccountHierarchyListSiebelCommsProvABCSImpl.ProcessBillingAccountList.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/ProcessAccountHierarchyListSiebelCommsProvABCSImpl/ProcessAccountHierarchyListSiebelCommsProvABCSImpl</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/SyncDiscountBRMCommsReqABCSImpl/V1}SyncDiscountBRMCommsReqABCSImpl">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="EBSOverride.CommunicationsItemCompositionEBSV1.SyncItemCompositionList">true</Property>
+<Property name="EBSOverride.CommunicationsItemCompositionEBSV1.SyncItemCompositionList.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/SyncItemCompositionListSiebelCommsProvABCSImpl/SyncItemCompositionListSiebelCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsItemCompositionEBSV1.SyncItemCompositionList.PortType">{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/SyncItemCompositionListSiebelCommsProvABCSImpl/V1}SyncItemCompositionListSiebelCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsItemCompositionEBSV1.SyncItemCompositionList.ServiceName">{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/SyncItemCompositionListSiebelCommsProvABCSImpl/V1}SyncItemCompositionListSiebelCommsProvABCSImpl</Property>
+<Property name="ABCSExtension.PreXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeEBS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/ProcessFulfillmentOrderBillingBRMCommsSuspendResumeSubProcess/V1}ProcessFulfillmentOrderBillingBRMCommsSuspendResumeSubProcess">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="ABCSExtension.PreInvokeEBM">false</Property>
+<Property name="ABCSExtension.PostInvokeEBM">false</Property>
+<Property name="ABCSExtension.PreProcessResumePCM_OP_CUST_SET_STATUSABM">false</Property>
+<Property name="ABCSExtension.PostProcessResumePCM_OP_CUST_SET_STATUSABM">false</Property>
+<Property name="ABCSExtension.PreProcessSuspendPCM_OP_CUST_SET_STATUSABM">false</Property>
+<Property name="ABCSExtension.PostProcessSuspendPCM_OP_CUST_SET_STATUSABM">false</Property>
+<Property name="ABCSExtension.PreProcessResumePCM_OP_SUBSCRIPTION_PURCHASE_DEALABM">false</Property>
+<Property name="ABCSExtension.PostProcessResumePCM_OP_SUBSCRIPTION_PURCHASE_DEALABM">false</Property>
+<Property name="ABCSExtension.PreProcessSuspendPCM_OP_SUBSCRIPTION_PURCHASE_DEALABM">false</Property>
+<Property name="ABCSExtension.PostProcessSuspendPCM_OP_SUBSCRIPTION_PURCHASE_DEALABM">false</Property>
+<Property name="ABCSExtension.PreProcessPCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUSABM">false</Property>
+<Property name="ABCSExtension.PostProcessPCM_OP_SUBSCRIPTION_SET_DISCOUNT_STATUSABM">false</Property>
+<Property name="ABCSExtension.PreProcessPCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUSABM">false</Property>
+<Property name="ABCSExtension.PostProcessPCM_OP_SUBSCRIPTION_SET_PRODUCT_STATUSABM">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QueryClassificationListSiebelCommsProvABCSImpl/V1}QueryClassificationListSiebelCommsProvABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="Routing.ProductClassQuery.RouteToCAVS">false</Property>
+<Property name="Routing.ProductClassQuery.SEBL_01.EndpointURI">http://SBL_HOSTNAME:SBL_PORT/eai_enu/start.swe?SWEExtSource=SecureWebService&amp;SWEExtCmd=Execute&amp;WSSOAP=1</Property>
+<Property name="ABCSExtension.PreXformEBMtoABMClassificationListEBM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBMClassificationListEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeABSListOfSwiAdminIssClassDefinitionABM">false</Property>
+<Property name="ABCSExtension.PostInvokeABSListOfSwiAdminIssClassDefinitionABM">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/QuerySpecificationListSiebelCommsProvABCSImpl/V1}QuerySpecificationListSiebelCommsProvABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="Routing.QueryProductClassAttributes.RouteToCAVS">false</Property>
+<Property name="Routing.QueryProductClassAttributes.SEBL_01.EndpointURI">http://SBL_HOSTNAME:SBL_PORT/eai_enu/start.swe?SWEExtSource=SecureWebService&amp;SWEExtCmd=Execute&amp;WSSOAP=1</Property>
+<Property name="ABCSExtension.PreXformEBMtoABMSpecificationListEBM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBMSpecificationListEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeABSAttributeQueryByExample_InputABM">false</Property>
+<Property name="ABCSExtension.PostInvokeABSAttributeQueryByExample_InputABM">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/AIA/Industry/Comms/CreateTroubleTicketAIACommsReqImpl/V1}CreateTroubleTicketAIACommsReqImpl">
+<Property name="Default.SystemID">COMMON</Property>
+<Property name="EBSOverride.TroubleTicketEBS.CreateTroubleTicket.PortType">{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/CreateTroubleTicketSiebelCommsProvABCSImpl/V1}CreateTroubleTicketSiebelCommsProvABCSImplService</Property>
+<Property name="EBSOverride.TroubleTicketEBS.CreateTroubleTicket.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/CreateTroubleTicketSiebelCommsProvABCSImpl/CreateTroubleTicketSiebelCommsProvABCSImpl</Property>
+<Property name="EBSOverride.TroubleTicketEBS.CreateTroubleTicket.ServiceName">{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/CreateTroubleTicketSiebelCommsProvABCSImpl/V1}CreateTroubleTicketSiebelCommsProvABCSImpl</Property>
+<Property name="TroubleTicket.DefaultSeverity">2</Property>
+<Property name="TroubleTicket.DefaultPriority">2</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Core/QueryCustomerPartyListSiebelProvABCSImpl/V2}QueryCustomerPartyListSiebelProvABCSImplV2">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="Routing.SWI_spcCustomer_spcParty_spcService.SEBL_01.EndpointURI">http://SBL_HOSTNAME:SBL_PORT/eai_enu/start.swe?SWEExtSource=SecureWebService&amp;SWEExtCmd=Execute&amp;WSSOAP=1</Property>
+<Property name="Routing.SWI_spcCustomer_spcParty_spcService.RouteToCAVS">false</Property>
+<Property name="Routing.SWI_spcCustomer_spcParty_spcService.CAVS.EndpointURI">http://AIA_HOSTNAME:AIA_PORT/AIAValidationSystemServlet/syncresponsesimulator</Property>
+<Property name="ABCSExtension.PreXformEBMtoABMEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeSWICustServiceABM">false</Property>
+<Property name="ABCSExtension.PostInvokeSWICustServiceABM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBMEBM">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/SyncItemCompositionListSiebelCommsProvABCSImpl/V1}SyncItemCompositionListSiebelCommsProvABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="Routing.CommunicationsItemCompositionResponseEBSV1.SyncItemCompositionListResponse.RouteToCAVS">false</Property>
+<Property name="Routing.CommunicationsItemCompositionResponseEBSV1.SyncItemCompositionListResponse.CAVS.EndpointURI">http://AIA_HOSTNAME:AIA_PORT/AIAValidationSystemServlet/asyncresponserecipient</Property>
+<Property name="Routing.CommunicationsItemCompositionResponseEBSV1.SyncItemCompositionListResponse.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="Routing.SiebelProductService.SEBL_01.EndpointURI">http://SBL_HOSTNAME:SBL_PORT/eai_enu/start.swe?SWEExtSource=SecureWebService&amp;SWEExtCmd=Execute&amp;WSSOAP=1</Property>
+<Property name="Routing.SiebelProductService.RouteToCAVS">false</Property>
+<Property name="Routing.SiebelProductService.CAVS.EndpointURI">http://AIA_HOSTNAME:AIA_PORT/AIAValidationSystemServlet/syncresponsesimulator?</Property>
+<Property name="Siebel.SEBL_01.BusinessUnit">0-R9NH</Property>
+<Property name="Siebel.SEBL_01.Product.WorkspaceName">Demo Workspace</Property>
+<Property name="Siebel.Product.WorkspaceReleaseFlag">N</Property>
+<Property name="Siebel.Product.WorkspaceReuseFlag">Y</Property>
+<Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeABS">false</Property>
+<Property name="ABCSExtension.PostInvokeABS">false</Property>
+<Property name="EBSOverride.CommunicationsItemCompositionResponseEBSV1.SyncItemCompositionListResponse">true</Property>
+<Property name="EBSOverride.CommunicationsItemCompositionResponseEBSV1.SyncItemCompositionListResponse.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/ProductOptimizedSyncPriceListListSiebelCommsProvABCSImpl/ProductOptimizedSyncPriceListListSiebelCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsItemCompositionResponseEBSV1.SyncItemCompositionListResponse.PortType">{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/ProductOptimizedSyncPriceListListSiebelCommsProvABCSImpl/V1}ProductOptimizedSyncPriceListListSiebelCommsProvABCSImpl</Property>
+<Property name="EBSOverride.CommunicationsItemCompositionResponseEBSV1.SyncItemCompositionListResponse.ServiceName">{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/ProductOptimizedSyncPriceListListSiebelCommsProvABCSImpl/V1}ProductOptimizedSyncPriceListListSiebelCommsProvABCSImpl</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/ProcessCollectionSharingBRMCommsProvABCSImpl/V1}ProcessCollectionSharingBRMCommsProvABCSImpl">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="Routing.BRMCOLLECTIONSService.RouteToCAVS">false</Property>
+<Property name="Routing.BRMCOLLECTIONSService.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PostXformEBMtoABM">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/EnterpriseFlows/Industry/Comms/CommsProcessBillingAccountListEBF/V1}CommsProcessBillingAccountListEBF">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="Routing.GESB.RouteToCAVS">false</Property>
+<Property name="EBSOverride.CommunicationsBillingEBSV1.ProcessBillingAccountListResponse.PortType">CommsProcessFulfillmentOrderBillingAccountListEBF</Property>
+<Property name="EBSOverride.CommunicationsBillingEBSV1.ProcessBillingAccountListResponse.ServiceName">{http://xmlns.oracle.com/EnterpriseFlows/Industry/Comms/CommsProcessFulfillmentOrderBillingAccountListEBF/V1}CommsProcessFulfillmentOrderBillingAccountListEBF</Property>
+<Property name="EBSOverride.CommunicationsBillingEBSV1.ProcessBillingAccountListResponse.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/CommsProcessFulfillmentOrderBillingAccountListEBF/client</Property>
+<Property name="EBSOverride.CommunicationsCustomerPartyEBSV2.QueryCustomerPartyList.PortType">QueryCustomerPartyListSiebelProvABCSImplService</Property>
+<Property name="EBSOverride.CommunicationsCustomerPartyEBSV2.QueryCustomerPartyList.ServiceName">{http://xmlns.oracle.com/ABCSImpl/Siebel/Core/QueryCustomerPartyListSiebelProvABCSImpl/V2}QueryCustomerPartyListSiebelProvABCSImplService</Property>
+<Property name="EBSOverride.CommunicationsCustomerPartyEBSV2.QueryCustomerPartyList.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/QueryCustomerPartyListSiebelProvABCSImplV2/QueryCustomerPartyListSiebelProvABCSImpl</Property>
+<Property name="ResequencerComponent_DN">default/CommunicationsCustomerPartyEBSV2Resequencer!1.0/CommunicationsCustomerPartyEBSV2Resequencer</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/ProcessFulfillmentOrderBillingBRMCommsSharingGroupSubProcess/V1}ProcessFulfillmentOrderBillingBRMCommsSharingGroupSubProcess">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="Routing.BRMSUBSCRIPTIONService.RouteToCAVS">false</Property>
+<Property name="Routing.BRMSUBSCRIPTIONService.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="Routing.BRMBASEService.RouteToCAVS">false</Property>
+<Property name="Routing.BRMBASEService.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="Routing.BRMCUSTService.RouteToCAVS">false</Property>
+<Property name="Routing.BRMCUSTService.BRM_01.EndpointURI">eis/BRM</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/ProcessFulfillmentOrderBillingBRMCommsProvABCSImpl/V1}ProcessFulfillmentOrderBillingBRMCommsProvABCSImpl">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="Routing.BRMBALService_ptt.RouteToCAVS">false</Property>
+<Property name="Routing.BRMBALService_ptt.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="Routing.BRMARService_ptt.RouteToCAVS">false</Property>
+<Property name="Routing.BRMSUBSCRIPTIONService.RouteToCAVS">false</Property>
+<Property name="Routing.BRMSUBSCRIPTIONService.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="Routing.BRMCUSTService.RouteToCAVS">false</Property>
+<Property name="Routing.BRMCUSTService.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="Routing.BRMBASEService.RouteToCAVS">false</Property>
+<Property name="Routing.MediaVoucherService.EndpointURI">http://tssesbtest.han.telia.se:61275/Services/MediaVoucher?wsdl</Property>
+<Property name="Routing.BRMSUBSCRIPTIONService.RouteToCOD">COD_01</Property>
+<Property name="Routing.BRMBASEService.BRM_01.EndpointURI">eis/BRM</Property>
+<Property name="EBSOverride.CommunicationsBillingEBSV1.ProcessFulfillmentOrderBillingResponse.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/ProcessFulfillmentOrderBillingResponseOSMCFSCommsJMSProducer/client</Property>
+<Property name="EBSOverride.CommunicationsBillingEBSV1.ProcessFulfillmentOrderBillingResponse.PortType">ProcessFulfillmentOrderBillingResponseOSMCFSCommsJMSProducer</Property>
+<Property name="EBSOverride.CommunicationsBillingEBSV1.ProcessFulfillmentOrderBillingResponse.ServiceName">{http://xmlns.oracle.com/ProcessFulfillmentOrderBillingResponseOSMCFSCommsJMSProducer}ProcessFulfillmentOrderBillingResponseOSMCFSCommsJMSProducer</Property>
+<Property name="ABCSExtension.PreInvokeEBM">false</Property>
+<Property name="ABCSExtension.PostInvokeEBM">true</Property>
+<Property name="ABCSExtension.PreProcessPCM_OP_CUST_CREATE_PROFILEABM">false</Property>
+<Property name="ABCSExtension.PostProcessPCM_OP_CUST_CREATE_PROFILEABM">false</Property>
+<Property name="ABCSExtension.PreProcessPCM_OP_CUST_MODIFY_PROFILEABM">false</Property>
+<Property name="ABCSExtension.PostProcessPCM_OP_CUST_MODIFY_PROFILEABM">false</Property>
+<Property name="ABCSExtension.PreProcessPCM_OP_CUST_DELETE_PROFILEABM">false</Property>
+<Property name="ABCSExtension.PostProcessPCM_OP_CUST_DELETE_PROFILEABM">false</Property>
+<Property name="ABCSExtension.PreProcessPCM_OP_SUBSCRIPTION_SET_BUNDLEABM">false</Property>
+<Property name="ABCSExtension.PostProcessPCM_OP_SUBSCRIPTION_SET_BUNDLEABM">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/ProcessFulfillmentOrderBillingBRMCommsAddSubProcess/V1}ProcessFulfillmentOrderBillingBRMCommsAddSubProcess">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="BRM_01.FutureTimeThresholdForBillingDates">8640</Property>
+<Property name="ABCSExtension.PreInvokeEBM">false</Property>
+<Property name="ABCSExtension.PostInvokeEBM">true</Property>
+<Property name="ABCSExtension.PreProcessAddPCM_OP_SUBSCRIPTION_PURCHASE_DEALABM">false</Property>
+<Property name="ABCSExtension.PostProcessAddPCM_OP_SUBSCRIPTION_PURCHASE_DEALABM">false</Property>
+<Property name="ABCSExtension.PreProcessAddPCM_OP_CUST_MODIFY_CUSTOMERABM">false</Property>
+<Property name="ABCSExtension.PostProcessAddPCM_OP_CUST_MODIFY_CUSTOMERABM">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/CreateTroubleTicketSiebelCommsProvABCSImpl/V1}CreateTroubleTicketSiebelCommsProvABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="Routing.SWI_spcTrouble_spcTicket_spcService.RouteToCAVS">false</Property>
+<Property name="Routing.SWI_spcTrouble_spcTicket_spcService.SEBL_01.EndpointURI">http://SBL_HOSTNAME:SBL_PORT/eai_enu/start.swe?SWEExtSource=SecureWebService&amp;SWEExtCmd=Execute&amp;WSSOAP=1</Property>
+<Property name="TroubleTicket.GenerateTroubleTicketResponse">false</Property>
+<Property name="TroubleTicket.UseDefaultInstance">false</Property>
+<Property name="TroubleTicket.SR_TYPE">Order Failure</Property>
+<Property name="EBSOverride.TroubleTicketEBSResponse.CreateTroubleTicketResponse.PortType">{http://xmlns.oracle.com/Industry/Comms/CreateTroubleTicketRespOSMCFSCommsJMSProducer/V1}CreateTroubleTicketRespOSMCFSCommsJMSProducer</Property>
+<Property name="EBSOverride.TroubleTicketEBSResponse.CreateTroubleTicketResponse.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/CreateTroubleTicketRespOSMCFSCommsJMSProducer/client</Property>
+<Property name="EBSOverride.TroubleTicketEBSResponse.CreateTroubleTicketResponse.ServiceName">{http://xmlns.oracle.com/Industry/Comms/CreateTroubleTicketRespOSMCFSCommsJMSProducer/V1}CreateTroubleTicketRespOSMCFSCommsJMSProducer</Property>
+<Property name="EBSOverride.TroubleTicketEBSResponse.CreateTroubleTicketCustomResponse.PortType">{http://xmlns.oracle.com/Industry/Comms/CreateTroubleTicketCustomRespOSMCFSCommsJMSProducer/V1}CreateTroubleTicketCustomRespOSMCFSCommsJMSProducer</Property>
+<Property name="EBSOverride.TroubleTicketEBSResponse.CreateTroubleTicketCustomResponse.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/CreateTroubleTicketCustomRespOSMCFSCommsJMSProducer/client</Property>
+<Property name="EBSOverride.TroubleTicketEBSResponse.CreateTroubleTicketCustomResponse.ServiceName">{http://xmlns.oracle.com/Industry/Comms/CreateTroubleTicketRespOSMCFSCommsJMSProducer/V1}CreateTroubleTicketCustomRespOSMCFSCommsJMSProducer</Property>
+<Property name="ABCSExtension.PreInvokeABSSWITroubleTicketIOABM">false</Property>
+<Property name="ABCSExtension.PostInvokeABSSWITroubleTicketIOABM">false</Property>
+<Property name="ABCSExtension.PreXformEBMtoABMTroubleTicketEBM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBMTroubleTicketEBM">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/UpdateSalesOrderSiebelCommsProvABCSImpl/V1}UpdateSalesOrderSiebelCommsProvABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="Routing.SWI_spcOrder_spcUpsert.RouteToCAVS">false</Property>
+<Property name="Routing.SWI_spcOrder_spcUpsert.SEBL_01.EndpointURI">http://SBL_HOSTNAME:SBL_PORT/eai_enu/start.swe?SWEExtSource=SecureWebService&amp;SWEExtCmd=Execute&amp;WSSOAP=1</Property>
+<Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PreInvokeABS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/ProcessFulfillmentOrderBillingBRMCommsMoveAddSubProcess/V1}ProcessFulfillmentOrderBillingBRMCommsMoveAddSubProcess">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="ABCSExtension.PreInvokeEBM">false</Property>
+<Property name="ABCSExtension.PostInvokeEBM">false</Property>
+<Property name="ABCSExtension.PreProcessMoveAddPCM_OP_SUBSCRIPTION_PURCHASE_DEALABM">false</Property>
+<Property name="ABCSExtension.PostProcessMoveAddPCM_OP_SUBSCRIPTION_PURCHASE_DEALABM">false</Property>
+<Property name="ABCSExtension.PreProcessPCM_OP_SUBSCRIPTION_SERVICE_BALGRP_TRANSFERABM">false</Property>
+<Property name="ABCSExtension.PostProcessPCM_OP_SUBSCRIPTION_SERVICE_BALGRP_TRANSFERABM">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/ProcessSalesOrderFulfillmentSiebelCommsReqABCSImpl/V1}ProcessSalesOrderFulfillmentSiebelCommsReqABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="EBSOverride.CommunicationsSalesOrderEBSV2.ProcessSalesOrderFulfillment.Address">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/ProcessSalesOrderFulfillmentOSMCFSCommsJMSProducer/client</Property>
+<Property name="Default.handleLargeOrderEnabled">false</Property>
+<Property name="Default.numOrderLinesInLargeOrder">1000</Property>
+<Property name="Default.numOrderLinesInMiniABM">150</Property>
+<Property name="EBSOverride.CommunicationsSalesOrderEBSV2.ProcessSalesOrderFulfillment.PortType">ProcessSalesOrderFulfillmentOSMCFSCommsJMSProducer</Property>
+<Property name="EBSOverride.CommunicationsSalesOrderEBSV2.ProcessSalesOrderFulfillment.ServiceName">{http://xmlns.oracle.com/ProcessSalesOrderFulfillmentOSMCFSCommsJMSProducer}ProcessSalesOrderFulfillmentOSMCFSCommsJMSProducer</Property>
+<Property name="ABCSExtension.PreXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeEBS">false</Property>
+<Property name="ABCSExtension.PostInvokeEBS">false</Property>
+<Property name="Routing.AssetManagementBundledPromtion.SEBL_01.EndpointURI">http://SBL_HOSTNAME:SBL_PORT/eai_enu/start.swe?SWEExtSource=SecureWebService&amp;SWEExtCmd=Execute&amp;WSSOAP=1</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/UpdateTroubleTicketSiebelCommsProvABCSImpl/V1}UpdateTroubleTicketSiebelCommsProvABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="Routing.SWI_spcTrouble_spcTicket_spcService.RouteToCAVS">false</Property>
+<Property name="Routing.SWI_spcTrouble_spcTicket_spcService.SEBL_01.EndpointURI">http://SBL_HOSTNAME:SBL_PORT/eai_enu/start.swe?SWEExtSource=SecureWebService&amp;SWEExtCmd=Execute&amp;WSSOAP=1</Property>
+<Property name="ABCSExtension.PreXformEBMtoABMTroubleTicketEBM">false</Property>
+<Property name="ABCSExtension.PreInvokeABSSWITroubleTicketIOABM">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/Core2CommsCustomerPartyBridge}Core2CommsCustomerPartyBridge">
+<Property name="RouteToBRM">true</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://www.oracle.com/AIA/TransformAppContextService/Siebel/V1}TransformAppContextSiebelService">
+<Property name="TransformAppContextSiebelService.Soap.EndpointURL">http://AIA_HOSTNAME:AIA_PORT/soa-infra/services/default/TransformAppContextSiebelService/TransformAppContextSiebelService</Property>
+<Property name="TransformAppContextSiebelService.DefaultUser">User1</Property>
+<Property name="TransformAppContextSiebelService.DefaultBusinessUnit">SiebelAdmin</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCS/Siebel/Core/SyncCustomerSiebelEventAggregator/V1}SyncCustomerSiebelEventAggregator">
+<Property name="AggregatorExtension.PreInvokeABMtoABM">false</Property>
+<Property name="AggregatorExtension.PreXformABMtoABM">false</Property>
+<Property name="AggregatorExtension.PostXformAddrABMtoABM">false</Property>
+<Property name="AggregatorExtension.PostXformContactABMtoABM">false</Property>
+<Property name="AggregatorExtension.PostXformAcctABMtoABM">false</Property>
+<Property name="AggregatorExtension.PostXformBPABMtoABM">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncAccountSiebelReqABCSImpl/V1}SyncAccountSiebelReqABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="Routing.SWICustomerParty.SEBL_01.EndpointURI">http://SBL_HOSTNAME:SBL_PORT/eai_enu/start.swe?SWEExtSource=SecureWebService&amp;SWEExtCmd=Execute&amp;WSSOAP=1</Property>
+<Property name="Routing.SWICustomerParty.RouteToCAVS">false</Property>
+<Property name="Routing.GESB.RouteToCAVS">false</Property>
+<Property name="Routing.SWICustomerParty.CAVS.EndpointURI">http://AIA_HOSTNAME:AIA_PORT/AIAValidationSystemServlet/syncresponsesimulator</Property>
+<Property name="Routing.CustomerPartyEBSV2.SyncCustomerPartyList.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="Routing.CustomerPartyEBSV2.SyncCustomerPartyList.CAVS.EndpointURI">http://AIA_HOSTNAME:AIA_PORT/AIAValidationSystemServlet/asyncrequestrecipient</Property>
+<Property name="Routing.CustomerPartyEBSV2.SyncCustomerPartyList.RouteToCAVS">false</Property>
+<Property name="Routing.TransformAppContextSiebelService.RouteToCAVS">false</Property>
+<Property name="Routing.TransformAppContextSiebelService.CAVS.EndpointURI">http://AIA_HOSTNAME:AIA_PORT/AIAValidationSystemServlet/asyncrequestrecipient</Property>
+<Property name="ABCSExtension.PreXformABMtoEBMABM">false</Property>
+<Property name="ABCSExtension.PreInvokeEBSEBM">false</Property>
+<Property name="Account.ProcessUpdateEventsOnly">false</Property>
+<Property name="Contact.QueryAllEntities">false</Property>
+<Property name="Address.QueryAllEntities">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/SCM/SimLeaseReleaseUIMProvider/V1}SimLeaseReleaseUIMProvider">
+<Property name="Default.SystemID">UIM_01</Property>
+<Property name="Routing.SimLeaseReleaseUIMService.RouteToCAVS">false</Property>
+<Property name="Routing.SimLeaseReleaseUIMService.EndpointURI">http://UIM_HOSTNAME:UIM_PORT/InventoryWS/InventoryWSHTTP</Property>
+<Property name="Routing.SimLeaseReleaseUIMService.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="ABCSExtension.PreXfor mEBMtoABM">false</Property>
+<Property name="ABCSExtension.PostXformEBMtoABM">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/SCM/AddSecondIMSIUIMProvider/AddSecondIMSIUIMProcess}AddSecondIMSIUIMProvider">
+<Property name="Default.SystemID">UIM_01</Property>
+<Property name="Routing.AddSecondIMSIUIMService.RouteToCAVS">false</Property>
+<Property name="Routing.AddSecondIMSIUIMService.EndpointURI">http://UIM_HOSTNAME:UIM_PORT/InventoryWS/InventoryWSHTTP</Property>
+<Property name="Routing.AddSecondIMSIUIMService.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PostXformEBMtoABM">false</Property>
+<property name="csf-key" type="xs:string" many="false">UIMServicesKey</property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry//QueryBalanceGroupSiebelReqABCSImpl/V1}QueryBalanceGroupSiebelReqABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="Default.Target.SystemID">BRM_01</Property>
+<Property name="ABCSExtension.PreXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBM">false</Property>
+<Property name="Routing.CommunicationsCustomerPartyEBS.QueryCustomerPartyList.RouteToCAVS">false</Property>
+<Property name="Routing.CommunicationsCustomerPartyEBS.QueryCustomerPartyList.CAVS.EndpointURI">oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/AIAValidationSystemServlet/syncresponsesimulator</Property>
+<Property name="Routing.CommunicationsCustomerPartyEBS.QueryCustomerPartyList.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="ABCSExtension.PreInvokeEBS">false</Property>
+<Property name="ABCSExtension.PostInvokeEBS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/Industry//QueryBalanceGroupBRMProvABCSImpl/V1}QueryBalanceGroupBRMProvABCSImpl">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="Routing.BRMBALService_ptt.RouteToCAVS">false</Property>
+<Property name="Routing.BRMBALService_ptt.CAVS.EndpointURI">oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/AIAValidationSystemServlet/syncresponsesimulator</Property>
+<Property name="Routing.BRMBALService_ptt.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PostXformEBMtoABM">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/SiebelComms/Industry//QueryBalancesSiebelCommsReqABCSImpl/V1.0}QueryBalancesSiebelCommsReqABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="Default.Target.SystemID">BRM_01</Property>
+<Property name="ABCSExtension.PreXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBM">false</Property>
+<Property name="Routing.CommunicationsCustomerPartyEBS.QueryCustomerParty.RouteToCAVS">false</Property>
+<Property name="Routing.CommunicationsCustomerPartyEBS.QueryCustomerParty.CAVS.EndpointURI">oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/AIAValidationSystemServlet/syncresponsesimulator</Property>
+<Property name="Routing.CommunicationsCustomerPartyEBS.QueryCustomerParty.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="ABCSExtension.PreInvokeEBS">false</Property>
+<Property name="ABCSExtension.PostInvokeEBS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRMComms/Industry//QueryBalancesBRMCommsProvABCSImpl/V1.0}QueryBalancesBRMCommsProvABCSImpl">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="Default.Source.SystemID">SEBL_01</Property>
+<Property name="Routing.BRMBALService_ptt.RouteToCAVS">false</Property>
+<Property name="Routing.BRMBALService_ptt.CAVS.EndpointURI">oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/AIAValidationSystemServlet/syncresponsesimulator</Property>
+<Property name="Routing.BRMBALService_ptt.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PostXformEBMtoABM">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/Industry//UpdateRCCDetailsBRMProvABCSImpl/V1}UpdateRCCDetailsBRMProvABCSImpl">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="Routing.BRMBILLService_ptt.RouteToCAVS">false</Property>
+<Property name="Routing.BRMBILLService_ptt.CAVS.EndpointURI">oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/AIAValidationSystemServlet/syncresponsesimulator</Property>
+<Property name="Routing.BRMBILLService_ptt.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PostXformEBMtoABM">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry//UpdateRCCDetailsSiebelReqABCSImpl/V1}UpdateRCCDetailsSiebelReqABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="ABCSExtension.PreXformABMtoEBM">false</Property>
+<Property name="ABCSExtension.PostXformABMtoEBM">false</Property>
+<Property name="Default.Target.SystemID">BRM_01</Property>
+<Property name="Routing.CommunicationsCustomerPartyEBS.ProcessCreditEligibilityVerification.RouteToCAVS">false</Property>
+<Property name="Routing.CommunicationsCustomerPartyEBS.ProcessCreditEligibilityVerification.CAVS.EndpointURI">oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/AIAValidationSystemServlet/asyncresponsesimulator </Property>
+<Property name="Routing.CommunicationsCustomerPartyEBS.ProcessCreditEligibilityVerification.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="ABCSExtension.PreInvokeEBS">false</Property>
+<Property name="ABCSExtension.PostInvokeEBS">false</Property>
+</ServiceConfiguration>
+<ModuleConfiguration moduleName="UIM_Module">
+<Property name="UIMCFS.USERNAME">uim_admin</Property>
+<Property name="UIMCFS.PASSWORD">participatingapplications.uimcfs.server.password</Property>
+<Property name="SOA.JMS.URL">t3://CLUSTER_URLS</Property>
+<Property name="UIM.IMPORT-ENTITY.DELAY">PT60S</Property>
+</ModuleConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRMComms/Industry//SyncCustomerPartylistBRMCommsProvABCSImplExtension/V1}SyncCustomerPartylistBRMCommsProvABCSImplExtension">
+<Property name="Default.SystemID">BRM_01</Property>
+<Property name="Default.Source.SystemID">SEBL_01</Property>
+<Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PostXformEBMtoABM">false</Property>
+<Property name="Routing.BRMCUSTService_ptt.RouteToCAVS">false</Property>
+<Property name="Routing.BRMCUSTService_ptt.CAVS.EndpointURI">oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/AIAValidationSystemServlet/syncresponsesimulator</Property>
+<Property name="Routing.BRMCUSTService_ptt.BRM.EndpointURI"/>
+<Property name="Routing.BRMCUSTService_ptt.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="ABCSExtension.PreInvokeABS">false</Property>
+<Property name="ABCSExtension.PostInvokeABS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/SiebelComms/Industry//UpdateBillingBillNowSiebelCommsProvABCSImpl/V1}UpdateBillingBillNowSiebelCommsProvABCSImpl">
+<Property name="Default.SystemID">SEBL_01</Property>
+<Property name="Routing.AIASessionPoolManager.RouteToCAVS">false</Property>
+<Property name="Routing.AIASessionPoolManager.CAVS.EndpointURI">oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/AIAValidationSystemServlet/syncresponsesimulator</Property>
+<Property name="Routing.AIASessionPoolManager.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PostXformEBMtoABM">false</Property>
+<Property name="Routing.GetRecommendedProductOffersPort.RouteToCAVS">false</Property>
+<Property name="Routing.GetRecommendedProductOffersPort.CAVS.EndpointURI">oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/AIAValidationSystemServlet/syncresponsesimulator</Property>
+<Property name="Routing.GetRecommendedProductOffersPort.SEBL_01.EndpointURI">http://SBL_HOSTNAME:SBL_PORT/eai_enu/start.swe?SWEExtSource=SecureWebService&amp;SWEExtCmd=Execute&amp;WSSOAP=1</Property>
+<Property name="Routing.GetRecommendedProductOffersPort.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="ABCSExtension.PreInvokeABS">false</Property>
+<Property name="ABCSExtension.PostInvokeABS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BillNow/Industry//ProcessFulfillmentOrderBillingBillNowProvABCSImpl/V1}ProcessFulfillmentOrderBillingBillNowProvABCSImpl">
+<Property name="Default.SystemID">AIA</Property>
+<Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+<Property name="ABCSExtension.PostXformEBMtoABM">false</Property>
+<Property name="Routing.BRMBILLService_ptt.RouteToCAVS">false</Property>
+<Property name="Routing.BRMBILLService_ptt.CAVS.EndpointURI">oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/AIAValidationSystemServlet/syncresponsesimulator</Property>
+<Property name="Routing.BRMBILLService_ptt.AIA.EndpointURI"/>
+<Property name="Routing.BRMBILLService_ptt.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+<Property name="ABCSExtension.PreInvokeABS">false</Property>
+<Property name="ABCSExtension.PostInvokeABS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/C2B/Industry//QueryUnbilledChargesC2BReqABCSImpl/V1}QueryUnbilledChargesC2BReqABCSImpl">
+	<Property name="Default.SystemID">SEBL_01</Property>
+	<Property name="ABCSExtension.PreXformABMtoEBM">false</Property>
+	<Property name="ABCSExtension.PostXformABMtoEBM">false</Property>	
+	<Property name="Routing.CommunicationsServiceUsageEBS.QueryServiceUsage.RouteToCAVS">false</Property>
+	<Property name="Routing.CommunicationsServiceUsageEBS.QueryServiceUsage.CAVS.EndpointURI">oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/AIAValidationSystemServlet/syncresponsesimulator</Property>
+	<Property name="Routing.CommunicationsServiceUsageEBS.QueryServiceUsage.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+	<Property name="ABCSExtension.PreInvokeEBS">false</Property>
+	<Property name="ABCSExtension.PostInvokeEBS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRMComms/Industry//QueryUnbilledChargesBRMCommsProvABCSImpl/V1}QueryUnbilledChargesBRMCommsProvABCSImpl">
+	<Property name="Default.SystemID">BRM_01</Property>
+	<Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+	<Property name="ABCSExtension.PostXformEBMtoABM">false</Property>	
+	<Property name="Routing.BRMARService_ptt.RouteToCAVS">false</Property>
+	<Property name="Routing.BRMARService_ptt.CAVS.EndpointURI">oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/AIAValidationSystemServlet/syncresponsesimulator</Property>
+	<Property name="Routing.BRMARService_ptt.BRM_01.EndpointURI">eis/BRM</Property>
+	<Property name="Routing.BRMARService_ptt.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+	<Property name="ABCSExtension.PreInvokeABS">false</Property>
+	<Property name="ABCSExtension.PostInvokeABS">false</Property>
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/ProcessFulfillmentOrderBillingBRMCommsUpdateSubProcessExtension/V1}ProcessFulfillmentOrderBillingBRMCommsUpdateSubProcessExtension">
+	<Property name="Default.SystemID">BRM_01</Property>
+	<Property name="Routing.BRMBASEService_ptt.RouteToCAVS">false</Property>
+	<Property name="Routing.BRMBASEService_ptt.CAVS.EndpointURI">oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/AIAValidationSystemServlet/syncresponsesimulator</Property>
+	<Property name="Routing.BRMBASEService_ptt.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+	<Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+	<Property name="ABCSExtension.PostXformEBMtoABM">false</Property>	
+</ServiceConfiguration>
+<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/ProcessFulfillmentOrderBillingBRMCommsDeleteSubProcessExtension/V1}ProcessFulfillmentOrderBillingBRMCommsDeleteSubProcessExtension">
+      <Property name="Default.SystemID">BRM_01</Property>
+      <Property name="Routing.BRMBASEService_ptt.RouteToCAVS">false</Property>
+      <Property name="Routing.BRMBASEService_ptt.CAVS.EndpointURI">oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/AIAValidationSystemServlet/syncresponsesimulator</Property>
+      <Property name="Routing.BRMBASEService_ptt.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+      <Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+      <Property name="ABCSExtension.PostXformEBMtoABM">false</Property>
+ </ServiceConfiguration>
+</AIAConfiguration>

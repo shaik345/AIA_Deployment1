@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.siebel.com/xml/SWIContactIO" xmlns:xsdLocal="http://www.siebel.com/xml/SWIContactIO" attributeFormDefault="unqualified" elementFormDefault="qualified" 
+><xsd:annotation
+><xsd:documentation
+>Copyright (C) 2001-2004 Siebel Systems, Inc. All rights reserved. Siebel XSD Generation</xsd:documentation
+></xsd:annotation
+><xsd:element name="SiebelMessage" type="xsdLocal:SiebelMessage" 
+/><xsd:complexType name="SiebelMessage"
+><xsd:sequence
+><xsd:element name="ListOfSwicontactio" type="xsdLocal:ListOfSwicontactio" minOccurs="0" maxOccurs="1" 
+/></xsd:sequence
+><xsd:attribute name="MessageId" type="xsd:string" 
+/><xsd:attribute name="MessageType" type="xsd:string" 
+/><xsd:attribute name="IntObjectName" type="xsd:string" 
+/><xsd:attribute name="IntObjectFormat" type="xsd:string" 
+/></xsd:complexType
+><xsd:complexType name="ListOfSwicontactio"
+><xsd:sequence
+><xsd:element name="Contact" type="xsdLocal:Contact" minOccurs="0" maxOccurs="unbounded"
+/></xsd:sequence
+></xsd:complexType
+><xsd:complexType name="Contact"
+><xsd:sequence
+><xsd:element name="Id" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="Alias" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="CellularPhone" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ContactPersonTitle" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="CurrencyCode" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="DateofBirth" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="EmailAddress" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="FaxPhone" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="FirstName" type="xsd:string" minOccurs="1" maxOccurs="1"
+/><xsd:element name="HomePhone" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="IntegrationId" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="JobTitle" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="LastName" type="xsd:string" minOccurs="1" maxOccurs="1"
+/><xsd:element name="Gender" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="MM" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="MaritalStatus" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="MiddleName" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="MotherMaidenName" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="PrimaryOrganizationId" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="PrimaryPersonalAddressId" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="RowId" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="SocialSecurityNumber" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="Status" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="SuppressAllCalls" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="SuppressAllEmails" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="SuppressAllFaxes" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="SuppressAllMailings" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="WorkPhone" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="AIAIntegrationId" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ConsumerLink" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ListOfAccount" type="xsdLocal:ListOfAccount" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ListOfComInvoiceProfile" type="xsdLocal:ListOfComInvoiceProfile" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ListOfOrganization" type="xsdLocal:ListOfOrganization" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ListOfPersonalAddress" type="xsdLocal:ListOfPersonalAddress" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ListOfUcmContactPrivacy" type="xsdLocal:ListOfUcmContactPrivacy" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ListOfFmLocation" type="xsdLocal:ListOfFmLocation" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ListOfContactNote" type="xsdLocal:ListOfContactNote" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ListOfContact_Account" type="xsdLocal:ListOfContact_Account" minOccurs="0" maxOccurs="1"
+/></xsd:sequence
+><xsd:attribute name="operation" type="xsd:string"
+/></xsd:complexType
+><xsd:complexType name="ListOfAccount"
+><xsd:sequence
+><xsd:element name="Account" type="xsdLocal:Account" minOccurs="0" maxOccurs="unbounded"
+/></xsd:sequence
+></xsd:complexType
+><xsd:complexType name="Account"
+><xsd:sequence
+><xsd:element name="RowId" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ListOfAccount_BusinessAddress" type="xsdLocal:ListOfAccount_BusinessAddress" minOccurs="0" maxOccurs="1"
+/></xsd:sequence
+></xsd:complexType
+><xsd:complexType name="ListOfComInvoiceProfile"
+><xsd:sequence
+><xsd:element name="ComInvoiceProfile" type="xsdLocal:ComInvoiceProfile" minOccurs="0" maxOccurs="unbounded"
+/></xsd:sequence
+></xsd:complexType
+><xsd:complexType name="ComInvoiceProfile"
+><xsd:sequence
+><xsd:element name="BillingProfileId" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="AccountId" type="xsd:string" minOccurs="1" maxOccurs="1"
+/></xsd:sequence
+></xsd:complexType
+><xsd:complexType name="ListOfOrganization"
+><xsd:sequence
+><xsd:element name="Organization" type="xsdLocal:Organization" minOccurs="0" maxOccurs="unbounded"
+/></xsd:sequence
+></xsd:complexType
+><xsd:complexType name="Organization"
+><xsd:sequence
+><xsd:element name="Id" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="Name" type="xsd:string" minOccurs="1" maxOccurs="1"
+/><xsd:element name="Organization" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="OrganizationId" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="AIAIntegrationId" type="xsd:string" minOccurs="0" maxOccurs="1"
+/></xsd:sequence
+><xsd:attribute name="operation" type="xsd:string"
+/></xsd:complexType
+><xsd:complexType name="ListOfPersonalAddress"
+><xsd:sequence
+><xsd:element name="PersonalAddress" type="xsdLocal:PersonalAddress" minOccurs="0" maxOccurs="unbounded"
+/></xsd:sequence
+></xsd:complexType
+><xsd:complexType name="PersonalAddress"
+><xsd:sequence
+><xsd:element name="Id" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="AddressName" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="City" type="xsd:string" minOccurs="1" maxOccurs="1"
+/><xsd:element name="Country" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="County" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="EmailAddress" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="IntegrationId" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="PostalCode" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="Province" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="State" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="StreetAddress" type="xsd:string" minOccurs="1" maxOccurs="1"
+/><xsd:element name="StreetAddress2" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="AIAIntegrationId" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="AddressLink" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="CarrierRouteCode" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="DSFDeliveryType" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="DSFSeasonalIndicator" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="DeliveryPointBarcode" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="LargePrisonFlag" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="NCOALinkNewMoveEffectiveDate" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="NCOALinkNewMoveType" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="OptOutInaccurateRecordFlag" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="PostalAddressFlags" type="xsd:string" minOccurs="0" maxOccurs="1"
+/></xsd:sequence
+><xsd:attribute name="operation" type="xsd:string"
+/></xsd:complexType
+><xsd:complexType name="ListOfUcmContactPrivacy"
+><xsd:sequence
+><xsd:element name="UcmContactPrivacy" type="xsdLocal:UcmContactPrivacy" minOccurs="0" maxOccurs="unbounded"
+/></xsd:sequence
+></xsd:complexType
+><xsd:complexType name="UcmContactPrivacy"
+><xsd:sequence
+><xsd:element name="Id" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="AffiliateFlag" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="AffiliateMethod" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="AffiliateSource" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="AffiliateSystem" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ChannelFlag" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ChannelMethod" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ChannelSource" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ChannelSystem" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ContactId" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="CoverLetterType" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="CoverLetterTypeII" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="IntegrationId" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="LockedFlag" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="NonaffiliateFlag" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="NonaffiliateMethod" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="NonaffiliateSource" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="NonaffiliateSystem" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="NoticeSendFlag" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="NoticeSentDate" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="NoticeSentReason" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="NoticeSentType" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="OFACFlag" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="PENDEndDate" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="PENDStartDate" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="PrivacyParentType" type="xsd:string" minOccurs="1" maxOccurs="1"
+/><xsd:element name="PrivacyStateCode" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="PrivacyUID" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ReceiveAnnualNoticeFlag" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ReceiveAnnualNoticeMethod" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ReceiveAnnualNoticeSource" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ReceiveAnnualNoticeSystem" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="StatePENDPeriod" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="TelemarketingFlag" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="TelemarketingMethod" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="TelemarketingSource" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="TelemarketingSystem" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="AIAIntegrationId" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="BankruptcyDataFlag" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="DMAEmailFlag" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="DMAMailFlag" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="DMAPhoneFlag" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="DeceasedDataFlag" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="DerogatoryDataFlag" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="FTCDoNotCallFlag" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="OptOutConsAtBusFlag" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="OptOutDeceasedFlag" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="OptOutHighlySensitiveFlag" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="OverallSuppressionFlag" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="SAGPhoneFlag" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="TaxLienJudgmentFlag" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="WirelessFlag" type="xsd:string" minOccurs="0" maxOccurs="1"
+/></xsd:sequence
+><xsd:attribute name="operation" type="xsd:string"
+/></xsd:complexType
+><xsd:complexType name="ListOfFmLocation"
+><xsd:sequence
+><xsd:element name="FmLocation" type="xsdLocal:FmLocation" minOccurs="0" maxOccurs="unbounded"
+/></xsd:sequence
+></xsd:complexType
+><xsd:complexType name="FmLocation"
+><xsd:sequence
+><xsd:element name="Id" type="xsd:string" minOccurs="0" maxOccurs="1"
+/></xsd:sequence
+></xsd:complexType
+><xsd:complexType name="ListOfContactNote"
+><xsd:sequence
+><xsd:element name="ContactNote" type="xsdLocal:ContactNote" minOccurs="0" maxOccurs="unbounded"
+/></xsd:sequence
+></xsd:complexType
+><xsd:complexType name="ContactNote"
+><xsd:sequence
+><xsd:element name="ContactId" type="xsd:string" minOccurs="1" maxOccurs="1"
+/><xsd:element name="CreatedBy" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="CreatedByName" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="CreatedDate" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="Id" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ModId" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="Note" type="xsd:string" minOccurs="1" maxOccurs="1"
+/><xsd:element name="Private" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="Updated" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="UpdatedBy" type="xsd:string" minOccurs="0" maxOccurs="1"
+/></xsd:sequence
+><xsd:attribute name="operation" type="xsd:string"
+/><xsd:attribute name="searchspec" type="xsd:string"
+/></xsd:complexType
+><xsd:complexType name="ListOfContact_Account"
+><xsd:sequence
+><xsd:element name="Contact_Account" type="xsdLocal:Contact_Account" minOccurs="0" maxOccurs="unbounded"
+/></xsd:sequence
+></xsd:complexType
+><xsd:complexType name="Contact_Account"
+><xsd:sequence
+><xsd:element name="Account" type="xsd:string" minOccurs="1" maxOccurs="1"
+/><xsd:element name="AccountRowId" type="xsd:string" minOccurs="0" maxOccurs="1"
+/></xsd:sequence
+><xsd:attribute name="IsPrimaryMVG" type="xsd:string"
+/><xsd:attribute name="operation" type="xsd:string"
+/><xsd:attribute name="searchspec" type="xsd:string"
+/></xsd:complexType
+><xsd:complexType name="ListOfAccount_BusinessAddress"
+><xsd:sequence
+><xsd:element name="Account_BusinessAddress" type="xsdLocal:Account_BusinessAddress" minOccurs="0" maxOccurs="unbounded"
+/></xsd:sequence
+></xsd:complexType
+><xsd:complexType name="Account_BusinessAddress"
+><xsd:sequence
+><xsd:element name="AddressId" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="ApartmentNumber" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="City" type="xsd:string" minOccurs="1" maxOccurs="1"
+/><xsd:element name="Country" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="County" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="PostalCode" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="State" type="xsd:string" minOccurs="0" maxOccurs="1"
+/><xsd:element name="StreetAddress" type="xsd:string" minOccurs="1" maxOccurs="1"
+/><xsd:element name="StreetAddress2" type="xsd:string" minOccurs="0" maxOccurs="1"
+/></xsd:sequence
+><xsd:attribute name="IsPrimaryMVG" type="xsd:string"
+/><xsd:attribute name="operation" type="xsd:string"
+/><xsd:attribute name="searchspec" type="xsd:string"
+/></xsd:complexType
+></xsd:schema
+>

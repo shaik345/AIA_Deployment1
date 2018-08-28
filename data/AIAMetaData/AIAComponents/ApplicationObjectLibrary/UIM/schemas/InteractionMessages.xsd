@@ -1,0 +1,387 @@
+<?xml version="1.0"?>
+<!--
+ Copyright (c) 2011, 2014, Oracle and/or its affiliates. All rights reserved.
+    Oracle Corporation and/or its affiliates. Other names may be trademarks of their respective owners. 
+-->
+<xs:schema 
+    targetNamespace="http://xmlns.oracle.com/communications/inventory/webservice/businessinteraction" 
+    xmlns:invconfig="http://xmlns.oracle.com/communications/inventory/configuration" 
+    xmlns:invent="http://xmlns.oracle.com/communications/inventory/entity" 
+    xmlns:invrole="http://xmlns.oracle.com/communications/inventory/role" 
+    xmlns:invparty="http://xmlns.oracle.com/communications/inventory/party" 
+    xmlns:invplace="http://xmlns.oracle.com/communications/inventory/place" 
+    xmlns:invprop="http://xmlns.oracle.com/communications/inventory/property" 
+    xmlns:invspec="http://xmlns.oracle.com/communications/inventory/specification" 
+    xmlns:invsvc="http://xmlns.oracle.com/communications/inventory/service" 
+    xmlns:invbi="http://xmlns.oracle.com/communications/inventory/businessinteraction" 
+    xmlns:invco="http://xmlns.oracle.com/communications/inventory/customobject" 
+    xmlns:invld="http://xmlns.oracle.com/communications/inventory/logicaldevice" 
+    xmlns:invnum="http://xmlns.oracle.com/communications/inventory/number" 
+    xmlns:invfault="http://xmlns.oracle.com/communications/inventory/webservice/fault" 
+    xmlns:invcom="http://xmlns.oracle.com/communications/inventory/webservice/common" 
+    xmlns:biws="http://xmlns.oracle.com/communications/inventory/webservice/businessinteraction" 
+    xmlns="http://www.w3.org/2001/XMLSchema" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    elementFormDefault="qualified">
+	<!--  ============= Imports Start ================= -->
+	<xs:import namespace="http://www.w3.org/2001/XMLSchema"/>
+	<!-- Local Imports -->
+	<xs:import namespace="http://xmlns.oracle.com/communications/inventory/webservice/common" schemaLocation="InventoryCommon.xsd"/>
+	<xs:import namespace="http://xmlns.oracle.com/communications/inventory/webservice/fault" schemaLocation="InventoryFaults.xsd"/>
+	<xs:import namespace="http://xmlns.oracle.com/communications/inventory/businessinteraction" schemaLocation="BusinessInteraction.xsd"/>
+	<xs:import namespace="http://xmlns.oracle.com/communications/inventory/service" schemaLocation="Service.xsd"/>
+	<xs:import namespace="http://xmlns.oracle.com/communications/inventory/specification" schemaLocation="Specification.xsd"/>
+	<xs:import namespace="http://xmlns.oracle.com/communications/inventory/property" schemaLocation="Property.xsd"/>
+	<xs:import namespace="http://xmlns.oracle.com/communications/inventory/place" schemaLocation="Place.xsd"/>
+	<xs:import namespace="http://xmlns.oracle.com/communications/inventory/party" schemaLocation="Party.xsd"/>
+	<xs:import namespace="http://xmlns.oracle.com/communications/inventory/role" schemaLocation="Role.xsd"/>
+	<xs:import namespace="http://xmlns.oracle.com/communications/inventory/customobject" schemaLocation="CustomObject.xsd"/>
+	<xs:import namespace="http://xmlns.oracle.com/communications/inventory/logicaldevice" schemaLocation="LogicalDevice.xsd"/>
+	<xs:import namespace="http://xmlns.oracle.com/communications/inventory/number" schemaLocation="Number.xsd"/>
+	<!-- ==== Message Types ==== -->
+	<xs:complexType name="CaptureInteractionRequestType">
+		<xs:annotation>
+			<xs:documentation>
+				CaptureInteractionRequestType holds the information to
+				create or update a Business Interaction with a request
+				to act upon the inventory. The action request carries
+				the action and its input parameters.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="invcom:InventoryRequestType">
+				<xs:sequence>
+					<xs:element name="interaction" type="invbi:BusinessInteractionType" nillable="false">
+						<xs:annotation>
+							<xs:documentation>
+								Interaction identifies the Business
+								Interaction, which will be created or
+								updated to provide the context in which
+								the action will be performed. The id and
+								name must be provided.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="executeProcess" type="xs:boolean" nillable="false">
+						<xs:annotation>
+							<xs:documentation>
+								If true, the processInteraction operation will be executed 
+								after the captureInteraction. Default is false.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="responseLevel" type="biws:InteractionResponseLevelEnum" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+								This option controls the level of detail 
+								returned with the operation. Default is 
+								INTERACTION_ITEM_ENTITY_CONFIGURATION.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="CaptureInteractionResponseType">
+		<xs:annotation>
+			<xs:documentation>
+				CaptureInteractionResponseType holds the response of the
+				CaptureInteraction operation.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="invcom:InventoryResponseType">
+				<xs:sequence>
+					<xs:element name="interaction" type="invbi:BusinessInteractionType" nillable="false" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+								The BusinessInteraction capturing the
+								action that is being requested.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="CaptureInteractionFaultType">
+		<xs:annotation>
+			<xs:documentation>
+				Fault that is specific to the CaptureInteraction
+				operation.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="invfault:InventoryFaultType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProcessInteractionRequestType">
+		<xs:annotation>
+			<xs:documentation>
+				ProcessInteractionRequestType invokes the rules to
+				automatically perform a business interaction. Rules may
+				automate the business interaction partially or
+				completely. This operation is re-entrant to enable
+				incrementally updating the inventory using a mix of
+				automated and manual activities. Re-entrancy also
+				enables the action request to be re-captured (i.e., to
+				support order revision/amendment) and performed again.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="invcom:InventoryRequestType">
+				<xs:sequence>
+					<xs:element name="interaction" type="invbi:BusinessInteractionType" nillable="false" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+								Identify a Business Interaction by id or external id 
+								and automate its execution.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="responseLevel" type="biws:InteractionResponseLevelEnum" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+								This option controls the level of detail 
+								returned with the operation. Default is 
+								INTERACTION_ITEM_ENTITY_CONFIGURATION.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProcessInteractionResponseType">
+		<xs:annotation>
+			<xs:documentation>
+				ProcessInteractionResponseType holds the response of
+				the ProcessInteraction operation.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="invcom:InventoryResponseType">
+				<xs:sequence>
+					<xs:element name="interaction" type="invbi:BusinessInteractionType" nillable="false" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+								The BusinessInteraction capturing the
+								action that is being requested.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProcessInteractionFaultType">
+		<xs:annotation>
+			<xs:documentation>
+				Fault that is specific to the ProcessInteraction
+				operation.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="invfault:InventoryFaultType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="UpdateInteractionRequestType">
+		<xs:annotation>
+			<xs:documentation>
+				UpdateInteractionRequestType holds the request for
+				UpdateInteraction operation. This operation updates 
+				the business interaction and transitions the business 
+				interaction, service and service configuration statuses.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="invcom:InventoryRequestType">
+				<xs:sequence>
+					<xs:element name="interaction" type="invbi:BusinessInteractionType" nillable="false">
+						<xs:annotation>
+							<xs:documentation>
+								Identify a Business Interaction by id
+								and change its state according to the
+								interaction action. This cascades the
+								state change to its items.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="responseLevel" type="biws:InteractionResponseLevelEnum" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+								This option controls the level of detail 
+								returned with the operation. Default is 
+								INTERACTION_ITEM_ENTITY_CONFIGURATION.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="UpdateInteractionResponseType">
+		<xs:annotation>
+			<xs:documentation>
+				UpdateInteractionResponseType holds the response of
+				the UpdateInteraction operation operation.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="invcom:InventoryResponseType">
+				<xs:sequence>
+					<xs:element name="interaction" type="invbi:BusinessInteractionType" nillable="false" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+								The BusinessInteraction that was acted
+								upon.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="UpdateInteractionFaultType">
+		<xs:annotation>
+			<xs:documentation>
+				Fault type to return any business faults within
+				UpdateInteraction operation.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="invfault:InventoryFaultType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="GetInteractionRequestType">
+		<xs:annotation>
+			<xs:documentation>
+				GetInteractionRequestType retrieves a business
+				interaction.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="invcom:InventoryRequestType">
+				<xs:sequence>
+					<xs:element name="interaction" type="invbi:BusinessInteractionType" nillable="false">
+						<xs:annotation>
+							<xs:documentation>
+								Identify a Business Interaction by id.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="responseLevel" type="biws:InteractionResponseLevelEnum" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>
+								This option controls the level of detail 
+								returned with the operation. Default is 
+								INTERACTION_ITEM_ENTITY_CONFIGURATION.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="GetInteractionResponseType">
+		<xs:annotation>
+			<xs:documentation>
+				GetInteractionResponseType holds the response of the
+				GetInteraction operation.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="invcom:InventoryResponseType">
+				<xs:sequence>
+					<xs:element name="interaction" type="invbi:BusinessInteractionType" nillable="false">
+						<xs:annotation>
+							<xs:documentation>
+								The BusinessInteraction that is
+								retrieved.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="GetInteractionFaultType">
+		<xs:annotation>
+			<xs:documentation>
+				Fault that is specific to the GetInteraction operation.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="invfault:InventoryFaultType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:simpleType name="InteractionResponseLevelEnum">
+        <xs:annotation>
+            <xs:documentation>
+                Defines valid values for Business Interaction Response Detail Level.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xsd:string">
+            <xs:enumeration value="INTERACTION">
+	            <xs:annotation>
+	            	<xs:documentation>
+	                	Selecting this option would return only the interaction 
+	                	header section.
+	            	</xs:documentation>
+	        	</xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="INTERACTION_ITEM">
+	            <xs:annotation>
+	            	<xs:documentation>
+	                	Selecting this option would return the interaction header 
+	                	section and the list of items. Not supported in this release.
+	            	</xs:documentation>
+	        	</xs:annotation>
+        	</xs:enumeration>
+            <xs:enumeration value="INTERACTION_ITEM_ENTITY">
+	            <xs:annotation>
+	            	<xs:documentation>
+	                	Selecting this option would return the interaction header 
+	                	section and the list of items along with their associated entity. 
+	                	If the entity have configuration, they would not show.
+	            	</xs:documentation>
+	        	</xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="INTERACTION_ITEM_ENTITY_CONFIGURATION">
+	            <xs:annotation>
+	            	<xs:documentation>
+	                	Selecting this option would return the interaction header section 
+	                	and the list of items along with their associated entity and their 
+	                	configuration. This option is equivalent to the legacy 
+	                	"expandedResponse" boolean with a value of "false".
+	            	</xs:documentation>
+	        	</xs:annotation>
+        	</xs:enumeration>
+            <xs:enumeration value="INTERACTION_ITEM_ENTITY_CONFIGURATION_EXPANDED">
+            	<xs:annotation>
+	            	<xs:documentation>
+	                	Selecting this option would return the interaction header section 
+	                	and the list of items along with their associated entity and their 
+	                	configuration. Plus, with this option, we drill down child-configuration. 
+	                	This option is equivalent to the legacy "expandedResponse" boolean 
+	                	with a value of "true".
+	            	</xs:documentation>
+        		</xs:annotation>
+        	</xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+	<xs:element name="captureInteractionRequest" type="biws:CaptureInteractionRequestType"/>
+	<xs:element name="captureInteractionResponse" type="biws:CaptureInteractionResponseType"/>
+	<xs:element name="captureInteractionFault" type="biws:CaptureInteractionFaultType"/>
+	<xs:element name="processInteractionRequest" type="biws:ProcessInteractionRequestType"/>
+	<xs:element name="processInteractionResponse" type="biws:ProcessInteractionResponseType"/>
+	<xs:element name="processInteractionFault" type="biws:ProcessInteractionFaultType"/>
+	<xs:element name="updateInteractionRequest" type="biws:UpdateInteractionRequestType"/>
+	<xs:element name="updateInteractionResponse" type="biws:UpdateInteractionResponseType"/>
+	<xs:element name="updateInteractionFault" type="biws:UpdateInteractionFaultType"/>
+	<xs:element name="getInteractionRequest" type="biws:GetInteractionRequestType"/>
+	<xs:element name="getInteractionResponse" type="biws:GetInteractionResponseType"/>
+	<xs:element name="getInteractionFault" type="biws:GetInteractionFaultType"/>
+</xs:schema>

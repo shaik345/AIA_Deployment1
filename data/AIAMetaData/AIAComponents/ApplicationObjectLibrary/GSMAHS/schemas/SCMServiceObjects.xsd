@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:scm="http://telia.com/scm/fmw/sim/objects/v1"
+            targetNamespace="http://telia.com/scm/fmw/sim/objects/v1"
+            elementFormDefault="qualified">
+ <xsd:complexType name="LeaseSIMCardRequestType">
+  <xsd:sequence>
+   <xsd:element ref="scm:ICCID"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:element name="LeaseSIMCardRequest" type="scm:LeaseSIMCardRequestType"/>
+ <xsd:complexType name="ReleaseSIMCardRequestType">
+  <xsd:sequence>
+   <xsd:element ref="scm:ICCID"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:element name="ReleaseSIMCardRequest"
+              type="scm:ReleaseSIMCardRequestType"/>
+ <xsd:complexType name="LeaseSIMCardResponseType">
+  <xsd:sequence>
+   <xsd:element ref="scm:Result"/>
+   <xsd:element ref="scm:Description"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:element name="LeaseSIMCardResponse" type="scm:LeaseSIMCardResponseType"/>
+ <xsd:complexType name="ReleaseSIMCardResponseType">
+  <xsd:sequence>
+   <xsd:element ref="scm:Result"/>
+   <xsd:element ref="scm:Description"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:element name="ReleaseSIMCardResponse"
+              type="scm:ReleaseSIMCardResponseType"/>
+ <xsd:complexType name="AddSecondIMSIRequestType">
+  <xsd:sequence>
+   <xsd:element ref="scm:ICCID"/>
+   <xsd:element ref="scm:IMSI"/>
+   <xsd:element ref="scm:IMSI_Type" minOccurs="0"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:element name="AddSecondIMSIRequest" type="scm:AddSecondIMSIRequestType"/>
+ <xsd:complexType name="AddSecondIMSIResponseType">
+  <xsd:sequence>
+   <xsd:element ref="scm:Result"/>
+   <xsd:element ref="scm:Description"/>
+  </xsd:sequence>
+ </xsd:complexType>
+ <xsd:element name="AddSecondIMSIResponse"
+              type="scm:AddSecondIMSIResponseType"/>
+ <xsd:element name="ICCID" type="xsd:string"/>
+ <xsd:element name="IMSI" type="xsd:string"/>
+ <xsd:element name="IMSI_Type" type="xsd:string"/>
+ <xsd:element name="Result" type="xsd:string"/>
+ <xsd:element name="Description" type="xsd:string"/>
+</xsd:schema>

@@ -1,0 +1,57 @@
+26 Jul, 2017 2:01:15 PM oracle.security.jps.util.JpsUtil disableAudit
+INFO: JpsUtil: isAuditDisabled set to true
+26 Jul, 2017 2:01:15 PM oracle.security.jps.util.JpsUtil disableAudit
+INFO: JpsUtil: isAuditDisabled set to false
+26 Jul, 2017 2:01:19 PM oracle.mds
+NOTIFICATION: PManager instance is created without multitenancy support as JVM flag "oracle.multitenant.enabled" is not set to enable multitenancy support.
+26 Jul, 2017 2:01:19 PM oracle.security.jps.internal.config.xml.XmlConfigurationFactory initDefaultConfiguration
+SEVERE: java.io.FileNotFoundException: .\config\jps-config.xml (The system cannot find the path specified)
+26 Jul, 2017 2:01:19 PM oracle.mds
+NOTIFICATION: Auditing is disabled for component MDS.
+26 Jul, 2017 2:01:27 PM oracle.adf.share.ADFContext getCurrent
+WARNING: Automatically initializing a DefaultContext for getCurrent.
+Caller should ensure that a DefaultContext is proper for this use.
+Memory leaks and/or unexpected behaviour may occur if the automatic initialization is performed improperly.
+This message may be avoided by performing initADFContext before using getCurrent().
+For more information please enable logging for oracle.adf.share.ADFContext at FINEST level.
+26 Jul, 2017 2:01:27 PM oracle.mds
+NOTIFICATION: PManager instance is created without multitenancy support as JVM flag "oracle.multitenant.enabled" is not set to enable multitenancy support.
+26 Jul, 2017 2:01:27 PM oracle.security.jps.internal.config.xml.XmlConfigurationFactory initDefaultConfiguration
+SEVERE: java.io.FileNotFoundException: .\config\jps-config.xml (The system cannot find the path specified)
+26 Jul, 2017 2:01:27 PM oracle.mds
+NOTIFICATION: Auditing is disabled for component MDS.
+26 Jul, 2017 2:01:27 PM oracle.security.jps.internal.config.xml.XmlConfigurationFactory initDefaultConfiguration
+SEVERE: java.io.FileNotFoundException: .\config\jps-config.xml (The system cannot find the path specified)
+26 Jul, 2017 2:01:27 PM oracle.mds
+NOTIFICATION: Auditing is disabled for component ADF-MDS.
+26 Jul, 2017 2:01:36 PM oracle.fabric.common.wsdl.SchemaManager isIncrementalBuildSupported
+INFO: XMLSchema incremental build enabled.
+26 Jul, 2017 2:01:40 PM com.collaxa.cube.CubeLogger info
+INFO: validating "UpdateRCCDetailsSiebelReqABCSImplProcess.bpel" ...
+26 Jul, 2017 2:01:40 PM oracle.integration.platform.blocks.FabricConfigManager <clinit>
+WARNING: JRF is unable to determine the current application server platform.
+26 Jul, 2017 2:01:40 PM oracle.integration.platform.blocks.WLSPlatformConfigurationProvider <clinit>
+WARNING: JRF is unable to determine the current application server platform.
+26 Jul, 2017 2:02:08 PM oracle.fabric.common.wsdl.SchemaManager buildXDKSchema
+INFO: Namespace specified for the lookup belongs to a default namespace URI: http://www.w3.org/2001/XMLSchema. Will not attempt to build the schema model for it...
+26 Jul, 2017 2:02:08 PM oracle.fabric.common.wsdl.SchemaManager buildXDKSchema
+INFO: Namespace specified for the lookup belongs to a default namespace URI: http://www.w3.org/2001/XMLSchema. Will not attempt to build the schema model for it...
+26 Jul, 2017 2:02:08 PM oracle.fabric.common.wsdl.SchemaManager buildXDKSchema
+INFO: Namespace specified for the lookup belongs to a default namespace URI: http://www.w3.org/2001/XMLSchema. Will not attempt to build the schema model for it...
+26 Jul, 2017 2:02:08 PM oracle.fabric.common.wsdl.SchemaManager buildXDKSchema
+INFO: Namespace specified for the lookup belongs to a default namespace URI: http://www.w3.org/2001/XMLSchema. Will not attempt to build the schema model for it...
+26 Jul, 2017 2:02:08 PM oracle.fabric.common.wsdl.SchemaManager buildXDKSchema
+INFO: Namespace specified for the lookup belongs to a default namespace URI: http://www.w3.org/2001/XMLSchema. Will not attempt to build the schema model for it...
+26 Jul, 2017 2:02:08 PM oracle.fabric.common.wsdl.SchemaManager buildXDKSchema
+INFO: Namespace specified for the lookup belongs to a default namespace URI: http://www.w3.org/2001/XMLSchema. Will not attempt to build the schema model for it...
+26 Jul, 2017 2:02:08 PM com.collaxa.cube.CubeLogger info
+INFO: Composed "UpdateRCCDetailsSiebelReqABCSImplProcess" in 154.4 milliseconds [nodes 104=1+103, 673.6 nodes/sec]
+26 Jul, 2017 2:02:12 PM com.collaxa.cube.CubeLogger info
+INFO: Compiled "UpdateRCCDetailsSiebelReqABCSImplProcess" in 4.198 seconds
+26 Jul, 2017 2:02:12 PM com.collaxa.cube.CubeLogger info
+INFO: Gathered 18 files in 6.6 milliseconds
+
+26 Jul, 2017 2:02:12 PM com.collaxa.cube.CubeLogger info
+INFO: Packaged "UpdateRCCDetailsSiebelReqABCSImplProcess" in 74.9 milliseconds
+
+Picked up _JAVA_OPTIONS: -Xmx512M

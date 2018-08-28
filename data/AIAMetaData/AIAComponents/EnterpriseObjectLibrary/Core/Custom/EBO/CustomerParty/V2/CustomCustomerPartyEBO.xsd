@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://xmlns.oracle.com/EnterpriseObjects/Core/Custom/EBO/CustomerParty/V2" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:corecomcust="http://xmlns.oracle.com/EnterpriseObjects/Core/Custom/Common/V2" targetNamespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Custom/EBO/CustomerParty/V2" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.07.00">
+	<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="../../../../Common/V2/CommonComponents.xsd"/>
+	<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="../../../../Common/V2/CodeLists.xsd"/>
+	<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="../../../../Common/V2/DataTypes.xsd"/>
+	<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="../../../../Common/V2/Meta.xsd"/>
+	<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Custom/Common/V2" schemaLocation="../../../Common/V2/CustomCommonComponents.xsd"/>
+	<xsd:complexType name="CustomCustomerPartyEBOType">
+		<xsd:sequence>
+			<xsd:element name="QueryBalanceRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="RequestDetails">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="requesterId" type="xsd:string"/>
+									<xsd:element name="requestDate" type="xsd:dateTime"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="CustomerParty">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="serviceAccountId" type="xsd:string"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="InstalledProduct">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="assetIntegrationId" type="xsd:string"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="BalanceDetails">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="serviceType" type="xsd:string"/>
+									<xsd:element name="roaming" type="xsd:string"/>
+									<xsd:element name="national" type="xsd:string"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="QueryBalanceResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="ResponseDetails">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="responseDate" type="xsd:dateTime"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="BalanceDetails">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="nbOfBalances" type="xsd:dateTime"/>
+									<xsd:element name="AggregatedBalances" minOccurs="0" maxOccurs="unbounded">
+										<xsd:complexType>
+											<xsd:sequence>
+												<xsd:element name="productName" type="xsd:string"/>
+												<xsd:element name="Limit" type="xsd:string"/>
+												<xsd:element name="remainingBalance" type="xsd:string"/>
+												<xsd:element name="validFrom" type="xsd:dateTime"/>
+												<xsd:element name="validTo" type="xsd:dateTime"/>
+												<xsd:element name="allowanceType" type="xsd:string"/>
+												<!-- Start MOBREL 18.2 - Sprint 37:Mobdev-3512-->
+												<xsd:element name="unit" type="xsd:string"/>
+												<xsd:element name="serviceType" type="xsd:string"/>
+												<!-- End MOBREL 18.2 - Sprint 37:Mobdev-3512-->
+												<!-- Start MOBREL 18.4 - Defect:10267-->
+												<xsd:element name="resourceId" type="xsd:string"/>
+												<!-- End MOBREL 18.4 - Defect:10267-->
+												<!-- Start MOBREL 18.3 - Defect:10509-->
+												<xsd:element name="type" type="xsd:string"/>
+												<!-- End MOBREL 18.3 - Defect:10509-->
+											</xsd:sequence>
+										</xsd:complexType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="QueryTopUpHistoryRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="RequestDetails">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="requesterId" type="xsd:string"/>
+									<xsd:element name="requestDate" type="xsd:dateTime"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="CustomerParty">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="serviceAccountId" type="xsd:string"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="InstalledProduct">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="assetIntegrationId" type="xsd:string"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="HistoryDepth">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="from" type="xsd:dateTime"/>
+									<xsd:element name="to" type="xsd:dateTime"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="QueryTopUpHistoryResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="ResponseDetails">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="responseDate" type="xsd:dateTime"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="TopUpDetails">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="nbOfTopUp" type="xsd:string"/>
+									<xsd:element name="TopUpEventDetails" minOccurs="0" maxOccurs="unbounded">
+										<xsd:complexType>
+											<xsd:sequence>
+												<xsd:element name="productName" type="xsd:string"/>
+												<xsd:element name="limit" type="xsd:string"/>
+												<xsd:element name="price" type="xsd:string"/>
+												<xsd:element name="taxAmount" type="xsd:string"/>
+												<xsd:element name="purchasedDate" type="xsd:dateTime"/>
+												<xsd:element name="prepaidFlag" type="xsd:string"/>
+												<xsd:element name="purchasedThrough" type="xsd:string" minOccurs="0"/>
+												<!-- Start MOBREL 18.4 - Sprint 44:Mobdev-4318 and 4319 RAG-250-->
+												<xsd:element name="TsServiceId" type="xsd:string"/>
+												<!-- End MOBREL 18.4 - Sprint 44:Mobdev-4318 and 4319 RAG-250-->
+											</xsd:sequence>
+										</xsd:complexType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CustomAccountBalanceSummaryType"/>
+	<xsd:complexType name="CustomCustomerPartyAccountType">
+		<xsd:sequence>
+			<xsd:element name="CustomerPartyAccountSSN" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="CustomerPartyAccountTSCID" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="CustomerVATRegNumber" type="xsd:string" minOccurs="0"/>
+			<!-- Start : MDU-223 RAG-192 Changes in AIA for 18.1 MDU. -Ashwath-->
+			<xsd:element name="CustomerPartyTSPropertyID" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="CustomerPartyKOSAType" type="xsd:string" minOccurs="0"/>
+			<!-- End : MDU-223 RAG-192 Changes in AIA for 18.1 MDU. -Ashwath-->
+			<!-- Start : XDSL-1567 RAG-225 Changes in AIA for 18.2 XDSL Move. -Ashwath-->
+			<xsd:element name="CustomerPartyParentSubSegment" type="xsd:string" minOccurs="0"/>
+			<!-- End : XDSL-1567 RAG-225 Changes in AIA for 18.2 XDSL Move. -Ashwath-->
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CustomCustomerPartyAccountAttachmentType"/>
+	<xsd:complexType name="CustomCustomerPartyAccountContactType"/>
+	<xsd:complexType name="CustomCustomerPartyAccountContactCreditCardType"/>
+	<xsd:complexType name="CustomCustomerPartyAccountContactUsageType"/>
+	<xsd:complexType name="CustomCustomerPartyAccountSiteType"/>
+	<xsd:complexType name="CustomCustomerPartyAccountSiteAttachmentType"/>
+	<xsd:complexType name="CustomCustomerPartyAccountSiteBillingProfileType"/>
+	<xsd:complexType name="CustomCustomerPartyAccountSiteShippingProfileType"/>
+	<xsd:complexType name="CustomCustomerPartyAccountSiteUsageType"/>
+	<xsd:complexType name="CustomCustomerPartyAccountUsageType"/>
+	<xsd:complexType name="CustomCustomerPartyAttachmentType"/>
+	<xsd:complexType name="CustomCustomerPartyBankAccountType"/>
+	<xsd:complexType name="CustomCustomerPartyBestVisitationTimeType"/>
+	<xsd:complexType name="CustomCustomerPartyBillingProfileType"/>
+	<xsd:complexType name="CustomCustomerPartyCreditProfileType"/>
+	<xsd:complexType name="CustomCustomerPartyFinancialAccountType"/>
+	<xsd:complexType name="CustomCustomerPartyFinancialAccountBalanceType"/>
+	<xsd:complexType name="CustomCustomerPartyOverdueCollectionRuleType"/>
+	<xsd:complexType name="CustomCustomerPartyPaymentProfileType">
+		<xsd:sequence>
+			<xsd:element name="TSOrganizationName" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CustomCustomerPartyPrivacyProfileType"/>
+	<xsd:complexType name="CustomCustomerPartySellingProfileType"/>
+	<xsd:complexType name="CustomCustomerPartyShippingExceptionConfigurationType"/>
+	<xsd:complexType name="CustomCustomerPartyShippingProfileType"/>
+	<xsd:complexType name="CustomCustomerPartySpecificationType"/>
+	<xsd:complexType name="CustomCustomerPartySupportTeamType"/>
+	<xsd:complexType name="CustomCustomerPartySupportTeamMemberType"/>
+	<xsd:complexType name="CustomCustomerPartyTaxExemptionType"/>
+	<xsd:complexType name="CustomCustomerPartyWorkerType"/>
+	<xsd:complexType name="CustomPrivacyNoticeCommunicationType"/>
+	<xsd:complexType name="CustomRelatedCustomerPartyType"/>
+	<xsd:complexType name="CustomRelatedCustomerPartyAccountType"/>
+	<xsd:complexType name="CustomRelatedCustomerPartyAccountContactType"/>
+	<xsd:complexType name="CustomSpecialNeedProfileType"/>
+</xsd:schema>

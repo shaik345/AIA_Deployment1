@@ -1,0 +1,4651 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:subscriber="urn:siemens:names:prov:gw:SUBSCRIBER:1:0" xmlns:spml="urn:siemens:names:prov:gw:SPML:2:0" targetNamespace="urn:siemens:names:prov:gw:SUBSCRIBER:1:0" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="1.0">
+<xs:import namespace="urn:siemens:names:prov:gw:SPML:2:0" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/CNDB/schemas/prov-gw-spml-2.0.xsd"/>
+<xs:complexType name="Subscriber">
+<xs:annotation>
+<xs:documentation>Definition of class subscriber </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:FirstClassObject">
+<xs:sequence>
+<xs:element name="auc" type="subscriber:AUC" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="profile" type="subscriber:Profile" minOccurs="0"/>
+<xs:element name="hlr" type="subscriber:HLR" minOccurs="0"/>
+<xs:element name="hss" type="subscriber:HSS" minOccurs="0"/>
+<xs:element name="mnp" type="subscriber:MNP" minOccurs="0"/>
+<xs:element name="eir" type="subscriber:EIR" minOccurs="0"/>
+<xs:element name="isVoid" type="xs:boolean" minOccurs="0"/>
+<xs:element name="masteredBy" type="xsd:int" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="AUC">
+<xs:annotation>
+<xs:documentation>Abstract base class for a service </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="imsi" type="xsd:string" minOccurs="0"/>
+<xs:element name="encKey" type="xsd:string" minOccurs="0"/>
+<xs:element name="iccId" type="xsd:string" minOccurs="0"/>
+<xs:element name="algoId" type="xsd:int" minOccurs="0"/>
+<xs:element name="cv" type="xsd:string" minOccurs="0"/>
+<xs:element name="hmac" type="xsd:string" minOccurs="0"/>
+<xs:element name="kdbId" type="xsd:string" minOccurs="0"/>
+<xs:element name="acsub" type="xsd:int" minOccurs="0"/>
+<xs:element name="amf" type="xsd:string" minOccurs="0"/>
+<xs:element name="sqn" type="xsd:string" minOccurs="0"/>
+<xs:element name="opcEncKey" type="xsd:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="Profile">
+<xs:annotation>
+<xs:documentation>SubscriberProfile</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="givenName" type="subscriber:PrintableString128" minOccurs="0"/>
+<xs:element name="surname" type="subscriber:PrintableString128" minOccurs="0"/>
+<xs:element name="username" type="subscriber:PrintableString128" minOccurs="0"/>
+<xs:element name="password" type="subscriber:String128" minOccurs="0"/>
+<xs:element name="loginPassword" type="subscriber:String128" minOccurs="0"/>
+<xs:element name="prepaid" type="xsd:boolean" minOccurs="0"/>
+<xs:element name="roamingAllowed" type="xsd:boolean" minOccurs="0"/>
+<xsd:element name="notificationEmail" type="subscriber:EmailString" minOccurs="0"/>
+<xsd:element name="preferredLanguage" type="subscriber:LanguageString2" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="AS">
+<xs:annotation>
+<xs:documentation>Abstract base class for an application service </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="String128">
+<xs:annotation>
+<xs:documentation>String of length 1 .. 128</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="128"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="PrintableString">
+<xs:annotation>
+<xs:documentation>Printable String with '@_;' characters. This type is used for names and labels</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:pattern value="[a-zA-Z\d '()+,-./:=?@_;]+"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="PrintableString10">
+<xs:annotation>
+<xs:documentation>String of length 1 .. 10</xs:documentation>
+</xs:annotation>
+<xs:restriction base="subscriber:PrintableString">
+<xs:maxLength value="10"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="String10">
+<xs:annotation>
+<xs:documentation>String of length 1 .. 10</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xsd:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="10"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="PrintableString32">
+<xs:annotation>
+<xs:documentation>String of length 1 .. 32</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xsd:string">
+<xs:maxLength value="32"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="PrintableString64">
+<xs:annotation>
+<xs:documentation>String of length 1 .. 64</xs:documentation>
+</xs:annotation>
+<xs:restriction base="subscriber:PrintableString">
+<xs:maxLength value="64"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="PrintableString128">
+<xs:annotation>
+<xs:documentation>Printable String of length 1 .. 128</xs:documentation>
+</xs:annotation>
+<xs:restriction base="subscriber:PrintableString">
+<xs:maxLength value="128"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="PrintableString200">
+<xs:annotation>
+<xs:documentation>Printable String of length 1 .. 200</xs:documentation>
+</xs:annotation>
+<xs:restriction base="subscriber:PrintableString">
+<xs:maxLength value="200"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="PrintableString250">
+<xs:annotation>
+<xs:documentation>Printable String of length 1 .. 250</xs:documentation>
+</xs:annotation>
+<xs:restriction base="subscriber:PrintableString">
+<xs:maxLength value="250"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="PrintableString253">
+<xs:annotation>
+<xs:documentation>Printable String of length 1 .. 253</xs:documentation>
+</xs:annotation>
+<xs:restriction base="subscriber:PrintableString">
+<xs:minLength value="1"/>
+<xs:maxLength value="253"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="PrintableString254">
+<xs:annotation>
+<xs:documentation>Printable String of length 1 .. 254</xs:documentation>
+</xs:annotation>
+<xs:restriction base="subscriber:PrintableString">
+<xs:maxLength value="254"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="PrintableString255">
+<xs:annotation>
+<xs:documentation>Printable String of length 1 .. 255</xs:documentation>
+</xs:annotation>
+<xs:restriction base="subscriber:PrintableString">
+<xs:minLength value="1"/>
+<xs:maxLength value="255"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="PrintableString0_255">
+<xs:annotation>
+<xs:documentation>Printable String of length 0 .. 255</xs:documentation>
+</xs:annotation>
+<xs:restriction base="subscriber:PrintableString">
+<xs:maxLength value="255"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="OctetString">
+<xs:annotation>
+<xs:documentation>Only octet digits allowed</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xsd:string">
+<xsd:pattern value="[0-9A-Fa-f]+"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="OctetString16">
+<xs:annotation>
+<xs:documentation>OctetString of length 1..16</xs:documentation>
+</xs:annotation>
+<xs:restriction base="subscriber:OctetString">
+<xs:minLength value="1"/>
+<xs:maxLength value="16"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="OctetString20">
+<xs:annotation>
+<xs:documentation>OctetString of length 1..20</xs:documentation>
+</xs:annotation>
+<xs:restriction base="subscriber:OctetString">
+<xs:minLength value="1"/>
+<xs:maxLength value="20"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="NumericString">
+<xs:annotation>
+<xs:documentation>Only digits allowed</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xsd:string">
+<xs:pattern value="\d+"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="NumericString15">
+<xs:annotation>
+<xs:documentation>NumericString of length 1..15</xs:documentation>
+</xs:annotation>
+<xs:restriction base="subscriber:NumericString">
+<xs:maxLength value="15"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="NumericString10_15">
+<xs:annotation>
+<xs:documentation>Numeric String of length 10..15</xs:documentation>
+</xs:annotation>
+<xs:restriction base="subscriber:NumericString">
+<xs:minLength value="10"/>
+<xs:maxLength value="15"/>
+</xs:restriction>
+</xs:simpleType>
+<xsd:simpleType name="NumericString1_15">
+<xsd:annotation>
+<xsd:documentation>Numeric String of length 1..15</xsd:documentation>
+</xsd:annotation>
+<xsd:restriction base="subscriber:NumericString">
+<xsd:minLength value="1"/>
+<xsd:maxLength value="15"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xs:simpleType name="String254">
+<xs:annotation>
+<xs:documentation>String of length 1 .. 254</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xsd:string">
+<xs:minLength value="1"/>
+<xs:maxLength value="254"/>
+</xs:restriction>
+</xs:simpleType>
+<xsd:simpleType name="EmailString">
+<xsd:annotation>
+<xsd:documentation>Printable String of length 1 .. 255 of standard email format</xsd:documentation>
+</xsd:annotation>
+<xsd:restriction base="xsd:string">
+<xsd:pattern value="([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]+)"/>
+<xsd:minLength value="1"/>
+<xsd:maxLength value="255"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="LanguageString2">
+<xsd:annotation>
+<xsd:documentation>Two Letter Language Code. Values as per ISO 639-1 are recommended.</xsd:documentation>
+</xsd:annotation>
+<xsd:restriction base="xsd:string">
+<xsd:pattern value="[a-zA-Z]+"/>
+<xsd:minLength value="2"/>
+<xsd:maxLength value="2"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xs:complexType name="TemplateSubscriber">
+<xs:annotation>
+<xs:documentation>Definition of class TemplateSubscriber.</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Subscriber"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="SubscriberIdentifierAliasType">
+<xs:restriction base="xs:string">
+<xs:enumeration value="identifier"/>
+<xs:enumeration value="imsi"/>
+<xs:enumeration value="msisdn"/>
+<xs:enumeration value="username"/>
+<xs:enumeration value="iccid"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="SubscriberIdentifier">
+<xs:simpleContent>
+<xs:restriction base="spml:Identifier">
+<xs:attribute name="alias" type="subscriber:SubscriberIdentifierAliasType" use="required"/>
+</xs:restriction>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="SubscriberIdentifierFileNameType">
+<xs:simpleContent>
+<xs:restriction base="spml:IdentifierFileNameType">
+<xs:attribute name="alias" type="subscriber:SubscriberIdentifierAliasType" use="required"/>
+<xs:attribute name="filterType" type="spml:IdentifierFilterType" use="required"/>
+</xs:restriction>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="SubscriberAliasType">
+<xs:complexContent>
+<xs:restriction base="spml:AliasType">
+<xs:attribute name="name" type="subscriber:SubscriberIdentifierAliasType" use="required"/>
+<xs:attribute name="value" type="xs:string" use="required"/>
+</xs:restriction>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="HSSIdentifierAliasType">
+<xs:restriction base="xsd:string">
+<xs:enumeration value="imsi"/>
+<xs:enumeration value="msisdn"/>
+<xs:enumeration value="impu"/>
+<xs:enumeration value="impi"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="HSSIdentifier">
+<xs:simpleContent>
+<xs:restriction base="spml:Identifier">
+<xs:attribute name="alias" type="subscriber:HSSIdentifierAliasType" use="required"/>
+</xs:restriction>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="HSSIdentifierFileNameType">
+<xs:simpleContent>
+<xs:restriction base="spml:IdentifierFileNameType">
+<xs:attribute name="alias" type="subscriber:HSSIdentifierAliasType" use="required"/>
+<xs:attribute name="filterType" type="spml:IdentifierFilterType" use="required"/>
+</xs:restriction>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="HSSAliasType">
+<xs:complexContent>
+<xs:restriction base="spml:AliasType">
+<xs:attribute name="name" type="subscriber:HSSIdentifierAliasType" use="required"/>
+<xs:attribute name="value" type="xsd:string" use="required"/>
+</xs:restriction>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="HSS">
+<xs:annotation>
+<xs:documentation>HSS Application Service </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:AS">
+<xs:sequence>
+<xs:element name="subscriptionId" type="xsd:string" minOccurs="0"/>
+<xs:element name="scscfDestinationRealm" type="xsd:string" minOccurs="0"/>
+<xs:element name="profileType" type="subscriber:ProfileType" minOccurs="0"/>
+<xs:element name="adminBlocked" type="xsd:boolean" minOccurs="0"/>
+<xs:element name="defaultScscfRequired" type="xsd:boolean" minOccurs="0"/>
+<xs:element name="maximumPrivateIds" type="xsd:int" minOccurs="0"/>
+<xs:element name="maximumPublicIds" type="xsd:int" minOccurs="0"/>
+<xs:element name="subscriptionExpiryDate" type="xsd:string" minOccurs="0"/>
+<xs:element name="scscfSipAddress" type="xsd:string" minOccurs="0"/>
+<xs:element name="scscfHost" type="xsd:string" minOccurs="0"/>
+<xs:element name="sharedIFCSupport" type="xsd:boolean" minOccurs="0"/>
+<xs:element name="chargingGroupId" type="xsd:string" minOccurs="0"/>
+<xs:element name="ccfPrimary" type="xsd:string" minOccurs="0"/>
+<xs:element name="ccfSecondary" type="xsd:string" minOccurs="0"/>
+<xs:element name="ecfPrimary" type="xsd:string" minOccurs="0"/>
+<xs:element name="ecfSecondary" type="xsd:string" minOccurs="0"/>
+<xs:element name="directRoutingSipAddress" type="xsd:string" minOccurs="0"/>
+<xs:element name="commonMsisdn" type="xsd:string" minOccurs="0"/>
+<xs:element name="suppressAliasForImsiMsisdn" type="xsd:boolean" minOccurs="0"/>
+<xs:element name="privateUserId" type="subscriber:PrivateUserId" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="implicitRegisteredSet" type="subscriber:ImplicitRegisteredDataSet" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="publicUserId" type="subscriber:PublicUserId" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="serviceProfile" type="subscriber:ServiceProfile" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="repositoryData" type="subscriber:RepositoryData" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="notification" type="subscriber:Notification" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="pprTriggerInfo" type="subscriber:PPRTriggerInfo" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="gussData" type="subscriber:GussData" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="aliasGroup" type="subscriber:AliasGroup" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="aliasRepositoryData" type="subscriber:AliasRepositoryData" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="refSharedUserProfile" type="xsd:string" minOccurs="0"/>
+<xs:element name="refCxRestrictionVPLMNId" type="xsd:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="PreferredDomain">
+<xs:annotation>
+<xs:documentation>Preferred domain. Nokia proprietary. A Parameter that
+                identifies the preferred domain for the vcc (voice call continuity) user where the terminating
+                calls shall be routed to in case that the vcc-user is available in both domains.
+                Vcc user is a subscriber, which has has the feature CS/IMS roaming and handover.
+        </xs:documentation>
+</xs:annotation>
+<xs:restriction base="xsd:string">
+<xs:enumeration value="ims"/>
+<xs:enumeration value="cs"/>
+<xs:enumeration value="none"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="DomainSelectionFlag">
+<xs:annotation>
+<xs:documentation>A parameter that identifies whether the UE is registered in VoLTE IMS or CS-IP IMS
+          If the domain flag value is 0, the UE is currently registered in a Domain controlled by NEC HLR.
+          If the domain flag value is 1, then the UE is (supposed to be) currently registered in VoLTE IMS (controlled by NOKIA HSS).
+      </xs:documentation>
+</xs:annotation>
+<xs:restriction base="xsd:string">
+<xs:enumeration value="CS-IP"/>
+<xs:enumeration value="VoLTE"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="ProfileType">
+<xs:annotation>
+<xs:documentation>Nokia proprietary. Defines type of subscriber profile. 
+                Profile can be used as e.g. template for other subscriber profiles.
+                Values:
+                NORMAL (0) : The profile was added through SA and defines a common IMS subscriber
+                TEMPLATE (2): The profile is added through SA and assigned as template
+                CUG (3): Closed User group. Special used and assigned from SVS data. SVS Data is XML encoded and stored as repository data which contains reference number to find CUG Profile.
+        PSI (4) : The profile was added through PGW and defines a PSI subscriber
+            </xs:documentation>
+</xs:annotation>
+<xs:restriction base="xsd:string">
+<xs:enumeration value="normal"/>
+<xs:enumeration value="template"/>
+<xs:enumeration value="cug"/>
+<xs:enumeration value="guss"/>
+<xs:enumeration value="psi"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="RegistrationStatus">
+<xs:annotation>
+<xs:documentation>The Registration Status, specified in 3GPP TS 29.228 [43], contains the status 
+                of registration of a multimedia user (e.g. registered, not registered, temporarily registered waiting for authentication).
+                Values:
+                NOT_REGISTERED: The user is not registered
+                REGISTERED: Indicates that the user is registered
+                DEFAULT: Default S-CSCF assigned (Registered for services for unregistered user)
+            </xs:documentation>
+</xs:annotation>
+<xs:restriction base="xsd:string">
+<xs:enumeration value="notRegistered"/>
+<xs:enumeration value="registered"/>
+<xs:enumeration value="default"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="ProfilePartIndication">
+<xs:annotation>
+<xs:documentation>Enumerated type, with possible values "REGISTERED and UNREGISTERED, indicating if the iFC is a part of the registered or unregistered user profile. 
+                If ProfilePartIndicator is missing from the iFC, the iFC is  considered to be relevant to both the registered and unregistered parts  of the user profile, 
+                i.e. belongs to the common part of the user profile 
+                values:
+                UN_REGISTERED
+                REGISTERED
+            </xs:documentation>
+</xs:annotation>
+<xs:restriction base="xsd:string">
+<xs:enumeration value="unRegistered"/>
+<xs:enumeration value="registered"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="Handling">
+<xs:annotation>
+<xs:documentation>Default handling The default handling procedure indicates whether to abandon the matching of lower priority triggers and to release the dialogue, 
+                or to continue the dialogue and trigger matching.
+                values:
+                - session continue.
+                - terminating.
+            </xs:documentation>
+</xs:annotation>
+<xs:restriction base="xsd:string">
+<xs:enumeration value="continue"/>
+<xs:enumeration value="terminate"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="SessionReleasePolicy">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:restriction base="xsd:string">
+<xs:enumeration value="deregisterForcedSessionRelease"/>
+<xs:enumeration value="deregisterNoForcedSessionRelease"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="ForkingPolicy">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:restriction base="xsd:string">
+<xs:enumeration value="sequentialForking"/>
+<xs:enumeration value="parallelForking"/>
+<xs:enumeration value="mixedForking"/>
+<xs:enumeration value="noForking"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="AuthenticationScheme">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:restriction base="xsd:string">
+<xs:enumeration value="aka"/>
+<xs:enumeration value="earlyIms"/>
+<xs:enumeration value="gprs"/>
+<xs:enumeration value="httpDigest"/>
+<xs:enumeration value="nba"/>
+<xs:enumeration value="tlsDigestAkaV1"/>
+<xs:enumeration value="tlsDigestAkaV2"/>
+<xs:enumeration value="sipDigest"/>
+<xs:enumeration value="caveAka"/>
+<xs:enumeration value="cache"/>
+<xs:enumeration value="imrn"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="PrivateUserId">
+<xs:annotation>
+<xs:documentation>Private User Identity Type - IMPI</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="privateUserId" type="xsd:string" minOccurs="0"/>
+<xs:element name="imsi" type="xsd:string" minOccurs="0"/>
+<xs:element name="provisionedImsi" type="subscriber:ProvisionedImsi" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="msisdn" type="xsd:string" minOccurs="0"/>
+<xs:element name="ipAddress" type="xsd:string" minOccurs="0"/>
+<xs:element name="framedIPV6Prefix" type="xsd:string" minOccurs="0"/>
+<xs:element name="framedInterfaceId" type="xsd:string" minOccurs="0"/>
+<xs:element name="httpDigestKey" type="xsd:string" minOccurs="0"/>
+<xs:element name="httpDigestKeyVersion" type="xsd:int" minOccurs="0"/>
+<xs:element name="preferredAuthenticationScheme" type="subscriber:AuthenticationScheme" minOccurs="0"/>
+<xs:element name="usedAuthenticationScheme" type="subscriber:AuthenticationScheme" minOccurs="0"/>
+<xs:element name="lineIdentifier" type="subscriber:LineIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="sgsnId" type="xsd:string" minOccurs="0"/>
+<xs:element name="ggsnId" type="xsd:string" minOccurs="0"/>
+<xs:element name="actAsVLR" type="xsd:boolean" minOccurs="0"/>
+<xs:element name="chargeId" type="xsd:string" minOccurs="0"/>
+<xs:element name="sessionId" type="xsd:string" minOccurs="0"/>
+<xs:element name="preferredDomain" type="subscriber:PreferredDomain" minOccurs="0"/>
+<xs:element name="refGussDataId" type="subscriber:String10" minOccurs="0"/>
+<xs:element name="looseRoutingIndicationRequired" type="xsd:boolean" minOccurs="0"/>
+<xs:element name="digestRealm" type="xsd:string" minOccurs="0"/>
+<xs:element name="digestHa1" type="subscriber:PrintableString32" minOccurs="0"/>
+<xs:element name="uimId" type="subscriber:HexadecimalString" minOccurs="0"/>
+<xs:element name="domainSelectionFlag" type="subscriber:DomainSelectionFlag" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="PublicUserId">
+<xs:annotation>
+<xs:documentation>Public User ID - IMPU</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="publicUserId" type="xsd:string" minOccurs="0"/>
+<xs:element name="originalPublicUserId" type="xsd:string" minOccurs="0"/>
+<xs:element name="barringIndication" type="xsd:boolean" minOccurs="0"/>
+<xs:element name="defaultIndication" type="xsd:boolean" minOccurs="0"/>
+<xs:element name="serviceProfileName" type="xsd:string" minOccurs="0"/>
+<xs:element name="irsId" type="xsd:string" minOccurs="0"/>
+<xs:element name="displayName" type="xsd:string" minOccurs="0"/>
+<xs:element name="displayNamePrivacy" type="xsd:boolean" minOccurs="0"/>
+<xs:element name="aliasId" type="xsd:string" minOccurs="0"/>
+<xs:element name="isChildIMPU" type="xsd:boolean" minOccurs="0"/>
+<xs:element name="servicePriorityLevel" type="xsd:int" minOccurs="0"/>
+<xs:element name="sarPublicUserId" type="xsd:string" minOccurs="0"/>
+<xs:element name="publicIdType" type="subscriber:PublicIdentityType" minOccurs="0"/>
+<xs:element name="snrPublicUserId" type="xsd:string" minOccurs="0"/>
+<xs:element name="extendedPriority" type="subscriber:ExtendedPriority" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="PublicIdentityType">
+<xs:annotation>
+<xs:documentation>
+        The PublicIdentityType indicates the type of public Identity
+        0    distinctIMPU
+        1    wildcardedIMPU
+      </xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:enumeration value="distinctIMPU"/>
+<xs:enumeration value="wildcardedIMPU"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="ExtendedPriority">
+<xs:annotation>
+<xs:documentation>Extended Priority</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="priorityNamespace" type="subscriber:PrintableString255" minOccurs="0"/>
+<xs:element name="priorityLevel" type="subscriber:PrintableString255" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="ImplicitRegisteredDataSet">
+<xs:annotation>
+<xs:documentation>Implicit Registered Data Set - IRS</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="irsId" type="xsd:string" minOccurs="0"/>
+<xs:element name="registrationStatus" type="subscriber:RegistrationStatus" minOccurs="0"/>
+<xs:element name="authenticationPending" type="xsd:boolean" minOccurs="0"/>
+<xs:element name="provisionedPrivateId" type="xsd:string" minOccurs="0"/>
+<xs:element name="privateIds" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="visitedNetworkListId" type="xsd:int" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="emergencyRegistration" type="xsd:boolean" minOccurs="0"/>
+<xs:element name="registrationTimeStamp" type="xsd:string" minOccurs="0"/>
+<xs:element name="defaultRegTimeStamp" type="xsd:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="AliasGroup">
+<xs:annotation>
+<xs:documentation>
+                Name: Alias Group
+                Contents:
+                1. aliasGroupId = Identifer for the alias group
+                2. serviceProfileName =  Name of the service profile for this alias group.
+                3. irsId = IRS identifier for aliasGroup
+             
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="aliasId" type="xsd:string" minOccurs="0"/>
+<xs:element name="serviceProfileName" type="xsd:string" minOccurs="0"/>
+<xs:element name="irsId" type="xsd:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="Notification">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="asHostName" type="xsd:string" minOccurs="0"/>
+<xs:element name="publicUserId" type="xsd:string" minOccurs="0"/>
+<xs:element name="asDestinationRealm" type="xsd:string" minOccurs="0"/>
+<xs:element name="asSipAddress" type="xsd:string" minOccurs="0"/>
+<xs:element name="quiescenceStatus" type="xsd:boolean" minOccurs="0"/>
+<xs:element name="notifyScscfName" type="xsd:boolean" minOccurs="0"/>
+<xs:element name="notifyFilter" type="xsd:boolean" minOccurs="0"/>
+<xs:element name="notifyChargingInfo" type="xsd:boolean" minOccurs="0"/>
+<xs:element name="notifyPublicId" type="xsd:boolean" minOccurs="0"/>
+<xs:element name="notifyRegistration" type="xsd:boolean" minOccurs="0"/>
+<xs:element name="sessionId" type="xsd:string" minOccurs="0"/>
+<xs:element name="serviceIndNames" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="identitySet" type="subscriber:HSSIdentitSetType" minOccurs="0" maxOccurs="4"/>
+<xs:element name="shExpiryTime" type="xsd:string" minOccurs="0"/>
+<xs:element name="messageWaitIndication" type="xsd:boolean" minOccurs="0"/>
+<xs:element name="notifyServicePriorityLevel" type="xsd:boolean" minOccurs="0"/>
+<xs:element name="notifyExtendedPriority" type="xsd:boolean" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="RepositoryData">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="serviceIndId" type="xsd:string" minOccurs="0"/>
+<xs:element name="publicUserId" type="xsd:string" minOccurs="0"/>
+<xs:element name="version" type="xsd:int" minOccurs="0"/>
+<xs:element name="asData" type="xsd:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="AliasRepositoryData">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="serviceIndId" type="xsd:string" minOccurs="0"/>
+<xs:element name="version" type="xsd:int" minOccurs="0"/>
+<xs:element name="asData" type="xsd:string" minOccurs="0"/>
+<xs:element name="aliasId" type="xsd:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="ServiceProfile">
+<xs:annotation>
+<xs:documentation>Service Profile</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="profileName" type="xsd:string" minOccurs="0"/>
+<xs:element name="mandatoryCapability" type="subscriber:MandatoryCapability" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="optionalCapability" type="subscriber:OptionalCapability" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="globalFilterId" type="subscriber:GlobalFilterId" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="subscribedMediaProfileID" type="subscriber:SubscribedMediaProfileID" minOccurs="0"/>
+<xs:element name="userFilterCriteria" type="subscriber:UserFilterCriteria" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="subscribedMediaProfileId" type="xsd:int" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="UserFilterCriteria">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="filterName" type="xsd:string" minOccurs="0"/>
+<xs:element name="asSipAddress" type="xsd:string" minOccurs="0"/>
+<xs:element name="priority" type="xsd:int" minOccurs="0"/>
+<xs:element name="triggerPoints" type="xsd:string" minOccurs="0"/>
+<xs:element name="serviceInformation" type="xsd:string" minOccurs="0"/>
+<xs:element name="handling" type="subscriber:Handling" minOccurs="0"/>
+<xs:element name="profilePartIndication" type="subscriber:ProfilePartIndication" minOccurs="0"/>
+<xs:element name="includeRegisterRequest" type="xsd:boolean" minOccurs="0"/>
+<xs:element name="includeRegisterResponse" type="xsd:boolean" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="MandatoryCapability">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="mandatoryCapability" type="xsd:long" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="OptionalCapability">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="optionalCapability" type="xsd:long" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="GlobalFilterId">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="globalFilterId" type="xsd:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="SubscribedMediaProfileID">
+<xs:annotation>
+<xs:documentation>The SubscribedMediaProfileID is an optional element of the service profile defined in 29.228. It will be reused to store one or more dedicated policies. 
+                A mechanism was defined so that this generic ID can be easily extended to be used to identify other types of policies. Each policy has its own bitmask. 
+                The exact policy could be calculated via an AND operation with the generic ID and the policy bit mask.
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="sessionReleasePolicy" type="subscriber:SessionReleasePolicy" minOccurs="0"/>
+<xs:element name="forkingPolicy" type="subscriber:ForkingPolicy" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="ProvisionedImsi">
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="provisionedImsi" type="xsd:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="LineIdentifier">
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="lineIdentifier" type="xsd:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="PPRTriggerInfo">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="privateUserId" type="xsd:string" minOccurs="0"/>
+<xs:element name="publicUserIds" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="RTRTriggerInfo">
+<xs:annotation>
+<xs:documentation>Definition of RTRTrigger info class</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:FirstClassObject">
+<xs:sequence>
+<xs:element name="publicUserIds" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="scscfAddress" type="xsd:string" minOccurs="0"/>
+<xs:element name="scscfRealm" type="xsd:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="EPSIdentifierAliasType">
+<xs:restriction base="xsd:string">
+<xs:enumeration value="msisdn"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="EPSIdentifier">
+<xs:simpleContent>
+<xs:restriction base="spml:Identifier">
+<xs:attribute name="alias" type="subscriber:EPSIdentifierAliasType" use="required"/>
+</xs:restriction>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="EPSIdentifierFileNameType">
+<xs:simpleContent>
+<xs:restriction base="spml:IdentifierFileNameType">
+<xs:attribute name="alias" type="subscriber:EPSIdentifierAliasType" use="required"/>
+<xs:attribute name="filterType" type="spml:IdentifierFilterType" use="required"/>
+</xs:restriction>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="EPSAliasType">
+<xs:complexContent>
+<xs:restriction base="spml:AliasType">
+<xs:attribute name="name" type="subscriber:EPSIdentifierAliasType" use="required"/>
+<xs:attribute name="value" type="xsd:string" use="required"/>
+</xs:restriction>
+</xs:complexContent>
+</xs:complexType>
+<xs:group name="EPS_Group">
+<xs:annotation>
+<xs:documentation>Definition of EPS data </xs:documentation>
+</xs:annotation>
+<xs:sequence>
+<xs:element name="eps" type="subscriber:EPS" minOccurs="0"/>
+<xs:element name="epsPdnContext" type="subscriber:EPSPdnContext" minOccurs="0" maxOccurs="100"/>
+<xsd:element name="epsRoamAreaName" type="xsd:string" minOccurs="0"/>
+<xsd:element name="epsPsRoamAreaMmeName" type="xsd:string" minOccurs="0"/>
+<xsd:element name="epsRoamSubscriptionInfoName" type="xsd:string" minOccurs="0"/>
+<xsd:element name="epsCsg" type="subscriber:EPSCsg" minOccurs="0" maxOccurs="unbounded"/>
+<xsd:element name="epsTracingProfile" type="subscriber:EPSTracingProfile" minOccurs="0"/>
+<xsd:element name="epsPsRszi" type="subscriber:EPSPsRszi" minOccurs="0" maxOccurs="unbounded"/>
+<xsd:element name="epsASNotificationInfo" type="subscriber:EPSASNotificationInfo" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="epsAdditionalHssServiceData" type="subscriber:EPSAdditionalHssServiceData" minOccurs="0"/>
+<xsd:element name="epsSharedUserProfile" type="subscriber:PrintableString255" minOccurs="0"/>
+<xsd:element name="epsS6dULAHostId" type="subscriber:PrintableString255" minOccurs="0"/>
+</xs:sequence>
+</xs:group>
+<xsd:complexType name="EPS">
+<xsd:annotation>
+<xsd:documentation>EPS Data</xsd:documentation>
+</xsd:annotation>
+<xsd:complexContent>
+<xsd:extension base="spml:SecondClassObject">
+<xsd:sequence>
+<xsd:element name="defaultPdnContextId" type="xsd:unsignedInt" minOccurs="0"/>
+<xsd:element name="maxBandwidthUp" type="xsd:unsignedInt" minOccurs="0"/>
+<xsd:element name="maxBandwidthDown" type="xsd:unsignedInt" minOccurs="0"/>
+<xsd:element name="mmeIdentity" type="subscriber:PrintableString255" minOccurs="0"/>
+<xsd:element name="msPurgedEps" type="xsd:boolean" minOccurs="0"/>
+<xsd:element name="apnOIReplacement" type="subscriber:PrintableString64" minOccurs="0"/>
+<xsd:element name="sessionTransferNumber" type="xsd:unsignedLong" minOccurs="0"/>
+<xsd:element name="vplmnId" type="subscriber:PrintableString64" minOccurs="0"/>
+<xsd:element name="featuresSupportedByMME" type="subscriber:UnsignedInt8bit" minOccurs="0"/>
+<xsd:element name="ueRegistered" type="xsd:boolean" minOccurs="0"/>
+<xsd:element name="sessionTimeout" type="xsd:unsignedInt" minOccurs="0"/>
+<xsd:element name="aaaServerAddress" type="subscriber:PrintableString64" minOccurs="0"/>
+<xsd:element name="aaaServerRealm" type="subscriber:PrintableString64" minOccurs="0"/>
+<xsd:element name="currentRATType" type="subscriber:RATType" minOccurs="0"/>
+<xsd:element name="accessAPNEnabled" type="xsd:boolean" minOccurs="0"/>
+<xsd:element name="notAllowedRATTypes" type="subscriber:RATType" minOccurs="0" maxOccurs="12"/>
+<xsd:element name="mipFeatureVector" type="subscriber:EpsMipFeatureVector" minOccurs="0" maxOccurs="4"/>
+<xsd:element name="msisdn" type="subscriber:NumericString1_15" minOccurs="0"/>
+<xsd:element name="mmeSuppFeatures" type="subscriber:MmeSuppFeatures" minOccurs="0" maxOccurs="unbounded"/>
+<xsd:element name="odbPOAccessEps" type="subscriber:OdbPOAccessEps" minOccurs="0"/>
+<xsd:element name="rfspIndex" type="subscriber:EPSRfspType" minOccurs="0"/>
+<xsd:element name="mmeRealm" type="xsd:string" minOccurs="0"/>
+<xs:element name="mmeUpdateSucceeded" type="xs:boolean" minOccurs="0"/>
+<xs:element name="plmnStatus" type="subscriber:EPSPlmnStatus" minOccurs="0"/>
+<xs:element name="mmeHostId" type="subscriber:PrintableString255" minOccurs="0"/>
+<xs:element name="imsVoiceOverPS" type="subscriber:EPSIMSVoiceOverPSSupport" minOccurs="0"/>
+<xsd:element name="locUpdateTimestamp" type="xsd:dateTime" minOccurs="0"/>
+<xsd:element name="refLipaAllowedVplmnListName" type="subscriber:PrintableString255" minOccurs="0"/>
+<xsd:element name="isMPSEnabled" type="xsd:boolean" minOccurs="0"/>
+<xsd:element name="refDeviceProfileName" type="subscriber:PrintableString64" minOccurs="0"/>
+<xsd:element name="vplmnIdS6a" type="subscriber:PrintableString64" minOccurs="0"/>
+<xsd:element name="s6aSgsnNumber" type="xsd:string" minOccurs="0"/>
+<xsd:element name="s6aCombinedFlag" type="xsd:boolean" minOccurs="0"/>
+<xsd:element name="virtualApnName" type="subscriber:PrintableString32" minOccurs="0"/>
+<xsd:element name="epsAAARegistration" type="subscriber:EPSAAARegistration" minOccurs="0" maxOccurs="unbounded"/>
+<xsd:element name="emergencyBarringEnabled" type="xsd:boolean" minOccurs="0"/>
+<xsd:element name="eUTRANCellGlobalId" type="xsd:string" minOccurs="0"/>
+<xsd:element name="trackingAreaId" type="xsd:string" minOccurs="0"/>
+<xsd:element name="imeiRef" type="subscriber:NumericString" minOccurs="0"/>
+<xsd:element name="meidRef" type="subscriber:PrintableString64" minOccurs="0"/>
+<xsd:element name="privateUserIdRef" type="xsd:string" minOccurs="0"/>
+<xsd:element name="s6aULAHostId" type="subscriber:PrintableString255" minOccurs="0"/>
+<xsd:element name="sGsMmeIdentity" type="subscriber:PrintableString255" minOccurs="0"/>
+<xsd:element name="pdnOnDemand" type="subscriber:EpsPdnOnDemandType" minOccurs="0"/>
+</xsd:sequence>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:complexType name="EPSPdnContext">
+<xsd:annotation>
+<xsd:documentation>EPS PDN Context</xsd:documentation>
+</xsd:annotation>
+<xsd:complexContent>
+<xsd:extension base="spml:SecondClassObject">
+<xsd:sequence>
+<xsd:element name="apn" type="subscriber:PrintableStringAPN255" minOccurs="0"/>
+<xsd:element name="contextId" type="xsd:unsignedInt" minOccurs="0"/>
+<xsd:element name="type" type="subscriber:EpsPdnType" minOccurs="0"/>
+<xsd:element name="ipv4Address" type="subscriber:IPv4" minOccurs="0"/>
+<xsd:element name="ipv6Address" type="subscriber:IPv6" minOccurs="0"/>
+<xsd:element name="pdnGw" type="subscriber:PrintableString255" minOccurs="0"/>
+<xsd:element name="pdnGwRealm" type="subscriber:PrintableString255" minOccurs="0"/>
+<xsd:element name="pdnGwIPv4" type="subscriber:IPv4" minOccurs="0"/>
+<xsd:element name="pdnGwIPv6" type="subscriber:IPv6" minOccurs="0"/>
+<xsd:element name="pdnGwDynamicAllocation" type="xsd:boolean" minOccurs="0"/>
+<xsd:element name="vplmnAddressAllowed" type="xsd:boolean" minOccurs="0"/>
+<xsd:element name="maxBandwidthUp" type="xsd:unsignedInt" minOccurs="0"/>
+<xsd:element name="maxBandwidthDown" type="xsd:unsignedInt" minOccurs="0"/>
+<xsd:element name="qos" type="subscriber:PrintableString255" minOccurs="0"/>
+<xsd:element name="pdnChargingCharacteristics" type="subscriber:PdnChargingCharacteristics" minOccurs="0"/>
+<xsd:element name="dynPdnInfo" type="subscriber:DynPdnInfo" minOccurs="0" maxOccurs="unbounded"/>
+<xsd:element name="pdnContextBlocking" type="subscriber:PdnContextBlocking" minOccurs="0"/>
+<xsd:element name="lipaPermission" type="subscriber:EPSLipaPermission" minOccurs="0"/>
+<xs:element name="apnOIReplacement" type="subscriber:PrintableString64" minOccurs="0"/>
+<xsd:element name="restorationPriority" type="xsd:unsignedInt" minOccurs="0"/>
+<xsd:element name="virtualApnName" type="subscriber:PrintableString255" minOccurs="0"/>
+<xsd:element name="refHssPdnContextName" type="xsd:string" minOccurs="0"/>
+<xsd:element name="aaaServerAddress" type="xsd:string" minOccurs="0"/>
+<xsd:element name="aaaServerRealm" type="xsd:string" minOccurs="0"/>
+</xsd:sequence>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:complexType name="EPSAAARegistration">
+<xsd:annotation>
+<xsd:documentation>EPS AAA Registration</xsd:documentation>
+</xsd:annotation>
+<xsd:complexContent>
+<xsd:extension base="spml:SecondClassObject">
+<xsd:sequence>
+<xsd:element name="aaaServerAddress" type="subscriber:PrintableString64" minOccurs="0"/>
+<xsd:element name="aaaServerRealm" type="subscriber:PrintableString64" minOccurs="0"/>
+<xsd:element name="RATType" type="subscriber:RATType" minOccurs="0"/>
+<xsd:element name="regStatus" type="xsd:unsignedInt" minOccurs="0"/>
+</xsd:sequence>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xs:complexType name="GussData">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="gussDataId" type="subscriber:String10" minOccurs="0"/>
+<xs:element name="uiccSecurityType" type="subscriber:UiccSecurityType" minOccurs="0"/>
+<xs:element name="keyLifetime" type="xsd:unsignedInt" minOccurs="0"/>
+<xs:element name="gussTimeStamp" type="xsd:dateTime" minOccurs="0"/>
+<xs:element name="ussData" type="subscriber:UssData" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="UiccSecurityType">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:restriction base="xsd:string">
+<xs:enumeration value="gba"/>
+<xs:enumeration value="gbau"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="UssData">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="ussDataId" type="subscriber:String10" minOccurs="0"/>
+<xs:element name="gsId" type="xsd:unsignedInt" minOccurs="0"/>
+<xs:element name="activeIndication" type="xsd:boolean" minOccurs="0"/>
+<xs:element name="ussType" type="xsd:unsignedInt" minOccurs="0"/>
+<xs:element name="refNafGroupId" type="subscriber:PrintableString64" minOccurs="0"/>
+<xs:element name="permissionListItem" type="subscriber:PermissionListItem" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="keySelectionId" type="subscriber:KeySelectionId" minOccurs="0"/>
+<xs:element name="upiListItem" type="subscriber:UpiListItem" minOccurs="0" maxOccurs="45"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="PermissionListItem">
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="permissionFlag" type="xsd:unsignedInt" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="KeySelectionId">
+<xs:annotation>
+<xs:documentation/>
+</xs:annotation>
+<xs:restriction base="xsd:string">
+<xs:enumeration value="ME-based"/>
+<xs:enumeration value="UICC-based"/>
+<xs:enumeration value="ME-UICC-based"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="UpiListItem">
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="upi" type="subscriber:PrintableString128" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="PdnChargingCharacteristics">
+<xs:annotation>
+<xs:documentation>
+                    PDN Charging characteristics. 
+                    Mapping requires distinguising of these two types.
+                </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:GeneralChargingCharacteristics"/>
+</xs:complexContent>
+</xs:complexType>
+<xsd:simpleType name="EpsPdnOnDemandType">
+<xsd:annotation>
+<xsd:documentation>
+        0: On-Demand PDN is not allowed
+        1: On-Demand PDN type 1
+        2: On-Demand PDN type 2
+        3: On-Demand PDN type 3
+        4: On-Demand PDN type 4
+      </xsd:documentation>
+</xsd:annotation>
+<xsd:restriction base="xsd:string">
+<xsd:enumeration value="NOT_ALLOWED"/>
+<xsd:enumeration value="TYPE_ONE"/>
+<xsd:enumeration value="TYPE_TWO"/>
+<xsd:enumeration value="TYPE_THREE"/>
+<xsd:enumeration value="TYPE_FOUR"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="IPv4">
+<xsd:annotation>
+<xsd:documentation>IPv4 address 
+                Example:  123.1.23.55
+            </xsd:documentation>
+</xsd:annotation>
+<xsd:restriction base="xsd:string">
+<xsd:pattern value="([1-9]?\d|1\d\d|2[0-4]\d|25[0-5])\.([1-9]?\d|1\d\d|2[0-4]\d|25[0-5])\.([1-9]?\d|1\d\d|2[0-4]\d|25[0-5])\.([1-9]?\d|1\d\d|2[0-4]\d|25[0-5])"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="IPv6">
+<xsd:annotation>
+<xsd:documentation>IPv6 address 
+                Examples:
+                4FDE:0000:0000:0002:0022:F376:FF3B:AB3F
+                10FB:0:0:0:C:ABC:1F0C:44DA
+                0:0:0:0:0:0:0:1
+                10FB::C:ABC:1F0C:44DA
+                FD01::1F
+                ::1
+                ::
+                ::ffff:192.168.89.9
+            </xsd:documentation>
+</xsd:annotation>
+<xsd:restriction base="xsd:string">
+<xsd:pattern value="([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}"/>
+<xsd:pattern value="(([0-9A-Fa-f]{1,4}:){6})(25[0-5]|2[0-4]\d|[0-1]?\d?\d)(\.(25[0-5]|2[0-4]\d|[0-1]?\d?\d)){3}"/>
+<xsd:pattern value="::(([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){0,6})?)"/>
+<xsd:pattern value="([0-9A-Fa-f]{1,4})::(([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){0,5})?)"/>
+<xsd:pattern value="([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){1})::(([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){0,4})?)"/>
+<xsd:pattern value="([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){2})::(([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){0,3})?)"/>
+<xsd:pattern value="([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){3})::(([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){0,2})?)"/>
+<xsd:pattern value="([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){4})::(([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){0,1})?)"/>
+<xsd:pattern value="([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){5})::(([0-9A-Fa-f]{1,4})?)"/>
+<xsd:pattern value="([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){6})::"/>
+<xsd:pattern value="::(([0-9A-Fa-f]{1,4}:){0,5})(25[0-5]|2[0-4]\d|[0-1]?\d?\d)(\.(25[0-5]|2[0-4]\d|[0-1]?\d?\d)){3}"/>
+<xsd:pattern value="([0-9A-Fa-f]{1,4})::(([0-9A-Fa-f]{1,4}:){0,4})(25[0-5]|2[0-4]\d|[0-1]?\d?\d)(\.(25[0-5]|2[0-4]\d|[0-1]?\d?\d)){3}"/>
+<xsd:pattern value="([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}))::(([0-9A-Fa-f]{1,4}:){0,3})(25[0-5]|2[0-4]\d|[0-1]?\d?\d)(\.(25[0-5]|2[0-4]\d|[0-1]?\d?\d)){3}"/>
+<xsd:pattern value="([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){2})::(([0-9A-Fa-f]{1,4}:){0,2})(25[0-5]|2[0-4]\d|[0-1]?\d?\d)(\.(25[0-5]|2[0-4]\d|[0-1]?\d?\d)){3}"/>
+<xsd:pattern value="([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){3})::(([0-9A-Fa-f]{1,4}:){0,1})(25[0-5]|2[0-4]\d|[0-1]?\d?\d)(\.(25[0-5]|2[0-4]\d|[0-1]?\d?\d)){3}"/>
+<xsd:pattern value="([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){4})::(25[0-5]|2[0-4]\d|[0-1]?\d?\d)(\.(25[0-5]|2[0-4]\d|[0-1]?\d?\d)){3}"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="EpsMipFeatureVector">
+<xsd:annotation>
+<xsd:documentation>EPS Mip Feature Vector</xsd:documentation>
+</xsd:annotation>
+<xsd:restriction base="xsd:string">
+<xsd:enumeration value="mip6_integrated"/>
+<xsd:enumeration value="pmip6_supported"/>
+<xsd:enumeration value="ip4_hoa_supported"/>
+<xsd:enumeration value="assign_local_ip"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="EpsPdnType">
+<xsd:annotation>
+<xsd:documentation>EPS Pdn type</xsd:documentation>
+</xsd:annotation>
+<xsd:restriction base="xsd:string">
+<xsd:enumeration value="ipv4"/>
+<xsd:enumeration value="ipv6"/>
+<xsd:enumeration value="both"/>
+<xsd:enumeration value="ipv4oripv6"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="EpsAccessRestriction">
+<xsd:annotation>
+<xsd:documentation>EPS access restriction</xsd:documentation>
+</xsd:annotation>
+<xsd:restriction base="xsd:string">
+<xsd:enumeration value="UTRAN"/>
+<xsd:enumeration value="GERAN"/>
+<xsd:enumeration value="GAN"/>
+<xsd:enumeration value="E-UTRAN"/>
+<xsd:enumeration value="I-HSPA-Evolution"/>
+<xsd:enumeration value="HO-To-Non3GPP"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="RATType">
+<xsd:annotation>
+<xsd:documentation>RAT type</xsd:documentation>
+</xsd:annotation>
+<xsd:restriction base="xsd:string">
+<xsd:enumeration value="WLAN"/>
+<xsd:enumeration value="UTRAN"/>
+<xsd:enumeration value="GERAN"/>
+<xsd:enumeration value="GAN"/>
+<xsd:enumeration value="HSPA_EVOLUTION"/>
+<xsd:enumeration value="CDMA2000_1X"/>
+<xsd:enumeration value="HRPD"/>
+<xsd:enumeration value="UMB"/>
+<xsd:enumeration value="VIRTUAL"/>
+<xsd:enumeration value="EUTRAN"/>
+<xsd:enumeration value="EHRPD"/>
+<xsd:enumeration value="BBF-WLAN"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="UnsignedInt8bit">
+<xsd:annotation>
+<xsd:documentation>Unsigned 8 bit integer </xsd:documentation>
+</xsd:annotation>
+<xsd:restriction base="xsd:unsignedInt">
+<xsd:maxInclusive value="255"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xs:simpleType name="HSSIdentitSetType">
+<xs:restriction base="xsd:string">
+<xs:enumeration value="ALL_IDENTITIES"/>
+<xs:enumeration value="REGISTERED_IDENTITIES"/>
+<xs:enumeration value="IMPLICIT_IDENTITIES"/>
+<xs:enumeration value="ALIAS_IDENTITIES"/>
+</xs:restriction>
+</xs:simpleType>
+<xsd:simpleType name="PrintableStringAPN255">
+<xsd:annotation>
+<xsd:documentation>Printable String APN of length 1 .. 255</xsd:documentation>
+</xsd:annotation>
+<xsd:restriction base="subscriber:PrintableStringAPN">
+<xsd:minLength value="1"/>
+<xsd:maxLength value="255"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="PrintableStringAPN">
+<xsd:annotation>
+<xsd:documentation>Printable String  with '@' and '*' character</xsd:documentation>
+</xsd:annotation>
+<xsd:restriction base="xsd:string">
+<xsd:pattern value="\*|[a-zA-Z\d '()+,-./:=?@_]+"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:complexType name="DynPdnInfo">
+<xsd:annotation>
+<xsd:documentation>
+                This read only attribute stores the dynamic APN configuration (access point name, PDN GW host, realm and IPv4 or
+                IPv6 address). Dynamic APNs are only stored when the wildcard APN at S6a and SWx interface is
+                supported. In this case the attributes pdnGwHostName, pdnGwRealm, pdnGwIPv4, pdnGwIPv6 of the
+                wildcard entry are empty. In general, it is possible to register multiple dynamic APN configurations in
+                parallel for a wildcard APN. This attribute is written by the application FE (HSS-FE) after a request sent by
+                the MME/AAA. It is NOT provisioned, but the dynamic APN configuration can be read over the provisioning
+                interface (PGW GUI).
+            </xsd:documentation>
+</xsd:annotation>
+<xsd:complexContent>
+<xsd:extension base="spml:SecondClassObject">
+<xsd:sequence>
+<xsd:element name="pdnAccPointName" type="subscriber:PrintableString255" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="pdnGwHostName" type="subscriber:PrintableString255" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="pdnGwRealm" type="subscriber:PrintableString255" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="pdnGwIPV4" type="subscriber:PrintableString255" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="pdnGwIPV6" type="subscriber:PrintableString255" minOccurs="0" maxOccurs="1"/>
+</xsd:sequence>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:complexType name="PdnContextBlocking">
+<xsd:annotation>
+<xsd:documentation>
+                This attribute indicates whether the PDN context subscription is blocked or not for a
+                specific access type (eUTRAN/S6a or eHPPD/SWx). It consists of 8 bits. Currently only
+                the first two bits are used. Bit 1 denotes whether the APN is blocked via the S6a
+                interface, bit 2 denotes whether the APN is blocked via the SWx interface. The
+                remaining bits are for future use.
+                Possible values:
+                Bit 1 value 0: APN is not blocked over S6a
+                Bit 1 value 1: APN is blocked over S6a
+                Bit 2 value 0: APN is not blocked over SWx
+                Bit 2 value 1: APN is blocked over SWx
+            </xsd:documentation>
+</xsd:annotation>
+<xsd:complexContent>
+<xsd:extension base="spml:SecondClassObject">
+<xsd:sequence>
+<xsd:element name="flagAPNBlockedOverS6a" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="flagAPNBlockedOverSWx" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="flagReserved2" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="flagReserved3" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="flagReserved4" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="flagReserved5" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="flagReserved6" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="flagReserved7" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+</xsd:sequence>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:simpleType name="OdbPOAccessEps">
+<xsd:annotation>
+<xsd:documentation>
+                Operator Determined Barring for packet oriented access (EPS) for usage over the S6a interface.
+                0 NONE NONE
+                1 ALLPOS Barr all PO service access
+                2 HPLMNAP Barr access to HPLMN-AP while roaming in VPLMN
+                3 VPLMNAP Barr access to AP that are within the roamed to VPLMN
+            </xsd:documentation>
+</xsd:annotation>
+<xsd:restriction base="xsd:string">
+<xsd:enumeration value="NONE"/>
+<xsd:enumeration value="ALLPOS"/>
+<xsd:enumeration value="HPLMNAP"/>
+<xsd:enumeration value="VPLMNAP"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:complexType name="MmeSuppFeatures">
+<xsd:annotation>
+<xsd:documentation>
+                This read only attribute contains the list of features supported by the MME. It is composed of the feature list ID and
+                the feature list. For the currently defined bits the feature list ID is 1. Curently 25
+                features are defined (thus at the moment one feature list is sufficient for the S6a interface).
+            </xsd:documentation>
+</xsd:annotation>
+<xsd:complexContent>
+<xsd:extension base="spml:SecondClassObject">
+<xsd:sequence>
+<xsd:element name="featuredListId" type="subscriber:BitString32" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="featuredList" type="subscriber:BitString" minOccurs="0" maxOccurs="1"/>
+</xsd:sequence>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:simpleType name="BitString32">
+<xsd:annotation>
+<xsd:documentation>Bit string with length 32 characters exactly</xsd:documentation>
+</xsd:annotation>
+<xsd:restriction base="subscriber:BitString">
+<xsd:minLength value="32"/>
+<xsd:maxLength value="32"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="BitString">
+<xsd:annotation>
+<xsd:documentation>Only 0|1 is allowed</xsd:documentation>
+</xsd:annotation>
+<xsd:restriction base="xsd:string">
+<xsd:pattern value="(0|1)+"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="HexadecimalString">
+<xsd:annotation>
+<xsd:documentation>Hexadecimal values are allowed.a-f,A-F and 0-9.</xsd:documentation>
+</xsd:annotation>
+<xsd:restriction base="xsd:string">
+<xsd:pattern value="[A-Fa-f0-9]*"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xs:simpleType name="SubscriberSwapAliasType">
+<xs:restriction base="xsd:string">
+<xs:enumeration value="imsi"/>
+<xs:enumeration value="msisdn"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="SubscriberSwapIdentifier">
+<xs:simpleContent>
+<xs:extension base="spml:ID">
+<xs:attribute name="alias" type="subscriber:SubscriberSwapAliasType" use="required"/>
+</xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+<xsd:simpleType name="EPSOdbBarringRoam">
+<xsd:annotation>
+<xsd:documentation>
+                Operator Determined Barring for Restriction of roaming .
+                0 NONE    No barring of roaming
+                1 ROAMOH  roaming outside the home PLMN is restricted.
+                2 ROAMOHC roaming outside the home PLMN country is restricted.
+            </xsd:documentation>
+</xsd:annotation>
+<xsd:restriction base="xsd:string">
+<xsd:enumeration value="NONE"/>
+<xsd:enumeration value="ROAMOH"/>
+<xsd:enumeration value="ROAMOHC"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="EPSRfspType">
+<xsd:annotation>
+<xsd:documentation>Integer and the range is  1 to 256 </xsd:documentation>
+</xsd:annotation>
+<xsd:restriction base="xsd:int">
+<xsd:minInclusive value="1"/>
+<xsd:maxInclusive value="256"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:complexType name="EPSCsg">
+<xsd:annotation>
+<xsd:documentation>EPS CSG Data</xsd:documentation>
+</xsd:annotation>
+<xsd:complexContent>
+<xsd:extension base="spml:SecondClassObject">
+<xsd:sequence>
+<xsd:element name="mccMnc" type="subscriber:PrintableString255" minOccurs="0"/>
+<xsd:element name="csgId" type="subscriber:EPSCsgId" minOccurs="0" maxOccurs="unbounded"/>
+</xsd:sequence>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:complexType name="EPSPsRszi">
+<xsd:annotation>
+<xsd:documentation>EPS PS RSZI Data</xsd:documentation>
+</xsd:annotation>
+<xsd:complexContent>
+<xsd:extension base="spml:SecondClassObject">
+<xsd:sequence>
+<xs:element name="mcc" type="subscriber:NumericString3" minOccurs="0"/>
+<xs:element name="mnc" type="subscriber:NumericString3" minOccurs="0"/>
+<xs:element name="zoneCode01" type="subscriber:NumericString5" minOccurs="0"/>
+<xs:element name="zoneCode02" type="subscriber:NumericString5" minOccurs="0"/>
+<xs:element name="zoneCode03" type="subscriber:NumericString5" minOccurs="0"/>
+<xs:element name="zoneCode04" type="subscriber:NumericString5" minOccurs="0"/>
+<xs:element name="zoneCode05" type="subscriber:NumericString5" minOccurs="0"/>
+<xs:element name="zoneCode06" type="subscriber:NumericString5" minOccurs="0"/>
+<xs:element name="zoneCode07" type="subscriber:NumericString5" minOccurs="0"/>
+<xs:element name="zoneCode08" type="subscriber:NumericString5" minOccurs="0"/>
+<xs:element name="zoneCode09" type="subscriber:NumericString5" minOccurs="0"/>
+<xs:element name="zoneCode10" type="subscriber:NumericString5" minOccurs="0"/>
+</xsd:sequence>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xs:complexType name="EPSCsgId">
+<xs:annotation>
+<xsd:documentation>CSG Identifier is string. Note: It is modeled as SCO to allow  modification of  individual value(s)</xsd:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="csgId" type="xsd:string" minOccurs="0"/>
+<xs:element name="apnName" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xsd:complexType name="EPSTracingProfile">
+<xsd:annotation>
+<xsd:documentation>EPS Tracing Profile</xsd:documentation>
+</xsd:annotation>
+<xsd:complexContent>
+<xsd:extension base="spml:SecondClassObject">
+<xsd:sequence>
+<xsd:element name="reference" type="xsd:string" minOccurs="0"/>
+<xsd:element name="depth" type="subscriber:EPSDepth" minOccurs="0"/>
+<xsd:element name="neTypeList" type="subscriber:EPSNeType" minOccurs="0"/>
+<xsd:element name="interfaceList" type="subscriber:EPSInterfaces" minOccurs="0"/>
+<xsd:element name="eventList" type="subscriber:EPSEvents" minOccurs="0"/>
+<xsd:element name="collectionEntityIp" type="subscriber:IPAddress" minOccurs="0"/>
+<xsd:element name="activationState" type="subscriber:EPSActivationState" minOccurs="0"/>
+</xsd:sequence>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:simpleType name="EPSDepth">
+<xsd:annotation>
+<xsd:documentation>Integer in the range is 0 to 5 </xsd:documentation>
+</xsd:annotation>
+<xsd:restriction base="xsd:int">
+<xsd:minInclusive value="0"/>
+<xsd:maxInclusive value="5"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="EPSNeType">
+<xsd:annotation>
+<xsd:documentation>Hexadecimal values are allowed.a-f,A-F and 0-9.</xsd:documentation>
+</xsd:annotation>
+<xsd:restriction base="xsd:string">
+<xsd:pattern value="[A-Fa-f0-9]*"/>
+<xsd:minLength value="0"/>
+<xsd:maxLength value="4"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="EPSInterfaces">
+<xsd:annotation>
+<xsd:documentation>Hexadecimal values are allowed.a-f,A-F and 0-9.</xsd:documentation>
+</xsd:annotation>
+<xsd:restriction base="xsd:string">
+<xsd:pattern value="[A-Fa-f0-9]*"/>
+<xsd:minLength value="0"/>
+<xsd:maxLength value="28"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="EPSEvents">
+<xsd:annotation>
+<xsd:documentation>Hexadecimal values are allowed.a-f,A-F and 0-9.</xsd:documentation>
+</xsd:annotation>
+<xsd:restriction base="xsd:string">
+<xsd:pattern value="[A-Fa-f0-9]*"/>
+<xsd:minLength value="0"/>
+<xsd:maxLength value="18"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="EPSActivationState">
+<xsd:annotation>
+<xsd:documentation>
+                Depth of the tracing required
+                0 active
+                1 inactive
+           </xsd:documentation>
+</xsd:annotation>
+<xsd:restriction base="xsd:string">
+<xsd:enumeration value="active"/>
+<xsd:enumeration value="inactive"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xs:simpleType name="HLRIdentifierAliasType">
+<xs:restriction base="xs:string">
+<xs:enumeration value="msisdn"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="HLRIdentifier">
+<xs:simpleContent>
+<xs:restriction base="spml:Identifier">
+<xs:attribute name="alias" type="subscriber:HLRIdentifierAliasType" use="required"/>
+</xs:restriction>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="HLRIdentifierFileNameType">
+<xs:simpleContent>
+<xs:restriction base="spml:IdentifierFileNameType">
+<xs:attribute name="alias" type="subscriber:HLRIdentifierAliasType" use="required"/>
+<xs:attribute name="filterType" type="spml:IdentifierFilterType" use="required"/>
+</xs:restriction>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="HLRAliasType">
+<xs:complexContent>
+<xs:restriction base="spml:AliasType">
+<xs:attribute name="name" type="subscriber:HLRIdentifierAliasType" use="required"/>
+<xs:attribute name="value" type="xs:string" use="required"/>
+</xs:restriction>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="HLR">
+<xs:annotation>
+<xs:documentation>HLR Application Service </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:AS">
+<xs:sequence>
+<xs:element name="imsi" type="xs:string" minOccurs="0"/>
+<xs:element name="contractId" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="ntype" type="subscriber:NType" minOccurs="0"/>
+<xs:element name="imsiActive" type="xs:boolean" minOccurs="0"/>
+<xs:element name="mobileSubscriberType" type="subscriber:MobileSubscriberType" minOccurs="0"/>
+<xs:element name="umtsSubscriber" type="subscriber:UmtsSubscriber" minOccurs="0"/>
+<xs:element name="wllSubscriber" type="xs:boolean" minOccurs="0"/>
+<xs:element name="tifSubscriber" type="subscriber:TifSubscriber" minOccurs="0"/>
+<xs:element name="mscat" type="xs:int" minOccurs="0"/>
+<xs:element name="odboc" type="xs:int" minOccurs="0"/>
+<xs:element name="odbic" type="xs:int" minOccurs="0"/>
+<xs:element name="odbr" type="xs:int" minOccurs="0"/>
+<xs:element name="odboprc" type="xs:int" minOccurs="0"/>
+<xs:element name="odbssm" type="xs:int" minOccurs="0"/>
+<xs:element name="osb1" type="xs:boolean" minOccurs="0"/>
+<xs:element name="osb2" type="xs:boolean" minOccurs="0"/>
+<xs:element name="osb3" type="xs:boolean" minOccurs="0"/>
+<xs:element name="osb4" type="xs:boolean" minOccurs="0"/>
+<xs:element name="clip" type="xs:boolean" minOccurs="0"/>
+<xs:element name="clipOverride" type="xs:boolean" minOccurs="0"/>
+<xs:element name="clir" type="xs:int" minOccurs="0"/>
+<xs:element name="colp" type="xs:boolean" minOccurs="0"/>
+<xs:element name="colpOverride" type="xs:boolean" minOccurs="0"/>
+<xs:element name="colr" type="xs:boolean" minOccurs="0"/>
+<xs:element name="hold" type="xs:boolean" minOccurs="0"/>
+<xs:element name="mpty" type="xs:boolean" minOccurs="0"/>
+<xs:element name="aoci" type="xs:boolean" minOccurs="0"/>
+<xs:element name="aocc" type="xs:boolean" minOccurs="0"/>
+<xs:element name="natccbs" type="xs:boolean" minOccurs="0"/>
+<xs:element name="natct" type="xsd:boolean" minOccurs="0"/>
+<xs:element name="natHotbill" type="xs:boolean" minOccurs="0"/>
+<xs:element name="natFR" type="xs:boolean" minOccurs="0"/>
+<xs:element name="natusersig1" type="xs:boolean" minOccurs="0"/>
+<xs:element name="ccbsa" type="xs:boolean" minOccurs="0"/>
+<xs:element name="ccbsb" type="xs:boolean" minOccurs="0"/>
+<xs:element name="natss01" type="xs:boolean" minOccurs="0"/>
+<xs:element name="natss02" type="xs:boolean" minOccurs="0"/>
+<xs:element name="natss03" type="xs:boolean" minOccurs="0"/>
+<xs:element name="natss04" type="xs:boolean" minOccurs="0"/>
+<xs:element name="natss05" type="xs:boolean" minOccurs="0"/>
+<xs:element name="natss06" type="xs:boolean" minOccurs="0"/>
+<xs:element name="natss07" type="xs:boolean" minOccurs="0"/>
+<xs:element name="natss08" type="xs:boolean" minOccurs="0"/>
+<xs:element name="natss09" type="xs:boolean" minOccurs="0"/>
+<xs:element name="natss10" type="xs:boolean" minOccurs="0"/>
+<xs:element name="natss11" type="xs:boolean" minOccurs="0"/>
+<xs:element name="natss12" type="xs:boolean" minOccurs="0"/>
+<xs:element name="natss13" type="xs:boolean" minOccurs="0"/>
+<xs:element name="natss14" type="xs:boolean" minOccurs="0"/>
+<xs:element name="natss15" type="xs:boolean" minOccurs="0"/>
+<xs:element name="statusNatss01" type="xs:int" minOccurs="0"/>
+<xs:element name="statusNatss02" type="xs:int" minOccurs="0"/>
+<xs:element name="statusNatss03" type="xs:int" minOccurs="0"/>
+<xs:element name="statusNatss04" type="xs:int" minOccurs="0"/>
+<xs:element name="statusNatss05" type="xs:int" minOccurs="0"/>
+<xs:element name="statusNatss06" type="xs:int" minOccurs="0"/>
+<xs:element name="statusNatss07" type="xs:int" minOccurs="0"/>
+<xs:element name="statusNatss08" type="xs:int" minOccurs="0"/>
+<xs:element name="statusNatss09" type="xs:int" minOccurs="0"/>
+<xs:element name="statusNatss10" type="xs:int" minOccurs="0"/>
+<xs:element name="statusNatss11" type="xs:int" minOccurs="0"/>
+<xs:element name="statusNatss12" type="xs:int" minOccurs="0"/>
+<xs:element name="statusNatss13" type="xs:int" minOccurs="0"/>
+<xs:element name="statusNatss14" type="xs:int" minOccurs="0"/>
+<xs:element name="statusNatss15" type="xs:int" minOccurs="0"/>
+<xs:element name="subrelro" type="subscriber:SUBRELRO" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="nwa" type="xs:int" minOccurs="0"/>
+<xs:element name="odbgprs" type="xs:int" minOccurs="0"/>
+<xs:element name="rr" type="xs:string" minOccurs="0"/>
+<xs:element name="sr" type="xs:int" minOccurs="0"/>
+<xs:element name="vgrpid" type="subscriber:VGRPID" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="msp" type="xs:string" minOccurs="0"/>
+<xs:element name="odbsci" type="xs:int" minOccurs="0"/>
+<xs:element name="ts11" type="subscriber:TS11" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="ts21" type="subscriber:TS21" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="ts22" type="subscriber:TS22" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="ts61" type="subscriber:TS61" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="ts62" type="subscriber:TS62" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="vgcs" type="subscriber:VGCS" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="vbs" type="subscriber:VBS" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="bs20genr" type="subscriber:BS20GENR" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="bs21" type="subscriber:BS21" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="bs22" type="subscriber:BS22" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="bs23" type="subscriber:BS23" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="bs24" type="subscriber:BS24" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="bs25" type="subscriber:BS25" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="bs26" type="subscriber:BS26" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="bs30genr" type="subscriber:BS30GENR" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="bs31" type="subscriber:BS31" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="bs32" type="subscriber:BS32" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="bs33" type="subscriber:BS33" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="bs34" type="subscriber:BS34" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="bs40genr" type="subscriber:BS40GENR" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="bs41" type="subscriber:BS41" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="bs42" type="subscriber:BS42" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="bs44" type="subscriber:BS44" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="bs45" type="subscriber:BS45" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="bs46" type="subscriber:BS46" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="bs61a" type="subscriber:BS61A" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="bs81a" type="subscriber:BS81A" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="gprs" type="subscriber:GPRS" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="ts21Gprs" type="subscriber:TS21GPRS" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="ts22Gprs" type="subscriber:TS22GPRS" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="cfu" type="subscriber:CFU" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="cfb" type="subscriber:CFB" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="cfnrc" type="subscriber:CFNrc" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="cfnry" type="subscriber:CFNry" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="allccf" type="subscriber:AllCCF" minOccurs="0"/>
+<xs:element name="allcf" type="subscriber:AllCF" minOccurs="0"/>
+<xs:element name="cfd" type="subscriber:CFD" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="caw" type="subscriber:CAW" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="cug" type="subscriber:CUG" minOccurs="0" maxOccurs="10"/>
+<xs:element name="cugbsg" type="subscriber:CUGBSG" minOccurs="0" maxOccurs="5"/>
+<xs:element name="comcb" type="subscriber:COMCB" minOccurs="0"/>
+<xs:element name="baoc" type="subscriber:BAOC" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="boic" type="subscriber:BOIC" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="boicexhc" type="subscriber:BOICexHC" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="boro" type="subscriber:BORO" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="baic" type="subscriber:BAIC" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="bicroam" type="subscriber:BICRoam" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="emlpp" type="subscriber:EMLPP" minOccurs="0"/>
+<xs:element name="imsilink" type="xs:string" minOccurs="0"/>
+<xs:element name="isActiveIMSI" type="xs:boolean" minOccurs="0"/>
+<xs:element name="multiDevice" type="subscriber:MultiDeviceType" minOccurs="0"/>
+<xs:element name="rs" type="subscriber:RS" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="srf" type="subscriber:SRF" minOccurs="0" maxOccurs="16"/>
+<xs:element name="followMe" type="subscriber:FollowMe" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="followMeAccessMatrix" type="subscriber:FollowMeClassOfRegistration" minOccurs="0" maxOccurs="5"/>
+<xs:element name="twincardImsi" type="xs:string" minOccurs="0"/>
+<xs:element name="actIMSIGprs" type="xs:boolean" minOccurs="0"/>
+<xs:element name="cuss" type="subscriber:CUSS" minOccurs="0"/>
+<xs:element name="crelss" type="subscriber:CRELSS" minOccurs="0"/>
+<xs:element name="curelss" type="subscriber:CURELSS" minOccurs="0"/>
+<xs:element name="plmnoss" type="subscriber:PLMNOSS" minOccurs="0"/>
+<xs:element name="basicSelfLocation" type="subscriber:BasicSelfLocation" minOccurs="0"/>
+<xs:element name="autoSelfLocation" type="subscriber:AutoSelfLocation" minOccurs="0"/>
+<xs:element name="transferToThirdParty" type="subscriber:TransferToThirdParty" minOccurs="0"/>
+<xs:element name="callback" type="subscriber:CALLBACK" minOccurs="0"/>
+<xs:element name="obGprs" type="xs:int" minOccurs="0"/>
+<xs:element name="optimalRouting" type="xs:boolean" minOccurs="0"/>
+<xs:element name="ndcLac" type="xs:string" minOccurs="0"/>
+<xs:element name="imsiTraceReference" type="xs:int" minOccurs="0"/>
+<xs:element name="imsiTraceType" type="xs:int" minOccurs="0"/>
+<xs:element name="expiryDate" type="xs:string" minOccurs="0"/>
+<xs:element name="preferedInterexchangeCarrier" type="xs:string" minOccurs="0"/>
+<xs:element name="vbsData" type="subscriber:VbsData" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="generalChargingCharacteristics" type="subscriber:GeneralChargingCharacteristics" minOccurs="0"/>
+<xs:element name="vlrid" type="xs:boolean" minOccurs="0"/>
+<xs:element name="pdpContext" type="subscriber:PDPContext" minOccurs="0" maxOccurs="50"/>
+<xs:element name="smscsi" type="subscriber:SMSCSI" minOccurs="0"/>
+<xs:element name="ocsi" type="subscriber:OCSI" minOccurs="0"/>
+<xs:element name="tcsi" type="subscriber:TCSI" minOccurs="0"/>
+<xs:element name="ucsisub" type="subscriber:UCSISUB" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="ucsiserv" type="xs:string" minOccurs="0"/>
+<xs:element name="gprscsi" type="subscriber:GPRSCSI" minOccurs="0"/>
+<xs:element name="sscsi" type="subscriber:SSCSI" minOccurs="0"/>
+<xs:element name="mcsi" type="subscriber:MCSI" minOccurs="0"/>
+<xs:element name="dcsi" type="subscriber:DCSI" minOccurs="0"/>
+<xs:element name="vtcsi" type="subscriber:VTCSI" minOccurs="0"/>
+<xs:element name="mtsmscsi" type="subscriber:MTSMSCSI" minOccurs="0"/>
+<xs:element name="mgcsi" type="subscriber:MGCSI" minOccurs="0"/>
+<xs:element name="notifyToCSE" type="subscriber:NotifyToCse" minOccurs="0"/>
+<xs:element name="vlrMobData" type="subscriber:VlrMobData" minOccurs="0"/>
+<xs:element name="sgsnMobData" type="subscriber:SgsnMobData" minOccurs="0"/>
+<xs:element name="msgWaitData" type="subscriber:MsgWaitData" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="changeOverIMSI" type="xs:string" minOccurs="0"/>
+<xs:element name="routingCategory" type="xs:int" minOccurs="0"/>
+<xs:element name="routingCategoryExtension" type="xs:int" minOccurs="0"/>
+<xs:element name="imeisv" type="xs:string" minOccurs="0"/>
+<xs:element name="cnap" type="xs:boolean" minOccurs="0"/>
+<xs:element name="cnapOverride" type="xs:boolean" minOccurs="0"/>
+<xs:element name="allbs" type="subscriber:ALLBS" minOccurs="0"/>
+<xs:element name="ect" type="xs:boolean" minOccurs="0"/>
+<xs:element name="enhsrisms" type="xs:boolean" minOccurs="0"/>
+<xs:element name="oick" type="subscriber:OICK" minOccurs="0"/>
+<xs:element name="tick" type="subscriber:TICK" minOccurs="0" maxOccurs="2"/>
+<xs:element name="eoick" type="subscriber:EOICK" minOccurs="0"/>
+<xs:element name="etick" type="subscriber:ETICK" minOccurs="0" maxOccurs="2"/>
+<xs:element name="eoinci" type="subscriber:EOINCI" minOccurs="0"/>
+<xs:element name="etinci" type="subscriber:ETINCI" minOccurs="0" maxOccurs="2"/>
+<xs:element name="odbftno" type="xs:int" minOccurs="0"/>
+<xs:element name="prohibitedFtnoCategory" type="xs:int" minOccurs="0"/>
+<xs:element name="odbect" type="subscriber:OdbEctType" minOccurs="0" maxOccurs="6"/>
+<xs:element name="clgPtyNumber" type="xs:string" minOccurs="0"/>
+<xs:element name="clgPtyData" type="subscriber:ClgPtyData" minOccurs="0"/>
+<xs:element name="lastCallTimeStamp" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="lcnService" type="subscriber:LcnService" minOccurs="0"/>
+<xs:element name="ownMsisdnService" type="subscriber:OwnMsisdnService" minOccurs="0"/>
+<xs:element name="vlrIdService" type="subscriber:VlrIdService" minOccurs="0"/>
+<xs:element name="actualTimeService" type="subscriber:ActualTimeService" minOccurs="0"/>
+<xs:element name="lastCallSimId" type="subscriber:UnsignedInt9" minOccurs="0"/>
+<xs:element name="multiSim" type="subscriber:MultiSimType" minOccurs="0"/>
+<xs:element name="ussdClirService" type="subscriber:UssdClirService" minOccurs="0"/>
+<xs:element name="ucsisubext" type="subscriber:UCSISUBEXT" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="roamSubscription" type="subscriber:ROAMSUBSCRIPTION" minOccurs="0"/>
+<xs:element name="profileType" type="subscriber:HlrProfileType" minOccurs="0"/>
+<xs:element name="commonMSISDN" type="xs:string" minOccurs="0"/>
+<xs:element name="overrideCommonCLI" type="xs:boolean" minOccurs="0"/>
+<xs:element name="mssMultiSim" type="subscriber:HlrMssMultiSimType" minOccurs="0"/>
+<xs:element name="spatialTrigger" type="subscriber:SpatialTrigger" minOccurs="0"/>
+<xs:element name="insms" type="subscriber:INSMS" minOccurs="0"/>
+<xs:element name="arc" type="subscriber:ARC" minOccurs="0"/>
+<xs:element name="acc" type="subscriber:HlrAcc" minOccurs="0"/>
+<xs:element name="csFallback" type="subscriber:HlrCSFallback" minOccurs="0"/>
+<xs:element name="smsSubData" type="subscriber:HlrSmsSubData" minOccurs="0"/>
+<xs:element name="ftnTransIndex" type="xs:int" minOccurs="0"/>
+<xs:element name="icsIndicator" type="xs:int" minOccurs="0"/>
+<xs:element name="sset" type="subscriber:HLRSSET" minOccurs="0"/>
+<xs:element name="emoick" type="subscriber:HLREMOICK" minOccurs="0"/>
+<xs:element name="uEReachabilityReqInfo" type="subscriber:UEReachabilityReqInfo" minOccurs="0"/>
+<xs:element name="csarp" type="subscriber:HLRCSARP" minOccurs="0"/>
+<xs:element name="refFraudProfileName" type="xs:string" minOccurs="0"/>
+<xs:element name="mrbt" type="xs:boolean" minOccurs="0"/>
+<xs:element name="gsmTrace" type="subscriber:HLRGSMTrace" minOccurs="0"/>
+<xs:element name="subFraudObsInfo" type="subscriber:HLRFraudObservationInfo" minOccurs="0" maxOccurs="2"/>
+<xs:element name="simObsActive" type="xs:boolean" minOccurs="0"/>
+<xs:element name="chbha" type="subscriber:HLRChargingBasedOnHomeArea" minOccurs="0"/>
+<xs:element name="primaryBasicService" type="subscriber:HLRPBS" minOccurs="0"/>
+<xs:element name="cf" type="subscriber:HLRCallForward" minOccurs="0"/>
+<xs:element name="rrPs" type="xs:string" minOccurs="0"/>
+<xs:element name="srPs" type="xs:int" minOccurs="0"/>
+<xs:element name="refHplmnAreaName" type="xs:string" minOccurs="0"/>
+<xs:element name="meId" type="subscriber:PrintableString64" minOccurs="0"/>
+<xs:element name="accessRestr" type="subscriber:EpsAccessRestriction" minOccurs="0" maxOccurs="6"/>
+<xs:element name="odbBaroam" type="subscriber:EPSOdbBarringRoam" minOccurs="0"/>
+<xs:element name="sgsnIdentity" type="subscriber:PrintableString255" minOccurs="0"/>
+<xs:element name="sgsnRealm" type="subscriber:PrintableString255" minOccurs="0"/>
+<xs:element name="sgsnSupportedFeatures" type="subscriber:SgsnSupportedFeatures" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="refHplmnListName" type="subscriber:PrintableString255" minOccurs="0"/>
+<xs:element name="s6dSgsnNumber" type="subscriber:PrintableString255" minOccurs="0"/>
+<xs:element name="s6dCombinedFlag" type="xsd:boolean" minOccurs="0"/>
+<xs:element name="notification" type="subscriber:AppSrvNotificationData" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="s6dLocUpdateTimestamp" type="xsd:dateTime" minOccurs="0"/>
+<xs:group ref="subscriber:EPS_Group"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="NType">
+<xs:annotation>
+<xs:documentation>Numbering Type</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:enumeration value="single"/>
+<xs:enumeration value="multi"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="Service">
+<xs:annotation>
+<xs:documentation>Abstract base class for a service </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BasicService">
+<xs:annotation>
+<xs:documentation>Abstract base class for a basic service </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="msisdn" type="xs:string" minOccurs="0"/>
+<xs:element name="bcieID" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="TS11">
+<xs:annotation>
+<xs:documentation> 
+                TS11 is a particular subclass of a service class with dedicated parameter
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:BasicService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="TS21">
+<xs:annotation>
+<xs:documentation> 
+                TS21 is a Short Message service mobile terminating
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:BasicService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="TS22">
+<xs:annotation>
+<xs:documentation> 
+                TS22 is a Short Message service mobile originating
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:BasicService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="TS61">
+<xs:annotation>
+<xs:documentation> 
+                TS61 is an alternate speech and facsimile group 3 service
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:BasicService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="TS62">
+<xs:annotation>
+<xs:documentation> 
+                TS62 is an automatic facsimile group 3 service
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:BasicService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="VGCS">
+<xs:annotation>
+<xs:documentation> 
+                VGCS Voice Group Call Service
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:BasicService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="VBS">
+<xs:annotation>
+<xs:documentation> 
+                VBS Voice Broadcast Service
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:BasicService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BS20GENR">
+<xs:annotation>
+<xs:documentation> 
+                BS20 GENR is a general circuit switched data asynchronous service
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:BasicService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BS21">
+<xs:annotation>
+<xs:documentation> 
+                BS21 datal circuit duplex asynchronous service (300 b/s)
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:BasicService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BS22">
+<xs:annotation>
+<xs:documentation> 
+                BS22 datal circuit duplex asynchronous service (1200 b/s)
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:BasicService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BS23">
+<xs:annotation>
+<xs:documentation> 
+                BS23 datal circuit duplex asynchronous service (1200 b/s and 75 b/s)
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:BasicService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BS24">
+<xs:annotation>
+<xs:documentation> 
+                BS24 datal circuit duplex asynchronous service (2400 b/s)
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:BasicService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BS25">
+<xs:annotation>
+<xs:documentation> 
+                BS25 datal circuit duplex asynchronous service (4800 b/s)
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:BasicService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BS26">
+<xs:annotation>
+<xs:documentation> 
+                BS26 datal circuit duplex asynchronous service (9600 b/s)
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:BasicService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BS30GENR">
+<xs:annotation>
+<xs:documentation> 
+                BS30 GENR is a general circuit switched data synchronous service
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:BasicService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BS31">
+<xs:annotation>
+<xs:documentation> 
+                BS31 datal circuit duplex synchronous service (1200 b/s)
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:BasicService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BS32">
+<xs:annotation>
+<xs:documentation> 
+                BS32 datal circuit duplex ssynchronous service (2400 b/s)
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:BasicService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BS33">
+<xs:annotation>
+<xs:documentation> 
+                BS33 datal circuit duplex synchronous service (4800 b/s)
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:BasicService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BS34">
+<xs:annotation>
+<xs:documentation> 
+                BS34 datal circuit duplex synchronous service (9600 b/s)
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:BasicService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BS41">
+<xs:annotation>
+<xs:documentation>
+                BS41 PAD access circuit asynchronous service (300 b/s)
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:BasicService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BS42">
+<xs:annotation>
+<xs:documentation>
+                BS42 PAD access circuit asynchronous service (12000 b/s)
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:BasicService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BS44">
+<xs:annotation>
+<xs:documentation>
+                BS44 PAD access circuit asynchronous service (2400 b/s)
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:BasicService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BS45">
+<xs:annotation>
+<xs:documentation>
+                BS45 PAD access circuit asynchronous service (4800 b/s)
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:BasicService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BS46">
+<xs:annotation>
+<xs:documentation>
+                BS46 PAD access circuit asynchronous service (9600 b/s)
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:BasicService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BS40GENR">
+<xs:annotation>
+<xs:documentation>
+                BS40GENR general PAD access circuit asynchronous service
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:BasicService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BS61A">
+<xs:annotation>
+<xs:documentation> 
+                BS61A Alternate Speech / Unrestricted Data 
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:BasicService">
+<xs:sequence>
+<xs:element name="bcieIDData" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BS81A">
+<xs:annotation>
+<xs:documentation> 
+                BS81 Speech followed by Data 
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:BasicService">
+<xs:sequence>
+<xs:element name="bcieIDData" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="GPRS">
+<xs:annotation>
+<xs:documentation> 
+                GPRS This is a Nokia special service for GPRS
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:BasicService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="TransferOptionType">
+<xs:annotation>
+<xs:documentation>Enumeration of valid values for transferOption element in TS21GPRS</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:enumeration value="transferViaMSC"/>
+<xs:enumeration value="transferViaSGSN"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="TS21GPRS">
+<xs:annotation>
+<xs:documentation> 
+                TS21GPRS TSMS MT over GPRS 
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:BasicService">
+<xs:sequence>
+<xs:element name="transferOption" type="subscriber:TransferOptionType" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="TS22GPRS">
+<xs:annotation>
+<xs:documentation> 
+                TS22GPRS SMS MO over GPRS 
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:BasicService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="CfBasicServiceGroupType">
+<xs:annotation>
+<xs:documentation>Enumeration of valid values for BasicServiceGroup element in CFU</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:enumeration value="TS10-telephony"/>
+<xs:enumeration value="TS60-fax"/>
+<xs:enumeration value="BS20-dataAsync"/>
+<xs:enumeration value="BS30-dataSync"/>
+<xs:enumeration value="BS40-padAccess"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="HLRCfBasicServiceGroupTypeExt">
+<xs:annotation>
+<xs:documentation>Enumeration of valid values for BasicServiceGroup element in CFU</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:enumeration value="TS10-telephony"/>
+<xs:enumeration value="TS60-fax"/>
+<xs:enumeration value="BS20-dataAsync"/>
+<xs:enumeration value="BS30-dataSync"/>
+<xs:enumeration value="BS40-padAccess"/>
+<xs:enumeration value="TS20-shortMessage"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="CFU">
+<xs:annotation>
+<xs:documentation> CFU Call forwarding unconditional </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="basicServiceGroup" type="subscriber:HLRCfBasicServiceGroupTypeExt" minOccurs="0"/>
+<xs:element name="isdnNumber" type="xs:string" minOccurs="0"/>
+<xs:element name="status" type="xs:int" minOccurs="0"/>
+<xs:element name="notifyCallingSubscriber" type="xs:boolean" minOccurs="0"/>
+<xs:element name="ftnoType" type="subscriber:FtnoType" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="CFB">
+<xs:annotation>
+<xs:documentation> CFB Call forwarding on mobile subscriber busy </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="basicServiceGroup" type="subscriber:CfBasicServiceGroupType" minOccurs="0"/>
+<xs:element name="isdnNumber" type="xs:string" minOccurs="0"/>
+<xs:element name="status" type="xs:int" minOccurs="0"/>
+<xs:element name="notifyCallingSubscriber" type="xs:boolean" minOccurs="0"/>
+<xs:element name="notifyForwardingSubscriber" type="xs:boolean" minOccurs="0"/>
+<xs:element name="ftnoType" type="subscriber:FtnoType" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="CFNrc">
+<xs:annotation>
+<xs:documentation> CFNrc Call forwarding on mobile subscriber not reachable </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="basicServiceGroup" type="subscriber:CfBasicServiceGroupType" minOccurs="0"/>
+<xs:element name="isdnNumber" type="xs:string" minOccurs="0"/>
+<xs:element name="status" type="xs:int" minOccurs="0"/>
+<xs:element name="notifyCallingSubscriber" type="xs:boolean" minOccurs="0"/>
+<xs:element name="ftnoType" type="subscriber:FtnoType" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="CFNry">
+<xs:annotation>
+<xs:documentation> CFNry Call forwarding on no reply </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="basicServiceGroup" type="subscriber:CfBasicServiceGroupType" minOccurs="0"/>
+<xs:element name="isdnNumber" type="xs:string" minOccurs="0"/>
+<xs:element name="status" type="xs:int" minOccurs="0"/>
+<xs:element name="noReplyConditionTimer" type="xs:int" minOccurs="0"/>
+<xs:element name="notifyCallingSubscriber" type="xs:boolean" minOccurs="0"/>
+<xs:element name="notifyForwardingSubscriber" type="xs:boolean" minOccurs="0"/>
+<xs:element name="ftnoType" type="subscriber:FtnoType" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="AllCCF">
+<xs:annotation>
+<xs:documentation> AllCCF All conditional call forwarding services </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="basicServiceGroup" type="subscriber:CfBasicServiceGroupType" minOccurs="0"/>
+<xs:element name="isdnNumber" type="xs:string" minOccurs="0"/>
+<xs:element name="status" type="xs:int" minOccurs="0"/>
+<xs:element name="noReplyConditionTimer" type="xs:int" minOccurs="0"/>
+<xs:element name="notifyCallingSubscriber" type="xs:boolean" minOccurs="0"/>
+<xs:element name="notifyForwardingSubscriber" type="xs:boolean" minOccurs="0"/>
+<xs:element name="ftnoType" type="subscriber:FtnoType" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="AllCF">
+<xs:annotation>
+<xs:documentation> AllCF All call forwarding services </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="notifyCallingSubscriber" type="xs:boolean" minOccurs="0"/>
+<xs:element name="notifyForwardingSubscriber" type="xs:boolean" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="CFD">
+<xs:annotation>
+<xs:documentation> CFD Call Forwarding by Default </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="isdnNumber" type="xs:string" minOccurs="0"/>
+<xs:element name="status" type="xs:int" minOccurs="0"/>
+<xs:element name="replaceCFConditional" type="xs:int" minOccurs="0"/>
+<xs:element name="serviceAvailable" type="xs:int" minOccurs="0"/>
+<xs:element name="ftnoType" type="subscriber:FtnoType" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="CAW">
+<xs:annotation>
+<xs:documentation> CAW Call Waiting </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="basicServiceGroup" type="subscriber:CfBasicServiceGroupType" minOccurs="0"/>
+<xs:element name="status" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="CUG">
+<xs:annotation>
+<xs:documentation> CUG Closed User Group </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="cugIndex" type="xs:int" minOccurs="0"/>
+<xs:element name="cugInterlockCode" type="xs:string" minOccurs="0"/>
+<xs:element name="dataNetworkIdentityCode" type="subscriber:NumericString" minOccurs="0"/>
+<xs:element name="intraCUGRestriction" type="xs:int" minOccurs="0"/>
+<xs:sequence>
+<xs:element name="basicServiceGroup" type="subscriber:CfBasicServiceGroupType" minOccurs="0" maxOccurs="5"/>
+</xs:sequence>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="CUGBSG">
+<xs:annotation>
+<xs:documentation> CUG Closed User Group - Basic Service Group related Data </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="basicServiceGroup" type="subscriber:CfBasicServiceGroupType"/>
+<xs:element name="preferentialCUGIndex" type="xs:int" minOccurs="0"/>
+<xs:element name="interCUGAccessType" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="SUBRELRO">
+<xs:annotation>
+<xs:documentation> Subscriber Related Routing</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="subscriberRouting" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="VGRPID">
+<xs:annotation>
+<xs:documentation> Voice Call Group ID</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="voiceGroupId" type="xs:int"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="ComCbControlType">
+<xs:annotation>
+<xs:documentation> Enumeration of valid values for COMCB_Password used in COMCB </xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:enumeration value="byOperator"/>
+<xs:enumeration value="bySubscriber"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="COMCB">
+<xs:annotation>
+<xs:documentation> COMCB Common call barring attributes </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="control" type="subscriber:ComCbControlType" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+<xs:element name="pwBlockedBN" type="xs:boolean" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="BarringBasicServiceGroupType">
+<xs:annotation>
+<xs:documentation>Enumeration of valid values for BasicServiceGroup element in call forwarding</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:enumeration value="TS10-telephony"/>
+<xs:enumeration value="TS20-shortMessage"/>
+<xs:enumeration value="TS60-fax"/>
+<xs:enumeration value="BS20-dataAsync"/>
+<xs:enumeration value="BS30-dataSync"/>
+<xs:enumeration value="BS40-padAccess"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="BAOC">
+<xs:annotation>
+<xs:documentation> BAOC Barring of all outgoing calls </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="basicServiceGroup" type="subscriber:BarringBasicServiceGroupType" minOccurs="0"/>
+<xs:element name="status" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BOIC">
+<xs:annotation>
+<xs:documentation> BOIC Barring of all outgoing international calls </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="basicServiceGroup" type="subscriber:BarringBasicServiceGroupType" minOccurs="0"/>
+<xs:element name="status" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BOICexHC">
+<xs:annotation>
+<xs:documentation> BOICexHC Barring of all outgoing international calls except those directed to the home plmn country </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="basicServiceGroup" type="subscriber:BarringBasicServiceGroupType" minOccurs="0"/>
+<xs:element name="status" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BORO">
+<xs:annotation>
+<xs:documentation> BORO Barring of outgoing calls when roaming outside the home plmn country </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="barrGSM" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BAIC">
+<xs:annotation>
+<xs:documentation> BAIC Barring of all incoming calls </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="basicServiceGroup" type="subscriber:BarringBasicServiceGroupType" minOccurs="0"/>
+<xs:element name="status" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BICRoam">
+<xs:annotation>
+<xs:documentation> BICRoam Barring of all incoming calls when roaming outside the home plmn country </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="basicServiceGroup" type="subscriber:BarringBasicServiceGroupType" minOccurs="0"/>
+<xs:element name="status" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="EMLPPPriorityType">
+<xs:annotation>
+<xs:documentation>Enumeration of valid values for EMLPPPriorityTypeb used in EMLPP</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:enumeration value="priorityA"/>
+<xs:enumeration value="priorityB"/>
+<xs:enumeration value="priority0"/>
+<xs:enumeration value="priority1"/>
+<xs:enumeration value="priority2"/>
+<xs:enumeration value="priority3"/>
+<xs:enumeration value="priority4"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="EMLPP">
+<xs:annotation>
+<xs:documentation> EMLPP eMLPP </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="maxPriority" type="subscriber:EMLPPPriorityType" minOccurs="0"/>
+<xs:element name="defaultPriority" type="subscriber:EMLPPPriorityType" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="MultiDeviceIndicatorType">
+<xs:annotation>
+<xs:documentation>Enumeration of valid multi-device indicators</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:enumeration value="master"/>
+<xs:enumeration value="slave1"/>
+<xs:enumeration value="slave2"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="ActivePageDeviceType">
+<xs:annotation>
+<xs:documentation>Enumeration of valid multi-devices</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:enumeration value="master"/>
+<xs:enumeration value="slave1"/>
+<xs:enumeration value="slave2"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="MultiDeviceImsiType">
+<xs:annotation>
+<xs:documentation>SCO for multi device IMSI description</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="mdIndicator" type="subscriber:MultiDeviceIndicatorType"/>
+<xs:element name="mdImsi" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="MultiDeviceMsisdnType">
+<xs:annotation>
+<xs:documentation>SCO for multi device MSISDN description</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="mdIndicator" type="subscriber:MultiDeviceIndicatorType"/>
+<xs:element name="mdMsisdn" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="MultiDeviceType">
+<xs:annotation>
+<xs:documentation>Support of multi device functionality</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="multiDeviceIndicator" type="subscriber:MultiDeviceIndicatorType" minOccurs="0"/>
+<xs:element name="activePageDevice" type="subscriber:ActivePageDeviceType" minOccurs="0"/>
+<xs:element name="multiDeviceImsi" type="subscriber:MultiDeviceImsiType" minOccurs="0" maxOccurs="2"/>
+<xs:element name="multiDeviceMsisdn" type="subscriber:MultiDeviceMsisdnType" minOccurs="0" maxOccurs="2"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="RS">
+<xs:annotation>
+<xs:documentation> RS Regional Subscription </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="countryCode" type="xs:string" minOccurs="0"/>
+<xs:element name="networkDestinationCode" type="xs:string" minOccurs="0"/>
+<xs:element name="zoneCode01" type="xs:string" minOccurs="0"/>
+<xs:element name="zoneCode02" type="xs:string" minOccurs="0"/>
+<xs:element name="zoneCode03" type="xs:string" minOccurs="0"/>
+<xs:element name="zoneCode04" type="xs:string" minOccurs="0"/>
+<xs:element name="zoneCode05" type="xs:string" minOccurs="0"/>
+<xs:element name="zoneCode06" type="xs:string" minOccurs="0"/>
+<xs:element name="zoneCode07" type="xs:string" minOccurs="0"/>
+<xs:element name="zoneCode08" type="xs:string" minOccurs="0"/>
+<xs:element name="zoneCode09" type="xs:string" minOccurs="0"/>
+<xs:element name="zoneCode10" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="SRF">
+<xs:annotation>
+<xs:documentation> SRF Subscriber Related Features </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="featureId" type="xs:int" minOccurs="0"/>
+<xs:element name="featureNumber" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="PDPAccessPointNameAreaType">
+<xs:annotation>
+<xs:documentation>Enumeration of valid values for PDPAccessPointNameArea</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:enumeration value="HPLMN"/>
+<xs:enumeration value="ALLPLMN"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="IPAddress">
+<xs:annotation>
+<xs:documentation>Either ipv4 or ipv6 address is allowed</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:pattern value="([1-9]?\d|1\d\d|2[0-4]\d|25[0-5])\.([1-9]?\d|1\d\d|2[0-4]\d|25[0-5])\.([1-9]?\d|1\d\d|2[0-4]\d|25[0-5])\.([1-9]?\d|1\d\d|2[0-4]\d|25[0-5])"/>
+<xs:pattern value="([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}"/>
+<xs:pattern value="(([0-9A-Fa-f]{1,4}:){6})(25[0-5]|2[0-4]\d|[0-1]?\d?\d)(\.(25[0-5]|2[0-4]\d|[0-1]?\d?\d)){3}"/>
+<xs:pattern value="::(([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){0,6})?)"/>
+<xs:pattern value="([0-9A-Fa-f]{1,4})::(([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){0,5})?)"/>
+<xs:pattern value="([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){1})::(([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){0,4})?)"/>
+<xs:pattern value="([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){2})::(([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){0,3})?)"/>
+<xs:pattern value="([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){3})::(([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){0,2})?)"/>
+<xs:pattern value="([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){4})::(([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){0,1})?)"/>
+<xs:pattern value="([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){5})::(([0-9A-Fa-f]{1,4})?)"/>
+<xs:pattern value="([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){6})::"/>
+<xs:pattern value="::(([0-9A-Fa-f]{1,4}:){0,5})(25[0-5]|2[0-4]\d|[0-1]?\d?\d)(\.(25[0-5]|2[0-4]\d|[0-1]?\d?\d)){3}"/>
+<xs:pattern value="([0-9A-Fa-f]{1,4})::(([0-9A-Fa-f]{1,4}:){0,4})(25[0-5]|2[0-4]\d|[0-1]?\d?\d)(\.(25[0-5]|2[0-4]\d|[0-1]?\d?\d)){3}"/>
+<xs:pattern value="([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}))::(([0-9A-Fa-f]{1,4}:){0,3})(25[0-5]|2[0-4]\d|[0-1]?\d?\d)(\.(25[0-5]|2[0-4]\d|[0-1]?\d?\d)){3}"/>
+<xs:pattern value="([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){2})::(([0-9A-Fa-f]{1,4}:){0,2})(25[0-5]|2[0-4]\d|[0-1]?\d?\d)(\.(25[0-5]|2[0-4]\d|[0-1]?\d?\d)){3}"/>
+<xs:pattern value="([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){3})::(([0-9A-Fa-f]{1,4}:){0,1})(25[0-5]|2[0-4]\d|[0-1]?\d?\d)(\.(25[0-5]|2[0-4]\d|[0-1]?\d?\d)){3}"/>
+<xs:pattern value="([0-9A-Fa-f]{1,4}(:[0-9A-Fa-f]{1,4}){4})::(25[0-5]|2[0-4]\d|[0-1]?\d?\d)(\.(25[0-5]|2[0-4]\d|[0-1]?\d?\d)){3}"/>
+</xs:restriction>
+</xs:simpleType>
+<xsd:simpleType name="EPSLipaPermission">
+<xsd:annotation>
+<xsd:documentation>
+        Allowed values for Lipa Permission
+        0 LIPA-PROHIBITED
+        1 LIPA-ONLY 
+        2 LIPA-CONDITIONAL
+      </xsd:documentation>
+</xsd:annotation>
+<xsd:restriction base="xsd:string">
+<xsd:enumeration value="LIPA-PROHIBITED"/>
+<xsd:enumeration value="LIPA-ONLY"/>
+<xsd:enumeration value="LIPA-CONDITIONAL"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xs:complexType name="PDPContext">
+<xs:annotation>
+<xs:documentation> PDPContext </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="id" type="xs:int" minOccurs="0"/>
+<xs:element name="type" type="xs:int" minOccurs="0"/>
+<xs:element name="address" type="xs:string" minOccurs="0"/>
+<xs:element name="qosProfile" type="xs:string" minOccurs="0"/>
+<xs:element name="apn" type="xs:string" minOccurs="0"/>
+<xs:element name="apnArea" type="subscriber:PDPAccessPointNameAreaType" minOccurs="0"/>
+<xs:element name="chargingCharacteristics" type="subscriber:ChargingCharacteristics" minOccurs="0" maxOccurs="4"/>
+<xs:element name="chargingCharacteristicsProfile" type="xs:int" minOccurs="0"/>
+<xs:element name="chargingCharacteristicsBehavior" type="xs:int" minOccurs="0"/>
+<xs:element name="extType" type="xs:int" minOccurs="0"/>
+<xs:element name="extAddress" type="subscriber:IPAddress" minOccurs="0"/>
+<xs:element name="lipaPermission" type="subscriber:EPSLipaPermission" minOccurs="0"/>
+<xs:element name="refPdpContextName" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xsd:complexType name="SgsnSupportedFeatures">
+<xsd:annotation>
+<xsd:documentation>
+    Complex type containing the list of features supported by the SGSN.
+    It is composed of feature list ID and the feature. For the currently 
+    defined bits the feature list ID is 1. Currently 30 features are defined 
+    (thus at the moment one feature list is sufficient for the S6d interface).
+        </xsd:documentation>
+</xsd:annotation>
+<xsd:complexContent>
+<xsd:extension base="spml:SecondClassObject">
+<xsd:sequence>
+<xsd:element name="featureListId" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+<xsd:element name="feature" type="subscriber:FeatureList" minOccurs="0" maxOccurs="unbounded"/>
+</xsd:sequence>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:simpleType name="FeatureList">
+<xsd:annotation>
+<xsd:documentation>
+      This is an enumeration of all the supported features 
+      of the origin hosts in S6a/S6d interface as defined by 3GPP.
+      </xsd:documentation>
+</xsd:annotation>
+<xsd:restriction base="xsd:string">
+<xsd:enumeration value="ODB-all-APN"/>
+<xsd:enumeration value="ODB-HPLMN-APN"/>
+<xsd:enumeration value="ODB-VPLMN-APN"/>
+<xsd:enumeration value="ODB-all-OG"/>
+<xsd:enumeration value="ODB-all-InternationalOG"/>
+<xsd:enumeration value="ODB-all-InternationalOGNotToHPLMN-Country"/>
+<xsd:enumeration value="ODB-all-InterzonalOG"/>
+<xsd:enumeration value="ODB-all-InterzonalOGNotToHPLMN-Country"/>
+<xsd:enumeration value="ODB-all-InterzonalOGAndInternationalOGNotToHPLMN-Country"/>
+<xsd:enumeration value="RegSub"/>
+<xsd:enumeration value="Trace"/>
+<xsd:enumeration value="LCS-all-PrivExcep"/>
+<xsd:enumeration value="LCS-Universal"/>
+<xsd:enumeration value="LCS-CallSessionRelated"/>
+<xsd:enumeration value="LCS-CallSessionUnrelated"/>
+<xsd:enumeration value="LCS-PLMNOperator"/>
+<xsd:enumeration value="LCS-ServiceType"/>
+<xsd:enumeration value="LCS-all-MOLR-SS"/>
+<xsd:enumeration value="LCS-BasicSelfLocation"/>
+<xsd:enumeration value="LCS-AutonomousSelfLocation"/>
+<xsd:enumeration value="LCS-TransferToThirdParty"/>
+<xsd:enumeration value="SM-MO-PP"/>
+<xsd:enumeration value="Barring-OutgoingCalls"/>
+<xsd:enumeration value="BAOC"/>
+<xsd:enumeration value="BOIC"/>
+<xsd:enumeration value="BOICExHC"/>
+<xsd:enumeration value="UE-Reachability-Notification"/>
+<xsd:enumeration value="T-ADS-Data-Retrieval"/>
+<xsd:enumeration value="State/Location-Information-Retrieval"/>
+<xsd:enumeration value="Partial Purge"/>
+<xsd:enumeration value="Local Time Zone Retrieval"/>
+<xsd:enumeration value="Additional MSISDN"/>
+<xsd:enumeration value="SMS in MME"/>
+<xsd:enumeration value="SMS in SGSN"/>
+<xsd:enumeration value="Dia-LCS-all-PrivExcep"/>
+<xsd:enumeration value="Dia-LCS-Universal"/>
+<xsd:enumeration value="Dia-LCS-CallSessionRelated"/>
+<xsd:enumeration value="Dia-LCS-CallSessionUnrelated"/>
+<xsd:enumeration value="Dia-LCS-PLMNOperator"/>
+<xsd:enumeration value="Dia-LCS-ServiceType"/>
+<xsd:enumeration value="Dia-LCS-all-MOLR-SS"/>
+<xsd:enumeration value="Dia-LCS-BasicSelfLocation"/>
+<xsd:enumeration value="Dia-LCS-AutonomousSelfLocation"/>
+<xsd:enumeration value="Dia-LCS-TransferToThirdParty"/>
+<xsd:enumeration value="Gdd-in-SGSN"/>
+<xsd:enumeration value="Optimized-LCS-Proc-Support"/>
+<xsd:enumeration value="SGSN CAMEL Capability"/>
+<xsd:enumeration value="ProSe Capability"/>
+<xsd:enumeration value="P-CSCF Restoration"/>
+<xsd:enumeration value="Reset-IDs"/>
+<xsd:enumeration value="Communication-pattern"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:complexType name="AppSrvNotificationData">
+<xsd:annotation>
+<xsd:documentation>Notification Data</xsd:documentation>
+</xsd:annotation>
+<xsd:complexContent>
+<xsd:extension base="spml:SecondClassObject">
+<xsd:sequence>
+<xsd:element name="msisdn" type="subscriber:NumericString1_15" minOccurs="0"/>
+<xsd:element name="asHostName" type="xsd:string" minOccurs="0"/>
+<xsd:element name="asRealm" type="xsd:string" minOccurs="0"/>
+<xsd:element name="asSubscribedInfo" type="subscriber:ASSubscribedInfo" minOccurs="0"/>
+<xsd:element name="expiryTime" type="xsd:string" minOccurs="0"/>
+</xsd:sequence>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xs:complexType name="ASSubscribedInfo">
+<xs:annotation>
+<xsd:documentation>AS Subscribed Info</xsd:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="subscribedInfo" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="CSI">
+<xs:annotation>
+<xs:documentation> Camel Subscription Information  base class</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="operatorServiceName" type="xs:string" minOccurs="0"/>
+<xs:element name="csiState" type="xs:int" minOccurs="0"/>
+<xs:element name="csiNotify" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="DCSI">
+<xs:annotation>
+<xs:documentation> DCSI Dialed CAMEL subscription information </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:CSI"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="MCSI">
+<xs:annotation>
+<xs:documentation> MCSI Mobility management CAMEL subscription information </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:CSI"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="MGCSI">
+<xs:annotation>
+<xs:documentation> MGCSI CAMEL subscription information </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:CSI"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="MTSMSCSI">
+<xs:annotation>
+<xs:documentation> MTSMSCSI Mobile terminating SMS CAMEL subscription information </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:CSI"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="OCSI">
+<xs:annotation>
+<xs:documentation> OCSI Originating Camel Subscription Information </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:CSI"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="TCSI">
+<xs:annotation>
+<xs:documentation> TCSI Terminating Camel Subscription Information </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:CSI"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="GPRSCSI">
+<xs:annotation>
+<xs:documentation> GPRSCSI GPRSCSIServices </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:CSI"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="SMSCSI">
+<xs:annotation>
+<xs:documentation> SMSCSI SMS Camel Subscription Information </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:CSI"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="SSCSI">
+<xs:annotation>
+<xs:documentation> SSCSI SSCSIServices </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:CSI"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="VTCSI">
+<xs:annotation>
+<xs:documentation> VTCSI VMSC terminating CAMEL subscription information </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:CSI"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="UCSISUB">
+<xs:annotation>
+<xs:documentation> UCSISUB This data item is used in customer specific projects for Prepay subscribers. It controls access to the account Query etc. This object can be applied multiple times</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="ucsiServCode" type="xs:int" minOccurs="0"/>
+<xs:element name="gsmscfAddress" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="NotifyToCse">
+<xs:annotation>
+<xs:documentation>Notification flag, which indicates the necessity to notify the Camel Service Environment, gsmSCF(GSM Service control function), of the change of subscriber data.</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="callForwardingServices" type="xs:boolean" minOccurs="0"/>
+<xs:element name="callBarringServices" type="xs:boolean" minOccurs="0"/>
+<xs:element name="operatorDeterminedBarringServices" type="xs:boolean" minOccurs="0"/>
+<xs:element name="clipServices" type="xs:boolean" minOccurs="0"/>
+<xs:element name="clirServices" type="xs:boolean" minOccurs="0"/>
+<xs:element name="callWaitServices" type="xs:boolean" minOccurs="0"/>
+<xs:element name="callHoldServices" type="xs:boolean" minOccurs="0"/>
+<xs:element name="explicitCallTransferServices" type="xs:boolean" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="MobileSubscriberType">
+<xs:annotation>
+<xs:documentation>This attribute specifies the type of the mobile subscriber.</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:enumeration value="genericSubscriber"/>
+<xs:enumeration value="lmuSubscriber"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="TifSubscriber">
+<xs:annotation>
+<xs:documentation>
+                Translation Information Flag subscriber.
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="tifCsiActive" type="xs:boolean" minOccurs="0"/>
+<xs:element name="tifCsiNotificationToCse" type="xs:boolean" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="FollowMeBasicServiceGroupType">
+<xs:annotation>
+<xs:documentation>Enumeration of valid values for BasicServiceGroup element in FollowMe</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:enumeration value="TS10-telephony"/>
+<xs:enumeration value="TS60-fax"/>
+<xs:enumeration value="BS20-dataAsync"/>
+<xs:enumeration value="BS30-dataSync"/>
+<xs:enumeration value="BS40-padAccess"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="FollowMe">
+<xs:annotation>
+<xs:documentation>
+                Follow Me - Enables a mobile subscriber A to have control over the Follow Me data
+                of a remote party B such that subsequent calls directed to remote party B are forwarded
+                to subscriber A.
+                Follow Me supervisor - Allows to modify the Follow Me data of the remote party who has
+                been registered to another initiating subscriber.
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="basicServiceGroup" type="subscriber:FollowMeBasicServiceGroupType" minOccurs="0"/>
+<xs:element name="status" type="xs:int" minOccurs="0"/>
+<xs:element name="followMeSupervisor" type="xs:boolean" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="FollowMeClassOfRegistration">
+<xs:annotation>
+<xs:documentation>
+                This attribute holds the classes of registration for the "follow me" supplementary service.
+                The following values are allowed:
+                    A  Engine/ Train cab- radio basic functions
+                    B  Maintenance service user
+                    C  Operation support user
+                    D  Customer support user
+                    E  Train Controller
+                This attribute allows entires of a single value or of multiple logical values. The logical
+                values are combined to one physical value in database by OR combination.
+            </xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:enumeration value="classA"/>
+<xs:enumeration value="classB"/>
+<xs:enumeration value="classC"/>
+<xs:enumeration value="classD"/>
+<xs:enumeration value="classE"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="CUSS">
+<xs:annotation>
+<xs:documentation>
+                LCS universal status. This attribute specifies the status of Call universal supplementary
+                service. This attribute can accept a single value entry.
+                provided: 1
+                active: 2
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="status" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="CRELSS">
+<xs:annotation>
+<xs:documentation>
+                LCS call related status. This attribute specifies the status of call related supplementary service.
+                provided: 1
+                active: 2
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="lcsProfile" type="xs:string" minOccurs="0"/>
+<xs:element name="status" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="CURELSS">
+<xs:annotation>
+<xs:documentation>
+                LCS call unrelated status. This attribute specifies the status of call unrelated supplementary service.
+                provided: 1
+                active: 2
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="lcsProfile" type="xs:string" minOccurs="0"/>
+<xs:element name="status" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="PLMNOSS">
+<xs:annotation>
+<xs:documentation>
+                LCS PLMN operator status. This attribute specifies the status of PLMN operator supplementary service.
+                provided: 1
+                active: 2
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="lcsProfile" type="xs:string" minOccurs="0"/>
+<xs:element name="status" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="BasicSelfLocation">
+<xs:annotation>
+<xs:documentation>
+                Basic Self Location. This attribute can accept a single value entry.
+                provided: 1
+                active: 2
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="status" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="AutoSelfLocation">
+<xs:annotation>
+<xs:documentation>
+                Auto Self Location. This attribute can accept a single value entry.
+                provided: 1
+                active: 2
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="status" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="TransferToThirdParty">
+<xs:annotation>
+<xs:documentation>
+                Mobile subscriber requests transfer of own location to another LCS client. This attribute can accept a single value entry.
+                provided: 1
+                active: 2
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="status" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="GeneralChargingCharacteristics">
+<xs:annotation>
+<xs:documentation>
+                General Charging characteristics.
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="chargingCharacteristics" type="subscriber:ChargingCharacteristics" minOccurs="0" maxOccurs="4"/>
+<xs:element name="chargingCharacteristicsProfile" type="xs:int" minOccurs="0"/>
+<xs:element name="chargingCharacteristicsBehavior" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="ChargingCharacteristics">
+<xs:annotation>
+<xs:documentation>
+                This attribute specifies allowed charging characteristics. This attribute only accepts a single value
+                entry.
+            </xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:enumeration value="none"/>
+<xs:enumeration value="normal"/>
+<xs:enumeration value="prepaid"/>
+<xs:enumeration value="flatRate"/>
+<xs:enumeration value="hotBilling"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="CALLBACK">
+<xs:annotation>
+<xs:documentation>
+                Call Back feature is introduced in the GSM mobile system as a national PLMN specific
+                supplementary service. Enables a call that cannot be completed to the called subscriber
+                to be automatically forwarded to a special number. Normally to a voice mail system (VMS).
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="status" type="xs:int" minOccurs="0"/>
+<xs:element name="vmsShortCode" type="xs:string" minOccurs="0"/>
+<xs:element name="cbTimer" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="OperatorBarringGPRS">
+<xs:annotation>
+<xs:documentation>
+                Operator Determined Barring for packet oriented access (GPRS). This attribute indicates
+                which one of the following categories of operator determined barring of GPRS applies to
+                the mobile subscriber.
+            </xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:enumeration value="allPOServices"/>
+<xs:enumeration value="hplmnAccessPoints"/>
+<xs:enumeration value="vplmnAccessPoints"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="UmtsSubscriber">
+<xs:annotation>
+<xs:documentation>
+                This attribute identifies the type of UMTS Subscription.
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="accTypeGSM" type="xs:boolean" minOccurs="0"/>
+<xs:element name="accTypeGERAN" type="xs:boolean" minOccurs="0"/>
+<xs:element name="accTypeUTRAN" type="xs:boolean" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="VbsData">
+<xs:annotation>
+<xs:documentation>
+                Voice Broadcast Service data.
+            </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="broadCastId" type="xs:string" minOccurs="0"/>
+<xs:element name="initPerm" type="xs:boolean" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="FtnoType">
+<xs:annotation>
+<xs:documentation>
+                Type of FTNO format.
+            </xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:enumeration value="unknown"/>
+<xs:enumeration value="internat"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="FeaturesNotSupportedByVLRType">
+<xs:annotation>
+<xs:documentation>Enumeration of valid values for featuresNotSupportedByVLR in VlrMobData</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:enumeration value="regionalRoaming"/>
+<xs:enumeration value="operatorDetermindBarring"/>
+<xs:enumeration value="closedUserGroup"/>
+<xs:enumeration value="oCSI"/>
+<xs:enumeration value="tCSI"/>
+<xs:enumeration value="sSCSI"/>
+<xs:enumeration value="camelDCSI"/>
+<xs:enumeration value="camelVTCSI"/>
+<xs:enumeration value="camelSMSCSI"/>
+<xs:enumeration value="camelMTSMSCSI"/>
+<xs:enumeration value="camelMCSI"/>
+<xs:enumeration value="sMSMT"/>
+<xs:enumeration value="lateFeature"/>
+<xs:enumeration value="aOCC"/>
+<xs:enumeration value="generalBearerService20"/>
+<xs:enumeration value="generalBearerService30"/>
+<xs:enumeration value="generalBearerService40"/>
+<xs:enumeration value="cCBSA"/>
+<xs:enumeration value="cCBSB"/>
+<xs:enumeration value="oICK"/>
+<xs:enumeration value="extCamel"/>
+<xs:enumeration value="superCharger"/>
+<xs:enumeration value="autoCallRedir"/>
+<xs:enumeration value="sset"/>
+<xs:enumeration value="emoick"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="VlrMobData">
+<xs:annotation>
+<xs:documentation> VlrMobData - Mobility data for VLR (GSM) </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="vlrIdValid" type="xs:boolean" minOccurs="0"/>
+<xs:element name="isdnNumberOfVLR" type="xs:string" minOccurs="0"/>
+<xs:element name="mobileTerminatingCallPossible" type="xs:boolean" minOccurs="0"/>
+<xs:element name="plmnAllowed" type="xs:boolean" minOccurs="0"/>
+<xs:element name="roamingAreaAllowed" type="xs:boolean" minOccurs="0"/>
+<xs:element name="mscAreaRestrictedReceived" type="xs:boolean" minOccurs="0"/>
+<xs:element name="msPurged" type="xs:boolean" minOccurs="0"/>
+<xs:element name="supportedCAMELPhaseByVLR" type="xs:int" minOccurs="0"/>
+<xs:element name="supportedMAPVersionForLUP" type="xs:int" minOccurs="0"/>
+<xs:element name="featuresNotSupportedByVLR" type="subscriber:FeaturesNotSupportedByVLRType" minOccurs="0" maxOccurs="25"/>
+<xs:element name="prohFtnoUpdInVlrFail" type="xs:boolean" minOccurs="0"/>
+<xs:element name="ts10BarrByCb" type="xs:int" minOccurs="0"/>
+<xs:element name="ts20BarrByCb" type="xs:int" minOccurs="0"/>
+<xs:element name="ts60BarrByCb" type="xs:int" minOccurs="0"/>
+<xs:element name="bs20BarrByCb" type="xs:int" minOccurs="0"/>
+<xs:element name="bs30BarrByCb" type="xs:int" minOccurs="0"/>
+<xs:element name="bs40BarrByCb" type="xs:int" minOccurs="0"/>
+<xs:element name="vlrSupportsLongFtno" type="xs:boolean" minOccurs="0"/>
+<xs:element name="supportedLCSCapabilitySetsForVLR" type="xs:int" minOccurs="0"/>
+<xs:element name="offeredCAMEL4CSIsForVLR" type="xs:int" minOccurs="0"/>
+<xs:element name="mscNumber" type="xs:string" minOccurs="0"/>
+<xs:element name="previousIsdnNumberOfVLR" type="xs:string" minOccurs="0" maxOccurs="5"/>
+<xs:element name="emoickSubst" type="xs:int" minOccurs="0"/>
+<xs:element name="ssetSubst" type="xs:int" minOccurs="0"/>
+<xs:element name="locUpdateCSTimestamp" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="allowedMTRF" type="xs:boolean" minOccurs="0"/>
+<xs:element name="csTraceStatus" type="subscriber:HLRTraceStates" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="FeaturesNotSupportedBySGSNType">
+<xs:annotation>
+<xs:documentation>Enumeration of valid values for featuresNotSupportedBySGSN in SgsnMobData</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:enumeration value="sMS"/>
+<xs:enumeration value="gprsCsi"/>
+<xs:enumeration value="smsCsi"/>
+<xs:enumeration value="mtSmsCsi"/>
+<xs:enumeration value="odb"/>
+<xs:enumeration value="mgCsi"/>
+<xs:enumeration value="extCamel"/>
+<xs:enumeration value="superCharger"/>
+<xs:enumeration value="regionalSubscriptionNotSupSGSN"/>
+<xs:enumeration value="tadsDataRetrieval"/>
+<xs:enumeration value="initialAttach"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="HLRIMSVoiceOverPSSupport">
+<xs:annotation>
+<xs:documentation>ims voice over PS support enum</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xsd:string">
+<xs:enumeration value="imsVoiceOverPSNotSupported"/>
+<xs:enumeration value="imsVoiceOverPSSupported"/>
+<xs:enumeration value="imsVoiceOverPSSupportUnknown"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="HLRTraceStates">
+<xs:annotation>
+<xs:documentation>Gsm Tracing states enum </xs:documentation>
+</xs:annotation>
+<xs:restriction base="xsd:string">
+<xs:enumeration value="ACTIVE"/>
+<xs:enumeration value="ACTIVEPENDING"/>
+<xs:enumeration value="NOTACTIVE"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="SgsnMobData">
+<xs:annotation>
+<xs:documentation> SgsnMobData - Mobility data for SGSN (GPRS) </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="sgsnIdValid" type="xs:boolean" minOccurs="0"/>
+<xs:element name="isdnNumberOfSGSN" type="xs:string" minOccurs="0"/>
+<xs:element name="plmnAllowed" type="xs:boolean" minOccurs="0"/>
+<xs:element name="roamingAreaAllowed" type="xs:boolean" minOccurs="0"/>
+<xs:element name="gprsAllowed" type="xs:boolean" minOccurs="0"/>
+<xs:element name="supportedCAMELPhaseBySGSN" type="xs:int" minOccurs="0"/>
+<xs:element name="supportedMAPVersionForLUP" type="xs:int" minOccurs="0"/>
+<xs:element name="featuresNotSupportedBySGSN" type="subscriber:FeaturesNotSupportedBySGSNType" minOccurs="0" maxOccurs="11"/>
+<xs:element name="sgsnCamelNot" type="xs:boolean" minOccurs="0"/>
+<xs:element name="sgsnExtQos" type="xs:boolean" minOccurs="0"/>
+<xs:element name="gprsCsiSubst" type="xs:int" minOccurs="0"/>
+<xs:element name="gprsSmsCsiSubst" type="xs:int" minOccurs="0"/>
+<xs:element name="gprsMtSmsCsiSubst" type="xs:int" minOccurs="0"/>
+<xs:element name="mgCsiSubst" type="xs:int" minOccurs="0"/>
+<xs:element name="supportedLCSCapabilitySetsForSGSN" type="xs:int" minOccurs="0"/>
+<xs:element name="offeredCAMEL4CSIsForSGSN" type="xs:int" minOccurs="0"/>
+<xs:element name="sgsnAddress" type="xs:string" minOccurs="0"/>
+<xs:element name="previousIsdnNumberOfSGSN" type="xs:string" minOccurs="0" maxOccurs="5"/>
+<xs:element name="msPurged" type="xs:boolean" minOccurs="0"/>
+<xs:element name="sgsnAreaRestRcvd" type="xs:boolean" minOccurs="0"/>
+<xs:element name="imsVoiceOverPS" type="subscriber:HLRIMSVoiceOverPSSupport" minOccurs="0"/>
+<xs:element name="ueSrvccCapability" type="xs:int" minOccurs="0"/>
+<xs:element name="locUpdatePSTimestamp" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="psTraceStatus" type="subscriber:HLRTraceStates" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="MobileStationNotReachableReasonType">
+<xs:annotation>
+<xs:documentation>Enumeration of valid values for mobileStationNotReachableReason... in Data</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:enumeration value="msNoPagingRespViaMsc"/>
+<xs:enumeration value="msImsiDetached"/>
+<xs:enumeration value="msRoamingRestriction"/>
+<xs:enumeration value="msDeregInHLRForNonGPRS"/>
+<xs:enumeration value="msPurgedForNonGPRS"/>
+<xs:enumeration value="msNoPagingRespViaSGSN"/>
+<xs:enumeration value="msGPRSDetached"/>
+<xs:enumeration value="msDeregInHLRForGPRS"/>
+<xs:enumeration value="msPurgedForGPRS"/>
+<xs:enumeration value="unidentifiedSubViaMSC"/>
+<xs:enumeration value="unidentifiedSubViaSGSN"/>
+<xs:enumeration value="deregInHlrHssForIMS"/>
+<xs:enumeration value="noResponseViaIP_SM_GW"/>
+<xs:enumeration value="ueDeregistered"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="MsgWaitData">
+<xs:annotation>
+<xs:documentation> MsgWaitData - SMS message waiting data </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="msisdnUsedForAlertingOfSMSServiceCentre" type="xs:string" minOccurs="0"/>
+<xs:element name="mobileCapacityExceededFlag" type="xs:boolean" minOccurs="0"/>
+<xs:element name="mobileStationNotReachableFlag" type="xs:boolean" minOccurs="0"/>
+<xs:element name="addressOfSMSServicesCentres" type="xs:string" minOccurs="0" maxOccurs="32"/>
+<xs:element name="mobileStationNotReachableFlagForGPRS" type="xs:boolean" minOccurs="0"/>
+<xs:element name="mobileStationNotReachableReasonForGPRS" type="subscriber:MobileStationNotReachableReasonType" minOccurs="0"/>
+<xs:element name="mobileStationNotReachableReasonForGSM" type="subscriber:MobileStationNotReachableReasonType" minOccurs="0"/>
+<xs:element name="alertMsisdn" type="xs:string" minOccurs="0" maxOccurs="32"/>
+<xs:element name="ueNotReachableForIP" type="xs:boolean" minOccurs="0"/>
+<xs:element name="ueNotReachableReason" type="subscriber:MobileStationNotReachableReasonType" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="INService">
+<xs:annotation>
+<xs:documentation> IN Service</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="operatorServiceName" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="OICK">
+<xs:annotation>
+<xs:documentation> Originating IN Category Key</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:INService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="EOICK">
+<xs:annotation>
+<xs:documentation> Extended CAMEL Originating IN Category Key</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:INService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="EOINCI">
+<xs:annotation>
+<xs:documentation> Extended CAMEL Originating IN Capability Indicator</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:INService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="TICK">
+<xs:annotation>
+<xs:documentation> Terminating IN Category Key</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:TerminatingINService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="ETICK">
+<xs:annotation>
+<xs:documentation> Extended CAMEL Terminating IN Category Key</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:TerminatingINService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="ETINCI">
+<xs:annotation>
+<xs:documentation> Extended CAMEL Terminating IN Capability Indicator</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:TerminatingINService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="FlexibleMsisdnChangeOperation">
+<xs:complexContent>
+<xs:extension base="spml:AbstractOperation">
+<xs:sequence>
+<xs:element name="regularExpression" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="ALLBS">
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="msisdn" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="Property">
+<xs:attribute name="name" type="xs:string"/>
+<xs:attribute name="value" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="Properties">
+<xs:sequence>
+<xs:element name="property" type="subscriber:Property" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="SubMigrationOperation">
+<xs:complexContent>
+<xs:extension base="spml:AbstractMigration">
+<xs:sequence>
+<xs:element name="sourceDataModel" type="xs:string"/>
+<xs:element name="targetDataModel" type="xs:string"/>
+<xs:element name="properties" type="subscriber:Properties"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="TerminatingINService">
+<xs:annotation>
+<xs:documentation>Terminating IN Service</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="operatorServiceName" type="xs:string" minOccurs="0"/>
+<xs:element name="roamingType" type="subscriber:RoamingType" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="RoamingType">
+<xs:annotation>
+<xs:documentation>This attribute specifies whether the subscriber is roaming in HPLMN or outside HPLMN</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:enumeration value="HPLMN"/>
+<xs:enumeration value="OutsideHPLMN"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="OdbEctType">
+<xs:annotation>
+<xs:documentation>This attribute indicates which of the categories of operator determined barring of explicit call transfer calls applies to the mobile subscriber</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:enumeration value="all"/>
+<xs:enumeration value="chargeable"/>
+<xs:enumeration value="international"/>
+<xs:enumeration value="interzonal"/>
+<xs:enumeration value="doublyChargeable"/>
+<xs:enumeration value="multiple"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="ClgPtyData">
+<xs:annotation>
+<xs:documentation>
+    This attribute contains information concerning the last calling number
+    e.g. it indicates whether the presenation of the calling number is allowed or restricted and if the number
+    was already sent in an USSD_Response to the subscriber. Multiple logical values are stored as one value
+    combined by OR.
+    Values:
+    PresentationAllowed = 0
+    PresentationRestricted = 1
+    NumberUnavailable = 4
+            </xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:enumeration value="presentationAllowed"/>
+<xs:enumeration value="presentationRestricted"/>
+<xs:enumeration value="numberUnavailable"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="UnsignedInt9">
+<xs:annotation>
+<xs:documentation>Integer in the range 0..9</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:nonNegativeInteger">
+<xs:maxInclusive value="9"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="NumericString6_15">
+<xs:annotation>
+<xs:documentation>Numeric String of length 15</xs:documentation>
+</xs:annotation>
+<xs:restriction base="subscriber:NumericString">
+<xs:minLength value="6"/>
+<xs:maxLength value="15"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="MultiSimMemberType">
+<xs:annotation>
+<xs:documentation>Support of multi SIM member</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="multiSimId" type="subscriber:UnsignedInt9" minOccurs="0"/>
+<xs:element name="multiSimImsi" type="subscriber:NumericString6_15" minOccurs="0"/>
+<xs:element name="basicServiceGroup" type="subscriber:BarringBasicServiceGroupType" minOccurs="0" maxOccurs="6"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="MultiSimType">
+<xs:annotation>
+<xs:documentation>Support of multi SIM functionality</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="subSimId" type="subscriber:UnsignedInt9" minOccurs="0"/>
+<xs:element name="multiSimMember" type="subscriber:MultiSimMemberType" minOccurs="0" maxOccurs="10"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="USSDService">
+<xs:annotation>
+<xs:documentation> USSD Service </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="active" type="xs:boolean" minOccurs="0"/>
+<xs:element name="refAdvtName" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="LcnService">
+<xs:annotation>
+<xs:documentation> LCN </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:USSDService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="OwnMsisdnService">
+<xs:annotation>
+<xs:documentation> OWN MSISDN </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:USSDService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="VlrIdService">
+<xs:annotation>
+<xs:documentation> VLR ID </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:USSDService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="ActualTimeService">
+<xs:annotation>
+<xs:documentation> ACTUAL TIME </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:USSDService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="UssdClirService">
+<xs:annotation>
+<xs:documentation> USSD CLIR Service </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:USSDService"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="UCSISUBEXT">
+<xs:annotation>
+<xs:documentation> UCSISUBEXT It controls access to the account Query etc. This object can be applied multiple times</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="ucsiServCodeExt" type="xs:string" minOccurs="0"/>
+<xs:element name="gsmscfAddress" type="xs:string" minOccurs="0"/>
+<xs:element name="origRefIndicator" type="subscriber:HLRRefIndicatorType" minOccurs="0"/>
+<xs:element name="destRefIndicator" type="subscriber:HLRRefIndicatorType" minOccurs="0"/>
+<xs:element name="ussdSendingOptions" type="subscriber:HLRUssdSendingOptions" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="HlrProfileType">
+<xs:annotation>
+<xs:documentation>Enumeration of valid values for Subscriber Profile Type</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:enumeration value="mssMultiSim"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="HlrMssMultiSimType">
+<xs:annotation>
+<xs:documentation>Support of MSC-S based MultiSim for subscriber functionality</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="denyDirectSMS" type="xs:boolean" minOccurs="0"/>
+<xs:element name="denyDirectCall" type="xs:boolean" minOccurs="0"/>
+<xs:element name="groupMSISDN" type="xs:string" minOccurs="0"/>
+<xs:element name="primarySMSTerminal" type="xs:string" minOccurs="0"/>
+<xs:element name="allowSyncToGroup" type="xs:boolean" minOccurs="0"/>
+<xs:element name="refAdvtName" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="SpatialTrigger">
+<xs:annotation>
+<xs:documentation>Spatial Trigger functionality</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="spatialTriggerEvent" type="xs:int" minOccurs="0"/>
+<xs:element name="gmlcId" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="HLRSwapAliasType">
+<xs:restriction base="xs:string">
+<xs:enumeration value="imsi"/>
+<xs:enumeration value="msisdn"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="HLRSwapIdentifier">
+<xs:simpleContent>
+<xs:extension base="spml:ID">
+<xs:attribute name="alias" type="subscriber:HLRSwapAliasType" use="required"/>
+</xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="canMsubOperation">
+<xs:annotation>
+<xs:documentation> Defines the canMsub extended operation. The vlr.sgsn and mme types of
+        cancelation is supported.</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:AbstractOperation">
+<xs:sequence>
+<xs:element name="imsi" type="subscriber:NumericString15" minOccurs="0"/>
+<xs:element name="vlr" type="subscriber:CanMsubTarget" minOccurs="0"/>
+<xs:element name="sgsn" type="subscriber:CanMsubTarget" minOccurs="0"/>
+<xs:element name="mme" type="subscriber:CanMsubTarget" minOccurs="0"/>
+<xs:element name="mmeRealm" type="subscriber:CanMsubTarget" minOccurs="0"/>
+<xs:element name="sgsnIdentity" type="subscriber:CanMsubTarget" minOccurs="0"/>
+<xs:element name="sgsnRealm" type="subscriber:CanMsubTarget" minOccurs="0"/>
+<xs:element name="msubPurgedGprs" type="subscriber:CanMsubTargetBoolean" minOccurs="0"/>
+<xs:element name="gprsDataSentIndication" type="subscriber:CanMsubTargetBoolean" minOccurs="0"/>
+<xs:element name="force" type="xs:boolean" minOccurs="0" default="false"/>
+<xs:element name="reattachRequiredS6A" type="xsd:boolean" minOccurs="0"/>
+<xs:element name="reattachRequiredS6D" type="xsd:boolean" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="CanMsubTargetBoolean">
+<xs:annotation>
+<xs:documentation> Defines optional val attribute (of type boolean) for canMsub targets</xs:documentation>
+</xs:annotation>
+<xs:attribute name="val" type="xsd:boolean"/>
+</xs:complexType>
+<xs:complexType name="CanMsubTarget">
+<xs:annotation>
+<xs:documentation> Defines optional address attribute for canMsub targets</xs:documentation>
+</xs:annotation>
+<xs:attribute name="address" type="xsd:string"/>
+</xs:complexType>
+<xs:complexType name="CanMsubSubscriber">
+<xs:annotation>
+<xs:documentation> Defines the canMsub subscriber firstclass object </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:FirstClassObject">
+<xs:sequence>
+<xs:element name="vlr" type="xsd:string" minOccurs="0"/>
+<xs:element name="sgsn" type="xsd:string" minOccurs="0"/>
+<xs:element name="mme" type="xsd:string" minOccurs="0"/>
+<xs:element name="mmeRealm" type="xsd:string" minOccurs="0"/>
+<xs:element name="mmeHostId" type="xsd:string" minOccurs="0"/>
+<xs:element name="sgsnIdentity" type="xsd:string" minOccurs="0"/>
+<xs:element name="sgsnRealm" type="xsd:string" minOccurs="0"/>
+<xs:element name="msubPurgedGprs" type="xsd:string" minOccurs="0"/>
+<xs:element name="gprsDataSentIndication" type="xsd:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="IMSI">
+<xs:annotation>
+<xs:documentation>IMSI, International Mobile Subscriber Identity </xs:documentation>
+</xs:annotation>
+<xs:restriction base="subscriber:NumericString">
+<xs:minLength value="6"/>
+<xs:maxLength value="15"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="GeographicalInformation">
+<xs:sequence>
+<xs:element name="geographicalShape" type="subscriber:GeographicalShape" minOccurs="0"/>
+<xs:element name="geographicalLatitude" type="int" minOccurs="0"/>
+<xs:element name="geographicalLongitude" type="int" minOccurs="0"/>
+<xs:element name="geographicalUncertaintyCode" type="int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+<xs:simpleType name="GeographicalShape">
+<xs:restriction base="string">
+<xs:enumeration value="Ellips.Point+Uncert.Circle"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="GeodeticInformation">
+<xs:sequence>
+<xs:element name="geodeticPresentation" type="subscriber:GeodeticPresentation" minOccurs="0"/>
+<xs:element name="geodeticScreeningIndicator" type="subscriber:GeodeticScreeningIndicator" minOccurs="0"/>
+<xs:element name="geodeticShape" type="subscriber:GeodeticShape" minOccurs="0"/>
+<xs:element name="geodeticLatitude" type="int" minOccurs="0"/>
+<xs:element name="geodeticLongitude" type="int" minOccurs="0"/>
+<xs:element name="geodeticUncertaintyCode" type="int" minOccurs="0"/>
+<xs:element name="geodeticConfidence" type="int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+<xs:simpleType name="GeodeticPresentation">
+<xs:restriction base="string">
+<xs:enumeration value="presentation allowed"/>
+<xs:enumeration value="presentation restricted"/>
+<xs:enumeration value="location not available"/>
+<xs:enumeration value="spare"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="GeodeticScreeningIndicator">
+<xs:restriction base="string">
+<xs:enumeration value="user provided, not verified"/>
+<xs:enumeration value="user provided, verified and passed"/>
+<xs:enumeration value="user provided, verified and failed"/>
+<xs:enumeration value="network provided"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="GeodeticShape">
+<xs:restriction base="string">
+<xs:enumeration value="Ellipsoid Point"/>
+<xs:enumeration value="Ellips.Point+Uncert.Circle"/>
+<xs:enumeration value="Point with Altit.+Uncert."/>
+<xs:enumeration value="ellipse on the ellipsoid"/>
+<xs:enumeration value="ellipsoid circle sector"/>
+<xs:enumeration value="polygon"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="NetDetNotReachable">
+<xs:restriction base="string">
+<xs:enumeration value="msPurged"/>
+<xs:enumeration value="imsiDetached"/>
+<xs:enumeration value="restrictedArea"/>
+<xs:enumeration value="notRegistered"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="SubscriberState">
+<xs:choice>
+<xs:element name="assumedIdle" type="boolean"/>
+<xs:element name="camelBusy" type="boolean"/>
+<xs:element name="netDetNotReachable" type="subscriber:NetDetNotReachable"/>
+<xs:element name="notProvidedFromVLR" type="boolean"/>
+</xs:choice>
+</xs:complexType>
+<xs:complexType name="CellIdOrLAI">
+<xs:sequence>
+<xs:element name="cellGlobalIdOrServiceAreaIdFixedLength" type="subscriber:CellGlobalIdOrServiceAreaIdFixedLength" minOccurs="0"/>
+<xs:element name="laiFixedLength" type="subscriber:LaiFixedLength" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CellGlobalIdOrServiceAreaIdFixedLength">
+<xs:sequence>
+<xs:element name="mccMnc" type="string" minOccurs="0"/>
+<xs:element name="locationAreaCode" type="int" minOccurs="0"/>
+<xs:element name="cellIdentity" type="int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="LaiFixedLength">
+<xs:sequence>
+<xs:element name="mccMnc" type="string" minOccurs="0"/>
+<xs:element name="locationAreaCode" type="int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="LocationInformation">
+<xs:sequence>
+<xs:element name="ageOfLocationInformation" type="int" minOccurs="0"/>
+<xs:element name="geographicalInformation" type="subscriber:GeographicalInformation" minOccurs="0"/>
+<xs:element name="vlr-number" type="string" minOccurs="0"/>
+<xs:element name="locationNumber" type="string" minOccurs="0"/>
+<xs:element name="cellIdOrLAI" type="subscriber:CellIdOrLAI" minOccurs="0"/>
+<xs:element name="selectedLSA-Id" type="string" minOccurs="0"/>
+<xs:element name="msc-Number" type="string" minOccurs="0"/>
+<xs:element name="geodeticInformation" type="subscriber:GeodeticInformation" minOccurs="0"/>
+<xs:element name="currentLocationRetrieved" type="boolean" minOccurs="0"/>
+<xs:element name="sai-Present" type="boolean" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="msSearchOperation">
+<xs:complexContent>
+<xs:extension base="spml:AbstractOperation">
+<xs:sequence>
+<xs:element name="imsi" type="subscriber:IMSI"/>
+<xs:element name="infoText" type="xs:string" minOccurs="0"/>
+<xs:element name="locationInformation" type="subscriber:LocationInformation" minOccurs="0"/>
+<xs:element name="subscriberState" type="subscriber:SubscriberState" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="ROAMSUBSCRIPTION">
+<xs:annotation>
+<xs:documentation> This attributes indicates a symbolic name identifying the Roaming Subscription Info entry. </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="roamSubscriptionInfo" type="xs:string"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="HLRGroupIdentifierAliasType">
+<xs:restriction base="xs:string">
+<xs:enumeration value="identifier"/>
+<xs:enumeration value="msisdn"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="HLRGroupIdentifier">
+<xs:simpleContent>
+<xs:restriction base="spml:Identifier">
+<xs:attribute name="alias" type="subscriber:HLRGroupIdentifierAliasType" use="required"/>
+</xs:restriction>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="HLRGroupIdentifierFileNameType">
+<xs:simpleContent>
+<xs:restriction base="spml:IdentifierFileNameType">
+<xs:attribute name="alias" type="subscriber:HLRGroupIdentifierAliasType" use="required"/>
+<xs:attribute name="filterType" type="spml:IdentifierFilterType" use="required"/>
+</xs:restriction>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="HLRGroupAliasType">
+<xs:complexContent>
+<xs:restriction base="spml:AliasType">
+<xs:attribute name="name" type="subscriber:HLRGroupIdentifierAliasType" use="required"/>
+<xs:attribute name="value" type="xs:string" use="required"/>
+</xs:restriction>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="HlrGroup">
+<xs:annotation>
+<xs:documentation>Definition of class group </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:FirstClassObject">
+<xs:sequence>
+<xs:element name="alertingType" type="subscriber:HlrGroupAlertingType" minOccurs="0"/>
+<xs:element name="alertingTimeParallel" type="xs:int" minOccurs="0"/>
+<xs:element name="alertingTimeSequence" type="xs:int" minOccurs="0"/>
+<xs:element name="groupType" type="subscriber:HlrGroupType" minOccurs="0"/>
+<xs:element name="toneType" type="subscriber:HlrGroupToneType" minOccurs="0"/>
+<xs:element name="memberCfSupp" type="xs:boolean" minOccurs="0"/>
+<xs:element name="primaryLBSTerminal" type="xs:string" minOccurs="0"/>
+<xs:element name="primarySMSTerminal" type="xs:string" minOccurs="0"/>
+<xs:element name="alertDataCalls" type="subscriber:HlrGroupAlertDataCallsType" minOccurs="0"/>
+<xs:element name="odbic" type="xs:int" minOccurs="0"/>
+<xs:element name="groupBasicService" type="subscriber:HlrGroupBasicService" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="cfu" type="subscriber:CFU" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="cfb" type="subscriber:CFB" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="cfnrc" type="subscriber:CFNrc" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="cfnry" type="subscriber:CFNry" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="cfd" type="subscriber:CFD" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="msgWaitData" type="subscriber:MsgWaitData" minOccurs="0"/>
+<xs:element name="member" type="subscriber:HlrGroupMemberType" minOccurs="0" maxOccurs="5"/>
+<xs:element name="sset" type="subscriber:HLRSSET" minOccurs="0"/>
+<xs:element name="primaryVoiceTerminal" type="xs:string" minOccurs="0"/>
+<xs:element name="ocsi" type="subscriber:OCSI" minOccurs="0"/>
+<xs:element name="tcsi" type="subscriber:TCSI" minOccurs="0"/>
+<xs:element name="odboc" type="xs:int" minOccurs="0"/>
+<xs:element name="refRestrictedAreaName" type="xs:string" minOccurs="0"/>
+<xs:element name="syncEnabled" type="xs:boolean" minOccurs="0"/>
+<xs:element name="caw" type="subscriber:CAW" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="comcb" type="subscriber:COMCB" minOccurs="0"/>
+<xs:element name="baoc" type="subscriber:BAOC" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="boic" type="subscriber:BOIC" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="boicexhc" type="subscriber:BOICexHC" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="baic" type="subscriber:BAIC" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="bicroam" type="subscriber:BICRoam" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="huntingTypeForSms" type="subscriber:HlrGroupSmsHuntingType" minOccurs="0"/>
+<xs:element name="smsSubData" type="subscriber:HlrSmsSubData" minOccurs="0"/>
+<xs:element name="refAddressListName" type="xs:string" minOccurs="0"/>
+<xs:element name="primaryBasicService" type="subscriber:HLRGRPPBS" minOccurs="0"/>
+<xs:element name="cf" type="subscriber:HLRCallForward" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="HlrGroupMemberType">
+<xs:annotation>
+<xs:documentation>Support of MSC-S based MultiSim for group functionality</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="msisdn" type="xs:string" minOccurs="0"/>
+<xs:element name="imsi" type="xs:string" minOccurs="0"/>
+<xs:element name="huntingOrder" type="xs:int" minOccurs="0"/>
+<xs:element name="restrictedCsPlmnId" type="xs:int" minOccurs="0"/>
+<xs:element name="restrictedPsPlmnId" type="xs:int" minOccurs="0"/>
+<xs:element name="allowSyncFromGroup" type="xs:boolean" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="HlrGroupBasicService">
+<xs:annotation>
+<xs:documentation>List basic services that can be assigned to a Group </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="serviceName" type="subscriber:HlrGroupServiceNameType"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="HlrGroupServiceNameType">
+<xs:annotation>
+<xs:documentation>Enumeration of valid values for Profile Type</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:enumeration value="ts11"/>
+<xs:enumeration value="ts21"/>
+<xs:enumeration value="ts22"/>
+<xs:enumeration value="ts61"/>
+<xs:enumeration value="ts62"/>
+<xs:enumeration value="bs20genr"/>
+<xs:enumeration value="bs21"/>
+<xs:enumeration value="bs22"/>
+<xs:enumeration value="bs23"/>
+<xs:enumeration value="bs24"/>
+<xs:enumeration value="bs25"/>
+<xs:enumeration value="bs26"/>
+<xs:enumeration value="bs30genr"/>
+<xs:enumeration value="bs31"/>
+<xs:enumeration value="bs32"/>
+<xs:enumeration value="bs33"/>
+<xs:enumeration value="bs34"/>
+<xs:enumeration value="bs40genr"/>
+<xs:enumeration value="bs41"/>
+<xs:enumeration value="bs42"/>
+<xs:enumeration value="bs44"/>
+<xs:enumeration value="bs45"/>
+<xs:enumeration value="bs46"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="HlrGroupType">
+<xs:annotation>
+<xs:documentation>Enumeration of valid values for Group Type</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:enumeration value="singleUser"/>
+<xs:enumeration value="multipleUser"/>
+<xs:enumeration value="singleUserSpecial"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="HlrGroupAlertingType">
+<xs:annotation>
+<xs:documentation>Enumeration of valid values for Alerting Type</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:enumeration value="bothWithParallelPrefered"/>
+<xs:enumeration value="parallel"/>
+<xs:enumeration value="sequential"/>
+<xs:enumeration value="intelligent"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="HlrGroupAlertDataCallsType">
+<xs:annotation>
+<xs:documentation>Enumeration of valid values for Alert Data calls Type</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:enumeration value="notAlerted"/>
+<xs:enumeration value="sequential"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="HlrGroupToneType">
+<xs:annotation>
+<xs:documentation>Enumeration of valid values for Tone Type</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:enumeration value="simpleTone"/>
+<xs:enumeration value="ringbackTone"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="INSMS">
+<xs:annotation>
+<xs:documentation> IN Short Message Service</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="operatorServiceName" type="xs:string" minOccurs="0"/>
+<xs:element name="state" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="ARC">
+<xs:annotation>
+<xs:documentation> Automatic Redirection of Calls</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="active" type="xs:boolean" minOccurs="0"/>
+<xs:element name="redirInd" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="HlrAcc">
+<xs:annotation>
+<xs:documentation> Account Code </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="active" type="xs:boolean" minOccurs="0"/>
+<xs:element name="accountCode" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="HlrCSFallback">
+<xs:annotation>
+<xs:documentation>HLR CS Fallback subscription</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="prnRetry" type="xs:boolean" minOccurs="0"/>
+<xs:element name="mtrr" type="xs:boolean" minOccurs="0"/>
+<xs:element name="mtrf" type="xs:boolean" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="HlrSmsSubData">
+<xs:annotation>
+<xs:documentation>HLR SMSSubData</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="refPriorityListName" type="xs:string" minOccurs="0"/>
+<xs:element name="ipSmGwAddress" type="xs:string" minOccurs="0"/>
+<xs:element name="refSCAddress" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="HLRGSMTrace">
+<xs:annotation>
+<xs:documentation>HLR gsmtracing</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="traceReference" type="xs:int" minOccurs="0"/>
+<xs:element name="omcId" type="xs:string" minOccurs="0"/>
+<xs:element name="csTraceActive" type="xs:boolean" minOccurs="0"/>
+<xs:element name="csTraceType" type="xs:int" minOccurs="0"/>
+<xs:element name="psTraceActive" type="xs:boolean" minOccurs="0"/>
+<xs:element name="psTraceType" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="HLRServiceType">
+<xs:annotation>
+<xs:documentation> Service Type</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="operatorServiceName" type="xs:string" minOccurs="0"/>
+<xs:element name="state" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="HLRSSET">
+<xs:annotation>
+<xs:documentation> SSET CAMEL CORE INAP information </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:HLRServiceType"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="HLREMOICK">
+<xs:annotation>
+<xs:documentation> EMOICK CAMEL CORE INAP information </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:HLRServiceType"/>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="UEReachabilityReqInfo">
+<xs:annotation>
+<xs:documentation>UE-Reachability request information</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="urppMME" type="xs:boolean" minOccurs="0"/>
+<xs:element name="urppSGSN" type="xs:boolean" minOccurs="0"/>
+<xs:element name="asAddressSh" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="asAddressMAPJ" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="HLRRefIndicatorType">
+<xs:annotation>
+<xs:documentation>Enumeration of valid values for Reference Indicator</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:enumeration value="IMSI"/>
+<xs:enumeration value="MSISDN"/>
+<xs:enumeration value="HLR-NUM"/>
+<xs:enumeration value="VLR-NUM"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="HLRUssdSendingOptions">
+<xs:annotation>
+<xs:documentation>Set of options that control the sending of parameters in USSD messages</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:enumeration value="Send MSISDN in OEN in BSA"/>
+<xs:enumeration value="Send HLR NUM in OEN in BSA"/>
+<xs:enumeration value="Send VLR NUM in OEN in BSA"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="HlrGroupSmsHuntingType">
+<xs:annotation>
+<xs:documentation>Enumeration of valid values for HuntingType</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:enumeration value="primaryTerminal"/>
+<xs:enumeration value="intelligentHunting"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="HLRCSARP">
+<xs:annotation>
+<xs:documentation> CS Allocation / Retention Priority</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="active" type="xs:boolean" minOccurs="0"/>
+<xs:element name="priority" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="HLRFraudObservationInfo">
+<xs:annotation>
+<xs:documentation>Subscriber fraud observation information 
+      </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="observationName" type="xs:string" minOccurs="0"/>
+<xs:element name="observationNumber" type="xs:int" minOccurs="0"/>
+<xs:element name="samplingSlot" type="xs:int" minOccurs="0"/>
+<xs:element name="currentEventCount" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="HLRChargingBasedOnHomeArea">
+<xs:annotation>
+<xs:documentation>Subscriber charging based on home area information
+          </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:Service">
+<xs:sequence>
+<xs:element name="chargingClass" type="subscriber:HLRChargingClassTypes" minOccurs="0"/>
+<xs:element name="chargingArea" type="xs:int" minOccurs="0" maxOccurs="3"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="HLRChargingClassTypes">
+<xs:annotation>
+<xs:documentation>Charging Class types enum </xs:documentation>
+</xs:annotation>
+<xs:restriction base="xsd:string">
+<xs:enumeration value="regional"/>
+<xs:enumeration value="national"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="HLRCallForward">
+<xs:annotation>
+<xs:documentation>Subscriber call forwarding services information
+          </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="refHlrFtnoProfile" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="HLRPBS">
+<xs:annotation>
+<xs:documentation>This attribute specifies the values for PBS.</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:enumeration value="notDefined"/>
+<xs:enumeration value="ts11"/>
+<xs:enumeration value="ts21"/>
+<xs:enumeration value="ts22"/>
+<xs:enumeration value="ts61"/>
+<xs:enumeration value="ts62"/>
+<xs:enumeration value="vgcs"/>
+<xs:enumeration value="vbs"/>
+<xs:enumeration value="bs20genr"/>
+<xs:enumeration value="bs21"/>
+<xs:enumeration value="bs22"/>
+<xs:enumeration value="bs23"/>
+<xs:enumeration value="bs24"/>
+<xs:enumeration value="bs25"/>
+<xs:enumeration value="bs26"/>
+<xs:enumeration value="bs30genr"/>
+<xs:enumeration value="bs31"/>
+<xs:enumeration value="bs32"/>
+<xs:enumeration value="bs33"/>
+<xs:enumeration value="bs34"/>
+<xs:enumeration value="bs40genr"/>
+<xs:enumeration value="bs41"/>
+<xs:enumeration value="bs42"/>
+<xs:enumeration value="bs44"/>
+<xs:enumeration value="bs45"/>
+<xs:enumeration value="bs46"/>
+<xs:enumeration value="bs61a"/>
+<xs:enumeration value="bs81a"/>
+<xs:enumeration value="gprs"/>
+<xs:enumeration value="ts21Gprs"/>
+<xs:enumeration value="ts22Gprs"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="HLRGRPPBS">
+<xs:annotation>
+<xs:documentation>This attribute specifies the values for PBS For HLR Group.</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:enumeration value="notDefined"/>
+<xs:enumeration value="ts11"/>
+<xs:enumeration value="ts21"/>
+<xs:enumeration value="ts22"/>
+<xs:enumeration value="ts61"/>
+<xs:enumeration value="ts62"/>
+<xs:enumeration value="bs20genr"/>
+<xs:enumeration value="bs21"/>
+<xs:enumeration value="bs22"/>
+<xs:enumeration value="bs23"/>
+<xs:enumeration value="bs24"/>
+<xs:enumeration value="bs25"/>
+<xs:enumeration value="bs26"/>
+<xs:enumeration value="bs30genr"/>
+<xs:enumeration value="bs31"/>
+<xs:enumeration value="bs32"/>
+<xs:enumeration value="bs33"/>
+<xs:enumeration value="bs34"/>
+<xs:enumeration value="bs40genr"/>
+<xs:enumeration value="bs41"/>
+<xs:enumeration value="bs42"/>
+<xs:enumeration value="bs44"/>
+<xs:enumeration value="bs45"/>
+<xs:enumeration value="bs46"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="EPSASNotificationInfo">
+<xs:annotation>
+<xsd:documentation>Application Server Notification Info's Instances</xsd:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="asHostName" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+<xsd:element name="notificationData" type="subscriber:EPSNotificationData" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="EPSNotificationData">
+<xs:annotation>
+<xsd:documentation> Holds the Application Servers (AS) SUBSCRIPTION related Data </xsd:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xsd:element name="notificationIdValue" type="xsd:string" minOccurs="0"/>
+<xsd:element name="dataReferenceType" type="subscriber:EPSDataReferenceType" minOccurs="0"/>
+<xsd:element name="asRealm" type="xsd:string" minOccurs="0"/>
+<xsd:element name="serviceIndication" type="xsd:string" minOccurs="0"/>
+<xsd:element name="expiryTime" type="xsd:string" minOccurs="0"/>
+<xsd:element name="shUserIdentity" type="xsd:string" minOccurs="0"/>
+<xsd:element name="shUserName" type="xsd:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="EPSDataReferenceType">
+<xs:annotation>
+<xs:documentation>
+                  Contains Data reference value
+              </xs:documentation>
+</xs:annotation>
+<xs:restriction base="xsd:string">
+<xs:enumeration value="repositoryData"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="EPSIMSVoiceOverPSSupport">
+<xs:restriction base="xs:string">
+<xs:enumeration value="imsVoiceOverPSNotSupported"/>
+<xs:enumeration value="imsVoiceOverPSSupported"/>
+<xs:enumeration value="imsVoiceOverPSSupportUnknown"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="EPSPlmnStatus">
+<xs:annotation>
+<xs:documentation>
+                  The plmnStatus indicates whether the LTE subscriber is roaming in HPLMN, HPLMNCountry or VPLMN.
+                  0    None
+                  1    HPLMN    Home PLMN
+                  2     HPLMNCountry    Home PLMN Country
+                  3     VPLMN    Visting PLMN
+                  4     ROAM-NOT-ALLOWED    Roaming not allowed
+              </xs:documentation>
+</xs:annotation>
+<xs:restriction base="xs:string">
+<xs:enumeration value="NONE"/>
+<xs:enumeration value="HPLMN"/>
+<xs:enumeration value="HPLMNCountry"/>
+<xs:enumeration value="VPLMN"/>
+<xs:enumeration value="ROAM-NOT-ALLOWED"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="RefScsGroupName">
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xsd:element name="refScsGroupName" type="subscriber:PrintableString128" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="EPSAdditionalHssServiceData">
+<xs:annotation>
+<xs:documentation>
+        Additional service Data details.
+      </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xsd:element name="refScsGroupName" type="subscriber:RefScsGroupName" minOccurs="0" maxOccurs="unbounded"/>
+<xsd:element name="deviceTriggerAllowed" type="xsd:boolean" minOccurs="0"/>
+<xsd:element name="refPrivacyProfileReg" type="xsd:int" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="MSISDN">
+<xs:annotation>
+<xs:documentation>NumericString of length 3..15</xs:documentation>
+</xs:annotation>
+<xs:restriction base="subscriber:NumericString">
+<xs:minLength value="3"/>
+<xs:maxLength value="15"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="SchedIMSISwapDataIdentifierAliasType">
+<xs:restriction base="xsd:string">
+<xs:enumeration value="identifier"/>
+<xs:enumeration value="oldIMSI"/>
+<xs:enumeration value="newIMSI"/>
+<xs:enumeration value="msisdn"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="SchedIMSISwapDataIdentifier">
+<xs:simpleContent>
+<xs:restriction base="spml:Identifier">
+<xs:attribute name="alias" type="subscriber:SchedIMSISwapDataIdentifierAliasType" use="required"/>
+</xs:restriction>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="SchedIMSISwapDataIdentifierFileNameType">
+<xs:simpleContent>
+<xs:restriction base="spml:IdentifierFileNameType">
+<xs:attribute name="alias" type="subscriber:SchedIMSISwapDataIdentifierAliasType" use="required"/>
+<xs:attribute name="filterType" type="spml:IdentifierFilterType" use="required"/>
+</xs:restriction>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="SchedIMSISwapDataAliasType">
+<xs:complexContent>
+<xs:restriction base="spml:AliasType">
+<xs:attribute name="name" type="subscriber:SchedIMSISwapDataIdentifierAliasType" use="required"/>
+<xs:attribute name="value" type="xsd:string" use="required"/>
+</xs:restriction>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="SchedIMSISwapState">
+<xs:annotation>
+<xs:documentation>State of the swap</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xsd:string">
+<xs:enumeration value="scheduled"/>
+<xs:enumeration value="executedViaLUP"/>
+<xs:enumeration value="forcedViaDueDate"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="SchedIMSISwapData">
+<xs:annotation>
+<xs:documentation>
+            Definition of IMSI CO details of a subscriber
+        </xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:FirstClassObject">
+<xs:sequence>
+<xs:element name="msisdn" type="subscriber:MSISDN" minOccurs="0"/>
+<xs:element name="oldIMSI" type="subscriber:IMSI" minOccurs="0"/>
+<xs:element name="newIMSI" type="subscriber:IMSI" minOccurs="0"/>
+<xs:element name="dueDate" type="xsd:string" minOccurs="0"/>
+<xs:element name="swapExecutedDate" type="xsd:string" minOccurs="0"/>
+<xs:element name="swapState" type="subscriber:SchedIMSISwapState" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="schedIMSISwapOperation">
+<xs:complexContent>
+<xs:extension base="spml:AbstractOperation">
+<xs:sequence>
+<xs:element name="msisdn" type="subscriber:MSISDN" minOccurs="0"/>
+<xs:element name="oldIMSI" type="subscriber:IMSI" minOccurs="0"/>
+<xs:element name="newIMSI" type="subscriber:IMSI" minOccurs="0"/>
+<xs:element name="dueDate" type="xsd:date" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="MNPIdentifierAliasType">
+<xs:restriction base="xsd:string">
+<xs:enumeration value="imsi"/>
+<xs:enumeration value="msisdn"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="MNPIdentifier">
+<xs:simpleContent>
+<xs:restriction base="spml:Identifier">
+<xs:attribute name="alias" type="subscriber:MNPIdentifierAliasType" use="required"/>
+</xs:restriction>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="MNPIdentifierFileNameType">
+<xs:simpleContent>
+<xs:restriction base="spml:IdentifierFileNameType">
+<xs:attribute name="alias" type="subscriber:MNPIdentifierAliasType" use="required"/>
+<xs:attribute name="filterType" type="spml:IdentifierFilterType" use="required"/>
+</xs:restriction>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="MNPAliasType">
+<xs:complexContent>
+<xs:restriction base="spml:AliasType">
+<xs:attribute name="name" type="subscriber:MNPIdentifierAliasType" use="required"/>
+<xs:attribute name="value" type="xsd:string" use="required"/>
+</xs:restriction>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="MNP">
+<xs:annotation>
+<xs:documentation>Mobile Number Portstatus (MNP) Service</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="subscriber:AS">
+<xs:sequence>
+<xs:element name="portedMsisdn" type="subscriber:MnpPortedMsisdn" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="MnpPortedMsisdn">
+<xs:annotation>
+<xs:documentation>MNP Ported Msisdn</xs:documentation>
+</xs:annotation>
+<xs:complexContent>
+<xs:extension base="spml:SecondClassObject">
+<xs:sequence>
+<xs:element name="msisdn" type="subscriber:NumericString15" minOccurs="0"/>
+<xs:element name="imsi" type="subscriber:NumericString6_15" minOccurs="0"/>
+<xs:element name="portStatus" type="subscriber:MnpPortStatus" minOccurs="0"/>
+<xs:element name="routingLocation" type="subscriber:PrintableString128" minOccurs="0"/>
+<xs:element name="lastModifiedDate" type="xsd:dateTime" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+<xs:simpleType name="MnpPortStatus">
+<xs:annotation>
+<xs:documentation>MNP Status of the subscriber</xs:documentation>
+</xs:annotation>
+<xs:restriction base="xsd:string">
+<xs:enumeration value="portedIn"/>
+<xs:enumeration value="ownPortedOut"/>
+<xs:enumeration value="foreignPortedToForeign"/>
+<xs:enumeration value="ownNotPortedOut"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="NumericString3">
+<xs:annotation>
+<xs:documentation>Numeric String of length 1..3</xs:documentation>
+</xs:annotation>
+<xs:restriction base="subscriber:NumericString">
+<xs:maxLength value="3"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="NumericString5">
+<xs:annotation>
+<xs:documentation>Numeric String of length 1..5</xs:documentation>
+</xs:annotation>
+<xs:restriction base="subscriber:NumericString">
+<xs:maxLength value="5"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="MNPSwapAliasType">
+<xs:restriction base="xsd:string">
+<xs:enumeration value="imsi"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="MNPSwapIdentifier">
+<xs:simpleContent>
+<xs:extension base="spml:ID">
+<xs:attribute name="alias" type="subscriber:MNPSwapAliasType" use="required"/>
+</xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+<xs:simpleType name="EIRIdentifierAliasType">
+<xs:restriction base="xsd:string">
+<xs:enumeration value="imsi"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="EIRIdentifier">
+<xs:simpleContent>
+<xs:restriction base="spml:Identifier">
+<xs:attribute name="alias" type="subscriber:EIRIdentifierAliasType" use="required"/>
+</xs:restriction>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="EIRIdentifierFileNameType">
+<xs:simpleContent>
+<xs:restriction base="spml:IdentifierFileNameType">
+<xs:attribute name="alias" type="subscriber:EIRIdentifierAliasType" use="required"/>
+<xs:attribute name="filterType" type="spml:IdentifierFilterType" use="required"/>
+</xs:restriction>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="EIRAliasType">
+<xs:complexContent>
+<xs:restriction base="spml:AliasType">
+<xs:attribute name="name" type="subscriber:EIRIdentifierAliasType" use="required"/>
+<xs:attribute name="value" type="xsd:string" use="required"/>
+</xs:restriction>
+</xs:complexContent>
+</xs:complexType>
+<xsd:complexType name="EIR">
+<xsd:annotation>
+<xsd:documentation>EIR Application Service of the Subscriber</xsd:documentation>
+</xsd:annotation>
+<xsd:complexContent>
+<xsd:extension base="spml:SecondClassObject">
+<xsd:sequence>
+<xsd:element name="fastBlackList" type="xsd:boolean" minOccurs="0"/>
+<xsd:element name="lockedImsiImei" type="xsd:boolean" minOccurs="0"/>
+<xsd:element name="dualImsi" type="xsd:boolean" minOccurs="0"/>
+<xs:element name="imeiHistory" type="subscriber:ImeiHistory" minOccurs="0" maxOccurs="100"/>
+<xs:element name="deviceSetReference" type="subscriber:PrintableString32" minOccurs="0"/>
+<xs:element name="newDeviceSetReference" type="subscriber:PrintableString32" minOccurs="0"/>
+<xs:element name="newDeviceSetRefActTime" type="xsd:dateTime" minOccurs="0"/>
+<xsd:element name="imsi" type="xsd:string" minOccurs="0"/>
+</xsd:sequence>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:complexType name="ImeiHistory">
+<xsd:annotation>
+<xsd:documentation>IMEI History</xsd:documentation>
+</xsd:annotation>
+<xsd:complexContent>
+<xsd:extension base="spml:SecondClassObject">
+<xsd:sequence>
+<xsd:element name="timestamp" type="xsd:dateTime" minOccurs="0"/>
+<xsd:element name="imei" type="subscriber:IMEI" minOccurs="0"/>
+</xsd:sequence>
+</xsd:extension>
+</xsd:complexContent>
+</xsd:complexType>
+<xsd:simpleType name="IMEI">
+<xsd:annotation>
+<xsd:documentation>IMEI</xsd:documentation>
+</xsd:annotation>
+<xsd:restriction base="subscriber:OctetString">
+<xsd:minLength value="14"/>
+<xsd:maxLength value="16"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xs:schema>

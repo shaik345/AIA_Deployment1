@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="ProcessSMSContentConfigHTTPBindingProvABCSImpl"
+             targetNamespace="http://xmlns.oracle.com/ABCSImpl/HTTPBinding/Industry//ProcessSMSContentConfigHTTPBindingProvABCSImpl/V1"
+
+
+	     
+	     xmlns:customerpartyeboebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2"
+             xmlns:customerpartyeboabcs="http://xmlns.oracle.com/ABCSImpl/HTTPBinding/Industry//ProcessSMSContentConfigHTTPBindingProvABCSImpl/V1"
+	
+	     xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" 
+             xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" 
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" >
+	
+	
+	<documentation>
+		<svcdoc:Service>
+		               <svcdoc:Description>
+This Process converts EBM to POST/GET Http binding url
+</svcdoc:Description>
+		               
+			<svcdoc:ServiceType>ProviderABCSImpl</svcdoc:ServiceType>
+						<svcdoc:Version>1</svcdoc:Version>
+						<svcdoc:ProductCode>Agile</svcdoc:ProductCode>
+		</svcdoc:Service>
+	</documentation>  
+	
+	 <import namespace="http://schemas.oracle.com/bpel/extension" 
+ 	 location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+	<types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema">
+	            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/CustomerParty/V2/CustomerPartyEBM.xsd"/>
+		    <!--<import namespace="" schemaLocation=""/>-->
+		
+		</schema>
+	</types>
+	<message name="ProcessSMSContentConfigReqMsg">
+		<part name="ProcessSMSContentConfigEBM" element="customerpartyeboebo:ProcessCustomerPartyListEBM"/>
+	</message>
+	<message name="ProcessSMSContentConfigRespMsg">
+		<part name="ProcessSMSContentConfigResponseEBM" element="customerpartyeboebo:ProcessCustomerPartyListResponseEBM"/>
+	</message>
+	<portType name="ProcessSMSContentConfigHTTPBindingProvABCSImpl">
+        <operation name="ProcessSMSContentConfig">
+                <documentation>
+				<svcdoc:Operation>
+					<svcdoc:Description>This operation is used to Process an SMSContentConfig
+                              object</svcdoc:Description>
+					<svcdoc:MEP>SyncReqResp</svcdoc:MEP>
+				</svcdoc:Operation>
+			</documentation>
+			<input message="customerpartyeboabcs:ProcessSMSContentConfigReqMsg"/>
+				<output message="customerpartyeboabcs:ProcessSMSContentConfigRespMsg"/>
+		</operation>
+	   
+	    </portType>
+	<plnk:partnerLinkType name="ProcessSMSContentConfigHTTPBindingProvABCSImpl">
+		<plnk:role name="ProcessSMSContentConfigHTTPBindingProvABCSImplProvider">
+			<plnk:portType name="customerpartyeboabcs:ProcessSMSContentConfigHTTPBindingProvABCSImpl"/>
+		</plnk:role>
+	</plnk:partnerLinkType>
+ <service name="ProcessSMSContentConfigHTTPBindingService">
+  <port name="ProcessSMSContentConfigHTTPBindingService_pt"
+        binding="customerpartyeboabcs:ProcessSMSContentConfigHTTPBindingProvABCSImplSOAP11Binding">
+   <soap:address location="https://sms.ccs.teliasonera.com/smsplus/smsextended?"/>
+  </port>
+ </service>
+ <binding name="ProcessSMSContentConfigHTTPBindingProvABCSImplSOAP11Binding"
+          type="customerpartyeboabcs:ProcessSMSContentConfigHTTPBindingProvABCSImpl">
+  <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+  <operation name="ProcessSMSContentConfig">
+   <soap:operation style="rpc"
+                   soapAction="http://xmlns.oracle.com/ABCSImpl/HTTPBinding/Industry//ProcessSMSContentConfigHTTPBindingProvABCSImpl/V1/ProcessSMSContentConfig"/>
+   <input>
+    <soap:body use="encoded"
+               namespace="http://xmlns.oracle.com/ABCSImpl/HTTPBinding/Industry//ProcessSMSContentConfigHTTPBindingProvABCSImpl/V1"
+               parts="ProcessSMSContentConfigEBM"
+               encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+   </input>
+   <output>
+    <soap:body use="encoded"
+               namespace="http://xmlns.oracle.com/ABCSImpl/HTTPBinding/Industry//ProcessSMSContentConfigHTTPBindingProvABCSImpl/V1"
+               parts="ProcessSMSContentConfigResponseEBM"
+               encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+   </output>
+  </operation>
+ </binding>
+</definitions>

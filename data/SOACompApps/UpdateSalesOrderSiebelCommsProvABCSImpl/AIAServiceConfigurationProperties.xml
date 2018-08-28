@@ -1,0 +1,9 @@
+<AIAServiceConfiguration xmlns="http://xmlns.oracle.com/aia/core/config/V1" version="1.0">
+	<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/UpdateSalesOrderSiebelCommsProvABCSImpl/V1}UpdateSalesOrderSiebelCommsProvABCSImpl">
+		<Property name="Default.SystemID">SEBL_01</Property>
+		<Property name="Routing.SWI_spcOrder_spcUpsert.RouteToCAVS">false</Property>
+		<Property name="Routing.SWI_spcOrder_spcUpsert.SEBL_01.EndpointURI">${participatingapplications.siebel.server.InternetProtocol}${participatingapplications.siebel.server.host}:${participatingapplications.siebel.server.port}/eai_${participatingapplications.siebel.server.Language}/start.swe?SWEExtSource=SecureWebService&amp;SWEExtCmd=Execute&amp;WSSOAP=1</Property>         
+		<Property name="ABCSExtension.PreXformEBMtoABM">false</Property>
+		<Property name="ABCSExtension.PreInvokeABS">false</Property>
+	</ServiceConfiguration>
+</AIAServiceConfiguration>

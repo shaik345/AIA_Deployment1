@@ -1,0 +1,30 @@
+<pgp-list>
+<!-- It is assumed that the csf-map is always "SOA"-->
+	<manufacturer id="1" name="gnd">
+		<file csf-key="gnd-OTA" type="OTA">/opt/aia/SCM/FileSystem/pgp_config/private/gnd/OTA/privatekey.gpg</file>
+		<file csf-key="gnd-OTA_Key" type="OTA_KEY">/opt/aia/SCM/FileSystem/pgp_config/private/gnd/OTA_KEY/privatekey.gpg</file>
+		<file csf-key="gnd-2OT" type="2OT">/opt/aia/SCM/FileSystem/pgp_config/private/gnd/2OT/privatekey.gpg</file>
+		<file csf-key="gnd-PRO" type="PRO">/opt/aia/SCM/FileSystem/pgp_config/private/gnd/PRO/privatekey.gpg</file>
+		<file csf-key="gnd-AUC" type="AUC">/opt/aia/SCM/FileSystem/pgp_config/private/gnd/AUC/privatekey.gpg</file>
+		<file csf-key="gnd-BOWE" type="BOW">/opt/aia/SCM/FileSystem/pgp_config/private/gnd/BOWE/privatekey.gpg</file>
+		<file csf-key="gnd-M2M" type="M2M">/opt/aia/SCM/FileSystem/pgp_config/private/gnd/M2M/privatekey.gpg</file>
+	</manufacturer>
+	<manufacturer id="2" name="gemalto">
+		<file csf-key="gemalto-OTA" type="OTA">/opt/aia/SCM/FileSystem/pgp_config/private/gemalto/OTA/privatekey.gpg</file>
+		<file csf-key="gemalto-OTA_Key" type="OTA_KEY">/opt/aia/SCM/FileSystem/pgp_config/private/gemalto/OTA_KEY/privatekey.gpg</file>
+		<file csf-key="gemalto-2OT" type="2OT">/opt/aia/SCM/FileSystem/pgp_config/private/gemalto/2OT/privatekey.gpg</file>
+		<file csf-key="gemalto-PRO" type="PRO">/opt/aia/SCM/FileSystem/pgp_config/private/gemalto/PRO/privatekey.gpg</file>
+		<file csf-key="gemalto-AUC" type="AUC">/opt/aia/SCM/FileSystem/pgp_config/private/gemalto/AUC/privatekey.gpg</file>
+		<file csf-key="gemalto-BOWE" type="BOW">/opt/aia/SCM/FileSystem/pgp_config/private/gemalto/BOWE/privatekey.gpg</file>
+		<file csf-key="gemalto-M2M" type="M2M">/opt/aia/SCM/FileSystem/pgp_config/private/gemalto/M2M/privatekey.gpg</file>
+	</manufacturer>
+	<manufacturer id="4" name="oberthur">
+		<file csf-key="oberthur-OTA" type="OTA">/opt/aia/SCM/FileSystem/pgp_config/private/oberthur/OTA/privatekey.gpg</file>
+		<file csf-key="oberthur-OTA_Key" type="OTA_KEY">/opt/aia/SCM/FileSystem/pgp_config/private/oberthur/OTA_KEY/privatekey.gpg</file>
+		<file csf-key="oberthur-2OT" type="2OT">/opt/aia/SCM/FileSystem/pgp_config/private/oberthur/2OT/privatekey.gpg</file>
+		<file csf-key="oberthur-PRO" type="PRO">/opt/aia/SCM/FileSystem/pgp_config/private/oberthur/PRO/privatekey.gpg</file>
+		<file csf-key="oberthur-AUC" type="AUC">/opt/aia/SCM/FileSystem/pgp_config/private/oberthur/AUC/privatekey.gpg</file>
+		<file csf-key="oberthur-BOWE" type="BOW">/opt/aia/SCM/FileSystem/pgp_config/private/oberthur/BOWE/privatekey.gpg</file>
+		<file csf-key="oberthur-M2M" type="M2M">/opt/aia/SCM/FileSystem/pgp_config/private/oberthur/M2M/privatekey.gpg</file>
+	</manufacturer>
+</pgp-list>

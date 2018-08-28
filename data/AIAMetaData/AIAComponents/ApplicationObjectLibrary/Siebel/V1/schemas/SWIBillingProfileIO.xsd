@@ -1,0 +1,122 @@
+<xsd:schema targetNamespace="http://www.siebel.com/xml/SWIBillingProfileIO" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsdLocal="http://www.siebel.com/xml/SWIBillingProfileIO">
+   <xsd:annotation>
+      <xsd:documentation>Copyright (C) 2001-2004 Siebel Systems, Inc. All rights reserved. Siebel XSD Generation</xsd:documentation>
+   </xsd:annotation>
+   <xsd:element name="ListOfSwibillingprofileio" type="xsdLocal:ListOfSwibillingprofileio"/>
+   <xsd:complexType name="ListOfSwibillingprofileioTopElmt">
+      <xsd:sequence>
+         <xsd:element name="ListOfSwibillingprofileio" type="xsdLocal:ListOfSwibillingprofileio" minOccurs="1" maxOccurs="1"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="ListOfSwibillingprofileio">
+      <xsd:sequence>
+         <xsd:element name="ComInvoiceProfile" type="xsdLocal:ComInvoiceProfile" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="ComInvoiceProfile">
+      <xsd:sequence>
+         <xsd:element name="Location" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="Created" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="ContactFullName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="BillingProfileId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="AccountId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+         <xsd:element name="AddressId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="BankAccountName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="BankAccountNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="BankAccountType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="BankAuthorizationflag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="BankBranch" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="BankLanguageCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="BankLanguageId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="BankName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="BillAverage" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="BillCycle" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="BillCycleDay" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="BillFrequency" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="BillSequence" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="BillSource" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="BillType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="BillVendorId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="BudgetBillingFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="CPNIDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="CPNIFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="CollectionsFlag" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+         <xsd:element name="ContactId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="CreditCardBlockFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="CreditCardBlockReason" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="CreditCardCategory" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="CreditCardExpirationDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="CreditCardName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="CreditCardNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="CreditCardNumberEncryptkeyReference" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="CreditCardSecurityCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="CreditCardType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="CreditCardVerificationNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="CreditCardVerificationNumberEncryptionKey" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="DaysToCash" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="EmailBillTo" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="ExternalBillingAccountNumber-Old" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="ExtraCopies" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="InterestatInvoiceFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="LastBillAmount" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="LastBillDate" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="MediaType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="BillingProfileName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+         <xsd:element name="NoPayFormFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="NumberofManualInvoices" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="PaymentMethod" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="ReasonforManualOutsource" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="RepeatDebtorFlag" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+         <xsd:element name="RoutingNumber" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="StandingOrderFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="StatementFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="Status" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="YearlyAdvancePaymentFlag" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="TSAccountType" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="ListOfCutAddress" type="xsdLocal:ListOfCutAddress" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="ListOfContact" type="xsdLocal:ListOfContact" minOccurs="0" maxOccurs="1"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="ListOfCutAddress">
+      <xsd:sequence>
+         <xsd:element name="CutAddress" type="xsdLocal:CutAddress" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="CutAddress">
+      <xsd:sequence>
+         <xsd:element name="AddressName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+         <xsd:element name="City" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+         <xsd:element name="Country" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="PostalCode" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="AddressId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="State" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="AddressLine1" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+         <xsd:element name="AddressLine2" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="AddressLine3" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="AddressLine4" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="AddressLine6" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="TSPointId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="ListOfContact">
+      <xsd:sequence>
+         <xsd:element name="Contact" type="xsdLocal:Contact" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="Contact">
+      <xsd:sequence>
+         <xsd:element name="CellularPhone" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="EmailAddress" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="FaxPhone" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="FirstName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+         <xsd:element name="HomePhone" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="JobTitle" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="LastName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+         <xsd:element name="Salutation" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="MiddleName" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="PrimaryOrganizationId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="ContactId" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+         <xsd:element name="WorkPhone" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+      </xsd:sequence>
+   </xsd:complexType>
+</xsd:schema>

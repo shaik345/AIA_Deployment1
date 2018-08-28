@@ -1,0 +1,1283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<process name="SyncProductSiebelProvABCSImplProcess" targetNamespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncProductSiebelProvABCSImpl/V1" xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20" xmlns:coreitemv="http://xmlns.oracle.com/EnterpriseServices/Core/Item/V2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:addres="http://schemas.xmlsoap.org/ws/2003/03/addressing" xmlns:corecomm="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:ora="http://schemas.oracle.com/xpath/extension" xmlns:swiprod="http://www.siebel.com/xml/SWIProductIntegrationIO" xmlns:swiprodprom="http://www.siebel.com/xml/SWIPromotionIntegrationIO" xmlns:asivo="http://siebel.com/asi/V0" xmlns:ns1="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue" xmlns:coreitem="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/Item/V2" xmlns:bpelcommon="http://schemas.oracle.com/service/bpel/common" xmlns:ns2="http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncProductSiebelProvABCSImplExtension" xmlns:corecomebo="http://xmlns.oracle.com/EnterpriseObjects/Core/CommonEBO/V1" xmlns:aiaerr="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess" xmlns:orcl="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2003/03/addressing" xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath" xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xmlns:client="http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncProductSiebelProvABCSImpl/V1" xmlns:ns6="urn:oasis:names:tc:xacml:2.0:context:schema:cd:04" xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions" xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath" xmlns:swiprodpromotion="http://siebel.com/asi/SWIPromotionIntegration/V0" xmlns:aia="http://www.oracle.com/XSL/Transform/java/oracle.apps.aia.core.xpath.AIAFunctions" xmlns:ehdr="http://www.oracle.com/XSL/Transform/java/oracle.tip.esb.server.headers.ESBHeaderFunctions" xmlns:ns3="http://siebel.com/asi/SWIPromotionIntegration/" xmlns:bpelx="http://schemas.oracle.com/bpel/extension" xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue" xmlns:socket="http://www.oracle.com/XSL/Transform/java/oracle.tip.adapter.socket.ProtocolTranslator" xmlns:mhdr="http://www.oracle.com/XSL/Transform/java/oracle.tip.mediator.service.common.functions.MediatorExtnFunction" xmlns:med="http://schemas.oracle.com/mediator/xpath" xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk" xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:aiaspm="http://xmlns.oracle.com/AIASessionPoolManager" xmlns:sblws="http://siebel.com/webservices" xml:id="id_1" xmlns:ui="http://xmlns.oracle.com/soa/designer/" xmlns:ns4="http://siebel.com/asi/" xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions">
+	<!--  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// PARTNERLINKS                                                         List of services participating in this BPEL process                //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+	<partnerLinks xml:id="id_2">
+		<!--  The 'client' role represents the requester of this service. It is  used for callback. The location and correlation information associated with the client role are automatically set using WS-Addressing. -->
+		<partnerLink name="SyncProductSiebelProvABCSImpl" partnerLinkType="client:SyncProductSiebelProvABCSImpl" myRole="SyncProductSiebelProvABCSImplProvider" xml:id="id_3"/>
+		<partnerLink name="SWIProductIntegration" partnerRole="SWIProductImport_Role" partnerLinkType="asivo:SWIProductImport_PL" xml:id="id_4"/>
+		<partnerLink myRole="AIAAsyncErrorHandlingBPELProcessRequester" name="AIAAsyncErrorHandlingBPELProcess" partnerRole="AIAAsyncErrorHandlingBPELProcessProvider" partnerLinkType="aiaerr:AIAAsyncErrorHandlingBPELProcess" xml:id="id_5"/>
+		<partnerLink name="ItemResponseEBSV2" partnerLinkType="coreitemv:ItemEBSResponse_PL" partnerRole="ItemEBSResponse_Role" xml:id="id_6"/>
+		<partnerLink name="SyncProductSiebelProvABCSImplExtension" partnerRole="SyncProductSiebelProvABCSImplExtensionServiceProvider" partnerLinkType="ns2:SyncProductSiebelProvABCSImplExtensionService" myRole="SyncProductSiebelProvABCSImplExtensionServiceProvider" xml:id="id_7"/>
+		<partnerLink name="SWIPromotionIntegration" partnerRole="SWIPromotionImport_Role" partnerLinkType="ns3:SWIPromotionImport_PL" xml:id="id_8"/>
+		<partnerLink name="AIASessionPoolManager" partnerLinkType="aiaspm:AIASessionPoolManager_PL" partnerRole="AIASessionPoolManager_Role" xml:id="id_9"/>
+		<partnerLink name="ItemErrorResponseEBSV2" partnerRole="ItemEBSResponse_Role" partnerLinkType="coreitemv:ItemEBSResponse_PL" xml:id="id_10"/>
+		<partnerLink name="SWIProductLine" xml:id="id_795" partnerLinkType="ns4:SWIProductLine_PL" partnerRole="SWIProductLine_Role"/>
+	</partnerLinks>
+	<!--  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// VARIABLES                                                         List of messages and XML documents used within this BPEL process  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+	<variables xml:id="id_11">
+		<!-- Reference to the message passed as input during initiation -->
+		<!-- Reference to the message that will be sent back to the requester during callback -->
+		<variable name="SyncItemListReqMsg" messageType="client:SyncItemListReqMsg" xml:id="id_12"/>
+		<variable name="ListOfProductImport" messageType="client:SiebelListABM" xml:id="id_13"/>
+		<variable name="SiebelWSHeader" element="sblws:WSHeader" xml:id="id_14"/>
+		<variable name="SessionToken" element="sblws:SessionToken" xml:id="id_15"/>
+		<variable name="InvokeSiebelServiceStartSWIProductUpsert_InputVariable" messageType="asivo:SWIProductImportUpsert_Input" xml:id="id_16"/>
+		<variable name="InvokeSiebelServiceStartSWIProductUpsert_OutputVariable" messageType="asivo:SWIProductImportUpsert_Output" xml:id="id_17"/>
+		<variable name="EnterpriseFaultMsg" messageType="client:FaultMsg" xml:id="id_18"/>
+		<variable name="InvokeEHProcess_initiate_InputVariable" messageType="aiaerr:AIAAsyncErrorHandlingBPELProcessRequestMessage" xml:id="id_19"/>
+		<variable name="ItemCompositionEBSFaultMsg" messageType="client:FaultMsg" xml:id="id_20"/>
+		<variable name="RuntimeFaultMessage" messageType="bpelx:RuntimeFaultMessage" xml:id="id_21"/>
+		<variable name="SyncItemListResMsg" messageType="coreitemv:SyncItemListRespMsg" xml:id="id_22"/>
+		<variable name="XSLTParameters" element="bpelcommon:parameters" xml:id="id_23"/>
+		<variable name="LanguageCodes" type="xsd:string" xml:id="id_24"/>
+		<variable name="SystId" type="xsd:string" xml:id="id_781"/>
+		<variable name="SysId" type="xsd:string" xml:id="id_794"/>
+		<variable name="ReleaseFlag_XSLTParam" element="bpelcommon:parameters" xml:id="id_25"/>
+		<variable name="ServiceName" type="xsd:string" xml:id="id_26"/>
+		<variable name="PreXformEBMtoABMEBM_InputVariable" messageType="ns2:PreXformEBMtoABMEBMMsg" xml:id="id_27"/>
+		<variable name="PreXformEBMtoABMEBM_OutputVariable" messageType="ns2:PreXformEBMtoABMEBMMsg" xml:id="id_28"/>
+		<variable name="PostXformABMtoEBMEBM_InputVariable" messageType="ns2:PostXformABMtoEBMEBMMsg" xml:id="id_29"/>
+		<variable name="PostXformABMtoEBMEBM_OutputVariable" messageType="ns2:PostXformABMtoEBMEBMMsg" xml:id="id_30"/>
+		<variable name="PreInvokeSWIProductImportUpsertABM_InputVariable" messageType="ns2:PreInvokeSWIProductImportUpsertABMMsg" xml:id="id_31"/>
+		<variable name="PreInvokeSWIProductImportUpsertABM_OutputVariable" messageType="ns2:PreInvokeSWIProductImportUpsertABMMsg" xml:id="id_32"/>
+		<variable name="PostInvokeSWIProductImportUpsertABM_InputVariable" messageType="ns2:PostInvokeSWIProductImportUpsertABMMsg" xml:id="id_33"/>
+		<variable name="PostInvokeSWIProductImportUpsertABM_OutputVariable" messageType="ns2:PostInvokeSWIProductImportUpsertABMMsg" xml:id="id_34"/>
+		<variable name="SystemID" type="xsd:string" xml:id="id_35"/>
+		<variable name="EBM_HEADER" element="corecomm:EBMHeader" xml:id="id_36"/>
+		<variable name="BOMName" type="xsd:string" xml:id="id_37"/>
+		<variable name="Title" type="xsd:string" xml:id="id_38"/>
+		<variable name="StructName" type="xsd:string" xml:id="id_39"/>
+		<variable name="ProdRevID" type="xsd:string" xml:id="id_40"/>
+		<variable name="productSourcePIP" type="xsd:string" xml:id="id_41"/>
+		<variable name="InvokeSWIPromotionIntegrationCallPromotion_SWIPromotionUpsert_InputVar" messageType="ns3:SWIPromotionUpsert_Input" xml:id="id_42"/>
+		<variable name="InvokeSWIPromotionIntegrationCallPromotion_SWIPromotionUpsert_OutputVar" messageType="ns3:SWIPromotionUpsert_Output" xml:id="id_43"/>
+		<variable name="SyncPromotionListResMsg" messageType="coreitemv:SyncItemListRespMsg" xml:id="id_44"/>
+		<variable name="PreInvokeSWIPromotionIntegrationABM_InputVar" messageType="ns2:PreInvokeSWIPromotionIntegrationABMMsg" xml:id="id_45"/>
+		<variable name="PreInvokeSWIPromotionIntegrationABM_OutputVar" messageType="ns2:PreInvokeSWIPromotionIntegrationABMMsg" xml:id="id_46"/>
+		<variable name="PostInvokeSWIPromotionIntegrationABM_InputVar" messageType="ns2:PostInvokeSWIPromotionIntegrationABMMsg" xml:id="id_47"/>
+		<variable name="PostInvokeSWIPromotionIntegrationABM_OutputVar" messageType="ns2:PostInvokeSWIPromotionIntegrationABMMsg" xml:id="id_48"/>
+		<variable name="SyncPromotionListReqMsg" messageType="client:SyncItemListReqMsg" xml:id="id_49"/>
+		<variable name="InvokeSWIPromotionIntegrationCallPromotion_SWIPromotionUpsert_InputVar1" messageType="ns3:SWIPromotionUpsert_Input" xml:id="id_50"/>
+		<variable name="ReleaseWorkspaceProdInpurVar" messageType="asivo:SWIProductImportUpsert_Input" xml:id="id_51"/>
+		<variable name="ReleaseWorkspaceProdOutputVar" messageType="asivo:SWIProductImportUpsert_Output" xml:id="id_52"/>
+		<variable name="countVar" type="xsd:int" xml:id="id_53"/>
+		<variable name="testOut" type="xsd:string" xml:id="id_54"/>
+		<variable name="Invoke_SWIProductLine_Insert_InputVariable" messageType="ns4:SWIProductLine_Insert_Input" xml:id="id_806"/>
+		<variable name="Invoke_SWIProductLine_Insert_OutputVariable" messageType="ns4:SWIProductLine_Insert_Output" xml:id="id_807"/>
+		<variable name="InvokeSWIProductLine_Upsert_InputVariable" messageType="ns4:SWIProductLine_Upsert_Input" xml:id="id_852"/>
+		<variable name="InvokeSWIProductLine_Upsert_OutputVariable" messageType="ns4:SWIProductLine_Upsert_Output" xml:id="id_853"/>
+		<variable name="ProductLine_XSLTParams" element="bpelcommon:parameters" xml:id="id_891"/>
+		<variable name="InsertProdLine_XSLTParams" element="bpelcommon:parameters" xml:id="id_997"/>
+		<variable name="Invoke1_SWIProductLine_Synchronize_InputVariable" messageType="ns4:SWIProductLine_Synchronize_Input" xml:id="id_1013"/>
+		<variable name="Invoke1_SWIProductLine_Synchronize_OutputVariable" messageType="ns4:SWIProductLine_Synchronize_Output" xml:id="id_1014"/>
+		<variable name="InvokeSWIProductLine_Product_Synchronize_InputVariable" messageType="ns4:SWIProductLine_Synchronize_Input" xml:id="id_1040"/>
+		<variable name="InvokeSWIProductLine_Product_Synchronize_OutputVariable" messageType="ns4:SWIProductLine_Synchronize_Output" xml:id="id_1041"/>
+		<variable name="SWIProdLineSyncItemListRespEBMMsg" messageType="client:SyncItemListResMsg" xml:id="id_1033"/>
+	</variables>
+	<faultHandlers xml:id="id_55">
+		<catch faultName="bpelx:bindingFault" faultVariable="RuntimeFaultMessage" xml:id="id_56">
+			<sequence name="Sequence_bindingFault" xml:id="id_57">
+				<scope name="Scope_ReleaseSessionToken" variableAccessSerializable="no" bpelx:skipCondition="string-length(bpws:getVariableData('SessionToken'))=0" xml:id="id_58">
+					<variables xml:id="id_59">
+						<variable name="ReleaseAIASessionPoolManagerRequest" messageType="aiaspm:ReleaseAIASessionPoolManagerRequest" xml:id="id_60"/>
+						<variable name="ReleaseAIASessionPoolManagerResponse" messageType="aiaspm:ReleaseAIASessionPoolManagerResponse" xml:id="id_61"/>
+					</variables>
+					<sequence name="Sequence_ReleaseSessionToken" xml:id="id_62">
+						<assign name="Assign_ReleaseAIASessionPoolManagerRequest" xml:id="id_63">
+							<copy xml:id="id_64">
+								<from variable="SessionToken" query="/sblws:SessionToken" xml:id="id_65"/>
+								<to variable="ReleaseAIASessionPoolManagerRequest" part="payload" query="/aiaspm:ReleaseAIASessionPoolManagerRequest/aiaspm:UpdatedSessionToken" xml:id="id_66"/>
+							</copy>
+							<copy xml:id="id_67">
+								<from variable="SystemID" xml:id="id_68"/>
+								<to variable="ReleaseAIASessionPoolManagerRequest" part="payload" query="/aiaspm:ReleaseAIASessionPoolManagerRequest/aiaspm:HostId" xml:id="id_69"/>
+							</copy>
+							<copy xml:id="id_70">
+								<from expression="ora:getCompositeInstanceId()" xml:id="id_71"/>
+								<to variable="ReleaseAIASessionPoolManagerRequest" part="payload" query="/aiaspm:ReleaseAIASessionPoolManagerRequest/aiaspm:InstanceId" xml:id="id_72"/>
+							</copy>
+							<copy xml:id="id_73">
+								<from expression="ora:getFaultAsString()" xml:id="id_74"/>
+								<to variable="ReleaseAIASessionPoolManagerRequest" part="payload" query="/aiaspm:ReleaseAIASessionPoolManagerRequest/aiaspm:ErrorCode" xml:id="id_75"/>
+							</copy>
+						</assign>
+						<invoke name="Invoke_ReleaseSessionToken" partnerLink="AIASessionPoolManager" inputVariable="ReleaseAIASessionPoolManagerRequest" outputVariable="ReleaseAIASessionPoolManagerResponse" portType="aiaspm:AIASessionPoolManager" operation="Release" bpelx:invokeAsDetail="no" xml:id="id_76"/>
+					</sequence>
+				</scope>
+				<assign name="SyncItemListFaultMessage" xml:id="id_77">
+					<copy xml:id="id_78">
+						<from expression="ora:processXSLT('xsl/EBM_to_Fault.xsl',bpws:getVariableData('SyncItemListReqMsg','SyncItemListEBM'))" xml:id="id_79"/>
+						<to variable="EnterpriseFaultMsg" part="AIAFault" xml:id="id_80"/>
+					</copy>
+					<copy xml:id="id_81">
+						<from variable="RuntimeFaultMessage" part="code" xml:id="id_82"/>
+						<to variable="EnterpriseFaultMsg" part="AIAFault" query="/corecomm:Fault/corecomm:FaultNotification/corecomm:FaultMessage/corecomm:Code" xml:id="id_83"/>
+					</copy>
+					<copy xml:id="id_84">
+						<from variable="RuntimeFaultMessage" part="summary" xml:id="id_85"/>
+						<to variable="EnterpriseFaultMsg" part="AIAFault" query="/corecomm:Fault/corecomm:FaultNotification/corecomm:FaultMessage/corecomm:Text" xml:id="id_86"/>
+					</copy>
+					<copy xml:id="id_87">
+						<from variable="RuntimeFaultMessage" part="detail" xml:id="id_88"/>
+						<to variable="EnterpriseFaultMsg" part="AIAFault" query="/corecomm:Fault/corecomm:FaultNotification/corecomm:FaultMessage/corecomm:Stack" xml:id="id_89"/>
+					</copy>
+					<copy xml:id="id_90">
+						<from expression="ora:getInstanceId()" xml:id="id_91"/>
+						<to variable="EnterpriseFaultMsg" part="AIAFault" query="/corecomm:Fault/corecomm:FaultNotification/corecomm:FaultingService/corecomm:InstanceID" xml:id="id_92"/>
+					</copy>
+					<copy xml:id="id_93">
+						<from expression="'BPEL'" xml:id="id_94"/>
+						<to variable="EnterpriseFaultMsg" part="AIAFault" query="/corecomm:Fault/corecomm:FaultNotification/corecomm:FaultingService/corecomm:ImplementationCode" xml:id="id_95"/>
+					</copy>
+					<copy xml:id="id_96">
+						<from expression="ora:getProcessId()" xml:id="id_97"/>
+						<to variable="EnterpriseFaultMsg" part="AIAFault" query="/corecomm:Fault/corecomm:FaultNotification/corecomm:FaultingService/corecomm:ID" xml:id="id_98"/>
+					</copy>
+				</assign>
+				<switch name="Switch_Fault" xml:id="id_99">
+					<case condition="ora:getElement('SyncItemListReqMsg','SyncItemListEBM','/coreitem:SyncItemListEBM/coreitem:DataArea/corecomm:Sync/@responseCode')" xml:id="id_100">
+						<sequence name="Sequence_7" xml:id="id_101">
+							<assign name="PopulateSyncItemListResponseEBMWithFault" xml:id="id_102">
+								<copy xml:id="id_103">
+									<from expression="ora:processXSLT('xsl/Fault_to_SyncItemListResponseEBM.xsl',bpws:getVariableData('EnterpriseFaultMsg','AIAFault'),bpws:getVariableData('XSLTParameters'))" xml:id="id_104"/>
+									<to variable="SyncItemListResMsg" part="SyncItemListResponseEBM" xml:id="id_105"/>
+								</copy>
+							</assign>
+							<invoke name="FaultCallback" partnerLink="ItemErrorResponseEBSV2" portType="coreitemv:ItemEBSResponse" operation="SyncItemListResponse" inputVariable="SyncItemListResMsg" xml:id="id_106"/>
+						</sequence>
+					</case>
+					<otherwise xml:id="id_107">
+						<empty name="Empty_1" xml:id="id_108"/>
+					</otherwise>
+				</switch>
+				<!--throw name="ReThrow_BindingFault" faultName="bpelx:bindingFault" faultVariable="RuntimeFaultMessage" xml:id="id_109"/-->
+				<throw name="Rethrow_BindingFault" xml:id="id_1008" faultName="bpelx:bindingFault" faultVariable="RuntimeFaultMessage"/>
+			</sequence>
+		</catch>
+		<catch faultName="bpelx:remoteFault" faultVariable="RuntimeFaultMessage" xml:id="id_110">
+			<sequence name="Sequence_remoteFault" xml:id="id_111">
+				<scope name="Scope_ReleaseSessionToken" variableAccessSerializable="no" bpelx:skipCondition="string-length(bpws:getVariableData('SessionToken'))=0" xml:id="id_112">
+					<variables xml:id="id_113">
+						<variable name="ReleaseAIASessionPoolManagerRequest" messageType="aiaspm:ReleaseAIASessionPoolManagerRequest" xml:id="id_114"/>
+						<variable name="ReleaseAIASessionPoolManagerResponse" messageType="aiaspm:ReleaseAIASessionPoolManagerResponse" xml:id="id_115"/>
+					</variables>
+					<sequence name="Sequence_ReleaseSessionToken" xml:id="id_116">
+						<assign name="Assign_ReleaseAIASessionPoolManagerRequest" xml:id="id_117">
+							<copy xml:id="id_118">
+								<from variable="SessionToken" query="/sblws:SessionToken" xml:id="id_119"/>
+								<to variable="ReleaseAIASessionPoolManagerRequest" part="payload" query="/aiaspm:ReleaseAIASessionPoolManagerRequest/aiaspm:UpdatedSessionToken" xml:id="id_120"/>
+							</copy>
+							<copy xml:id="id_121">
+								<from variable="SystemID" xml:id="id_122"/>
+								<to variable="ReleaseAIASessionPoolManagerRequest" part="payload" query="/aiaspm:ReleaseAIASessionPoolManagerRequest/aiaspm:HostId" xml:id="id_123"/>
+							</copy>
+							<copy xml:id="id_124">
+								<from expression="ora:getCompositeInstanceId()" xml:id="id_125"/>
+								<to variable="ReleaseAIASessionPoolManagerRequest" part="payload" query="/aiaspm:ReleaseAIASessionPoolManagerRequest/aiaspm:InstanceId" xml:id="id_126"/>
+							</copy>
+							<copy xml:id="id_127">
+								<from expression="ora:getFaultAsString()" xml:id="id_128"/>
+								<to variable="ReleaseAIASessionPoolManagerRequest" part="payload" query="/aiaspm:ReleaseAIASessionPoolManagerRequest/aiaspm:ErrorCode" xml:id="id_129"/>
+							</copy>
+						</assign>
+						<invoke name="Invoke_ReleaseSessionToken" partnerLink="AIASessionPoolManager" inputVariable="ReleaseAIASessionPoolManagerRequest" outputVariable="ReleaseAIASessionPoolManagerResponse" portType="aiaspm:AIASessionPoolManager" operation="Release" bpelx:invokeAsDetail="no" xml:id="id_130"/>
+					</sequence>
+				</scope>
+				<assign name="SyncItemListFaultMessage_RemoteFault" xml:id="id_131">
+					<copy xml:id="id_132">
+						<from expression="ora:processXSLT('xsl/EBM_to_Fault.xsl',bpws:getVariableData('SyncItemListReqMsg','SyncItemListEBM'))" xml:id="id_133"/>
+						<to variable="EnterpriseFaultMsg" part="AIAFault" xml:id="id_134"/>
+					</copy>
+					<copy xml:id="id_135">
+						<from variable="RuntimeFaultMessage" part="code" xml:id="id_136"/>
+						<to variable="EnterpriseFaultMsg" part="AIAFault" query="/corecomm:Fault/corecomm:FaultNotification/corecomm:FaultMessage/corecomm:Code" xml:id="id_137"/>
+					</copy>
+					<copy xml:id="id_138">
+						<from variable="RuntimeFaultMessage" part="summary" xml:id="id_139"/>
+						<to variable="EnterpriseFaultMsg" part="AIAFault" query="/corecomm:Fault/corecomm:FaultNotification/corecomm:FaultMessage/corecomm:Text" xml:id="id_140"/>
+					</copy>
+					<copy xml:id="id_141">
+						<from variable="RuntimeFaultMessage" part="detail" xml:id="id_142"/>
+						<to variable="EnterpriseFaultMsg" part="AIAFault" query="/corecomm:Fault/corecomm:FaultNotification/corecomm:FaultMessage/corecomm:Stack" xml:id="id_143"/>
+					</copy>
+					<copy xml:id="id_144">
+						<from expression="ora:getInstanceId()" xml:id="id_145"/>
+						<to variable="EnterpriseFaultMsg" part="AIAFault" query="/corecomm:Fault/corecomm:FaultNotification/corecomm:FaultingService/corecomm:InstanceID" xml:id="id_146"/>
+					</copy>
+					<copy xml:id="id_147">
+						<from expression="'BPEL'" xml:id="id_148"/>
+						<to variable="EnterpriseFaultMsg" part="AIAFault" query="/corecomm:Fault/corecomm:FaultNotification/corecomm:FaultingService/corecomm:ImplementationCode" xml:id="id_149"/>
+					</copy>
+					<copy xml:id="id_150">
+						<from expression="ora:getProcessId()" xml:id="id_151"/>
+						<to variable="EnterpriseFaultMsg" part="AIAFault" query="/corecomm:Fault/corecomm:FaultNotification/corecomm:FaultingService/corecomm:ID" xml:id="id_152"/>
+					</copy>
+				</assign>
+				<switch name="Switch_Fault" xml:id="id_153">
+					<case condition="ora:getElement('SyncItemListReqMsg','SyncItemListEBM','/coreitem:SyncItemListEBM/coreitem:DataArea/corecomm:Sync/@responseCode')" xml:id="id_154">
+						<sequence name="Sequence_6" xml:id="id_155">
+							<assign name="PopulateSyncItemListResponseEBMWithFault" xml:id="id_156">
+								<copy xml:id="id_157">
+									<from expression="ora:processXSLT('xsl/Fault_to_SyncItemListResponseEBM.xsl',bpws:getVariableData('EnterpriseFaultMsg','AIAFault'),bpws:getVariableData('XSLTParameters'))" xml:id="id_158"/>
+									<to variable="SyncItemListResMsg" part="SyncItemListResponseEBM" xml:id="id_159"/>
+								</copy>
+							</assign>
+							<invoke name="FaultCallback" partnerLink="ItemErrorResponseEBSV2" portType="coreitemv:ItemEBSResponse" operation="SyncItemListResponse" inputVariable="SyncItemListResMsg" xml:id="id_160"/>
+						</sequence>
+					</case>
+					<otherwise xml:id="id_161">
+						<empty name="Empty_3" xml:id="id_162"/>
+					</otherwise>
+				</switch>
+				<!--throw name="ReThrow_RemoteFault" faultName="bpelx:remoteFault" faultVariable="RuntimeFaultMessage" xml:id="id_163"/-->
+				<throw name="Rethrow_RemoteFault" xml:id="id_1009" faultName="bpelx:remoteFault" faultVariable="RuntimeFaultMessage"/>
+			</sequence>
+		</catch>
+		<catch faultName="client:fault" faultVariable="EnterpriseFaultMsg" xml:id="id_164">
+			<sequence xml:id="id_165">
+				<scope name="Scope_ReleaseSessionToken" variableAccessSerializable="no" bpelx:skipCondition="string-length(bpws:getVariableData('SessionToken'))=0" xml:id="id_166">
+					<variables xml:id="id_167">
+						<variable name="ReleaseAIASessionPoolManagerRequest" messageType="aiaspm:ReleaseAIASessionPoolManagerRequest" xml:id="id_168"/>
+						<variable name="ReleaseAIASessionPoolManagerResponse" messageType="aiaspm:ReleaseAIASessionPoolManagerResponse" xml:id="id_169"/>
+					</variables>
+					<sequence name="Sequence_ReleaseSessionToken" xml:id="id_170">
+						<assign name="Assign_ReleaseAIASessionPoolManagerRequest" xml:id="id_171">
+							<copy xml:id="id_172">
+								<from variable="SessionToken" query="/sblws:SessionToken" xml:id="id_173"/>
+								<to variable="ReleaseAIASessionPoolManagerRequest" part="payload" query="/aiaspm:ReleaseAIASessionPoolManagerRequest/aiaspm:UpdatedSessionToken" xml:id="id_174"/>
+							</copy>
+							<copy xml:id="id_175">
+								<from variable="SystemID" xml:id="id_176"/>
+								<to variable="ReleaseAIASessionPoolManagerRequest" part="payload" query="/aiaspm:ReleaseAIASessionPoolManagerRequest/aiaspm:HostId" xml:id="id_177"/>
+							</copy>
+							<copy xml:id="id_178">
+								<from expression="ora:getCompositeInstanceId()" xml:id="id_179"/>
+								<to variable="ReleaseAIASessionPoolManagerRequest" part="payload" query="/aiaspm:ReleaseAIASessionPoolManagerRequest/aiaspm:InstanceId" xml:id="id_180"/>
+							</copy>
+							<copy xml:id="id_181">
+								<from expression="ora:getFaultAsString()" xml:id="id_182"/>
+								<to variable="ReleaseAIASessionPoolManagerRequest" part="payload" query="/aiaspm:ReleaseAIASessionPoolManagerRequest/aiaspm:ErrorCode" xml:id="id_183"/>
+							</copy>
+						</assign>
+						<invoke name="Invoke_ReleaseSessionToken" partnerLink="AIASessionPoolManager" inputVariable="ReleaseAIASessionPoolManagerRequest" outputVariable="ReleaseAIASessionPoolManagerResponse" portType="aiaspm:AIASessionPoolManager" operation="Release" bpelx:invokeAsDetail="no" xml:id="id_184"/>
+					</sequence>
+				</scope>
+				<assign name="PopulateSyncItemListResponseEBMWithFault" xml:id="id_185">
+					<copy xml:id="id_186">
+						<from expression="ora:processXSLT('xsl/Fault_to_SyncItemListResponseEBM.xsl',bpws:getVariableData('EnterpriseFaultMsg','AIAFault'),bpws:getVariableData('XSLTParameters'))" xml:id="id_187"/>
+						<to variable="SyncItemListResMsg" part="SyncItemListResponseEBM" xml:id="id_188"/>
+					</copy>
+				</assign>
+				<assign name="Assign_InvokeAIAAsynchErrorHandlingBPELProcess" xml:id="id_189">
+					<copy xml:id="id_190">
+						<from variable="EnterpriseFaultMsg" part="AIAFault" query="/corecomm:Fault" xml:id="id_191"/>
+						<to variable="InvokeEHProcess_initiate_InputVariable" part="FaultMessage" query="/corecomm:Fault" xml:id="id_192"/>
+					</copy>
+				</assign>
+				<invoke name="Invoke_AIAAsynchErrorHandlingBPELProcess" partnerLink="AIAAsyncErrorHandlingBPELProcess" portType="aiaerr:AIAAsyncErrorHandlingBPELProcess" operation="initiate" inputVariable="InvokeEHProcess_initiate_InputVariable" xml:id="id_193"/>
+				<invoke name="FaultCallback" partnerLink="ItemErrorResponseEBSV2" portType="coreitemv:ItemEBSResponse" operation="SyncItemListResponse" inputVariable="SyncItemListResMsg" xml:id="id_194"/>
+				<!--throw name="ReThrow_RemoteFault" faultName="bpelx:remoteFault" faultVariable="EnterpriseFaultMsg" xml:id="id_195"/-->
+				<throw name="Rethrow_EnterpriseFault" xml:id="id_1010" faultName="client:fault" faultVariable="EnterpriseFaultMsg"/>
+			</sequence>
+		</catch>
+		<catchAll xml:id="id_196">
+			<sequence name="Sequence_CatchAll" xml:id="id_197">
+				<scope name="Scope_ReleaseSessionToken" variableAccessSerializable="no" bpelx:skipCondition="string-length(bpws:getVariableData('SessionToken'))=0" xml:id="id_198">
+					<variables xml:id="id_199">
+						<variable name="ReleaseAIASessionPoolManagerRequest" messageType="aiaspm:ReleaseAIASessionPoolManagerRequest" xml:id="id_200"/>
+						<variable name="ReleaseAIASessionPoolManagerResponse" messageType="aiaspm:ReleaseAIASessionPoolManagerResponse" xml:id="id_201"/>
+					</variables>
+					<sequence name="Sequence_ReleaseSessionToken" xml:id="id_202">
+						<assign name="Assign_ReleaseAIASessionPoolManagerRequest" xml:id="id_203">
+							<copy xml:id="id_204">
+								<from variable="SessionToken" query="/sblws:SessionToken" xml:id="id_205"/>
+								<to variable="ReleaseAIASessionPoolManagerRequest" part="payload" query="/aiaspm:ReleaseAIASessionPoolManagerRequest/aiaspm:UpdatedSessionToken" xml:id="id_206"/>
+							</copy>
+							<copy xml:id="id_207">
+								<from variable="SystemID" xml:id="id_208"/>
+								<to variable="ReleaseAIASessionPoolManagerRequest" part="payload" query="/aiaspm:ReleaseAIASessionPoolManagerRequest/aiaspm:HostId" xml:id="id_209"/>
+							</copy>
+							<copy xml:id="id_210">
+								<from expression="ora:getCompositeInstanceId()" xml:id="id_211"/>
+								<to variable="ReleaseAIASessionPoolManagerRequest" part="payload" query="/aiaspm:ReleaseAIASessionPoolManagerRequest/aiaspm:InstanceId" xml:id="id_212"/>
+							</copy>
+							<copy xml:id="id_213">
+								<from expression="ora:getFaultAsString()" xml:id="id_214"/>
+								<to variable="ReleaseAIASessionPoolManagerRequest" part="payload" query="/aiaspm:ReleaseAIASessionPoolManagerRequest/aiaspm:ErrorCode" xml:id="id_215"/>
+							</copy>
+						</assign>
+						<invoke name="Invoke_ReleaseSessionToken" partnerLink="AIASessionPoolManager" inputVariable="ReleaseAIASessionPoolManagerRequest" outputVariable="ReleaseAIASessionPoolManagerResponse" portType="aiaspm:AIASessionPoolManager" operation="Release" bpelx:invokeAsDetail="no" xml:id="id_216"/>
+					</sequence>
+				</scope>
+				<assign name="CreateEnterpriseFaultMsg" xml:id="id_217">
+					<copy xml:id="id_218">
+						<from expression="ora:processXSLT('xsl/EBM_to_Fault.xsl',bpws:getVariableData('SyncItemListReqMsg','SyncItemListEBM'))" xml:id="id_219"/>
+						<to variable="EnterpriseFaultMsg" part="AIAFault" xml:id="id_220"/>
+					</copy>
+					<copy xml:id="id_221">
+						<from expression="ora:getFaultAsString()" xml:id="id_222"/>
+						<to variable="EnterpriseFaultMsg" part="AIAFault" query="/corecomm:Fault/corecomm:FaultNotification/corecomm:FaultMessage/corecomm:Text" xml:id="id_223"/>
+					</copy>
+					<copy xml:id="id_224">
+						<from expression="ora:getInstanceId()" xml:id="id_225"/>
+						<to variable="EnterpriseFaultMsg" part="AIAFault" query="/corecomm:Fault/corecomm:FaultNotification/corecomm:FaultingService/corecomm:InstanceID" xml:id="id_226"/>
+					</copy>
+					<copy xml:id="id_227">
+						<from expression="'BPEL'" xml:id="id_228"/>
+						<to variable="EnterpriseFaultMsg" part="AIAFault" query="/corecomm:Fault/corecomm:FaultNotification/corecomm:FaultingService/corecomm:ImplementationCode" xml:id="id_229"/>
+					</copy>
+					<copy xml:id="id_230">
+						<from expression="ora:getProcessId()" xml:id="id_231"/>
+						<to variable="EnterpriseFaultMsg" part="AIAFault" query="/corecomm:Fault/corecomm:FaultNotification/corecomm:FaultingService/corecomm:ID" xml:id="id_232"/>
+					</copy>
+				</assign>
+				<assign name="AssignEHInput" xml:id="id_233">
+					<copy xml:id="id_234">
+						<from variable="EnterpriseFaultMsg" part="AIAFault" xml:id="id_235"/>
+						<to variable="InvokeEHProcess_initiate_InputVariable" part="FaultMessage" query="/corecomm:Fault" xml:id="id_236"/>
+					</copy>
+				</assign>
+				<invoke name="Invoke_AIAAsynchErrorHandlingBPELProcess" partnerLink="AIAAsyncErrorHandlingBPELProcess" portType="aiaerr:AIAAsyncErrorHandlingBPELProcess" operation="initiate" inputVariable="InvokeEHProcess_initiate_InputVariable" xml:id="id_237"/>
+				<switch name="Switch_3" xml:id="id_238">
+					<case condition="ora:getElement('SyncItemListReqMsg','SyncItemListEBM','/coreitem:SyncItemListEBM/coreitem:DataArea/corecomm:Sync/@responseCode')" xml:id="id_239">
+						<sequence name="Sequence_8" xml:id="id_240">
+							<assign name="PopulateSyncItemListResponseEBMWithFault" xml:id="id_241">
+								<copy xml:id="id_242">
+									<from expression="ora:processXSLT('xsl/Fault_to_SyncItemListResponseEBM.xsl',bpws:getVariableData('EnterpriseFaultMsg','AIAFault'),bpws:getVariableData('XSLTParameters'))" xml:id="id_243"/>
+									<to variable="SyncItemListResMsg" part="SyncItemListResponseEBM" xml:id="id_244"/>
+								</copy>
+							</assign>
+							<invoke name="FaultCallback" partnerLink="ItemErrorResponseEBSV2" portType="coreitemv:ItemEBSResponse" operation="SyncItemListResponse" inputVariable="SyncItemListResMsg" xml:id="id_245"/>
+						</sequence>
+					</case>
+					<otherwise xml:id="id_246">
+						<empty name="Empty_2" xml:id="id_247"/>
+					</otherwise>
+				</switch>
+				<assign name="Assign_RunTimeFaultMsg" xml:id="id_248">
+					<copy xml:id="id_249">
+						<from variable="EnterpriseFaultMsg" part="AIAFault" query="/corecomm:Fault/corecomm:FaultNotification/corecomm:FaultMessage/corecomm:Code" xml:id="id_250"/>
+						<to variable="RuntimeFaultMessage" part="code" xml:id="id_251"/>
+					</copy>
+					<copy xml:id="id_252">
+						<from variable="EnterpriseFaultMsg" part="AIAFault" query="/corecomm:Fault/corecomm:FaultNotification/corecomm:FaultMessage/corecomm:Text" xml:id="id_253"/>
+						<to variable="RuntimeFaultMessage" part="summary" xml:id="id_254"/>
+					</copy>
+					<copy xml:id="id_255">
+						<from variable="EnterpriseFaultMsg" part="AIAFault" query="/corecomm:Fault/corecomm:FaultNotification/corecomm:FaultMessage/corecomm:Stack" xml:id="id_256"/>
+						<to variable="RuntimeFaultMessage" part="detail" xml:id="id_257"/>
+					</copy>
+				</assign>
+				<!--throw name="ThrowFault" faultVariable="RuntimeFaultMessage" faultName="bpelx:remoteFault" xml:id="id_258"/-->
+				<throw name="Rethrow" xml:id="id_1011" faultName="client:Fault" faultVariable="InvokeEHProcess_initiate_InputVariable"/>
+			</sequence>
+		</catchAll>
+	</faultHandlers>
+	<!--  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ORCHESTRATION LOGIC                                                Set of activities coordinating the flow of messages across the     services integrated within this business process                   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+	<sequence name="main" xml:id="id_259">
+		<!-- Receive input from requestor. (Note: This maps to operation defined in SyncProductSiebelProvABCSImpl.wsdl) -->
+		<receive name="ReceiveSyncItemListEBM" partnerLink="SyncProductSiebelProvABCSImpl" portType="client:SyncProductSiebelProvABCSImplService" operation="SyncItem" variable="SyncItemListReqMsg" createInstance="yes" xml:id="id_260"/>
+		<!--  Asynchronous callback to the requester. (Note: the callback location and correlation id is transparently handled using WS-addressing.) -->
+		<assign name="AssignTitle" xml:id="id_261">
+			<copy xml:id="id_262">
+				<from variable="SyncItemListReqMsg" part="SyncItemListEBM" query="/coreitem:SyncItemListEBM/corecomm:EBMHeader/corecomm:BusinessScope/corecomm:ID" xml:id="id_263"/>
+				<to variable="Title" xml:id="id_264"/>
+			</copy>
+		</assign>
+		<bpelx:exec name="SetTitle" language="java" version="1.5" xml:id="id_265">
+			<![CDATA[setCompositeInstanceTitle((String) getVariableData("Title"));]]>
+		</bpelx:exec>
+		<assign name="GetTargetSystemID" xml:id="id_266">
+			<copy xml:id="id_267">
+				<from expression="ora:processXSLT('xsl/AddTargetSystemID.xsl',bpws:getVariableData('SyncItemListReqMsg','SyncItemListEBM'))" xml:id="id_268"/>
+				<to variable="SyncItemListReqMsg" part="SyncItemListEBM" xml:id="id_269"/>
+			</copy>
+			<copy xml:id="id_270">
+				<from variable="SyncItemListReqMsg" part="SyncItemListEBM" query="/coreitem:SyncItemListEBM/corecomm:EBMHeader/corecomm:Target/corecomm:ID" xml:id="id_271"/>
+				<to variable="SystemID" xml:id="id_272"/>
+			</copy>
+		</assign>
+		<assign name="Assign_EBM_HEADER" xml:id="id_273">
+			<copy xml:id="id_274">
+				<from variable="SyncItemListReqMsg" part="SyncItemListEBM" query="/coreitem:SyncItemListEBM/corecomm:EBMHeader" xml:id="id_275"/>
+				<to variable="EBM_HEADER" query="/corecomm:EBMHeader" xml:id="id_276"/>
+			</copy>
+		</assign>
+		<assign name="Prepare_EBMHeaderXSLParam" xml:id="id_277">
+			<copy xml:id="id_278">
+				<from xml:id="id_279">
+					<bpelcommon:parameters xmlns:ns1="http://schemas.oracle.com/service/bpel/common" xmlns:bpelcommon="http://schemas.oracle.com/service/bpel/common" xml:id="id_280">
+						<bpelcommon:item xml:id="id_281">
+							<bpelcommon:name xml:id="id_282">EBMHeaderParam</bpelcommon:name>
+							<bpelcommon:value xml:id="id_283"/>
+						</bpelcommon:item>
+						<bpelcommon:item xml:id="id_284">
+							<bpelcommon:name xml:id="id_285">ReqEBMParam</bpelcommon:name>
+							<bpelcommon:value xml:id="id_286"/>
+						</bpelcommon:item>
+					</bpelcommon:parameters>
+				</from>
+				<to variable="XSLTParameters" query="/bpelcommon:parameters" xml:id="id_287"/>
+			</copy>
+			<copy xml:id="id_288">
+				<from expression="ora:getContentAsString(bpws:getVariableData('EBM_HEADER'))" xml:id="id_289"/>
+				<to variable="XSLTParameters" query="/bpelcommon:parameters/bpelcommon:item[bpelcommon:name='EBMHeaderParam']/bpelcommon:value" xml:id="id_290"/>
+			</copy>
+			<copy xml:id="id_291">
+				<from expression="ora:getContentAsString(bpws:getVariableData('SyncItemListReqMsg','SyncItemListEBM','/coreitem:SyncItemListEBM'))" xml:id="id_292"/>
+				<to variable="XSLTParameters" query="/bpelcommon:parameters/bpelcommon:item[bpelcommon:name='ReqEBMParam']/bpelcommon:value" xml:id="id_293"/>
+			</copy>
+		</assign>
+		<scope name="Scope_GetSessionToken" variableAccessSerializable="no" bpelx:skipCondition="aia:getServiceProperty('{http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncProductSiebelProvABCSImpl/V1}SyncProductSiebelProvABCSImpl', 'Routing.SWIProductIntegration.RouteToCAVS', false())='true'" xml:id="id_294">
+			<variables xml:id="id_295">
+				<variable name="GetAIASessionPoolManagerGetRequest" messageType="aiaspm:GetAIASessionPoolManagerGetRequest" xml:id="id_296"/>
+				<variable name="GetAIASessionPoolManagerResponse" messageType="aiaspm:GetAIASessionPoolManagerResponse" xml:id="id_297"/>
+			</variables>
+			<sequence name="Sequence_GetSessionToken" xml:id="id_298">
+				<assign name="Assign_GetAIASessionPoolManagerGetRequest" xml:id="id_299">
+					<copy xml:id="id_300">
+						<from variable="SystemID" xml:id="id_301"/>
+						<to variable="GetAIASessionPoolManagerGetRequest" part="payload" query="/aiaspm:GetAIASessionPoolManagerGetRequest/aiaspm:HostId" xml:id="id_302"/>
+					</copy>
+					<copy xml:id="id_303">
+						<from expression="ora:getCompositeInstanceId()" xml:id="id_304"/>
+						<to variable="GetAIASessionPoolManagerGetRequest" part="payload" query="/aiaspm:GetAIASessionPoolManagerGetRequest/aiaspm:InstanceId" xml:id="id_305"/>
+					</copy>
+				</assign>
+				<invoke name="Invoke_GetSessionToken" partnerLink="AIASessionPoolManager" inputVariable="GetAIASessionPoolManagerGetRequest" outputVariable="GetAIASessionPoolManagerResponse" portType="aiaspm:AIASessionPoolManager" operation="Get" bpelx:invokeAsDetail="no" xml:id="id_306"/>
+				<assign name="Assign_SiebelWSHeader" xml:id="id_307">
+					<copy xml:id="id_308">
+						<from variable="GetAIASessionPoolManagerResponse" part="payload" query="/aiaspm:GetAIASessionPoolManagerResponse/aiaspm:SessionToken" xml:id="id_309"/>
+						<to variable="SessionToken" query="/sblws:SessionToken" xml:id="id_310"/>
+					</copy>
+					<copy xml:id="id_311">
+						<from variable="GetAIASessionPoolManagerResponse" part="payload" query="/aiaspm:GetAIASessionPoolManagerResponse/aiaspm:SessionToken" xml:id="id_312"/>
+						<to variable="SiebelWSHeader" query="/sblws:WSHeader/sblws:SessionToken" xml:id="id_313"/>
+					</copy>
+					<copy xml:id="id_314">
+						<from expression="'Stateless'" xml:id="id_315"/>
+						<to variable="SiebelWSHeader" query="/sblws:WSHeader/sblws:SessionType" xml:id="id_316"/>
+					</copy>
+				</assign>
+			</sequence>
+		</scope>
+		<scope name="Insert_ProductLines" xml:id="id_980" variableAccessSerializable="no">
+			<variables xml:id="id_983">
+				<variable name="InsertProdLineDataAreaCount" type="xsd:integer" xml:id="id_984"/>
+				<variable name="ProdLineCount" type="xsd:integer" xml:id="id_985"/>
+				<variable name="Index" type="xsd:integer" xml:id="id_1026"/>
+				<variable name="TempSyncItemListRespEBMMsg" messageType="client:SyncItemListResMsg" xml:id="id_1060"/>
+			</variables>
+			<sequence xml:id="id_981">
+				<assign name="Assign_ProdLineDataAreaCount" xml:id="id_982">
+					<copy xml:id="id_987">
+						<from expression="ora:countNodes('SyncItemListReqMsg','SyncItemListEBM','/coreitem:SyncItemListEBM/coreitem:DataArea')" xml:id="id_988"/>
+						<to variable="InsertProdLineDataAreaCount" xml:id="id_989"/>
+					</copy>
+					<copy xml:id="id_1027">
+						<from expression="0" xml:id="id_1028"/>
+						<to variable="Index" xml:id="id_1029"/>
+					</copy>
+					<copy xml:id="id_990">
+						<from expression="1" xml:id="id_991"/>
+						<to variable="ProdLineCount" xml:id="id_992"/>
+					</copy>
+				</assign>
+				<while name="While_InsertProductLine" xml:id="id_978" condition="bpws:getVariableData('ProdLineCount')  &lt;=  bpws:getVariableData('InsertProdLineDataAreaCount')">
+					<sequence xml:id="id_986">
+						<assign name="Assign_InsertProdLineXSLTParams" xml:id="id_979">
+							<copy xml:id="id_998">
+								<from xml:id="id_999">
+									<bpelcommon:parameters xmlns:ns1="http://schemas.oracle.com/service/bpel/common" xmlns:bpelcommon="http://schemas.oracle.com/service/bpel/common" xml:id="id_1000">
+										<bpelcommon:item xml:id="id_1001">
+											<bpelcommon:name xml:id="id_1002">ProdLineDataAreaCount</bpelcommon:name>
+											<bpelcommon:value xml:id="id_1003"/>
+										</bpelcommon:item>
+									</bpelcommon:parameters>
+								</from>
+								<to variable="InsertProdLine_XSLTParams" xml:id="id_1004" query="/bpelcommon:parameters"/>
+							</copy>
+							<copy xml:id="id_1005">
+								<from expression="bpws:getVariableData('ProdLineCount')" xml:id="id_1006"/>
+								<to variable="InsertProdLine_XSLTParams" query="/bpelcommon:parameters/bpelcommon:item[bpelcommon:name='ProdLineDataAreaCount']/bpelcommon:value" xml:id="id_1007"/>
+							</copy>
+						</assign>
+						<switch name="Switch_InsertProductLine" xml:id="id_920">
+							<case xml:id="id_921" condition="(bpws:getVariableData('SyncItemListReqMsg','SyncItemListEBM','/coreitem:SyncItemListEBM/coreitem:DataArea[number($ProdLineCount)]/coreitem:SyncItemList/corecomebo:EntityTypeCode') = 'PRODUCT_LINE')">
+								<sequence name="InsertProductLine" xml:id="id_802">
+									<scope name="PreXformInsertProductLineScope" xml:id="id_816" bpelx:skipCondition="aia:getServiceProperty(bpws:getVariableData('ServiceName'),'ABCSExtension.PreXformEBMtoABMEBM',false())!='true'" variableAccessSerializable="no">
+										<sequence name="EBM_Enrich" xml:id="id_818">
+											<assign name="AssignEBM" xml:id="id_817">
+												<copy xml:id="id_821">
+													<from variable="SyncItemListReqMsg" part="SyncItemListEBM" query="/coreitem:SyncItemListEBM" xml:id="id_822"/>
+													<to variable="PreXformEBMtoABMEBM_InputVariable" part="SyncItemListEBM" query="/coreitem:SyncItemListEBM" xml:id="id_823"/>
+												</copy>
+											</assign>
+											<invoke name="Invoke_PreProcessEBM" xml:id="id_819" inputVariable="PreXformEBMtoABMEBM_InputVariable" outputVariable="PreXformEBMtoABMEBM_OutputVariable" partnerLink="SyncProductSiebelProvABCSImplExtension" portType="ns2:SyncProductSiebelProvABCSImplExtensionService" operation="PreXformEBMtoABMEBM" bpelx:invokeAsDetail="no"/>
+											<assign name="AssignEBM" xml:id="id_820">
+												<copy xml:id="id_827">
+													<from variable="PreXformEBMtoABMEBM_OutputVariable" part="SyncItemListEBM" xml:id="id_828" query="/coreitem:SyncItemListEBM"/>
+													<to variable="SyncItemListReqMsg" part="SyncItemListEBM" xml:id="id_829" query="/coreitem:SyncItemListEBM"/>
+												</copy>
+											</assign>
+										</sequence>
+									</scope>
+									<assign name="XformSyncItemListToSWISyncProductLine" xml:id="id_1015">
+										<bpelx:annotation xml:id="id_1016">
+											<bpelx:pattern xml:id="id_1017">transformation</bpelx:pattern>
+										</bpelx:annotation>
+										<copy xml:id="id_1018">
+											<from xml:id="id_1019" expression="ora:processXSLT('xsl/XformSyncItemListEBMToSWISyncProductLine.xsl',bpws:getVariableData('SyncItemListReqMsg','SyncItemListEBM'),bpws:getVariableData('InsertProdLine_XSLTParams'))"/>
+											<to xml:id="id_1020" variable="Invoke1_SWIProductLine_Synchronize_InputVariable" part="SWIProductLine_Synchronize_Input"/>
+										</copy>
+									</assign>
+									<invoke name="InvokeSWIProductLine_Synchronize" xml:id="id_1012" inputVariable="Invoke1_SWIProductLine_Synchronize_InputVariable" outputVariable="Invoke1_SWIProductLine_Synchronize_OutputVariable" partnerLink="SWIProductLine" portType="ns4:SWIProductLine" operation="SWIProductLine_Synchronize" bpelx:invokeAsDetail="no" bpelx:outputHeaderVariable="SessionToken" bpelx:inputHeaderVariable="SiebelWSHeader">
+										<bpelx:inputProperty name="endpointURI" xml:id="id_8497" expression="aia:getServiceProperty('{http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncProductSiebelProvABCSImpl/V1}SyncProductSiebelProvABCSImpl',concat('Routing.SWIProductLineIntegration.',bpws:getVariableData('SystemID'),'.EndpointURI' ),false())"/>
+									</invoke>
+									<scope name="Post_InvokeEnrichEBM" xml:id="id_967" variableAccessSerializable="no" bpelx:skipCondition="aia:getServiceProperty(bpws:getVariableData('ServiceName'),'ABCSExtension.PostXformABMtoEBMEBM',false())!='true'">
+										<sequence name="Sequence4" xml:id="id_969">
+											<assign name="Assign_EBM" xml:id="id_970">
+												<copy xml:id="id_972">
+													<from variable="SyncItemListResMsg" part="SyncItemListResponseEBM" query="/coreitem:SyncItemListResponseEBM" xml:id="id_973"/>
+													<to variable="PostXformABMtoEBMEBM_InputVariable" part="SyncItemListResponseEBM" query="/coreitem:SyncItemListResponseEBM" xml:id="id_974"/>
+												</copy>
+											</assign>
+											<invoke name="Invoke_PostInvokeEBM" xml:id="id_968" inputVariable="PostXformABMtoEBMEBM_InputVariable" outputVariable="PostXformABMtoEBMEBM_OutputVariable" partnerLink="SyncProductSiebelProvABCSImplExtension" portType="ns2:SyncProductSiebelProvABCSImplExtensionService" operation="PostXformABMtoEBMEBM" bpelx:invokeAsDetail="no"/>
+											<assign name="Assign_EBM" xml:id="id_971">
+												<copy xml:id="id_975">
+													<from variable="PostXformABMtoEBMEBM_OutputVariable" part="SyncItemListResponseEBM" query="/coreitem:SyncItemListResponseEBM" xml:id="id_976"/>
+													<to variable="SyncItemListResMsg" part="SyncItemListResponseEBM" query="/coreitem:SyncItemListResponseEBM" xml:id="id_977"/>
+												</copy>
+											</assign>
+										</sequence>
+									</scope>
+									<assign name="XformSiebelProdLineABMToSyncItemListResponseEBM" xml:id="id_843">
+										<copy xml:id="id_846">
+											<from xml:id="id_847" expression="ora:processXSLT('xsl/XformSiebelSyncProdLineABMToSyncItemListResponseEBM.xsl',bpws:getVariableData('Invoke1_SWIProductLine_Synchronize_OutputVariable','SWIProductLine_Synchronize_Output'),bpws:getVariableData('XSLTParameters'))"/>
+											<to xml:id="id_848" variable="TempSyncItemListRespEBMMsg" part="SyncItemListResponseEBM"/>
+										</copy>
+									</assign>
+									<assign name="Assign_AppendResponse" xml:id="id_1021">
+										<bpelx:insertBefore xml:id="id_1037">
+											<bpelx:from variable="TempSyncItemListRespEBMMsg" part="SyncItemListResponseEBM" xml:id="id_1038" query="/coreitem:SyncItemListResponseEBM/coreitem:DataArea"/>
+											<bpelx:to variable="SWIProdLineSyncItemListRespEBMMsg" part="SyncItemListResponseEBM" xml:id="id_1039" query="/coreitem:SyncItemListResponseEBM/coreitem:DataArea"/>
+										</bpelx:insertBefore>
+										<copy xml:id="id_1061">
+											<from variable="TempSyncItemListRespEBMMsg" part="SyncItemListResponseEBM" query="/coreitem:SyncItemListResponseEBM/corecomm:EBMHeader" xml:id="id_1062"/>
+											<to variable="SWIProdLineSyncItemListRespEBMMsg" part="SyncItemListResponseEBM" query="/coreitem:SyncItemListResponseEBM/corecomm:EBMHeader" xml:id="id_1063"/>
+										</copy>
+									</assign>
+								</sequence>
+							</case>
+							<otherwise xml:id="id_922">
+								<empty name="Empty" xml:id="id_923"/>
+							</otherwise>
+						</switch>
+						<assign name="IncrementDataArea" xml:id="id_993">
+							<copy xml:id="id_994">
+								<from expression="bpws:getVariableData('ProdLineCount') + 1" xml:id="id_995"/>
+								<to variable="ProdLineCount" xml:id="id_996"/>
+							</copy>
+						</assign>
+					</sequence>
+				</while>
+			</sequence>
+		</scope>
+		<switch name="Switch_ProductLine" xml:id="id_873">
+			<case xml:id="id_874" condition="(bpws:getVariableData('SyncItemListReqMsg','SyncItemListEBM','/coreitem:SyncItemListEBM/coreitem:DataArea/coreitem:SyncItemList/corecomebo:EntityTypeCode') != 'PRODUCT_LINE') and (ora:countNodes('SyncItemListReqMsg','SyncItemListEBM','/coreitem:SyncItemListEBM/coreitem:DataArea/coreitem:SyncItemList') > 0) or (not(bpws:getVariableData('SyncItemListReqMsg','SyncItemListEBM','/coreitem:SyncItemListEBM/coreitem:DataArea/coreitem:SyncItemList/corecomebo:EntityTypeCode')))"><sequence xml:id="id_882" name="ProductSync">
+					<scope name="Scope_SyncProduct" xml:id="id_317">
+						<sequence name="Sequence_SyncProduct" xml:id="id_318">
+							<switch name="Switch_ConstructInputABM" xml:id="id_319">
+								<case condition="ora:countNodes('SyncItemListReqMsg','SyncItemListEBM','/coreitem:SyncItemListEBM/coreitem:DataArea/coreitem:SyncItemList') > 0" xml:id="id_320"><sequence name="Sequence_ConstructInputABM" xml:id="id_321">
+										<assign name="Assign_ServiceName" xml:id="id_322">
+											<copy xml:id="id_323">
+												<from expression="'{http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncProductSiebelProvABCSImpl/V1}SyncProductSiebelProvABCSImpl'" xml:id="id_324"/>
+												<to variable="ServiceName" xml:id="id_325"/>
+											</copy>
+										</assign>
+										<assign name="AssignProductSourcePIP" xml:id="id_326">
+											<copy xml:id="id_327">
+												<from expression="aia:getServiceProperty(bpws:getVariableData('ServiceName'),'Product.Source.PIP',true())" xml:id="id_328"/>
+												<to variable="productSourcePIP" xml:id="id_329"/>
+											</copy>
+										</assign>
+										<assign name="AssignLanguageCode" xml:id="id_330">
+											<copy xml:id="id_331">
+												<from expression="aia:getServiceProperty(bpws:getVariableData('ServiceName'),'LANGUAGE_CODE',true())" xml:id="id_332"/>
+												<to variable="LanguageCodes" xml:id="id_333"/>
+											</copy>
+										</assign>
+										<assign name="PrepareXSLTParameters" xml:id="id_334">
+											<copy xml:id="id_335">
+												<from xml:id="id_336">
+													<bpelcommon:parameters xmlns:ns1="http://schemas.oracle.com/service/bpel/common" xmlns:bpelcommon="http://schemas.oracle.com/service/bpel/common" xml:id="id_337">
+														<bpelcommon:item xml:id="id_338">
+															<bpelcommon:name xml:id="id_339">SimpleProdReleaseFlag</bpelcommon:name>
+															<bpelcommon:value xml:id="id_340"/>
+														</bpelcommon:item>
+														<bpelcommon:item xml:id="id_341">
+															<bpelcommon:name xml:id="id_342">ComplexProdReleaseFlag</bpelcommon:name>
+															<bpelcommon:value xml:id="id_343"/>
+														</bpelcommon:item>
+														<bpelcommon:item xml:id="id_344">
+															<bpelcommon:name xml:id="id_345">SystemID</bpelcommon:name>
+															<bpelcommon:value xml:id="id_346"/>
+														</bpelcommon:item>
+														<bpelcommon:item xml:id="id_347">
+															<bpelcommon:name xml:id="id_348">productSourcePIP</bpelcommon:name>
+															<bpelcommon:value xml:id="id_349"/>
+														</bpelcommon:item>
+														<bpelcommon:item xml:id="id_350">
+															<bpelcommon:name xml:id="id_351">BatchName</bpelcommon:name>
+															<bpelcommon:value xml:id="id_352"/>
+														</bpelcommon:item>
+														<bpelcommon:item xml:id="id_353">
+															<bpelcommon:name xml:id="id_354">LanguageCodes</bpelcommon:name>
+															<bpelcommon:value xml:id="id_355"/>
+														</bpelcommon:item>
+													</bpelcommon:parameters>
+												</from>
+												<to variable="ReleaseFlag_XSLTParam" xml:id="id_356" query="/bpelcommon:parameters"/>
+											</copy>
+											<copy xml:id="id_357">
+												<from expression="aia:getServiceProperty('{http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncProductSiebelProvABCSImpl/V1}SyncProductSiebelProvABCSImpl', 'SIMPLE_PRODUCT_RELEASE_FLAG',true())" xml:id="id_358"/>
+												<to variable="ReleaseFlag_XSLTParam" query="/bpelcommon:parameters/bpelcommon:item[bpelcommon:name='SimpleProdReleaseFlag']/bpelcommon:value" xml:id="id_359"/>
+											</copy>
+											<copy xml:id="id_360">
+												<from expression="aia:getServiceProperty('{http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncProductSiebelProvABCSImpl/V1}SyncProductSiebelProvABCSImpl', 'COMPLEX_PRODUCT_RELEASE_FLAG',true())" xml:id="id_361"/>
+												<to variable="ReleaseFlag_XSLTParam" query="/bpelcommon:parameters/bpelcommon:item[bpelcommon:name='ComplexProdReleaseFlag']/bpelcommon:value" xml:id="id_362"/>
+											</copy>
+											<copy xml:id="id_363">
+												<from expression="bpws:getVariableData('SystemID')" xml:id="id_364"/>
+												<to variable="ReleaseFlag_XSLTParam" query="/bpelcommon:parameters/bpelcommon:item[bpelcommon:name='SystemID']/bpelcommon:value" xml:id="id_365"/>
+											</copy>
+											<copy xml:id="id_366">
+												<from variable="productSourcePIP" xml:id="id_367"/>
+												<to variable="ReleaseFlag_XSLTParam" query="/bpelcommon:parameters/bpelcommon:item[bpelcommon:name='productSourcePIP']/bpelcommon:value" xml:id="id_368"/>
+											</copy>
+											<copy xml:id="id_369">
+												<from variable="LanguageCodes" xml:id="id_370"/>
+												<to variable="ReleaseFlag_XSLTParam" query="/bpelcommon:parameters/bpelcommon:item[bpelcommon:name='LanguageCodes']/bpelcommon:value" xml:id="id_371"/>
+											</copy>
+										</assign>
+										<switch name="Switch_BatchName" xml:id="id_372">
+											<case condition="ora:countNodes('SyncItemListReqMsg','SyncItemListEBM','/coreitem:SyncItemListEBM/corecomm:EBMHeader/corecomm:MessageBatch') > 0" xml:id="id_373"><assign name="Assign_BatchName" xml:id="id_374">
+													<copy xml:id="id_375">
+														<from expression="bpws:getVariableData('SyncItemListReqMsg','SyncItemListEBM','/coreitem:SyncItemListEBM/corecomm:EBMHeader/corecomm:MessageBatch/corecomm:Name')" xml:id="id_376"/>
+														<to variable="ReleaseFlag_XSLTParam" xml:id="id_377" query="/bpelcommon:parameters/bpelcommon:item[bpelcommon:name='BatchName']/bpelcommon:value"/>
+													</copy>
+												</assign>
+											</case>
+											<otherwise xml:id="id_378">
+												<assign name="Assign_BatchName" xml:id="id_379">
+													<copy xml:id="id_380">
+														<from expression="''" xml:id="id_381"/>
+														<to variable="ReleaseFlag_XSLTParam" xml:id="id_382" query="/bpelcommon:parameters/bpelcommon:item[bpelcommon:name='BatchName']/bpelcommon:value"/>
+													</copy>
+												</assign>
+											</otherwise>
+										</switch>
+										<scope name="PreXformCustomScope" bpelx:skipCondition="aia:getServiceProperty(bpws:getVariableData('ServiceName'),'ABCSExtension.PreXformEBMtoABMEBM',false())!='true'" xml:id="id_746" variableAccessSerializable="no" ui:customizable="true">
+											<bpelx:annotation xml:id="id_813">
+												<bpelx:general xml:id="id_814">
+													<bpelx:property name="userLabel" xml:id="id_815">PreXformCustomScope</bpelx:property>
+												</bpelx:general>
+											</bpelx:annotation>
+											<sequence name="Sequence_PreXformEBMtoABMEBM" xml:id="id_385">
+												<assign name="Assign_EBM" xml:id="id_386">
+													<copy xml:id="id_387">
+														<from variable="SyncItemListReqMsg" part="SyncItemListEBM" xml:id="id_388" query="/coreitem:SyncItemListEBM"/>
+														<to variable="PreXformEBMtoABMEBM_InputVariable" part="SyncItemListEBM" xml:id="id_389" query="/coreitem:SyncItemListEBM"/>
+													</copy>
+												</assign>
+												<invoke name="Invoke_PreProcessEBM" partnerLink="SyncProductSiebelProvABCSImplExtension" portType="ns2:SyncProductSiebelProvABCSImplExtensionService" operation="PreXformEBMtoABMEBM" inputVariable="PreXformEBMtoABMEBM_InputVariable" outputVariable="PreXformEBMtoABMEBM_OutputVariable" xml:id="id_390" bpelx:invokeAsDetail="no"/>
+												<assign name="Assign_EBM" xml:id="id_391">
+													<copy xml:id="id_392">
+														<from variable="PreXformEBMtoABMEBM_OutputVariable" part="SyncItemListEBM" query="/coreitem:SyncItemListEBM" xml:id="id_393"/>
+														<to variable="SyncItemListReqMsg" part="SyncItemListEBM" query="/coreitem:SyncItemListEBM" xml:id="id_394"/>
+													</copy>
+												</assign>
+											</sequence>
+										</scope>
+										<assign name="XformSyncItemListEBMToSiebelProdABM" xml:id="id_397">
+											<copy xml:id="id_398">
+												<from expression="ora:processXSLT('xsl/XformSyncItemListEBMToSiebelProdABM.xsl',bpws:getVariableData('SyncItemListReqMsg','SyncItemListEBM'),bpws:getVariableData('ReleaseFlag_XSLTParam'))" xml:id="id_399"/>
+												<to variable="InvokeSiebelServiceStartSWIProductUpsert_InputVariable" part="SWIProductImportUpsert_Input" xml:id="id_400"/>
+											</copy>
+										</assign>
+										<assign name="XformRestructureProductABM" xml:id="id_401">
+											<bpelx:annotation xml:id="id_402">
+												<bpelx:pattern xml:id="id_403">transformation</bpelx:pattern>
+											</bpelx:annotation>
+											<copy xml:id="id_404">
+												<from expression="ora:processXSLT('xsl/XformRestructureProductABM.xsl',bpws:getVariableData('InvokeSiebelServiceStartSWIProductUpsert_InputVariable','SWIProductImportUpsert_Input'))" xml:id="id_405"/>
+												<to variable="InvokeSiebelServiceStartSWIProductUpsert_InputVariable" part="SWIProductImportUpsert_Input" xml:id="id_406"/>
+											</copy>
+										</assign>
+									</sequence>
+								</case>
+								<otherwise xml:id="id_407">
+									<sequence name="Sequence_11" xml:id="id_408">
+										<assign name="Assign_CreateEnterpriseFaultMessage" xml:id="id_409">
+											<copy xml:id="id_410">
+												<from expression="ora:processXSLT('xsl/EBM_to_Fault.xsl',bpws:getVariableData('SyncItemListReqMsg','SyncItemListEBM'))" xml:id="id_411"/>
+												<to variable="EnterpriseFaultMsg" part="AIAFault" xml:id="id_412"/>
+											</copy>
+											<copy xml:id="id_413">
+												<from expression="'No Items to process'" xml:id="id_414"/>
+												<to variable="EnterpriseFaultMsg" part="AIAFault" query="/corecomm:Fault/corecomm:FaultNotification/corecomm:FaultMessage/corecomm:Text" xml:id="id_415"/>
+											</copy>
+											<copy xml:id="id_416">
+												<from expression="ora:getInstanceId()" xml:id="id_417"/>
+												<to variable="EnterpriseFaultMsg" part="AIAFault" query="/corecomm:Fault/corecomm:FaultNotification/corecomm:FaultingService/corecomm:InstanceID" xml:id="id_418"/>
+											</copy>
+											<copy xml:id="id_419">
+												<from expression="'BPEL'" xml:id="id_420"/>
+												<to variable="EnterpriseFaultMsg" part="AIAFault" query="/corecomm:Fault/corecomm:FaultNotification/corecomm:FaultingService/corecomm:ImplementationCode" xml:id="id_421"/>
+											</copy>
+											<copy xml:id="id_422">
+												<from expression="ora:getProcessId()" xml:id="id_423"/>
+												<to variable="EnterpriseFaultMsg" part="AIAFault" query="/corecomm:Fault/corecomm:FaultNotification/corecomm:FaultingService/corecomm:ID" xml:id="id_424"/>
+											</copy>
+										</assign>
+										<throw name="ThrowInternalFault" faultName="client:fault" faultVariable="EnterpriseFaultMsg" xml:id="id_425"/>
+									</sequence>
+								</otherwise>
+							</switch>
+							<switch name="Switch_CheckProductExist" xml:id="id_426">
+								<case condition="ora:countNodes('InvokeSiebelServiceStartSWIProductUpsert_InputVariable','SWIProductImportUpsert_Input','/asivo:SWIProductImportUpsert_Input/swiprod:ListOfProductImport/swiprod:ProductIntegration/swiprod:ListOfProductDefinition/swiprod:ProductDefinition') > 0" xml:id="id_427"><sequence name="Sequence_ProductExist" xml:id="id_428">
+										<scope name="PreInvokeCustom_Scope" bpelx:skipCondition="aia:getServiceProperty(bpws:getVariableData('ServiceName'),'ABCSExtension.PreInvokeSWIProductImportUpsertABM',false())!='true'" xml:id="id_748" variableAccessSerializable="no" ui:customizable="true">
+											<bpelx:annotation xml:id="id_832">
+												<bpelx:general xml:id="id_833">
+													<bpelx:property name="userLabel" xml:id="id_834">PreInvokeCustom_Scope</bpelx:property>
+												</bpelx:general>
+											</bpelx:annotation>
+											<sequence name="Sequence_PreInvokeSWIProductImportUpsertABM" xml:id="id_431">
+												<assign name="Assign_ABM" xml:id="id_432">
+													<copy xml:id="id_433">
+														<from variable="InvokeSiebelServiceStartSWIProductUpsert_InputVariable" part="SWIProductImportUpsert_Input" xml:id="id_434" query="/asivo:SWIProductImportUpsert_Input"/>
+														<to variable="PreInvokeSWIProductImportUpsertABM_InputVariable" part="SWIProductImportUpsert_Input" xml:id="id_435" query="/asivo:SWIProductImportUpsert_Input"/>
+													</copy>
+												</assign>
+												<invoke name="Invoke_PreProcessABM" partnerLink="SyncProductSiebelProvABCSImplExtension" portType="ns2:SyncProductSiebelProvABCSImplExtensionService" operation="PreInvokeSWIProductImportUpsertABM" inputVariable="PreInvokeSWIProductImportUpsertABM_InputVariable" outputVariable="PreInvokeSWIProductImportUpsertABM_OutputVariable" xml:id="id_436"/>
+												<assign name="Assign_ABM" xml:id="id_437">
+													<copy xml:id="id_438">
+														<from variable="PreInvokeSWIProductImportUpsertABM_OutputVariable" part="SWIProductImportUpsert_Input" query="/asivo:SWIProductImportUpsert_Input" xml:id="id_439"/>
+														<to variable="InvokeSiebelServiceStartSWIProductUpsert_InputVariable" part="SWIProductImportUpsert_Input" query="/asivo:SWIProductImportUpsert_Input" xml:id="id_440"/>
+													</copy>
+												</assign>
+											</sequence>
+										</scope>
+										<switch name="Switch_AssignID" xml:id="id_876">
+											<case condition="aia:getServiceProperty('{http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncProductSiebelProvABCSImpl/V1}SyncProductSiebelProvABCSImpl','Routing.SWIProductIntegration.RouteToCAVS',false())!='true'" xml:id="id_877">
+												<assign name="AssignSystemId" xml:id="id_785">
+													<copy xml:id="id_758">
+														<from expression="bpws:getVariableData('SystemID')" xml:id="id_759"/>
+														<to variable="SystId" xml:id="id_780"/>
+													</copy>
+												</assign>
+											</case>
+											<otherwise xml:id="id_878">
+												<assign name="AssignSystemId" xml:id="id_757">
+													<copy xml:id="id_782">
+														<from expression="'CAVS'" xml:id="id_783"/>
+														<to variable="SystId" xml:id="id_784"/>
+													</copy>
+												</assign>
+											</otherwise>
+										</switch>
+										<invoke name="InvokeSWIProductUpsertCallexecute" partnerLink="SWIProductIntegration" portType="asivo:SWIProductImport" operation="SWIProductImportUpsert" inputVariable="InvokeSiebelServiceStartSWIProductUpsert_InputVariable" outputVariable="InvokeSiebelServiceStartSWIProductUpsert_OutputVariable" bpelx:outputHeaderVariable="SessionToken" xml:id="id_481" bpelx:invokeAsDetail="no" bpelx:inputHeaderVariable="SiebelWSHeader">
+											<bpelx:inputProperty name="endpointURI" xml:id="id_754" expression="aia:getServiceProperty('{http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncProductSiebelProvABCSImpl/V1}SyncProductSiebelProvABCSImpl',concat('Routing.SWIProductIntegration.',$SystId,'.EndpointURI' ),false())"/>
+										</invoke>
+										<scope name="PostInvokeCustom_Scope" bpelx:skipCondition="aia:getServiceProperty(bpws:getVariableData('ServiceName'),'ABCSExtension.PostInvokeSWIProductImportUpsertABM',false())!='true'" xml:id="id_749" variableAccessSerializable="no" ui:customizable="true">
+											<sequence name="Sequence_PostInvokeSWIProductImportUpsertABM" xml:id="id_484">
+												<assign name="Assign_ABM" xml:id="id_485">
+													<copy xml:id="id_486">
+														<from variable="InvokeSiebelServiceStartSWIProductUpsert_OutputVariable" part="SWIProductImportUpsert_Output" query="/asivo:SWIProductImportUpsert_Output/swiprod:ListOfProductImport" xml:id="id_487"/>
+														<to variable="PostInvokeSWIProductImportUpsertABM_InputVariable" part="SWIProductImportUpsert_Output" query="/asivo:SWIProductImportUpsert_Output/swiprod:ListOfProductImport" xml:id="id_488"/>
+													</copy>
+												</assign>
+												<invoke name="Invoke_PostProcessABM" partnerLink="SyncProductSiebelProvABCSImplExtension" portType="ns2:SyncProductSiebelProvABCSImplExtensionService" operation="PostInvokeSWIProductImportUpsertABM" inputVariable="PostInvokeSWIProductImportUpsertABM_InputVariable" outputVariable="PostInvokeSWIProductImportUpsertABM_OutputVariable" xml:id="id_489"/>
+												<assign name="Assign_ABM" xml:id="id_490">
+													<copy xml:id="id_491">
+														<from variable="PostInvokeSWIProductImportUpsertABM_OutputVariable" part="SWIProductImportUpsert_Output" query="/asivo:SWIProductImportUpsert_Output/swiprod:ListOfProductImport" xml:id="id_492"/>
+														<to variable="InvokeSiebelServiceStartSWIProductUpsert_OutputVariable" part="SWIProductImportUpsert_Output" query="/asivo:SWIProductImportUpsert_Output/swiprod:ListOfProductImport" xml:id="id_493"/>
+													</copy>
+												</assign>
+											</sequence>
+										</scope>
+										<assign name="XformSiebelProdABMToSyncItemListResponseEBM" xml:id="id_496">
+											<copy xml:id="id_497">
+												<from expression="ora:processXSLT('xsl/XformSiebelProdABMToSyncItemListResponseEBM.xsl',bpws:getVariableData('InvokeSiebelServiceStartSWIProductUpsert_OutputVariable','SWIProductImportUpsert_Output'),bpws:getVariableData('XSLTParameters'))" xml:id="id_498"/>
+												<to variable="SyncItemListResMsg" part="SyncItemListResponseEBM" xml:id="id_499"/>
+											</copy>
+										</assign>
+										<scope name="PostXformCustom_Scope" bpelx:skipCondition="aia:getServiceProperty(bpws:getVariableData('ServiceName'),'ABCSExtension.PostXformABMtoEBMEBM',false())!='true'" xml:id="id_750" variableAccessSerializable="no" ui:customizable="true">
+											<sequence name="Sequence_PostXformABMtoEBMEBM" xml:id="id_502">
+												<assign name="Assign_EBM" xml:id="id_503">
+													<copy xml:id="id_504">
+														<from variable="SyncItemListResMsg" part="SyncItemListResponseEBM" query="/coreitem:SyncItemListResponseEBM" xml:id="id_505"/>
+														<to variable="PostXformABMtoEBMEBM_InputVariable" part="SyncItemListResponseEBM" query="/coreitem:SyncItemListResponseEBM" xml:id="id_506"/>
+													</copy>
+												</assign>
+												<invoke name="Invoke_PostProcessEBM" partnerLink="SyncProductSiebelProvABCSImplExtension" portType="ns2:SyncProductSiebelProvABCSImplExtensionService" operation="PostXformABMtoEBMEBM" inputVariable="PostXformABMtoEBMEBM_InputVariable" outputVariable="PostXformABMtoEBMEBM_OutputVariable" xml:id="id_507"/>
+												<assign name="Assign_EBM" xml:id="id_508">
+													<copy xml:id="id_509">
+														<from variable="PostXformABMtoEBMEBM_OutputVariable" part="SyncItemListResponseEBM" query="/coreitem:SyncItemListResponseEBM" xml:id="id_510"/>
+														<to variable="SyncItemListResMsg" part="SyncItemListResponseEBM" query="/coreitem:SyncItemListResponseEBM" xml:id="id_511"/>
+													</copy>
+												</assign>
+											</sequence>
+										</scope>
+									</sequence>
+								</case>
+								<otherwise xml:id="id_514"/>
+							</switch>
+							<assign name="XformSyncItemListEBMToSyncPromotionEBM" xml:id="id_515">
+								<bpelx:annotation xml:id="id_516">
+									<bpelx:pattern xml:id="id_517">transformation</bpelx:pattern>
+								</bpelx:annotation>
+								<copy xml:id="id_518">
+									<from expression="ora:processXSLT('xsl/XformSyncItemListEBMToSyncPromotionEBM.xsl',bpws:getVariableData('SyncItemListReqMsg','SyncItemListEBM'))" xml:id="id_519"/>
+									<to variable="SyncPromotionListReqMsg" part="SyncItemListEBM" xml:id="id_520"/>
+								</copy>
+							</assign>
+						</sequence>
+					</scope>
+					<switch name="Switch_PromotionExist" xml:id="id_521">
+						<case condition="ora:getElement('SyncPromotionListReqMsg','SyncItemListEBM','/coreitem:SyncItemListEBM/coreitem:DataArea')" xml:id="id_522">
+							<scope name="Scope_SyncPromotions" xml:id="id_523">
+								<variables xml:id="id_524">
+									<variable name="index" type="xsd:int" xml:id="id_525"/>
+									<variable name="countPromotionDataArea" type="xsd:int" xml:id="id_526"/>
+								</variables>
+								<sequence name="Sequence_SyncPromotions" xml:id="id_527">
+									<assign name="xformSyncItemListEBMToSiebelPromotionABM" xml:id="id_528">
+										<copy xml:id="id_529">
+											<from expression="ora:processXSLT('xsl/xformSyncItemListEBMToSiebelPromotionABM.xsl',bpws:getVariableData('SyncPromotionListReqMsg','SyncItemListEBM'),bpws:getVariableData('ReleaseFlag_XSLTParam'))" xml:id="id_530"/>
+											<to variable="InvokeSWIPromotionIntegrationCallPromotion_SWIPromotionUpsert_InputVar1" part="SWIPromotionUpsert_Input" xml:id="id_531"/>
+										</copy>
+									</assign>
+									<assign name="XformRestructurePromotionABM" xml:id="id_532">
+										<bpelx:annotation xml:id="id_533">
+											<bpelx:pattern xml:id="id_534">transformation</bpelx:pattern>
+										</bpelx:annotation>
+										<copy xml:id="id_535">
+											<from expression="ora:processXSLT('xsl/XformRestructurePromotionABM.xsl',bpws:getVariableData('InvokeSWIPromotionIntegrationCallPromotion_SWIPromotionUpsert_InputVar1','SWIPromotionUpsert_Input'))" xml:id="id_536"/>
+											<to variable="InvokeSWIPromotionIntegrationCallPromotion_SWIPromotionUpsert_InputVar" part="SWIPromotionUpsert_Input" xml:id="id_537"/>
+										</copy>
+									</assign>
+									<scope name="PreInvokeCustom_Scope" bpelx:skipCondition="aia:getServiceProperty(bpws:getVariableData('ServiceName'),'ABCSExtension.PreInvokeSWIPromotionIntegrationABM',false())!='true'" xml:id="id_751" variableAccessSerializable="no" ui:customizable="true">
+										<sequence name="Sequence_PreInvokeSWIPromotionIntegrationABM" xml:id="id_540">
+											<assign name="Assign_ABM" xml:id="id_541">
+												<copy xml:id="id_542">
+													<from variable="InvokeSWIPromotionIntegrationCallPromotion_SWIPromotionUpsert_InputVar" part="SWIPromotionUpsert_Input" query="/ns3:SWIPromotionUpsert_Input" xml:id="id_543"/>
+													<to variable="PreInvokeSWIPromotionIntegrationABM_InputVar" part="SWIPromotionUpsert_Input" query="/ns3:SWIPromotionUpsert_Input" xml:id="id_544"/>
+												</copy>
+											</assign>
+											<invoke name="Invoke_PreProcessABM" partnerLink="SyncProductSiebelProvABCSImplExtension" portType="ns2:SyncProductSiebelProvABCSImplExtensionService" operation="PreInvokeSWIPromotionIntegrationABM" inputVariable="PreInvokeSWIPromotionIntegrationABM_InputVar" outputVariable="PreInvokeSWIPromotionIntegrationABM_OutputVar" xml:id="id_545"/>
+											<assign name="Assign_ABM" xml:id="id_546">
+												<copy xml:id="id_547">
+													<from variable="PreInvokeSWIPromotionIntegrationABM_OutputVar" part="SWIPromotionUpsert_Input" query="/ns3:SWIPromotionUpsert_Input" xml:id="id_548"/>
+													<to variable="InvokeSWIPromotionIntegrationCallPromotion_SWIPromotionUpsert_InputVar" part="SWIPromotionUpsert_Input" query="/ns3:SWIPromotionUpsert_Input" xml:id="id_549"/>
+												</copy>
+											</assign>
+										</sequence>
+									</scope>
+									<switch name="Switch_AssignTarget" xml:id="id_879">
+										<case condition="aia:getServiceProperty('{http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncProductSiebelProvABCSImpl/V1}SyncProductSiebelProvABCSImpl','Routing.SWIPromotionIntegration.RouteToCAVS',false())!='true'" xml:id="id_880">
+											<assign name="AssignSystId" xml:id="id_786">
+												<copy xml:id="id_788">
+													<from expression="bpws:getVariableData('SystemID')" xml:id="id_787"/>
+													<to variable="SysId" xml:id="id_789"/>
+												</copy>
+											</assign>
+										</case>
+										<otherwise xml:id="id_881">
+											<assign name="AssignSystId" xml:id="id_790">
+												<copy xml:id="id_791">
+													<from expression="'CAVS'" xml:id="id_792"/>
+													<to variable="SysId" xml:id="id_793"/>
+												</copy>
+											</assign>
+										</otherwise>
+									</switch>
+									<invoke name="InvokeSWIPromotionIntegrationCallPromotion_SWIPromotionUpsert" portType="ns3:SWIPromotionImport" operation="SWIPromotionUpsert" inputVariable="InvokeSWIPromotionIntegrationCallPromotion_SWIPromotionUpsert_InputVar" outputVariable="InvokeSWIPromotionIntegrationCallPromotion_SWIPromotionUpsert_OutputVar" partnerLink="SWIPromotionIntegration" bpelx:outputHeaderVariable="SessionToken" xml:id="id_590" bpelx:invokeAsDetail="no" bpelx:inputHeaderVariable="SiebelWSHeader">
+										<bpelx:inputProperty name="endpointURI" xml:id="id_755" expression="aia:getServiceProperty('{http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncProductSiebelProvABCSImpl/V1}SyncProductSiebelProvABCSImpl',concat('Routing.SWIPromotionIntegration.',$SysId,'.EndpointURI' ),false())"/>
+									</invoke>
+									<scope name="Scope3" xml:id="id_1067">
+										<bpelx:annotation xml:id="id_1068">
+											<bpelx:general xml:id="id_1069">
+												<bpelx:property name="userLabel" xml:id="id_1070">
+													<![CDATA[SynchPromotionTransactionAttribute_Scope]]>
+												</bpelx:property>
+											</bpelx:general>
+										</bpelx:annotation>
+										<variables xml:id="id_1081">
+											<variable name="CheckTransactionAttribute" type="xsd:integer" xml:id="id_1082"/>
+										</variables>
+										<sequence name="Sequence6" xml:id="id_1072">
+											<assign name="XformSyncItemListEBMToSiebelProdABMPromoTransAttributes" xml:id="id_1073">
+												<bpelx:annotation xml:id="id_1074">
+													<bpelx:pattern xml:id="id_1075">transformation</bpelx:pattern>
+												</bpelx:annotation>
+												<copy xml:id="id_1076">
+													<from xml:id="id_1077" expression="ora:doXSLTransformForDoc('xsl/XformSyncItemListEBMToSiebelProdABMPromoTransAttributes.xsl', $SyncPromotionListReqMsg.SyncItemListEBM)"/>
+													<to xml:id="id_1078" variable="InvokeSiebelServiceStartSWIProductUpsert_InputVariable" part="SWIProductImportUpsert_Input"/>
+												</copy>
+											</assign>
+											<assign name="AssignCheckNoTransactionAttributes" xml:id="id_1080">
+												<copy xml:id="id_1101">
+													<from expression="ora:countNodes('InvokeSiebelServiceStartSWIProductUpsert_InputVariable','SWIProductImportUpsert_Input','/asivo:SWIProductImportUpsert_Input/swiprod:ListOfProductImport/swiprod:ProductIntegration/swiprod:ListOfProductDefinition/swiprod:ProductDefinition/swiprod:ListOfSwiIssProductAttributesVbc/swiprod:ProductAttributesVbc')" xml:id="id_1102"/>
+													<to variable="CheckTransactionAttribute" xml:id="id_1103"/>
+												</copy>
+											</assign>
+											<invoke name="InvokeSWIProductUpsertPromotionTransAttribute" xml:id="id_1071" inputVariable="InvokeSiebelServiceStartSWIProductUpsert_InputVariable" outputVariable="InvokeSiebelServiceStartSWIProductUpsert_OutputVariable" partnerLink="SWIProductIntegration" portType="asivo:SWIProductImport" operation="SWIProductImportUpsert" bpelx:outputHeaderVariable="SessionToken" bpelx:invokeAsDetail="no" bpelx:skipCondition="bpws:getVariableData('CheckTransactionAttribute') = 0" bpelx:inputHeaderVariable="SiebelWSHeader">
+												<!-- Start Chaning parameter from SystId to SysId March 14th 2016 Santosh M E -->
+												<bpelx:inputProperty name="endpointURI" xml:id="id_1079" expression="aia:getServiceProperty('{http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncProductSiebelProvABCSImpl/V1}SyncProductSiebelProvABCSImpl',concat('Routing.SWIProductIntegration.',$SysId,'.EndpointURI' ),false())"/>
+												<!-- End Chaning parameter from SystId to SysId March 14th 2016 Santosh M E -->
+											</invoke>
+										</sequence>
+									</scope>
+									<scope name="PostInvokeCustom_Scope" bpelx:skipCondition="aia:getServiceProperty(bpws:getVariableData('ServiceName'),'ABCSExtension.PostInvokeSWIPromotionIntegrationABM',false())!='true'" xml:id="id_752" variableAccessSerializable="no" ui:customizable="true">
+										<sequence name="Sequence_PostInvokeSWIPromotionIntegrationABM" xml:id="id_593">
+											<assign name="Assign_ABM" xml:id="id_594">
+												<copy xml:id="id_595">
+													<from variable="InvokeSWIPromotionIntegrationCallPromotion_SWIPromotionUpsert_OutputVar" part="SWIPromotionUpsert_Output" query="/ns3:SWIPromotionUpsert_Output" xml:id="id_596"/>
+													<to variable="PostInvokeSWIPromotionIntegrationABM_InputVar" part="SWIPromotionUpsert_Output" query="/ns3:SWIPromotionUpsert_Output" xml:id="id_597"/>
+												</copy>
+											</assign>
+											<invoke name="Invoke_PostProcessABM" partnerLink="SyncProductSiebelProvABCSImplExtension" portType="ns2:SyncProductSiebelProvABCSImplExtensionService" operation="PostInvokeSWIPromotionIntegrationABM" inputVariable="PostInvokeSWIPromotionIntegrationABM_InputVar" outputVariable="PostInvokeSWIPromotionIntegrationABM_OutputVar" xml:id="id_598"/>
+											<assign name="Assign_ABM" xml:id="id_599">
+												<copy xml:id="id_600">
+													<from variable="PostInvokeSWIPromotionIntegrationABM_OutputVar" part="SWIPromotionUpsert_Output" query="/ns3:SWIPromotionUpsert_Output" xml:id="id_601"/>
+													<to variable="InvokeSWIPromotionIntegrationCallPromotion_SWIPromotionUpsert_OutputVar" part="SWIPromotionUpsert_Output" query="/ns3:SWIPromotionUpsert_Output" xml:id="id_602"/>
+												</copy>
+											</assign>
+										</sequence>
+									</scope>
+									<assign name="Assign_XSLTParam" xml:id="id_605">
+										<copy xml:id="id_606">
+											<from expression="ora:getContentAsString(bpws:getVariableData('SyncPromotionListReqMsg','SyncItemListEBM','/coreitem:SyncItemListEBM'))" xml:id="id_607"/>
+											<to variable="XSLTParameters" query="/bpelcommon:parameters/bpelcommon:item[bpelcommon:name='ReqEBMParam']/bpelcommon:value" xml:id="id_608"/>
+										</copy>
+									</assign>
+									<assign name="xformSiebelPromotionABMToSyncItemListResponseEBM" xml:id="id_609">
+										<copy xml:id="id_610">
+											<from expression="ora:processXSLT('xsl/xformSiebelPromotionABMToSyncItemListResponseEBM.xsl',bpws:getVariableData('InvokeSWIPromotionIntegrationCallPromotion_SWIPromotionUpsert_OutputVar','SWIPromotionUpsert_Output'),bpws:getVariableData('XSLTParameters'))" xml:id="id_611"/>
+											<to variable="SyncPromotionListResMsg" part="SyncItemListResponseEBM" xml:id="id_612"/>
+										</copy>
+									</assign>
+									<scope name="PostXformCustom_Scope" bpelx:skipCondition="aia:getServiceProperty(bpws:getVariableData('ServiceName'),'ABCSExtension.PostXformABMtoEBMEBM',false())!='true'" xml:id="id_753" variableAccessSerializable="no" ui:customizable="true">
+										<sequence name="Sequence_PostXformABMtoEBMEBM" xml:id="id_615">
+											<assign name="Assign_EBM" xml:id="id_616">
+												<copy xml:id="id_617">
+													<from variable="SyncPromotionListResMsg" part="SyncItemListResponseEBM" query="/coreitem:SyncItemListResponseEBM" xml:id="id_618"/>
+													<to variable="PostXformABMtoEBMEBM_InputVariable" part="SyncItemListResponseEBM" query="/coreitem:SyncItemListResponseEBM" xml:id="id_619"/>
+												</copy>
+											</assign>
+											<invoke name="Invoke_PostProcessEBM" partnerLink="SyncProductSiebelProvABCSImplExtension" portType="ns2:SyncProductSiebelProvABCSImplExtensionService" operation="PostXformABMtoEBMEBM" inputVariable="PostXformABMtoEBMEBM_InputVariable" outputVariable="PostXformABMtoEBMEBM_OutputVariable" xml:id="id_620"/>
+											<assign name="Assign_EBM" xml:id="id_621">
+												<copy xml:id="id_622">
+													<from variable="PostXformABMtoEBMEBM_OutputVariable" part="SyncItemListResponseEBM" query="/coreitem:SyncItemListResponseEBM" xml:id="id_623"/>
+													<to variable="SyncPromotionListResMsg" part="SyncItemListResponseEBM" query="/coreitem:SyncItemListResponseEBM" xml:id="id_624"/>
+												</copy>
+											</assign>
+										</sequence>
+									</scope>
+									<assign name="Assign_Assign_InitCounter" xml:id="id_627">
+										<copy xml:id="id_628">
+											<from expression="0" xml:id="id_629"/>
+											<to variable="index" xml:id="id_630"/>
+										</copy>
+										<copy xml:id="id_631">
+											<from expression="ora:countNodes('SyncPromotionListResMsg','SyncItemListResponseEBM','/coreitem:SyncItemListResponseEBM/coreitem:DataArea/coreitem:SyncItemListResponse')" xml:id="id_632"/>
+											<to variable="countPromotionDataArea" xml:id="id_633"/>
+										</copy>
+									</assign>
+									<switch name="Switch_4" xml:id="id_634">
+										<case condition="bpws:getVariableData('SyncItemListResMsg','SyncItemListResponseEBM','/coreitem:SyncItemListResponseEBM/coreitem:DataArea') != ''" xml:id="id_635">
+											<scope name="Scope_AppendPromotionResponse" xml:id="id_636">
+												<sequence name="Sequence_9" xml:id="id_637">
+													<while name="While_1" condition="bpws:getVariableData('index') &lt; bpws:getVariableData('countPromotionDataArea')" xml:id="id_638">
+														<sequence name="Sequence_10" xml:id="id_639">
+															<assign name="Assign_IncrementCounter" xml:id="id_640">
+																<copy xml:id="id_641">
+																	<from expression="bpws:getVariableData('index') +1" xml:id="id_642"/>
+																	<to variable="index" xml:id="id_643"/>
+																</copy>
+															</assign>
+															<assign name="Assign_AppendPromotionResponse" xml:id="id_644">
+																<extensibleAssign xml:id="id_645">
+																	<bpelx:insertAfter xml:id="id_646">
+																		<bpelx:from variable="SyncPromotionListResMsg" part="SyncItemListResponseEBM" xml:id="id_647" query="/coreitem:SyncItemListResponseEBM/coreitem:DataArea[$index]"/>
+																		<bpelx:to variable="SyncItemListResMsg" part="SyncItemListResponseEBM" xml:id="id_648" query="/coreitem:SyncItemListResponseEBM/coreitem:DataArea"/>
+																	</bpelx:insertAfter>
+																</extensibleAssign>
+															</assign>
+														</sequence>
+													</while>
+												</sequence>
+											</scope>
+										</case>
+										<otherwise xml:id="id_649">
+											<assign name="Assign_PromotionResponse" xml:id="id_650">
+												<copy xml:id="id_651">
+													<from variable="SyncPromotionListResMsg" part="SyncItemListResponseEBM" query="/coreitem:SyncItemListResponseEBM" xml:id="id_652"/>
+													<to variable="SyncItemListResMsg" part="SyncItemListResponseEBM" query="/coreitem:SyncItemListResponseEBM" xml:id="id_653"/>
+												</copy>
+											</assign>
+										</otherwise>
+									</switch>
+								</sequence>
+							</scope>
+						</case>
+						<otherwise xml:id="id_654">
+							<empty name="Empty_7" xml:id="id_655"/>
+						</otherwise>
+					</switch>
+					<scope name="Scope_ReleaseWorkSpace" xml:id="id_656">
+						<sequence name="Sequence_ReleaseWorkSpace" xml:id="id_657">
+							<switch name="Switch_ReleaseWorkSpace" xml:id="id_658">
+								<case condition="ora:getElement('SyncItemListReqMsg','SyncItemListEBM','/coreitem:SyncItemListEBM/corecomm:EBMHeader/corecomm:MessageBatch/corecomm:BatchParameter[corecomm:Name = &quot;WORKSPACE_RELEASE_FLAG&quot;]/corecomm:Value')" xml:id="id_659">
+									<sequence name="Sequence_ReleaseWorkSpace" xml:id="id_660">
+										<switch name="Switch_AssignBatchStatus" xml:id="id_661">
+											<case condition="bpws:getVariableData('SyncItemListResMsg','SyncItemListResponseEBM','/coreitem:SyncItemListResponseEBM/corecomm:EBMHeader/corecomm:FaultNotification/corecomm:FaultMessage/corecomm:Text') != ''" xml:id="id_662">
+												<assign name="Assign_BatchStatus" xml:id="id_663">
+													<copy xml:id="id_664">
+														<from expression="'Success'" xml:id="id_665"/>
+														<to variable="SyncItemListResMsg" part="SyncItemListResponseEBM" xml:id="id_666" query="/coreitem:SyncItemListResponseEBM/corecomm:EBMHeader/corecomm:MessageBatch/corecomm:StatusCode"/>
+													</copy>
+												</assign>
+											</case>
+											<otherwise xml:id="id_667">
+												<empty name="Empty_8" xml:id="id_668"/>
+											</otherwise>
+										</switch>
+										<assign name="Assign_ReleaseFlag" xml:id="id_669">
+											<copy xml:id="id_670">
+												<from expression="'Y'" xml:id="id_671"/>
+												<to variable="ReleaseWorkspaceProdInpurVar" part="SWIProductImportUpsert_Input" query="/asivo:SWIProductImportUpsert_Input/swiprod:ListOfProductImport/swiprod:ProductIntegration/swiprod:WorkspaceReuseFlag" xml:id="id_672"/>
+											</copy>
+											<copy xml:id="id_673">
+												<from variable="SyncItemListReqMsg" part="SyncItemListEBM" query="/coreitem:SyncItemListEBM/corecomm:EBMHeader/corecomm:MessageBatch/corecomm:Name" xml:id="id_674"/>
+												<to variable="ReleaseWorkspaceProdInpurVar" part="SWIProductImportUpsert_Input" query="/asivo:SWIProductImportUpsert_Input/swiprod:ListOfProductImport/swiprod:ProductIntegration/swiprod:WorkspaceName" xml:id="id_675"/>
+											</copy>
+											<copy xml:id="id_676">
+												<from variable="SyncItemListReqMsg" part="SyncItemListEBM" query="/coreitem:SyncItemListEBM/corecomm:EBMHeader/corecomm:MessageBatch/corecomm:BatchParameter[corecomm:Name='WORKSPACE_RELEASE_FLAG']/corecomm:Value" xml:id="id_677"/>
+												<to variable="ReleaseWorkspaceProdInpurVar" part="SWIProductImportUpsert_Input" query="/asivo:SWIProductImportUpsert_Input/swiprod:ListOfProductImport/swiprod:ProductIntegration/swiprod:WorkspaceReleaseFlag" xml:id="id_678"/>
+											</copy>
+										</assign>
+										<invoke name="Invoke_ReleaseFlag" partnerLink="SWIProductIntegration" portType="asivo:SWIProductImport" operation="SWIProductImportUpsert" inputVariable="ReleaseWorkspaceProdInpurVar" outputVariable="ReleaseWorkspaceProdOutputVar" bpelx:outputHeaderVariable="SessionToken" bpelx:inputHeaderVariable="SiebelWSHeader" xml:id="id_717">
+											<bpelx:inputProperty name="endpointURI" xml:id="id_756" expression="aia:getServiceProperty('{http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncProductSiebelProvABCSImpl/V1}SyncProductSiebelProvABCSImpl',concat('Routing.SWIProductIntegration.',bpws:getVariableData('SystemID'),'.EndpointURI' ),false())"/>
+										</invoke>
+									</sequence>
+								</case>
+								<otherwise xml:id="id_718">
+									<empty name="Empty_6" xml:id="id_719"/>
+								</otherwise>
+							</switch>
+						</sequence>
+					</scope>
+				</sequence>
+			</case>
+			<otherwise xml:id="id_875">
+				<empty name="Empty2" xml:id="id_883"/>
+			</otherwise>
+		</switch>
+		<scope name="Scope2" xml:id="id_902">
+			<variables xml:id="id_903">
+				<variable name="CountVar" type="xsd:integer" xml:id="id_904"/>
+				<variable name="DataAreaIndex" type="xsd:integer" xml:id="id_905"/>
+				<variable name="ProductLineIndex" type="xsd:integer" xml:id="id_928"/>
+				<variable name="CountProductLineVar" type="xsd:integer" xml:id="id_929"/>
+			</variables>
+			<sequence xml:id="id_906">
+				<assign name="AssignDataAreaCount" xml:id="id_908">
+					<copy xml:id="id_909">
+						<from expression="ora:countNodes('SyncItemListReqMsg','SyncItemListEBM','/coreitem:SyncItemListEBM/coreitem:DataArea')" xml:id="id_910"/>
+						<to variable="CountVar" xml:id="id_911"/>
+					</copy>
+					<copy xml:id="id_912">
+						<from expression="'1'" xml:id="id_913"/>
+						<to variable="DataAreaIndex" xml:id="id_914"/>
+					</copy>
+				</assign>
+				<while name="While_DataArea" xml:id="id_907" condition="bpws:getVariableData('DataAreaIndex') &lt;=  bpws:getVariableData('CountVar')">
+					<sequence name="Sequence2" xml:id="id_915">
+						<switch name="Switch_Product_Line_Info" xml:id="id_799">
+							<case xml:id="id_850" condition="ora:countNodes('SyncItemListReqMsg','SyncItemListEBM','/coreitem:SyncItemListEBM/coreitem:DataArea[number($DataAreaIndex)]/coreitem:SyncItemList/corecomebo:ItemClassification/corecomebo:ProductLine') > 0"><sequence name="UpsertProductLine" xml:id="id_854">
+									<assign name="AssignProductLineCount" xml:id="id_927">
+										<copy xml:id="id_930">
+											<from expression="ora:countNodes('SyncItemListReqMsg','SyncItemListEBM','/coreitem:SyncItemListEBM/coreitem:DataArea[number($DataAreaIndex)]/coreitem:SyncItemList/corecomebo:ItemClassification/corecomebo:ProductLine')" xml:id="id_931"/>
+											<to variable="CountProductLineVar" xml:id="id_932"/>
+										</copy>
+										<copy xml:id="id_933">
+											<from expression="'1'" xml:id="id_934"/>
+											<to variable="ProductLineIndex" xml:id="id_935"/>
+										</copy>
+									</assign>
+									<while name="While_ProductLine" xml:id="id_939" condition="bpws:getVariableData('ProductLineIndex') &lt;=  bpws:getVariableData('CountProductLineVar')">
+										<sequence xml:id="id_940">
+											<assign name="PrepareXSLTParams" xml:id="id_890">
+												<copy xml:id="id_892">
+													<from xml:id="id_893">
+														<bpelcommon:parameters xmlns:ns1="http://schemas.oracle.com/service/bpel/common" xmlns:bpelcommon="http://schemas.oracle.com/service/bpel/common" xml:id="id_894">
+															<bpelcommon:item xml:id="id_895">
+																<bpelcommon:name xml:id="id_896">SystemID</bpelcommon:name>
+																<bpelcommon:value xml:id="id_897"/>
+															</bpelcommon:item>
+															<bpelcommon:item xml:id="id_936">
+																<bpelcommon:name xml:id="id_937">DataAreaIndex</bpelcommon:name>
+																<bpelcommon:value xml:id="id_938"/>
+															</bpelcommon:item>
+															<bpelcommon:item xml:id="id_945">
+																<bpelcommon:name xml:id="id_946">ProductLineIndex</bpelcommon:name>
+																<bpelcommon:value xml:id="id_947"/>
+															</bpelcommon:item>
+														</bpelcommon:parameters>
+													</from>
+													<to variable="ProductLine_XSLTParams" xml:id="id_898" query="/bpelcommon:parameters"/>
+												</copy>
+												<copy xml:id="id_899">
+													<from expression="bpws:getVariableData('SystemID')" xml:id="id_900"/>
+													<to variable="ProductLine_XSLTParams" query="/bpelcommon:parameters/bpelcommon:item[bpelcommon:name='SystemID']/bpelcommon:value" xml:id="id_901"/>
+												</copy>
+												<copy xml:id="id_924">
+													<from expression="bpws:getVariableData('DataAreaIndex')" xml:id="id_925"/>
+													<to variable="ProductLine_XSLTParams" query="/bpelcommon:parameters/bpelcommon:item[bpelcommon:name='DataAreaIndex']/bpelcommon:value" xml:id="id_926"/>
+												</copy>
+												<copy xml:id="id_948">
+													<from expression="bpws:getVariableData('ProductLineIndex')" xml:id="id_949"/>
+													<to variable="ProductLine_XSLTParams" query="/bpelcommon:parameters/bpelcommon:item[bpelcommon:name='ProductLineIndex']/bpelcommon:value" xml:id="id_950"/>
+												</copy>
+											</assign>
+											<scope name="PreXformUpsertproductLineScope" xml:id="id_861" bpelx:skipCondition="aia:getServiceProperty(bpws:getVariableData('ServiceName'),'ABCSExtension.PreXformEBMtoABMEBM',false())!='true'" variableAccessSerializable="no">
+												<sequence name="EBM_EnrichEBM" xml:id="id_863">
+													<assign name="AssignEBM" xml:id="id_864">
+														<copy xml:id="id_884">
+															<from variable="SyncItemListReqMsg" part="SyncItemListEBM" query="/coreitem:SyncItemListEBM" xml:id="id_885"/>
+															<to variable="PreXformEBMtoABMEBM_InputVariable" part="SyncItemListEBM" query="/coreitem:SyncItemListEBM" xml:id="id_886"/>
+														</copy>
+													</assign>
+													<invoke name="Invoke_PreProcessEBM" xml:id="id_862" inputVariable="PreXformEBMtoABMEBM_InputVariable" outputVariable="PreXformEBMtoABMEBM_OutputVariable" partnerLink="SyncProductSiebelProvABCSImplExtension" portType="ns2:SyncProductSiebelProvABCSImplExtensionService" operation="PreXformEBMtoABMEBM"/>
+													<assign name="AssignEBM" xml:id="id_865">
+														<copy xml:id="id_887">
+															<from variable="PreXformEBMtoABMEBM_OutputVariable" part="SyncItemListEBM" query="/coreitem:SyncItemListEBM" xml:id="id_888"/>
+															<to variable="SyncItemListReqMsg" part="SyncItemListEBM" query="/coreitem:SyncItemListEBM" xml:id="id_889"/>
+														</copy>
+													</assign>
+												</sequence>
+											</scope>
+											<assign name="XformSyncItemListToSWIUpsertProductLine" xml:id="id_855">
+												<copy xml:id="id_858">
+													<from xml:id="id_859" expression="ora:processXSLT('xsl/XformSyncItemListEBMToSWIUpsertProductLine.xsl',bpws:getVariableData('SyncItemListReqMsg','SyncItemListEBM'),bpws:getVariableData('ProductLine_XSLTParams'))"/>
+													<to xml:id="id_860" variable="InvokeSWIProductLine_Upsert_InputVariable" part="SWIProductLine_Upsert_Input"/>
+												</copy>
+											</assign>
+											<invoke name="InvokeSWIProductLine_Synchronize" xml:id="id_851" inputVariable="InvokeSWIProductLine_Upsert_InputVariable" outputVariable="InvokeSWIProductLine_Upsert_OutputVariable" partnerLink="SWIProductLine" portType="ns4:SWIProductLine" operation="SWIProductLine_Upsert" bpelx:outputHeaderVariable="SessionToken" bpelx:invokeAsDetail="no" bpelx:inputHeaderVariable="SiebelWSHeader">
+												<bpelx:inputProperty name="endpointURI" xml:id="id_849" expression="aia:getServiceProperty('{http://xmlns.oracle.com/ABCSImpl/Siebel/Core/SyncProductSiebelProvABCSImpl/V1}SyncProductSiebelProvABCSImpl',concat('Routing.SWIProductLineIntegration.',bpws:getVariableData('SystemID'),'.EndpointURI' ),false())"/>
+											</invoke>
+											<scope name="Post_EnrichEBM" xml:id="id_956" variableAccessSerializable="no" bpelx:skipCondition="aia:getServiceProperty(bpws:getVariableData('ServiceName'),'ABCSExtension.PostXformABMtoEBMEBM',false())!='true'">
+												<sequence name="Sequence3" xml:id="id_958">
+													<assign name="Assign_EBM" xml:id="id_957">
+														<copy xml:id="id_961">
+															<from variable="SyncItemListResMsg" part="SyncItemListResponseEBM" query="/coreitem:SyncItemListResponseEBM" xml:id="id_962"/>
+															<to variable="PostXformABMtoEBMEBM_InputVariable" part="SyncItemListResponseEBM" query="/coreitem:SyncItemListResponseEBM" xml:id="id_963"/>
+														</copy>
+													</assign>
+													<invoke name="Invoke_PostInvokeEBM" xml:id="id_959" inputVariable="PostXformABMtoEBMEBM_InputVariable" outputVariable="PostXformABMtoEBMEBM_OutputVariable" partnerLink="SyncProductSiebelProvABCSImplExtension" portType="ns2:SyncProductSiebelProvABCSImplExtensionService" operation="PostXformABMtoEBMEBM" bpelx:invokeAsDetail="no"/>
+													<assign name="Assign_EBM" xml:id="id_960">
+														<copy xml:id="id_964">
+															<from variable="PostXformABMtoEBMEBM_OutputVariable" part="SyncItemListResponseEBM" query="/coreitem:SyncItemListResponseEBM" xml:id="id_965"/>
+															<to variable="SyncItemListResMsg" part="SyncItemListResponseEBM" query="/coreitem:SyncItemListResponseEBM" xml:id="id_966"/>
+														</copy>
+													</assign>
+												</sequence>
+											</scope>
+											<assign name="Increment_ProductLineCount" xml:id="id_941">
+												<copy xml:id="id_942">
+													<from expression="bpws:getVariableData('ProductLineIndex') + 1" xml:id="id_943"/>
+													<to variable="ProductLineIndex" xml:id="id_944"/>
+												</copy>
+											</assign>
+										</sequence>
+									</while>
+								</sequence>
+							</case>
+							<otherwise xml:id="id_801">
+								<scope name="Scope1" xml:id="id_830">
+									<empty name="Empty1" xml:id="id_839"/>
+								</scope>
+							</otherwise>
+						</switch>
+						<assign name="Increment_DataAreaCount" xml:id="id_916">
+							<copy xml:id="id_917">
+								<from expression="bpws:getVariableData('DataAreaIndex') + 1" xml:id="id_918"/>
+								<to variable="DataAreaIndex" xml:id="id_919"/>
+							</copy>
+						</assign>
+					</sequence>
+				</while>
+			</sequence>
+		</scope>
+		<switch name="Switch_AppendProductLineResponse" xml:id="id_1042">
+			<case xml:id="id_1043" condition="bpws:getVariableData('SWIProdLineSyncItemListRespEBMMsg','SyncItemListResponseEBM','/coreitem:SyncItemListResponseEBM/corecomm:EBMHeader/corecomm:RequestEBMID') != ''">
+				<sequence name="Sequence5" xml:id="id_1059">
+					<assign name="Assign_ProductLineResponse" xml:id="id_1045">
+						<bpelx:insertBefore xml:id="id_1056">
+							<bpelx:from variable="SWIProdLineSyncItemListRespEBMMsg" part="SyncItemListResponseEBM" xml:id="id_1057" query="/coreitem:SyncItemListResponseEBM/coreitem:DataArea"/>
+							<bpelx:to variable="SyncItemListResMsg" part="SyncItemListResponseEBM" xml:id="id_1058" query="/coreitem:SyncItemListResponseEBM/coreitem:DataArea"/>
+						</bpelx:insertBefore>
+						<copy xml:id="id_1064">
+							<from variable="SWIProdLineSyncItemListRespEBMMsg" part="SyncItemListResponseEBM" query="/coreitem:SyncItemListResponseEBM/corecomm:EBMHeader" xml:id="id_1065"/>
+							<to variable="SyncItemListResMsg" part="SyncItemListResponseEBM" query="/coreitem:SyncItemListResponseEBM/corecomm:EBMHeader" xml:id="id_1066"/>
+						</copy>
+					</assign>
+				</sequence>
+			</case>
+			<otherwise xml:id="id_1044">
+				<empty name="Empty" xml:id="id_1046"/>
+			</otherwise>
+		</switch>
+		<scope name="Scope_ReleaseSessionToken" variableAccessSerializable="no" bpelx:skipCondition="string-length(bpws:getVariableData('SessionToken'))=0" xml:id="id_720">
+			<variables xml:id="id_721">
+				<variable name="ReleaseAIASessionPoolManagerRequest" messageType="aiaspm:ReleaseAIASessionPoolManagerRequest" xml:id="id_722"/>
+				<variable name="ReleaseAIASessionPoolManagerResponse" messageType="aiaspm:ReleaseAIASessionPoolManagerResponse" xml:id="id_723"/>
+			</variables>
+			<sequence name="Sequence_ReleaseSessionToken" xml:id="id_724">
+				<assign name="Assign_ReleaseAIASessionPoolManagerRequest" xml:id="id_725">
+					<copy xml:id="id_726">
+						<from variable="SessionToken" query="/sblws:SessionToken" xml:id="id_727"/>
+						<to variable="ReleaseAIASessionPoolManagerRequest" part="payload" query="/aiaspm:ReleaseAIASessionPoolManagerRequest/aiaspm:UpdatedSessionToken" xml:id="id_728"/>
+					</copy>
+					<copy xml:id="id_729">
+						<from variable="SystemID" xml:id="id_730"/>
+						<to variable="ReleaseAIASessionPoolManagerRequest" part="payload" query="/aiaspm:ReleaseAIASessionPoolManagerRequest/aiaspm:HostId" xml:id="id_731"/>
+					</copy>
+					<copy xml:id="id_732">
+						<from expression="ora:getCompositeInstanceId()" xml:id="id_733"/>
+						<to variable="ReleaseAIASessionPoolManagerRequest" part="payload" query="/aiaspm:ReleaseAIASessionPoolManagerRequest/aiaspm:InstanceId" xml:id="id_734"/>
+					</copy>
+				</assign>
+				<invoke name="Invoke_ReleaseSessionToken" partnerLink="AIASessionPoolManager" inputVariable="ReleaseAIASessionPoolManagerRequest" outputVariable="ReleaseAIASessionPoolManagerResponse" portType="aiaspm:AIASessionPoolManager" operation="Release" bpelx:invokeAsDetail="no" xml:id="id_735"/>
+			</sequence>
+		</scope>
+		<switch name="Switch_ItemResponse" xml:id="id_736">
+			<case condition="ora:getElement('SyncItemListReqMsg','SyncItemListEBM','/coreitem:SyncItemListEBM/coreitem:DataArea/corecomm:Sync/@responseCode')" xml:id="id_737">
+				<sequence name="Sequence_SendResponse" xml:id="id_738">
+					<assign name="AssignTitleToInvokeItemResponseEBS" xml:id="id_739">
+						<copy xml:id="id_740">
+							<from variable="Title" xml:id="id_741"/>
+							<to variable="SyncItemListResMsg" part="SyncItemListResponseEBM" query="/coreitem:SyncItemListResponseEBM/corecomm:EBMHeader/corecomm:BusinessScope[1]/corecomm:ID" xml:id="id_742"/>
+						</copy>
+					</assign>
+					<invoke name="InvokeItemResponseEBS" partnerLink="ItemResponseEBSV2" portType="coreitemv:ItemEBSResponse" operation="SyncItemListResponse" inputVariable="SyncItemListResMsg" xml:id="id_743"/>
+				</sequence>
+			</case>
+			<otherwise xml:id="id_744">
+				<empty name="Empty_5" xml:id="id_745"/>
+			</otherwise>
+		</switch>
+	</sequence>
+</process>

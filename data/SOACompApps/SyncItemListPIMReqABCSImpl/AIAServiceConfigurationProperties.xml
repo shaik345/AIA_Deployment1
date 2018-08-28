@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AIAServiceConfiguration xmlns="http://xmlns.oracle.com/aia/core/config/V1" version="1.0">
+	<ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/PIM/Core/SyncItemListPIMReqABCSImpl/V1}SyncItemListPIMReqABCSImpl">
+		<Property name="Default.SystemID">PIM_01</Property>
+		<!--<Property name="Routing.QueryItemListPIMAdapter.RouteToCAVS">false</Property>-->
+		<Property name="Routing.QueryItemListPIMAdapter.PIM_01.EndpointURI">http://tw001buaia.ddc.teliasonera.net:8001/soa-infra/services/default/QueryItemListPIMAdapter/client</Property> 
+		<!--<Property name="Routing.QueryItemListPIMAdapter.CAVS.EndpointURI">http://tw001buaia.ddc.teliasonera.net:8001/AIAValidationSystemServlet/syncresponsesimulator</Property>-->
+		<!--<Property name="Routing.QueryBillOffMaterialsListPIMAdapter.RouteToCAVS">false</Property>-->
+		<Property name="Routing.QueryBillOffMaterialsListPIMAdapter.PIM_01.EndpointURI">http://tw001buaia.ddc.teliasonera.net:8001/soa-infra/services/default/QueryBillOffMaterialsListPIMAdapter/client</Property>
+		<!--<Property name="Routing.QueryBillOffMaterialsListPIMAdapter.CAVS.EndpointURI">http://tw001buaia.ddc.teliasonera.net:8001/AIAValidationSystemServlet/syncresponsesimulator</Property>     -->           
+		<!--<Property name="Routing.GetListofTargetSystems.RouteToCAVS">false</Property>-->
+		<Property name="Routing.GetListofTargetSystems.PIM_01.EndpointURI">http://${participatingapplications.pim.server.host}:${participatingapplications.pim.server.port}/webservices/AppsWSProvider/oracle/apps/ego/pubfwk/service/PublicationService?wsdl</Property>
+                <!--<Property name="Routing.GetListofTargetSystems.CAVS.EndpointURI">http://tw001buaia.ddc.teliasonera.net:8001/AIAValidationSystemServlet/asyncresponserecipient</Property>-->
+
+		<!--<Property name="Routing.PublicationService.RouteToCAVS">false</Property>-->
+		<Property name="Routing.PublicationService.PIM_01.EndpointURI">http://${participatingapplications.pim.server.host}:${participatingapplications.pim.server.port}/webservices/AppsWSProvider/oracle/apps/ego/pubfwk/service/PublicationService?wsdl</Property>		
+                <!--<Property name="Routing.PublicationService.CAVS.EndpointURI">http://tw001buaia.ddc.teliasonera.net:8001/AIAValidationSystemServlet/asyncresponserecipient</Property>-->
+		<!--<Property name="Routing.ItemEBSV2.SyncItemList.RouteToCAVS">false</Property>-->
+		<Property name="Routing.ItemEBSV2.SyncItemList.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+		<!--<Property name="Routing.ItemEBSV2.SyncItemList.CAVS.EndpointURI">http://tw001buaia.ddc.teliasonera.net:8001/AIAValidationSystemServlet/asyncresponserecipient</Property>-->
+		<!--<Property name="Routing.BillOfMaterialsEBS.SyncBillOfMaterialsList.RouteToCAVS">false</Property>-->
+		<Property name="Routing.BillOfMaterialsEBS.SyncBillOfMaterialsList.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+		<!--<Property name="Routing.BillOfMaterialsEBS.SyncBillOfMaterialsList.CAVS.EndpointURI">http://tw001buaia.ddc.teliasonera.net:8001/AIAValidationSystemServlet/asyncresponserecipient</Property>-->
+		<!--<Property name="Routing.PriceListEBSV2.SyncPriceListList.RouteToCAVS">false</Property>-->
+		<Property name="Routing.PriceListEBSV2.SyncPriceListList.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+		<!--<Property name="Routing.PriceListEBSV2.SyncPriceListList.CAVS.EndpointURI">http://tw001buaia.ddc.teliasonera.net:8001/AIAValidationSystemServlet/asyncresponserecipient</Property>-->
+		<Property name="ABCSExtension.PreXformABMtoEBMItemListABM">false</Property>
+		<Property name="ABCSExtension.PreInvokeItemListEBSSyncItemListEBM">false</Property>
+		<Property name="ABCSExtension.PostXformEBMtoABMItemListEBM">false</Property>
+		<Property name="ABCSExtension.PreInvolkePublicationServiceItemListEBM">false</Property>
+		<Property name="ABCSExtension.PreInvokePriceListEBSSyncItemListEBM">false</Property>
+		<Property name="ABCSExtension.PostXformEBMtoABMPriceListEBM">false</Property>
+		<Property name="ABCSExtension.PreInvolkePublicationServicePriceListEBM">false</Property>
+		<Property name="ABCSExtension.PreXformABMtoEBMIBillOfMaterialsListABM">false</Property>
+		<Property name="ABCSExtension.PreInvokeBillOfMaterialsListEBSSyncBOMListEBM">false</Property>
+		<Property name="ABCSExtension.PostXformEBMtoABMBOMListEBM">false</Property>
+		<Property name="ABCSExtension.PreInvolkePublicationServiceBOMListEBM">false</Property>       	
+		<Property name="NUMBER_OF_PARALLEL_ITEM_TARGETS">3</Property>
+		<Property name="NUMBER_OF_PARALLEL_BOM_TARGETS">3</Property>
+	</ServiceConfiguration>
+</AIAServiceConfiguration>

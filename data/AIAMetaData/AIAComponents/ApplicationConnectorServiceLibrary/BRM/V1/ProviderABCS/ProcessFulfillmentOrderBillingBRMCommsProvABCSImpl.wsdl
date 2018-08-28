@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="ProcessFulfillmentOrderBillingBRMCommsProvABCSImpl"
+             targetNamespace="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/ProcessFulfillmentOrderBillingBRMCommsProvABCSImpl/V1"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:sordebo="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/FulfillmentOrder/V1"
+             xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+             xmlns:bg="http://schemas.oracle.com/BG/bpel/common"
+             xmlns:com="http://schemas.oracle.com/service/bpel/common"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:brm="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes"
+             xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	     xmlns:gesb="http://www.teliasonera.com/oagis"
+             xmlns:sordabcs="http://xmlns.oracle.com/ABCSImpl/BRM/Industry/Comms/ProcessFulfillmentOrderBillingBRMCommsProvABCSImpl/V1">
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description>BRM Provider ABCS Implementation for Order To
+                                Billing Integration</svcdoc:Description>
+            <svcdoc:ServiceType>ProviderABCSImplementation</svcdoc:ServiceType>
+            <svcdoc:DisplayName>ProcessFulfillmentOrderBillingBRMCommsProvABCSImpl</svcdoc:DisplayName>
+            <svcdoc:Version>1.0</svcdoc:Version>
+            <svcdoc:EBOName>FulfillmentOrderEBO</svcdoc:EBOName>
+            <svcdoc:LifecycleStatus>Active</svcdoc:LifecycleStatus>
+            <svcdoc:ImplementationTechnology>BPEL</svcdoc:ImplementationTechnology>
+            <svcdoc:ProductFamily>BRM</svcdoc:ProductFamily>
+            <svcdoc:ProductPillar>BRM</svcdoc:ProductPillar>
+            <svcdoc:ProductCode>SFA</svcdoc:ProductCode>
+        </svcdoc:Service>
+    </documentation>
+    <import namespace="http://schemas.oracle.com/bpel/extension"
+            location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <types>
+        <xsd:schema>
+            <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/FulfillmentOrder/V1"
+                        schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Industry/Communications/EBO/FulfillmentOrder/V1/FulfillmentOrderEBM.xsd"/>
+        </xsd:schema>
+        <xsd:schema>
+            <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2"
+                        schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseObjectLibrary/Core/Common/V2/Meta.xsd"/>
+        </xsd:schema>
+        <xsd:schema>
+            <xsd:import namespace="http://schemas.oracle.com/service/bpel/common"
+                        schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/bpel-common.xsd"/>
+        </xsd:schema>
+        <xsd:schema>
+            <xsd:import namespace="http://xmlns.oracle.com/ProcessFulfillmentOrderBillingBRMCommsSubprocess"
+                        schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/PIPS/Communications/Schemas/ProcessFulfillmentOrderBillingBRMCommsSubprocess.xsd"/>
+        </xsd:schema>
+		<xsd:schema>
+            <xsd:import namespace="http://www.teliasonera.com/oagis"
+                        schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/GESB/V1/schemas/SyncItemMaster.xsd"/>
+        </xsd:schema>
+    </types>
+	<message name="MediaVoucherSchemaRequestMessage">
+        <part name="payload"
+              element="gesb:SyncItemMaster"/>
+    </message>
+    <message name="ProcessFulfillmentOrderBillingBRMCommsProvABCSImplRequestMessage">
+        <part name="payload"
+              element="sordebo:ProcessFulfillmentOrderBillingEBM"/>
+    </message>
+    <message name="ProcessFulfillmentOrderBillingBRMCommsProvABCSImplResponseMessage">
+        <part name="payload"
+              element="sordebo:ProcessFulfillmentOrderBillingEBM"/>
+    </message>
+    <message name="FaultMsg">
+        <part name="Fault" element="corecom:Fault"/>
+    </message>
+    <message name="AIAFaultMsg">
+        <documentation>
+            <svcdoc:Message>
+                <svcdoc:Description>This message is used for propagating Error
+                                    Context and Error Message</svcdoc:Description>
+            </svcdoc:Message>
+        </documentation>
+        <part name="AIAFault" element="corecom:Fault"/>
+    </message>
+    <portType name="ProcessFulfillmentOrderBillingBRMCommsProvABCSImpl">
+        <operation name="processBilling">
+            <input message="sordabcs:ProcessFulfillmentOrderBillingBRMCommsProvABCSImplRequestMessage"/>
+        </operation>
+    </portType>
+    <plnk:partnerLinkType name="ProcessFulfillmentOrderBillingBRMCommsProvABCSImpl">
+        <plnk:role name="ProcessFulfillmentOrderBillingBRMCommsProvABCSImplProvider">
+            <plnk:portType name="sordabcs:ProcessFulfillmentOrderBillingBRMCommsProvABCSImpl"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

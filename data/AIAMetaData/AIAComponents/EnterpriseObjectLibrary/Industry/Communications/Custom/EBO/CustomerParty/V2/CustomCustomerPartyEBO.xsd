@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+** Oracle Corporation  **
+** AIA Enterprise Object Library **
+** Version: 2.06 **
+** Date: Sep 16, 2010 **
+ 
+ Copyright (c) 2007, 2010, Oracle and/or its affiliates. All rights reserved. 
+License information for this file is provided in the file 
+"Oracle AIA EBO License.txt" that is provided with this package.
+ 
+    XML Schema 
+    Name: \EnterpriseObjectsLibrary\Industry\Communications\EBO\CustomerParty\V2\CustomerPartyEBO.xsd 
+ 
+-->
+ 
+<!-- ====================================================================== -->
+<!-- =====      Oracle EBO Custom CustomerParty EBO Schema Module     ===== -->
+<!-- ====================================================================== -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://xmlns.oracle.com/EnterpriseObjects/Core/Custom/EBO/CustomerParty/V2" xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:corecomcust="http://xmlns.oracle.com/EnterpriseObjects/Core/Custom/Common/V2" targetNamespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Custom/EBO/CustomerParty/V2" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.06.00" > 
+<!-- ====================================================================== -->
+<!-- ==============  Imports and Includes   =============================== -->
+<!-- ====================================================================== -->
+<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="../../../../Common/V2/CommonComponents.xsd"/>
+<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="../../../../Common/V2/CodeLists.xsd"/>
+<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="../../../../Common/V2/DataTypes.xsd"/>
+<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="../../../../Common/V2/Meta.xsd"/>
+<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Custom/Common/V2" schemaLocation="../../../Common/V2/CustomCommonComponents.xsd"/>
+<!-- ====================================================================== -->
+<!-- ==============  CustomerParty Custom Components ================ -->
+<!-- ====================================================================== -->
+<xsd:complexType name="CustomCustomerPartyEBOType" />
+<xsd:complexType name="CustomAccountBalanceSummaryType" />
+<!--xsd:complexType name="CustomCustomerPartyAccountType" /-->
+	<xsd:complexType name="CustomCustomerPartyAccountType">
+			<xsd:sequence>
+		<!-- Start Code Merge R1.3 Drop 2 EBM place holder is added for CustomerPartyAccont SSN number Santosh Aug 4th 2015 -->
+					   <xsd:element name="CustomerPartyAccountSSN" type="xsd:string"  minOccurs="0" />
+					 
+					   <xsd:element name="CustomerPartyAccountTSCID" type="xsd:string"  minOccurs="0" />
+					     
+			<!--  End Code Merge R1.3 Drop 2 custom fields R1.3 Drop 2 Santosh Aug 4th -->
+
+<!-- Start ARFT changes added 7 new fields as per GESB requirment on May 5th 2016 -->
+<xsd:element name="TSDateOfExpiry" type="xsd:string"  minOccurs="0" /><xsd:element name="TSGlobalAccount" type="xsd:string"  minOccurs="0" />
+<xsd:element name="TSInsolvencyStatus" type="xsd:string"  minOccurs="0" />
+<xsd:element name="TSSalesTeamId" type="xsd:string"  minOccurs="0" />
+<xsd:element name="TSSubSegment" type="xsd:string"  minOccurs="0" />
+<xsd:element name="TSVATCode" type="xsd:string"  minOccurs="0" />
+<xsd:element name="TSVATNumber" type="xsd:string"  minOccurs="0" />
+<xsd:element name="TSVIPFlag" type="xsd:string"  minOccurs="0" />
+<xsd:element name="PrimaryAddressId" type="xsd:string"  minOccurs="0" />
+<xsd:element name="PrimaryContactId" type="xsd:string"  minOccurs="0" />
+<!-- End ARFT changes added 7 new fields as per GESB requirment on May 5th 2016 -->						
+			
+		</xsd:sequence>
+	</xsd:complexType>
+<xsd:complexType name="CustomBalanceGroupType" />
+<xsd:complexType name="CustomBalanceSummaryType" />
+<xsd:complexType name="CustomCreditLimitRangeType" />
+<xsd:complexType name="CustomCustomerPartyAccountAttachmentType" />
+<xsd:complexType name="CustomCustomerPartyAccountContactType" />
+<xsd:complexType name="CustomCustomerPartyAccountContactCreditCardType" />
+<xsd:complexType name="CustomCustomerPartyAccountContactUsageType" />
+<xsd:complexType name="CustomCustomerPartyAccountSiteType" />
+<xsd:complexType name="CustomCustomerPartyAccountSiteAttachmentType" />
+<xsd:complexType name="CustomCustomerPartyAccountSiteBillingProfileType" />
+<xsd:complexType name="CustomCustomerPartyAccountSiteShippingProfileType" />
+<xsd:complexType name="CustomCustomerPartyAccountSiteUsageType" />
+<xsd:complexType name="CustomCustomerPartyAccountUsageType" />
+<xsd:complexType name="CustomCustomerPartyAttachmentType" />
+<xsd:complexType name="CustomCustomerPartyBankAccountType" />
+<xsd:complexType name="CustomCustomerPartyBestVisitationTimeType" />
+<!--start : R17.2-sprint_12 : GAP ID 121 – PRE-REGISTERED CREDIT CARD PAYMENT TO BANK GATEWAYS -->
+<xsd:complexType name="CustomCustomerPartyBillingProfileType">
+	<xsd:sequence>
+		<xsd:element name="CreditCardVerificationNumber" type="xsd:string" minOccurs="0" maxOccurs="unbounded" />
+	</xsd:sequence>		
+</xsd:complexType>
+<!--end : R17.2-sprint_12 : GAP ID 121 – PRE-REGISTERED CREDIT CARD PAYMENT TO BANK GATEWAYS -->
+<xsd:complexType name="CustomCustomerPartyCreditProfileType" />
+<xsd:complexType name="CustomCustomerPartyFinancialAccountType" />
+<xsd:complexType name="CustomCustomerPartyFinancialAccountBalanceType" />
+<xsd:complexType name="CustomCustomerPartyOverdueCollectionRuleType" />
+
+<!-- Start Code Merge R1.3 Drop2 custom fields R1.3 Drop 2 Santosh Aug 4th 2015 -->
+<!--xsd:complexType name="CustomCustomerPartyPaymentProfileType" /-->	
+	<xsd:complexType name="CustomCustomerPartyPaymentProfileType">
+			<xsd:sequence>
+			<xsd:element name="TSOrganizationName" type="xsd:string" minOccurs="0" maxOccurs="unbounded" />
+<!-- START: Changes made for BankID and e-Invoice by Arup Ghosal on 22-09-2015 -->			
+			<xsd:element name="TSBankID" type="xsd:string" minOccurs="0" maxOccurs="unbounded" />
+<!-- END: Changes made for BankID and e-Invoice by Arup Ghosal on 22-09-2015 -->	
+<!--Start CareOf gap 52B BCT 44 Ari R6.0 -->
+<xsd:element name="TSCareOf" type="xsd:string" minOccurs="0" maxOccurs="unbounded" />
+
+<!--End CareOf gap 52B R6.0 -->
+<!-- START: Changes made for ARFT Sprint 2 -->			
+			<xsd:element name="TSBankAuthorizationflag" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="TSPointId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+<!-- END: Changes made for ARFT Sprint 2 -->
+<!--Start: R8.0 gap 52B change Nishant 13-May-2016-->
+<xsd:element name="TSBillRefID" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+<!--End: R8.0 gap 52B change Nishant 13-May-2016-->
+
+<!--Start: R12.0 gap BCT-412 Ari 12/9/2016-->
+		 <xsd:element name="TSAttentionInfo" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+<!--End: R12.0 gap BCT-412 Ari 12/9/2016-->
+
+		<!--Start BCT-226 R14.0 Payment Term Ari 7/10/2016 -->
+		  <xsd:element name="TSPaymentTerm" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+		 <!--End BCT-226 R14.0 Payment Term Ari 7/10/2016 -->
+
+		</xsd:sequence>
+	</xsd:complexType>
+<!-- End Code Merge R1.3 Drop 2  custom fields R1.3 Drop 2 Santosh Aug 4th 2015 -->
+<xsd:complexType name="CustomCustomerPartyPrivacyProfileType" />
+<xsd:complexType name="CustomCustomerPartySellingProfileType" />
+<xsd:complexType name="CustomCustomerPartyShippingExceptionConfigurationType" />
+<xsd:complexType name="CustomCustomerPartyShippingProfileType" />
+<xsd:complexType name="CustomCustomerPartySpecificationType" />
+<xsd:complexType name="CustomCustomerPartySupportTeamType" />
+<xsd:complexType name="CustomCustomerPartySupportTeamMemberType" />
+<xsd:complexType name="CustomCustomerPartyTaxExemptionType" />
+<xsd:complexType name="CustomCustomerPartyWorkerType" />
+<xsd:complexType name="CustomPrivacyNoticeCommunicationType" />
+<xsd:complexType name="CustomRelatedCustomerPartyType" />
+<xsd:complexType name="CustomRelatedCustomerPartyAccountType" />
+<xsd:complexType name="CustomRelatedCustomerPartyAccountContactType" />
+<xsd:complexType name="CustomResourceUnitType" />
+<xsd:complexType name="CustomResourceUnitBalanceType" />
+<xsd:complexType name="CustomSpecialNeedProfileType" />
+</xsd:schema>

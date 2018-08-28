@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<dvm name="ITEM_BILLING_TYPE_CODE" xmlns="http://xmlns.oracle.com/dvm">
+	<description>ValueXref BillingTypeCode</description>
+	<columns>
+		<column name="EBIZ_01"/>
+		<column name="COMMON"/>
+		<column name="PIM_01"/>
+		<column name="SEBL_01"/>
+		<column name="BRM_01"/>
+	</columns>
+	<rows>
+		<row>
+			<cell>E</cell>
+			<cell>EXPENSE</cell>
+			<cell>EXPENSE</cell>
+			<cell>Expense</cell>
+			<cell/>
+		</row>
+		<row>
+			<cell>L</cell>
+			<cell>LABOUR</cell>
+			<cell>LABOUR</cell>
+			<cell>Labour</cell>
+			<cell/>
+		</row>
+		<row>
+			<cell>M</cell>
+			<cell>MATERIAL</cell>
+			<cell>MATERIAL</cell>
+			<cell>Material</cell>
+			<cell/>
+		</row>
+		<row>
+			<cell>C</cell>
+			<cell>CONSUME</cell>
+			<cell>CONSUME</cell>
+			<cell/>
+			<cell/>
+		</row>
+		<row>
+			<cell/>
+			<cell>SUBSCRIPTION</cell>
+			<cell>SUBSCRIPTION</cell>
+			<cell>Subscription</cell>
+			<cell>602</cell>
+		</row>
+		<row>
+			<cell/>
+			<cell>SPONSORSHIP</cell>
+			<cell>SPONSORSHIP</cell>
+			<cell>Sponsorship</cell>
+			<cell>Sponsorship</cell>
+		</row>
+		<row>
+			<cell/>
+			<cell>ITEM</cell>
+			<cell>ITEM</cell>
+			<cell>Item</cell>
+			<cell>601</cell>
+		</row>
+		<row>
+			<cell/>
+			<cell>SYSTEM</cell>
+			<cell>SYSTEM</cell>
+			<cell>System</cell>
+			<cell>603</cell>
+		</row>
+		<row>
+			<cell/>
+			<cell>SERVICE_BUNDLE</cell>
+			<cell>SERVICE_BUNDLE</cell>
+			<cell>Service Bundle</cell>
+			<cell/>
+		</row>
+		<row>
+			<cell/>
+			<cell>EVENT</cell>
+			<cell>EVENT</cell>
+			<cell>Event</cell>
+			<cell/>
+		</row>
+		<row>
+			<cell/>
+			<cell>DISCOUNT</cell>
+			<cell>DISCOUNT</cell>
+			<cell>Discount</cell>
+			<cell/>
+		</row>
+		<row>
+			<cell/>
+			<cell>SPECIAL_RATING</cell>
+			<cell>SPECIAL_RATING</cell>
+			<cell>Special Rating</cell>
+			<cell/>
+		</row>
+	</rows>
+</dvm>

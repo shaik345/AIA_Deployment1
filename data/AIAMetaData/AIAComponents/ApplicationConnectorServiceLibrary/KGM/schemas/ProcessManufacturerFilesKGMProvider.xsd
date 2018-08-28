@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsd:schema targetNamespace="http://xmlns.oracle.com/MDS_deploy/ProcessManufacturerFilesKGMProvider/ProcessManufacturerFilesKGMProvider" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+<xsd:element name="ItemListType">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="FileName" type="xsd:string" minOccurs="1" maxOccurs="unbounded"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="processResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="result" type="xsd:string"/>
+<xsd:element name="FileName" type="xsd:string" minOccurs="1" maxOccurs="unbounded"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:schema>

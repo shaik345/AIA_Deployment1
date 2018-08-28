@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:brm="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="TLCCHANNEL" targetNamespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes">
+<types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes">
+<include schemaLocation="../schemas/TLC_OP_CHANNEL_QUERY_BALANCES.xsd"/>
+<include schemaLocation="../schemas/TLC_OP_CHANNEL_GET_TOPUP_HISTORY.xsd"/>
+<include schemaLocation="../schemas/TLC_OP_CHANNEL_PURCHASE_TOPUP.xsd"/>
+<include schemaLocation="../schemas/TLC_OP_CHANNEL_AR_GET_BILL_ITEMS.xsd"/>
+</schema>
+</types>
+<message name="TLC_OP_CHANNEL_QUERY_BALANCES_inmsg">
+<part element="brm:TLC_OP_CHANNEL_QUERY_BALANCES_inputFlist" name="TLC_OP_CHANNEL_QUERY_BALANCES_inputFlist"/>
+</message>
+<message name="TLC_OP_CHANNEL_QUERY_BALANCES_outmsg">
+<part element="brm:TLC_OP_CHANNEL_QUERY_BALANCES_outputFlist" name="TLC_OP_CHANNEL_QUERY_BALANCES_outputFlist"/>
+</message>
+<message name="TLC_OP_CHANNEL_GET_TOPUP_HISTORY_inmsg">
+<part element="brm:TLC_OP_CHANNEL_GET_TOPUP_HISTORY_inputFlist" name="TLC_OP_CHANNEL_GET_TOPUP_HISTORY_inputFlist"/>
+</message>
+<message name="TLC_OP_CHANNEL_GET_TOPUP_HISTORY_outmsg">
+<part element="brm:TLC_OP_CHANNEL_GET_TOPUP_HISTORY_outputFlist" name="TLC_OP_CHANNEL_GET_TOPUP_HISTORY_outputFlist"/>
+</message>
+<message name="TLC_OP_CHANNEL_PURCHASE_TOPUP_inmsg">
+<part element="brm:TLC_OP_CHANNEL_PURCHASE_TOPUP_inputFlist" name="TLC_OP_CHANNEL_PURCHASE_TOPUP_inputFlist"/>
+</message>
+<message name="TLC_OP_CHANNEL_PURCHASE_TOPUP_outmsg">
+<part element="brm:TLC_OP_CHANNEL_PURCHASE_TOPUP_outputFlist" name="TLC_OP_CHANNEL_PURCHASE_TOPUP_outputFlist"/>
+</message>
+	 <message name="TLC_OP_CHANNEL_AR_GET_BILL_ITEMS_inmsg">
+        <part element="brm:TLC_OP_CHANNEL_AR_GET_BILL_ITEMS_inputFlist" name="TLC_OP_CHANNEL_AR_GET_BILL_ITEMS_inputFlist"/>
+    </message>
+    <message name="TLC_OP_CHANNEL_AR_GET_BILL_ITEMS_outmsg">
+        <part element="brm:TLC_OP_CHANNEL_AR_GET_BILL_ITEMS_outputFlist" name="TLC_OP_CHANNEL_AR_GET_BILL_ITEMS_outputFlist"/>
+    </message>
+<portType name="BRMTLCCHANNELService_ptt">
+<operation name="TLC_OP_CHANNEL_QUERY_BALANCES">
+<input message="brm:TLC_OP_CHANNEL_QUERY_BALANCES_inmsg" name="TLC_OP_CHANNEL_QUERY_BALANCES_Request"/>
+<output message="brm:TLC_OP_CHANNEL_QUERY_BALANCES_outmsg" name="TLC_OP_CHANNEL_QUERY_BALANCES_Response"/>
+</operation>
+<operation name="TLC_OP_CHANNEL_GET_TOPUP_HISTORY">
+<input message="brm:TLC_OP_CHANNEL_GET_TOPUP_HISTORY_inmsg" name="TLC_OP_CHANNEL_GET_TOPUP_HISTORY_Request"/>
+<output message="brm:TLC_OP_CHANNEL_GET_TOPUP_HISTORY_outmsg" name="TLC_OP_CHANNEL_GET_TOPUP_HISTORY_Response"/>
+</operation>
+<operation name="TLC_OP_CHANNEL_PURCHASE_TOPUP">
+<input message="brm:TLC_OP_CHANNEL_PURCHASE_TOPUP_inmsg" name="TLC_OP_CHANNEL_PURCHASE_TOPUP_Request"/>
+<output message="brm:TLC_OP_CHANNEL_PURCHASE_TOPUP_outmsg" name="TLC_OP_CHANNEL_PURCHASE_TOPUP_Response"/>
+</operation>
+		<operation name="TLC_OP_CHANNEL_AR_GET_BILL_ITEMS">
+            <input message="brm:TLC_OP_CHANNEL_AR_GET_BILL_ITEMS_inmsg" name="TLC_OP_CHANNEL_AR_GET_BILL_ITEMS_Request"/>
+            <output message="brm:TLC_OP_CHANNEL_AR_GET_BILL_ITEMS_outmsg" name="TLC_OP_CHANNEL_AR_GET_BILL_ITEMS_Response"/>
+        </operation>
+</portType>
+<plt:partnerLinkType name="BRMTLCCHANNELService_plt">
+<plt:role name="BRMTLCCHANNELService_role">
+<plt:portType name="brm:BRMTLCCHANNELService_ptt"/>
+</plt:role>
+</plt:partnerLinkType>
+</definitions>

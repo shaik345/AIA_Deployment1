@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes"  attributeFormDefault="unqualified" elementFormDefault="qualified"  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes">
+
+    <!-- root element for notifications -->
+    <xs:element name="Notification" type="NotificationType"/>
+
+    <xs:complexType name="NotificationType">
+        <xs:choice>
+            <!-- policy related notifications -->
+            <xs:element name="SpendingLimitNotification" type="SPENDING_LIMIT_NOTIFICATION_TYPE"/>
+            <xs:element name="CreateSubscriberPreference" type="SUBSCRIBER_PREFERENCE_TYPE"/>
+            <xs:element name="ModifySubscriberPreference" type="SUBSCRIBER_PREFERENCE_TYPE"/>
+            <xs:element name="DeleteSubscriberPreference" type="SUBSCRIBER_PREFERENCE_TYPE"/>
+
+            <!-- external notifications -->
+            <xs:element name="CreditFloorBreachNotification" type="CREDIT_FLOOR_BREACH_EVENT_TYPE"/>
+            <xs:element name="CreditCeilingBreachNotification" type="CREDIT_CEILING_BREACH_EVENT_TYPE"/>
+            <xs:element name="AdviceOfChargeNotification" type="ADVICE_OF_CHARGE_NOTIFICATION_EVENT_TYPE"/>
+            <xs:element name="CreditThresholdBreachNotification" type="THRESHOLD_BREACH_EVENT_TYPE"/>
+            <xs:element name="AggregatedCreditThresholdBreachNotification"
+                        type="AGGREGATED_THRESHOLD_BREACH_EVENT_TYPE"/>
+            <xs:element name="RARNotification" type="RAR_NOTIFICATION_TYPE"/>
+            <xs:element name="CustomNotification"
+                        type="CUSTOM_EVENT_TYPE"/>
+
+            <!-- ECE internal notifications ....notifications consumed by BRMGateway-->
+            <xs:element name="BillingNotification" type="BILLING_NOTIFICATION_EVENT_TYPE"/>
+            <xs:element name="ReplenishPoidIdNotification" type="REPLENISH_POID_EVENT_TYPE"/>
+            <xs:element name="ExternalTopUpNotification" type="EXTERNAL_TOP_UP_EVENT_TYPE"/>
+            <xs:element name="LifeCycleTransitionNotification" type="LIFE_CYCLE_TRANSISTION_EVENT_TYPE"/>
+            <xs:element name="FirstUsageValidityNotification" type="FIRST_USAGE_VALIDITY_EVENT_TYPE"/>
+            <xs:element name="RerateCreateJobNotifcation" type="RERATE_CREATE_JOB_EVENT_TYPE"/>
+            <xs:element name="OfferingValidityInitializationNotification"
+                        type="OFFERING_VALIDITY_INITIALIZATION_EVENT_TYPE"/>
+        </xs:choice>
+        <xs:attribute name="version" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <!-- ########################################## Policy ################################################# -->
+    <!-- SpendingLimit notification Element -->
+    <xs:complexType name="SPENDING_LIMIT_NOTIFICATION_TYPE">
+        <xs:sequence>
+            <xs:element name="NotificationType" type="xs:string" fixed="SPENDING_LIMIT_NOTIFICATION"/>
+            <xs:element name="CustomerId" type="xs:string"/>
+            <xs:element name="PublicUserIdentities" type="PublicUserIdentitiesType"/>
+            <xs:element name="SessionId" type="xs:string"/>
+            <xs:element name="OperationType">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="UPDATE"/>
+                        <xs:enumeration value="USAGE"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="SubOperationType" type="xs:string"/>
+            <xs:element name="Destination-Realm" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="Destination-Host" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="BalanceElementId" type="xs:string"/>
+            <xs:element name="BalanceElementCode" type="xs:string"/>
+            <xs:element name="CurrentBalance" type="xs:decimal"/>
+            <xs:element name="Unit" type="xs:string"/>
+            <xs:element name="EffectiveTime" type="xs:string"/>
+            <xs:element name="Breaches" type="BreachesType" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- SubscriberPreference type -->
+    <xs:complexType name="SUBSCRIBER_PREFERENCE_TYPE">
+        <xs:sequence>
+            <xs:element name="NotificationType" type="xs:string" fixed="SUBSCRIBER_PREFERENCE_UPDATE_EVENT"/>
+            <xs:element name="CustomerId" type="xs:string"/>
+            <xs:element name="ProductInfo" maxOccurs="unbounded" minOccurs="0">
+                <!-- ProductInfo type -->
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ProductId" type="xs:string"/>
+                        <xs:element name="PublicUserIdentities" type="PublicUserIdentitiesType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="SubscriberPreferencesInfo" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="PreferenceName" type="xs:string"/>
+                        <xs:element name="PreferenceValue" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="SessionId" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="OperationType">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="UPDATE"/>
+                        <xs:enumeration value="USAGE"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="SubOperationType" type="xs:string"/>
+            <xs:element name="Destination-Realm" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="Destination-Host" type="xs:string" minOccurs="0" maxOccurs="1"/>
+
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- ########################################## General notification ################################################# -->
+    <!-- CreditFloorBreachEvent notification element -->
+    <xs:complexType name="CREDIT_FLOOR_BREACH_EVENT_TYPE">
+        <xs:sequence>
+            <xs:element name="NotificationType" type="xs:string" fixed="CREDIT_FLOOR_BREACH_EVENT"/>
+            <xs:element name="PublicUserIdentities" type="PublicUserIdentitiesType"/>
+            <xs:element name="BalanceElementId" type="xs:string"/>
+            <xs:element name="BalanceElementCode" type="xs:string"/>
+            <xs:element name="CurrentBalance" type="xs:decimal"/>
+            <xs:element name="CreditFloor" type="xs:decimal"/>
+            <xs:element name="Reason">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="0x01"/>
+                        <xs:enumeration value="0x02"/>
+                        <xs:enumeration value="0x04"/>
+                        <xs:enumeration value="0x08"/>
+                        <xs:enumeration value="0x10"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="OperationType">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="UPDATE"/>
+                        <xs:enumeration value="USAGE"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="AlertType">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="3"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="SubOperationType" type="xs:string"/>
+            <xs:element name="ExtensionData" type="ExtensionData" minOccurs="0"
+                        maxOccurs="1"/>
+            <xs:element name="SubscriberPreferences" type="SubscriberPreferencesType" minOccurs="0"
+                        maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- CreditCeilingBreachEvent notification element -->
+    <xs:complexType name="CREDIT_CEILING_BREACH_EVENT_TYPE">
+        <xs:sequence>
+            <xs:element name="NotificationType" type="xs:string" fixed="CREDIT_CEILING_BREACH_EVENT"/>
+            <xs:element name="PublicUserIdentities" type="PublicUserIdentitiesType"/>
+            <xs:element name="BalanceElementId" type="xs:string"/>
+            <xs:element name="BalanceElementCode" type="xs:string"/>
+            <xs:element name="CurrentBalance" type="xs:decimal"/>
+            <xs:element name="CreditCeiling" type="xs:decimal"/>
+            <xs:element name="Reason">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="0x01"/>
+                        <xs:enumeration value="0x02"/>
+                        <xs:enumeration value="0x04"/>
+                        <xs:enumeration value="0x08"/>
+                        <xs:enumeration value="0x10"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="OperationType">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="UPDATE"/>
+                        <xs:enumeration value="USAGE"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="AlertType">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="SubOperationType" type="xs:string"/>
+            <xs:element name="ExtensionData" type="ExtensionData" minOccurs="0"
+                        maxOccurs="1"/>
+            <xs:element name="SubscriberPreferences" type="SubscriberPreferencesType" minOccurs="0"
+                        maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- AdviceOfChargeEvent notification element -->
+    <xs:complexType name="ADVICE_OF_CHARGE_NOTIFICATION_EVENT_TYPE">
+        <xs:sequence>
+            <xs:element name="NotificationType" type="xs:string" fixed="ADVICE_OF_CHARGE_NOTIFICATION_EVENT"/>
+            <xs:element name="ChargeInfo" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="PublicUserIdentity" type="xs:string"/>
+                        <xs:element name="Consumptions" minOccurs="0" maxOccurs="unbounded">
+                            <!-- Consumptions type -->
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="BalanceElementId" type="xs:string"/>
+                                    <xs:element name="ConsumptionQuantity" type="xs:string"/>
+                                    <xs:element name="ConsumptionUnit" type="xs:string"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="Grants" minOccurs="0" maxOccurs="unbounded">
+                            <!-- Grants type -->
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="BalanceElementId" type="xs:string"/>
+                                    <xs:element name="GrantQuantity" type="xs:string"/>
+                                    <xs:element name="GrantUnit" type="xs:string"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="CurrentBalance" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="BalanceElementId" type="xs:string"/>
+                                    <xs:element name="CurrentBalanceQuantity" type="xs:string"/>
+                                    <xs:element name="CurrentBalanceUnit" type="xs:string"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="OperationType">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="UPDATE"/>
+                        <xs:enumeration value="USAGE"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="SubOperationType" type="xs:string"/>
+            <xs:element name="SubscriberPreferences" type="SubscriberPreferencesType" minOccurs="0"
+                        maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- CreditThresholdBreach notification element -->
+    <xs:complexType name="THRESHOLD_BREACH_EVENT_TYPE">
+        <xs:sequence>
+            <xs:element name="NotificationType" type="xs:string" fixed="THRESHOLD_BREACH_EVENT"/>
+            <xs:element name="PublicUserIdentities" type="PublicUserIdentitiesType"/>
+            <xs:element name="BalanceElementId" type="xs:string"/>
+            <xs:element name="BalanceElementCode" type="xs:string"/>
+            <xs:element name="CurrentBalance" type="xs:decimal"/>
+            <xs:element name="ThresholdAmount" type="xs:string"/>
+            <xs:element name="ThresholdPercent" type="xs:string"/>
+            <xs:element name="BreachDirection">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="THRESHOLD_BREACH_UP"/>
+                        <xs:enumeration value="THRESHOLD_BREACH_DOWN"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="AlertType">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="2"/>
+                        <xs:enumeration value="4"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="ValidityUpdateOnly" type="xs:string"/>
+            <xs:element name="Reason">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="0x01"/>
+                        <xs:enumeration value="0x02"/>
+                        <xs:enumeration value="0x04"/>
+                        <xs:enumeration value="0x08"/>
+                        <xs:enumeration value="0x10"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="OperationType">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="UPDATE"/>
+                        <xs:enumeration value="USAGE"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="SubOperationType" type="xs:string"/>
+            <xs:element name="ExtensionData" type="ExtensionData" minOccurs="0"
+                        maxOccurs="1"/>
+            <xs:element name="SubscriberPreferences" type="SubscriberPreferencesType" minOccurs="0"
+                        maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- AggregatedCreditThresholdBreach notification element -->
+    <xs:complexType name="AGGREGATED_THRESHOLD_BREACH_EVENT_TYPE">
+        <xs:sequence>
+            <xs:element name="NotificationType" type="xs:string" fixed="AGGREGATED_THRESHOLD_BREACH_EVENT"/>
+            <xs:element name="PublicUserIdentities" type="PublicUserIdentitiesType"/>
+            <xs:element name="BalanceElementId" type="xs:string"/>
+            <xs:element name="BalanceElementCode" type="xs:string"/>
+            <xs:element name="CurrentBalance" type="xs:decimal"/>
+            <xs:element name="ThresholdAmount" type="xs:string"/>
+            <xs:element name="ThresholdPercent" type="xs:string"/>
+            <xs:element name="BreachDirection">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="THRESHOLD_BREACH_UP"/>
+                        <xs:enumeration value="THRESHOLD_BREACH_DOWN"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="OperationType">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="UPDATE"/>
+                        <xs:enumeration value="USAGE"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="SubOperationType" type="xs:string"/>
+            <xs:element name="SubscriberPreferences" type="SubscriberPreferencesType" minOccurs="0"
+                        maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- TopUpNotification element -->
+    <xs:complexType name="RAR_NOTIFICATION_TYPE">
+        <xs:sequence>
+            <xs:element name="NotificationType" type="xs:string" fixed="TOP_UP_NOTIFICATION_EVENT"/>
+            <xs:element name="PublicUserIdentities" type="PublicUserIdentitiesType"/>
+            <xs:element name="ActiveSessions">
+                <!-- ActiveSession Types -->
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="SessionId" type="xs:string" maxOccurs="unbounded" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="ProductType"/>
+            <xs:element name="ProductId"/>
+            <xs:element name="CustomerId"/>
+            <xs:element name="SessionId" type="xs:string"/>
+            <xs:element name="OperationType">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="UPDATE"/>
+                        <xs:enumeration value="USAGE"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="SubOperationType" type="xs:string"/>
+            <xs:element name="Destination-Realm" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="Destination-Host" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Custom Event element -->
+    <xs:complexType name="CUSTOM_EVENT_TYPE">
+        <xs:sequence>
+            <xs:element name="NotificationType" type="xs:string"
+                        fixed="CUSTOM_EVENT_NOTIFICATION_EVENT"/>
+            <xs:element name="CustomDataMap" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="CustomDataKey" type="xs:string"/>
+                        <xs:element name="CustomDataValue" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- ########################################## BRM notifications ################################################# -->
+    <!-- BillingNotification element -->
+    <xs:complexType name="BILLING_NOTIFICATION_EVENT_TYPE">
+        <xs:sequence>
+            <xs:element name="NotificationType" type="xs:string" fixed="BILLING_NOTIFICATION_EVENT"/>
+            <xs:element name="CustomerId" type="xs:string"/>
+            <xs:element name="BillingUnitId" type="xs:string"/>
+            <xs:element name="ExternalReference" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Replenish Poid element -->
+    <xs:complexType name="REPLENISH_POID_EVENT_TYPE">
+        <xs:sequence>
+            <xs:element name="NotificationType" type="xs:string" fixed="REPLENISH_POID_ID_NOTIFICATION_EVENT"/>
+            <xs:element name="SchemaName" type="xs:string"/>
+            <xs:element name="Quantity" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- lifecycle transition event Poid element -->
+    <xs:complexType name="LIFE_CYCLE_TRANSISTION_EVENT_TYPE">
+        <xs:sequence>
+            <xs:element name="NotificationType" type="xs:string" fixed="LIFECYCLE_TRANSITION_NOTIFICATION_EVENT"/>
+            <xs:element name="PublicUserIdentities" type="PublicUserIdentitiesType"/>
+            <xs:element name="CustomerId" type="xs:string"/>
+            <xs:element name="ExternalReference" type="xs:string"/>
+            <xs:element name="ProductId" type="xs:string"/>
+            <xs:element name="ProductType" type="xs:string"/>
+            <xs:element name="LifecycleState" type="xs:string"/>
+            <xs:element name="ExpirationTime" type="xs:string"/>
+            <xs:element name="SubscriberPreferences" type="SubscriberPreferencesType" minOccurs="0"
+                        maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <!-- ExternalTopUp element -->
+    <xs:complexType name="EXTERNAL_TOP_UP_EVENT_TYPE">
+        <xs:sequence>
+            <xs:element name="NotificationType" type="xs:string" fixed="EXTERNAL_TOP_UP_NOTIFICATION_EVENT"/>
+            <xs:element name="PublicUserIdentities" type="PublicUserIdentitiesType"/>
+            <xs:element name="CustomerId" type="xs:string"/>
+            <xs:element name="ExternalReference" type="xs:string"/>
+            <xs:element name="RequestTime" type="xs:string"/>
+            <xs:element name="Id" type="xs:string"/>
+            <xs:element name="BalanceImpact" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:choice>
+                            <xs:sequence>
+                                <xs:element name="ProductId" type="xs:string"/>
+                                <xs:element name="ProductType" type="xs:string"/>
+                            </xs:sequence>
+                            <xs:element name="BalanceId" type="xs:string"/>
+                        </xs:choice>
+
+                        <xs:element name="BalanceItemImpact" minOccurs="1" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="BalanceItemId" type="xs:string"/>
+                                    <xs:element name="BalanceElementId" type="xs:string"/>
+                                    <xs:element name="BalanceElementCode" type="xs:string"/>
+                                    <xs:element name="Quantity" type="xs:decimal"/>
+                                    <xs:element name="ExtendValidityFlag" type="xs:string"/>
+                                    <xs:element name="ValidityRule" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                    <xs:element name="ValidFrom" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                    <xs:element name="ValidTo" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="SubscriberPreferences" type="SubscriberPreferencesType" minOccurs="0"
+                        maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- FirstUsageValidity element -->
+    <xs:complexType name="FIRST_USAGE_VALIDITY_EVENT_TYPE">
+        <xs:sequence>
+            <xs:element name="NotificationType" type="xs:string" fixed="FIRST_USAGE_VALIDITY_INIT_NOTIFICATION_EVENT"/>
+            <xs:element name="PublicUserIdentities" type="PublicUserIdentitiesType"/>
+            <xs:element name="CustomerId" type="xs:string"/>
+            <xs:element name="ExternalReference" type="xs:string"/>
+            <xs:element name="BalanceId" type="xs:string"/>
+
+            <xs:element name="Validity" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="BalanceElementId" type="xs:string"/>
+                        <xs:element name="BalanceItemId" type="xs:string"/>
+                        <xs:element name="ValidFrom" type="xs:string"/>
+                        <xs:element name="ValidTo" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="SubscriberPreferences" type="SubscriberPreferencesType" minOccurs="0"
+                        maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <!-- ReRateCreateJob element -->
+    <xs:complexType name="RERATE_CREATE_JOB_EVENT_TYPE">
+        <xs:sequence>
+            <xs:element name="NotificationType" type="xs:string" fixed="RERATE_CREATE_JOB_EVENT"/>
+            <xs:element name="CustomerInfo" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="CustomerId" type="xs:string"/>
+                        <xs:element name="ExternalReference" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="FailedRerateJobId" type="xs:string"/>
+            <xs:element name="FailedRerateJobEndTime" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- OfferingValidityInitialization element -->
+    <xs:complexType name="OFFERING_VALIDITY_INITIALIZATION_EVENT_TYPE">
+        <xs:sequence>
+            <xs:element name="NotificationType" type="xs:string"
+                        fixed="OFFERING_USAGE_VALIDITY_INIT_NOTIFICATION_EVENT"/>
+            <xs:element name="CustomerId" type="xs:string"/>
+            <xs:element name="ExternalReference" type="xs:string"/>
+            <xs:element name="PurchasedOfferingId" type="xs:string"/>
+            <xs:element name="OfferingType" type="xs:string"/>
+            <xs:element name="ValidFrom" type="xs:string"/>
+            <xs:element name="ValidTo" type="xs:string"/>
+            <xs:element name="SubscriberPreferences" type="SubscriberPreferencesType" minOccurs="0"
+                        maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- ########################################## END OF BRM notifications ################################################# -->
+
+
+    <!-- permitted breach types -->
+    <xs:complexType name="BreachesType">
+        <xs:sequence>
+            <xs:element name="OfferProfileName" type="xs:string"/>
+            <xs:element name="LabelName" type="xs:string"/>
+            <xs:element name="StatusLabel" type="xs:string"/>
+            <xs:element name="DeltaToNextThreshold" type="xs:string"/>
+            <xs:element name="NextProbableStatusLabel" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <!-- PublicUserIdentities type -->
+    <xs:complexType name="PublicUserIdentitiesType">
+        <xs:sequence>
+            <xs:element name="PublicUserIdentity" type="xs:string" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- subscriber preference type -->
+    <xs:complexType name="SubscriberPreferencesType">
+        <xs:sequence>
+            <xs:element name="SubscriberPreference" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="SubscriberPreferencesInfo">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="PreferenceName" type="xs:string"/>
+                                    <xs:element name="PreferenceValue" type="xs:string"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                    <xs:attribute name="PublicUserIdentity" type="xs:string"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <!-- External Data type -->
+    <xs:complexType name="ExtensionData">
+        <xs:sequence>
+           <!--<xs:element name="key" type="xs:string" maxOccurs="unbounded" minOccurs="0"/> -->
+        </xs:sequence>
+    </xs:complexType>
+
+
+</xs:schema>

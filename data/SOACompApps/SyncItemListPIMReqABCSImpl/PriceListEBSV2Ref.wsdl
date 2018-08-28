@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+     name="PriceListEBSV2"
+     targetNamespace="http://xmlns.oracle.com/EnterpriseServices/Core/PriceList/V2"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:ebs="http://xmlns.oracle.com/EnterpriseServices/Core/PriceList/V2"
+    >
+    <import namespace="http://xmlns.oracle.com/EnterpriseServices/Core/PriceList/V2" location="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseBusinessServiceLibrary/Core/EBO/PriceList/V2/PriceListEBSV2.wsdl"/>
+    <plnk:partnerLinkType name="PriceListEBS_PL">
+        <plnk:role name="PriceListEBS_Role">
+            <plnk:portType name="ebs:PriceListEBS"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="PriceListEBSResponse_PL">
+        <plnk:role name="PriceListEBSResponse_Role">
+            <plnk:portType name="ebs:PriceListEBSResponse"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+</definitions>

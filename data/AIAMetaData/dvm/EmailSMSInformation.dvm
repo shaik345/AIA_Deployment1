@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dvm name="EmailSMSInformation" xmlns="http://xmlns.oracle.com/dvm">
+<description>DVM description</description>
+<columns>
+<column name="SEQ_NO"/>
+<column name="MOBILE_NUMBER"/>
+<column name="SMS_TEXT"/>
+<column name="EMAIL_ID"/>
+<column name="EMAIL_TEXT"/>
+</columns>
+<rows>
+<row>
+<cell>1</cell>
+<cell>MobileNumber</cell>
+<cell>Error reported during processing of File : %a</cell>
+<cell>Email_Id</cell>
+<cell>SCM Fault : </cell>
+</row>
+</rows>
+</dvm>
+

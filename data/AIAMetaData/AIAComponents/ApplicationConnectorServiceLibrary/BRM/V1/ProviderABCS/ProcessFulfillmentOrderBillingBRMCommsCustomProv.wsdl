@@ -1,0 +1,23 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="ProcessFulfillmentOrderBillingBRMCommsCustomProv"
+     targetNamespace="http://oracle.com/sca/soapservice/BCT-123Custom/Project2/ProcessFulfillmentOrderBillingBRMCommsCustomProv"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:inp1="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/FulfillmentOrder/V1"
+     xmlns:tns="http://oracle.com/sca/soapservice/BCT-123Custom/Project2/ProcessFulfillmentOrderBillingBRMCommsCustomProv"
+    >
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/FulfillmentOrder/V1"
+                 schemaLocation="xsd/FulfillmentOrderEBM.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="requestMessage">
+        <wsdl:part name="payload" element="inp1:ProcessFulfillmentOrderBillingEBM"/>
+    </wsdl:message>
+    <wsdl:portType name="execute_ptt">
+        <wsdl:operation name="execute">
+            <wsdl:input message="tns:requestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

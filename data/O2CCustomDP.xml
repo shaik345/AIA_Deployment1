@@ -1,0 +1,202 @@
+<?xml version="1.0" standalone="yes"?>
+<DeploymentPlan component="Metadata" version="3.0">
+	<Configurations>
+		<!--<UpdateMetadata wlserver="fp">
+			<fileset dir="${AIA_HOME}/AIAMetaData">
+				<include name="dvm/ACCOUNTBALANCEADJUSTMENT_REASON.dvm"/>
+				<include name="dvm/ACCOUNTBALANCEADJUSTMENT_USAGEALLOCATION_TAXTREATMENT.dvm"/>
+				<include name="dvm/ADDRESS_COUNTRYID.dvm"/>
+				<include name="dvm/APPLIES_TO.dvm"/>
+				<include name="dvm/CURRENCY_CODE.dvm"/>
+				<include name="dvm/CUSTOMERPARTY_PAYPROFILE_DELIVERYPREF.dvm"/>
+				<include name="dvm/CUSTOMERPARTY_PAYPROFILE_PAYMETHODCODE.dvm"/>
+				<include name="dvm/GL_CODE.dvm"/>
+				<include name="dvm/INVENTORY_TYPE.dvm"/>
+				<include name="dvm/ITEM_UOM_CODE.dvm"/>
+				<include name="dvm/PAYMENT_TERM.dvm"/>
+				<include name="dvm/PRICE_TYPE.dvm"/>
+				<include name="dvm/PRICETYPE_EVENT.dvm"/>
+				<include name="dvm/SALESORDER_LINESTATUS.dvm"/>
+				<include name="dvm/TARGET_ID.dvm"/>
+				<include name="AIAComponents/ApplicationConnectorServiceLibrary/BRM/V1/ProviderABCS/ProcessFulfillmentOrderBillingBRMCommsProvABCSImpl.wsdl"/>
+				<include name="AIAComponents/ApplicationConnectorServiceLibrary/GESB/V1/ProviderABCS/SyncCustomerPartyListGESBCommsProvABCSImpl.wsdl"/>
+				<include name="AIAComponents/ApplicationConnectorServiceLibrary/Siebel/V1/RequesterABCS/CreateCorrectiveBillSiebelCommsReqABCSImpl.wsdl"/>
+				<include name="AIAComponents/ApplicationConnectorServiceLibrary/UIM/ReferenceUim.wsdl"/>
+				<include name="AIAComponents/ApplicationConnectorServiceLibrary/UIM/UIMService.wsdl"/>
+				<include name="AIAComponents/ApplicationConnectorServiceLibrary/SMSContentProvider/ProcessSMSContentConfigHTTPBindingProvABCSImpl.wsdl"/>
+				<include name="AIAComponents/ApplicationConnectorServiceLibrary/C2B/RequesterABCS/QueryTopUpHistoryC2BReqABCSImpl.wsdl"/>
+				<include name="AIAComponents/ApplicationConnectorServiceLibrary/BRM/V1/ProviderABCS/QueryTopUpHistoryBRMProvABCSImpl.wsdl"/>				
+				<include name="AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/PCM_OP_BILL_MAKE_CORRECTIVE_BILL.xsd"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/TWI_OP_BILL_MAKE_CORRECTIVE_BILL.xsd"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/profile.xsd"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/TWI_OP_BILL_MAKE_BILL_NOW.xsd"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/GESB/V1/schemas/MediaVoucherTargetFields.xsd"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/GESB/V1/schemas/MT_CustomerMaster.xsd"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/GESB/V1/schemas/SyncItemMaster.xsd"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/CallGudeSMSXSD.xsd"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/ListOfProductImport.xsd"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/ListOfTSBillNowRequestIO.xsd"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/ListOfTSBillNowResponseIO.xsd"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/ListOfTSCorrectiveInvoiceIO.xsd"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/ListOfTSCorrectiveInvoiceResponseIO.xsd"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/SWIBillingProfileIO.xsd"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/SWICustomerPartyIO.xsd"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/SWIOrderIO.xsd"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/C2B/DataTopUps.xsd"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/C2B/RequesterABCS/ProcessDataTopUpsC2BReqABCSImpl.wsdl"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/C2B/RequesterABCS/QueryBalanceC2BReqABCSImpl.wsdl"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/C2B/QueryTopUpHistory.xsd"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/C2B/QueryBalances.xsd"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/BRM/V1/ProviderABCS/QueryBalanceBRMProvABCSImpl.wsdl"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/BRM/V1/ProviderABCS/ProcessDataTopUpsBRMProvABCSImpl.wsdl"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/ TLC_OP_CHANNEL_PURCHASE_TOPUP.xsd"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/TLC_OP_CHANNEL_QUERY_BALANCES.xsd"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/TLC_OP_CHANNEL_GET_TOPUP_HISTORY.xsd"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/BRM/V1/wsdls/BRMTLCChannelServices.jca"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/BRM/V1/wsdls/BRMTLCChannelServices.wsdl"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/BRM/V1/wsdls/BRMARServices.jca"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/BRM/V1/wsdls/BRMARServices.wsdl"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/TLC_OP_AR_GET_BILL_ITEMS.xsd"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/SWIProductIntegrationIO.xsd"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/SWIPromotionIntegrationIO.xsd"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/BRM/V1/wsdls/BRMBillServices.jca"/>
+				<include name="AIAComponents/EnterpriseBusinessServiceLibrary/Core/EBO/FulfillmentOrder/V1/FulfillmentOrderTopUpsEBS.wsdl"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/BRM/V1/wsdls/BRMBillServices.wsdl"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/GESB/V1/wsdls/MediaVoucher.wsdl"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/GESB/V1/wsdls/SycnCustomerPartyListGESBCommsJMSProducer_RS.wsdl"/>
+				<include name="AIAComponents/ExtensionServiceLibrary/BRM/V1/ProcessFulfillmentOrderBillingBRMCommsProvABCSImplExtensionConcrete.wsdl"/>
+				<include name="AIAComponents/EnterpriseBusinessServiceLibrary/Industry/Communications/EBO/CustomerParty/V2/CommunicationsCustomerPartyEBSV2.wsdl"/>
+				<include name="AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Custom/Common/V2/CustomCommonComponents.xsd"/>
+				<include name="AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Custom/EBO/CustomerParty/V2/CustomCustomerPartyEBO.xsd"/>
+				<include name="AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Custom/EBO/FulfillmentOrder/V1/CustomFulfillmentOrderEBO.xsd"/>
+				<include name="AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Custom/EBO/SalesOrder/V2/CustomSalesOrderEBO.xsd"/>
+				<include name="AIAComponents/EnterpriseObjectLibrary/Core/Custom/Common/V2/CustomCommonComponents.xsd"/>
+				<include name="AIAComponents/EnterpriseObjectLibrary/Core/Custom/CommonEBO/V1/CustomItem.xsd"/>
+				<include name="AIAComponents/EnterpriseObjectLibrary/Core/Custom/EBO/CustomerParty/V2/CustomCustomerPartyEBO.xsd"/>
+				<include name="AIAComponents/EnterpriseObjectLibrary/Core/EBO/CustomerParty/V2/CustomerPartyEBO.xsd"/>
+				<include name="AIAComponents/EnterpriseObjectLibrary/Industry/Communications/Custom/EBO/CustomerParty/V2/CustomCustomerPartyEBO.xsd"/>-->							
+				<!--start: Mobile Mobdev 17.4 changes-->
+				<!--<include name="dvm/ITEM_TYPE.dvm"/>
+				<include name="dvm/RESOURCE.dvm"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/BRM/V1/wsdls/BRMARServices.jca"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/BRM/V1/wsdls/BRMARServices.wsdl"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/BRM/V1/wsdls/BRMBalServices.jca"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/BRM/V1/wsdls/BRMBalServices.wsdl"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/BRM/V1/wsdls/BRMBillServices.jca"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/BRM/V1/wsdls/BRMBillServices.wsdl"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/TLC_OP_AR_GET_BILL_ITEMS.xsd"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/TLC_OP_BAL_GET_ACCT_BAL_GRP_AND_SVC.xsd"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/TLC_OP_BAL_GET_BALANCES.xsd"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/TLC_OP_BILL_SET_LIMIT_AND_CR.xsd"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/SWIOrderIO.xsd"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/GetBalanceGroups.xsd"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/GetBalances.xsd"/>
+				<include name="AIAComponents/ApplicationObjectLibrary/Siebel/V1/schemas/UpdateRCCDetails.xsd"/>
+				<include name="AIAComponents/ApplicationConnectorServiceLibrary/BRM/V1/ProviderABCS/QueryBalancesBRMCommsProvABCSImpl.wsdl"/>
+				<include name="AIAComponents/ApplicationConnectorServiceLibrary/BRM/V1/ProviderABCS/QueryBalanceGroupBRMProvABCSImpl.wsdl"/>
+				<include name="AIAComponents/ApplicationConnectorServiceLibrary/BRM/V1/ProviderABCS/UpdateRCCDetailsBRMProvABCSImpl.wsdl"/>
+				<include name="AIAComponents/ApplicationConnectorServiceLibrary/Siebel/V2/RequesterABCS/QueryBalanceGroupSiebelReqABCSImpl.wsdl"/>
+				<include name="AIAComponents/ApplicationConnectorServiceLibrary/Siebel/V2/RequesterABCS/QueryBalancesSiebelCommsReqABCSImpl.wsdl"/>
+				<include name="AIAComponents/ApplicationConnectorServiceLibrary/Siebel/V2/RequesterABCS/UpdateRCCDetailsSiebelReqABCSImpl.wsdl"/>
+				<include name="AIAComponents/ApplicationConnectorServiceLibrary/Siebel/V2/RequesterABCS/RCCBalanceSiebelCommsReqABCS.wsdl"/>-->
+				<!--end: Mobile Mobdev 17.4 changes-->
+			<!--</fileset>
+			<fileset dir="${AIA_INSTANCE}/AIAMetaData">
+				<include name="config/AIAConfigurationProperties.xml"/>
+			</fileset>
+			<fileset dir="${AIA_INSTANCE}">
+				<include name="config/AIAInstallProperties.xml"/>
+			</fileset>
+		</UpdateMetadata>-->
+	</Configurations>
+<Deployments>
+	<Composite compositeName="ProcessFulfillmentOrderBillingBRMCommsProvABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/BRM/ProviderABCS/ProcessFulfillmentOrderBillingBRMCommsProvABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="SyncProductSiebelProvABCSImpl" compositedir="${env.STAGE}/services/core/Siebel/ProviderABCS/SyncProductSiebelProvABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="SyncItemListPIMReqABCSImpl" compositedir="${env.STAGE}/services/core/PIM/RequesterABCS/SyncItemListPIMReqABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="QueryCustomerPartyListSiebelProvABCSImplV2" compositedir="${env.STAGE}/services/core/Siebel/ProviderABCS/QueryCustomerPartyListSiebelProvABCSImplV2" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="SyncCustomerPartyListGESBCommsProvABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/GESB/ProviderABCS/SyncCustomerPartyListGESBCommsProvABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="SyncAccountSiebelReqABCSImpl" compositedir="${env.STAGE}/services/core/Siebel/RequesterABCS/SyncAccountSiebelReqABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="SyncCustomerPartyListBRMCommsProvABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/BRM/ProviderABCS/SyncCustomerPartyListBRMCommsProvABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="SyncCustomerPartylistBRMCommsProvABCSImplExtension" compositedir="${env.STAGE}/services/industry/Communications/BRM/ProviderABCS/SyncCustomerPartylistBRMCommsProvABCSImplExtension" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="QueryBalanceEBSV2" compositedir="${env.STAGE}/services/industry/Communications/EBS/QueryBalanceEBSV2" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="QueryTopUpHistoryEBSV2" compositedir="${env.STAGE}/services/industry/Communications/EBS/QueryTopUpHistoryEBSV2" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="ProcessDataTopUpsEBSV1" compositedir="${env.STAGE}/services/industry/Communications/EBS/ProcessDataTopUpsEBSV1" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+    <Composite compositeName="ProcessFulfillmentOrderBillingBRMCommsProvABCSImplExtension" compositedir="${env.STAGE}/services/industry/Communications/BRM/ProviderABCS/ProcessFulfillmentOrderBillingBRMCommsProvABCSImplExtension" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="QueryBalanceBRMProvABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/BRM/ProviderABCS/QueryBalanceBRMProvABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="QueryTopUpHistoryBRMProvABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/BRM/ProviderABCS/QueryTopUpHistoryBRMProvABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="QueryBalanceC2BReqABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/C2B/RequesterABCS/QueryBalanceC2BReqABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="QueryTopUpHistoryC2BReqABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/C2B/RequesterABCS/QueryTopUpHistoryC2BReqABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="ProcessDataTopUpsC2BReqABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/C2B/RequesterABCS/ProcessDataTopUpsC2BReqABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="ProcessDataTopUpsBRMProvABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/BRM/ProviderABCS/ProcessDataTopUpsBRMProvABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="SyncClassificationSchemeListSiebelProvABCSImpl" compositedir="${env.STAGE}/services/core/Siebel/ProviderABCS/SyncClassificationSchemeListSiebelProvABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="SyncItemCatalogCategoryPIMReqABCSImpl" compositedir="${env.STAGE}/services/core/PIM/RequesterABCS/SyncItemCatalogCategoryPIMReqABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="CreateAccountBalanceAdjustmentBRMCommsProvABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/BRM/ProviderABCS/CreateAccountBalanceAdjustmentBRMCommsProvABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="ProcessFulfillmentOrderBillingBRMCommsAddSubProcess" compositedir="${env.STAGE}/services/industry/Communications/BRM/ProviderABCS/ProcessFulfillmentOrderBillingBRMCommsAddSubProcess" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="ProcessFulfillmentOrderBillingBRMCommsUpdateSubProcess" compositedir="${env.STAGE}/services/industry/Communications/BRM/ProviderABCS/ProcessFulfillmentOrderBillingBRMCommsUpdateSubProcess" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="ProcessFulfillmentOrderBillingBRMCommsDeleteSubProcess" compositedir="${env.STAGE}/services/industry/Communications/BRM/ProviderABCS/ProcessFulfillmentOrderBillingBRMCommsDeleteSubProcess" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="QueryInvoiceListBRMCommsProvABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/BRM/ProviderABCS/QueryInvoiceListBRMCommsProvABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="QueryInvoiceListSiebelCommsReqABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/Siebel/RequesterABCS/QueryInvoiceListSiebelCommsReqABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="ProcessFulfillmentOrderBillingBRMCommsSharingGroupSubProcess" compositedir="${env.STAGE}/services/industry/Communications/BRM/ProviderABCS/ProcessFulfillmentOrderBillingBRMCommsSharingGroupSubProcess" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="SMSContentConfigEBS" compositedir="${env.STAGE}/services/industry/Communications/EBS/SMSContentConfigEBS" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="CommunicationsCustomerPartyEBSV2" compositedir="${env.STAGE}/services/industry/Communications/EBS/CommunicationsCustomerPartyEBSV2" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="CommsProcessBillingAccountListEBF" compositedir="${env.STAGE}/services/industry/Communications/EnterpriseBusinessFlow/CommsProcessBillingAccountListEBF" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="SyncCustomerPartyListGESBCommsJMSProducer" compositedir="${env.STAGE}/services/industry/Communications/GESB/AdapterServices/SyncCustomerPartyListGESBCommsJMSProducer" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<!-- Defect 9582 -->
+	<Composite compositeName="ProcessBDLAQGESBJMSProducer" compositedir="${env.STAGE}/services/industry/Communications/GESB/AdapterServices/ProcessBDLAQGESBJMSProducer" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<!-- Defect 9582 -->
+	<Composite compositeName="ProcessAccountHierarchyListSiebelCommsProvABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/Siebel/ProviderABCS/ProcessAccountHierarchyListSiebelCommsProvABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="CreateCorrectiveBillSiebelCommsReqABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/Siebel/RequesterABCS/CreateCorrectiveBillSiebelCommsReqABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="CreateOneTimeBillSiebelCommsReqABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/Siebel/RequesterABCS/CreateOneTimeBillSiebelCommsReqABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="ProcessSalesOrderFulfillmentSiebelCommsReqABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/Siebel/RequesterABCS/ProcessSalesOrderFulfillmentSiebelCommsReqABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="ProcessSMSConfigSiebelReqABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/Siebel/RequesterABCS/ProcessSMSConfigSiebelReqABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="ProcessSMSContentConfigHTTPBindingProvABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/SMSService/ProcessSMSContentConfigHTTPBindingProvABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="CustomerPartyEBSV2" compositedir="${env.STAGE}/services/core/EBS/CustomerPartyEBSV2" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="SyncPriceListPDCProvABCSImpl" compositedir="${env.STAGE}/services/core/PDC/ProviderABCS/SyncPriceListPDCProvABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="SyncBillOfMaterialsListSiebelProvABCSImpl" compositedir="${env.STAGE}/services/core/Siebel/ProviderABCS/SyncBillOfMaterialsListSiebelProvABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>	
+	<Composite compositeName="QueryInvoiceSiebelCommsReqABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/Siebel/RequesterABCS/QueryInvoiceSiebelCommsReqABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="CreateFullCreditInvoiceSiebelReqABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/Siebel/RequesterABCS/CreateFullCreditInvoiceSiebelReqABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="ProcessFulfillmentOrderBillingCustomResponseOSMCFSCommsJMSProducer" compositedir="${env.STAGE}/services/industry/Communications/OSM/AdapterServices/ProcessFulfillmentOrderBillingCustomResponseOSMCFSCommsJMSProducer" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="CreateOrderFalloutNotificationOSMCFSCommsProvImpl" compositedir="${env.STAGE}/services/industry/Communications/OrderFallout/src/CreateOrderFalloutNotificationOSMCFSCommsProvImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="ProcessFulfillmentOrderBillingBRMCommsAddSubProcessExtension" compositedir="${env.STAGE}/services/industry/Communications/BRM/ProviderABCS/ProcessFulfillmentOrderBillingBRMCommsAddSubProcessExtension" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="ProcessFulfillmentOrderBillingBRMCommsCustomProvABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/BRM/ProviderABCS/ProcessFulfillmentOrderBillingBRMCommsCustomProvABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="SyncItemListPDCProvABCSImpl" compositedir="${env.STAGE}/services/core/PDC/ProviderABCS/SyncItemListPDCProvABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="CreateTroubleTicketSiebelCommsProvABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/Siebel/ProviderABCS/CreateTroubleTicketSiebelCommsProvABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="UpdateSalesOrderSiebelCommsProvABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/Siebel/ProviderABCS/UpdateSalesOrderSiebelCommsProvABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="UpdateTroubleTicketSiebelCommsProvABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/Siebel/ProviderABCS/UpdateTroubleTicketSiebelCommsProvABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="QueryBalanceGroupSiebelReqABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/Siebel/RequesterABCS/QueryBalanceGroupSiebelReqABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="ProcessFulfillmentOrderBillingCustomOSMCFSCommsJMSConsumer" compositedir="${env.STAGE}/services/industry/Communications/OSM/AdapterServices/ProcessFulfillmentOrderBillingCustomOSMCFSCommsJMSConsumer" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="UpdateRCCDetailsBRMProvABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/BRM/ProviderABCS/UpdateRCCDetailsBRMProvABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="QueryBalanceGroupBRMProvABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/BRM/ProviderABCS/QueryBalanceGroupBRMProvABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="QueryBalancesBRMCommsProvABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/BRM/ProviderABCS/QueryBalancesBRMCommsProvABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="RCCBalanceEBSV2" compositedir="${env.STAGE}/services/industry/Communications/EBS/RCCBalanceEBSV2" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="UpdateRCCDetailsSiebelReqABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/Siebel/RequesterABCS/UpdateRCCDetailsSiebelReqABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="QueryBalancesSiebelCommsReqABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/Siebel/RequesterABCS/QueryBalancesSiebelCommsReqABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="QueryBalanceGroupSiebelReqABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/Siebel/RequesterABCS/QueryBalanceGroupSiebelReqABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="RCCBalanceSiebelCommsReqABCS" compositedir="${env.STAGE}/services/industry/Communications/Siebel/RequesterABCS/RCCBalanceSiebelCommsReqABCS" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="CreateAccountBalanceAdjustmentSiebelCommsReqABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/Siebel/RequesterABCS/CreateAccountBalanceAdjustmentSiebelCommsReqABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="QueryServiceUsageBRMCommsProvABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/BRM/ProviderABCS/QueryServiceUsageBRMCommsProvABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="QueryInvoiceEventDetailsSiebelCommsReqABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/Siebel/RequesterABCS/QueryInvoiceEventDetailsSiebelCommsReqABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="QueryUnbilledEventDetailsSiebelCommsReqABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/Siebel/RequesterABCS/QueryUnbilledEventDetailsSiebelCommsReqABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<!--start: Broadband changes for 18.1 -->
+	<Composite compositeName="ProcessFulfillmentOrderBillingBillNowProvABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/BRM/ProviderABCS/ProcessFulfillmentOrderBillingBillNowProvABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="ProcessFulfillmentOrderBillingBillNowCommsJMSConsumer" compositedir="${env.STAGE}/services/industry/Communications/BRM/AdapterServices/ProcessFulfillmentOrderBillingBillNowCommsJMSConsumer" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="UpdateBillingBillNowSiebelCommsProvABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/Siebel/ProviderABCS/UpdateBillingBillNowSiebelCommsProvABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="UpdateBillingBillNowSiebelCommsJMSConsumer" compositedir="${env.STAGE}/services/industry/Communications/Siebel/AdapterServices/UpdateBillingBillNowSiebelCommsJMSConsumer" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="SyncCustomerPartyListBRM_01CommsJMSConsumer" compositedir="${env.STAGE}/services/industry/Communications/BRM/AdapterServices/SyncCustomerPartyListBRM_01CommsJMSConsumer" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<!--End: Broadband changes for 18.1 -->
+	<!--start: Mobile changes for 18.2 -->
+	<Composite compositeName="QueryUnbilledChargesBRMCommsProvABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/BRM/ProviderABCS/QueryUnbilledChargesBRMCommsProvABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="QueryUnbilledChargesC2BReqABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/C2B/RequesterABCS/QueryUnbilledChargesC2BReqABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="UnbilledChargesEBS" compositedir="${env.STAGE}/services/industry/Communications/EBS/UnbilledChargesEBS" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="CreateTroubleTicketCustomOSMCFSCommsJMSConsumer" compositedir="${env.STAGE}/services/industry/Communications/OSM/AdapterServices/CreateTroubleTicketCustomOSMCFSCommsJMSConsumer" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="CreateTroubleTicketCustomRespOSMCFSCommsJMSProducer" compositedir="${env.STAGE}/services/industry/Communications/OSM/AdapterServices/CreateTroubleTicketCustomRespOSMCFSCommsJMSProducer" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="UpdateTroubleTicketCustomOSMCFSCommsJMSConsumer" compositedir="${env.STAGE}/services/industry/Communications/OSM/AdapterServices/UpdateTroubleTicketCustomOSMCFSCommsJMSConsumer" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="ProcessFulfillmentOrderBillingBRMCommsUpdateSubProcessExtension" compositedir="${env.STAGE}/services/industry/Communications/BRM/ProviderABCS/ProcessFulfillmentOrderBillingBRMCommsUpdateSubProcessExtension" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="ProcessFulfillmentOrderBillingBRMCommsDeleteSubProcessExtension" compositedir="${env.STAGE}/services/industry/Communications/BRM/ProviderABCS/ProcessFulfillmentOrderBillingBRMCommsDeleteSubProcessExtension" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<Composite compositeName="CommsProcessFulfillmentOrderBillingAccountListEBF" compositedir="${env.STAGE}/services/industry/Communications/EnterpriseBusinessFlow/CommsProcessFulfillmentOrderBillingAccountListEBF" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<!--End: Mobile changes for 18.2 -->
+	<!--start: Mobile changes for 18.3 -->
+	<Composite compositeName="ProcessInstalledProductSpecialRatingSetListBRMCommsProvABCSImpl" compositedir="${env.STAGE}/services/industry/Communications/BRM/ProviderABCS/ProcessInstalledProductSpecialRatingSetListBRMCommsProvABCSImpl" revision="2.0" wlserver="fp" action="deploy" overwrite="true" forceMerge="true"/>
+	<!--End: Mobile changes for 18.3 -->
+</Deployments>
+</DeploymentPlan>

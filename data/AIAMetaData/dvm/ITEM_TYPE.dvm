@@ -1,0 +1,584 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dvm name="ITEM_TYPE" xmlns="http://xmlns.oracle.com/dvm">
+<description>ITEM TYPE CODE</description>
+<columns>
+<column name="COMMON"/>
+<column name="EBIZ_01"/>
+<column name="PIM_01"/>
+<column name="SEBL_01"/>
+<column name="JDEE1_01"/>
+<column name="OTM_01"/>
+<column name="JDEW_01"/>
+<column name="CRMOD_01"/>
+<column name="FUSION_01"/>
+</columns>
+<rows>
+<row>
+<cell>SA</cell>
+<cell>SA</cell>
+<cell>SA</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+</row>
+<row>
+<cell>ATO</cell>
+<cell>ATO</cell>
+<cell>ATO</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+</row>
+<row>
+<cell>FG</cell>
+<cell>FG</cell>
+<cell>FG</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+</row>
+<row>
+<cell>Phantom</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell>0</cell>
+<cell/>
+<cell>0</cell>
+<cell/>
+<cell/>
+</row>
+<row>
+<cell>Maintenance</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell>1</cell>
+<cell/>
+<cell>1</cell>
+<cell/>
+<cell/>
+</row>
+<row>
+<cell>Special Handling = 'O'</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell>9</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+</row>
+<row>
+<cell>Bulk Floor Stock</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell>B</cell>
+<cell/>
+<cell>B</cell>
+<cell/>
+<cell/>
+</row>
+<row>
+<cell>Configured Item</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell>C</cell>
+<cell/>
+<cell>C</cell>
+<cell/>
+<cell/>
+</row>
+<row>
+<cell>Emergency/Corrective Maint.</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell>E</cell>
+<cell/>
+<cell>E</cell>
+<cell/>
+<cell/>
+</row>
+<row>
+<cell>Feature</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell>F</cell>
+<cell/>
+<cell>F</cell>
+<cell/>
+<cell/>
+</row>
+<row>
+<cell>Project Manufactured Item</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell>G</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+</row>
+<row>
+<cell>Project Purchased Item</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell>H</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+</row>
+<row>
+<cell>Kit or Parent Item</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell>K</cell>
+<cell/>
+<cell>K</cell>
+<cell/>
+<cell/>
+</row>
+<row>
+<cell>Mfg. Assembly or Sub-Assembly</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell>M</cell>
+<cell/>
+<cell>M</cell>
+<cell/>
+<cell/>
+</row>
+<row>
+<cell>Non-Stock Item</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell>N</cell>
+<cell/>
+<cell>N</cell>
+<cell/>
+<cell/>
+</row>
+<row>
+<cell>Obsolete</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell>O</cell>
+<cell/>
+<cell>O</cell>
+<cell/>
+<cell/>
+</row>
+<row>
+<cell>Purchased inc. Raw Material</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell>P</cell>
+<cell/>
+<cell>P</cell>
+<cell/>
+<cell/>
+</row>
+<row>
+<cell>Process</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell>R</cell>
+<cell/>
+<cell>R</cell>
+<cell/>
+<cell/>
+</row>
+<row>
+<cell>Stock End-Item</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell>S</cell>
+<cell/>
+<cell>S</cell>
+<cell/>
+<cell/>
+</row>
+<row>
+<cell>Tool</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell>T</cell>
+<cell/>
+<cell>V</cell>
+<cell/>
+<cell/>
+</row>
+<row>
+<cell>Obsolete - Use Up</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell>U</cell>
+<cell/>
+<cell>U</cell>
+<cell/>
+<cell/>
+</row>
+<row>
+<cell>Labor</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell>V</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+</row>
+<row>
+<cell>Machine</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell>W</cell>
+<cell/>
+<cell>W</cell>
+<cell/>
+<cell/>
+</row>
+<row>
+<cell>Outside Processing</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell>X</cell>
+<cell/>
+<cell>X</cell>
+<cell/>
+<cell/>
+</row>
+<row>
+<cell>Support Item</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell>Y</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+</row>
+<row>
+<cell>COMMODITY</cell>
+<cell/>
+<cell/>
+<cell>Commodity</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+</row>
+<row>
+<cell>ACCESSORIAL</cell>
+<cell/>
+<cell/>
+<cell>Accessorial</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+</row>
+<row>
+<cell>TRANSPORTATION</cell>
+<cell/>
+<cell/>
+<cell>Transportation</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+</row>
+<row>
+<cell>SPECIAL_SERVICE</cell>
+<cell/>
+<cell/>
+<cell>Special Service</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+</row>
+<row>
+<cell>OFFER</cell>
+<cell/>
+<cell/>
+<cell>Promotion</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+</row>
+<row>
+<cell>PRODUCT</cell>
+<cell>PF</cell>
+<cell/>
+<cell>Product</cell>
+<cell/>
+<cell/>
+<cell>4</cell>
+<cell>Product</cell>
+<cell/>
+</row>
+<row>
+<cell>BUNDLE</cell>
+<cell/>
+<cell/>
+<cell>Commercial Bundle</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+</row>
+<row>
+<cell>Expense Item</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+<cell>T</cell>
+<cell/>
+<cell/>
+</row>
+<row>
+<cell>Service</cell>
+<cell>SVC</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+<cell>Service</cell>
+<cell/>
+</row>
+<row>
+<cell>Asset Activity</cell>
+<cell>AA</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+<cell>Asset</cell>
+<cell/>
+</row>
+<row>
+<cell>Asset Group</cell>
+<cell>AG</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+<cell>Asset</cell>
+<cell/>
+</row>
+    <row>
+      <cell>Credit Limit</cell>
+      <cell></cell>
+      <cell>CL</cell>
+      <cell>Credit Limit</cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+	<!--Start BCT-845 Cost control by Manish R17.4-->
+<row>
+<cell>Cost Control Limit</cell>
+<cell/>
+<cell>COST_CONTROL_LIMIT</cell>
+<cell>Cost Control Limit</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+</row>
+<row>
+<cell>Cost Control Barring</cell>
+<cell/>
+<cell>COST_CONTROL_BARRING</cell>
+<cell>Cost Control Barring</cell>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+<cell/>
+</row>
+<!--End BCT-845 Cost control by Manish R17.4-->
+<!-- start-Mobdev 17.4 changes-->
+<row>
+      <cell>INSTALLMENT</cell>
+      <cell></cell>
+      <cell>INSTALLMENT</cell>
+      <cell>Installment</cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+	<row>
+      <cell>INSTALLMENT RC</cell>
+      <cell></cell>
+      <cell>INSTALLMENT RC</cell>
+      <cell>Installment RC</cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+	<row>
+      <cell>INSTALLMENT OTC</cell>
+      <cell></cell>
+      <cell>INSTALLMENT OTC</cell>
+      <cell>Installment OTC</cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+	<row>
+      <cell>RCC</cell>
+      <cell></cell>
+      <cell>RCC</cell>
+      <cell>RCC</cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+	<row>
+      <cell>Device OTC</cell>
+      <cell></cell>
+      <cell>DEVICE OTC</cell>
+      <cell>Device OTC</cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+	<row>
+      <cell>PENALTY</cell>
+      <cell></cell>
+      <cell>PENALTY</cell>
+      <cell>Penalty</cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>	
+	<row>
+      <cell>TERMINAL INSURANCE</cell>
+      <cell></cell>
+      <cell>TERMINAL INSURANCE</cell>
+      <cell>Terminal Insurance</cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+	<row>
+      <cell>TERMINAL INSURANCE PLAN</cell>
+      <cell></cell>
+      <cell>TERMINAL INSURANCE PLAN</cell>
+      <cell>Terminal Insurance Plan</cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+	<row>
+      <cell>TERMINAL INSURANCE DEDUCTIBLES</cell>
+      <cell></cell>
+      <cell>TERMINAL INSURANCE DEDUCTIBLES</cell>
+      <cell>Terminal Insurance Deductibles</cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+	<row>
+      <cell>RABATT</cell>
+      <cell></cell>
+      <cell>RABATT</cell>
+      <cell>Rabatt</cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+	<row>
+      <cell>PERPETUAL</cell>
+      <cell></cell>
+      <cell>PERPETUAL</cell>
+      <cell>Perpetual</cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+	<!-- end-Mobdev 17.4 changes-->
+	<!-- start-Mobdev 4509 18.4 changes-->
+	<row>
+    <cell>Fixed Number</cell>
+    <cell/>
+    <cell>FIXED_NUMBER</cell>
+    <cell>Fixed Number</cell>
+    <cell/>
+    <cell/>
+    <cell/>
+    <cell/>
+    <cell/>
+    </row>
+	<!-- end-Mobdev 4509 18.4 changes-->
+  </rows>
+</dvm>

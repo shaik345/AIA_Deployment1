@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<AIAServiceConfiguration xmlns="http://xmlns.oracle.com/aia/core/config/V1" version="1.0">
+   <ServiceConfiguration serviceName="{http://xmlns.oracle.com/ABCSImpl/PDC/Core/SyncPriceListPDCProvABCSImpl/V1}SyncPriceListPDCProvABCSImpl">
+      <Property name="Default.SystemID">PDC_01</Property>
+	  <Property name="Default.BRMID">BRM_01</Property>
+	  <Property name="Default.pdcuser">pdc1</Property>
+      <Property name="Routing.pricingGatewayPortType.RouteToCAVS">false</Property>
+      <Property name="Routing.pricingGatewayPortType.CAVS.EndpointURI">oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/AIAValidationSystemServlet/syncresponsesimulator</Property>
+      <Property name="Routing.pricingGatewayPortType.PDC_01.EndpointURI">http://${participatingapplications.pdc.server.host}:${participatingapplications.pdc.server.port}/pdc/PricingGatewayPort</Property>
+      <Property name="Routing.pricingGatewayPortType.MessageProcessingInstruction.EnvironmentCode">PRODUCTION</Property>
+   </ServiceConfiguration>
+</AIAServiceConfiguration>

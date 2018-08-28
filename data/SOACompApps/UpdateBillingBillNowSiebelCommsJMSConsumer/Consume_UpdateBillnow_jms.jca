@@ -1,0 +1,13 @@
+<adapter-config name="Consume_UpdateBillnow" adapter="JMS Adapter" wsdlLocation="Consume_UpdateBillnow.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/wls/NotificationTopic" UIJmsProvider="WLSJMS" UIConnectionName="BU7"/>
+  <endpoint-activation portType="Consume_Message_ptt" operation="Consume_Message">
+    <activation-spec className="oracle.tip.adapter.jms.inbound.JmsConsumeActivationSpec">
+      <property name="PayloadType" value="TextMessage"/>
+	  <property name="DurableSubscriber" value="UpdateBillingBillNowBillNowSiebelCommsConsumer_01"/>
+      <property name="UseMessageListener" value="false"/>
+      <property name="DestinationName" value="jms/aia/NotificationTopic"/>
+    </activation-spec>
+  </endpoint-activation>
+
+</adapter-config>

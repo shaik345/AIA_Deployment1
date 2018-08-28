@@ -1,0 +1,91 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!--Upgraded by DVM upgade utility 1.0-->
+<dvm name="SALESORDER_LINESTATUS" xmlns="http://xmlns.oracle.com/dvm">
+<description>DVM description</description>
+   <columns>
+      <column name="COMMON"/>
+      <column name="SEBL_01"/>
+      <column name="BRM_01"/>
+   </columns>
+<rows>
+      <row>
+         <cell>ACTIVE</cell>
+         <cell>Active</cell>
+         <cell>Active</cell>
+      </row>
+<row>
+         <cell>OPEN</cell>
+         <cell>Open</cell>
+         <cell/>
+      </row>
+<row>
+         <cell>COMPLETE</cell>
+         <cell>Complete</cell>
+         <cell/>
+      </row>
+<row>
+         <cell>CLOSE</cell>
+         <cell>Closed</cell>
+         <cell/>
+      </row>
+<row>
+         <cell>BILLIED</cell>
+         <cell>Billied</cell>
+         <cell/>
+      </row>
+<row>
+         <cell>CANCELLED</cell>
+         <cell>Cancelled</cell>
+         <cell/>
+      </row>
+<row>
+         <cell>FAILED</cell>
+         <cell>Failed</cell>
+         <cell/>
+      </row>
+<row>
+         <cell>IN PROGRESS</cell>
+         <cell>In Progress</cell>
+         <cell/>
+      </row>
+	  <row>
+         <cell>PENDING</cell>
+         <cell>Pending</cell>
+         <cell/>
+      </row>
+	  <!-- Start Changes for COLT Interface Custom Status Sept 4th 2015 Santosh M E (Discussed with Saranga and Ershad) -->
+	  <row>
+         <cell>ORDER_PENDING</cell>
+         <cell>Pending</cell>
+         <cell/>
+      </row>
+	   <row>
+         <cell>GOODS_ISSUED</cell>
+         <cell>Goods Issued</cell>
+         <cell/>
+      </row>
+	  <row>
+         <cell>IN_TRANSPORTATION</cell>
+         <cell>In Transportation</cell>
+         <cell/>
+      </row>
+	   <row>
+         <cell>DELIVERED</cell>
+         <cell>Delivered</cell>
+         <cell/>
+      </row>
+	   <row>
+         <cell>WAITING_FOR_CLIENT</cell>
+         <cell>Waiting For Client</cell>
+         <cell/>
+      </row>
+	   <row>
+         <cell>PICKING_REQUEST_SENT</cell>
+         <cell>Picking Request Sent</cell>
+         <cell/>
+      </row>
+	  
+	   <!-- Start Changes for COLT Interface Custom Status Sept 4th 2015 Santosh M E-->
+	  
+</rows>
+</dvm>

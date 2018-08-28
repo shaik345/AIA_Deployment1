@@ -1,0 +1,1014 @@
+<?xml version="1.0"?>
+<!-- Copyright (c) 2011, 2015, Oracle and/or its affiliates. 
+All rights reserved.-->
+<!--     This sample file, which has been provided by Oracle Corporation as part of 
+    an Oracle(r) product for use ONLY by licensed users of the product, includes 
+    CONFIDENTIAL and PROPRIETARY information of Oracle Corporation. This material 
+    is the confidential property of Oracle Corporation or its licensors and may 
+    be used, reproduced, stored, or transmitted only in accordance with a valid 
+    Oracle license or sublicense agreement. USE OF THIS SOFTWARE IS GOVERNED 
+    BY THE TERMS AND CONDITIONS OF THE LICENSE AGREEMENT AND LIMITED WARRANTY 
+    FURNISHED WITH THE PRODUCT. IN PARTICULAR, YOU WILL INDEMNIFY AND HOLD ORACLE 
+    CORPORATION, ITS RELATED COMPANIES AND ITS SUPPLIERS, HARMLESS FROM AND AGAINST 
+    ANY CLAIMS OR LIABILITIES ARISING OUT OF THE USE, REPRODUCTION, OR DISTRIBUTION 
+    OF YOUR PROGRAMS, INCLUDING ANY CLAIMS OR LIABILITIES ARISING OUT OF OR RESULTING 
+    FROM THE USE, MODIFICATION, OR DISTRIBUTION OF PROGRAMS OR FILES CREATED 
+    FROM, BASED ON, AND/OR DERIVED FROM THIS SAMPLE SOURCE CODE FILE. -->
+<xs:schema
+    targetNamespace="http://xmlns.oracle.com/communications/inventory/webservice/nsrm"
+    xmlns:nsrmws="http://xmlns.oracle.com/communications/inventory/webservice/nsrm"
+    xmlns:invent="http://xmlns.oracle.com/communications/inventory/entity"
+    xmlns:invspec="http://xmlns.oracle.com/communications/inventory/specification"
+    xmlns:invbi="http://xmlns.oracle.com/communications/inventory/businessinteraction"
+    xmlns:invconfig="http://xmlns.oracle.com/communications/inventory/configuration"
+    xmlns:invprop="http://xmlns.oracle.com/communications/inventory/property"
+    xmlns:invld="http://xmlns.oracle.com/communications/inventory/logicaldevice"
+    xmlns:invpd="http://xmlns.oracle.com/communications/inventory/physicaldevice"
+    xmlns:invtn="http://xmlns.oracle.com/communications/inventory/number"
+    xmlns:invgroup="http://xmlns.oracle.com/communications/inventory/group"
+    xmlns:invfault="http://xmlns.oracle.com/communications/inventory/webservice/fault"
+    xmlns:invcom="http://xmlns.oracle.com/communications/inventory/webservice/common"
+	xmlns:biws="http://xmlns.oracle.com/communications/inventory/webservice/businessinteraction"
+    xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <!-- ============= Imports Start ================= -->
+    <xs:import namespace="http://www.w3.org/2001/XMLSchema" />
+    <!-- Local Imports -->
+    <xs:import
+        namespace="http://xmlns.oracle.com/communications/inventory/webservice/common"
+        schemaLocation="InventoryCommon.xsd" />
+    <xs:import
+        namespace="http://xmlns.oracle.com/communications/inventory/webservice/fault"
+        schemaLocation="InventoryFaults.xsd" />
+    <xs:import namespace="http://xmlns.oracle.com/communications/inventory/entity"
+        schemaLocation="Entity.xsd" />
+    <xs:import
+        namespace="http://xmlns.oracle.com/communications/inventory/specification"
+        schemaLocation="Specification.xsd" />
+    <xs:import
+        namespace="http://xmlns.oracle.com/communications/inventory/businessinteraction"
+        schemaLocation="BusinessInteraction.xsd" />
+    <xs:import
+        namespace="http://xmlns.oracle.com/communications/inventory/configuration"
+        schemaLocation="Configuration.xsd" />
+    <xs:import
+        namespace="http://xmlns.oracle.com/communications/inventory/property"
+        schemaLocation="Property.xsd" />
+    <xs:import
+        namespace="http://xmlns.oracle.com/communications/inventory/logicaldevice"
+        schemaLocation="LogicalDevice.xsd" />
+    <xs:import
+        namespace="http://xmlns.oracle.com/communications/inventory/physicaldevice"
+        schemaLocation="PhysicalDevice.xsd" />
+    <xs:import namespace="http://xmlns.oracle.com/communications/inventory/group"
+        schemaLocation="InventoryGroup.xsd" />
+    <xs:import namespace="http://xmlns.oracle.com/communications/inventory/party"
+        schemaLocation="Party.xsd" />
+    <xs:import namespace="http://xmlns.oracle.com/communications/inventory/place"
+        schemaLocation="Place.xsd" />
+    <xs:import namespace="http://xmlns.oracle.com/communications/inventory/number"
+        schemaLocation="Number.xsd" />
+    <xs:import
+        namespace="http://xmlns.oracle.com/communications/inventory/networkaddress"
+        schemaLocation="NetworkAddress.xsd" />
+    <xs:import
+        namespace="http://xmlns.oracle.com/communications/inventory/customobject"
+        schemaLocation="CustomObject.xsd" />
+	<xs:import
+        namespace="http://xmlns.oracle.com/communications/inventory/network" 
+		 schemaLocation="Network.xsd" />
+
+    <!-- ==== Message Types ==== -->
+    <xs:complexType name="CreateEntityRequestType">
+        <xs:annotation>
+            <xs:documentation>
+
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="invcom:InventoryRequestType">
+                <xs:sequence>
+                    <xs:element name="entity" type="invent:EntityType"
+                        nillable="false" minOccurs="1" maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="inventoryGroup"
+                        type="invgroup:InventoryGroupType" nillable="false"
+                        minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="parameter" type="invbi:ParameterType"
+                        minOccurs="0" maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    
+
+    <xs:complexType name="FindEntityRequestType">
+        <xs:annotation>
+            <xs:documentation>
+
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="invcom:InventoryRequestType">
+                <xs:sequence>
+                    <xs:choice>
+            			<xs:element name="entity" type="invent:EntityType" nillable="false" minOccurs="0" maxOccurs="1">
+                			<xs:annotation>
+                    			<xs:documentation>
+                    			</xs:documentation>
+                			</xs:annotation>
+            			</xs:element>
+            			<xs:element name="criteria" type="invent:SearchCriteriaType" nillable="false" minOccurs="0" maxOccurs="1">
+                			<xs:annotation>
+                    			<xs:documentation>
+                    			</xs:documentation>
+                			</xs:annotation>
+            			</xs:element>
+        			</xs:choice>
+                    <xs:element name="parameter" type="invbi:ParameterType"
+                        minOccurs="0" maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="UpdateEntityRequestType">
+        <xs:annotation>
+            <xs:documentation>
+
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="invcom:InventoryRequestType">
+                <xs:sequence>
+                    <xs:element name="entityDetails" type="invent:EntityType"
+                        nillable="false" minOccurs="1" maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="entitySearchCriteria" type="invent:SearchCriteriaType"
+                        nillable="false" minOccurs="1" maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="parameter" type="invbi:ParameterType"
+                        minOccurs="0" maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="DeleteEntityRequestType">
+        <xs:annotation>
+            <xs:documentation>
+
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="invcom:InventoryRequestType">
+                <xs:sequence>
+                    <xs:choice>
+            			<xs:element name="entity" type="invent:EntityType" nillable="false" minOccurs="0" maxOccurs="1">
+                			<xs:annotation>
+                    			<xs:documentation>
+                    			</xs:documentation>
+                			</xs:annotation>
+            			</xs:element>
+            			<xs:element name="criteria" type="invent:SearchCriteriaType" nillable="false" minOccurs="0" maxOccurs="1">
+                			<xs:annotation>
+                    			<xs:documentation>
+                    			</xs:documentation>
+                			</xs:annotation>
+            			</xs:element>
+        			</xs:choice>
+                    <xs:element name="parameter" type="invbi:ParameterType"
+                        minOccurs="0" maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="ReserveEntityRequestType">
+        <xs:annotation>
+            <xs:documentation>
+
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="invcom:InventoryRequestType">
+                <xs:sequence>
+                    <xs:element name="reservation"
+                        type="invconfig:ResourceReservationType"
+                        nillable="false" minOccurs="1" maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="resourceEntities" type="invent:EntityType" nillable="false" minOccurs="0" maxOccurs="unbounded">
+                			<xs:annotation>
+                    			<xs:documentation>
+                    			</xs:documentation>
+                			</xs:annotation>
+            		</xs:element>
+            		<xs:element name="resourceCriteria" type="invent:SearchCriteriaType" nillable="false" minOccurs="0" maxOccurs="unbounded">
+                			<xs:annotation>
+                    			<xs:documentation>
+                    			</xs:documentation>
+                			</xs:annotation>
+            		</xs:element>
+        			<xs:element name="parameter" type="invbi:ParameterType"
+                        minOccurs="0" maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="UnreserveEntityRequestType">
+        <xs:annotation>
+            <xs:documentation>
+
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="invcom:InventoryRequestType">
+                <xs:sequence>
+                    <xs:element name="reservation"
+                        type="invconfig:ResourceReservationType"
+                        nillable="false" minOccurs="1" maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="resourceEntities" type="invent:EntityType" nillable="false" minOccurs="0" maxOccurs="unbounded">
+                			<xs:annotation>
+                    			<xs:documentation>
+                    			</xs:documentation>
+                			</xs:annotation>
+            		</xs:element>
+            		<xs:element name="resourceCriteria" type="invent:SearchCriteriaType" nillable="false" minOccurs="0" maxOccurs="unbounded">
+                			<xs:annotation>
+                    			<xs:documentation>
+                    			</xs:documentation>
+                			</xs:annotation>
+            		</xs:element>
+        			<xs:element name="parameter" type="invbi:ParameterType"
+                        minOccurs="0" maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="UpdateReservationRequestType">
+        <xs:annotation>
+            <xs:documentation>
+
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="invcom:InventoryRequestType">
+                <xs:sequence>
+                    <xs:element name="reservation"
+                        type="invconfig:ResourceReservationType"
+                        minOccurs="1" maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+					<xs:element name="resourceEntities" type="invent:EntityType" nillable="false" minOccurs="0" maxOccurs="1">
+                			<xs:annotation>
+                    			<xs:documentation>
+                    			</xs:documentation>
+                			</xs:annotation>
+            		</xs:element>
+            		<xs:element name="resourceCriteria" type="invent:SearchCriteriaType" nillable="false" minOccurs="0" maxOccurs="1">
+                			<xs:annotation>
+                    			<xs:documentation>
+                    			</xs:documentation>
+                			</xs:annotation>
+            		</xs:element>
+                    <xs:element name="parameter" type="invbi:ParameterType"
+                        minOccurs="0" maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+
+
+    <xs:complexType name="AssociateEntityRequestType">
+        <xs:annotation>
+            <xs:documentation>
+
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="invcom:InventoryRequestType">
+                <xs:sequence>
+                    <xs:element name="associationType"
+                        type="invent:AssociationTypeEnum" nillable="false"
+                        minOccurs="1" maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="sourceEntities">
+                        <xs:complexType>
+                            <xs:choice>
+            					<xs:element name="entity" type="invent:EntityType" nillable="false" minOccurs="0" maxOccurs="1">
+                					<xs:annotation>
+                    				<xs:documentation>
+                    				</xs:documentation>
+                					</xs:annotation>
+            					</xs:element>
+            					<xs:element name="criteria" type="invent:SearchCriteriaType" nillable="false" minOccurs="0" maxOccurs="1">
+                					<xs:annotation>
+                    					<xs:documentation>
+                    					</xs:documentation>
+                					</xs:annotation>
+            					</xs:element>
+        					</xs:choice>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="targetEntities">
+                        <xs:complexType>
+                            <xs:choice>
+            					<xs:element name="entity" type="invent:EntityType" nillable="false" minOccurs="0" maxOccurs="1">
+                					<xs:annotation>
+                    				<xs:documentation>
+                    				</xs:documentation>
+                					</xs:annotation>
+            					</xs:element>
+            					<xs:element name="criteria" type="invent:SearchCriteriaType" nillable="false" minOccurs="0" maxOccurs="1">
+                					<xs:annotation>
+                    					<xs:documentation>
+                    					</xs:documentation>
+                					</xs:annotation>
+            					</xs:element>
+        					</xs:choice>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="parameter" type="invbi:ParameterType"
+                        minOccurs="0" maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+	<xs:complexType name="ExportEntityRequestType">
+        <xs:annotation>
+            <xs:documentation>
+
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="invcom:InventoryRequestType">
+            <xs:sequence>
+				<xs:element name="fileName" type="xsd:string" nillable="true" minOccurs="0" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation></xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="criteria" type="invent:SearchCriteriaType" nillable="false"  minOccurs="1" maxOccurs="unbounded">
+            		<xs:annotation>
+                		<xs:documentation>search criteria</xs:documentation>
+                	</xs:annotation>
+            	</xs:element>
+			</xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:complexType name="DisassociateEntityRequestType">
+        <xs:annotation>
+            <xs:documentation>
+
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="nsrmws:AssociateEntityRequestType">
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+
+    <xs:complexType name="CreateEntityResponseType">
+        <xs:annotation>
+            <xs:documentation>
+
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="invcom:InventoryResponseType">
+                <xs:sequence>
+                    <xs:element name="entity" type="invent:EntityType"
+                        nillable="false" minOccurs="0" maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    
+
+
+    <xs:complexType name="FindEntityResponseType">
+        <xs:annotation>
+            <xs:documentation>
+
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="invcom:InventoryResponseType">
+                <xs:sequence>
+                    <xs:element name="entity" type="invent:EntityType"
+                        nillable="false" minOccurs="0" maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="UpdateEntityResponseType">
+        <xs:annotation>
+            <xs:documentation>
+
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="invcom:InventoryResponseType">
+                <xs:sequence>
+                    <xs:element name="entity" type="invent:EntityType"
+                        nillable="false" minOccurs="0" maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="DeleteEntityResponseType">
+        <xs:annotation>
+            <xs:documentation>
+
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="invcom:InventoryResponseType">
+                <xs:sequence>
+                    <xs:element name="entity" type="invent:EntityType"
+                        nillable="false" minOccurs="0" maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="ReserveEntityResponseType">
+        <xs:annotation>
+            <xs:documentation>
+
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="invcom:InventoryResponseType">
+                <xs:sequence>
+                    <xs:element name="reservation"
+                        type="invconfig:ResourceReservationType"
+                        nillable="false" minOccurs="1" maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="entity" type="invent:EntityType"
+                        nillable="false" minOccurs="0" maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="UnreserveEntityResponseType">
+        <xs:annotation>
+            <xs:documentation>
+
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="nsrmws:ReserveEntityResponseType">
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="UpdateReservationResponseType">
+        <xs:annotation>
+            <xs:documentation>
+
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="nsrmws:UnreserveEntityResponseType">
+               </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="ImportEntityResponseType">
+        <xs:annotation>
+            <xs:documentation>
+
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="invcom:InventoryResponseType">
+                <xs:sequence>
+                    <xs:element name="count" type="xs:int">
+                        <xs:annotation>
+                            <xs:documentation>
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="AssociateEntityResponseType">
+        <xs:annotation>
+            <xs:documentation>
+
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="invcom:InventoryResponseType">
+                <xs:sequence>
+                    <xs:element name="count" type="xs:int">
+                        <xs:annotation>
+                            <xs:documentation>
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="DisassociateEntityResponseType">
+        <xs:annotation>
+            <xs:documentation>
+
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="nsrmws:AssociateEntityResponseType">
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+
+    <xs:complexType name="CreateEntityFaultType">
+        <xs:annotation>
+            <xs:documentation>
+
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="invfault:InventoryFaultType" />
+        </xs:complexContent>
+    </xs:complexType>
+
+    
+
+
+    <xs:complexType name="FindEntityFaultType">
+        <xs:annotation>
+            <xs:documentation>
+
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="invfault:InventoryFaultType" />
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="UpdateEntityFaultType">
+        <xs:annotation>
+            <xs:documentation>
+
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="invfault:InventoryFaultType" />
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="DeleteEntityFaultType">
+        <xs:annotation>
+            <xs:documentation>
+
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="invfault:InventoryFaultType" />
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="ReserveEntityFaultType">
+        <xs:annotation>
+            <xs:documentation>
+
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="invfault:InventoryFaultType" />
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="UnreserveEntityFaultType">
+        <xs:annotation>
+            <xs:documentation>
+
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="invfault:InventoryFaultType" />
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="UpdateReservationFaultType">
+        <xs:annotation>
+            <xs:documentation>
+
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="invfault:InventoryFaultType" />
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="ImportEntityFaultType">
+        <xs:annotation>
+            <xs:documentation>
+
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="invfault:InventoryFaultType" />
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:complexType name="ExportEntityFaultType">
+        <xs:annotation>
+            <xs:documentation>
+
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="invfault:InventoryFaultType" />
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="AssociateEntityFaultType">
+        <xs:annotation>
+            <xs:documentation>
+
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="invfault:InventoryFaultType" />
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="DisassociateEntityFaultType">
+        <xs:annotation>
+            <xs:documentation>
+
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="invfault:InventoryFaultType" />
+        </xs:complexContent>
+    </xs:complexType>
+
+
+    <xs:complexType name="ImportEntityType">
+        <xs:annotation>
+            <xs:documentation>This is a named parameter to an action.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="data" type="invbi:ParameterType"
+                nillable="false" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ReservationAndEntityDetails">
+     <xs:annotation>
+            <xs:documentation>
+
+            </xs:documentation>
+        </xs:annotation>
+	  <xs:complexContent>
+		<xs:extension base="invcom:InventoryResponseType">
+		   <xs:sequence>
+                    <xs:element name="reservation"
+                        type="invconfig:ResourceReservationType"
+                        nillable="false" minOccurs="1" maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="entity" type="invent:EntityType"
+                        nillable="false" minOccurs="1" maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+				</xs:extension>
+      </xs:complexContent> 	  
+	</xs:complexType>
+    <!-- ==== Elements ==== -->
+    <xs:element name="createEntityRequest" type="nsrmws:CreateEntityRequestType">
+        <xs:annotation>
+            <xs:documentation>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="createEntityResponse" type="nsrmws:CreateEntityResponseType">
+        <xs:annotation>
+            <xs:documentation>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="createEntityFault" type="nsrmws:CreateEntityFaultType">
+        <xs:annotation>
+            <xs:documentation>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    
+	<xs:element name="findEntityRequest" type="nsrmws:FindEntityRequestType">
+        <xs:annotation>
+            <xs:documentation>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="findEntityResponse" type="nsrmws:FindEntityResponseType">
+        <xs:annotation>
+            <xs:documentation>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="findEntityFault" type="nsrmws:FindEntityFaultType">
+        <xs:annotation>
+            <xs:documentation>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="updateEntityRequest" type="nsrmws:UpdateEntityRequestType">
+        <xs:annotation>
+            <xs:documentation>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="updateEntityResponse" type="nsrmws:UpdateEntityResponseType">
+        <xs:annotation>
+            <xs:documentation>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="updateEntityFault" type="nsrmws:UpdateEntityFaultType">
+        <xs:annotation>
+            <xs:documentation>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="deleteEntityRequest" type="nsrmws:DeleteEntityRequestType">
+        <xs:annotation>
+            <xs:documentation>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="deleteEntityResponse" type="nsrmws:DeleteEntityResponseType">
+        <xs:annotation>
+            <xs:documentation>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="deleteEntityFault" type="nsrmws:DeleteEntityFaultType">
+        <xs:annotation>
+            <xs:documentation>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+
+    <xs:element name="reserveEntityRequest" type="nsrmws:ReserveEntityRequestType">
+        <xs:annotation>
+            <xs:documentation>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="reserveEntityResponse" type="nsrmws:ReserveEntityResponseType">
+        <xs:annotation>
+            <xs:documentation>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="reserveEntityFault" type="nsrmws:ReserveEntityFaultType">
+        <xs:annotation>
+            <xs:documentation>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="unreserveEntityRequest" type="nsrmws:UnreserveEntityRequestType">
+        <xs:annotation>
+            <xs:documentation>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="unreserveEntityResponse" type="nsrmws:UnreserveEntityResponseType">
+        <xs:annotation>
+            <xs:documentation>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="unreserveEntityFault" type="nsrmws:UnreserveEntityFaultType">
+        <xs:annotation>
+            <xs:documentation>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="updateReservationRequest" type="nsrmws:UpdateReservationRequestType">
+        <xs:annotation>
+            <xs:documentation>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="updateReservationResponse" type="nsrmws:UpdateReservationResponseType">
+        <xs:annotation>
+            <xs:documentation>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="updateReservationFault" type="nsrmws:UpdateReservationFaultType">
+        <xs:annotation>
+            <xs:documentation>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="importEntityResponse" type="nsrmws:ImportEntityResponseType">
+        <xs:annotation>
+            <xs:documentation>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="importEntityFault" type="nsrmws:ImportEntityFaultType">
+        <xs:annotation>
+            <xs:documentation>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="associateEntityRequest" type="nsrmws:AssociateEntityRequestType">
+        <xs:annotation>
+            <xs:documentation>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="associateEntityResponse" type="nsrmws:AssociateEntityResponseType">
+        <xs:annotation>
+            <xs:documentation>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="associateEntityFault" type="nsrmws:AssociateEntityFaultType">
+        <xs:annotation>
+            <xs:documentation>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+	
+	<xs:element name="exportEntityRequest" type="nsrmws:ExportEntityRequestType">
+        <xs:annotation>
+            <xs:documentation>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    
+    <xs:element name="exportEntityFault" type="nsrmws:ExportEntityFaultType">
+        <xs:annotation>
+            <xs:documentation>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+	
+    <xs:element name="disassociateEntityRequest" type="nsrmws:DisassociateEntityRequestType">
+        <xs:annotation>
+            <xs:documentation>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="disassociateEntityResponse" type="nsrmws:DisassociateEntityResponseType">
+        <xs:annotation>
+            <xs:documentation>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="disassociateEntityFault" type="nsrmws:DisassociateEntityFaultType">
+        <xs:annotation>
+            <xs:documentation>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+</xs:schema>

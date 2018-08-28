@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+        targetNamespace="http://xmlns.oracle.com/scm/ProcessManufacturerFilesUIMProvider/ProcessManufacturerFilesUIMProviderBPELProcess"
+        xmlns="http://www.w3.org/2001/XMLSchema">
+ <element name="process">
+  <complexType>
+   <sequence>
+    <element name="filename" type="string"/>
+    <element name="HeaderInfo">
+     <complexType>
+      <sequence>
+       <element name="Cardtype" type="string"/>
+       <element name="Nb_Of_Records" type="string"/>
+       <element name="Order_ID" type="string"/>
+       <element name="Priority" type="string"/>
+       <element name="Types" type="string"/>
+       <element name="Var_in" type="string"/>
+       <element name="Var_out" type="string"/>
+      </sequence>
+     </complexType>
+    </element>
+   </sequence>
+  </complexType>
+ </element>
+ <element name="processResponse">
+  <complexType>
+   <sequence>
+    <element name="status" type="string"/>
+    <element name="filename" type="string"/>
+   </sequence>
+  </complexType>
+ </element>
+ <!-- for one-way asynchronous midprocess receive-->
+ <element name="loadingResponse">
+  <complexType>
+   <sequence>
+	<element name="filename" type="string"/>
+    <element name="status" type="string"/>
+   </sequence>
+  </complexType>
+ </element>
+</schema>

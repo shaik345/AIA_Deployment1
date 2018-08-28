@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="UpdateRCCDetailsBRMProvABCSImpl" revision="1.0" mode="active" state="on" xmlns="http://xmlns.oracle.com/sca/1.0" xmlns:ui="http://xmlns.oracle.com/soa/designer/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+     <import namespace="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess" location="oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/V1/wsdls/AIAAsyncErrorHandlingBPELProcess.wsdl"/>
+        <!--<svcdoc:AIA>
+               <svcdoc:ServiceSolutionComponentAssociation>
+                  <svcdoc:GUID>b945c533-243d-4679-9a89-2d40548b482c</svcdoc:GUID>
+               </svcdoc:ServiceSolutionComponentAssociation>
+        </svcdoc:AIA>-->
+    <import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes"
+            location="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/wsdls/BRMBillServices.wsdl"
+            importType="wsdl"/>
+    <import namespace="http://xmlns.oracle.com/ABCSImpl/BRM/Industry//UpdateRCCDetailsBRMProvABCSImpl/V1"
+            location="oramds:/apps/AIAMetaData/AIAComponents/ApplicationConnectorServiceLibrary/BRM/V1/ProviderABCS/UpdateRCCDetailsBRMProvABCSImpl.wsdl"
+            importType="wsdl"/>
+    <service ui:wsdlLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationConnectorServiceLibrary/BRM/V1/ProviderABCS/UpdateRCCDetailsBRMProvABCSImpl.wsdl" name="UpdateRCCDetailsBRMProvABCSImpl">
+        <interface.wsdl interface="http://xmlns.oracle.com/ABCSImpl/BRM/Industry//UpdateRCCDetailsBRMProvABCSImpl/V1#wsdl.interface(UpdateRCCDetailsBRMProvABCSImpl)"/>
+        <!--<svcdoc:AIA>
+                    <svcdoc:Service>
+                      <svcdoc:InterfaceDetails>
+                         <svcdoc:ServiceName>CommunicationsCustomerPartyEBSV2</svcdoc:ServiceName>
+                        <svcdoc:Namespace>http://xmlns.oracle.com/EnterpriseServices/Core/CustomerParty/V2</svcdoc:Namespace>
+                            <svcdoc:ArtifactType>EnterpriseBusinessService</svcdoc:ArtifactType>
+                            <svcdoc:ServiceOperation>
+                              <svcdoc:Name>UpdateCustomerParty</svcdoc:Name>
+                            </svcdoc:ServiceOperation>		
+                      </svcdoc:InterfaceDetails>
+                      <svcdoc:ImplementationDetails>
+                         <svcdoc:ApplicationName>BRM</svcdoc:ApplicationName>
+                         <svcdoc:BaseVersion></svcdoc:BaseVersion>
+                         <svcdoc:DevelopedBy>Oracle</svcdoc:DevelopedBy>
+                         <svcdoc:OracleCertified>Yes</svcdoc:OracleCertified>
+                         <svcdoc:ArtifactType>ProviderABCSImplementation</svcdoc:ArtifactType>
+                         <svcdoc:ServiceOperation>
+                            <svcdoc:Name>UpdateRCCDetails</svcdoc:Name>
+                         </svcdoc:ServiceOperation>
+                      </svcdoc:ImplementationDetails>
+                   </svcdoc:Service>
+        </svcdoc:AIA>-->
+        <binding.ws port="http://xmlns.oracle.com/ABCSImpl/BRM/Industry//UpdateRCCDetailsBRMProvABCSImpl/V1#wsdl.endpoint(UpdateRCCDetailsBRMProvABCSImpl/UpdateRCCDetailsBRMProvABCSImpl_pt)">
+            <property name="weblogic.wsee.wsat.transaction.flowOption"
+                      type="xs:string" many="false">NEVER</property>
+        </binding.ws>
+    </service>
+        <property name="oracle.composite.faultPolicyFile">oramds:/apps/AIAMetaData/faultPolicies/fault-policies.xml</property>
+        <property name="oracle.composite.faultBindingFile">oramds:/apps/AIAMetaData/faultPolicies/fault-bindings.xml</property>
+    <component name="UpdateRCCDetailsBRMProvABCSImplProcess">
+        <implementation.bpel src="UpdateRCCDetailsBRMProvABCSImplProcess.bpel"/>
+        <property name="bpel.config.transaction">required</property>
+        <property name="bpel.config.oneWayDeliveryPolicy">sync</property>
+    </component>
+    <reference ui:wsdlLocation="oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/V1/wsdls/AIAAsyncErrorHandlingBPELProcess.wsdl" name="AIAAsyncErrorHandlingBPELProcess">
+        <interface.wsdl interface="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess#wsdl.interface(AIAAsyncErrorHandlingBPELProcess)" callbackInterface="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess#wsdl.interface(AIAAsyncErrorHandlingBPELProcessCallback)" xmlns:ns="http://xmlns.oracle.com/sca/1.0"/>
+        <binding.ws port="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess#wsdl.endpoint(AIAAsyncErrorHandlingBPELProcess/AIAAsyncErrorHandlingBPELProcess)" location="oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/V1/wsdls/AIAAsyncErrorHandlingBPELProcess.wsdl" xmlns:ns="http://xmlns.oracle.com/sca/1.0"/>
+        <!--<svcdoc:AIA>
+                    <svcdoc:Reference>
+                        <svcdoc:ArtifactType>UtilityService</svcdoc:ArtifactType>
+                        <svcdoc:ServiceOperation>
+                        <svcdoc:Name>initiate</svcdoc:Name>
+                        </svcdoc:ServiceOperation>
+                    </svcdoc:Reference>
+                    </svcdoc:AIA>-->
+    </reference>
+  <reference ui:wsdlLocation="BRMBILLService_pttRef.wsdl" name="BRMBILLService_ptt">
+        <interface.wsdl interface="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes#wsdl.interface(BRMBILLService_ptt)" xmlns:ns="http://xmlns.oracle.com/sca/1.0"/>
+         <binding.jca config="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/wsdls/BRMBillServices.jca"
+                     operation="TLC_OP_BILL_SET_LIMIT_AND_CR"/>
+        <!--<svcdoc:AIA>
+                    <svcdoc:Reference>
+                        <svcdoc:ArtifactType>EnterpriseBusinessService</svcdoc:ArtifactType>
+                        <svcdoc:ServiceOperation>
+                        <svcdoc:Name>TLC_OP_BILL_SET_LIMIT_AND_CR</svcdoc:Name>
+                        </svcdoc:ServiceOperation>
+                    </svcdoc:Reference>
+                </svcdoc:AIA>-->
+    </reference>
+    <wire>
+        <source.uri>UpdateRCCDetailsBRMProvABCSImpl</source.uri>
+        <target.uri>UpdateRCCDetailsBRMProvABCSImplProcess/UpdateRCCDetailsBRMProvABCSImpl</target.uri>
+    </wire>
+    <wire>
+        <source.uri>UpdateRCCDetailsBRMProvABCSImplProcess/AIAAsyncErrorHandlingBPELProcess</source.uri>
+        <target.uri>AIAAsyncErrorHandlingBPELProcess</target.uri>
+    </wire>
+    <wire>
+        <source.uri>UpdateRCCDetailsBRMProvABCSImplProcess/BRMBILLService_ptt</source.uri>
+        <target.uri>BRMBILLService_ptt</target.uri>
+    </wire>
+</composite>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.telia.org/c2b/queryBalance" xmlns="http://www.telia.org/c2b/queryBalance" elementFormDefault="qualified">
+	<xs:element name="QueryBalanceRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="RequestDetails">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="requesterId" type="xs:string"/>
+							<xs:element name="requestDate" type="xs:dateTime"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="CustomerParty">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="serviceAccountId" type="xs:string"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="InstalledProduct">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="assetIntegrationId" type="xs:string"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="BalanceDetails">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="serviceType" type="xs:string"/>
+							<xs:element name="roaming" type="xs:string" minOccurs="0"/>
+							<xs:element name="national" type="xs:string" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="QueryBalanceResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ResponseDetails">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="responseDate" type="xs:dateTime"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="BalanceDetails">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="nbOfBalances" type="xs:integer"/>
+							<xs:element name="AggregatedBalances" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="productName" type="xs:string" minOccurs="0"/>
+										<xs:element name="Limit" type="xs:string"/>
+										<xs:element name="remainingBalance" type="xs:string"/>
+										<xs:element name="validFrom" type="xs:dateTime" minOccurs="0"/>
+										<xs:element name="validTo" type="xs:dateTime" minOccurs="0"/>
+										<xs:element name="allowanceType" type="xs:string" minOccurs="0"/>
+										<!-- Start MOBREL 18.2 - Sprint 37:Mobdev-3512-->
+										<xs:element name="unit" type="xs:string" minOccurs="0"/>
+										<xs:element name="serviceType" type="xs:string" minOccurs="0"/>
+										<!-- End MOBREL 18.2 - Sprint 37:Mobdev-3512-->
+										<!-- Start MOBREL 18.4 - Defect:10267-->
+										<xs:element name="resourceId" type="xs:string" minOccurs="0"/>
+										<!-- End MOBREL 18.4 - Defect:10267-->
+										<!-- Start MOBREL 18.3 - Defect:10509-->
+										<xs:element name="type" type="xs:string" minOccurs="0"/>
+										<!-- End MOBREL 18.3 - Defect:10509-->
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="QueryBalanceFault">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="responseDate" type="xs:dateTime"/>
+				<xs:element name="Status">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="statusCode" type="xs:string"/>
+							<xs:element name="ErrorCode" type="xs:string"/>
+							<xs:element name="ErrorMessage" type="xs:string"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

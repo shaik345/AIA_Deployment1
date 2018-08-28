@@ -1,0 +1,382 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xsd:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:op="http://www.portal.com/schemas/BusinessOpcodes" 
+	xmlns="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" 
+	targetNamespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" 
+	elementFormDefault="qualified">
+	<xsd:complexType name="profileExtensionType">
+		<xsd:sequence>
+			<xsd:element name="ACCOUNT_OBJ" minOccurs="0" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:pattern value="([0-9]*.)+[0-9]*(\s)+((/)*([a-zA-Z_]*))*(\s)+[\-]*[0-9]+(\s)+[0-9]*"/>
+						<xsd:pattern value=""/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="CREATED_T" type="xsd:dateTime" nillable="true" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="EFFECTIVE_T" type="xsd:dateTime" nillable="true" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="MOD_T" type="xsd:dateTime" nillable="true" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="NAME" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OBJECT_CACHE_TYPE" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="POID" minOccurs="0" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:pattern value="([0-9]*.)+[0-9]*(\s)+((/)*([a-zA-Z_]*))*(\s)+[\-]*[0-9]+(\s)+[0-9]*"/>
+						<xsd:pattern value=""/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="READ_ACCESS" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SERVICE_OBJ" minOccurs="0" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:pattern value="([0-9]*.)+[0-9]*(\s)+((/)*([a-zA-Z_]*))*(\s)+[\-]*[0-9]+(\s)+[0-9]*"/>
+						<xsd:pattern value=""/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="WRITE_ACCESS" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element ref="profileExtension" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="profileExtension" type="profileExtensionType" abstract="true"/>
+	<xsd:element name="profile_acct_extratingExtension" substitutionGroup="profileExtension" type="profile_acct_extratingExtensionType"/>
+	<xsd:complexType name="profile_acct_extratingExtensionType">
+		<xsd:complexContent>
+			<xsd:extension base="profileExtensionType">
+				<xsd:sequence>
+					<xsd:element name="DATA_ARRAY" minOccurs="0" maxOccurs="unbounded">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="NAME" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+								<xsd:element name="VALID_FROM" type="xsd:dateTime" nillable="true" minOccurs="0" maxOccurs="1"/>
+								<xsd:element name="VALID_TO" type="xsd:dateTime" nillable="true" minOccurs="0" maxOccurs="1"/>
+								<xsd:element name="VALUE" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+							</xsd:sequence>
+							<xsd:attribute type="xsd:string" name="elem"/>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="profile_collections_paramsExtension" substitutionGroup="profileExtension" type="profile_collections_paramsExtensionType"/>
+	<xsd:complexType name="profile_collections_paramsExtensionType">
+		<xsd:complexContent>
+			<xsd:extension base="profileExtensionType">
+				<xsd:sequence>
+					<xsd:element name="COLLECTIONS_PARAMS" minOccurs="0" maxOccurs="unbounded">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="BILLINFO_OBJ" minOccurs="0" maxOccurs="1">
+									<xsd:simpleType>
+										<xsd:restriction base="xsd:string">
+											<xsd:pattern value="([0-9]*.)+[0-9]*(\s)+((/)*([a-zA-Z_]*))*(\s)+[\-]*[0-9]+(\s)+[0-9]*"/>
+											<xsd:pattern value=""/>
+										</xsd:restriction>
+									</xsd:simpleType>
+								</xsd:element>
+							</xsd:sequence>
+							<xsd:attribute type="xsd:string" name="elem"/>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="profile_customer_careExtension" substitutionGroup="profileExtension" type="profile_customer_careExtensionType"/>
+	<xsd:complexType name="profile_customer_careExtensionType">
+		<xsd:complexContent>
+			<xsd:extension base="profileExtensionType">
+				<xsd:sequence>
+					<xsd:element name="CUSTOMER_CARE_INFO" minOccurs="0" maxOccurs="1">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="CUSTOMER_TYPE" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="profile_event_orderingExtension" substitutionGroup="profileExtension" type="profile_event_orderingExtensionType"/>
+	<xsd:complexType name="profile_event_orderingExtensionType">
+		<xsd:complexContent>
+			<xsd:extension base="profileExtensionType">
+				<xsd:sequence>
+					<xsd:element name="OOD_CRITERIA" minOccurs="0" maxOccurs="unbounded">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="BAL_GRP_OBJ" minOccurs="0" maxOccurs="1">
+									<xsd:simpleType>
+										<xsd:restriction base="xsd:string">
+											<xsd:pattern value="([0-9]*.)+[0-9]*(\s)+((/)*([a-zA-Z_]*))*(\s)+[\-]*[0-9]+(\s)+[0-9]*"/>
+											<xsd:pattern value=""/>
+										</xsd:restriction>
+									</xsd:simpleType>
+								</xsd:element>
+								<xsd:element name="BILL_CYCLE_T" type="xsd:dateTime" nillable="true" minOccurs="0" maxOccurs="1"/>
+								<xsd:element name="CRITERIA_NAME" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+								<xsd:element name="LAST_EVENT_PROCESS_T" type="xsd:dateTime" nillable="true" minOccurs="0" maxOccurs="1"/>
+							</xsd:sequence>
+							<xsd:attribute type="xsd:string" name="elem"/>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="profile_ldapExtension" substitutionGroup="profileExtension" type="profile_ldapExtensionType"/>
+	<xsd:complexType name="profile_ldapExtensionType">
+		<xsd:complexContent>
+			<xsd:extension base="profileExtensionType">
+				<xsd:sequence>
+					<xsd:element name="LDAP_INFO" minOccurs="0" maxOccurs="1">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="DN" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="profile_mostcalledExtension" substitutionGroup="profileExtension" type="profile_mostcalledExtensionType"/>
+	<xsd:complexType name="profile_mostcalledExtensionType">
+		<xsd:complexContent>
+			<xsd:extension base="profileExtensionType">
+				<xsd:sequence>
+					<xsd:element name="MOST_CALLED_INFO" minOccurs="0" maxOccurs="1">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="COUNT" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+								<xsd:element name="CRITERION" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+								<xsd:element name="EVENT_TYPE" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+								<xsd:element name="IMPACT_CATEGORY" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+								<xsd:element name="OFFERING_OBJ" minOccurs="0" maxOccurs="1">
+									<xsd:simpleType>
+										<xsd:restriction base="xsd:string">
+											<xsd:pattern value="([0-9]*.)+[0-9]*(\s)+((/)*([a-zA-Z_]*))*(\s)+[\-]*[0-9]+(\s)+[0-9]*"/>
+											<xsd:pattern value=""/>
+										</xsd:restriction>
+									</xsd:simpleType>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="profile_rollover_transferExtension" substitutionGroup="profileExtension" type="profile_rollover_transferExtensionType"/>
+	<xsd:complexType name="profile_rollover_transferExtensionType">
+		<xsd:complexContent>
+			<xsd:extension base="profileExtensionType">
+				<xsd:sequence>
+					<xsd:element name="RESOURCE_INFO" minOccurs="0" maxOccurs="unbounded">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="BAL_GRP_OBJ" minOccurs="0" maxOccurs="1">
+									<xsd:simpleType>
+										<xsd:restriction base="xsd:string">
+											<xsd:pattern value="([0-9]*.)+[0-9]*(\s)+((/)*([a-zA-Z_]*))*(\s)+[\-]*[0-9]+(\s)+[0-9]*"/>
+											<xsd:pattern value=""/>
+										</xsd:restriction>
+									</xsd:simpleType>
+								</xsd:element>
+								<xsd:element name="RECIPIENTS" minOccurs="0" maxOccurs="unbounded">
+									<xsd:complexType>
+										<xsd:sequence>
+											<xsd:element name="BAL_GRP_OBJ" minOccurs="0" maxOccurs="1">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:pattern value="([0-9]*.)+[0-9]*(\s)+((/)*([a-zA-Z_]*))*(\s)+[\-]*[0-9]+(\s)+[0-9]*"/>
+														<xsd:pattern value=""/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="SERVICE_OBJ" minOccurs="0" maxOccurs="1">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:pattern value="([0-9]*.)+[0-9]*(\s)+((/)*([a-zA-Z_]*))*(\s)+[\-]*[0-9]+(\s)+[0-9]*"/>
+														<xsd:pattern value=""/>
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:element>
+											<xsd:element name="VALID_FROM" type="xsd:dateTime" nillable="true" minOccurs="0" maxOccurs="1"/>
+											<xsd:element name="VALID_TO" type="xsd:dateTime" nillable="true" minOccurs="0" maxOccurs="1"/>
+										</xsd:sequence>
+										<xsd:attribute type="xsd:string" name="elem"/>
+									</xsd:complexType>
+								</xsd:element>
+							</xsd:sequence>
+							<xsd:attribute type="xsd:string" name="elem"/>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="profile_serv_extratingExtension" substitutionGroup="profileExtension" type="profile_serv_extratingExtensionType"/>
+	<xsd:complexType name="profile_serv_extratingExtensionType">
+		<xsd:complexContent>
+			<xsd:extension base="profileExtensionType">
+				<xsd:sequence>
+					<xsd:element name="DATA_ARRAY" minOccurs="0" maxOccurs="unbounded">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="NAME" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+								<xsd:element name="VALID_FROM" type="xsd:dateTime" nillable="true" minOccurs="0" maxOccurs="1"/>
+								<xsd:element name="VALID_TO" type="xsd:dateTime" nillable="true" minOccurs="0" maxOccurs="1"/>
+								<xsd:element name="VALUE" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+							</xsd:sequence>
+							<xsd:attribute type="xsd:string" name="elem"/>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="EXTRATING" minOccurs="0" maxOccurs="1">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="LABEL" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+								<xsd:element name="REFERENCE_COUNT" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+								<xsd:element name="STATUS" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="profile_subscriber_preferencesExtension" substitutionGroup="profileExtension" type="profile_subscriber_preferencesExtensionType"/>
+	<xsd:complexType name="profile_subscriber_preferencesExtensionType">
+		<xsd:complexContent>
+			<xsd:extension base="profileExtensionType">
+				<xsd:sequence>
+					<xsd:element name="SUBSCRIBER_PREFERENCES" minOccurs="0" maxOccurs="unbounded">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="NAME" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+								<xsd:element name="SUBSCRIBER_PREFERENCE_ID" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+								<xsd:element name="VALUE" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+							</xsd:sequence>
+							<xsd:attribute type="xsd:string" name="elem"/>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="profile_telia_customerExtension" substitutionGroup="profileExtension" type="profile_telia_customerExtensionType"/>
+	<xsd:complexType name="profile_telia_customerExtensionType">
+		<xsd:complexContent>
+			<xsd:extension base="profileExtensionType">
+				<xsd:sequence>
+					<xsd:element name="CUSTOMER" minOccurs="0" maxOccurs="unbounded">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="TWI_FLD_CUSTOMER_ID" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+								<xsd:element name="TWI_FLD_ORGANIZATION_ID" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+								<!--xsd:element name="TWI_FLD_BUSINESS_SEGMENT" type="xsd:string" minOccurs="0" maxOccurs="1"/-->
+								<xsd:element name="TWI_FLD_TSCID" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+								<xsd:element name="TLC_FLD_CUSTOMER_VAT" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+								<xsd:element name="EMAIL_ADDR" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+								<xsd:element name="PHONE" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+								<!-- Start : MDU-223 RAG-192 Changes in AIA for 18.1 MDU. -Ashwath-->
+								<xsd:element name="TWI_FLD_KO_ACCT_TYPE" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+								<xsd:element name="TWI_FLD_PROPERTY_ID" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+								<!-- End : MDU-223 RAG-192 Changes in AIA for 18.1 MDU. -Ashwath-->
+							</xsd:sequence>
+							<xsd:attribute type="xsd:string" name="elem"/>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<!--Start MDU-718 Changes in AIA to add Service Profile for Service Bundle 18.2. -Ashwath-->
+	<xsd:element name="profile_telia_svc_attributesExtension" substitutionGroup="profileExtension" type="profile_telia_svc_attributesExtensionType"/>
+	<xsd:complexType name="profile_telia_svc_attributesExtensionType">
+		<xsd:complexContent>
+			<xsd:extension base="profileExtensionType">
+				<xsd:sequence>
+					<xsd:element name="PIN_FLD_SERVICE_EXTENSIONS" minOccurs="0" maxOccurs="unbounded">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="TWI_FLD_AGREEMENT_NO" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+							</xsd:sequence>
+							<xsd:attribute type="xsd:string" name="elem"/>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<!--End MDU-718 Changes in AIA to add Service Profile for Service Bundle 18.2. -Ashwath-->
+	<xsd:element name="profile_tlc_mob_insuranceExtension" substitutionGroup="profileExtension" type="profile_tlc_mob_insuranceExtensionType"/>
+	<xsd:complexType name="profile_tlc_mob_insuranceExtensionType">
+		<xsd:complexContent>
+			<xsd:extension base="profileExtensionType">
+				<xsd:sequence>
+					<xsd:element name="TLC_FLD_MOBILE_INSURANCE" minOccurs="0" maxOccurs="unbounded">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="NAME" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+								<xsd:element name="TLC_FLD_ALIAS" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+								<xsd:element name="TLC_FLD_MANUFACTURER" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+								<xsd:element name="TLC_FLD_MODEL" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+								<xsd:element name="TLC_FLD_SERIAL_NUM" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+								<xsd:element name="TLC_FLD_SERIAL_NUM_TYPE" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+							</xsd:sequence>
+							<xsd:attribute type="xsd:string" name="elem"/>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="profile_tlc_service_contactExtension" substitutionGroup="profileExtension" type="profile_tlc_service_contactExtensionType"/>
+	<xsd:complexType name="profile_tlc_service_contactExtensionType">
+		<xsd:complexContent>
+			<xsd:extension base="profileExtensionType">
+				<xsd:sequence>
+					<xsd:element name="TLC_FLD_SERVICE_PROFILE" minOccurs="0" maxOccurs="unbounded">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="TLC_FLD_CONTACT_REFERENCE" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+							</xsd:sequence>
+							<xsd:attribute type="xsd:string" name="elem"/>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="profile_writeoffExtension" substitutionGroup="profileExtension" type="profile_writeoffExtensionType"/>
+	<xsd:complexType name="profile_writeoffExtensionType">
+		<xsd:complexContent>
+			<xsd:extension base="profileExtensionType">
+				<xsd:sequence>
+					<xsd:element name="WRITEOFF_INFO" minOccurs="0" maxOccurs="unbounded">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="FLAGS" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+								<xsd:element name="ITEM_OBJ" minOccurs="0" maxOccurs="1">
+									<xsd:simpleType>
+										<xsd:restriction base="xsd:string">
+											<xsd:pattern value="([0-9]*.)+[0-9]*(\s)+((/)*([a-zA-Z_]*))*(\s)+[\-]*[0-9]+(\s)+[0-9]*"/>
+											<xsd:pattern value=""/>
+										</xsd:restriction>
+									</xsd:simpleType>
+								</xsd:element>
+							</xsd:sequence>
+							<xsd:attribute type="xsd:string" name="elem"/>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+</xsd:schema>

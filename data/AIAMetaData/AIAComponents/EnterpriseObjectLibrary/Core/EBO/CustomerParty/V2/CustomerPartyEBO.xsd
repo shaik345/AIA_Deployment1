@@ -1,0 +1,2820 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+** Oracle Corporation  **
+** AIA Enterprise Object Library **
+** Version: 2.07 **
+** Date: Oct 5, 2011 **
+ 
+ Copyright (c) 2007, 2011, Oracle and/or its affiliates. All rights reserved. 
+License information for this file is provided in the file 
+"Oracle AIA EBO License.txt" that is provided with this package.
+ 
+    XML Schema 
+    Name: \EnterpriseObjectsLibrary\Core\EBO\CustomerParty\V2\CustomerPartyEBO.xsd 
+ 
+-->
+ 
+<!-- ====================================================================== -->
+<!-- =====      Oracle EBO CustomerParty EBO Schema Module     ===== -->
+<!-- ====================================================================== -->
+<xsd:schema xmlns:corecom="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" xmlns:corecustomerpartycust="http://xmlns.oracle.com/EnterpriseObjects/Core/Custom/EBO/CustomerParty/V2" xmlns:corecomcust="http://xmlns.oracle.com/EnterpriseObjects/Core/Custom/Common/V2" xmlns:corecomEBO="http://xmlns.oracle.com/EnterpriseObjects/Core/CommonEBO/V1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1" xmlns="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2" targetNamespace="http://xmlns.oracle.com/EnterpriseObjects/Core/EBO/CustomerParty/V2" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.07.00" > 
+<!-- ====================================================================== -->
+<!-- ==============  Imports and Includes   =============================== -->
+<!-- ====================================================================== -->
+<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="../../../Common/V2/Meta.xsd"/>
+<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="../../../Common/V2/CommonComponents.xsd"/>
+<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="../../../Common/V2/CodeLists.xsd"/>
+<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Common/V2" schemaLocation="../../../Common/V2/DataTypes.xsd"/>
+<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Custom/EBO/CustomerParty/V2" schemaLocation="../../../Custom/EBO/CustomerParty/V2/CustomCustomerPartyEBO.xsd"/>
+<xsd:import namespace="http://xmlns.oracle.com/EnterpriseObjects/Core/Custom/Common/V2" schemaLocation="../../../Custom/Common/V2/CustomCommonComponents.xsd"/>
+<!-- ====================================================================== -->
+<!-- ==============  CustomerParty EBO ====================== -->
+<!-- ====================================================================== -->
+                       <xsd:element name="CustomerPartyEBO" type="CustomerPartyEBOType" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+An individual or company to whom the deploying company intends to sell products or services. For example, ABC Computer and John Smith are customer parties of the deploying company.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                 <xsd:annotation> 
+                      <xsd:documentation> 
+                           <svcdoc:EBO> 
+                                   <svcdoc:Description> 
+An individual or company to whom the deploying company intends to sell products or services. For example, ABC Computer and John Smith are customer parties of the deploying company.
+                                   </svcdoc:Description> 
+                                   <svcdoc:Type>EBO</svcdoc:Type> 
+                                   <svcdoc:Industry/> 
+                           </svcdoc:EBO> 
+                      </xsd:documentation> 
+                 </xsd:annotation> 
+                <xsd:complexType name="CustomerPartyEBOType" >
+                 <xsd:complexContent>
+                      <xsd:extension base="corecom:PartyType">
+                 <xsd:sequence>
+                       <xsd:element name="LevelCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+New customer, prospect, regular,  short term and temporary
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="TypeCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Type of Customer Account. Some examples are Internal customers, Revenue generating external customers etc.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="TaxCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Tax Rate or Tax Classification Code that the Customer
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="ClassificationCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Classifications that this Customer Party has been classified into. For example : SIC Code
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="PotentialRevenueAmount" type="corecom:AmountType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Monetary value of the customer to the deploying company over the life of the customer's account with the deploying company
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="SpeciallyDesignatedNationalIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Specially Designated Nationals and Blocked Persons (SDNs) are individuals and entities located throughout the world that are blocked pursuant to the various sanctions programs administered by OFAC. SDNs can be front companies, parastatal entities, or individuals determined to be owned or controlled by, or acting for or on behalf of, targeted countries or groups. They also can be specially identified individuals such as terrorists or narcotics traffickers. U.S. persons are prohibited from engaging in any transactions with SDNs and must block any property in their possession or under their control in which an SDN has an interest. Indicates whether the customer is an SDN.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="ResidentIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether the customer is considered to be resident.  Depending on the context of use, this supports one application containing the logic to determine residency based on a set of rules and sharing that determination with other applications in context through the CustomerParty EBO
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                      <xsd:element ref="corecom:Note" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Note
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:Status"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Status of the customer party (e.g., Active, Inactive etc.)
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:ParentCustomerPartyReference"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+ParentCustomerParty
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="CustomerPartyAccount" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Financial arrangement that a person or organization has with deploying company to buy products and services e.g. John's buying account at Amazon, Dell's buying account at Oracle
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="CustomerPartyBillingProfile" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Options for billing the customer OR creating invoice
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="CustomerPartyShippingProfile" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Options for shipping to the customer
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="CustomerPartyPaymentProfile" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Options for receiving payments from this customer Party
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="CustomerPartyCreditProfile" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Credit Profile of the Customer
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="CustomerPartySellingProfile" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Options for Sales Order creation
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="CustomerPartySupportTeam" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Support Team assigned to the Customer
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="CustomerPartyShippingExceptionConfiguration" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Shipping Exception to this customer party by days of week or by a block of days
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="CustomerPartyBankAccount" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Bank Accounts owned by this Customer Account
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="CustomerPartyTaxExemption" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Tax Exemptions that this Customer Party is eligible for.
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="CustomerPartyAttachment" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Attachment
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="CustomerPartyPrivacyProfile"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Privacy related settings of the customer
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="RelatedCustomerParty" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Relationship between Customer Party
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="SpecialNeedProfile"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Capture SpecialNeeds related to the CustomerParty.
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="CustomerPartySpecification" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+User defined attributes of the customer party
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="CustomerPartyFinancialAccount" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Financial Account owned by this customer
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="CustomerPartyBestVisitationTime" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Captures the customer's availability so that the sales representatives can visit them at the most suitable  times
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                     <xsd:element name="Custom" type="corecustomerpartycust:CustomCustomerPartyEBOType" minOccurs="0"/>
+                 </xsd:sequence>
+                         <xsd:attribute name="actionCode" type="corecom:ActionCodeType" use="optional"/>
+                         </xsd:extension>
+                   </xsd:complexContent>
+            </xsd:complexType>
+                       <xsd:element name="AccountBalanceSummary" type="AccountBalanceSummaryType" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Capture Account Balance Information for the CustomerPartyAccount.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+            <xsd:complexType name="AccountBalanceSummaryType" >
+                 <xsd:sequence>
+                       <xsd:element name="TypeCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Captures the type of account balance being displayed.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="Amount" type="corecom:AmountType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Captures the amount associated with the account balance type.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="DueDate" type="corecom:DateType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Captured the date associated with the account balance details (ie. payment due date).
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                     <xsd:element name="Custom" type="corecustomerpartycust:CustomAccountBalanceSummaryType" minOccurs="0"/>
+                 </xsd:sequence>
+                 <xsd:attribute name="actionCode" type="corecom:ActionCodeType" use="optional"/>
+            </xsd:complexType>
+                       <xsd:element name="CustomerPartyAccount" type="CustomerPartyAccountType" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Financial arrangement that a person or organization has with deploying company to buy products and services e.g. John's buying account at Amazon, Dell's buying account at Oracle
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+            <xsd:complexType name="CustomerPartyAccountType" >
+                 <xsd:sequence>
+                      <xsd:element ref="corecom:Identification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Customer Account unique identifier
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                       <xsd:element name="CreationDateTime" type="corecom:DateTimeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Date when the customer account was originally established
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="CoterminateDateTime" type="corecom:DateTimeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Identifies the date when services ordered by the customer will end.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="CurrencyCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Default Billing Currency for this Customer Account
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+					
+                       <xsd:element name="ClassificationCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Classifications that this Customer Party Account has been classified into.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="Name" type="corecom:NameType" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Descriptive Name of the Account
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                      <xsd:element ref="corecom:Status"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Customer Account status
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:BillingProfileIdentification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Billing preferences applicable for creating bills or invoices for this Customer
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:ShippingProfileIdentification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Shipping preferences applicable for Shipping to this Customer
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:SellingProfileIdentification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Selling preferences applicable for Selling to or creating Sales Order for this customer
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:PaymentProfileIdentification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Payment preferences that this customer uses to make payments to the deploying company
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:CreditProfileIdentification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Credit preferences and classifications including credit limit , credit risk etc. for this Customer
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:Note" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Note
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:ParentCustomerPartyAccountIdentification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Parent of this Customer Party Account  in the Account  hierarchy
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:OrganizationUnitReference"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+The CustomerPartyAccount's organization unit. This can be mapped to division, business unit, department, or other organizational designations.
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="CustomerPartyAccountSite" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Sites where this Customer Party does business
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="CustomerPartyAccountContact" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Contact persons on behalf of this customer Party
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="RelatedCustomerPartyAccount" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Other Customer Party accounts that are related to this Customer Party account and hence can act as proxy for this Customer Party account.
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="CustomerPartyAccountUsage" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Usages or Roles that this Customer Party can be assigned. Some example values are: ShipTo, BillTo, Broker, SoldTo etc.
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="CustomerPartyAccountAttachment" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Attachment
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="AccountBalanceSummary" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Capture Account Balance Information for the CustomerPartyAccount.
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="CustomerPartyOverdueCollectionRule"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+This is a business reference component for the OverdueCollectionRuleReference. It represents the Overdue Collection Rule which controls how the account 's debt is compared against collection criteria to determine if an overdue process should be started and which specific overdue process is applicable to this account.
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                     <xsd:element name="Custom" type="corecustomerpartycust:CustomCustomerPartyAccountType" minOccurs="0"/>
+                 </xsd:sequence>
+                 <xsd:attribute name="actionCode" type="corecom:ActionCodeType" use="optional"/>
+            </xsd:complexType>
+                       <xsd:element name="CustomerPartyAccountAttachment" type="CustomerPartyAccountAttachmentType" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Attachment
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+            <xsd:complexType name="CustomerPartyAccountAttachmentType" >
+                 <xsd:sequence>
+                      <xsd:element ref="corecom:Identification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Unique Identification
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:Attachment"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Attachment
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                     <xsd:element name="Custom" type="corecustomerpartycust:CustomCustomerPartyAccountAttachmentType" minOccurs="0"/>
+                 </xsd:sequence>
+                 <xsd:attribute name="actionCode" type="corecom:ActionCodeType" use="optional"/>
+            </xsd:complexType>
+                       <xsd:element name="CustomerPartyAccountContact" type="CustomerPartyAccountContactType" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Contact persons on behalf of this customer Party
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+            <xsd:complexType name="CustomerPartyAccountContactType" >
+                 <xsd:sequence>
+                      <xsd:element ref="corecom:Identification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Identification of the Customer Contact
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                       <xsd:element name="PreferredIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether this contact is the primary contact for this Customer Party Account
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                      <xsd:element ref="corecom:CustomerPartyContactIdentification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Contact of the Customer Party that this site uses
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:EffectiveTimePeriod"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Effective Period of this Contact
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:Status"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Status as of Effective Date
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="CustomerPartyAccountContactUsage" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Roles that this CustomerContact can play with relation to this Customer.
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="CustomerPartyAccountContactCreditCard" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Credit cards of the Contact
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="RelatedCustomerPartyAccountContact" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Credit cards of the Contact
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                     <xsd:element name="Custom" type="corecustomerpartycust:CustomCustomerPartyAccountContactType" minOccurs="0"/>
+                 </xsd:sequence>
+                 <xsd:attribute name="actionCode" type="corecom:ActionCodeType" use="optional"/>
+            </xsd:complexType>
+                       <xsd:element name="CustomerPartyAccountContactCreditCard" type="CustomerPartyAccountContactCreditCardType" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Credit cards of the Contact
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+            <xsd:complexType name="CustomerPartyAccountContactCreditCardType" >
+                 <xsd:sequence>
+                      <xsd:element ref="corecom:Identification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Identification
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:CreditCard"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Credit Card
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                     <xsd:element name="Custom" type="corecustomerpartycust:CustomCustomerPartyAccountContactCreditCardType" minOccurs="0"/>
+                 </xsd:sequence>
+                 <xsd:attribute name="actionCode" type="corecom:ActionCodeType" use="optional"/>
+            </xsd:complexType>
+                       <xsd:element name="CustomerPartyAccountContactUsage" type="CustomerPartyAccountContactUsageType" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Roles that this CustomerContact can play with relation to this Customer.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+            <xsd:complexType name="CustomerPartyAccountContactUsageType" >
+                 <xsd:sequence>
+                      <xsd:element ref="corecom:Identification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Unique Identification
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:Usage"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Usages or Roles that this Customer Party can be assigned. Some example values are: ShipTo, BillTo, Broker, SoldTo etc.
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                     <xsd:element name="Custom" type="corecustomerpartycust:CustomCustomerPartyAccountContactUsageType" minOccurs="0"/>
+                 </xsd:sequence>
+                 <xsd:attribute name="actionCode" type="corecom:ActionCodeType" use="optional"/>
+            </xsd:complexType>
+                       <xsd:element name="CustomerPartyAccountSite" type="CustomerPartyAccountSiteType" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Sites where this Customer Party does business
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+            <xsd:complexType name="CustomerPartyAccountSiteType" >
+                 <xsd:sequence>
+                      <xsd:element ref="corecom:Identification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Identification of the Customer Site
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                       <xsd:element name="Name" type="corecom:NameType" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+User defined descriptive name of the Site.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="Description" type="corecom:TextType" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Description of the Site
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="PreferredIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether this Site is the Primary Site for this Customer Party
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="LanguageCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Primary Language of operation
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="TaxCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Tax Rate or Tax Classification that applies to this Site
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="RFIDIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether this Site is RFID enabled
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="KeySalesAccountIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether this Site is a Key account for sales representatives
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                      <xsd:element ref="corecom:CustomerPartyLocationIdentification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Location of the Customer Party where this site is located
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:ServiceLocationIdentification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Applicable for Servicing Sites only. Identifies where service is performed.
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:EffectiveTimePeriod"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Effective Period of this Site
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:Status"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Customer Site Status. Example of valid values are : Active or Inactive
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:Note" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Note
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="CustomerPartyAccountSiteBillingProfile" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Billing preferences applicable for this Customer Site
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="CustomerPartyAccountSiteShippingProfile" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Shipping preferences applicable for this Customer Site
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="CustomerPartyAccountSiteUsage" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Usages or Roles that this Customer Site can be assigned. Some example values are: ShipTo, BillTo, Broker, SoldTo etc.
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="CustomerPartyAccountSiteAttachment" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Attachment
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                     <xsd:element name="Custom" type="corecustomerpartycust:CustomCustomerPartyAccountSiteType" minOccurs="0"/>
+                 </xsd:sequence>
+                 <xsd:attribute name="actionCode" type="corecom:ActionCodeType" use="optional"/>
+            </xsd:complexType>
+                       <xsd:element name="CustomerPartyAccountSiteAttachment" type="CustomerPartyAccountSiteAttachmentType" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Attachment
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+            <xsd:complexType name="CustomerPartyAccountSiteAttachmentType" >
+                 <xsd:sequence>
+                      <xsd:element ref="corecom:Identification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Unique Identification
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:Attachment"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Attachment
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                     <xsd:element name="Custom" type="corecustomerpartycust:CustomCustomerPartyAccountSiteAttachmentType" minOccurs="0"/>
+                 </xsd:sequence>
+                 <xsd:attribute name="actionCode" type="corecom:ActionCodeType" use="optional"/>
+            </xsd:complexType>
+                       <xsd:element name="CustomerPartyAccountSiteBillingProfile" type="CustomerPartyAccountSiteBillingProfileType" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Billing preferences applicable for this Customer Site
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+            <xsd:complexType name="CustomerPartyAccountSiteBillingProfileType" >
+                 <xsd:sequence>
+                      <xsd:element ref="corecom:Identification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Identification
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:BillingProfileIdentification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Billing preferences applicable for this Customer Site
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                     <xsd:element name="Custom" type="corecustomerpartycust:CustomCustomerPartyAccountSiteBillingProfileType" minOccurs="0"/>
+                 </xsd:sequence>
+                 <xsd:attribute name="actionCode" type="corecom:ActionCodeType" use="optional"/>
+            </xsd:complexType>
+                       <xsd:element name="CustomerPartyAccountSiteShippingProfile" type="CustomerPartyAccountSiteShippingProfileType" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Shipping preferences applicable for this Customer Site
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+            <xsd:complexType name="CustomerPartyAccountSiteShippingProfileType" >
+                 <xsd:sequence>
+                      <xsd:element ref="corecom:Identification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Identification
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:ShippingProfileIdentification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Shipping preferences applicable for this Customer Site
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                     <xsd:element name="Custom" type="corecustomerpartycust:CustomCustomerPartyAccountSiteShippingProfileType" minOccurs="0"/>
+                 </xsd:sequence>
+                 <xsd:attribute name="actionCode" type="corecom:ActionCodeType" use="optional"/>
+            </xsd:complexType>
+                       <xsd:element name="CustomerPartyAccountSiteUsage" type="CustomerPartyAccountSiteUsageType" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Usages or Roles that this Customer Site can be assigned. Some example values are: ShipTo, BillTo, Broker, SoldTo etc.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+            <xsd:complexType name="CustomerPartyAccountSiteUsageType" >
+                 <xsd:sequence>
+                      <xsd:element ref="corecom:Identification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Unique Identification
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:Usage"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Usages or Roles that this Customer Party can be assigned. Some example values are: ShipTo, BillTo, Broker, SoldTo etc.
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                     <xsd:element name="Custom" type="corecustomerpartycust:CustomCustomerPartyAccountSiteUsageType" minOccurs="0"/>
+                 </xsd:sequence>
+                 <xsd:attribute name="actionCode" type="corecom:ActionCodeType" use="optional"/>
+            </xsd:complexType>
+                       <xsd:element name="CustomerPartyAccountUsage" type="CustomerPartyAccountUsageType" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Usages or Roles that this Customer Party can be assigned. Some example values are: ShipTo, BillTo, Broker, SoldTo etc.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+            <xsd:complexType name="CustomerPartyAccountUsageType" >
+                 <xsd:sequence>
+                      <xsd:element ref="corecom:Identification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Unique Identification
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:Usage"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Usages or Roles that this Customer Party can be assigned. Some example values are: ShipTo, BillTo, Broker, SoldTo etc.
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                     <xsd:element name="Custom" type="corecustomerpartycust:CustomCustomerPartyAccountUsageType" minOccurs="0"/>
+                 </xsd:sequence>
+                 <xsd:attribute name="actionCode" type="corecom:ActionCodeType" use="optional"/>
+            </xsd:complexType>
+                       <xsd:element name="CustomerPartyAttachment" type="CustomerPartyAttachmentType" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Attachment
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+            <xsd:complexType name="CustomerPartyAttachmentType" >
+                 <xsd:sequence>
+                      <xsd:element ref="corecom:Identification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Unique Identification
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:Attachment"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Attachment
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                     <xsd:element name="Custom" type="corecustomerpartycust:CustomCustomerPartyAttachmentType" minOccurs="0"/>
+                 </xsd:sequence>
+                 <xsd:attribute name="actionCode" type="corecom:ActionCodeType" use="optional"/>
+            </xsd:complexType>
+                       <xsd:element name="CustomerPartyBankAccount" type="CustomerPartyBankAccountType" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Bank Accounts owned by this Customer Account
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+            <xsd:complexType name="CustomerPartyBankAccountType" >
+                 <xsd:sequence>
+                      <xsd:element ref="corecom:Identification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Unique Identification
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:BankAccount"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Bank Accounts owned by this Customer Account
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                     <xsd:element name="Custom" type="corecustomerpartycust:CustomCustomerPartyBankAccountType" minOccurs="0"/>
+                 </xsd:sequence>
+                 <xsd:attribute name="actionCode" type="corecom:ActionCodeType" use="optional"/>
+            </xsd:complexType>
+                       <xsd:element name="CustomerPartyBestVisitationTime" type="CustomerPartyBestVisitationTimeType" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Captures the customer's availability so that the sales representatives can visit them at the most suitable  times
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+            <xsd:complexType name="CustomerPartyBestVisitationTimeType" >
+                 <xsd:sequence>
+                      <xsd:element ref="corecom:Identification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+unique identification of CustomerPartyBestVisitationTime
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                       <xsd:element name="DayOfWeekCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Preferred day(s) of the week when customer  is ok to see sales representatives. E.g. Monday, Tuesday, Wednesday.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="Comment" type="corecom:TextType" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Additional comments.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                      <xsd:element ref="corecom:TimeDuration"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Refers to the time period of the best visit time.
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                <xsd:choice>
+                    <xsd:sequence>
+                      <xsd:element ref="corecom:CustomerPartyLocationIdentification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Points to one of  the CustomerPartyLocation.
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                     </xsd:sequence>
+                    <xsd:sequence>
+                      <xsd:element ref="corecom:PartyRelatedOrganizationPartyIdentification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Point to PartyRelatedParty which is an organization. For example, sales representatitives can visit a doctor at the specified hospital related to that doctor.
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                     </xsd:sequence>
+                </xsd:choice>
+                     <xsd:element name="Custom" type="corecustomerpartycust:CustomCustomerPartyBestVisitationTimeType" minOccurs="0"/>
+                 </xsd:sequence>
+                 <xsd:attribute name="actionCode" type="corecom:ActionCodeType" use="optional"/>
+            </xsd:complexType>
+                       <xsd:element name="CustomerPartyBillingProfile" type="CustomerPartyBillingProfileType" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Options for billing the customer OR creating invoice
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+            <xsd:complexType name="CustomerPartyBillingProfileType" >
+                 <xsd:sequence>
+                      <xsd:element ref="corecom:Identification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Identification of the Billing Profile
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                       <xsd:element name="Name" type="corecom:NameType" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Name of the billing profile
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="PreferredIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether this is the Primary Billing Profile for this Customer Party
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="FrequencyCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Identifies the Billing Cycle Frequency
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="DayOfMonth" type="corecom:DateType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+## Deprecated in AIA 11gR1 PS3.This field is replaced by DayOfMonthCode. Identifies the date in a month when the Bill is created.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="DayOfMonthCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Identifies the date in a month when the Bill is created.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="CurrencyCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Currency Code for this Billing Profile. Bills created from this Billing Profile will have this currency as the primary currency code.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="LanguageCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+The language, such as English or Spanish, that the bill is printed in.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="RoundingMethodCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Describes the rounding method that rounds the amounts on the bill to a specified limit.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="BillTypeCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether the Bill is Detail or summary
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="MediaTypeCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+The type of media on which the bill is to be presented. For example, printed, electronic transmission or electromagnetic (tape, diskette, and so on).
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="MediaFormatCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+An identifier for the type of media such as tape, CD, or diskette on which the bill is to be copied for distribution to the customer.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="NumberOfCopies" type="corecom:IntegerType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Number of copies (printed or copies of the media) that are to be made at the time of printing.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="InvoiceConsolidationIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates if consolidated billing invoice is generated and sent to customer.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="InvoiceConsolidationTypeCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Type of Consolidated Billing Invoice sent to customer. Example of valid values can be: Summary or Detail
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="HoldBillIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates if the bill receivable should be held or not.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="PORequiredIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether a Customer PO is required to generate the bill for that customer.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="ManualInvoiceCreationAllowedIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether invoices can be created by someone manually.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="DeliveryNotePrintIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether the system prints delivery notes for this customer on the invoice.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="PartialPaymentAllowedIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether partial payments are  allowed
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="AutomaticPaymentEnabledIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether automatic Payment is enabled for this Customer.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="ImmediatePaymentRequiredIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether invoices for this Customer require immediate payment
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="DisplayPriceIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether price is shown on sales receipt
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="DueDaysGraceAllowedIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether any grace is allowed on the Payment due date.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="DiscountDaysGraceAllowedIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether any grace is allowed on the Discounted Payment due date.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="FreightBillTypeCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Identifies the Type of Freight Bill applicable to this Billing Profile.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="RefundMethodCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Identifies the Refund Method applicable to this Billing Profile
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="TaxHeaderLevelIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether tax is included  in the header or in the line. Y for headers, N for lines.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="TaxRoundingRuleCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Tax amount rounding rule
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="TaxPrintingOptionCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Tax printing option
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                      <xsd:element ref="corecom:EffectiveTimePeriod"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Effective Period of this Billing Profile
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:Status"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Status of the Billing Profile
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:Note" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Note
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:PaymentProfileIdentification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Refers to the PaymentProfile that will be used to pay against a bill created from this billing profile
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:BillingInquiryPhoneCommunication"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Bill Inquiry Phone - the number for customers to call with questions
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:BillingInquiryEmailCommunication"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Bill Inquiry Phone - the email address for customers to contact with questions
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:CustomerPartyContactIdentification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+The  CustomePartyContactIdentification points to one of the PartyContacts which is the billing contact for this particular billing profile.
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:CustomerPartyLocationIdentification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+The CustomerPartyLocationIdentification points to one of the PartyLocations that is used as the billing address for this particular billing profile.
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:EmailCommunication"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Email address details associated with this billing profile for the purposes such as bill delivery, billing validation, etc.
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:FaxCommunication"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Fax number details associated with this billing profile for the purposes such as bill delivery, billing validation, etc.
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:PayFromPartyReference"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Refers to the Payer Party when it is different from this Customer Party. It includes a reference to the billing profile other than the current one, that pays the bill generated by this billing profile. It may or may not be the billing profile of the parent customer Party.
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:CustomerPurchaseOrderReference"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Captures the external Customer PO Number to be included in the invoice.
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                     <xsd:element name="Custom" type="corecustomerpartycust:CustomCustomerPartyBillingProfileType" minOccurs="0"/>
+                 </xsd:sequence>
+                 <xsd:attribute name="actionCode" type="corecom:ActionCodeType" use="optional"/>
+            </xsd:complexType>
+                       <xsd:element name="CustomerPartyCreditProfile" type="CustomerPartyCreditProfileType" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Credit Profile of the Customer
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+            <xsd:complexType name="CustomerPartyCreditProfileType" >
+                 <xsd:sequence>
+                      <xsd:element ref="corecom:Identification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Identification of the customer's credit profile
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                       <xsd:element name="PreferredIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether this is the Primary Credit profile for this Customer
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="ClassificationCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Specifies the Credit classification.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="CreditRatingCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Specifies the Credit Rating
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="RiskCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Specifies the Credit Risk
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="ReviewCycleCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Review cycle for the customer credit profile
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="CurrencyCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Currency Code
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="LanguageCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Language of documentation for this Credit Profile
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="CreditLimitAmount" type="corecom:AmountType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+The total amount that the customer is allowed to spend on purchases before the system sends a workflow message
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="CreditTolerancePercent" type="corecom:PercentType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Percentage over credit limit that this customer can exceed before action is taken
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="MaximumOrderAmount" type="corecom:AmountType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Maximum Order Amount
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="CreditCheckBacklogPeriod" type="corecom:DurationType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Number of days in the past included in the Credit check
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="LastCreditReviewDate" type="corecom:DateType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Date of last credit profile data review
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="NextCreditReviewDate" type="corecom:DateType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+The next date that credit will be reviewed
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="CreditCheckRequiredIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether a credit check is to be carried out
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="DiscountTermIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates if discount terms exist.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="PaymentTermOverrideAllowedIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates if user can override standard payment terms.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="InterestChargeEnabledIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates if this customer is charged interest.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="FinanceChargeAccrualIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates if finance charges are charged on existing finance charge balances.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="CreditHoldIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates if a credit hold exists on this account.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="StatementDeliveryIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates if statements are sent to this customer.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="CreditBalanceStatementDeliveryIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates if customers credit balances receive statements.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="DunningLetterDeliveryIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates if dunning letters are sent to this customer when invoices, debit memos or chargebacks become past due.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="InterestPeriod" type="corecom:DurationType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Number of days that the interest rate refers to
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="PaymentGracePeriod" type="corecom:DurationType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Maximum number of overdue days allowed before action is taken
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="DiscountGracePeriod" type="corecom:DurationType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Number of days after discount term date that this customer can take discounts
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="CorporateCreditLimitOverTolerancePercent" type="corecom:PercentType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Percent Over corporate credit Limit when the credit profile is for the Customer as part of a corporation
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="CorporateCreditLimitAmount" type="corecom:AmountType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Corporate Credit Limit when the credit profile is for the Customer as part of a corporation
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="CorporateCreditLimitDate" type="corecom:DateType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Corporate Credit Limit Date when the credit profile is for the Customer as part of a corporation
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="CreditScore" type="corecom:NumericType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates the credit score of the customer. Ex. 4, 7, 10,8 etc.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="RiskCategoryCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+indicates the risk category of the customer. Ex. Moderate Risk, Significant Risk , Management Attention etc.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="TotalUtilizedLineOfCreditAmount" type="corecom:AmountType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates the total utilization amount for the Credit Lines
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                      <xsd:element ref="corecom:EffectiveTimePeriod"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Effective Period of this Credit Profile
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:Status"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Status as of Effective Date
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:Note" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Note
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:CollectionStatus"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Collection Status that also includes Collection Date
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:PaymentTerm"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+The Payment Term associated with this credit profile
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:CreditAnalystContact"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Identifier of the credit analyst associated with this customer profile
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                     <xsd:element name="Custom" type="corecustomerpartycust:CustomCustomerPartyCreditProfileType" minOccurs="0"/>
+                 </xsd:sequence>
+                 <xsd:attribute name="actionCode" type="corecom:ActionCodeType" use="optional"/>
+            </xsd:complexType>
+                       <xsd:element name="CustomerPartyFinancialAccount" type="CustomerPartyFinancialAccountType" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Financial Account owned by this customer
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+            <xsd:complexType name="CustomerPartyFinancialAccountType" >
+                 <xsd:sequence>
+                      <xsd:element ref="corecom:Identification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Unique Identification
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                       <xsd:element name="MaturityDate" type="corecom:DateType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates the maturity date of a financial account.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="TenureDuration" type="corecom:DurationType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates the remaining term of a financial account
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                      <xsd:element ref="corecom:FinancialAccount"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Details about the financial accounts of a person or organization
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:Preference"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Indicates this account is a preferred account.
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="CustomerPartyFinancialAccountBalance" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Indicates the different types of balances in the financial accounts.
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                     <xsd:element name="Custom" type="corecustomerpartycust:CustomCustomerPartyFinancialAccountType" minOccurs="0"/>
+                 </xsd:sequence>
+                 <xsd:attribute name="actionCode" type="corecom:ActionCodeType" use="optional"/>
+            </xsd:complexType>
+                       <xsd:element name="CustomerPartyFinancialAccountBalance" type="CustomerPartyFinancialAccountBalanceType" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates the different types of balances in the financial accounts.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+            <xsd:complexType name="CustomerPartyFinancialAccountBalanceType" >
+                 <xsd:sequence>
+                      <xsd:element ref="corecom:Identification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+To identify the various balance types.
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:FinancialAccountBalance"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+The balance amount and balance types available at the financial account.
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                     <xsd:element name="Custom" type="corecustomerpartycust:CustomCustomerPartyFinancialAccountBalanceType" minOccurs="0"/>
+                 </xsd:sequence>
+                 <xsd:attribute name="actionCode" type="corecom:ActionCodeType" use="optional"/>
+            </xsd:complexType>
+                       <xsd:element name="CustomerPartyOverdueCollectionRule" type="CustomerPartyOverdueCollectionRuleType" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+This is a business reference component for the OverdueCollectionRuleReference. It represents the Overdue Collection Rule which controls how the account 's debt is compared against collection criteria to determine if an overdue process should be started and which specific overdue process is applicable to this account.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+            <xsd:complexType name="CustomerPartyOverdueCollectionRuleType" >
+                 <xsd:sequence>
+                     <xsd:element ref="corecom:OverdueCollectionRuleReference"  minOccurs="0" />
+                     <xsd:element name="Custom" type="corecustomerpartycust:CustomCustomerPartyOverdueCollectionRuleType" minOccurs="0"/>
+                 </xsd:sequence>
+                 <xsd:attribute name="actionCode" type="corecom:ActionCodeType" use="optional"/>
+            </xsd:complexType>
+                       <xsd:element name="CustomerPartyPaymentProfile" type="CustomerPartyPaymentProfileType" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Options for receiving payments from this customer Party
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+            <xsd:complexType name="CustomerPartyPaymentProfileType" >
+                 <xsd:sequence>
+                      <xsd:element ref="corecom:Identification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Identification of the Payment Profile
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                       <xsd:element name="PreferredIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether this is the Primary Payment profile for this Customer
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="PaymentMethodCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Specifies the Payment Type. Example values can be: Card, Cash, Direct Debit, Draft, Letter of Credit, GIRO, Check ( Send me a bill)
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="CurrencyCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Currency code for this Payment Profile
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="ClearingPeriod" type="corecom:DurationType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Specifies the number of  days before receipts that belong to this customer (or site) can be cleared by the Automatic Clearing program. This overrides the value of the payment method / bank account.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="AutomaticPaymentMaximumWithdrawalAmount" type="corecom:AmountType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Captures maximum amount to be process by automatic payment.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                      <xsd:element ref="corecom:EffectiveTimePeriod"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Effective Period of this Payment Profile
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:Status"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Status as of Effective Date
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:Note" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Note
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:PaymentTerm"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Payment Term
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:PaymentInstrument"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Captures the payment detail information.
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                     <xsd:element name="Custom" type="corecustomerpartycust:CustomCustomerPartyPaymentProfileType" minOccurs="0"/>
+                 </xsd:sequence>
+                 <xsd:attribute name="actionCode" type="corecom:ActionCodeType" use="optional"/>
+            </xsd:complexType>
+                       <xsd:element name="CustomerPartyPrivacyProfile" type="CustomerPartyPrivacyProfileType" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Privacy related settings of the customer
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+            <xsd:complexType name="CustomerPartyPrivacyProfileType" >
+                 <xsd:sequence>
+                       <xsd:element name="PrivacyLevelCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Privacy level of the customer (e.g., Opt In, Opt Out Affiliate, Opt Out All Parties, Opt Out Third Parties etc.)
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="PhoneCommunicationAllowedIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether or not calling the customer is allowed
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="EmailCommunicationAllowedIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether or not emailing to the customer is allowed
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="FaxCommunicationAllowedIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether or not faxing the customer is allowed
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="MailCommunicationAllowedIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether or not mailing the customer is allowed
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="CountrySubDivision" type="corecom:StringType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+The country sub-division (state, province, district, city etc.) with the most restrictive sharing preference applicable to the customer
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="PendingStatusStartDate" type="corecom:DateType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Date when the privacy preferences are set to a pending state (e.g., the value for affiliate preference, non-affiliate preference etc. is set to PEND)
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="PendingStatusEndDate" type="corecom:DateType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Date when the privacy preferences are no longer in pending state. This could happen if the customer specifies the privacy preferences or the system defaults them
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="PendingStatusMaximumDuration" type="corecom:DurationType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+The maximum duration for which the privacy preferences may be in a pending state. This duration may be governed by state laws etc
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="CommunicationDissuasionIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether or not the customer may be contacted via any communication channel.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="HighlySensitivePartyCommunicationDissuasionIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates if the customer should not be contacted since he / she is deemed to be holding a sensitive position or has a high stature such as CEO, member of a legislative body etc.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="DeceasedPartyCommunicationDissuasionIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether communication should be stopped since the person is deceased
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                      <xsd:element ref="corecom:AffiliatePrivacyPreference"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Privacy Preferences for Affiliates
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:NonAffiliatePrivacyPreference"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Privacy Preferences for NonAffiliates
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:PartnerPrivacyPreference"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Privacy Preferences for Partners
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:TeleMarketerPrivacyPreference"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Privacy Preferences for Tele-marketers
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="PrivacyNoticeCommunication"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Setting related to annual privacy notice
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                     <xsd:element name="Custom" type="corecustomerpartycust:CustomCustomerPartyPrivacyProfileType" minOccurs="0"/>
+                 </xsd:sequence>
+                 <xsd:attribute name="actionCode" type="corecom:ActionCodeType" use="optional"/>
+            </xsd:complexType>
+                       <xsd:element name="CustomerPartySellingProfile" type="CustomerPartySellingProfileType" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Options for Sales Order creation
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+            <xsd:complexType name="CustomerPartySellingProfileType" >
+                 <xsd:sequence>
+                      <xsd:element ref="corecom:Identification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Identification of the Selling Profile
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                       <xsd:element name="PreferredIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Primary selling profile
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="OrderTypeCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Order type identifier
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="FreightChargeMethodCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Freight Charge Calculation Method
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="HoldOrderReasonCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+A user defined code that identifies why an order is on hold.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="BackorderAllowedIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether to allow backorders for customer.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="ItemSubstitutionAllowedIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether that customer will accept substitute items.  Enter N to disallow or Y to allow substitutions. The system will interpret a blank value as a Y.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="PriorityProcessingCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+A code that tells the system to handle this customer's orders on a priority basis. Use this value to set up print pick slips so you can choose to print them on a priority basis
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="RestockingFeeIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether Restocking Fee applies to the items returned by this customer
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="AgreementPriceAdjustmentAllowedIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether to allow adjustments to Buying Agreement pricing
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="ItemCrossReferencePreferenceCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Lookup for item cross reference preference for placing orders
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="ItemIdentificationSourceCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Identifies which product id source to look at I.e. Seller's or customer's
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="VMIOrderConsolidationCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Specifies how Sales Order requests generated in VMI (Vendor Managed Inventory) replenishment requests will be generated.  Options are None: VMI replenishment process will generate one sales order for each replenishment request. Ship-to Customer: all replenishment requests for the same Ship-to Customer will be combined into one Sales Order. Sold-to customer: see above
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="VMIOrderHoldIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether to set a hold flag on all VMI-generated Sales Orders.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="VolumeDisplayUOMCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+A code unit of measure that the system uses to display volume
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="WeightDisplayUOMCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+A code that identifies which unit of measure the system uses to display the weight when you use the order summary form.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="MinimumOrderAmount" type="corecom:AmountType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Value below which an order is placed on hold. If you try to enter an order whose total is less than the minimum order value, the system displays an error message.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="MaximumOrderAmount" type="corecom:AmountType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Value above which an order is placed on hold. If you try to enter an order whose total is more than the maximum order value, the system displays an error message.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                      <xsd:element ref="corecom:EffectiveTimePeriod"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Effective Period of this Selling Profile
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:Status"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Status as of Effective Date
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:Note" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Note
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:PriceListReference"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Refers to the Pricelist to use with this Selling profile
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                     <xsd:element name="Custom" type="corecustomerpartycust:CustomCustomerPartySellingProfileType" minOccurs="0"/>
+                 </xsd:sequence>
+                 <xsd:attribute name="actionCode" type="corecom:ActionCodeType" use="optional"/>
+            </xsd:complexType>
+                       <xsd:element name="CustomerPartyShippingExceptionConfiguration" type="CustomerPartyShippingExceptionConfigurationType" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Shipping Exception to this customer party by days of week or by a block of days
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+            <xsd:complexType name="CustomerPartyShippingExceptionConfigurationType" >
+                 <xsd:sequence>
+                      <xsd:element ref="corecom:Identification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Identification of the customer's credit profile
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                       <xsd:element name="DayOfWeekCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Specifies a day of week when this customer does not receive shipments
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                      <xsd:element ref="corecom:EffectiveTimePeriod"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Indicates a Start date and End date that this customer does not receive shipments
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:Status"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Status as of Effective Date
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                     <xsd:element name="Custom" type="corecustomerpartycust:CustomCustomerPartyShippingExceptionConfigurationType" minOccurs="0"/>
+                 </xsd:sequence>
+                 <xsd:attribute name="actionCode" type="corecom:ActionCodeType" use="optional"/>
+            </xsd:complexType>
+                       <xsd:element name="CustomerPartyShippingProfile" type="CustomerPartyShippingProfileType" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Options for shipping to the customer
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+            <xsd:complexType name="CustomerPartyShippingProfileType" >
+                 <xsd:sequence>
+                      <xsd:element ref="corecom:Identification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Identification of the Shipping Profile
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                       <xsd:element name="Description" type="corecom:TextType" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Description for this Shipping Profile
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="PreferredIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether this is the Primary Billing Profile for this Customer Party
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="ModeOfTransportCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Mode of Transportation
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="ServiceLevelCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Transportation Service Level
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="FOBPointCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Customer's preferred FOB point. FOB stands for the point in a shipment at which title of the goods is transferred. Examples include, FOB delivered (the title changes hands at the point of delivery), FOB Destination
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="FreightTermCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Customer's preferred Freight Terms Code
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="SortPriorityCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Customer's preferred Sort Priority Code
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="ShippingNetworkCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Customer's preferred Distribution Network Code - Predefined shipping network preferred
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="DocumentLanguageCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Language for shipping documents
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="ShipSetIncludedIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates if shipment lines should automatically be included in ship sets.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="ArrivalSetIncludedIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates if shipment lines should automatically be included in arrival sets.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="PartialOrderShipmentAllowedIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether the customer accepts partial order shipments.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="PartialOrderLineShipmentAllowedIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether the customer accepts partial line shipments.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="PartialScheduleShipmentAllowedIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether the customer accepts partial schedule shipments. This is a Demand fulfillment option
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="EarlyShipmentAllowedIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether the customer accepts shipments prior to requested date. This is a Just In Time Parameter
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="BackOrderCancelIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether Back Orders for this customer should automatically be cancelled. This is a Demand fulfillment option
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="OverPickingAllowedIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether overpicking is allowed when picking order.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="StagedDateControlIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether customer maintains staged date information about the item
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="ContainerControlIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether customer maintains Container information about the item
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="LotControlIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether customer maintains Lot information about the item
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="SerialControlIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether customer maintains Serial information about the item
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="ScheduleDatePushIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates if the group schedule date can automatically be pushed.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="TransportationMethodRequiredIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether a transportation method is required for this customer on the ASN
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="RoutingRequiredIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether a transportation routing is required for this customer on the ASN
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="PackagingCodeRequiredIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether a packaging code is required for this customer on the ASN
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="WeightCodeRequiredIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether a weight code is required for this customer on the ASN
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="VMIAllowedIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether Customer allows VMI shipments
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                      <xsd:element ref="corecom:EffectiveTimePeriod"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Effective Period for this Shipping Profile
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:Status"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Status as of Effective Date
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:Note" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Note
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:DeliveryDurationTolerance"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Shipment delivery tolerance as compared to the requested ship date : Just In Time Parameter
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:ShipmentTolerance"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Percentage tolerance for over and under shipment
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:ReturnPercentTolerance"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Percentage tolerance for over and under return
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                     <xsd:element name="Custom" type="corecustomerpartycust:CustomCustomerPartyShippingProfileType" minOccurs="0"/>
+                 </xsd:sequence>
+                 <xsd:attribute name="actionCode" type="corecom:ActionCodeType" use="optional"/>
+            </xsd:complexType>
+                       <xsd:element name="CustomerPartySpecification" type="CustomerPartySpecificationType" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+User defined attributes of the customer party
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+            <xsd:complexType name="CustomerPartySpecificationType" >
+                 <xsd:sequence>
+                      <xsd:element ref="corecom:Identification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Unique Identification
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:Specification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Name and value of a user defined attribute of the customer party
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                     <xsd:element name="Custom" type="corecustomerpartycust:CustomCustomerPartySpecificationType" minOccurs="0"/>
+                 </xsd:sequence>
+                 <xsd:attribute name="actionCode" type="corecom:ActionCodeType" use="optional"/>
+            </xsd:complexType>
+                       <xsd:element name="CustomerPartySupportTeam" type="CustomerPartySupportTeamType" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Support Team assigned to the Customer
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+            <xsd:complexType name="CustomerPartySupportTeamType" >
+                 <xsd:sequence>
+                      <xsd:element ref="corecom:Identification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Identification of the customer party's support team
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                       <xsd:element name="PreferredIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates the Primary Customer Support team
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                      <xsd:element ref="corecom:EffectiveTimePeriod"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Effective Period of the Customer Support team
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:Status"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Status as of Effective Date
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:SupportTeamReference"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Refers to the Customer Support Team
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="CustomerPartySupportTeamMember" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Represents the sales representatives, marketing personnel associated with the customer
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                     <xsd:element name="Custom" type="corecustomerpartycust:CustomCustomerPartySupportTeamType" minOccurs="0"/>
+                 </xsd:sequence>
+                 <xsd:attribute name="actionCode" type="corecom:ActionCodeType" use="optional"/>
+            </xsd:complexType>
+                       <xsd:element name="CustomerPartySupportTeamMember" type="CustomerPartySupportTeamMemberType" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Represents the sales representatives, marketing personnel associated with the customer
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+            <xsd:complexType name="CustomerPartySupportTeamMemberType" >
+                 <xsd:sequence>
+                      <xsd:element ref="corecom:Identification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Unique identification of CustomerPartySupportTeamMember
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:EffectiveTimePeriod"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Effective period for the support team member
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="CustomerPartyWorker"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+A business reference component for the Worker object.
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                     <xsd:element name="Custom" type="corecustomerpartycust:CustomCustomerPartySupportTeamMemberType" minOccurs="0"/>
+                 </xsd:sequence>
+                 <xsd:attribute name="actionCode" type="corecom:ActionCodeType" use="optional"/>
+            </xsd:complexType>
+                       <xsd:element name="CustomerPartyTaxExemption" type="CustomerPartyTaxExemptionType" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Tax Exemptions that this Customer Party is eligible for.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+            <xsd:complexType name="CustomerPartyTaxExemptionType" >
+                 <xsd:sequence>
+                      <xsd:element ref="corecom:Identification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Unique Identification
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:TaxExemption"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Tax Exemptions that this Customer Party is eligible for.
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                     <xsd:element name="Custom" type="corecustomerpartycust:CustomCustomerPartyTaxExemptionType" minOccurs="0"/>
+                 </xsd:sequence>
+                 <xsd:attribute name="actionCode" type="corecom:ActionCodeType" use="optional"/>
+            </xsd:complexType>
+                       <xsd:element name="CustomerPartyWorker" type="CustomerPartyWorkerType" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+A business reference component for the Worker object.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+            <xsd:complexType name="CustomerPartyWorkerType" >
+                 <xsd:sequence>
+                     <xsd:element ref="corecom:WorkerReference"  minOccurs="0" />
+                     <xsd:element name="Custom" type="corecustomerpartycust:CustomCustomerPartyWorkerType" minOccurs="0"/>
+                 </xsd:sequence>
+                 <xsd:attribute name="actionCode" type="corecom:ActionCodeType" use="optional"/>
+            </xsd:complexType>
+                       <xsd:element name="PrivacyNoticeCommunication" type="PrivacyNoticeCommunicationType" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Setting related to annual privacy notice
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+            <xsd:complexType name="PrivacyNoticeCommunicationType" >
+                 <xsd:sequence>
+                       <xsd:element name="AnnualIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether the customer should be sent the annual privacy notice or not
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="SystemDefaultIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether the system defaulted the annual notice setting or not. If not, the user elected the setting
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="CommunicationChannelCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Communication channel used by the customer to elect the annual notice setting (e.g., phone, written etc.)
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="RecordingSystemTypeCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+The system type that recorded the annual notice setting (e.g., IVR, Call Center etc.)
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="NoticeSentIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether privacy notice has been sent to the customer
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="SentDate" type="corecom:DateType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+The date when the privacy notice was sent to the customer
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="NoticeTypeCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+The type of privacy notice sent to the customer. The notice types may be based on applicable legislations or other criteria
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="Reason" type="corecom:TextType" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Descriptive reason for sending the notice. It may be the initial notice, an annual notice etc.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="CoverLetterTypeCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+The type of cover letter sent along with the notice
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                     <xsd:element name="Custom" type="corecustomerpartycust:CustomPrivacyNoticeCommunicationType" minOccurs="0"/>
+                 </xsd:sequence>
+                 <xsd:attribute name="actionCode" type="corecom:ActionCodeType" use="optional"/>
+            </xsd:complexType>
+                       <xsd:element name="RelatedCustomerParty" type="RelatedCustomerPartyType" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Relationship between Customer Party
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+            <xsd:complexType name="RelatedCustomerPartyType" >
+                 <xsd:sequence>
+                      <xsd:element ref="corecom:Identification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Identification of the RelatedCustomerParty Business Component
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                       <xsd:element name="PriorityRanking" type="corecom:NumericType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Priority of the related Customer Party    -  Lowest number is highest priority, used for defaulting.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="ReciprocalIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether the relationship is reciprocal
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="RelationshipCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Relationship Type. Some example values are : ShipTo, BillTo, SoldTo, Broker, Indirect, Payto, RemitFrom etc.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                      <xsd:element ref="corecom:EffectiveTimePeriod"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Defines the relationship effective period.
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:RelatedCustomerPartyReference"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Identification of Related Customer Party
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                     <xsd:element name="Custom" type="corecustomerpartycust:CustomRelatedCustomerPartyType" minOccurs="0"/>
+                 </xsd:sequence>
+                 <xsd:attribute name="actionCode" type="corecom:ActionCodeType" use="optional"/>
+            </xsd:complexType>
+                       <xsd:element name="RelatedCustomerPartyAccount" type="RelatedCustomerPartyAccountType" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Other Customer Party accounts that are related to this Customer Party account and hence can act as proxy for this Customer Party account.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+            <xsd:complexType name="RelatedCustomerPartyAccountType" >
+                 <xsd:sequence>
+                      <xsd:element ref="corecom:Identification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Identification of the RelatedCustomerParty Business Component
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                       <xsd:element name="RelationshipCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Relationship Type. Some example values are : ShipTo, BillTo, SoldTo, Broker, Indirect, Payto, RemitFrom etc.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="PriorityRanking" type="corecom:NumericType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Priority of the related Customer Party    -  Lowest number is highest priority, used for defaulting.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="ReciprocalIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether the relationship is reciprocal
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                      <xsd:element ref="corecom:EffectiveTimePeriod"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Defines the relationship effective date.
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                <xsd:choice>
+                    <xsd:sequence>
+                      <xsd:element ref="corecom:RelatedCustomerPartyAccountIdentification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Related Customer Party Account
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                     </xsd:sequence>
+                    <xsd:sequence>
+                      <xsd:element ref="corecom:RelatedCustomerPartyAccountReference"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Support relationship with other customer party accounts.
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                     </xsd:sequence>
+                </xsd:choice>
+                     <xsd:element name="Custom" type="corecustomerpartycust:CustomRelatedCustomerPartyAccountType" minOccurs="0"/>
+                 </xsd:sequence>
+                 <xsd:attribute name="actionCode" type="corecom:ActionCodeType" use="optional"/>
+            </xsd:complexType>
+                       <xsd:element name="RelatedCustomerPartyAccountContact" type="RelatedCustomerPartyAccountContactType" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Credit cards of the Contact
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+            <xsd:complexType name="RelatedCustomerPartyAccountContactType" >
+                 <xsd:sequence>
+                      <xsd:element ref="corecom:Identification"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Unique Identification
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                       <xsd:element name="RelationshipCode" type="corecom:CodeType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Relationship Type. Some example values are : Spouse, Children, Lawyer etc.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="PriorityRanking" type="corecom:NumericType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Priority of the related Contact    -  Lowest number is highest priority, used for defaulting.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="ReciprocalIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether the relationship is reciprocal
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                      <xsd:element ref="corecom:Contact"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Related Contact
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                      <xsd:element ref="corecom:EffectiveTimePeriod"  minOccurs="0" >
+                           <xsd:annotation> 
+                               <xsd:documentation> 
+Defines the relationship effective date.
+                               </xsd:documentation> 
+                           </xsd:annotation> 
+                      </xsd:element> 
+                     <xsd:element name="Custom" type="corecustomerpartycust:CustomRelatedCustomerPartyAccountContactType" minOccurs="0"/>
+                 </xsd:sequence>
+                 <xsd:attribute name="actionCode" type="corecom:ActionCodeType" use="optional"/>
+            </xsd:complexType>
+                       <xsd:element name="SpecialNeedProfile" type="SpecialNeedProfileType" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Capture SpecialNeeds related to the CustomerParty.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+            <xsd:complexType name="SpecialNeedProfileType" >
+                 <xsd:sequence>
+                       <xsd:element name="LifeSupportIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether the customerparty has life support.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="SeniorCitizenIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether the customerparty is a senior citizen or caters to senior citizens.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="DisabledIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether the customerparty is disabled or caters to the disabled.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="ConfidentialityIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether this customerparty should be confidential customer.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="AbusiveCustomerIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether the customerparty is an abusive customer.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="CreditProblemIndicator" type="corecom:IndicatorType"  minOccurs="0" >
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Indicates whether the customerparty has a credit problem.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                       <xsd:element name="Description" type="corecom:TextType" minOccurs="0" maxOccurs="unbounded">
+                           <xsd:annotation> 
+                                <xsd:documentation> 
+Captures a general description/comment related to the customerparty's  special needs.
+                                </xsd:documentation> 
+                           </xsd:annotation> 
+                       </xsd:element> 
+                     <xsd:element name="Custom" type="corecustomerpartycust:CustomSpecialNeedProfileType" minOccurs="0"/>
+                 </xsd:sequence>
+                 <xsd:attribute name="actionCode" type="corecom:ActionCodeType" use="optional"/>
+            </xsd:complexType>
+</xsd:schema>

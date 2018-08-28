@@ -1,0 +1,52 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<definitions
+     name="UpdateBillingBillNowSiebelCommsProvABCSImpl"
+     targetNamespace="http://xmlns.oracle.com/ABCSImpl/SiebelComms/Industry//UpdateBillingBillNowSiebelCommsProvABCSImpl/V1"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:svcdoc="http://xmlns.oracle.com/Services/Documentation/V1"
+     xmlns:ns2="http://siebel.com/asi/"
+     xmlns:ns1="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:client="http://xmlns.oracle.com/ABCSImpl/SiebelComms/Industry//UpdateBillingBillNowSiebelCommsProvABCSImpl/V1"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    >
+    <documentation>
+        <svcdoc:Service>
+            <svcdoc:Description/>
+            <svcdoc:ServiceType>ProviderABCSImpl</svcdoc:ServiceType>
+            <svcdoc:Version>1</svcdoc:Version>
+            <svcdoc:ProductCode>Siebel</svcdoc:ProductCode>
+        </svcdoc:Service>
+    </documentation>
+    <plnk:partnerLinkType name="UpdateBillingBillNowSiebelCommsProvABCSImpl">
+        <plnk:role name="UpdateBillingBillNowSiebelCommsProvABCSImplProvider">
+            <plnk:portType name="client:UpdateBillingBillNowSiebelCommsProvABCSImpl"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+    <import namespace="http://siebel.com/asi/" location="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/Siebel/V1/wsdls/ProductOfferWebservice.wsdl"/>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/BRM/schemas/BusinessOpcodes" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/BRM/V1/schemas/Notification.xsd"/>
+            <import namespace="http://xmlns.oracle.com/EnterpriseObjects/Industry/Communications/OrderFailureData/V1"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/PIPS/Communications/Schemas/OrderFailureData.xsd"/>
+            <import namespace="http://siebel.com/webservices" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/V1/schemas/SiebelWSHeader.xsd"/>
+        </schema>
+    </types>
+    <message name="UpdateBillingBillNowReqMsg">
+        <part name="payload" element="ns1:Notification"/>
+    </message>
+    <portType name="UpdateBillingBillNowSiebelCommsProvABCSImpl">
+        <operation name="process">
+            <documentation>
+                <svcdoc:Operation>
+                    <svcdoc:Description>This operation is used to Update an BillingBillNow
+                         object</svcdoc:Description>
+                    <svcdoc:MEP>SyncReqResp</svcdoc:MEP>
+                </svcdoc:Operation>
+            </documentation>
+            <input message="client:UpdateBillingBillNowReqMsg"/>
+        </operation>
+    </portType>
+</definitions>

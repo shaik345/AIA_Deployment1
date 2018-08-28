@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="ProcessManufacturerFilesSIMOTAProvider" targetNamespace="http://xmlns.oracle.com/scm/ProcessManufacturerFilesSIMOTAProvider/ProcessManufacturerFilesSIMOTAProvider" xmlns:ns1="http://schemas.oracle.com/bpel/extension" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:client="http://xmlns.oracle.com/scm/ProcessManufacturerFilesSIMOTAProvider/ProcessManufacturerFilesSIMOTAProvider" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<plnk:partnerLinkType name="ProcessManufacturerFilesSIMOTAProvider">
+<plnk:role name="ProcessManufacturerFilesSIMOTAProviderProvider">
+<plnk:portType name="client:ProcessManufacturerFilesSIMOTAProvider"/>
+</plnk:role>
+<plnk:role name="ProcessManufacturerFilesSIMOTAProviderRequester">
+<plnk:portType name="client:ProcessManufacturerFilesSIMOTAProviderCallback"/>
+</plnk:role>
+</plnk:partnerLinkType>
+<wsdl:import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+<wsdl:types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:client="http://xmlns.oracle.com/scm/ProcessManufacturerFilesSIMOTAProvider/ProcessManufacturerFilesSIMOTAProvider" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://schemas.oracle.com/bpel/extension">
+<import namespace="http://xmlns.oracle.com/scm/ProcessManufacturerFilesSIMOTAProvider/ProcessManufacturerFilesSIMOTAProvider" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationConnectorServiceLibrary/SIMOTA/schemas/ProcessManufacturerFilesSIMOTAProvider.xsd"/>
+</schema>
+</wsdl:types>
+<wsdl:message name="ProcessManufacturerFilesSIMOTAProviderRequestMessage">
+<wsdl:part name="payload" element="client:ItemListType"/>
+</wsdl:message>
+<wsdl:message name="ProcessManufacturerFilesSIMOTAProviderResponseMessage">
+<wsdl:part name="payload" element="client:processResponse"/>
+</wsdl:message>
+<wsdl:portType name="ProcessManufacturerFilesSIMOTAProvider">
+<wsdl:operation name="ItemListType">
+<wsdl:input message="client:ProcessManufacturerFilesSIMOTAProviderRequestMessage"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:portType name="ProcessManufacturerFilesSIMOTAProviderCallback">
+<wsdl:operation name="processResponse">
+<wsdl:input message="client:ProcessManufacturerFilesSIMOTAProviderResponseMessage"/>
+</wsdl:operation>
+</wsdl:portType>
+</wsdl:definitions>

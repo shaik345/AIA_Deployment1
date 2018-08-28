@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<composite name="UpdateRCCDetailsSiebelReqABCSImpl" revision="1.0" mode="active" state="on" xmlns="http://xmlns.oracle.com/sca/1.0" xmlns:ui="http://xmlns.oracle.com/soa/designer/"   xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <import namespace="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess" location="oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/V1/wsdls/AIAAsyncErrorHandlingBPELProcess.wsdl"/>
+        <!--<svcdoc:AIA>
+               <svcdoc:ServiceSolutionComponentAssociation>
+                   <svcdoc:GUID>5f5e085c-6cc7-4b7f-9b59-3a024b26a9dc</svcdoc:GUID>
+               </svcdoc:ServiceSolutionComponentAssociation>
+        </svcdoc:AIA>-->
+    <import namespace="http://xmlns.oracle.com/EnterpriseServices/Core/CustomerParty/V2"
+            location="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseBusinessServiceLibrary/Industry/Communications/EBO/CustomerParty/V2/CommunicationsCustomerPartyEBSV2.wsdl"
+            importType="wsdl"/>
+    <import namespace="http://xmlns.oracle.com/EnterpriseServices/Core/CustomerParty/V2"
+            location="CommunicationsCustomerPartyEBSV2Wrapper.wsdl"
+            importType="wsdl"/>
+    <import namespace="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry//UpdateRCCDetailsSiebelReqABCSImpl/V1"
+            location="oramds:/apps/AIAMetaData/AIAComponents/ApplicationConnectorServiceLibrary/Siebel/V2/RequesterABCS/UpdateRCCDetailsSiebelReqABCSImpl.wsdl"
+            importType="wsdl"/>
+    <service ui:wsdlLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationConnectorServiceLibrary/Siebel/V2/RequesterABCS/UpdateRCCDetailsSiebelReqABCSImpl.wsdl" name="UpdateRCCDetailsSiebelReqABCSImpl">
+        <interface.wsdl interface="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry//UpdateRCCDetailsSiebelReqABCSImpl/V1#wsdl.interface(UpdateRCCDetailsSiebelReqABCSImpl)"/>
+         <!--<svcdoc:AIA>
+               <svcdoc:Service>
+                        <svcdoc:ImplementationDetails>
+                           <svcdoc:ApplicationName>Siebel</svcdoc:ApplicationName>
+                            <svcdoc:BaseVersion>Provide participating application version details here</svcdoc:BaseVersion>
+                            <svcdoc:DevelopedBy>Oracle</svcdoc:DevelopedBy>
+                            <svcdoc:OracleCertified>Yes</svcdoc:OracleCertified>
+                            <svcdoc:ArtifactType>RequesterABCSImplementation</svcdoc:ArtifactType>   
+                            <svcdoc:ServiceOperation>
+                                <svcdoc:Name>RCCDetails</svcdoc:Name>
+                            </svcdoc:ServiceOperation>
+                        </svcdoc:ImplementationDetails>
+                </svcdoc:Service>
+         </svcdoc:AIA>-->
+        <binding.ws port="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry//UpdateRCCDetailsSiebelReqABCSImpl/V1#wsdl.endpoint(UpdateRCCDetailsSiebelReqABCSImpl/UpdateRCCDetailsSiebelReqABCSImpl_pt)">
+            <property name="weblogic.wsee.wsat.transaction.flowOption"
+                      type="xs:string" many="false">NEVER</property>
+        </binding.ws>
+    </service>
+    <property name="oracle.composite.faultPolicyFile">oramds:/apps/AIAMetaData/faultPolicies/fault-policies.xml</property>
+    <property name="oracle.composite.faultBindingFile">oramds:/apps/AIAMetaData/faultPolicies/fault-bindings.xml</property>
+    <component name="UpdateRCCDetailsSiebelReqABCSImplProcess">
+    <implementation.bpel src="UpdateRCCDetailsSiebelReqABCSImplProcess.bpel"/>
+    <property name="bpel.config.transaction">required</property>
+    <property name="bpel.config.oneWayDeliveryPolicy">sync</property>
+    </component>
+    <reference ui:wsdlLocation="oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/V1/wsdls/AIAAsyncErrorHandlingBPELProcess.wsdl" name="AIAAsyncErrorHandlingBPELProcess">
+        <interface.wsdl interface="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess#wsdl.interface(AIAAsyncErrorHandlingBPELProcess)" callbackInterface="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess#wsdl.interface(AIAAsyncErrorHandlingBPELProcessCallback)" xmlns:ns="http://xmlns.oracle.com/sca/1.0"/>
+        <binding.ws port="http://xmlns.oracle.com/AIAAsyncErrorHandlingBPELProcess#wsdl.endpoint(AIAAsyncErrorHandlingBPELProcess/AIAAsyncErrorHandlingBPELProcess)" location="oramds:/apps/AIAMetaData/AIAComponents/InfrastructureServiceLibrary/V1/wsdls/AIAAsyncErrorHandlingBPELProcess.wsdl" xmlns:ns="http://xmlns.oracle.com/sca/1.0"/>
+        <!--<svcdoc:AIA>
+            <svcdoc:Reference>
+                        <svcdoc:ArtifactType>UtilityService</svcdoc:ArtifactType>
+                        <svcdoc:ServiceOperation>
+                        <svcdoc:Name>initiate</svcdoc:Name>
+                        </svcdoc:ServiceOperation>
+                    </svcdoc:Reference>
+                    </svcdoc:AIA>-->
+    </reference>
+    <reference ui:wsdlLocation="http://tr002staia.ddc.teliasonera.net:8001/soa-infra/services/default/RCCBalanceEBSV2!3.0/apps/AIAMetaData/AIAComponents/EnterpriseBusinessServiceLibrary/Industry/Communications/EBO/CustomerParty/V2/CommunicationsCustomerPartyEBSV2.wsdl" name="CommunicationsCustomerPartyEBS">
+        <interface.wsdl interface="http://xmlns.oracle.com/EnterpriseServices/Core/CustomerParty/V2#wsdl.interface(CommunicationsCustomerPartyEBS)"
+                        callbackInterface="http://xmlns.oracle.com/EnterpriseServices/Core/CustomerParty/V2#wsdl.interface(CommunicationsCustomerPartyEBSResponse)"/>
+        <!--<svcdoc:AIA>
+                    <svcdoc:Reference>
+                        <svcdoc:ArtifactType>EnterpriseBusinessService</svcdoc:ArtifactType>
+                        <svcdoc:ServiceOperation>
+                        <svcdoc:Name>CustomerParty</svcdoc:Name>
+                        </svcdoc:ServiceOperation>
+                    </svcdoc:Reference>
+                </svcdoc:AIA>-->
+        <binding.ws port="http://xmlns.oracle.com/EnterpriseServices/Core/CustomerParty/V2#wsdl.endpoint(RCCBalanceEBSV2_ep/CommunicationsCustomerPartyEBS_pt)"
+                    location="http://tr002staia.ddc.teliasonera.net:8001/soa-infra/services/default/RCCBalanceEBSV2/RCCBalanceEBSV2_ep?WSDL"
+                    soapVersion="1.1">
+            <property name="weblogic.wsee.wsat.transaction.flowOption"
+                      type="xs:string" many="false">WSDLDriven</property>
+        </binding.ws>
+        <callback>
+            <binding.ws port="http://xmlns.oracle.com/EnterpriseServices/Core/CustomerParty/V2#wsdl.endpoint(RCCBalanceEBSV2_ep/CommunicationsCustomerPartyEBSResponse_pt)"/>
+        </callback>
+    </reference>
+    <wire>
+        <source.uri>UpdateRCCDetailsSiebelReqABCSImpl</source.uri>
+        <target.uri>UpdateRCCDetailsSiebelReqABCSImplProcess/UpdateRCCDetailsSiebelReqABCSImpl</target.uri>
+    </wire>
+    <wire>
+        <source.uri>UpdateRCCDetailsSiebelReqABCSImplProcess/AIAAsyncErrorHandlingBPELProcess</source.uri>
+        <target.uri>AIAAsyncErrorHandlingBPELProcess</target.uri>
+    </wire>
+    <wire>
+        <source.uri>UpdateRCCDetailsSiebelReqABCSImplProcess/CommunicationsCustomerPartyEBS</source.uri>
+        <target.uri>CommunicationsCustomerPartyEBS</target.uri>
+    </wire>
+</composite>

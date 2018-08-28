@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<componentType xmlns="http://xmlns.oracle.com/sca/1.0" xmlns:ui="http://xmlns.oracle.com/soa/designer/">
+   <service ui:wsdlLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationConnectorServiceLibrary/OSM/V1/AdapterServices/UpdateTroubleTicketCustomOSMCFSCommsJMSConsumer.wsdl" name="UpdateTroubleTicketCustomOSMCFSCommsJMSConsumer_RS">
+      <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/jms/UpdateTroubleTicketCustomOSMCFSCommsJMSConsumer/#wsdl.interface(Consume_Message_ptt)"/>
+   </service>
+   <reference name="CommunicationsTroubleTicketEBSV1" ui:wsdlLocation="oramds:/apps/AIAMetaData/AIAComponents/EnterpriseBusinessServiceLibrary/Industry/Communications/EBO/TroubleTicket/V1/CommunicationsTroubleTicketEBSV1.wsdl">
+      <interface.wsdl interface="http://xmlns.oracle.com/EnterpriseServices/Core/TroubleTicket/V1#wsdl.interface(CommunicationsTroubleTicketEBS)"/>
+   </reference>
+   <reference name="UpdateTroubleTicketProvider" ui:wsdlLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationConnectorServiceLibrary/Siebel/V1/ProviderABCS/UpdateTroubleTicketSiebelCommsProvABCSImpl.wsdl">
+      <interface.wsdl interface="http://xmlns.oracle.com/ABCSImpl/Siebel/Industry/Comms/UpdateTroubleTicketSiebelCommsProvABCSImpl/V1#wsdl.interface(UpdateTroubleTicketSiebelCommsProvABCSImplService)"/>
+   </reference>
+</componentType>

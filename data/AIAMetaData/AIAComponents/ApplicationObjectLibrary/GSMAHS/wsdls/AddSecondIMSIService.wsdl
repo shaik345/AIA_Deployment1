@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<definitions
+     name="AddSecondIMSIService"
+     targetNamespace="http://telia.com/scm/fmw/sim/processsimcardownerchangerequest/v1"
+     xmlns="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:client="http://telia.com/scm/fmw/sim/processsimcardownerchangerequest/v1"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:err="http://telia.com/scm//common/error/objects/v1"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:scmo="http://telia.com/scm/fmw/sim/objects/v1"
+    >
+    <types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://telia.com/scm/fmw/sim/objects/v1" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/GSMAHS/schemas/SCMServiceObjects.xsd"/>
+            <xsd:import namespace="http://telia.com/scm//common/error/objects/v1" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/GSMAHS/schemas/SCMErrorMessage.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="AddSecondIMSIRequest">
+        <part name="request" element="scmo:AddSecondIMSIRequest"/>
+    </message>
+    <message name="AddSecondIMSIResponse">
+        <part name="response" element="scmo:AddSecondIMSIResponse"/>
+    </message>
+    <message name="SIMCardFault">
+        <part name="fault" element="err:scmFaultMessage"/>
+    </message>
+    <portType name="AddSecondIMSIServicePortType">
+        <operation name="AddSecondIMSI">
+            <input message="client:AddSecondIMSIRequest"/>
+            <output message="client:AddSecondIMSIResponse"/>
+            <fault name="SIMCardBusinessFault" message="client:SIMCardFault"/>
+            <fault name="SIMCardTechnicalFault" message="client:SIMCardFault"/>
+        </operation>
+    </portType>
+    <binding name="AddSecondIMSIServiceBinding" type="client:AddSecondIMSIServicePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="AddSecondIMSI">
+            <soap:operation style="document" soapAction="AddSecondIMSI"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+            <fault name="SIMCardBusinessFault">
+                <soap:fault name="SIMCardBusinessFault" use="literal"/>
+            </fault>
+            <fault name="SIMCardTechnicalFault">
+                <soap:fault name="SIMCardTechnicalFault" use="literal"/>
+            </fault>
+        </operation>
+    </binding>
+    <service name="AddSecondIMSIService">
+        <port name="AddSecondIMSIServicePort" binding="client:AddSecondIMSIServiceBinding">
+            <soap:address location="http://wl305261.ap.tieto.com:7001/soa-infra/services/default/SCMProject1/AddSecondIMSIService"/>
+        </port>
+    </service>
+</definitions>

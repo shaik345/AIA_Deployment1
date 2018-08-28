@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+     name="SMSContentProvider"
+     targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/http/SMSServiceusingServiceConstr/ProcessSMSContentConfigHTTPBindingProvABCSImpl/SMSContentProvider"
+     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/http/SMSServiceusingServiceConstr/ProcessSMSContentConfigHTTPBindingProvABCSImpl/SMSContentProvider"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:msg_in_out="http://xmlns.oracle.com/Twist_application/HHTPBindingTest/BPELProcess1"
+     xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+    >
+    <plt:partnerLinkType name="Request_Response_plt">
+        <plt:role name="Request-Response_role">
+            <plt:portType name="tns:Request_Response_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/Twist_application/HHTPBindingTest/BPELProcess1"
+                 schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/SMSContentProvider/SMSContentProv.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="process_msg_in">
+        <wsdl:part name="process" element="msg_in_out:process"/>
+    </wsdl:message>
+    <wsdl:message name="SendResponse_msg_out">
+        <wsdl:part name="SendResponse" element="msg_in_out:SendResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="Request_Response_ptt">
+        <wsdl:operation name="Request-Response">
+            <wsdl:input message="tns:process_msg_in"/>
+            <wsdl:output message="tns:SendResponse_msg_out"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

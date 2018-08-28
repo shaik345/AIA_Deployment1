@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="ProcessManufacturerFilesCNDBProvider" targetNamespace="http://xmlns.oracle.com/ProcessManufacturerFilesCNDBProvider/ProcessManufacturerFilesCNDBProvider/ProcessManufacturerFilesCNDBProvider" xmlns:ns1="http://schemas.oracle.com/bpel/extension" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:cor="http://xmlns.oracle.com/ProcessManufacturerFilesCNDBProvider/ProcessManufacturerFilesCNDBProvider/ProcessManufacturerFilesCNDBProvider/correlationset" xmlns:client="http://xmlns.oracle.com/ProcessManufacturerFilesCNDBProvider/ProcessManufacturerFilesCNDBProvider/ProcessManufacturerFilesCNDBProvider" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+<plnk:partnerLinkType name="ProcessManufacturerFilesCNDBProvider">
+<plnk:role name="ProcessManufacturerFilesCNDBProviderProvider">
+<plnk:portType name="client:ProcessManufacturerFilesCNDBProvider"/>
+</plnk:role>
+<plnk:role name="ProcessManufacturerFilesCNDBProviderRequester">
+<plnk:portType name="client:ProcessManufacturerFilesCNDBProviderCallback"/>
+</plnk:role>
+</plnk:partnerLinkType>
+<plnk:partnerLinkType name="ProcessManufacturerFilesCNDBResponseRequester">
+<plnk:role name="ProcessManufacturerFilesCNDBResponseRequester">
+<plnk:portType name="client:ProcessManufacturerFilesCNDBResponseRequester"/>
+</plnk:role>
+</plnk:partnerLinkType>
+<bpws:propertyAlias propertyName="cor:CNDBFileName" messageType="client:ProcessManufacturerFilesCNDBProviderRequestMessage" part="payload" query="/client:process/client:FileName"/>
+<bpws:propertyAlias propertyName="cor:CNDBFileName" messageType="client:ProcessManufacturerFilesCNDBResponseRequester_response" part="part" query="/client:response/client:FileName"/>
+<wsdl:import namespace="http://xmlns.oracle.com/ProcessManufacturerFilesCNDBProvider/ProcessManufacturerFilesCNDBProvider/ProcessManufacturerFilesCNDBProvider/correlationset" location="oramds:/apps/AIAMetaData/AIAComponents/ApplicationConnectorServiceLibrary/CNDB/wsdls/ProcessManufacturerFilesCNDBProvider_Properties.wsdl"/>
+<wsdl:import namespace="http://schemas.oracle.com/bpel/extension" location="oramds:/apps/AIAMetaData/AIAComponents/UtilityArtifacts/RuntimeFault.wsdl"/>
+<wsdl:types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+<import namespace="http://xmlns.oracle.com/ProcessManufacturerFilesCNDBProvider/ProcessManufacturerFilesCNDBProvider/ProcessManufacturerFilesCNDBProvider" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationConnectorServiceLibrary/CNDB/schemas/ProcessManufacturerFilesCNDBProvider.xsd"/>
+</schema>
+</wsdl:types>
+<wsdl:message name="ProcessManufacturerFilesCNDBProviderResponseMessage">
+<wsdl:part name="payload" element="client:processResponse"/>
+</wsdl:message>
+<wsdl:message name="ProcessManufacturerFilesCNDBProviderRequestMessage">
+<wsdl:part name="payload" element="client:process"/>
+</wsdl:message>
+<wsdl:message name="ProcessManufacturerFilesCNDBResponseRequester_response">
+<wsdl:part name="part" element="client:response"/>
+</wsdl:message>
+<wsdl:portType name="ProcessManufacturerFilesCNDBProviderCallback">
+<wsdl:operation name="processResponse">
+<wsdl:input message="client:ProcessManufacturerFilesCNDBProviderResponseMessage"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:portType name="ProcessManufacturerFilesCNDBProvider">
+<wsdl:operation name="process">
+<wsdl:input message="client:ProcessManufacturerFilesCNDBProviderRequestMessage"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:portType name="ProcessManufacturerFilesCNDBResponseRequester">
+<wsdl:operation name="response">
+<wsdl:input message="client:ProcessManufacturerFilesCNDBResponseRequester_response"/>
+</wsdl:operation>
+</wsdl:portType>
+</wsdl:definitions>

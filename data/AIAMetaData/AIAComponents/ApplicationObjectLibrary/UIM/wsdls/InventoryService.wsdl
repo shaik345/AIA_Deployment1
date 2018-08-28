@@ -1,0 +1,1264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (c) 2011, 2014, Oracle and/or its affiliates. 
+All rights reserved.-->
+<!--     This sample file, which has been provided by Oracle Corporation as part of 
+    an Oracle(r) product for use ONLY by licensed users of the product, includes 
+    CONFIDENTIAL and PROPRIETARY information of Oracle Corporation. This material 
+    is the confidential property of Oracle Corporation or its licensors and may 
+    be used, reproduced, stored, or transmitted only in accordance with a valid 
+    Oracle license or sublicense agreement. USE OF THIS SOFTWARE IS GOVERNED 
+    BY THE TERMS AND CONDITIONS OF THE LICENSE AGREEMENT AND LIMITED WARRANTY 
+    FURNISHED WITH THE PRODUCT. IN PARTICULAR, YOU WILL INDEMNIFY AND HOLD ORACLE 
+    CORPORATION, ITS RELATED COMPANIES AND ITS SUPPLIERS, HARMLESS FROM AND AGAINST 
+    ANY CLAIMS OR LIABILITIES ARISING OUT OF THE USE, REPRODUCTION, OR DISTRIBUTION 
+    OF YOUR PROGRAMS, INCLUDING ANY CLAIMS OR LIABILITIES ARISING OUT OF OR RESULTING 
+    FROM THE USE, MODIFICATION, OR DISTRIBUTION OF PROGRAMS OR FILES CREATED 
+    FROM, BASED ON, AND/OR DERIVED FROM THIS SAMPLE SOURCE CODE FILE. -->
+<wsdl:definitions 
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+    xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+    xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    xmlns="http://www.w3.org/2001/XMLSchema"
+    xmlns:invws="http://xmlns.oracle.com/communications/inventory/webservice/lead2cash"
+    xmlns:invcom="http://xmlns.oracle.com/communications/inventory/webservice/common"
+    xmlns:invfault="http://xmlns.oracle.com/communications/inventory/webservice/fault"
+    xmlns:biws="http://xmlns.oracle.com/communications/inventory/webservice/businessinteraction"
+    xmlns:invnsrm="http://xmlns.oracle.com/communications/inventory/webservice/nsrm"
+    xmlns:configws="http://xmlns.oracle.com/communications/inventory/webservice/configuration"
+    xmlns:invbi="http://xmlns.oracle.com/communications/inventory/businessinteraction"
+	xmlns:invco="http://xmlns.oracle.com/communications/inventory/customobject" 
+    xmlns:invgrp="http://xmlns.oracle.com/communications/inventory/group" 
+    xmlns:invld="http://xmlns.oracle.com/communications/inventory/logicaldevice" 
+    xmlns:invnet="http://xmlns.oracle.com/communications/inventory/network" 
+    xmlns:invna="http://xmlns.oracle.com/communications/inventory/networkaddress"
+    xmlns:invcna="http://xmlns.oracle.com/communications/inventory/customnetworkaddress" 
+    xmlns:invnum="http://xmlns.oracle.com/communications/inventory/number" 
+    xmlns:invparty="http://xmlns.oracle.com/communications/inventory/party" 
+    xmlns:invpd="http://xmlns.oracle.com/communications/inventory/physicaldevice" 
+    xmlns:invms="http://xmlns.oracle.com/communications/inventory/mediastream" 
+    xmlns:invconn="http://xmlns.oracle.com/communications/inventory/connectivity" 
+    xmlns:invsvc="http://xmlns.oracle.com/communications/inventory/service"
+    xmlns:att="http://www.bea.com/servers/wls90/wsee/attachment"
+    xmlns:impexp="http://xmlns.oracle.com/communications/inventory/webservice/nsrm"
+    name="InventoryWS"
+    targetNamespace="http://xmlns.oracle.com/communications/inventory/webservice/nsrm">
+    
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <!-- ============= Schema Imports ==================== -->
+            <xsd:import namespace="http://xmlns.oracle.com/communications/inventory/webservice/common" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/UIM/schemas/InventoryCommon.xsd" />
+            <xsd:import namespace="http://xmlns.oracle.com/communications/inventory/webservice/fault"  schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/UIM/schemas/InventoryFaults.xsd" />
+            <xsd:import namespace="http://xmlns.oracle.com/communications/inventory/webservice/nsrm" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/UIM/schemas/NSRMMessages.xsd" />
+            <xsd:import namespace="http://xmlns.oracle.com/communications/inventory/webservice/businessinteraction" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/UIM/schemas/InteractionMessages.xsd"/>
+			<xsd:import namespace="http://xmlns.oracle.com/communications/inventory/webservice/configuration" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/UIM/schemas/ConfigurationMessages.xsd"/>
+			<xsd:import namespace="http://xmlns.oracle.com/communications/inventory/businessinteraction" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/UIM/schemas/BusinessInteraction.xsd"/>
+			<xsd:import namespace="http://xmlns.oracle.com/communications/inventory/customobject" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/UIM/schemas/CustomObject.xsd"/>
+			<xsd:import namespace="http://xmlns.oracle.com/communications/inventory/group" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/UIM/schemas/InventoryGroup.xsd"/>
+			<xsd:import namespace="http://xmlns.oracle.com/communications/inventory/logicaldevice" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/UIM/schemas/LogicalDevice.xsd"/>
+			<xsd:import namespace="http://xmlns.oracle.com/communications/inventory/mediastream" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/UIM/schemas/MediaStream.xsd"/>
+			<xsd:import namespace="http://xmlns.oracle.com/communications/inventory/network" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/UIM/schemas/Network.xsd"/>
+			<xsd:import namespace="http://xmlns.oracle.com/communications/inventory/networkaddress" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/UIM/schemas/NetworkAddress.xsd"/>
+			<xsd:import namespace="http://xmlns.oracle.com/communications/inventory/customnetworkaddress" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/UIM/schemas/CustomNetworkAddress.xsd"/>
+			<xsd:import namespace="http://xmlns.oracle.com/communications/inventory/number" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/UIM/schemas/Number.xsd"/>
+			<xsd:import namespace="http://xmlns.oracle.com/communications/inventory/party" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/UIM/schemas/Party.xsd"/>
+			<xsd:import namespace="http://xmlns.oracle.com/communications/inventory/physicaldevice" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/UIM/schemas/PhysicalDevice.xsd"/>
+			<xsd:import namespace="http://xmlns.oracle.com/communications/inventory/connectivity" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/UIM/schemas/Connectivity.xsd"/>
+			<xsd:import namespace="http://xmlns.oracle.com/communications/inventory/service" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/UIM/schemas/Service.xsd"/>
+                        <xsd:import namespace="http://xmlns.oracle.com/communications/inventory/webservice/nsrm" schemaLocation="oramds:/apps/AIAMetaData/AIAComponents/ApplicationObjectLibrary/UIM/schemas/ImportExportEntityType.xsd"/>
+        </xsd:schema>
+        <!--xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://xmlns.oracle.com/communications/inventory/webservice/nsrm"
+                    elementFormDefault="qualified">
+            <xs:element name="importEntityRequestType">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element
+                            xmlns:att="http://www.bea.com/servers/wls90/wsee/attachment"
+                            name="octet" type="att:datahandler" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://xmlns.oracle.com/communications/inventory/webservice/nsrm"
+                    elementFormDefault="qualified">
+            <xs:element name="exportEntityResponseType">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element
+                            xmlns:att="http://www.bea.com/servers/wls90/wsee/attachment"
+                            name="octet" type="att:datahandler" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+		</xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://www.bea.com/servers/wls90/wsee/attachment">
+            <xsd:complexType name="datahandler">
+           
+                <xsd:annotation>
+                    <xsd:documentation>Internal type created by WebLogic
+                        - Do not edit!
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:complexType>
+        </xsd:schema-->
+    </wsdl:types>
+
+    <!-- ************************************************************* -->
+    <!-- Web Service Messages Definition -->
+    <!-- ************************************************************* -->
+    <!-- ************** Inventory Common ***************************** -->
+    <wsdl:message name="InventoryFault">
+        <wsdl:part name="inventoryFault" element="invfault:inventoryFault">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="ValidationFault">
+        <wsdl:part name="validationFault" element="invfault:validationFault">
+        </wsdl:part>
+    </wsdl:message>
+
+	<!--  *********************************************************  -->
+	<!--  *************************************************************  -->
+	<!--  Start of messages used for Interaction -->
+	<!--  *************************************************************  -->
+	<!--  ************** Capture Interaction *****************************  -->
+	<wsdl:message name="CaptureInteractionRequest">
+		<wsdl:part name="captureInteractionRequest" element="biws:captureInteractionRequest"/>
+	</wsdl:message>
+	<wsdl:message name="CaptureInteractionResponse">
+		<wsdl:part name="captureInteractionResponse" element="biws:captureInteractionResponse"/>
+	</wsdl:message>
+	<wsdl:message name="CaptureInteractionFault">
+		<wsdl:part name="captureInteractionFault" element="biws:captureInteractionFault"/>
+	</wsdl:message>
+	<!--  **************************************************************************  -->
+	<!--  ************** Process Interaction *****************************  -->
+	<wsdl:message name="ProcessInteractionRequest">
+		<wsdl:part name="processInteractionRequest" element="biws:processInteractionRequest"/>
+	</wsdl:message>
+	<wsdl:message name="ProcessInteractionResponse">
+		<wsdl:part name="processInteractionResponse" element="biws:processInteractionResponse"/>
+	</wsdl:message>
+	<wsdl:message name="ProcessInteractionFault">
+		<wsdl:part name="processInteractionFault" element="biws:processInteractionFault"/>
+	</wsdl:message>
+	<!--  **********************************************************************  -->
+	<!--  ************** Change Interaction State *****************************  -->
+	<wsdl:message name="UpdateInteractionRequest">
+		<wsdl:part name="updateInteractionRequest" element="biws:updateInteractionRequest"/>
+	</wsdl:message>
+	<wsdl:message name="UpdateInteractionResponse">
+		<wsdl:part name="updateInteractionResponse" element="biws:updateInteractionResponse"/>
+	</wsdl:message>
+	<wsdl:message name="UpdateInteractionFault">
+		<wsdl:part name="updateInteractionFault" element="biws:updateInteractionFault"/>
+	</wsdl:message>
+	<!--  ***************************************************************************  -->
+	<!--  ************** Get Interaction *****************************  -->
+	<wsdl:message name="GetInteractionRequest">
+		<wsdl:part name="getInteractionRequest" element="biws:getInteractionRequest"/>
+	</wsdl:message>
+	<wsdl:message name="GetInteractionResponse">
+		<wsdl:part name="getInteractionResponse" element="biws:getInteractionResponse"/>
+	</wsdl:message>
+	<wsdl:message name="GetInteractionFault">
+		<wsdl:part name="getInteractionFault" element="biws:getInteractionFault"/>
+	</wsdl:message>
+	<!--  *********************************************************  -->
+	<!--  *************************************************************  -->
+	<!--  Start of messages used for Configuration -->
+	<!--  *******************************************************************  -->
+	<!--  ************** Get Configuration *****************************  -->
+	<wsdl:message name="GetConfigurationRequest">
+		<wsdl:part name="getConfigurationRequest" element="configws:getConfigurationRequest"/>
+	</wsdl:message>
+	<wsdl:message name="GetConfigurationResponse">
+		<wsdl:part name="getConfigurationResponse" element="configws:getConfigurationResponse"/>
+	</wsdl:message>
+	<wsdl:message name="GetConfigurationFault">
+		<wsdl:part name="getConfigurationFault" element="configws:getConfigurationFault"/>
+	</wsdl:message>
+        <!--  ***********************************************************  -->
+        <!--  ************** Get ConfigurationDifference *****************************  -->
+        <wsdl:message name="GetConfigurationDifferencesRequest">
+                <wsdl:part name="getConfigurationDifferencesRequest" element="configws:getConfigurationDifferencesRequest"/>
+        </wsdl:message>
+        <wsdl:message name="GetConfigurationDifferencesResponse">
+                <wsdl:part name="getConfigurationDifferencesResponse" element="configws:getConfigurationDifferencesResponse"/>
+        </wsdl:message>
+        <wsdl:message name="GetConfigurationDifferencesFault">
+                <wsdl:part name="getConfigurationDifferencesFault" element="configws:getConfigurationDifferencesFault"/>
+        </wsdl:message>
+	<!--  ***********************************************************  -->
+	<!--  ************** Update Configuration *****************************  -->
+    <wsdl:message name="UpdateConfigurationRequest">
+        <wsdl:part name="updateConfigurationRequest" element="configws:updateConfigurationRequest" />
+    </wsdl:message>
+    <wsdl:message name="UpdateConfigurationResponse">
+        <wsdl:part name="updateConfigurationResponse" element="configws:updateConfigurationResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="UpdateConfigurationFault">
+        <wsdl:part name="updateConfigurationFault" element="configws:updateConfigurationFault">
+        </wsdl:part>
+    </wsdl:message>
+    <!-- ************** Create Entity ***************************** -->
+    <wsdl:message name="CreateEntityRequest">
+        <wsdl:part name="createEntityRequest" element="invnsrm:createEntityRequest">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="CreateEntityResponse">
+        <wsdl:part name="createEntityResponse" element="invnsrm:createEntityResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="CreateEntityFault">
+        <wsdl:part name="createEntityFault" element="invnsrm:createEntityFault">
+        </wsdl:part>
+    </wsdl:message>
+    <!-- ************** Find Entity ***************************** -->
+    <wsdl:message name="FindEntityRequest">
+        <wsdl:part name="findEntityRequest" element="invnsrm:findEntityRequest">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="FindEntityResponse">
+        <wsdl:part name="findEntityResponse" element="invnsrm:findEntityResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="FindEntityFault">
+        <wsdl:part name="findEntityFault" element="invnsrm:findEntityFault">
+        </wsdl:part>
+    </wsdl:message>
+    <!-- ************** Update Entity ***************************** -->
+    <wsdl:message name="UpdateEntityRequest">
+        <wsdl:part name="updateEntityRequest" element="invnsrm:updateEntityRequest">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="UpdateEntityResponse">
+        <wsdl:part name="updateEntityResponse" element="invnsrm:updateEntityResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="UpdateEntityFault">
+        <wsdl:part name="updateEntityFault" element="invnsrm:updateEntityFault">
+        </wsdl:part>
+    </wsdl:message>
+    <!-- ************** Delete Entity ***************************** -->
+    <wsdl:message name="DeleteEntityRequest">
+        <wsdl:part name="deleteEntityRequest" element="invnsrm:deleteEntityRequest">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="DeleteEntityResponse">
+        <wsdl:part name="deleteEntityResponse" element="invnsrm:deleteEntityResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="DeleteEntityFault">
+        <wsdl:part name="deleteEntityFault" element="invnsrm:deleteEntityFault">
+        </wsdl:part>
+    </wsdl:message>
+    <!-- ************** Reserve Entity ***************************** -->
+    <wsdl:message name="ReserveEntityRequest">
+        <wsdl:part name="reserveEntityRequest" element="invnsrm:reserveEntityRequest">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="ReserveEntityResponse">
+        <wsdl:part name="reserveEntityResponse" element="invnsrm:reserveEntityResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="ReserveEntityFault">
+        <wsdl:part name="reserveEntityFault" element="invnsrm:reserveEntityFault">
+        </wsdl:part>
+    </wsdl:message>
+    <!-- ************** Reserve Entity ***************************** -->
+    <wsdl:message name="UnreserveEntityRequest">
+        <wsdl:part name="unreserveEntityRequest" element="invnsrm:unreserveEntityRequest">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="UnreserveEntityResponse">
+        <wsdl:part name="unreserveEntityResponse" element="invnsrm:unreserveEntityResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="UnreserveEntityFault">
+        <wsdl:part name="unreserveEntityFault" element="invnsrm:unreserveEntityFault">
+        </wsdl:part>
+    </wsdl:message>
+    <!-- ************** Update Reservation ***************************** -->
+    <wsdl:message name="UpdateReservationRequest">
+        <wsdl:part name="updateReservationRequest" element="invnsrm:updateReservationRequest">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="UpdateReservationResponse">
+        <wsdl:part name="updateReservationResponse" element="invnsrm:updateReservationResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="UpdateReservationFault">
+        <wsdl:part name="updateReservationFault" element="invnsrm:updateReservationFault">
+        </wsdl:part>
+    </wsdl:message>
+    <!-- ************** Import Entity ***************************** -->
+    <wsdl:message name="ImportEntityRequest">
+        <wsdl:part name="importEntityRequest" element="impexp:importEntityRequestType">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="ImportEntityResponse">
+        <wsdl:part name="importEntityResponse" element="invnsrm:importEntityResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="ImportEntityFault">
+        <wsdl:part name="importEntityFault" element="invnsrm:importEntityFault">
+        </wsdl:part>
+    </wsdl:message>
+    <!-- ************** Export Entity ***************************** -->
+    <wsdl:message name="ExportEntityRequest">
+        <wsdl:part name="exportEntityRequest" element="invnsrm:exportEntityRequest">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="ExportEntityResponse">
+        <wsdl:part name="exportEntityResponse" element="impexp:exportEntityResponseType">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="ExportEntityFault">
+        <wsdl:part name="exportEntityFault" element="invnsrm:exportEntityFault">
+        </wsdl:part>
+    </wsdl:message>
+    <!-- ************** Associate Entity ***************************** -->
+    <wsdl:message name="AssociateEntityRequest">
+        <wsdl:part name="associateEntityRequest" element="invnsrm:associateEntityRequest">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="AssociateEntityResponse">
+        <wsdl:part name="associateEntityResponse" element="invnsrm:associateEntityResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="AssociateEntityFault">
+        <wsdl:part name="associateEntityFault" element="invnsrm:associateEntityFault">
+        </wsdl:part>
+    </wsdl:message>
+    <!-- ************** Associate Entity ***************************** -->
+    <wsdl:message name="DisassociateEntityRequest">
+        <wsdl:part name="disassociateEntityRequest" element="invnsrm:disassociateEntityRequest">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="DisassociateEntityResponse">
+        <wsdl:part name="disassociateEntityResponse" element="invnsrm:disassociateEntityResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="DisassociateEntityFault">
+        <wsdl:part name="disassociateEntityFault" element="invnsrm:disassociateEntityFault">
+        </wsdl:part>
+    </wsdl:message>
+    <!-- ******************************************************************* -->
+
+    <!-- ************************************************************* -->
+    <!-- Web Service Port Definition -->
+    <!-- ************************************************************* -->
+    <wsdl:portType name="InventoryWSPort">
+    	<wsdl:operation name="CaptureInteraction">
+            <wsdl:documentation>
+            	This operation captures the action being requested on a
+				BusinessInteraction.
+            </wsdl:documentation>
+            <wsdl:input message="invnsrm:CaptureInteractionRequest" />
+            <wsdl:output message="invnsrm:CaptureInteractionResponse" />
+            <wsdl:fault name="CaptureInteractionFault" message="invnsrm:CaptureInteractionFault" />
+            <wsdl:fault name="InventoryFault" message="invnsrm:InventoryFault" />
+            <wsdl:fault name="ValidationFault" message="invnsrm:ValidationFault" />
+        </wsdl:operation>
+        <wsdl:operation name="ProcessInteraction">
+			<wsdl:documentation>
+				This operation performs automation using the rules
+				provided for the action being requested by the
+				BusinessInteraction.
+			</wsdl:documentation>
+			<wsdl:input message="invnsrm:ProcessInteractionRequest"/>
+			<wsdl:output message="invnsrm:ProcessInteractionResponse"/>
+			<wsdl:fault name="ProcessInteractionFault" message="invnsrm:ProcessInteractionFault"/>
+			<wsdl:fault name="InventoryFault" message="invnsrm:InventoryFault"/>
+			<wsdl:fault name="ValidationFault" message="invnsrm:ValidationFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="UpdateInteraction">
+			<wsdl:documentation>
+				This operation is used to updates the business interaction and 
+				transitions the business interaction, service and service configuration 
+				statuses
+			</wsdl:documentation>
+			<wsdl:input message="invnsrm:UpdateInteractionRequest"/>
+			<wsdl:output message="invnsrm:UpdateInteractionResponse"/>
+			<wsdl:fault name="UpdateInteractionFault" message="invnsrm:UpdateInteractionFault"/>
+			<wsdl:fault name="InventoryFault" message="invnsrm:InventoryFault"/>
+			<wsdl:fault name="ValidationFault" message="invnsrm:ValidationFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetInteraction">
+			<wsdl:documentation>
+				This operation retrieves a BusinessInteraction.
+			</wsdl:documentation>
+			<wsdl:input message="invnsrm:GetInteractionRequest"/>
+			<wsdl:output message="invnsrm:GetInteractionResponse"/>
+			<wsdl:fault name="GetInteractionFault" message="invnsrm:GetInteractionFault"/>
+			<wsdl:fault name="InventoryFault" message="invnsrm:InventoryFault"/>
+			<wsdl:fault name="ValidationFault" message="invnsrm:ValidationFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetConfiguration">
+			<wsdl:documentation>
+				This operation retrieves an Entiry Configuration and its
+				details (the contents of its configuration items).
+				Entity id and the configure version number are required
+				to fetch a particular entity configuration.
+			</wsdl:documentation>
+			<wsdl:input message="invnsrm:GetConfigurationRequest"/>
+			<wsdl:output message="invnsrm:GetConfigurationResponse"/>
+			<wsdl:fault name="GetConfigurationFault" message="invnsrm:GetConfigurationFault"/>
+			<wsdl:fault name="InventoryFault" message="invnsrm:InventoryFault"/>
+			<wsdl:fault name="ValidationFault" message="invnsrm:ValidationFault"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetConfigurationDifferences">
+                        <wsdl:documentation>
+                                This operation retrieves Configuration Differences for an input configurable entity and two versions.
+			            </wsdl:documentation>
+                        <wsdl:input message="invnsrm:GetConfigurationDifferencesRequest"/>
+                        <wsdl:output message="invnsrm:GetConfigurationDifferencesResponse"/>
+                        <wsdl:fault name="GetConfigurationDifferencesFault" message="invnsrm:GetConfigurationDifferencesFault"/>
+                        <wsdl:fault name="InventoryFault" message="invnsrm:InventoryFault"/>
+                        <wsdl:fault name="ValidationFault" message="invnsrm:ValidationFault"/>
+                </wsdl:operation>
+		<wsdl:operation name="UpdateConfiguration">
+            <wsdl:documentation>This operation is used to transition the state of the Service/Service Configuration 
+            based on the business action performed. Service Id and Service action is a required to transition Service state. 
+            Service Id, Service Configuration Id or Service Configuration Version number and configuration action is 
+            required to transition the service configuration state. Success or failure message is included in response.
+            </wsdl:documentation>
+            <wsdl:input message="invnsrm:UpdateConfigurationRequest" />
+            <wsdl:output message="invnsrm:UpdateConfigurationResponse" />
+            <wsdl:fault name="UpdateConfigurationFault" message="invnsrm:UpdateConfigurationFault" />
+            <wsdl:fault name="InventoryFault" message="invnsrm:InventoryFault" />
+            <wsdl:fault name="ValidationFault" message="invnsrm:ValidationFault" />
+        </wsdl:operation>
+        <wsdl:operation name="CreateEntity">
+            <wsdl:documentation>
+            </wsdl:documentation>
+            <wsdl:input message="invnsrm:CreateEntityRequest" />
+            <wsdl:output message="invnsrm:CreateEntityResponse" />
+            <wsdl:fault name="CreateEntityFault" message="invnsrm:CreateEntityFault" />
+            <wsdl:fault name="InventoryFault" message="invnsrm:InventoryFault" />
+            <wsdl:fault name="ValidationFault" message="invnsrm:ValidationFault" />
+        </wsdl:operation>
+        <wsdl:operation name="FindEntity">
+            <wsdl:documentation>
+            </wsdl:documentation>
+            <wsdl:input message="invnsrm:FindEntityRequest" />
+            <wsdl:output message="invnsrm:FindEntityResponse" />
+            <wsdl:fault name="FindEntityFault" message="invnsrm:FindEntityFault" />
+            <wsdl:fault name="InventoryFault" message="invnsrm:InventoryFault" />
+            <wsdl:fault name="ValidationFault" message="invnsrm:ValidationFault" />
+        </wsdl:operation>
+        <wsdl:operation name="UpdateEntity">
+            <wsdl:documentation>
+            </wsdl:documentation>
+            <wsdl:input message="invnsrm:UpdateEntityRequest" />
+            <wsdl:output message="invnsrm:UpdateEntityResponse" />
+            <wsdl:fault name="UpdateEntityFault" message="invnsrm:UpdateEntityFault" />
+            <wsdl:fault name="InventoryFault" message="invnsrm:InventoryFault" />
+            <wsdl:fault name="ValidationFault" message="invnsrm:ValidationFault" />
+        </wsdl:operation>
+        <wsdl:operation name="DeleteEntity">
+            <wsdl:documentation>
+            </wsdl:documentation>
+            <wsdl:input message="invnsrm:DeleteEntityRequest" />
+            <wsdl:output message="invnsrm:DeleteEntityResponse" />
+            <wsdl:fault name="DeleteEntityFault" message="invnsrm:DeleteEntityFault" />
+            <wsdl:fault name="InventoryFault" message="invnsrm:InventoryFault" />
+            <wsdl:fault name="ValidationFault" message="invnsrm:ValidationFault" />
+        </wsdl:operation>
+        <wsdl:operation name="ReserveResource">
+            <wsdl:documentation>
+            </wsdl:documentation>
+            <wsdl:input message="invnsrm:ReserveEntityRequest" />
+            <wsdl:output message="invnsrm:ReserveEntityResponse" />
+            <wsdl:fault name="ReserveEntityFault" message="invnsrm:ReserveEntityFault" />
+            <wsdl:fault name="InventoryFault" message="invnsrm:InventoryFault" />
+            <wsdl:fault name="ValidationFault" message="invnsrm:ValidationFault" />
+        </wsdl:operation>
+        <wsdl:operation name="UnreserveEntity">
+            <wsdl:documentation>
+            </wsdl:documentation>
+            <wsdl:input message="invnsrm:UnreserveEntityRequest" />
+            <wsdl:output message="invnsrm:UnreserveEntityResponse" />
+            <wsdl:fault name="UnreserveEntityFault" message="invnsrm:UnreserveEntityFault" />
+            <wsdl:fault name="InventoryFault" message="invnsrm:InventoryFault" />
+            <wsdl:fault name="ValidationFault" message="invnsrm:ValidationFault" />
+        </wsdl:operation>
+        <wsdl:operation name="UpdateReservation">
+            <wsdl:documentation>
+            </wsdl:documentation>
+            <wsdl:input message="invnsrm:UpdateReservationRequest" />
+            <wsdl:output message="invnsrm:UpdateReservationResponse" />
+            <wsdl:fault name="UpdateReservationFault"
+                message="invnsrm:UpdateReservationFault" />
+            <wsdl:fault name="InventoryFault" message="invnsrm:InventoryFault" />
+            <wsdl:fault name="ValidationFault" message="invnsrm:ValidationFault" />
+        </wsdl:operation>
+        <wsdl:operation name="ImportEntity">
+            <wsdl:documentation>
+            </wsdl:documentation>
+            <wsdl:input message="invnsrm:ImportEntityRequest" />
+            <wsdl:output message="invnsrm:ImportEntityResponse" />
+            <wsdl:fault name="ImportEntityFault" message="invnsrm:ImportEntityFault" />
+            <wsdl:fault name="InventoryFault" message="invnsrm:InventoryFault" />
+            <wsdl:fault name="ValidationFault" message="invnsrm:ValidationFault" />
+        </wsdl:operation>
+        <wsdl:operation name="ExportEntity">
+            <wsdl:documentation>
+            </wsdl:documentation>
+            <wsdl:input message="invnsrm:ExportEntityRequest" />
+            <wsdl:output message="invnsrm:ExportEntityResponse" />
+            <wsdl:fault name="ExportEntityFault" message="invnsrm:ExportEntityFault" />
+            <wsdl:fault name="InventoryFault" message="invnsrm:InventoryFault" />
+            <wsdl:fault name="ValidationFault" message="invnsrm:ValidationFault" />
+        </wsdl:operation>
+        <wsdl:operation name="AssociateEntity">
+            <wsdl:documentation>
+            </wsdl:documentation>
+            <wsdl:input message="invnsrm:AssociateEntityRequest" />
+            <wsdl:output message="invnsrm:AssociateEntityResponse" />
+            <wsdl:fault name="AssociateEntityFault" message="invnsrm:AssociateEntityFault" />
+            <wsdl:fault name="InventoryFault" message="invnsrm:InventoryFault" />
+            <wsdl:fault name="ValidationFault" message="invnsrm:ValidationFault" />
+        </wsdl:operation>
+        <wsdl:operation name="DisassociateEntity">
+            <wsdl:documentation>
+            </wsdl:documentation>
+            <wsdl:input message="invnsrm:DisassociateEntityRequest" />
+            <wsdl:output message="invnsrm:DisassociateEntityResponse" />
+            <wsdl:fault name="DisassociateEntityFault"
+                message="invnsrm:DisassociateEntityFault" />
+            <wsdl:fault name="InventoryFault" message="invnsrm:InventoryFault" />
+            <wsdl:fault name="ValidationFault" message="invnsrm:ValidationFault" />
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <!-- ************************************************************* -->
+    <!-- Web Service HTTP Binding Definition -->
+    <!-- ************************************************************* -->
+    <wsdl:binding name="InventoryWSHTTPSoapBinding" type="invnsrm:InventoryWSPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+        <wsdl:operation name="CaptureInteraction">
+            <soap:operation
+                soapAction="http://xmlns.oracle.com/communications/inventory/webservice/CaptureInteraction" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="CaptureInteractionFault">
+                <soap:fault name="CaptureInteractionFault"
+                    use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="InventoryFault">
+                <soap:fault name="InventoryFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="ValidationFault">
+                <soap:fault name="ValidationFault" use="literal" />
+            </wsdl:fault>
+        </wsdl:operation>
+		<wsdl:operation name="ProcessInteraction">
+			<soap:operation soapAction="http://xmlns.oracle.com/communications/inventory/webservice/ProcessInteraction"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ProcessInteractionFault">
+				<soap:fault name="ProcessInteractionFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="InventoryFault">
+				<soap:fault name="InventoryFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ValidationFault">
+				<soap:fault name="ValidationFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="UpdateInteraction">
+			<soap:operation soapAction="http://xmlns.oracle.com/communications/inventory/webservice/UpdateInteraction"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="UpdateInteractionFault">
+				<soap:fault name="UpdateInteractionFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="InventoryFault">
+				<soap:fault name="InventoryFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ValidationFault">
+				<soap:fault name="ValidationFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetInteraction">
+			<soap:operation soapAction="http://xmlns.oracle.com/communications/inventory/webservice/GetInteraction"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="GetInteractionFault">
+				<soap:fault name="GetInteractionFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="InventoryFault">
+				<soap:fault name="InventoryFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ValidationFault">
+				<soap:fault name="ValidationFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetConfiguration">
+			<soap:operation soapAction="http://xmlns.oracle.com/communications/inventory/webservice/GetConfiguration"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="GetConfigurationFault">
+				<soap:fault name="GetConfigurationFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="InventoryFault">
+				<soap:fault name="InventoryFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ValidationFault">
+				<soap:fault name="ValidationFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetConfigurationDifferences">
+                        <soap:operation soapAction="http://xmlns.oracle.com/communications/inventory/webservice/GetConfigurationDifferences"/>
+                        <wsdl:input>
+                                <soap:body use="literal"/>
+                        </wsdl:input>
+                        <wsdl:output>
+                                <soap:body use="literal"/>
+                        </wsdl:output>
+                        <wsdl:fault name="GetConfigurationDifferencesFault">
+                                <soap:fault name="GetConfigurationDifferencesFault" use="literal"/>
+                        </wsdl:fault>
+                        <wsdl:fault name="InventoryFault">
+                                <soap:fault name="InventoryFault" use="literal"/>
+                        </wsdl:fault>
+                        <wsdl:fault name="ValidationFault">
+                                <soap:fault name="ValidationFault" use="literal"/>
+                        </wsdl:fault>
+                </wsdl:operation>
+		<wsdl:operation name="UpdateConfiguration">
+            <soap:operation soapAction="http://xmlns.oracle.com/communications/inventory/webservice/UpdateConfiguration" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="UpdateConfigurationFault">
+                <soap:fault name="UpdateConfigurationFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="InventoryFault">
+                <soap:fault name="InventoryFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="ValidationFault">
+                <soap:fault name="ValidationFault" use="literal" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="CreateEntity">
+            <soap:operation
+                soapAction="http://xmlns.oracle.com/communications/inventory/webservice/CreateEntity" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="CreateEntityFault">
+                <soap:fault name="CreateEntityFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="InventoryFault">
+                <soap:fault name="InventoryFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="ValidationFault">
+                <soap:fault name="ValidationFault" use="literal" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="FindEntity">
+            <soap:operation
+                soapAction="http://xmlns.oracle.com/communications/inventory/webservice/FindEntity" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="FindEntityFault">
+                <soap:fault name="FindEntityFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="InventoryFault">
+                <soap:fault name="InventoryFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="ValidationFault">
+                <soap:fault name="ValidationFault" use="literal" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="UpdateEntity">
+            <soap:operation
+                soapAction="http://xmlns.oracle.com/communications/inventory/webservice/UpdateEntity" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="UpdateEntityFault">
+                <soap:fault name="UpdateEntityFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="InventoryFault">
+                <soap:fault name="InventoryFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="ValidationFault">
+                <soap:fault name="ValidationFault" use="literal" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteEntity">
+            <soap:operation
+                soapAction="http://xmlns.oracle.com/communications/inventory/webservice/DeleteEntity" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DeleteEntityFault">
+                <soap:fault name="DeleteEntityFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="InventoryFault">
+                <soap:fault name="InventoryFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="ValidationFault">
+                <soap:fault name="ValidationFault" use="literal" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="ReserveResource">
+            <soap:operation
+                soapAction="http://xmlns.oracle.com/communications/inventory/webservice/ReserveResource" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="ReserveEntityFault">
+                <soap:fault name="ReserveEntityFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="InventoryFault">
+                <soap:fault name="InventoryFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="ValidationFault">
+                <soap:fault name="ValidationFault" use="literal" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="UnreserveEntity">
+            <soap:operation
+                soapAction="http://xmlns.oracle.com/communications/inventory/webservice/UnreserveEntity" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="UnreserveEntityFault">
+                <soap:fault name="UnreserveEntityFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="InventoryFault">
+                <soap:fault name="InventoryFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="ValidationFault">
+                <soap:fault name="ValidationFault" use="literal" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="UpdateReservation">
+            <soap:operation
+                soapAction="http://xmlns.oracle.com/communications/inventory/webservice/UpdateReservation" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="UpdateReservationFault">
+                <soap:fault name="UpdateReservationFault"
+                    use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="InventoryFault">
+                <soap:fault name="InventoryFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="ValidationFault">
+                <soap:fault name="ValidationFault" use="literal" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="ImportEntity">
+            <soap:operation style="document"
+                soapAction="http://xmlns.oracle.com/communications/inventory/webservice/ImportEntity" />
+            <wsdl:input>
+                <soap:body parts="importEntityRequest"
+                    use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="ImportEntityFault">
+                <soap:fault name="ImportEntityFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="InventoryFault">
+                <soap:fault name="InventoryFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="ValidationFault">
+                <soap:fault name="ValidationFault" use="literal" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="ExportEntity">
+            <soap:operation
+                soapAction="http://xmlns.oracle.com/communications/inventory/webservice/ExportEntity" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="ExportEntityFault">
+                <soap:fault name="ExportEntityFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="InventoryFault">
+                <soap:fault name="InventoryFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="ValidationFault">
+                <soap:fault name="ValidationFault" use="literal" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="AssociateEntity">
+            <soap:operation
+                soapAction="http://xmlns.oracle.com/communications/inventory/webservice/AssociateEntity" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="AssociateEntityFault">
+                <soap:fault name="AssociateEntityFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="InventoryFault">
+                <soap:fault name="InventoryFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="ValidationFault">
+                <soap:fault name="ValidationFault" use="literal" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="DisassociateEntity">
+            <soap:operation
+                soapAction="http://xmlns.oracle.com/communications/inventory/webservice/DisassociateEntity" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DisassociateEntityFault">
+                <soap:fault name="DisassociateEntityFault"
+                    use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="InventoryFault">
+                <soap:fault name="InventoryFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="ValidationFault">
+                <soap:fault name="ValidationFault" use="literal" />
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <!-- ************************************************************* -->
+    <!-- Web Service JMS Binding Definition -->
+    <!-- ************************************************************* -->
+    <wsdl:binding name="InventoryWSJMSSoapBinding" type="invnsrm:InventoryWSPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/jms" />
+        <wsdl:operation name="CaptureInteraction">
+            <soap:operation
+                soapAction="http://xmlns.oracle.com/communications/inventory/webservice/CaptureInteraction" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="CaptureInteractionFault">
+                <soap:fault name="CaptureInteractionFault"
+                    use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="InventoryFault">
+                <soap:fault name="InventoryFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="ValidationFault">
+                <soap:fault name="ValidationFault" use="literal" />
+            </wsdl:fault>
+        </wsdl:operation>
+		<wsdl:operation name="ProcessInteraction">
+			<soap:operation soapAction="http://xmlns.oracle.com/communications/inventory/webservice/ProcessInteraction"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="ProcessInteractionFault">
+				<soap:fault name="ProcessInteractionFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="InventoryFault">
+				<soap:fault name="InventoryFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ValidationFault">
+				<soap:fault name="ValidationFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="UpdateInteraction">
+			<soap:operation soapAction="http://xmlns.oracle.com/communications/inventory/webservice/UpdateInteraction"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="UpdateInteractionFault">
+				<soap:fault name="UpdateInteractionFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="InventoryFault">
+				<soap:fault name="InventoryFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ValidationFault">
+				<soap:fault name="ValidationFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetInteraction">
+			<soap:operation soapAction="http://xmlns.oracle.com/communications/inventory/webservice/GetInteraction"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="GetInteractionFault">
+				<soap:fault name="GetInteractionFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="InventoryFault">
+				<soap:fault name="InventoryFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ValidationFault">
+				<soap:fault name="ValidationFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="GetConfiguration">
+			<soap:operation soapAction="http://xmlns.oracle.com/communications/inventory/webservice/GetConfiguration"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="GetConfigurationFault">
+				<soap:fault name="GetConfigurationFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="InventoryFault">
+				<soap:fault name="InventoryFault" use="literal"/>
+			</wsdl:fault>
+			<wsdl:fault name="ValidationFault">
+				<soap:fault name="ValidationFault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		
+		<wsdl:operation name="GetConfigurationDifferences">
+                        <soap:operation soapAction="http://xmlns.oracle.com/communications/inventory/webservice/GetConfigurationDifferences"/>
+                        <wsdl:input>
+                                <soap:body use="literal"/>
+                        </wsdl:input>
+                        <wsdl:output>
+                                <soap:body use="literal"/>
+                        </wsdl:output>
+                        <wsdl:fault name="GetConfigurationDifferencesFault">
+                                <soap:fault name="GetConfigurationDifferencesFault" use="literal"/>
+                        </wsdl:fault>
+                        <wsdl:fault name="InventoryFault">
+                                <soap:fault name="InventoryFault" use="literal"/>
+                        </wsdl:fault>
+                        <wsdl:fault name="ValidationFault">
+                                <soap:fault name="ValidationFault" use="literal"/>
+                        </wsdl:fault>
+                </wsdl:operation>
+		
+		<wsdl:operation name="UpdateConfiguration">
+            <soap:operation soapAction="http://xmlns.oracle.com/communications/inventory/webservice/UpdateConfiguration" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="UpdateConfigurationFault">
+                <soap:fault name="UpdateConfigurationFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="InventoryFault">
+                <soap:fault name="InventoryFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="ValidationFault">
+                <soap:fault name="ValidationFault" use="literal" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="CreateEntity">
+            <soap:operation
+                soapAction="http://xmlns.oracle.com/communications/inventory/webservice/CreateEntity" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="CreateEntityFault">
+                <soap:fault name="CreateEntityFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="InventoryFault">
+                <soap:fault name="InventoryFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="ValidationFault">
+                <soap:fault name="ValidationFault" use="literal" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="FindEntity">
+            <soap:operation
+                soapAction="http://xmlns.oracle.com/communications/inventory/webservice/FindEntity" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="FindEntityFault">
+                <soap:fault name="FindEntityFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="InventoryFault">
+                <soap:fault name="InventoryFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="ValidationFault">
+                <soap:fault name="ValidationFault" use="literal" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="UpdateEntity">
+            <soap:operation
+                soapAction="http://xmlns.oracle.com/communications/inventory/webservice/UpdateEntity" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="UpdateEntityFault">
+                <soap:fault name="UpdateEntityFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="InventoryFault">
+                <soap:fault name="InventoryFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="ValidationFault">
+                <soap:fault name="ValidationFault" use="literal" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteEntity">
+            <soap:operation
+                soapAction="http://xmlns.oracle.com/communications/inventory/webservice/DeleteEntity" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DeleteEntityFault">
+                <soap:fault name="DeleteEntityFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="InventoryFault">
+                <soap:fault name="InventoryFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="ValidationFault">
+                <soap:fault name="ValidationFault" use="literal" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="ReserveResource">
+            <soap:operation
+                soapAction="http://xmlns.oracle.com/communications/inventory/webservice/ReserveResource" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="ReserveEntityFault">
+                <soap:fault name="ReserveEntityFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="InventoryFault">
+                <soap:fault name="InventoryFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="ValidationFault">
+                <soap:fault name="ValidationFault" use="literal" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="UnreserveEntity">
+            <soap:operation
+                soapAction="http://xmlns.oracle.com/communications/inventory/webservice/UnreserveEntity" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="UnreserveEntityFault">
+                <soap:fault name="UnreserveEntityFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="InventoryFault">
+                <soap:fault name="InventoryFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="ValidationFault">
+                <soap:fault name="ValidationFault" use="literal" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="UpdateReservation">
+            <soap:operation
+                soapAction="http://xmlns.oracle.com/communications/inventory/webservice/UpdateReservation" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="UpdateReservationFault">
+                <soap:fault name="UpdateReservationFault"
+                    use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="InventoryFault">
+                <soap:fault name="InventoryFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="ValidationFault">
+                <soap:fault name="ValidationFault" use="literal" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="ImportEntity">
+            <soap:operation
+                soapAction="http://xmlns.oracle.com/communications/inventory/webservice/ImportEntity" />
+            <wsdl:input>
+                <mime:multipartRelated>
+                    <mime:part>
+                        <soap:body use="literal" />
+                    </mime:part>
+                    <mime:part>
+                        <mime:content part="octet"
+                            type="application/octet-stream" />
+                    </mime:part>
+                </mime:multipartRelated>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:multipartRelated>
+                    <mime:part>
+                        <soap:body use="literal" />
+                    </mime:part>
+                    <mime:part>
+                        <mime:content part="octet"
+                            type="application/octet-stream" />
+                    </mime:part>
+                </mime:multipartRelated>
+            </wsdl:output>
+            <wsdl:fault name="ImportEntityFault">
+                <soap:fault name="ImportEntityFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="InventoryFault">
+                <soap:fault name="InventoryFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="ValidationFault">
+                <soap:fault name="ValidationFault" use="literal" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="ExportEntity">
+            <soap:operation
+                soapAction="http://xmlns.oracle.com/communications/inventory/webservice/ExportEntity" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="ExportEntityFault">
+                <soap:fault name="ExportEntityFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="InventoryFault">
+                <soap:fault name="InventoryFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="ValidationFault">
+                <soap:fault name="ValidationFault" use="literal" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="AssociateEntity">
+            <soap:operation
+                soapAction="http://xmlns.oracle.com/communications/inventory/webservice/AssociateEntity" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="AssociateEntityFault">
+                <soap:fault name="AssociateEntityFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="InventoryFault">
+                <soap:fault name="InventoryFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="ValidationFault">
+                <soap:fault name="ValidationFault" use="literal" />
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="DisassociateEntity">
+            <soap:operation
+                soapAction="http://xmlns.oracle.com/communications/inventory/webservice/DisassociateEntity" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+            <wsdl:fault name="DisassociateEntityFault">
+                <soap:fault name="DisassociateEntityFault"
+                    use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="InventoryFault">
+                <soap:fault name="InventoryFault" use="literal" />
+            </wsdl:fault>
+            <wsdl:fault name="ValidationFault">
+                <soap:fault name="ValidationFault" use="literal" />
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <!-- ************************************************************* -->
+    <!-- Web Service Port Binding Definition -->
+    <!-- ************************************************************* -->
+    <wsdl:service name="InventoryWS">
+        <wsdl:port name="InventoryWSHTTPPort" binding="invnsrm:InventoryWSHTTPSoapBinding">
+            <soap:address location="set.at.runtime"/>
+        </wsdl:port>
+        <wsdl:port name="InventoryWSJMSPort" binding="invnsrm:InventoryWSJMSSoapBinding">
+            <soap:address
+                location="jms://localhost:7001/InventoryWS/InventoryWSJMS?URI=inventoryWSQueue"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

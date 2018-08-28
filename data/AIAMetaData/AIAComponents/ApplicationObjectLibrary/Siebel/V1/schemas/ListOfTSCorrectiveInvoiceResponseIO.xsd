@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.siebel.com/xml/CMU%20Response%20Billing%20Invoice%20IO" xmlns:xsdLocal="http://www.siebel.com/xml/CMU%20Response%20Billing%20Invoice%20IO" attributeFormDefault="unqualified" elementFormDefault="qualified" 
+><xsd:annotation
+><xsd:documentation
+>Copyright (C) 2001-2004 Siebel Systems, Inc. All rights reserved. Siebel XSD Generation</xsd:documentation
+></xsd:annotation
+><xsd:element name="ListOfTSCorrectiveInvoiceResponseIO" type="xsdLocal:ListOfTSCorrectiveInvoiceResponseIO"
+/><xsd:complexType name="ListOfTSCorrectiveInvoiceResponseIOTopElmt"
+><xsd:sequence
+><xsd:element name="ListOfTSCorrectiveInvoiceResponseIO" type="xsdLocal:ListOfTSCorrectiveInvoiceResponseIO" minOccurs="1" maxOccurs="1"
+/></xsd:sequence
+></xsd:complexType
+><xsd:complexType name="ListOfTSCorrectiveInvoiceResponseIO"
+><xsd:sequence
+><xsd:element name="CmuInvoiceVbc" type="xsdLocal:CmuInvoiceVbc" minOccurs="0" maxOccurs="unbounded"
+/></xsd:sequence
+></xsd:complexType
+><xsd:complexType name="CmuInvoiceVbc"
+><xsd:sequence
+><xsd:element name="Description" type="xsd:string" minOccurs="0" maxOccurs="1"
+/></xsd:sequence
+></xsd:complexType
+></xsd:schema
+>
